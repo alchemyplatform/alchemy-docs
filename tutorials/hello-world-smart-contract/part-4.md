@@ -122,7 +122,7 @@ Here's what each of the variables represents:
 * `message` - a string that stores the current message in the smart contract
 * `newMessage` - a string that stores the new message that will be written to the smart contract
 
-After the state variables, you'll see five un-implemented functions: `useEffect` ,`addSmartContractListener`, `addWalletListener` , `connectWalletPressed`,  and `onPublishedPressed`. We'll explain what they do below:
+After the state variables, you'll see five un-implemented functions: `useEffect` ,`addSmartContractListener`, `addWalletListener` , `connectWalletPressed`,  and `onUpdatePressed`. We'll explain what they do below:
 
 {% code title="HelloWorld.js" %}
 ```javascript
@@ -203,7 +203,7 @@ return (
 * On line 17, we display the current message stored in the smart contract, which captured in the `message` string.
 * One lines 23-26, we use a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) to update our `newMessage` state variable when the input in the text field changes.
 
-In addition to our state variables, you'll also see that `connectWalletPressed` and `onPublishedPressed` functions are called when the buttons with IDs `publishButton` and `walletButton` are clicked respectively.
+In addition to our state variables, you'll also see that `onUpdatePressed` and `connectWalletPressed` functions are called when the buttons with IDs `publish` and `walletButton` are clicked respectively.
 
 Finally, let's address where is this `HelloWorld.js` component added.
 
