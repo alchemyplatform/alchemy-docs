@@ -30,7 +30,7 @@ Here are a few services that are commonly used for consumer-grade web applicatio
 **NOTE:** All of these services listed above offer varying free tiers to get you up and running as quickly as possible!
 {% endhint %}
 
-If you've followed along with some of Alchemy's tutorials on Enhanced APIs, like ♻️[Tracking Transaction Life Cycles](../tracking-transaction-life-cycles.md) or 📜 [Integrating Historical Transaction Data into your dApp](../transfers-tutorial.md), you may have noticed that our forkable Github code repos are written and configured to be fully deployable Heroku projects that so that developers can easily run sample dashboards and code snippets. Give one of them a try to better understand how you can also deploy code that runs on web hosting providers!
+If you've followed along with some of Alchemy's tutorials on Enhanced APIs, like ♻️[Tracking Transaction Life Cycles](../tracking-transaction-life-cycles.md) or 📜 [Integrating Historical Transaction Data into your dApp](../transfers-tutorial.md), you may have noticed that our forkable Github code repos are written and configured to be fully deployable Heroku projects so that developers can easily run sample dashboards and code snippets. Give one of them a try to better understand how you can also deploy code that runs on web hosting providers!
 
 ### Hints & Tips on Web Hosting!
 
