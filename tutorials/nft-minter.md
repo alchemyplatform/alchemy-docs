@@ -70,7 +70,7 @@ All of the code we'll write will live under the `src` folder. We'll be editing t
 
 ## Step 2: Check out our starter files
 
-Before we start coding, it's important check out what's already provided for us in the starter files.
+Before we start coding, it's important to check out what's already provided for us in the starter files.
 
 ### Get your react project running
 
@@ -308,7 +308,7 @@ Now if `window.ethereum` _is_ present, then that's when things get interesting.
 
 Using a try/catch loop, we'll try to connect to Metamask by calling[`window.ethereum.request({ method: "eth_requestAccounts" });`](https://docs.metamask.io/guide/rpc-api.html#eth-requestaccounts) Calling this function will open up Metamask in the browser, whereby the user will be prompted to connect their wallet to your dApp.  
 
-* If the user chooses to connect, `method: "eth_requestAccounts"`  will return an array that contains all of the user's account addresses that connected to the dApp. Altogether, our `connectWallet` function will return a JSON object that contains the _first_ `address` in this array \(see line 9\) and a `status` message that prompts the user to write a message to the smart contract.
+* If the user chooses to connect, `method: "eth_requestAccounts"`  will return an array that contains all of the user's account addresses that are connected to the dApp. Altogether, our `connectWallet` function will return a JSON object that contains the _first_ `address` in this array \(see line 9\) and a `status` message that prompts the user to write a message to the smart contract.
 * If the user rejects the connection, then the JSON object will contain an empty string for the `address` returned and a `status` message that reflects that the user rejected the connection.
 
 ### Add `connectWallet` function to your `Minter.js` UI Component <a id="import-connect-wallet-pressed-into-minter-jss-connect-wallet-function"></a>
@@ -500,7 +500,7 @@ The text in the "Link to Asset", "Name", "Description" fields will comprise the 
 
 * We could store it on the Ethereum blockchain; however, doing so would be SUPER expensive \(we're talking upwards of hundreds of dollars\) due to the nature of Ethereum. ❌
 * We could store it on a centralized server, like AWS or Firebase. But that would defeat our decentralization ethos. ❌
-* We could use IPFS, a decentralized protocol and peer-to-peer network for storing and sharing data in a distributed file system. As this protocol as decentralized and free, it is our best option! ✅
+* We could use IPFS, a decentralized protocol and peer-to-peer network for storing and sharing data in a distributed file system. As this protocol is decentralized and free, it is our best option! ✅
 
 To store our metadata on IPFS, we will use [Pinata](https://pinata.cloud/), a convenient IPFS API and toolkit. In the next step, we'll explain exactly how to do this!
 
@@ -601,8 +601,8 @@ First, it imports [axios](https://www.npmjs.com/package/axios), a promise based 
 
 Then we have our asynchronous function `pinJSONToIPFS`, which takes a `JSONBody` as its input and the Pinata api key and secret in its header, all to make a POST request to their`pinJSONToIPFS` API.
 
-* If this POST request is successful, then our function returns an JSON object with the `success` boolean as true and the `pinataUrl` where our metadata was pinned. We will use this `pinataUrl` returned as the `tokenURI` input to our smart contract's mint function.
-* If this post request fails, then our function returns an JSON object with the `success` boolean as false and a `message` string that relays our error.
+* If this POST request is successful, then our function returns a JSON object with the `success` boolean as true and the `pinataUrl` where our metadata was pinned. We will use this `pinataUrl` returned as the `tokenURI` input to our smart contract's mint function.
+* If this post request fails, then our function returns a JSON object with the `success` boolean as false and a `message` string that relays our error.
 
 As with our `connectWallet`function return types, we're returning JSON objects so we can use  their parameters to update our state variables and UI.
 
@@ -695,7 +695,7 @@ Because we will be making numerous asynchronous calls \(to Pinata to pin our met
 The three inputs to our function will be the `url` of our digital asset, `name`, and `description`. Add the following function signature below the `connectWallet` function:
 
 ```javascript
-export const mintNFT = async(url, name, description) => {
+export const mintNFT = async (url, name, description) => {
 }
 ```
 
@@ -727,7 +727,7 @@ To do so, we first we need to import the `pinJSONToIPFS`function into our `inter
 import {pinJSONToIPFS} from './pinata.js'
 ```
 
-Recall, that `pinJSONToIPFS` takes in a JSON body. So before we make a call to it, we're going to need to format our `url`, `name`, and `description` parameters into a JSON object.
+Recall that `pinJSONToIPFS` takes in a JSON body. So before we make a call to it, we're going to need to format our `url`, `name`, and `description` parameters into a JSON object.
 
 Let's update our code to create a JSON object called `metadata` and then make a call to `pinJSONToIPFS` with this `metadata` parameter:
 
@@ -803,7 +803,7 @@ The last thing to add in our `mintNFT` function is our Ethereum transaction:
 If you're already familiar with Ethereum transactions, you'll notice that the structure is pretty similar to what you've seen.
 
 * First, we set up our transactions parameters.
-  * `to` specifies the the recipient address \(our smart contract\)
+  * `to` specifies the recipient address \(our smart contract\)
   * `from` specifies the signer of the transaction \(the user's connected address to Metamask: `window.ethereum.selectedAddress`\)
   * `data`  contains the call to our smart contract `mintNFT` method, which receives our  `tokenURI` and the user's wallet address, `window.ethereum.selectedAddress`, as inputs
 * Then, we make an await call, `window.ethereum.request,` where we ask Metamask to sign the transaction. Notice, in this request, we're specifying our eth method \(eth\_SentTransaction\) and passing in our `transactionParameters`. At this point, Metamask will open up in the browser, and prompt the user to sign or reject the transaction.
@@ -873,10 +873,10 @@ That's one giant function! Now, we just need to connect our `mintNFT` function t
 
 ## Step 9: Connect `mintNFT` to our `Minter.js` frontend
 
-Open up your `Minter.js` file and update the  `import { connectWallet } from "./utils/interact.js";` line at the top to be:
+Open up your `Minter.js` file and update the  `import { connectWallet, getCurrentWalletConnected } from "./utils/interact.js";` line at the top to be:
 
 ```javascript
- import { connectWallet, mintNFT } from "./utils/interact.js";
+ import { connectWallet, getCurrentWalletConnected, mintNFT } from "./utils/interact.js";
 ```
 
 Finally, implement the `onMintPressed` function to make await call to your imported `mintNFT`function and update the `status` state variable to reflect whether our transaction succeeded or failed:
