@@ -33,7 +33,7 @@ Now that you have a basic understanding of blockchain, read these articles about
 
 1.  [Why decentralization matters](https://medium.com/s/story/why-decentralization-matters-5e3f79f7638e)
 2.  [5 best uses for blockchain](https://medium.com/bitfwd/top-5-most-compelling-use-cases-for-blockchain-technology-d198e500e3d3)
-3.  [Blockchain's potential uses cases by sector](https://www.coindesk.com/information/applications-use-cases-blockchains) or  [read this similar summary of blockchain application to different industries](https://lisk.io/academy/blockchain-basics/use-cases)
+3.  [Blockchain's potential uses cases by sector](https://www.cbinsights.com/research/industries-disrupted-blockchain/) or  [read this similar summary of blockchain application to different industries](https://lisk.io/academy/blockchain-basics/use-cases)
 4. [Current use cases - a bit hodge podge but interesting projects](https://hackernoon.com/20-blockchain-use-cases-for-2018-you-should-know-f7d2919c191d)
 5. [Naval Ravikant’s Cryptocurrencies Tweets](https://medium.com/the-naked-founder/naval-ravikants-36-tweets-on-cryptocurrencies-f9b2b64106c1)
 

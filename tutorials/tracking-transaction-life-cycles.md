@@ -318,7 +318,7 @@ Upon making the transaction, you should receive a text message stating its pendi
 
 Similarly, upon miner confirmation, the Heroku webapp also send an SMS alert with the change in transaction status!
 
-![](../.gitbook/assets/image%20%2829%29.png)
+![](../.gitbook/assets/image%20%2829%29%20%281%29.png)
 
 _🎉 **Congratulations on your dApp deployment! Feel free to edit your webapp, point the target address at other interesting contracts / public figures, or make improvements to this transaction life cycle tracker!**_
 

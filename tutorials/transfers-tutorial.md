@@ -193,7 +193,7 @@ git push heroku master                // to push and deploy your heroku app
 
 With that, we have pushed all changes to Heroku and are now able to view our dashboard live. Open the Heroku app at the URL that your project has been pushed to.  
 
-![](../.gitbook/assets/image%20%287%29%20%282%29%20%282%29%20%281%29%20%282%29%20%282%29%20%282%29.png)
+![](../.gitbook/assets/image%20%287%29%20%282%29%20%282%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
 
 Note that upon refreshing the page, we see that the dashboard's data is updated.  Likewise, if we click on the "Refresh Data" button, we find that the balances displayed also change if someone has interacted with the rescue contract.
 
@@ -555,7 +555,7 @@ ETH from the sale lands back in the Gitcoin multi-sig and will be used for the E
 
 After deploying this webapp in your desired environment, it should look like the following!
 
-![](../.gitbook/assets/image%20%287%29%20%282%29%20%282%29%20%281%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
+![](../.gitbook/assets/image%20%287%29%20%282%29%20%282%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
 
 This is a simple example, but there are many ways you can expand on this to build dashboards and dApp for your users.  
 

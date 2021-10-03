@@ -246,6 +246,47 @@ List of addresses to remove, use \[\] if none.
 {% endapi-method-spec %}
 {% endapi-method %}
 
+**Example Request**
+
+```text
+curl https://dashboard.alchemyapi.io/api/update-webhook-addresses \
+-X PATCH \
+-H "X-Alchemy-Token":"your-X-Alchemy-Token" \ 
+-d '{"webhook_id":27,"addresses_to_add":["0xfdb16996831753d5331ff813c29a93c76834a0ad","0x48ea66f94518534ecbc863fbf521896d52b025d9", "0x6f8d0c2a2c3a189803f5c6482c88be46a55058c1"], "addresses_to_remove":[]}'
+```
+
+{% api-method method="put" host="https://dashboard.alchemyapi.io" path="/api/update-webhook" %}
+{% api-method-summary %}
+
+{% endapi-method-summary %}
+
+{% api-method-description %}
+
+{% endapi-method-description %}
+
+{% api-method-spec %}
+{% api-method-request %}
+{% api-method-path-parameters %}
+{% api-method-parameter name="" type="string" required=false %}
+
+{% endapi-method-parameter %}
+{% endapi-method-path-parameters %}
+{% endapi-method-request %}
+
+{% api-method-response %}
+{% api-method-response-example httpCode=200 %}
+{% api-method-response-example-description %}
+
+{% endapi-method-response-example-description %}
+
+```
+
+```
+{% endapi-method-response-example %}
+{% endapi-method-response %}
+{% endapi-method-spec %}
+{% endapi-method %}
+
 {% api-method method="put" host="https://dashboard.alchemyapi.io" path="/api/update-webhook-addresses" %}
 {% api-method-summary %}
 Update webhook addresses
@@ -297,18 +338,9 @@ curl https://dashboard.alchemyapi.io/api/update-webhook-addresses \
 -d '{"webhook_id":104,"addresses":["0x6f8d0c2a2c3a189803f5c6482c88be46a55058c1","0xfdb16996831753d5331ff813c29a93c76834a0ad"]}'
 ```
 
-#### Example Request
-
-```text
-curl https://dashboard.alchemyapi.io/api/update-webhook-addresses \
--X PATCH \
--H "X-Alchemy-Token":"your-X-Alchemy-Token" \ 
--d '{"webhook_id":27,"addresses_to_add":["0xfdb16996831753d5331ff813c29a93c76834a0ad","0x48ea66f94518534ecbc863fbf521896d52b025d9", "0x6f8d0c2a2c3a189803f5c6482c88be46a55058c1"], "addresses_to_remove":[]}'
-```
-
 {% api-method method="put" host="https://dashboard.alchemyapi.io" path="/api/update-webhook" %}
 {% api-method-summary %}
-Update webhook active status
+
 {% endapi-method-summary %}
 
 {% api-method-description %}

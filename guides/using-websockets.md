@@ -76,7 +76,7 @@ While the subscription is active, you will receive events which are objects with
 
 ### Subscription types
 
-#### **1. alchemy\_newFullPendingTransactions** 
+### **1. alchemy\_newFullPendingTransactions** 
 
 {% hint style="warning" %}
 The `alchemy_newFullPendingTransactions` ****subscription type is a super costly to maintain and requires a large number of compute units since it emits full transaction information instead of just transaction hashes. We do not recommend keeping this subscription open for long periods of time for non-enterprise tier users. 
@@ -84,7 +84,7 @@ The `alchemy_newFullPendingTransactions` ****subscription type is a super costly
 **NOTE:** 
 
 * The naming of this subscription is different from the naming of the web3 subscription API, [`alchemy_fullPendingTransactions`](../documentation/alchemy-web3/enhanced-web3-api.md#web-3-eth-subscribe-alchemy_fullpendingtransactions).
-* This method is only supported on Ethereum networks
+* This method is only supported on Ethereum networks and Polygon Mainnet.
 {% endhint %}
 
 Returns the transaction information for all transactions that are added to the pending state. This subscription type subscribes to pending transactions, similar to the standard Web3 call `web3.eth.subscribe("pendingTransactions")`, but differs in that it emits full transaction information rather than just transaction hashes. ****
@@ -131,12 +131,12 @@ Result
 }
 ```
 
-#### 2. alchemy\_filteredNewFullPendingTransactions
+### 2. alchemy\_filteredNewFullPendingTransactions
 
 Returns the transaction information for all transactions that are added to the pending state that match a given filter. Currently supports an address filter, which will return transactions from or to the address.
 
 {% hint style="warning" %}
-**NOTE:** This method is only supported on Ethereum networks.
+**NOTE:** This method is only supported on Ethereum networks and Polygon Mainnet.
 {% endhint %}
 
 **Example**
@@ -181,14 +181,14 @@ Result
 }
 ```
 
-#### 3. newPendingTransactions
+### 3. newPendingTransactions
 
 Returns the hash for all transactions that are added to the pending state.
 
 When a transaction that was previously part of the canonical chain isn’t part of the new canonical chain after a reorganization its again emitted.
 
 {% hint style="warning" %}
-**NOTE:** This method is only supported on Ethereum networks.
+**NOTE:** This method is only supported on Ethereum networks and Polygon Mainnet.
 {% endhint %}
 
 **Parameters**
@@ -242,7 +242,7 @@ Result
 }
 ```
 
-#### 4. newHeads
+### 4. newHeads
 
 Emits an event any time a new header is added to the chain, including during a chain reorganization.
 
@@ -313,7 +313,7 @@ Result
  }
 ```
 
-#### 5. logs
+### 5. logs
 
 Emits logs which are part of newly added blocks that match specified filter criteria.
 
@@ -379,7 +379,7 @@ Result
 }
 ```
 
-#### 6. syncing
+### 6. syncing
 
 Indicates when the node starts or stops synchronizing. The result can either be a boolean indicating that the synchronization has started \(true\), finished \(false\) or an object with various progress indicators.
 

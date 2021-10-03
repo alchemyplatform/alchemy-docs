@@ -246,6 +246,15 @@ List of addresses to remove, use \[\] if none.
 {% endapi-method-spec %}
 {% endapi-method %}
 
+#### Example Request
+
+```text
+curl https://dashboard.alchemyapi.io/api/update-webhook-addresses \
+-X PATCH \
+-H "X-Alchemy-Token":"your-X-Alchemy-Token" \ 
+-d '{"webhook_id":27,"addresses_to_add":["0xfdb16996831753d5331ff813c29a93c76834a0ad","0x48ea66f94518534ecbc863fbf521896d52b025d9", "0x6f8d0c2a2c3a189803f5c6482c88be46a55058c1"], "addresses_to_remove":[]}'
+```
+
 {% api-method method="put" host="https://dashboard.alchemyapi.io" path="/api/update-webhook-addresses" %}
 {% api-method-summary %}
 Update webhook addresses
@@ -295,15 +304,6 @@ curl https://dashboard.alchemyapi.io/api/update-webhook-addresses \
 -X PUT \
 -H "X-Alchemy-Token":"your-X-Alchemy-Token" \ 
 -d '{"webhook_id":104,"addresses":["0x6f8d0c2a2c3a189803f5c6482c88be46a55058c1","0xfdb16996831753d5331ff813c29a93c76834a0ad"]}'
-```
-
-#### Example Request
-
-```text
-curl https://dashboard.alchemyapi.io/api/update-webhook-addresses \
--X PATCH \
--H "X-Alchemy-Token":"your-X-Alchemy-Token" \ 
--d '{"webhook_id":27,"addresses_to_add":["0xfdb16996831753d5331ff813c29a93c76834a0ad","0x48ea66f94518534ecbc863fbf521896d52b025d9", "0x6f8d0c2a2c3a189803f5c6482c88be46a55058c1"], "addresses_to_remove":[]}'
 ```
 
 {% api-method method="put" host="https://dashboard.alchemyapi.io" path="/api/update-webhook" %}

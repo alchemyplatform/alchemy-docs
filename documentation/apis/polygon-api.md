@@ -1562,7 +1562,9 @@ Result
 Returns an array of all logs matching a given filter object. For more information about `eth_getLogs` check out our [Deep Dive into eth\_getLogs](../../guides/eth_getlogs.md) page. 
 
 {% hint style="warning" %}
-**NOTE**: You can make `eth_getLogs` requests with up to a _**2K block range**_ and _**no limit on the response size**_.
+**NOTE**: You can make `eth_getLogs` requests with up to a _**2K block range**_ and _**no limit on the response size**_. 
+
+If you absolutely need to query larger block ranges, please contact us over [discord](https://alchemy.com/discord) or at support@alchemy.com. We can open access to larger block ranges based on your use case.
 
 _If you need to pull logs frequently, we recommend_ [_using WebSockets_](../../guides/using-websockets.md) _to push new logs to you when they are available._ 
 {% endhint %}
@@ -2530,7 +2532,73 @@ Result
 }
 ```
 
-#### 3. syncing
+#### 3. newPendingTransactions
+
+Returns the hash for all transactions that are added to the pending state. 
+
+When a transaction that was previously part of the canonical chain isn’t part of the new canonical chain after a reorganization its again emitted.
+
+{% hint style="info" %}
+**NOTE:**
+
+* If you want the full transaction object instead of just the hash, check out the Enhanced API [`alchemy_newFullPendingTransactions`](../../guides/using-websockets.md#1-alchemy_newfullpendingtransactions)
+* If you want pending transactions for a specific address, check out the Enhanced API 
+
+  \`\`[`alchemy_filteredNewFullPendingTransactions`](../../guides/using-websockets.md#2-alchemy_filterednewfullpendingtransactions)\`\`
+{% endhint %}
+
+**Parameters**
+
+none
+
+**Example**
+
+Request
+
+{% tabs %}
+{% tab title="Curl" %}
+```bash
+curl https://eth-mainnet.alchemyapi.io/v2/your-api-key \
+-X POST \
+-H "Content-Type: application/json" \
+-d '{"jsonrpc":"2.0","id": 2, "method": "eth_subscribe", "params": ["newPendingTransactions"]}'
+```
+{% endtab %}
+
+{% tab title="Postman" %}
+```http
+URL: https://eth-mainnet.alchemyapi.io/v2/your-api-key
+RequestType: POST
+Body: 
+{
+    "jsonrpc":"2.0",
+    "method":"eth_subscribe",
+    "params":["newPendingTransactions"]
+    "id":2
+}
+```
+{% endtab %}
+{% endtabs %}
+
+Result
+
+```javascript
+{
+    "jsonrpc":"2.0",
+    "id":2,
+    "result":"0xc3b33aa549fb9a60e95d21862596617c"
+}
+{
+    "jsonrpc":"2.0",
+    "method":"eth_subscription",
+    "params":{
+        "subscription":"0xc3b33aa549fb9a60e95d21862596617c",
+        "result":"0xd6fdc5cc41a9959e922f30cb772a9aef46f4daea279307bc5f7024edc4ccd7fa"
+    }
+}
+```
+
+#### 4. syncing
 
 Indicates when the node starts or stops synchronizing. The result can either be a boolean indicating that the synchronization has started \(true\), finished \(false\) or an object with various progress indicators.
 

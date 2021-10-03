@@ -202,7 +202,7 @@ web3.eth.estimateGas({
   ethGasStationCall().then((price) => {
     sendTx(web3, {
       gas: estimatedGas,
-      maxPriorityFee: price,
+      maxFeePerGas: price,
       to: toAddress,
       value: 100,
     });

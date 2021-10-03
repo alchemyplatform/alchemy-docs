@@ -59,9 +59,9 @@ Result
 }
 ```
 
-#### Optional Arguments: 
+### Optional Arguments: 
 
-#### 1. newHeads <a id="newheads"></a>
+### 1. newHeads
 
 Fires a notification each time a new header is appended to the chain, including chain reorganizations. 
 
@@ -133,7 +133,7 @@ Result
  }
 ```
 
-#### 2. logs <a id="logs"></a>
+### 2. logs
 
 Returns logs that are included in new imported blocks and match the given filter criteria.
 
@@ -202,7 +202,7 @@ Result
 }
 ```
 
-#### 3. newPendingTransactions <a id="newpendingtransactions"></a>
+### 3. newPendingTransactions
 
 Returns the hash for all transactions that are added to the pending state. 
 
@@ -268,7 +268,7 @@ Result
 }
 ```
 
-#### 4. syncing
+### 4. syncing
 
 Indicates when the node starts or stops synchronizing. The result can either be a boolean indicating that the synchronization has started \(true\), finished \(false\) or an object with various progress indicators.
 

@@ -1,18 +1,12 @@
 ---
 description: >-
-  A quick guide to setting up your eth2 node or validator using Alchemy. We'll
-  make sure this guide is actively updated as eth2 continues to roll out!
+  A quick guide to setting up your Eth2 node or validator on Prysm with Alchemy
+  as your web3 provider.
 ---
 
-# ♦️ Running an Eth2 Node/Validator with Alchemy
+# Setting up an Eth 2.0 Node or Validator with Prysm
 
-If you want general information on Etherum 2.0, we recommend checking out [ethereum.org](https://ethereum.org/en/eth2/).
-
-You can use Alchemy to support your eth2 project by running a [beacon node](https://ethereum.org/en/eth2/get-involved/#clients) or running a [validator](https://ethereum.org/en/eth2/staking/#gatsby-focus-wrapper) \(note if you want to run a validator you'll have to also run a node to interact with the beacon chain\). A beacon node simply maintains a view of the [beacon chain](https://ethereum.org/en/eth2/beacon-chain/) and [shard chain](https://ethereum.org/en/eth2/shard-chains/), while validators actively mine and validate new blocks \([earning rewards in the process](https://ethereum.org/en/eth2/staking/)\). In order to become a validator you have to [stake 32 Eth](https://launchpad.ethereum.org/overview). You can learn more about staking on [ethereum.org](https://ethereum.org/en/eth2/staking/) and on [EthHub](https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/proof-of-stake/).
-
-There are a handful of [beacon node clients](https://ethereum.org/en/eth2/get-involved/#clients) to choose from, however, in this guide we'll walk you through setting up a [Prysm node](https://prylabs.net/). The set up process should not be that different for other node clients!
-
-HINT: If you are just getting started it is highly recommended to run an eth2 testnode prior to jumping into mainnet.
+This guide assumes you have already generated your validator keys and have submitted your initial 32 Eth to the beacon chain. If you have not done so, [please follow this guide](https://app.gitbook.com/@alchemyapi/s/alchemy/~/drafts/-Mhzhhn69TnxCLAdq3aC/guides/running-an-eth2-node-with-alchemy).
 
 To learn more about Prysm, check out their [Eth2 Documentation](https://docs.prylabs.network/docs/getting-started).
 
@@ -20,7 +14,7 @@ To learn more about Prysm, check out their [Eth2 Documentation](https://docs.pry
 **Note**: The instructions below were adopted from the [Prysm Getting Started Guide](https://docs.prylabs.network/docs/mainnet/joining-eth2).
 {% endhint %}
 
-## Running an eth2 node <a id="running-an-eth-2-node"></a>
+## Running an Eth2 node <a id="running-an-eth-2-node"></a>
 
 ### 1. Get Prysm <a id="s-1-get-prysm"></a>
 
@@ -85,13 +79,13 @@ Complete steps 1 and 2 from above.
 
 ### For Testnet Validators
 
-If you want to be a validator in the Pyrmont eth2 testnet prior to jumping into mainnet, you'll still need to stake 32 testnet ETH. You can request testnet ETH by joining the [Prysm discord server](https://discord.com/invite/hmq4y2P) or requesting from a [facet](https://goerli-faucet.slock.it/). 
+If you want to be a validator in the Pyrmont eth2 testnet prior to jumping into mainnet, you'll still need to stake 32 testnet ETH. You can request testnet ETH by joining the [Prysm discord server](https://discord.com/invite/hmq4y2P) or requesting from a [faucet](https://goerli-faucet.slock.it/). 
 
 ### 1. Follow the [official eth2 onboarding](https://launchpad.ethereum.org/overview) <a id="s-3-follow-the-official-eth-2-onboarding"></a>
 
 The Eth2 Launchpad has a [step by step process](https://launchpad.ethereum.org/overview) for establishing your validator:
 
-* [**For eth2 mainnet**](https://launchpad.ethereum.org/overview)\*\*\*\*
+* [**For Eth2 mainnet**](https://launchpad.ethereum.org/overview)\*\*\*\*
 * \*\*\*\*[**For Prymont testnet**](https://pyrmont.launchpad.ethereum.org/overview)\*\*\*\*
 
 ### 2. [Import validator accounts into Prysm](https://docs.prylabs.network/docs/mainnet/joining-eth2#step-5-import-your-validator-accounts-into-prysm) <a id="s-4-import-validator-accounts-into-prysm"></a>

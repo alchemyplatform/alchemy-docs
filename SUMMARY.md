@@ -109,7 +109,9 @@
 * [🍎 Alchemy Set-up for Macs](guides/alchemy-for-macs.md)
 * [🌐 Choosing a Network](guides/choosing-a-network.md)
 * [🚦 Rate Limits](guides/rate-limits.md)
-* [♦️ Running an Eth2 Node/Validator with Alchemy](guides/running-an-eth2-node-with-alchemy.md)
+* [♦️ Running an Eth2.0 Staking Node or Validator with Alchemy](guides/running-an-eth2-node-with-alchemy/README.md)
+  * [Setting up an Eth 2.0 Staking Validator with Prysm](guides/running-an-eth2-node-with-alchemy/eth2-staking-prysm.md)
+  * [Setting up an Eth 2.0 Staking Validator with Teku](guides/running-an-eth2-node-with-alchemy/eth2-staking-teku.md)
 * [✅ Internal Playbook: Upgrading Ethereum Nodes](guides/internal-playbook-upgrading-ethereum-nodes.md)
 * [🐛Debugging CORS problems for end-users](guides/debugging-cors.md)
 
