@@ -12,7 +12,7 @@ Parity Tracing API methods give Alchemy users access to the most detailed inform
 **NOTE:** Alchemy is the only service that provides access to these Trace API methods due to their high maintenance costs and specialized infrastructure. For this reason, they are currently only available to Alchemy users in Growth and Enterprise tiers. You can upgrade your plan [here](https://dashboard.alchemyapi.io/settings/billing) to access them. 
 {% endhint %}
 
-These API methods allow you to get a full _externality_ trace on any transaction executed throughout the Parity chain. Unlike the log filtering API, you are able to search and filter based only upon address information. Information returned includes the execution of all `CREATE,` `SUICIDE` and all variants of `CALL` together with input data, output data, gas usage, amount transferred and the success status of each individual action.
+These API methods allow you to get a full _externality_ trace on any transaction executed throughout the Ethereum chain. Unlike the log filtering API, you are able to search and filter based only upon address information. Information returned includes the execution of all `CREATE,` `SUICIDE` and all variants of `CALL` together with input data, output data, gas usage, amount transferred and the success status of each individual action.
 
 {% hint style="info" %}
 **NOTE:** The Trace API is only supported on **Mainnet, Ropsten,** and **Kovan.** 

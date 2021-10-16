@@ -14,7 +14,7 @@ In addition to the standard [Ethereum JSON-RPC error codes](https://eth.wiki/jso
 
 | Code | Meaning |
 | :--- | :--- |
-| 400 | Bad Request -- Your request is invalid. Double-check your JSON-RPC body |
+| 400 | Bad Request -- Your request is invalid. Double-check your JSON-RPC body. |
 | 401 | Unauthorized --  You must authenticate your request with an API key. Check out how to [create a key](../introduction/getting-started.md#1-create-an-alchemy-key) if you do not have one.  |
 | 403 | Forbidden -- You've hit your **capacity limit**, or your request was rejected by your app's **whitelist settings**. |
 | 429 | Too Many Requests -- You've exceeded your concurrent requests capacity or [compute units](compute-units.md) per second capacity. Check out the [Rate Limits](../guides/rate-limits.md) page for solutions. |

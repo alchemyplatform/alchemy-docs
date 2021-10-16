@@ -7,13 +7,15 @@ description: >-
 
 # 🔔 Using Alchemy Notify/Webhooks
 
-_**Looking for the instructions on how to create webhooks programmatically? Check out the page below!**_ 
+_**Looking for the instructions on how to create webhooks programmatically? Check out the page below! **_
 
-{% page-ref page="../documentation/apis/enhanced-apis/notify-api.md" %}
+{% content-ref url="../documentation/enhanced-apis/notify-api.md" %}
+[notify-api.md](../documentation/enhanced-apis/notify-api.md)
+{% endcontent-ref %}
 
 Alchemy Notify works by using webhooks, a way for you to subscribe to events that occur on your application. This guide will walk through what webhooks are and how you can use them in order to get started with Alchemy Notify. 
 
-## What are Webhooks? <a id="what-are-webhooks"></a>
+## What are Webhooks? <a href="what-are-webhooks" id="what-are-webhooks"></a>
 
 Webhooks are a way for users to receive notifications when an event occurs on your application. Rather than continuously polling the server to check if the state has changed, webhooks provide information to you as it becomes available, which is a lot more efficient and beneficial for developers. Webhooks work by registering a URL to send notifications to once certain events occur.
 
@@ -27,17 +29,17 @@ You can think of webhook notifications just like SMS notifications. The entity s
 The difference between webhooks and WebSockets is that webhooks can only facilitate one-way communication between two services, while WebSockets can facilitate two-way communication between a user and a service, recognizing events and displaying them to the user as they occur.
 {% endhint %}
 
-## Types of Webhooks <a id="types-of-wehooks"></a>
+## Types of Webhooks <a href="types-of-wehooks" id="types-of-wehooks"></a>
 
 Alchemy offers four different types of webhooks each described below.
 
-### 1. Mined Transactions <a id="mined-transactions"></a>
+### 1. Mined Transactions <a href="mined-transactions" id="mined-transactions"></a>
 
 The Mined Transaction Webhook is used to notify your app anytime a transaction gets successfully mined. This is extremely useful if you want to notify customers the moment their transactions goes through.
 
 #### Example Response
 
-```text
+```
 {
   "app": "Demo", 
   "network": "MAINNET",
@@ -62,13 +64,13 @@ The Mined Transaction Webhook is used to notify your app anytime a transaction g
 }
 ```
 
-### **2.** Dropped Transactions <a id="dropped-transactions"></a>
+### **2. **Dropped Transactions <a href="dropped-transactions" id="dropped-transactions"></a>
 
 The Dropped Transactions Webhook is used to notify your app anytime a transaction gets dropped.
 
 **Example Response**
 
-```text
+```
 {
   "app": "Alchemy Mainnet",
   "network": "MAINNET",
@@ -93,12 +95,12 @@ The Dropped Transactions Webhook is used to notify your app anytime a transactio
 }
 ```
 
-### **3.** Address Activity <a id="address-activity"></a>
+### **3. **Address Activity <a href="address-activity" id="address-activity"></a>
 
 The Address Activity Webhook allows you to track all ETH, ERC20 and ERC721 external and internal [transfer events](eth_getlogs.md#what-are-transfers) for as many Ethereum addresses as you'd like. This provides your app with real-time state changes when an address sends or receives tokens. 
 
 {% hint style="info" %}
-If you are looking for historical activity, check out the [Transfers API](../documentation/apis/enhanced-apis/transfers-api.md)! 
+If you are looking for historical activity, check out the [Transfers API](../documentation/enhanced-apis/transfers-api.md)! 
 {% endhint %}
 
 #### Types of Transfers
@@ -107,45 +109,45 @@ There are three main types of transfers that are captured when receiving an addr
 
 **1. External Eth Transfers**
 
-These are top level Ethereum transactions that occur with a from address being an external \(user created\) address. External addresses have private keys and are accessed by users. 
+These are top level Ethereum transactions that occur with a from address being an external (user created) address. External addresses have private keys and are accessed by users. 
 
-**2. Token Transfers \(ERC20 or ERC721\)**
+**2. Token Transfers (ERC20 or ERC721)**
 
 These are event logs for any ERC20 and ERC721 transfer.  
 
 **3. Internal Eth Transfers**
 
-These are transfers that occur where the `fromAddress` is an internal \(smart contract\) address.  \(ex: a smart contract calling another smart contract or smart contract calling another external address\).
+These are transfers that occur where the `fromAddress` is an internal (smart contract) address.  (ex: a smart contract calling another smart contract or smart contract calling another external address).
 
 {% hint style="warning" %}
-**NOTE:** Internal transfers are only available for mainnet, ropsten and kovan
+**NOTE: **Internal transfers are only available for mainnet, ropsten and kovan
 {% endhint %}
 
 {% hint style="info" %}
-**NOTE:**  For efficiency, we do not return internal transfers with 0 value as they don't provide useful information without digging deeper into the internal transaction itself. If you are interested in these type of events see our [Trace API](../documentation/apis/enhanced-apis/trace-api.md). 
+**NOTE:  **For efficiency, we do not return internal transfers with 0 value as they don't provide useful information without digging deeper into the internal transaction itself. If you are interested in these type of events see our [Trace API](../documentation/enhanced-apis/trace-api.md). 
 
-Additionally, we do not include any internal transfers with call type`delegatecall` because although they have a _value_  associated with them they do not actually _transfer_  that value \(see[ Appendix H of the Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) if you're curious\). We also do not include miner rewards as an internal transfer.
+Additionally, we do not include any internal transfers with call type`delegatecall `because although they have a _value  _associated with them they do not actually _transfer_  that value (see[ Appendix H of the Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) if you're curious). We also do not include miner rewards as an internal transfer.
 {% endhint %}
 
 **Schema**
 
 * `category`: `external`, `internal`, or `token`- label for the transfer
-* `blockNum`: the block where the transfer occurred \(hex string\).
-* `fromAddress`: from address of transfer \(hex string\).
-* `toAddress`: to address of transfer \(hex string\). `null` if contract creation.
-* `value`: converted asset transfer value as a number \(raw value divided by contract decimal\). `null` if erc721 transfer or contract decimal not available.
-* `erc721TokenId`: raw erc721 token id \(hex string\). `null` if not an erc721 token transfer
+* `blockNum`: the block where the transfer occurred (hex string).
+* `fromAddress`: from address of transfer (hex string).
+* `toAddress`: to address of transfer (hex string). `null` if contract creation.
+* `value`: converted asset transfer value as a number (raw value divided by contract decimal). `null` if erc721 transfer or contract decimal not available.
+* `erc721TokenId`: raw erc721 token id (hex string). `null` if not an erc721 token transfer
 * `asset`: `ETH` or the token's symbol. `null` if not defined in the contract and not available from other sources.
-* `hash`: transaction hash \(hex string\).
+* `hash`: transaction hash (hex string).
 * `rawContract`
-  * `value`: raw transfer value \(hex string\). `null` if erc721 transfer
-  * `address`: contract address \(hex string\). `null` if `external` or `internal` transfer
-  * `decimal`: contract decimal \(hex string\). `null` if not defined in the contract and not available from other sources.
-* `typeTraceAddress`: the type of internal transfer \(`call`, `staticcall`, `create`, `suicide`\) followed by the trace address \(ex. `call_0_1`\).`null` if not internal transfer. \(note you can use this as a unique id for internal transfers since they will have the same parent hash\)
+  * `value`: raw transfer value (hex string). `null` if erc721 transfer
+  * `address`: contract address (hex string). `null` if `external` or `internal` transfer
+  * `decimal`: contract decimal (hex string). `null` if not defined in the contract and not available from other sources.
+* `typeTraceAddress`: the type of internal transfer (`call`, `staticcall`, `create`, `suicide`) followed by the trace address (ex. `call_0_1`).`null` if not internal transfer. (note you can use this as a unique id for internal transfers since they will have the same parent hash)
 
 **Example Response**
 
-```text
+```
 {
   "app": "Test webhooks",
   "network": "MAINNET",
@@ -222,13 +224,13 @@ Additionally, we do not include any internal transfers with call type`delegateca
 
 ### 4. Gas Price
 
-The Gas Price Webhook allows you to receive a notification every minute when the Mainnet gas price rises above or drops below a certain threshold that you can select. It works by pulling the current gas prices from [ETH Gas Station](https://ethgasstation.info/) every minute.
+The Gas Price Webhook allows you to receive a notification every minute when the Mainnet gas price rises above or drops below a certain threshold that you can select. It works by pulling the current gas prices from [ETH Gas Station](https://ethgasstation.info) every minute.
 
 Gas prices typically fall in a range, where a lower gas price means that the transaction will take longer to be mined, and a higher gas price means that the transaction will be mined more quickly. The Execution Speed metric allows you to specify a metric in that range that you would like to receive notifications, corresponding to ETH Gas Station's [Price Type metric documented here](https://docs.ethgasstation.info/gas-price). For example, selecting an Average Execution Speed means that you will receive notifications when a gas price typically mined in under 5 minutes rises above or drops below your selected threshold
 
 **Example Response**
 
-```text
+```
 {
   "app": "Alchemy Mainnet",
   "network": "MAINNET",
@@ -249,23 +251,23 @@ Gas prices typically fall in a range, where a lower gas price means that the tra
 }
 ```
 
-## Test Out Webhooks <a id="test-out-webhooks"></a>
+## Test Out Webhooks <a href="test-out-webhooks" id="test-out-webhooks"></a>
 
-There are many websites you can use to test out webhooks. For example, you can use [https://webhook.site/](https://webhook.site/) and copy **your unique URL**. Once you have the URL, you can test using the following steps:
+There are many websites you can use to test out webhooks. For example, you can use [https://webhook.site/](https://webhook.site) and copy **your unique URL**. Once you have the URL, you can test using the following steps:
 
 1. Navigate to your [Notify dashboard](https://dashboard.alchemyapi.io/notify)
 2. Click "Create Webhook" on the webhook you want to test
 3. Specify which app you wish to add notifications to
 4. Paste in **your unique URL** and hit the "Test Webhook" button
 
-You should then see the result updated on website: [https://webhook.site/](https://webhook.site/)
+You should then see the result updated on website: [https://webhook.site/](https://webhook.site)
 
-## How to Set Up Webhooks <a id="how-to-set-up-webhooks"></a>
+## How to Set Up Webhooks <a href="how-to-set-up-webhooks" id="how-to-set-up-webhooks"></a>
 
 Setting up a webhook is as simple as adding a new URL to your application. There are two primary ways to activate Alchemy Notify.
 
 {% hint style="warning" %}
-**NOTE:** If you need to add over 10 addresses to the address activity webhook, we recommend adding them through an API call. See our [Notify API Reference page](../documentation/apis/enhanced-apis/notify-api.md#create-webhook) for more information on this. 
+**NOTE: **If you need to add over 10 addresses to the address activity webhook, we recommend adding them through an API call. See our [Notify API Reference page](../documentation/enhanced-apis/notify-api.md#create-webhook) for more information on this. 
 {% endhint %}
 
 ### 1.  Setting Up Webhooks from the Dashboard
@@ -275,16 +277,18 @@ Navigate to the Notify tab in your [Alchemy Dashboard](https://dashboard.alchemy
 1. Determine which type of webhook you want to activate
 2. Click the "Create Webhook" button
 3. Specify which app you wish to add notifications to
-4. Add in your unique webhook URL, this can be any link that you want to receive requests at \(your server, slack, etc.\) **Note that the webhook payload might not** For instructions on how to set up Alchemy Notify programatically, check out the **always be compatible for 3rd party integrations.** 
+4. Add in your unique webhook URL, this can be any link that you want to receive requests at (your server, slack, etc.) **Note that the webhook payload might not **For instructions on how to set up Alchemy Notify programatically, check out the **always be compatible for 3rd party integrations. **
 5. Test out your webhook by hitting the "Test Webhook" button to ensure it works properly
 6. Hit "Create Webhook" and you should then see your webhook appear in the list!
 7. Check your endpoint to see responses rolling through! 
 
 ### 2. Setting up Webhooks Programmatically 
 
-[Notify API page](../documentation/apis/enhanced-apis/notify-api.md):
+[Notify API page](../documentation/enhanced-apis/notify-api.md):
 
-{% page-ref page="../documentation/apis/enhanced-apis/notify-api.md" %}
+{% content-ref url="../documentation/enhanced-apis/notify-api.md" %}
+[notify-api.md](../documentation/enhanced-apis/notify-api.md)
+{% endcontent-ref %}
 
 ## Webhook Signature and Security 
 
@@ -321,7 +325,7 @@ function isValidSignature(request) {
     const signature = headers['x-alchemy-signature']; // Lowercase for NodeJS
     const body = request.body;    
     const hmac = crypto.createHmac('sha256', token) // Create a HMAC SHA256 hash using the auth token
-    hmac.update(body, 'utf8') // Update the token hash with the request body using utf8
+    hmac.update(JSON.stringify(body), 'utf8') // Update the token hash with the request body using utf8
     const digest = hmac.digest('hex');     
     return (signature === digest); // If signature equals your computed hash, return true
 }
@@ -355,7 +359,7 @@ return (signature == digest);
 
 If you receive a capacity limit error, meaning you have exceeded your total monthly compute units, you should receive a response similar to the one below. You can upgrade your limits directly through the [Alchemy dashboard.](https://dashboard.alchemyapi.io/settings/billing)
 
-```text
+```
 {
   "app": "Demo",
   "network": "MAINNET",
@@ -364,4 +368,3 @@ If you receive a capacity limit error, meaning you have exceeded your total mont
   "timestamp": "2020-07-29T01:13:54.703Z"
 }
 ```
-

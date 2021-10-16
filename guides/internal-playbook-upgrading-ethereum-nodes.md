@@ -1,5 +1,7 @@
 ---
-description: "Check out this internal playbook for why, when, and how we upgrade our Ethereum nodes for our users \U0001F680"
+description: >-
+  Check out this internal playbook for why, when, and how we upgrade our
+  Ethereum nodes for our users 🚀
 ---
 
 # ✅ Internal Playbook: Upgrading Ethereum Nodes
@@ -10,23 +12,23 @@ description: "Check out this internal playbook for why, when, and how we upgrade
 
 On November 10th, the Ethereum ecosystem was hit by a flurry of errors, incorrect data, and downtime. While our infrastructure and our customers passed through the storm without incident, many other developers had a long night on-call.
 
-At around 11pm PDT, stating at block 11234873, a [consensus error surfaced in Geth versions older than 1.9.17](https://gist.github.com/karalabe/e1891c8a99fdc16c4e60d9713c35401f) that caused nodes to get stuck on an incorrect fork of mainnet. Future releases fixed this bug, but if you run your own nodes and hadn’t upgraded since July, then your production traffic was significantly impacted. Fortunately, our rigorous upgrading standards ensured that Alchemy Supernode was not effected by the incident, as we were on Geth v1.9.20 \(released August 25th\).
+At around 11pm PDT, stating at block 11234873, a [consensus error surfaced in Geth versions older than 1.9.17](https://gist.github.com/karalabe/e1891c8a99fdc16c4e60d9713c35401f) that caused nodes to get stuck on an incorrect fork of mainnet. Future releases fixed this bug, but if you run your own nodes and hadn’t upgraded since July, then your production traffic was significantly impacted. Fortunately, our rigorous upgrading standards ensured that Alchemy Supernode was not effected by the incident, as we were on Geth v1.9.20 (released August 25th).
 
 If you’re running your own nodes, this incident serves as a reminder: update, update, update. If you rely on a service provider, then it’s important you have transparency into why, when and how they conduct their upgrades so that you don’t have to worry about these types of inconsistencies.
 
 About a year ago, we did a deep dive into the [Constantinople upgrade](https://medium.com/alchemy-api/dont-get-forked-best-practices-for-handling-constantinople-and-ethereum-client-upgrades-e0d6b5dd8e9c). Today, we wanted to revisit our practices to be fully transparent about how the Alchemy Developer Platform maintains and upgrades [Supernode](https://alchemyapi.io/supernode) — the next generation Ethereum infrastructure layer we built that supports continuously updated versions of both Geth and Parity.
 
-## **Why Upgrade Nodes?** <a id="202f"></a>
+## **Why Upgrade Nodes?** <a href="202f" id="202f"></a>
 
 In general, we update our nodes for the same reason that updates become available in the first place: critical bug fixes, security patches and new features. While remaining on older versions provides stability, it risks eventually running into errors that cause vulnerability or downtime, as seen in the incident this morning. At Alchemy, we do our best to strike a balance between stability and timeliness.
 
-## When To Upgrade Nodes? <a id="f89a"></a>
+## When To Upgrade Nodes? <a href="f89a" id="f89a"></a>
 
 Historically, we tend to upgrade our nodes every few months, a heuristic that generally ensures the new version has been significantly battle tested while also giving our customers access to the latest features. Of course, this cadence can be expedited if there is a significant breaking change or security vulnerability that needs to be immediately patched.
 
 Like most things work related, our internal process is kicked off with a Slack notification. Whenever a new version of Geth or Parity is pushed to Github, we get an alert on Slack and kick off our exhaustive testing standards to ensure the stability of the Alchemy Supernode.
 
-## **How To Upgrade Nodes?** <a id="0d98"></a>
+## **How To Upgrade Nodes?** <a href="0d98" id="0d98"></a>
 
 Once we’ve decided to move forward with a new stable version, we step through the following phases:
 
@@ -62,7 +64,6 @@ In the unlikely case of an unrecoverable failure during the upgrade process, Alc
 
 Once the transition is successfully complete, if our system detects any subsequent performance issues on any of the nodes, our automatic alerting engine kicks in. It not only immediately notifies one of our infrastructure engineers so that we can address the root cause, but we also have safeguards in place to dynamically reallocate traffic and ensure our customers’ mission critical operations are up and running 99.99% of the time.
 
-## **Calling All Alchemists** 🧙 <a id="c97d"></a>
+## **Calling All Alchemists **🧙 <a href="c97d" id="c97d"></a>
 
 If you are running your own node infrastructure, we hope the process we’ve outlined is helpful in determining why, when and how to upgrade. If you don’t want to ever have to deal with node upgrades, along with a slew of other unseen issues and costs that come with creating a stable and scalable node infrastructure, like monitoring, load balancing, and guaranteeing consistency, then we’d love to see you [become an Alchemist](https://dashboard.alchemyapi.io/signup/)!
-

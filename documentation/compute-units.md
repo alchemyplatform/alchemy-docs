@@ -4,7 +4,7 @@ description: Explanation for what Compute Units are and how we use them.
 
 # 🔩 Compute Units \(CUs\)
 
-Compute units are a measure of the total computational resources your apps are using on Alchemy. You can think of this as how you would pay Amazon for compute usage on AWS. Some queries are lightweight and fast to run \(e.g., eth\_blockNumber\) and others can be more intense \(e.g., large eth\_getLogs queries\). Each method is assigned a quantity of compute units, derived from global average durations of each method. 
+Compute units are a measure of the total computational resources your apps are using on Alchemy. You can think of this as how you would pay Amazon for compute usage on AWS. Some queries are lightweight and fast to run \(e.g., eth\_blockNumber\) and others can be more intense \(e.g., large eth\_getLogs queries\). Each method is assigned a quantity of compute units, derived from global average durations of each method.
 
 We're obsessed with providing the most developer-friendly experience across our platform, and this doesn't stop at pricing. Pricing on compute units allows us to provide developers with the most fair and transparent pricing possible. No more over-paying for simple requests, you only pay for what you use, period.
 
@@ -22,6 +22,14 @@ We're obsessed with providing the most developer-friendly experience across our 
 | net\_version | 10 |
 | eth\_subscribe | 10 |
 | eth\_unsubscribe | 10 |
+| eth\_feeHistory | 10 |
+| eth\_maxPriorityFeePerGas | 10 |
+| eth\_createAccessList | 10 |
+| bor\_getAuthor | 10 |
+| bor\_getCurrentProposer | 10 |
+| bor\_getCurrentValidators | 10 |
+| bor\_getRootHash | 10 |
+| bor\_getSignersAtHash | 10 |
 | eth\_getTransactionReceipt | 15 |
 | eth\_getUncleByBlockHashAndIndex | 15 |
 | eth\_getUncleByBlockNumberAndIndex | 15 |
@@ -50,6 +58,11 @@ We're obsessed with providing the most developer-friendly experience across our 
 | eth\_getBlockByHash | 21 |
 | trace\_block | 24 |
 | parity\_getBlockReceipts | 24 |
+| erigon\_forks | 24 |
+| erigon\_getHeaderByHash | 24 |
+| erigon\_getHeaderByNumber | 24 |
+| erigon\_getLogsByHash | 24 |
+| erigon\_issuance | 24 |
 | eth\_getTransactionCount | 26 |
 | eth\_call | 26 |
 | alchemy\_getTokenBalances | 26 |
@@ -71,35 +84,34 @@ We're obsessed with providing the most developer-friendly experience across our 
 
 Webhook and WebSocket subscriptions on Alchemy are priced based on **bandwidth:** the amount of data delivered as part of the subscription.
 
-Each subscription type is priced identically, per byte: 
+Each subscription type is priced identically, per byte:
 
 | Bandwidth | CU |
 | :--- | :--- |
 | 1 byte | .04 |
 
-On average, a typical webhook or WebSocket subscription event is about 1000 bytes, so would consume 40 compute units. Note that this can vary significantly based on the specific event delivered \([`alchemy_newFullPendingTransactions`](../guides/using-websockets.md#alchemy_newfullpendingtransactions) subscription type has a much higher compute unit cost than others\). 
+On average, a typical webhook or WebSocket subscription event is about 1000 bytes, so would consume 40 compute units. Note that this can vary significantly based on the specific event delivered \([`alchemy_newFullPendingTransactions`](../guides/using-websockets.md#1-alchemy_newfullpendingtransactions) subscription type has a much higher compute unit cost than others\).
 
 ## On-Demand Compute \(Growth Tier Only\)
 
-Turning on autoscale gives you instant access to on-demand compute at volume discounts. No more worrying about your node going down due to a spike in traffic, or even waiting days for new nodes to sync. Autoscale gives you infinite scalability at affordable prices. 
+Turning on autoscale gives you instant access to on-demand compute at volume discounts. No more worrying about your node going down due to a spike in traffic, or even waiting days for new nodes to sync. Autoscale gives you infinite scalability at affordable prices.
 
 | Monthly Compute Units \(CU\) | Price Per Unit |
 | :--- | :--- |
-| 0-50,000,000 | $0.00 |
-| 50,000,000-75,000,000 | $0.0000040 \($4.00/1M CU\) |
-| 75,000,000-125,000,000 | $0.0000032 \($3.20/1M CU\) |
-| 125,000,000-275,000,000 | $0.0000025 \($2.50/1M CU\) |
-| 275,000,000-525,000,000 | $0.0000020 \($2.00/1M CU\) |
-| 525,000,000-1,025,000,000 | $0.0000016 \($1.60/1M CU\) |
-| 1,025,000,000+  | $0.0000012 \($1.20/1M CU\) |
+| 0-150,000,000 | $0.00 |
+| 150,000,000-200,000,000 | $0.0000032 \($3.20/1M CU\) |
+| 200,000,000-300,000,000 | $0.0000025 \($2.50/1M CU\) |
+| 300,000,000-450,000,000 | $0.0000020 \($2.00/1M CU\) |
+| 450,000,000-1,025,000,000 | $0.0000016 \($1.60/1M CU\) |
+| 1,025,000,000+ | $0.0000012 \($1.20/1M CU\) |
 
 ## Rate Limits \(CUPS\)
 
-[Rate Limits](../guides/rate-limits.md) serve to protect users from malicious actors or runaway scripts. Each tier has prioritized rate limit allocations designed for ultimate reliability. 
+[Rate Limits](../guides/rate-limits.md) serve to protect users from malicious actors or runaway scripts. Each tier has prioritized rate limit allocations designed for ultimate reliability.
 
-CUPS are a measure of the number of compute units used per second when making requests. Since each request is weighted differently, we base this on the total compute units used rather than the number of requests. 
+CUPS are a measure of the number of compute units used per second when making requests. Since each request is weighted differently, we base this on the total compute units used rather than the number of requests.
 
-For example, if you send one `eth_blockNumber` \(10 CUs\), two `eth_getLogs` \(75 CUs\), and two `eth_call` \(26 CUs\) requests in the same second, you will have a total of 310 CUPS. 
+For example, if you send one `eth_blockNumber` \(10 CUs\), two `eth_getLogs` \(75 CUs\), and two `eth_call` \(26 CUs\) requests in the same second, you will have a total of 310 CUPS.
 
 | User | CUPS |
 | :--- | :--- |
@@ -107,5 +119,5 @@ For example, if you send one `eth_blockNumber` \(10 CUs\), two `eth_getLogs` \(7
 | Growth | 660 |
 | Enterprise | Custom |
 
-If you are experiencing rate limits, or want create a more robust and reliable experience for your users, we recommend [implementing retries](https://app.gitbook.com/@alchemyapi/s/alchemy/~/drafts/-MQsfYK26fbJzMbpYgTc/guides/rate-limits#retries). 
+If you are experiencing rate limits, or want create a more robust and reliable experience for your users, we recommend [implementing retries](https://app.gitbook.com/@alchemyapi/s/alchemy/~/drafts/-MQsfYK26fbJzMbpYgTc/guides/rate-limits#retries).
 

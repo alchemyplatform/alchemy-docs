@@ -122,8 +122,9 @@ async function main() {
 
     const transaction = {
      'to': '0x31B98D14007bDEe637298086988A0bBd31184523', // faucet address to return eth
-     'value': 1000000000000000000, // 1 ETH
-     'gas': 30000, 
+     'value': 100,
+     'gas': 30000,
+     'maxFeePerGas': 1000000108,
      'nonce': nonce,
      // optional data field to send message or execute smart contract
     };
@@ -151,6 +152,7 @@ Now, before we jump into running this code, let's talk about some of the compone
   * `to`: This is the address we want to send Eth to. In this case, we are sending Eth back to the [Rinkeby faucet](https://faucet.rinkeby.io/) we initially requested from. 
   * `value`: This is the amount we wish to send, specified in wei where 10^18 wei = 1 ETH
   * `gas`: There are many ways to determine the right amount of gas to include with your transaction. Alchemy even has a [gas price webhook](../guides/using-notify.md#address-activity-1) to notify you when the gas price falls within a certain threshold. For mainnet transactions, it's good practice to check a gas estimator like [Eth Gas Station](https://ethgasstation.info/) to determine the right amount of gas to include. 21000 is the minimum amount of gas an operation on Ethereum will use, so to ensure our transaction will be executed we put 30000 here.
+  * `maxFeePerGas`: This is the amount you are willing to pay per gas for the transaction to execute. Since EIP 1559 this field or the `maxPriorityFeePerGas` field is required.
   * `nonce`: see above nonce definition. Nonce starts counting from zero. 
   * \[OPTIONAL\] `data`: Used for sending additional information with your transfer, or calling a smart contract, not required for balance transfers, check out the note below. 
 * `signedTx`: To sign our transaction object we will use the `signTransaction` method with our `PRIVATE_KEY`
@@ -159,11 +161,11 @@ Now, before we jump into running this code, let's talk about some of the compone
 {% hint style="info" %}
 **A Note on `data`**
 
-There are a two main types of transactions that can be sent in Ethereum.
+There are two main types of transactions that can be sent in Ethereum.
 
 * **Balance transfer:** Send eth from one address to another. No `data` field required, however, if you'd like to send additional information alongside your transaction, you can include that information in HEX format in this field. 
   * For example, let's say we wanted to write the hash of an IPFS document to the ethereum chain in order to give it an immutable timestamp. Our data field should then look like `data: web3.utils.toHex(‘IPFS hash‘)`. And now anyone can query the chain and see when that document was added. 
-* **Smart contact transaction:** Execute some smart contract code on the chain. In this case, the `data` field should contain  the smart function you wish to execute, alongside any parameters. 
+* **Smart contract transaction:** Execute some smart contract code on the chain. In this case, the `data` field should contain  the smart function you wish to execute, alongside any parameters. 
   * For a practical example, check out Step 8 in this [Hello World Tutorial](hello-world-smart-contract/#step-8-create-the-transaction).
 {% endhint %}
 
@@ -181,7 +183,7 @@ Open up the [Mempool page](https://dashboard.alchemyapi.io/mempool) in your Alch
 
 To view the details of your transaction once you've found it, select the tx hash, which should take you to a view that looks like this:
 
-![](../.gitbook/assets/screen-shot-2020-11-02-at-10.12.09-am.png)
+![View your transaction on the Alchemy Mempool Watcher](../.gitbook/assets/screen-shot-2021-08-02-at-8.50.18-pm.png)
 
 From there you can view your transaction on Etherscan by clicking on the icon circled in red!
 

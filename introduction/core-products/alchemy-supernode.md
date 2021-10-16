@@ -5,31 +5,31 @@ description: >-
   and scalability.
 ---
 
-# 🦸🏻 Alchemy Supernode
+# 🦸 Alchemy Supernode
 
-_**Get access to**_ [_**Alchemy for free here**_](https://alchemy.com/?r=affiliate:e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_**.**_  
+_**Get access to **_[_**Alchemy for free here**_](https://alchemy.com/?r=affiliate:e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_**.**_  
 
 ## Benefits
 
-### 1. 👍 Reliability 
+### 1. :thumbsup: Reliability 
 
 * Peak reliability node services
 * 100% Data Correctness
 * Dynamic Scalability
 
-### 2. ⚡ Extended Capabilities 
+### 2. :zap: Extended Capabilities 
 
-* Instant On \(no setup or sync times\)
+* Instant On (no setup or sync times)
 * Instant Testnets
 * Enhanced API
 * Real-time state consistency
 
-### 3. ✔ Easy to Use 
+### 3. :heavy_check_mark: Easy to Use 
 
 * One-line infrastructure API
 * 1,000+ engineering hours saved per year
 
-## 😫 Problem: Nodes are hard  
+## :tired_face: Problem: Nodes are hard  
 
 The traditional Web 2.0 approach to scaling infrastructure uses multiple, indistinguishable servers managed by a load balancer, but with blockchain, applications can’t treat nodes indistinguishably because each node syncs and stores data from the blockchain asynchronously.
 
@@ -38,7 +38,7 @@ The traditional Web 2.0 approach to scaling infrastructure uses multiple, indist
 * Apps that run directly on nodes suffer high latency and downtime because nodes are general-purpose and not designed to be highly available.
 * Without a new approach to infrastructure design, developers are forced to choose between state consistency and scale.
 
-## 😃 Solution: Alchemy Supernode
+## :smiley: Solution: Alchemy Supernode
 
 Alchemy Supernode is a new kind of infrastructure for decentralized applications with the following benefits:
 
@@ -60,7 +60,7 @@ Alchemy Supernode's innovative architecture for web3 scales every piece of node 
 
 Eliminate unexpected crashes by ensuring data is always correct, real-time, and in sync thanks to a proprietary coordinator service.
 
-![](https://uploads-ssl.webflow.com/5e9dcb2947627d36765ceee7/5f2a1001e4061b01c4ceb5f9_Supernode%20-%20Data%20Co%20animation%203.gif)
+![](https://uploads-ssl.webflow.com/5e9dcb2947627d36765ceee7/5f2a1001e4061b01c4ceb5f9\_Supernode%20-%20Data%20Co%20animation%203.gif)
 
 ### Peak Reliability  
 
@@ -80,11 +80,12 @@ Do more, quickly with an Alchemy Web3 extension of web3.js as well as Smart WebS
 
 Check out out full suite of Enhanced APIs here:
 
-{% page-ref page="../../documentation/apis/" %}
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
+{% endcontent-ref %}
 
 ### Instant On 
 
 Switch to the most powerful infrastructure engine for blockchain with a single line of code. Run your app on Alchemy Supernode in 5 minutes or less.
 
 ![](../../.gitbook/assets/supernode-instant-on.png)
-

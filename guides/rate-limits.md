@@ -4,29 +4,29 @@ description: Explanation of what rate limits are and how to handle them.
 
 # 🚦 Rate Limits
 
-## 🤔 What is a Rate Limit?
+## :thinking: What is a Rate Limit?
 
 Your plan has a certain capacity for the number of requests per second your application can make. 
 
 Often times, if you send queries too quickly in succession you will get a rate limit response. For most cases this is totally fine and will not affect your users at all as long as you handle them properly. Some developers see these errors and request for rate limit increases rather than appropriately refactoring their code to handle this case. If you are experience **under 30%** rate limited requests, [using retries](rate-limits.md#retries) is the best solution.
 
-## 📜 Rate Limit Type
+## :scroll: Rate Limit Type
 
-### Compute Units Per Second \(CUPS\)
+### Compute Units Per Second (CUPS)
 
 CUPS are a measure of the number of [compute units](https://docs.alchemyapi.io/documentation/compute-units) used per second when making requests. Since each request is weighted differently, we base this on the total compute units used rather than the number of requests. 
 
-For example, if you send one `eth_blockNumber` \(10 CUs\), two `eth_getLogs` \(75 CUs\), and two `eth_call` \(26 CUs\) requests in the same second, you will have a total of 310 CUPS. 
+For example, if you send one `eth_blockNumber` (10 CUs), two `eth_getLogs` (75 CUs), and two `eth_call` (26 CUs) requests in the same second, you will have a total of 310 CUPS. 
 
-See the table below for the number of compute units per second \(CUPS\) permitted for each user type.
+See the table below for the number of compute units per second (CUPS) permitted for each user type.
 
-| User | CUPS |
-| :--- | :--- |
-| Free | 330 |
-| Growth | 660 |
+| User       | CUPS   |
+| ---------- | ------ |
+| Free       | 330    |
+| Growth     | 660    |
 | Enterprise | Custom |
 
-## \*\*\*\*📥 **Response**
+## ****:inbox_tray: **Response**
 
 When you exceed your capacity, you will receive a rate limit response. This response will be different depending on whether you are connecting to Alchemy using HTTP or [WebSockets](using-websockets.md).
 
@@ -36,7 +36,7 @@ If you would like to test receiving a 429 response, send a POST request to [http
 
 ### HTTP
 
-You will receive an HTTP 429 \(Too Many Requests\) response status code.
+You will receive an HTTP 429 (Too Many Requests) response status code.
 
 ### **WebSockets**
 
@@ -52,7 +52,7 @@ You will receive a JSON-RPC error response with error code 429. For example, the
 }
 ```
 
-## 🤜 Retries 
+## :right_facing_fist: Retries 
 
 All you need to do to easily handle rate limits is to retry the request. This is a great idea to ensure great user experiences with any API even if you aren't hitting rate limits. Once you've implemented retries, [test out the behavior](rate-limits.md#test-rate-limits-retries) to make sure they work as expected. 
 
@@ -83,7 +83,7 @@ Exponential backoff is a standard error-handling strategy for network applicatio
 
 where:
 
-* The wait time is `min(((2^n)+random_number_milliseconds), maximum_backoff)`, with `n` incremented by 1 for each iteration \(request\).
+* The wait time is `min(((2^n)+random_number_milliseconds), maximum_backoff)`, with `n` incremented by 1 for each iteration (request).
 * `random_number_milliseconds` is a random number of milliseconds less than or equal to 1000. This helps to avoid cases in which many clients are synchronized by some situation and all retry at once, sending requests in synchronized waves. The value of `random_number_milliseconds` is recalculated after each retry request.
 * `maximum_backoff` is typically 32 or 64 seconds. The appropriate value depends on the use case.
 
@@ -117,11 +117,11 @@ To test out your implementation of retries, we created a test app on each networ
 
 #### **HTTP**
 
-[https://eth-kovan.alchemyapi.io/v2/S56zst1IHTq3hOO4-g8lKW\_0W6C7EMlx](https://eth-kovan.alchemyapi.io/v2/S56zst1IHTq3hOO4-g8lKW_0W6C7EMlx) 
+[https://eth-kovan.alchemyapi.io/v2/S56zst1IHTq3hOO4-g8lKW\_0W6C7EMlx](https://eth-kovan.alchemyapi.io/v2/S56zst1IHTq3hOO4-g8lKW\_0W6C7EMlx) 
 
 #### **WebSocket**
 
-[wss://eth-kovan.ws.alchemyapi.io/v2/S56zst1IHTq3hOO4-g8lKW\_0W6C7EMlx](wss://eth-kovan.ws.alchemyapi.io/v2/S56zst1IHTq3hOO4-g8lKW_0W6C7EMlx)
+[wss://eth-kovan.ws.alchemyapi.io/v2/S56zst1IHTq3hOO4-g8lKW\_0W6C7EMlx](wss://eth-kovan.ws.alchemyapi.io/v2/S56zst1IHTq3hOO4-g8lKW\_0W6C7EMlx)
 
 ### Rinkeby 
 
@@ -137,13 +137,12 @@ To test out your implementation of retries, we created a test app on each networ
 
 #### HTTP
 
-[https://eth-ropsten.alchemyapi.io/v2/H5VDpwYG31lR46dZlnGy5hrT\_nhicRYc](https://eth-ropsten.alchemyapi.io/v2/H5VDpwYG31lR46dZlnGy5hrT_nhicRYc) 
+[https://eth-ropsten.alchemyapi.io/v2/H5VDpwYG31lR46dZlnGy5hrT_nhicRYc](https://eth-ropsten.alchemyapi.io/v2/H5VDpwYG31lR46dZlnGy5hrT_nhicRYc) 
 
 #### WebSocket
 
-[wss://eth-ropsten.ws.alchemyapi.io/v2/H5VDpwYG31lR46dZlnGy5hrT\_nhicRYc](wss://eth-ropsten.ws.alchemyapi.io/v2/H5VDpwYG31lR46dZlnGy5hrT_nhicRYc) 
+[wss://eth-ropsten.ws.alchemyapi.io/v2/H5VDpwYG31lR46dZlnGy5hrT_nhicRYc](wss://eth-ropsten.ws.alchemyapi.io/v2/H5VDpwYG31lR46dZlnGy5hrT_nhicRYc) 
 
-## 💡 Final Tips
+## :bulb: Final Tips
 
-Use a different key for each part of your project \(e.g., frontend, backend, development\) to isolate rate limit usage to each use case. This also splits monitoring across different parts of your project, making it easier to debug issues and monitor usage.
-
+Use a different key for each part of your project (e.g., frontend, backend, development) to isolate rate limit usage to each use case. This also splits monitoring across different parts of your project, making it easier to debug issues and monitor usage.

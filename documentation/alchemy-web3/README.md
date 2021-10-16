@@ -5,11 +5,11 @@ description: >-
   retries and robust WebSocket support.
 ---
 
-# 🖥️ Alchemy Web3
+# 🪐 Alchemy Web3.js
 
-#### _**Get access to**_ [_**Alchemy for free here**_](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_**.**_
+#### _**Get access to **_[_**Alchemy for free here**_](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_**.**_
 
-## 👋 Introduction 
+## :wave: Introduction 
 
 [Alchemy Web3 ](https://github.com/alchemyplatform/alchemy-web3)is a wrapper around [Web3.js](https://web3js.readthedocs.io/en/v1.2.9/), providing enhanced API methods and other crucial benefits listed below. It is designed to require minimal configuration so you can start using it in your app right away.
 
@@ -17,7 +17,7 @@ description: >-
 
 * **Effortless integration** Alchemy Web3 is an extension of Web3.js. If you're already using Web3, then you can start using Alchemy Web3 with a one-line change.
 * **Enhanced Alchemy APIs** The client exposes methods to call Alchemy's exclusive features.
-* **Automatic Retries** If Alchemy returns a 429 response \(rate limited\), automatically retry after a short delay. This behavior is configurable.
+* **Automatic Retries** If Alchemy returns a 429 response (rate limited), automatically retry after a short delay. This behavior is configurable.
 * **Upgraded WebSockets** which don't miss events if the WebSocket needs to be reconnected.
 * **Seamless provider handling** Most requests will be sent through Alchemy, but requests involving signing and sending transactions are sent via a browser provider like Metamask or Trust Wallet if the user has it installed, or via a custom provider specified in options.
 
@@ -29,7 +29,7 @@ Alchemy Web3 brings multiple improvements to ensure correct WebSocket behavior i
 
 If you use your WebSocket URL when initializing, then when you create subscriptions using `web3.eth.subscribe()`, Alchemy Web3 will bring the following advantages over standard Web3 subscriptions:
 
-* Unlike standard Web3, you will not permanently miss events which arrive while the backing WebSocket is temporarily down. Instead, you will receive these events as soon as the connection is reopened. Note that if the connection is down for more than 120 blocks \(approximately 20 minutes\), you may still miss some events that were not part of the most recent 120 blocks.
+* Unlike standard Web3, you will not permanently miss events which arrive while the backing WebSocket is temporarily down. Instead, you will receive these events as soon as the connection is reopened. Note that if the connection is down for more than 120 blocks (approximately 20 minutes), you may still miss some events that were not part of the most recent 120 blocks.
 * Compared to standard Web3, lowered rate of failure when sending requests over the WebSocket while the connection is down. Alchemy Web3 will attempt to send the requests once the connection is reopened. Note that it is still possible, with a lower likelihood, for outgoing requests to be lost, so you should still have error handling as with any network request.
 
 ## Installation 
@@ -40,13 +40,13 @@ Navigate to your project directory and run:
 
 #### With Yarn:
 
-```text
+```
 yarn add @alch/alchemy-web3
 ```
 
 #### With NPM:
 
-```text
+```
 npm install @alch/alchemy-web3
 ```
 
@@ -54,7 +54,7 @@ npm install @alch/alchemy-web3
 
 Add the following script tag to your webpage:
 
-```text
+```
 <script src="https://cdn.jsdelivr.net/npm/@alch/alchemy-web3@latest/dist/alchemyWeb3.min.js"></script>
 ```
 
@@ -72,7 +72,7 @@ Using HTTPS:
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 
 // Using HTTPS
-const web3 = createAlchemyWeb3("https://eth-mainnet.alchemyapi.io/v2/demo");
+const web3 = createAlchemyWeb3("https://eth-mainnet.alchemyapi.io/<api-key>");
 ```
 
 Using WebSockets:
@@ -104,11 +104,17 @@ web3.eth
   .then(gasAmount => {
     /* … */
   });
+
+web3.eth
+  .getMaxPriorityFeePerGas().then(console.log);
+
+web3.eth
+  .getFeeHistory(4, "latest", [25, 50, 75]).then(console.log);
 ```
 
 ### With a Browser Provider
 
-If the user has a provider in their browser available at `window.ethereum`, then any methods which involve user accounts or signing will automatically use it. This provider might be injected by [Metamask](https://metamask.io/), [Trust Wallet](https://trustwallet.com/dapp) or other browsers or browser extensions if the user has them installed. For example, the following will use a provider from the user's browser:
+If the user has a provider in their browser available at `window.ethereum`, then any methods which involve user accounts or signing will automatically use it. This provider might be injected by [Metamask](https://metamask.io), [Trust Wallet](https://trustwallet.com/dapp) or other browsers or browser extensions if the user has them installed. For example, the following will use a provider from the user's browser:
 
 ```javascript
 web3.eth.getAccounts().then(accounts => {
@@ -176,4 +182,3 @@ The minimum time waited between consecutive retries, in milliseconds. Default: 1
 ### **retryJitter**
 
 A random amount of time is added to the retry delay to help avoid additional rate errors caused by too many concurrent connections, chosen as a number of milliseconds between 0 and this value. Default: 250.
-
