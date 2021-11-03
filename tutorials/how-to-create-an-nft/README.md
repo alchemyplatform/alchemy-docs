@@ -119,9 +119,10 @@ Check out this page for more details on [installation instructions](https://hard
 
 ## Step 8: Create Hardhat project
 
-Inside our project folder run:
+Change into hardhat directory, run package using npx.
 
 ```
+cd node_modules/hardhat
 npx hardhat
 ```
 
