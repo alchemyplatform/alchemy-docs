@@ -29,13 +29,13 @@ Once you’ve created an Alchemy account, you can generate an API key by creatin
 
 1. Navigate to the “Create App” page in your Alchemy Dashboard by hovering over “Apps” in the nav bar and clicking “Create App”
 
-![](https://static.slab.com/prod/uploads/7adb25ff/posts/images/avF_wnWdWxL9X9YtBm8FO8bw.png)
+![](https://static.slab.com/prod/uploads/7adb25ff/posts/images/avF\_wnWdWxL9X9YtBm8FO8bw.png)
 
-1. Name your app (we chose "My First NFT!"), offer a short description, select “Staging” for the Environment (used for your app bookkeeping), and choose “Ropsten” for your network. 
+1. Name your app (we chose "My First NFT!"), offer a short description, select “Staging” for the Environment (used for your app bookkeeping), and choose “Ropsten” for your network.&#x20;
 
 ![](../../.gitbook/assets/create-app.png)
 
-1. Click “Create app” and that’s it! Your app should appear in the table below. 
+1. Click “Create app” and that’s it! Your app should appear in the table below.&#x20;
 
 ## Step 3: Create an Ethereum account (address)
 
@@ -51,7 +51,7 @@ In order to deploy our smart contract to the test network, we’ll need some fak
 
 ## Step 5: Check your Balance
 
-To double check our balance is there, let’s make an [eth_getBalance](https://docs.alchemyapi.io/alchemy/documentation/alchemy-api-reference/json-rpc#eth_getbalance) request using [Alchemy’s composer tool](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_getBalance%22%2C%22paramValues%22%3A%5B%22%22%2C%22latest%22%5D%7D). This will return the amount of Eth in our wallet. After you input your Metamask account address and click “Send Request”, you should see a response like this:
+To double check our balance is there, let’s make an [eth\_getBalance](https://docs.alchemyapi.io/alchemy/documentation/alchemy-api-reference/json-rpc#eth\_getbalance) request using [Alchemy’s composer tool](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getBalance%22%2C%22paramValues%22%3A%5B%22%22%2C%22latest%22%5D%7D). This will return the amount of Eth in our wallet. After you input your Metamask account address and click “Send Request”, you should see a response like this:
 
 ```
 {"jsonrpc": "2.0", "id": 0, "result": "0xde0b6b3a7640000"}
@@ -203,7 +203,7 @@ contract MyNFT is ERC721, Ownable {
 
 1. Because we are inheriting classes from the OpenZepplin contracts library, in your command line run the following to install the library into our folder:
 
-`textnpm install @openzeppelin/contracts@3.1.0-solc-0.7`
+`npm install @openzeppelin/contracts@3.1.0-solc-0.7`
 
 So, what does this code _do_ exactly? Let's break it down, line by line.
 
@@ -368,7 +368,7 @@ If we go to the [Ropsten etherscan](https://ropsten.etherscan.io) and search for
 
 The `From` address should match your Metamask account address and the To address will say “Contract Creation.” If we click into the transaction, we’ll see our contract address in the `To` field:
 
-![](https://static.slab.com/prod/uploads/7adb25ff/posts/images/EniCjfOsqEgq_Jt76bcn0yVV.png)
+![](https://static.slab.com/prod/uploads/7adb25ff/posts/images/EniCjfOsqEgq\_Jt76bcn0yVV.png)
 
 Yasssss! You just deployed your NFT smart contract to the Ethereum chain 🎉
 
@@ -378,7 +378,7 @@ To understand what’s going on under the hood, let’s navigate to the Explorer
 
 Here you’ll see a handful of JSON-RPC calls that Hardhat/Ethers made under the hood for us when we called the `.deploy()` function.
 
-Two important ones to call out here are [`eth_sendRawTransaction`](https://docs.alchemyapi.io/alchemy/documentation/alchemy-api-reference/json-rpc#eth_sendrawtransaction), which is the request to actually write our smart contract onto the Ropsten chain, and [`eth_getTransactionByHash`](https://docs.alchemyapi.io/alchemy/documentation/alchemy-api-reference/json-rpc#eth_gettransactionbyhash) which is a request to read information about our transaction given the hash (a typical pattern when sending transactions).
+Two important ones to call out here are [`eth_sendRawTransaction`](https://docs.alchemyapi.io/alchemy/documentation/alchemy-api-reference/json-rpc#eth\_sendrawtransaction), which is the request to actually write our smart contract onto the Ropsten chain, and [`eth_getTransactionByHash`](https://docs.alchemyapi.io/alchemy/documentation/alchemy-api-reference/json-rpc#eth\_gettransactionbyhash) which is a request to read information about our transaction given the hash (a typical pattern when sending transactions).
 
 To learn more about sending transactions, check out this tutorial on [sending transactions using Web3](https://docs.alchemyapi.io/alchemy/tutorials/sending-transactions-using-web3-and-alchemy).
 

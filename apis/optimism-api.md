@@ -4,16 +4,16 @@ description: >-
   with Alchemy.
 ---
 
-# Optimism API
+# ✨ Optimism API
 
 {% hint style="warning" %}
-**IMPORTANT:** In order to deploy to Optimism, users have to apply to be whitelisted. [Click here](https://community.optimism.io/docs/developers/l2/deploy.html) for more information from the Optimism documentation, and use [this form](https://docs.google.com/forms/d/e/1FAIpQLSfBGsJN3nZQRLdMjqCS_svfQoPkn35o_cc4HUVnLlXN2BHmPw/viewform) to apply.
+**IMPORTANT:** In order to deploy to Optimism, users have to apply to be whitelisted. [Click here](https://community.optimism.io/docs/developers/l2/deploy.html) for more information from the Optimism documentation, and use [this form](https://docs.google.com/forms/d/e/1FAIpQLSfBGsJN3nZQRLdMjqCS\_svfQoPkn35o\_cc4HUVnLlXN2BHmPw/viewform) to apply.
 {% endhint %}
 
 For more information on the Optimism, JSON-RPC check out the[ Optimism Wiki](https://community.optimism.io/docs/developers/l2/rpc.html#frontmatter-title).
 
 {% hint style="info" %}
-**HINT: **Most JSON-RPC methods in Optimistic Ethereum are identical to the corresponding methods in the Ethereum JSON-RPC API. However, a few JSON-RPC methods have been added or changed to better fit the needs of Optimistic Ethereum. 
+**HINT: **Most JSON-RPC methods in Optimistic Ethereum are identical to the corresponding methods in the Ethereum JSON-RPC API. However, a few JSON-RPC methods have been added or changed to better fit the needs of Optimistic Ethereum.&#x20;
 {% endhint %}
 
 ## Mainnet vs. Testnet
@@ -29,9 +29,9 @@ Currently, Alchemy does not support pending transactions for Optimism websockets
 
 ## :package: Retrieving Blocks
 
-Calls related to retrieving blocks and block information. 
+Calls related to retrieving blocks and block information.&#x20;
 
-### eth_blockNumber
+### eth\_blockNumber
 
 Returns the number of the most recent block.
 
@@ -80,10 +80,10 @@ Result
 }
 ```
 
-### eth_getBlockByHash
+### eth\_getBlockByHash
 
 {% hint style="info" %}
- Currently, Optimistic Ethereum blocks only include a single transaction. If you query `eth_getBlockByNumber` or `eth_getBlockByHash`, you should expect to only see one transaction. 
+&#x20;Currently, Optimistic Ethereum blocks only include a single transaction. If you query `eth_getBlockByNumber` or `eth_getBlockByHash`, you should expect to only see one transaction.&#x20;
 {% endhint %}
 
 Returns information about a block by hash.
@@ -184,10 +184,10 @@ Result
 }
 ```
 
-### eth_getBlockByNumber
+### eth\_getBlockByNumber
 
 {% hint style="info" %}
- Currently, Optimistic Ethereum blocks only include a single transaction. If you query `eth_getBlockByNumber` or `eth_getBlockByHash`, you should expect to only see one transaction. 
+&#x20;Currently, Optimistic Ethereum blocks only include a single transaction. If you query `eth_getBlockByNumber` or `eth_getBlockByHash`, you should expect to only see one transaction.&#x20;
 {% endhint %}
 
 Returns information about a block by block number.
@@ -206,7 +206,7 @@ params: [
 
 #### Returns
 
-See [`eth_getBlockByHash`](ethereum/#eth_getblockbyhash)
+See [`eth_getBlockByHash`](ethereum/#eth\_getblockbyhash)
 
 Request
 
@@ -293,19 +293,19 @@ Result
 
 ## :receipt: Reading Transactions
 
-Calls for reading transactions. 
+Calls for reading transactions.&#x20;
 
 {% hint style="info" %}
-**NOTE: **On Optimism, there is one L2 block mined for each L2 transaction.  
+**NOTE: **On Optimism, there is one L2 block mined for each L2 transaction. &#x20;
 {% endhint %}
 
-### eth_getTransactionByHash
+### eth\_getTransactionByHash
 
 Returns the information about a transaction requested by transaction hash. In the response object, `blockHash`, `blockNumber`, and `transactionIndex` are `null` when the transaction is pending.
 
 #### Parameters
 
-`DATA`, 32 Bytes - hash of a transaction 
+`DATA`, 32 Bytes - hash of a transaction&#x20;
 
 ```javascript
 params: [
@@ -392,7 +392,7 @@ Result
 }
 ```
 
-### eth_getTransactionCount
+### eth\_getTransactionCount
 
 Returns the number of transactions sent from an address.
 
@@ -449,11 +449,11 @@ Result
 }
 ```
 
-### eth_getTransactionReceipt
+### eth\_getTransactionReceipt
 
-Returns the receipt of a transaction by transaction hash. 
+Returns the receipt of a transaction by transaction hash.&#x20;
 
-This can also be used to track the status of a transaction, since the result will be null until the transaction is mined. However, unlike [`eth_getTransactionByHash`](ethereum/#eth_gettransactionbyhash) , which returns `null` for unknown transactions, and a non-null response with 3 null fields for a pending transaction, `eth_getTransactionReceipt` returns null for both pending and unknown transactions. 
+This can also be used to track the status of a transaction, since the result will be null until the transaction is mined. However, unlike [`eth_getTransactionByHash`](ethereum/#eth\_gettransactionbyhash) , which returns `null` for unknown transactions, and a non-null response with 3 null fields for a pending transaction, `eth_getTransactionReceipt` returns null for both pending and unknown transactions.&#x20;
 
 This call is also commonly used to get the contract address for a contract creation tx.
 
@@ -463,7 +463,7 @@ This call is also commonly used to get the contract address for a contract creat
 
 #### Parameters
 
-`DATA`, 32 Bytes - hash of a transaction 
+`DATA`, 32 Bytes - hash of a transaction&#x20;
 
 ```javascript
 params: [ 
@@ -603,7 +603,7 @@ Result
 }
 ```
 
-### eth_getBlockTransactionCountByHash
+### eth\_getBlockTransactionCountByHash
 
 Returns the number of transactions in a block matching the given block hash.
 
@@ -658,7 +658,7 @@ Result
 }
 ```
 
-### eth_getBlockTransactionCountByNumber
+### eth\_getBlockTransactionCountByNumber
 
 Returns the number of transactions in a block matching the given block number.
 
@@ -713,15 +713,15 @@ Result
 }
 ```
 
-### eth_getTransactionByBlockHashAndIndex
+### eth\_getTransactionByBlockHashAndIndex
 
 Returns information about a transaction by block hash and transaction index position.
 
 #### Parameters
 
-`DATA`, 32 Bytes - hash of a block. 
+`DATA`, 32 Bytes - hash of a block.&#x20;
 
-`QUANTITY` - integer of the transaction index position. 
+`QUANTITY` - integer of the transaction index position.&#x20;
 
 ```javascript
 params: [ 
@@ -732,7 +732,7 @@ params: [
 
 #### Returns
 
-See [`eth_getTransactionByHash`](ethereum/#eth_gettransactionbyhash)``
+See [`eth_getTransactionByHash`](ethereum/#eth\_gettransactionbyhash)``
 
 Request
 
@@ -794,7 +794,7 @@ Result
 }
 ```
 
-### eth_getTransactionByBlockNumberAndIndex
+### eth\_getTransactionByBlockNumberAndIndex
 
 Returns information about a transaction by block number and transaction index position.
 
@@ -812,7 +812,7 @@ Returns information about a transaction by block number and transaction index po
 
 #### Returns
 
-See [`eth_getTransactionByHash`](ethereum/#eth_gettransactionbyhash)``
+See [`eth_getTransactionByHash`](ethereum/#eth\_gettransactionbyhash)``
 
 
 
@@ -876,11 +876,11 @@ Result
 }
 ```
 
-## :writing_hand: Writing Transactions 
+## :writing\_hand: Writing Transactions&#x20;
 
-Call to write to the blockchain. 
+Call to write to the blockchain.&#x20;
 
-### eth_sendRawTransaction
+### eth\_sendRawTransaction
 
 Creates a new message call transaction or a contract creation for signed transactions.
 
@@ -895,7 +895,7 @@ NOTE: Writing data on Optimism is handled by its sequencers; for more informatio
 
 #### Parameters
 
-`DATA`, The signed transaction data. 
+`DATA`, The signed transaction data.&#x20;
 
 ```javascript
 params: ["0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"]
@@ -903,12 +903,12 @@ params: ["0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb97
 
 #### Returns
 
-`DATA`, 32 Bytes - the transaction hash, or the zero hash if the transaction is not yet available. 
+`DATA`, 32 Bytes - the transaction hash, or the zero hash if the transaction is not yet available.&#x20;
 
-Use [`eth_getTransactionReceipt`](ethereum/#eth_gettransactionreceipt) to get the contract address after the transaction was mined when you created a contract.
+Use [`eth_getTransactionReceipt`](ethereum/#eth\_gettransactionreceipt) to get the contract address after the transaction was mined when you created a contract.
 
 {% hint style="danger" %}
-**Note: **Since `eth_sendRawTransaction` is a request used for writing to the blockchain and changes its state, it is impossible to execute the same request twice. This means if you were to copy the example given below you will not get the expected response. 
+**Note: **Since `eth_sendRawTransaction` is a request used for writing to the blockchain and changes its state, it is impossible to execute the same request twice. This means if you were to copy the example given below you will not get the expected response.&#x20;
 {% endhint %}
 
 Request
@@ -948,13 +948,13 @@ Result
 }
 ```
 
-## :open_file_folder: Account Information 
+## :open\_file\_folder: Account Information&#x20;
 
-Calls to get information about an account. 
+Calls to get information about an account.&#x20;
 
-### eth_getBalance
+### eth\_getBalance
 
-Returns the balance of the account of a given address. 
+Returns the balance of the account of a given address.&#x20;
 
 #### Parameters
 
@@ -970,7 +970,7 @@ params: [
 
 #### Returns
 
-`QUANTITY` - integer of the current balance for the given address in wei. 
+`QUANTITY` - integer of the current balance for the given address in wei.&#x20;
 
 Request
 
@@ -1009,9 +1009,9 @@ Result
 }
 ```
 
-### eth_getCode
+### eth\_getCode
 
-Returns code at a given address. This method can be used to [distinguish between contract addresses and wallet addresses](../resources/faq.md#how-do-i-distinguish-between-a-contract-address-and-a-wallet-address). 
+Returns code at a given address. This method can be used to [distinguish between contract addresses and wallet addresses](../resources/faq.md#how-do-i-distinguish-between-a-contract-address-and-a-wallet-address).&#x20;
 
 #### Parameters
 
@@ -1066,9 +1066,9 @@ Result
 }
 ```
 
-### eth_getStorageAt
+### eth\_getStorageAt
 
-Returns the value from a storage position at a given address, or in other words, returns the state of the contract's storage, which may not be exposed via the contract's methods. 
+Returns the value from a storage position at a given address, or in other words, returns the state of the contract's storage, which may not be exposed via the contract's methods.&#x20;
 
 #### Parameters
 
@@ -1082,7 +1082,7 @@ Returns the value from a storage position at a given address, or in other words,
 
 #### Example
 
-Calculating the correct position depends on the storage to retrieve. Consider the following contract deployed at `0x295a70b2de5e3953354a6a8344e616ed314d7251` by address `0x391694e7e0b0cce554cb130d723a9d27458f9298`. 
+Calculating the correct position depends on the storage to retrieve. Consider the following contract deployed at `0x295a70b2de5e3953354a6a8344e616ed314d7251` by address `0x391694e7e0b0cce554cb130d723a9d27458f9298`.&#x20;
 
 ```javascript
 contract Storage {
@@ -1096,7 +1096,7 @@ contract Storage {
 }
 ```
 
-Retrieving the value of `pos0` is straight forward: 
+Retrieving the value of `pos0` is straight forward:&#x20;
 
 Request
 
@@ -1135,7 +1135,7 @@ Result
 }
 ```
 
-### eth_accounts
+### eth\_accounts
 
 Returns a list of addresses owned by client.
 
@@ -1151,7 +1151,7 @@ none
 
 `Array of DATA`, 20 Bytes - addresses owned by the client.
 
-#### ****[**Example**](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_accounts%22%2C%22paramValues%22%3A%5B%5D%7D)****
+#### ****[**Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_accounts%22%2C%22paramValues%22%3A%5B%5D%7D)****
 
 Request
 
@@ -1190,23 +1190,23 @@ Result
 }
 ```
 
-### eth_getProof
+### eth\_getProof
 
-Returns the account and storage values of the specified account including the Merkle-proof. This call can be used to verify that the data you are pulling from is not tampered with. 
+Returns the account and storage values of the specified account including the Merkle-proof. This call can be used to verify that the data you are pulling from is not tampered with.&#x20;
 
 #### **Parameters**
 
 1. `DATA`, 20 Bytes - address of the account.
-2. `ARRAY`, 32 Bytes - array of storage-keys which should be proofed and included. See[`eth_getStorageAt`](ethereum/#eth_getstorageat)
+2. `ARRAY`, 32 Bytes - array of storage-keys which should be proofed and included. See[`eth_getStorageAt`](ethereum/#eth\_getstorageat)
 3. `QUANTITY|TAG` - integer block number, or the string `"latest"` or `"earliest"`, see the [default block parameter](https://eth.wiki/json-rpc/API#the-default-block-parameter)
 
 #### **Returns**
 
 `Object` - A account object:
 
-* `balance`: `QUANTITY` - the balance of the account. See[`eth_getBalance`](ethereum/#eth_getbalance)
+* `balance`: `QUANTITY` - the balance of the account. See[`eth_getBalance`](ethereum/#eth\_getbalance)
 * `codeHash`: `DATA`, 32 Bytes - hash of the code of the account. For a simple Account without code it will return `"0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"`
-* `nonce`: `QUANTITY`, - nonce of the account. See [`eth_getTransactionCount`](ethereum/#eth_gettransactioncount)``
+* `nonce`: `QUANTITY`, - nonce of the account. See [`eth_getTransactionCount`](ethereum/#eth\_gettransactioncount)``
 * `storageHash`: `DATA`, 32 Bytes - SHA3 of the StorageRoot. All storage will deliver a MerkleProof starting with this rootHash.
 * `accountProof`: `ARRAY` - Array of rlp-serialized MerkleTree-Nodes, starting with the stateRoot-Node, following the path of the SHA3 (address) as key.
 * `storageProof`: `ARRAY` - Array of storage-entries as requested. Each entry is a object with these properties:
@@ -1274,14 +1274,14 @@ Result
 
 ## :brain: EVM/Smart Contract Execution
 
-### eth_call
+### eth\_call
 
-Executes a new message call immediately without creating a transaction on the block chain. 
+Executes a new message call immediately without creating a transaction on the block chain.&#x20;
 
-This is one of the most commonly used API calls. It is used to read from the blockchain which includes executing smart contracts, but does not publish anything to the blockchain. This call does not consume any Ether.  
+This is one of the most commonly used API calls. It is used to read from the blockchain which includes executing smart contracts, but does not publish anything to the blockchain. This call does not consume any Ether. &#x20;
 
 {% hint style="warning" %}
-Starting from [Geth 1.9.13](https://github.com/ethereum/go-ethereum/pull/20783), `eth_call`will check the balance of the sender (to make sure that the sender has enough gas to complete the request) before executing the call. This means that even though the call doesn't consume any gas, the `from` address must have enough gas to execute the call as if it were a transaction. 
+Starting from [Geth 1.9.13](https://github.com/ethereum/go-ethereum/pull/20783), `eth_call`will check the balance of the sender (to make sure that the sender has enough gas to complete the request) before executing the call. This means that even though the call doesn't consume any gas, the `from` address must have enough gas to execute the call as if it were a transaction.&#x20;
 {% endhint %}
 
 #### Parameters
@@ -1289,14 +1289,14 @@ Starting from [Geth 1.9.13](https://github.com/ethereum/go-ethereum/pull/20783),
 * `Object` - The transaction call object
   * `from`: `DATA`, 20 Bytes - (optional) The address the transaction is sent from.
   * `to`: `DATA`, 20 Bytes - The address the transaction is directed to.
-  * `gas`: `QUANTITY` - (optional) Integer of the gas provided for the transaction execution. `eth_call` consumes zero gas, but this parameter may be needed by some executions. 
-  * `gasPrice`: `QUANTITY` - (optional) Integer of the gasPrice used for each paid gas. **Note: most of our users (95%+) never set the `gasPrice` on eth_call.**
+  * `gas`: `QUANTITY` - (optional) Integer of the gas provided for the transaction execution. `eth_call` consumes zero gas, but this parameter may be needed by some executions.&#x20;
+  * `gasPrice`: `QUANTITY` - (optional) Integer of the gasPrice used for each paid gas. **Note: most of our users (95%+) never set the `gasPrice` on eth\_call.**
   * `value`: `QUANTITY` - (optional) Integer of the value sent with this transaction
   * `data`: `DATA` - (optional) Hash of the method signature and encoded parameters. For details see Ethereum Contract ABI
 * `QUANTITY|TAG` - integer block number, or the string "latest", "earliest" or "pending" (see the [default block parameter](https://eth.wiki/json-rpc/API#the-default-block-parameter)), OR the `blockHash` (in accordance with [EIP-1898](https://eips.ethereum.org/EIPS/eip-1898)) **Note: the parameter is an object instead of a string and should be specified as: `{"blockHash": "0x<some-hash>"}.` **Learn more [here](https://eips.ethereum.org/EIPS/eip-1898).
 
 {% hint style="danger" %}
-**Note: **`eth_call` has a timeout restriction at the node level. Batching multiple `eth_call`  together on-chain using pre-deployed smart contracts might result in unexpected timeouts that cause none of your calls to complete. Instead, consider serializing these calls, or using smaller batches if they fail with a node error code. 
+**Note: **`eth_call` has a timeout restriction at the node level. Batching multiple `eth_call`  together on-chain using pre-deployed smart contracts might result in unexpected timeouts that cause none of your calls to complete. Instead, consider serializing these calls, or using smaller batches if they fail with a node error code.&#x20;
 {% endhint %}
 
 ```javascript
@@ -1317,7 +1317,7 @@ params: [
 
 `DATA` - the return value of executed contract.
 
-#### [Example](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_call%22%2C%22paramValues%22%3A%5B%7B%22to%22%3A%220xd46e8dd67c5d32be8058bb8eb970870f07244567%22%2C%22from%22%3A%220xb60e8dd61c5d32be8058bb8eb970870f07233155%22%2C%22gas%22%3A%220x76c0%22%2C%22gasPrice%22%3A%220x9184e72a000%22%2C%22value%22%3A%220x9184e72a%22%2C%22data%22%3A%220xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675%22%7D%2C%22latest%22%5D%7D)
+#### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_call%22%2C%22paramValues%22%3A%5B%7B%22to%22%3A%220xd46e8dd67c5d32be8058bb8eb970870f07244567%22%2C%22from%22%3A%220xb60e8dd61c5d32be8058bb8eb970870f07233155%22%2C%22gas%22%3A%220x76c0%22%2C%22gasPrice%22%3A%220x9184e72a000%22%2C%22value%22%3A%220x9184e72a%22%2C%22data%22%3A%220xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675%22%7D%2C%22latest%22%5D%7D)
 
 Request
 
@@ -1356,11 +1356,11 @@ Result
 }
 ```
 
-## :bookmark_tabs: Event Logs
+## :bookmark\_tabs: Event Logs
 
-### eth_getLogs
+### eth\_getLogs
 
-Returns an array of all logs matching a given filter object. For more information about `eth_getLogs` check out our [Deep Dive into eth_getLogs](../guides/eth_getlogs.md) page. 
+Returns an array of all logs matching a given filter object. For more information about `eth_getLogs` check out our [Deep Dive into eth\_getLogs](../guides/eth\_getlogs.md) page.&#x20;
 
 {% hint style="warning" %}
 **NOTE**: You can make `eth_getLogs` requests with up to a _**2K block range**_ and _**a 150MB limit on the response size**_.
@@ -1383,9 +1383,9 @@ _If you need to pull logs frequently, we recommend _[_using WebSockets_](../guid
   * "latest" for the last mined block
   * "pending", "earliest" for not yet mined transactions.
 * `address`: `DATA|Array`, 20 Bytes - (optional) Contract address or a list of addresses from which logs should originate.
-* `topics`: `Array` of `DATA`, - (optional) Array of 32 Bytes DATA topics. 
-  * Topics are order-dependent. Each topic can also be an array of DATA with "or" options. 
-  * Check out more details on how to format topics in [eth_newFilter](ethereum/#eth_newfilter).
+* `topics`: `Array` of `DATA`, - (optional) Array of 32 Bytes DATA topics.&#x20;
+  * Topics are order-dependent. Each topic can also be an array of DATA with "or" options.&#x20;
+  * Check out more details on how to format topics in [eth\_newFilter](ethereum/#eth\_newfilter).
 * `blockHash`: `DATA`, 32 Bytes - (optional) With the addition of EIP-234 (Geth >= v1.8.13 or Parity >= v2.1.0), blockHash is a new filter option which restricts the logs returned to the single block with the 32-byte hash blockHash. Using blockHash is equivalent to fromBlock = toBlock = the block number with hash `blockHash`.** If blockHash is present in the filter criteria, then neither `fromBlock` nor `toBlock` are allowed.**
 
 ```javascript
@@ -1402,9 +1402,9 @@ params: [
 
 #### Returns
 
-See [`eth_getFilterChanges`](ethereum/#eth_getfilterchanges)
+See [`eth_getFilterChanges`](ethereum/#eth\_getfilterchanges)
 
-#### [Example](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_getLogs%22%2C%22paramValues%22%3A%5B%7B%22address%22%3A%220xb59f67a8bff5d8cd03f6ac17265c550ed8f33907%22%2C%22topics%22%3A%22%5B%5C%220xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef%5C%22%5D%22%2C%22blockHash%22%3A%220x8243343df08b9751f5ca0c5f8c9c0460d8a9b6351066fae0acbd4d3e776de8bb%22%7D%5D%7D)
+#### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getLogs%22%2C%22paramValues%22%3A%5B%7B%22address%22%3A%220xb59f67a8bff5d8cd03f6ac17265c550ed8f33907%22%2C%22topics%22%3A%22%5B%5C%220xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef%5C%22%5D%22%2C%22blockHash%22%3A%220x8243343df08b9751f5ca0c5f8c9c0460d8a9b6351066fae0acbd4d3e776de8bb%22%7D%5D%7D)
 
 Request
 
@@ -1461,9 +1461,9 @@ Result
 
 ## :chains: Chain Information
 
-Calls to receive information about the current blockchain. 
+Calls to receive information about the current blockchain.&#x20;
 
-### eth_protocolVersion
+### eth\_protocolVersion
 
 Returns the current ethereum protocol version.
 
@@ -1475,7 +1475,7 @@ none
 
 `String` - The current ethereum protocol version.
 
-#### [Example](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_protocolVersion%22%2C%22paramValues%22%3A%5B%5D%7D)
+#### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_protocolVersion%22%2C%22paramValues%22%3A%5B%5D%7D)
 
 Request
 
@@ -1514,9 +1514,9 @@ Result
 }
 ```
 
-### eth_gasPrice
+### eth\_gasPrice
 
-Returns the current price per gas in wei. 
+Returns the current price per gas in wei.&#x20;
 
 {% hint style="info" %}
 If you are curious about the difference in gas price between this method and the [eth gas station](https://ethgasstation.info), check out this [GitHub issue](https://github.com/ethereum/go-ethereum/issues/15825).
@@ -1528,9 +1528,9 @@ none
 
 #### Returns
 
-`QUANTITY` - integer of the current gas price in wei. 
+`QUANTITY` - integer of the current gas price in wei.&#x20;
 
-#### [Example](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_gasPrice%22%2C%22paramValues%22%3A%5B%5D%7D)
+#### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_gasPrice%22%2C%22paramValues%22%3A%5B%5D%7D)
 
 Request
 
@@ -1569,9 +1569,9 @@ Result
 }
 ```
 
-### eth_estimateGas
+### eth\_estimateGas
 
-Generates and returns an estimate of how much gas is necessary to allow the transaction to complete. The transaction will not be added to the blockchain. 
+Generates and returns an estimate of how much gas is necessary to allow the transaction to complete. The transaction will not be added to the blockchain.&#x20;
 
 {% hint style="info" %}
 **Note:** The estimate may be significantly more than the amount of gas actually used by the transaction, for a variety of reasons including EVM mechanics and node performance. Estimates are served directly from nodes, we're not doing anything special to the value so the rest of the network is likely seeing the same.
@@ -1582,8 +1582,8 @@ Generates and returns an estimate of how much gas is necessary to allow the tran
 * `Object` - The transaction call object
   * `from`: `DATA`, 20 Bytes - (optional) The address the transaction is sent from.
   * `to`: `DATA`, 20 Bytes - The address the transaction is directed to.
-  * `gas`: `QUANTITY` - (optional) Integer of the gas provided for the transaction execution. `eth_call` consumes zero gas, but this parameter may be needed by some executions. 
-  * `gasPrice`: `QUANTITY` - (optional) Integer of the gasPrice used for each paid gas. **Note: most of our users (95%+) never set the `gasPrice` on eth_call.**
+  * `gas`: `QUANTITY` - (optional) Integer of the gas provided for the transaction execution. `eth_call` consumes zero gas, but this parameter may be needed by some executions.&#x20;
+  * `gasPrice`: `QUANTITY` - (optional) Integer of the gasPrice used for each paid gas. **Note: most of our users (95%+) never set the `gasPrice` on eth\_call.**
   * `value`: `QUANTITY` - (optional) Integer of the value sent with this transaction
   * `data`: `DATA` - (optional) Hash of the method signature and encoded parameters. For details see Ethereum Contract ABI
 * `QUANTITY|TAG` - integer block number, or the string "latest", "earliest" or "pending", see the [default block parameter](https://eth.wiki/json-rpc/API#the-default-block-parameter).
@@ -1599,7 +1599,7 @@ Generates and returns an estimate of how much gas is necessary to allow the tran
 
 `QUANTITY` - the amount of gas used.
 
-#### [Example](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_estimateGas%22%2C%22paramValues%22%3A%5B%7B%22from%22%3A%220xb60e8dd61c5d32be8058bb8eb970870f07233155%22%2C%22to%22%3A%220xd46e8dd67c5d32be8058bb8eb970870f07244567%22%2C%22gasPrice%22%3A%220x9184e72a000%22%2C%22value%22%3A%220x9184e72a%22%2C%22data%22%3A%220xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675%22%2C%22gas%22%3A%220x76c0%22%7D%5D%7D)
+#### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_estimateGas%22%2C%22paramValues%22%3A%5B%7B%22from%22%3A%220xb60e8dd61c5d32be8058bb8eb970870f07233155%22%2C%22to%22%3A%220xd46e8dd67c5d32be8058bb8eb970870f07244567%22%2C%22gasPrice%22%3A%220x9184e72a000%22%2C%22value%22%3A%220x9184e72a%22%2C%22data%22%3A%220xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675%22%2C%22gas%22%3A%220x76c0%22%7D%5D%7D)
 
 Request
 
@@ -1640,7 +1640,7 @@ Result
 
 
 
-### eth_chainId
+### eth\_chainId
 
 Returns the currently configured chain ID, a value used in replay-protected transaction signing as introduced by [EIP-155](https://eips.ethereum.org/EIPS/eip-155).
 
@@ -1697,7 +1697,7 @@ Result
 }
 ```
 
-### net_version
+### net\_version
 
 Returns the current network id.
 
@@ -1715,7 +1715,7 @@ none
 * `"4"`: Rinkeby Testnet
 * `"42"`: Kovan Testnet
 
-#### ****[**Example**](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22net_version%22%2C%22paramValues%22%3A%5B%5D%7D)****
+#### ****[**Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22net\_version%22%2C%22paramValues%22%3A%5B%5D%7D)****
 
 Request
 
@@ -1754,7 +1754,7 @@ Result
 }
 ```
 
-### net_listening
+### net\_listening
 
 Returns `true` if client is actively listening for network connections.
 
@@ -1766,7 +1766,7 @@ none
 
 `Boolean` - `true` when listening, otherwise `false`.
 
-#### ****[**Example**](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22net_listening%22%2C%22paramValues%22%3A%5B%5D%7D)****
+#### ****[**Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22net\_listening%22%2C%22paramValues%22%3A%5B%5D%7D)****
 
 Request
 
@@ -1805,7 +1805,7 @@ Result
 }
 ```
 
-## :bearded_person: Retrieving Uncles
+## :bearded\_person: Retrieving Uncles
 
 Calls to get information about uncles.
 
@@ -1813,7 +1813,7 @@ Calls to get information about uncles.
 **Note**: An uncle doesn't contain individual transactions.
 {% endhint %}
 
-### eth_getUncleByBlockNumberAndIndex
+### eth\_getUncleByBlockNumberAndIndex
 
 Returns information about an uncle of a block by number and uncle index position.
 
@@ -1831,9 +1831,9 @@ params: [
 
 #### Returns
 
-See [`eth_getBlockByHash`](ethereum/#eth_getblockbyhash) 
+See [`eth_getBlockByHash`](ethereum/#eth\_getblockbyhash)&#x20;
 
-#### [Example](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_getUncleByBlockNumberAndIndex%22%2C%22paramValues%22%3A%5B%220x29c%22%2C%220x0%22%5D%7D)
+#### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getUncleByBlockNumberAndIndex%22%2C%22paramValues%22%3A%5B%220x29c%22%2C%220x0%22%5D%7D)
 
 Request
 
@@ -1862,7 +1862,7 @@ Body:
 {% endtab %}
 {% endtabs %}
 
-Result 
+Result&#x20;
 
 ```javascript
 {
@@ -1891,13 +1891,13 @@ Result
 }
 ```
 
-### eth_getUncleByBlockHashAndIndex
+### eth\_getUncleByBlockHashAndIndex
 
 Returns information about an uncle of a block by hash and uncle index position.
 
 #### Parameters
 
-*   `QUANTITY|TAG` - a block number, or the string "earliest", "latest" or "pending", as in the 
+*   `QUANTITY|TAG` - a block number, or the string "earliest", "latest" or "pending", as in the&#x20;
 
     [default block parameter](https://eth.wiki/json-rpc/API#the-default-block-parameter).
 * `QUANTITY` - the uncle's index position.
@@ -1911,9 +1911,9 @@ params: [
 
 #### Returns
 
-See [`eth_getBlockByHash`](ethereum/#eth_getblockbyhash) 
+See [`eth_getBlockByHash`](ethereum/#eth\_getblockbyhash)&#x20;
 
-#### [Example](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_getUncleByBlockHashAndIndex%22%2C%22paramValues%22%3A%5B%220xb3b20624f8f0f86eb50dd04688409e5cea4bd02d700bf6e79e9384d47d6a5a35%22%2C%220x0%22%5D%7D)
+#### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getUncleByBlockHashAndIndex%22%2C%22paramValues%22%3A%5B%220xb3b20624f8f0f86eb50dd04688409e5cea4bd02d700bf6e79e9384d47d6a5a35%22%2C%220x0%22%5D%7D)
 
 Request
 
@@ -1971,7 +1971,7 @@ Result
 }
 ```
 
-### eth_getUncleCountByBlockHash
+### eth\_getUncleCountByBlockHash
 
 Returns the number of uncles in a block matching the given block hash.
 
@@ -1989,7 +1989,7 @@ params: [
 
 `QUANTITY` - integer of the number of uncles in this block.
 
-#### [Example](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_getUncleCountByBlockHash%22%2C%22paramValues%22%3A%5B%220xb3b20624f8f0f86eb50dd04688409e5cea4bd02d700bf6e79e9384d47d6a5a35%22%5D%7D)
+#### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getUncleCountByBlockHash%22%2C%22paramValues%22%3A%5B%220xb3b20624f8f0f86eb50dd04688409e5cea4bd02d700bf6e79e9384d47d6a5a35%22%5D%7D)
 
 Request
 
@@ -2028,7 +2028,7 @@ Result
 }
 ```
 
-### eth_getUncleCountByBlockNumber
+### eth\_getUncleCountByBlockNumber
 
 Returns the number of uncles in a block matching the give block number.
 
@@ -2046,7 +2046,7 @@ Returns the number of uncles in a block matching the give block number.
 
 `QUANTITY` - integer of the number of uncles in this block.
 
-#### [Example](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_getUncleCountByBlockNumber%22%2C%22paramValues%22%3A%5B%220xe8%22%5D%7D)
+#### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getUncleCountByBlockNumber%22%2C%22paramValues%22%3A%5B%220xe8%22%5D%7D)
 
 Request
 
@@ -2087,15 +2087,15 @@ Result
 
 ## :flashlight: Filters
 
-Calls related to creating, getting, and reading from filters. 
+Calls related to creating, getting, and reading from filters.&#x20;
 
-Eth filters expose the same information as the [`eth_subscribe`](ethereum/#eth_subscribe) methods, except that updates are received by polling rather than receiving pushes. A user may create a filter than repeatedly call `eth_getFilterChanges`on it, each time receiving events that have occurred since the last time `eth_getFilterChanges`was called (or since the filter was created if this is the first time `eth_getFilterChanges`is being called.
+Eth filters expose the same information as the [`eth_subscribe`](ethereum/#eth\_subscribe) methods, except that updates are received by polling rather than receiving pushes. A user may create a filter than repeatedly call `eth_getFilterChanges`on it, each time receiving events that have occurred since the last time `eth_getFilterChanges`was called (or since the filter was created if this is the first time `eth_getFilterChanges`is being called.
 
 {% hint style="warning" %}
-**Note**: Filters expire after 5 minutes of inactivity, so several of the example requests below will return`"filter not found"` if you try and call them. 
+**Note**: Filters expire after 5 minutes of inactivity, so several of the example requests below will return`"filter not found"` if you try and call them.&#x20;
 {% endhint %}
 
-### eth_getFilterChanges
+### eth\_getFilterChanges
 
 Polling method for a filter, which returns an array of logs which occurred since last poll.
 
@@ -2124,10 +2124,10 @@ params: [
   * `blockNumber`: `QUANTITY` - the block number where this log was in. `null` when its pending. `null` when its pending log.
   * `address`: `DATA`, 20 Bytes - address from which this log originated.
   * `data`: `DATA` - contains one or more 32 Bytes non-indexed arguments of the log.
-  * `topics`: `Array of DATA` - Array of 0 to 4 32 Bytes `DATA` of indexed log arguments. 
+  * `topics`: `Array of DATA` - Array of 0 to 4 32 Bytes `DATA` of indexed log arguments.&#x20;
     * In _solidity_: The first topic is the _hash_ of the signature of the event (e.g. `Deposit(address,bytes32,uint256)`), except you declare the event with the `anonymous` specifier.
 
-#### ****[**Example**](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_getFilterChanges%22%2C%22paramValues%22%3A%5B%220xfe704947a3cd3ca12541458a4321c869%22%5D%7D)****
+#### ****[**Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getFilterChanges%22%2C%22paramValues%22%3A%5B%220xfe704947a3cd3ca12541458a4321c869%22%5D%7D)****
 
 Request
 
@@ -2186,14 +2186,14 @@ Result
 }
 ```
 
-### eth_getFilterLogs
+### eth\_getFilterLogs
 
-Returns an array of all logs matching filter with given id. Can compute the same results with an `eth_getLogs` call (see hint below). 
+Returns an array of all logs matching filter with given id. Can compute the same results with an `eth_getLogs` call (see hint below).&#x20;
 
 {% hint style="warning" %}
-This method only works for filters creates with [`eth_newFilter`](ethereum/#eth_newfilter)not for filters created using [`eth_newBlockFilter`](ethereum/#eth_newblockfilter) or [`eth_newPendingTransactionFilter`](ethereum/#eth_newpendingtransactionfilter), which will return `"filter not found".`
+This method only works for filters creates with [`eth_newFilter`](ethereum/#eth\_newfilter)not for filters created using [`eth_newBlockFilter`](ethereum/#eth\_newblockfilter) or [`eth_newPendingTransactionFilter`](ethereum/#eth\_newpendingtransactionfilter), which will return `"filter not found".`
 
-### eth_getLogs vs. eth_getFilterLogs
+### eth\_getLogs vs. eth\_getFilterLogs
 
 These two computations will return the same results:
 
@@ -2213,9 +2213,9 @@ params: [
 
 #### **Returns**
 
-See [`eth_getFilterChanges`](ethereum/#eth_getfilterchanges)``
+See [`eth_getFilterChanges`](ethereum/#eth\_getfilterchanges)``
 
-#### ****[**Example**](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_getFilterLogs%22%2C%22paramValues%22%3A%5B%220xfe704947a3cd3ca12541458a4321c869%22%5D%7D)****
+#### ****[**Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getFilterLogs%22%2C%22paramValues%22%3A%5B%220xfe704947a3cd3ca12541458a4321c869%22%5D%7D)****
 
 Request
 
@@ -2274,9 +2274,9 @@ Result
 }
 ```
 
-### eth_newBlockFilter
+### eth\_newBlockFilter
 
-Creates a filter in the node, to notify when a new block arrives. To check if the state has changed, call [`eth_getFilterChanges`](ethereum/#eth_getfilterchanges).
+Creates a filter in the node, to notify when a new block arrives. To check if the state has changed, call [`eth_getFilterChanges`](ethereum/#eth\_getfilterchanges).
 
 #### **Parameters**
 
@@ -2286,7 +2286,7 @@ None
 
 `QUANTITY` - A filter id.
 
-#### ****[**Example**](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_newBlockFilter%22%2C%22paramValues%22%3A%5B%5D%7D)****
+#### ****[**Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_newBlockFilter%22%2C%22paramValues%22%3A%5B%5D%7D)****
 
 Request
 
@@ -2325,11 +2325,11 @@ Result
 }
 ```
 
-### eth_newFilter
+### eth\_newFilter
 
 Creates a filter object, based on filter options, to notify when the state changes (logs). Unlike `eth_newBlockFilter`which notifies you of **all **new** **blocks, you can pass in filter options to track new logs matching the topics specified. ** **
 
-To check if the state has changed, call [`eth_getFilterChanges.`](ethereum/#eth_getfilterchanges)``
+To check if the state has changed, call [`eth_getFilterChanges.`](ethereum/#eth\_getfilterchanges)``
 
 {% hint style="info" %}
 #### A note on specifying topic filters:
@@ -2364,7 +2364,7 @@ params: [{
 
 `QUANTITY` - A filter id.
 
-#### ****[**Example**](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_newFilter%22%2C%22paramValues%22%3A%5B%7B%22fromBlock%22%3A%220x1%22%2C%22toBlock%22%3A%220x2%22%2C%22address%22%3A%220x8888f1f195afa192cfee860698584c030f4c9db1%22%2C%22topics%22%3A%22%5B%5C%220x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b%5C%22%2C%20null%2C%20%5B%5C%220x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b%5C%22%2C%20%5C%220x0000000000000000000000000aff3454fce5edbc8cca8697c15331677e6ebccc%5C%22%5D%5D%22%7D%5D%7D)****
+#### ****[**Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_newFilter%22%2C%22paramValues%22%3A%5B%7B%22fromBlock%22%3A%220x1%22%2C%22toBlock%22%3A%220x2%22%2C%22address%22%3A%220x8888f1f195afa192cfee860698584c030f4c9db1%22%2C%22topics%22%3A%22%5B%5C%220x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b%5C%22%2C%20null%2C%20%5B%5C%220x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b%5C%22%2C%20%5C%220x0000000000000000000000000aff3454fce5edbc8cca8697c15331677e6ebccc%5C%22%5D%5D%22%7D%5D%7D)****
 
 Request
 
@@ -2403,9 +2403,9 @@ Result
 }
 ```
 
-### eth_uninstallFilter
+### eth\_uninstallFilter
 
-Uninstalls a filter with given id. Should always be called when watch is no longer needed. Additionally, Filters timeout when they aren’t requested with [`eth_getFilterChanges`](ethereum/#eth_getfilterchanges)for a period of time.
+Uninstalls a filter with given id. Should always be called when watch is no longer needed. Additionally, Filters timeout when they aren’t requested with [`eth_getFilterChanges`](ethereum/#eth\_getfilterchanges)for a period of time.
 
 #### **Parameters**
 
@@ -2421,7 +2421,7 @@ params: [
 
 `Boolean` - `true` if the filter was successfully uninstalled, otherwise `false`.
 
-#### ****[**Example**](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_uninstallFilter%22%2C%22paramValues%22%3A%5B%220xfe704947a3cd3ca12541458a4321c869%22%5D%7D)****
+#### ****[**Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_uninstallFilter%22%2C%22paramValues%22%3A%5B%220xfe704947a3cd3ca12541458a4321c869%22%5D%7D)****
 
 Request
 
@@ -2474,7 +2474,7 @@ none
 
 `String` - The current client version
 
-#### ****[**Example**](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22web3\_clientVersion%22%2C%22paramValues%22%3A%5B%5D%7D)****
+#### ****[**Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22web3\_clientVersion%22%2C%22paramValues%22%3A%5B%5D%7D)****
 
 Request
 
@@ -2522,7 +2522,7 @@ Returns Keccak-256 (_not_ the standardized SHA3-256) of the given data.
 1. `DATA` - the data in hex form to convert into a SHA3 hash
 
 {% hint style="warning" %}
-**Note: **web3\_sha3 takes in a hexidecimal number, not a direct string. So, if you wanted to convert "hello world" to it's Keccak-256 hash you would need to input the hex number for "hello world", which is "68656c6c6f20776f726c64". 
+**Note: **web3\_sha3 takes in a hexidecimal number, not a direct string. So, if you wanted to convert "hello world" to it's Keccak-256 hash you would need to input the hex number for "hello world", which is "68656c6c6f20776f726c64".&#x20;
 {% endhint %}
 
 ```bash
@@ -2572,20 +2572,20 @@ Result
 }
 ```
 
-## :alarm_clock: Real-Time Events
+## :alarm\_clock: Real-Time Events
 
 Geth v1.4 and later support subscribing using JSON-RPC notifications. This allows clients to wait for events instead of polling for them.
 
 It works by subscribing to particular events where the node will return a subscription id. For each event that matches the subscription, a notification with relevant data is sent together with the subscription id.
 
-Below are several methods used for retrieving real time events. 
+Below are several methods used for retrieving real time events.&#x20;
 
-### eth_syncing
+### eth\_syncing
 
-Returns an object with data about the sync status or `false`if the node is fully synced. 
+Returns an object with data about the sync status or `false`if the node is fully synced.&#x20;
 
 {% hint style="success" %}
-**Note**: Your response from `eth_syncing` will likely return false because Alchemy only supports nodes in production that are completely synced. 
+**Note**: Your response from `eth_syncing` will likely return false because Alchemy only supports nodes in production that are completely synced.&#x20;
 {% endhint %}
 
 #### **Parameters**
@@ -2597,7 +2597,7 @@ none
 `Object|Boolean`, An object with sync status data or `FALSE`, when not syncing:
 
 * `startingBlock`: `QUANTITY` - The block at which the import started (will only be reset, after the sync reached his head)
-* `currentBlock`: `QUANTITY` - The current block, same as eth_blockNumber
+* `currentBlock`: `QUANTITY` - The current block, same as eth\_blockNumber
 * `highestBlock`: `QUANTITY` - The estimated highest block
 
 Request
@@ -2637,7 +2637,7 @@ Response
 }
 ```
 
-### eth_subscribe
+### eth\_subscribe
 
 If successful this returns the subscription id. Subscriptions are created through websockets
 
@@ -2656,11 +2656,11 @@ If successful this returns the subscription id.
 **NOTE**: `eth_subscribe` requests cannot be replicated in the [composer](https://composer.alchemyapi.io) tool
 {% endhint %}
 
-#### Optional Arguments: 
+#### Optional Arguments:&#x20;
 
 #### 1. newHeads <a href="newheads" id="newheads"></a>
 
-Fires a notification each time a new header is appended to the chain, including chain reorganizations. 
+Fires a notification each time a new header is appended to the chain, including chain reorganizations.&#x20;
 
 In case of a chain reorganization the subscription will emit all new headers for the new chain. Therefore the subscription can emit multiple headers on the same height.
 
@@ -2769,7 +2769,7 @@ Result
 }
 ```
 
-### eth_unsubscribe
+### eth\_unsubscribe
 
 Subscriptions are canceled with a regular RPC call with `eth_unsubscribe` as method and the subscription id as first parameter. It returns a bool indicating if the subscription was canceled successfully.
 

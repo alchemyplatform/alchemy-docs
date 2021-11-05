@@ -7,7 +7,9 @@ description: >-
 
 # 📩 Submitting your Smart Contract to Etherscan
 
-You should have completed part 1 [creating and deploying a smart contract](./), and part 2 [interacting with your smart contract](interacting-with-a-smart-contract.md) prior to starting part 3 below.  
+You should have completed Part 1: [Creating and Deploying a Smart Contract](./), and Part 2:[ Interacting with Your Smart Contract](interacting-with-a-smart-contract.md) prior to starting this section below.
+
+{% embed url="https://www.youtube.com/watch?v=x1a5lrW-9fo" %}
 
 ## Part 3: Publish your Smart Contract to Etherscan
 
@@ -17,10 +19,10 @@ By verifying your smart contract on Etherscan, anyone can view your source code 
 
 ### Step 1: Generate an API Key on your Etherscan account
 
-An Etherscan API Key is necessary to verify that you're the owner of the smart contract that you're trying to publish. 
+An Etherscan API Key is necessary to verify that you're the owner of the smart contract that you're trying to publish.&#x20;
 
 {% hint style="info" %}
-If you don't have an Etherscan account, first sign up using this [link](https://etherscan.io/register). 
+If you don't have an Etherscan account, first sign up using this [link](https://etherscan.io/register).&#x20;
 {% endhint %}
 
 Once logged in, press your username on the top right, and select the "My profile" button:
@@ -35,13 +37,13 @@ Once you've followed the steps above, you should be able to view your new API ke
 
 ![](<../../.gitbook/assets/image (18).png>)
 
-Now, let's update your `.env `file to include your Etherscan API Key. 
+Now, let's update your `.env `file to include your Etherscan API Key.&#x20;
 
 If you were following the [Hardhat tutorial](./#create-and-deploy-your-smart-contract-using-hardhat), your `.env`file should look like this:
 
 ```javascript
 API_URL = "https://eth-ropsten.alchemyapi.io/v2/your-api-key"
-PUBLIC_KEY = "your-public-account-address"
+API_KEY = "your-api-key"
 PRIVATE_KEY = "your-private-account-address"
 ETHERSCAN_API_KEY = "your-etherscan-key" 
 ```
@@ -70,15 +72,18 @@ Publishing your contract to Etherscan with HardHat is super simple. To get start
 npm install --save-dev @nomiclabs/hardhat-etherscan
 ```
 
-Once installed, include the following statement at the top of your `hardhat.config.js`:
+Once installed, include the following statement at the top of your `hardhat.config.js`, and add the Etherscan config options:
 
 ```
+// hardhat.config.js
+
+require('dotenv').config();
+require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-etherscan");
-```
 
-Next, add the following Etherscan config to your `hardhat.config.js` file:
+const { API_URL, PRIVATE_KEY } = process.env;
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 
-```
 module.exports = {
   solidity: "0.7.3",
   defaultNetwork: "ropsten",
@@ -92,7 +97,7 @@ module.exports = {
   etherscan: {
     // Your API key for Etherscan
     // Obtain one at https://etherscan.io/
-    apiKey: process.env.ETHERSCAN_API_KEY
+    apiKey: ETHERSCAN_API_KEY
   }
 };
 ```
@@ -101,11 +106,15 @@ module.exports = {
 
 Make sure your files are properly saved (especially if you're in VSCode) and your `.env` variables are properly configured.
 
-Finally, run the `verify` task, passing the address of the contract, and the network where it's deployed:
+Finally, run the `verify` task, passing the address of the contract, and the first message argument string that we deployed it with:
 
 ```
 npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS 'Hello World!'
 ```
+
+{% hint style="info" %}
+Make sure that `DEPLOYED_CONTRACT_ADDRESS` is the address of your deployed smart contract on the Ropsten test network. Also, the last argument,`'Hello World!'` must be the same string value that you used during the deploy step in Part 1.
+{% endhint %}
 
 If all goes well, you should see the following message in your terminal:
 
@@ -127,7 +136,7 @@ Congrats! Your smart contract code should be on Etherescan! Check out [Step 4](s
 Skip this section if you deployed your smart contract with HardHat.
 {% endhint %}
 
-#### Step 3.1: Install the `truffle-plugin-verify` plugin 
+#### Step 3.1: Install the `truffle-plugin-verify` plugin&#x20;
 
 We need the `truffle-plugin-verify` plugin to automatically verify your truffle smart contract's source code and ABI on Etherscan. In your project directory run:
 
@@ -135,7 +144,7 @@ We need the `truffle-plugin-verify` plugin to automatically verify your truffle 
 npm install -g truffle-plugin-verify
 ```
 
-Once installed, add the plugin to your `truffle-config.js` file. Your file should look similar to this. 
+Once installed, add the plugin to your `truffle-config.js` file. Your file should look similar to this.&#x20;
 
 ```javascript
 const HDWalletProvider = require("@truffle/hdwallet-provider");

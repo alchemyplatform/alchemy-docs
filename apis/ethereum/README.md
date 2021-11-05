@@ -4,5 +4,5 @@ description: >-
   calls that Alchemy supports.
 ---
 
-# Ethereum API
+# 💎 Ethereum API
 

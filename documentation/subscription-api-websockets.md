@@ -1,65 +1,32 @@
 ---
 description: >-
-  All Alchemy APIs are accessible via WebSocket as well as POST requests, and
-  using a WebSocket to make your requests also gives you access to new APIs for
-  subscribing to events.
+  Learn how to subscribe to pending transactions, log events, new block headers
+  and more using Websockets.
 ---
 
-# 🔈 Using WebSockets
+# 🔊 Subscription API (Websockets)
 
-## WebSockets vs. HTTP
+To learn more about how to use websockets check out the guide below👇
 
-Unlike HTTP, with WebSockets, you don't need to continuously make requests when you want specific information. WebSockets maintain a network connection for you (if done right) and listen for changes.&#x20;
+{% content-ref url="../guides/using-websockets.md" %}
+[using-websockets.md](../guides/using-websockets.md)
+{% endcontent-ref %}
 
-As with any network connection, you should not assume that a WebSocket will remain open forever without interruption, but correctly handling dropped connections and reconnection by hand can be challenging to get right. Another downside of WebSockets is that you do not get HTTP status codes in the response, but only the error message.&#x20;
-
-{% hint style="info" %}
-[Alchemy Web3 ](../documentation/alchemy-web3/)automatically adds handling for WebSocket failures with no configuration necessary.
-{% endhint %}
-
-## Try It Out
-
-The easiest way to test our APIs with WebSockets is to install a command line tool for making WebSocket requests such as [wscat](https://github.com/websockets/wscat). Using wscat, you can send requests as follows:
-
-```bash
-$ wscat -c wss://eth-mainnet.ws.alchemyapi.io/ws/demo
-
-> {"jsonrpc": "2.0", "id": 0, "method": "eth_gasPrice"}
-< {"jsonrpc": "2.0", "result": "0xb2d05e00", "id": 0}
-```
-
-## How to Use WebSockets
-
-To begin, open a WebSocket using the WebSocket URL for your app. You can find your app's WebSocket URL by opening the app's page in [your dashboard](https://dashboard.alchemyapi.io) and clicking "View Key". Note that your app's URL for WebSockets is different from its URL for HTTP requests, but both can be found by clicking "View Key".
-
-![](../.gitbook/assets/websocket-key-copy.gif)
-
-Any of the APIs listed in the [Alchemy API Reference](../apis/ethereum/) or [Enhanced API](../documentation/enhanced-apis/token-api.md) can also be used via WebSocket. To do so, use the same payload that would be sent as the body of a POST request, but instead send that payload through the WebSocket.
-
-### With Web3
-
-Transitioning to WebSockets while using a client library like Web3 is simple. Simply pass the WebSocket URL instead of the HTTP one when instantiating your Web3 client. For example:
-
-```javascript
-const web3 = new Web3("wss://eth-mainnet.ws.alchemyapi.io/ws/demo");
-web3.eth.getBlockNumber().then(console.log);  // -> 7946893
-```
-
-## Subscription API
+&#x20;
 
 When connected by a WebSocket, you may use two additional methods: `eth_subscribe` and `eth_unsubscribe`. These methods will allow you to listen for particular events and be notified immediately.
-
-### eth\_subscribe
-
-Creates a new subscription for specified events. Learn more about `eth_subscribe` [here](../apis/ethereum/#eth\_subscribe). &#x20;
 
 {% hint style="warning" %}
 There is a limit of 20,000 websocket connections per API Key as well as 1,000 parallel websocket subscriptions per websocket connection, creating a maximum of 20 million subscriptions per application.&#x20;
 {% endhint %}
 
+## eth\_subscribe
+
+Creates a new subscription for specified events. Learn more about `eth_subscribe` [here](../apis/ethereum/#eth\_subscribe). &#x20;
+
 #### Parameters
 
-1. [Subscription type](using-websockets.md#subscription-types)
+1. [Subscription type](../guides/using-websockets.md#subscription-types)
 2. Optional params
 
 The first argument specifies the type of event for which to listen. The second argument contains additional options which depend on the first argument. The different description types, their options, and their event payloads are described below.
@@ -87,8 +54,8 @@ The `alchemy_newFullPendingTransactions`** **subscription type is a super costly
 
 **NOTE: **
 
-* The naming of this subscription is different from the naming of the web3 subscription API, [`alchemy_fullPendingTransactions`](../documentation/alchemy-web3/enhanced-web3-api.md#web-3-eth-subscribe-alchemy\_fullpendingtransactions).
-* This method is only supported on Ethereum networks and Polygon Mainnet.
+* The naming of this subscription is different from the naming of the web3 subscription API, [`alchemy_fullPendingTransactions`](alchemy-web3/enhanced-web3-api.md#web-3-eth-subscribe-alchemy\_fullpendingtransactions).
+* This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
 {% endhint %}
 
 Returns the transaction information for all transactions that are added to the pending state. This subscription type subscribes to pending transactions, similar to the standard Web3 call `web3.eth.subscribe("pendingTransactions")`, but differs in that it emits full transaction information rather than just transaction hashes.** **
@@ -140,7 +107,7 @@ Result
 Returns the transaction information for all transactions that are added to the pending state that match a given filter. Currently supports an address filter, which will return transactions from or to the address.
 
 {% hint style="warning" %}
-**NOTE: **This method is only supported on Ethereum networks and Polygon Mainnet.
+**NOTE: **This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
 {% endhint %}
 
 **Example**
@@ -192,7 +159,7 @@ Returns the hash for all transactions that are added to the pending state.
 When a transaction that was previously part of the canonical chain isn’t part of the new canonical chain after a reorganization its again emitted.
 
 {% hint style="warning" %}
-**NOTE: **This method is only supported on Ethereum networks and Polygon Mainnet.
+**NOTE: **This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
 {% endhint %}
 
 **Parameters**
@@ -428,7 +395,7 @@ Result
 }
 ```
 
-### eth\_unsubscribe
+## eth\_unsubscribe
 
 Cancels an existing subscription so that no further events are sent.
 

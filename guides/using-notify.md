@@ -13,13 +13,13 @@ _**Looking for the instructions on how to create webhooks programmatically? Chec
 [notify-api.md](../documentation/enhanced-apis/notify-api.md)
 {% endcontent-ref %}
 
-Alchemy Notify works by using webhooks, a way for you to subscribe to events that occur on your application. This guide will walk through what webhooks are and how you can use them in order to get started with Alchemy Notify. 
+Alchemy Notify works by using webhooks, a way for you to subscribe to events that occur on your application. This guide will walk through what webhooks are and how you can use them in order to get started with Alchemy Notify.&#x20;
 
 ## What are Webhooks? <a href="what-are-webhooks" id="what-are-webhooks"></a>
 
 Webhooks are a way for users to receive notifications when an event occurs on your application. Rather than continuously polling the server to check if the state has changed, webhooks provide information to you as it becomes available, which is a lot more efficient and beneficial for developers. Webhooks work by registering a URL to send notifications to once certain events occur.
 
-Webhooks are typically used to connect two different applications. One application is the "sender," which subscribes to events and sends them off to the the second "receiver" application, which takes actions based upon that received data. When an event occurs on the sender application it sends that data to the webhook URL of the receiver application. The receiver application can then send a callback message, with an HTTP status code to let the sender know the data was received successfully or not. 
+Webhooks are typically used to connect two different applications. One application is the "sender," which subscribes to events and sends them off to the the second "receiver" application, which takes actions based upon that received data. When an event occurs on the sender application it sends that data to the webhook URL of the receiver application. The receiver application can then send a callback message, with an HTTP status code to let the sender know the data was received successfully or not.&#x20;
 
 You can think of webhook notifications just like SMS notifications. The entity sending the message has your registered phone number and they send a specific message payload to that phone number. You then have the ability to respond confirming you have received it, creating a two-way communication stream.
 
@@ -35,7 +35,7 @@ Alchemy offers four different types of webhooks each described below.
 
 ### 1. Mined Transactions <a href="mined-transactions" id="mined-transactions"></a>
 
-The Mined Transaction Webhook is used to notify your app anytime a transaction gets successfully mined. This is extremely useful if you want to notify customers the moment their transactions goes through.
+The Mined Transaction Webhook is used to notify your app anytime a transaction gets successfully mined that was sent through your Alchemy API key. This is extremely useful if you want to notify customers the moment their transactions goes through.
 
 #### Example Response
 
@@ -66,7 +66,7 @@ The Mined Transaction Webhook is used to notify your app anytime a transaction g
 
 ### **2. **Dropped Transactions <a href="dropped-transactions" id="dropped-transactions"></a>
 
-The Dropped Transactions Webhook is used to notify your app anytime a transaction gets dropped.
+The Dropped Transactions Webhook is used to notify your app anytime a transaction gets dropped that was sent through your Alchemy API key.
 
 **Example Response**
 
@@ -97,23 +97,23 @@ The Dropped Transactions Webhook is used to notify your app anytime a transactio
 
 ### **3. **Address Activity <a href="address-activity" id="address-activity"></a>
 
-The Address Activity Webhook allows you to track all ETH, ERC20 and ERC721 external and internal [transfer events](eth_getlogs.md#what-are-transfers) for as many Ethereum addresses as you'd like. This provides your app with real-time state changes when an address sends or receives tokens. 
+The Address Activity Webhook allows you to track all ETH, ERC20 and ERC721 external and internal [transfer events](eth\_getlogs.md#what-are-transfers) for as many Ethereum addresses as you'd like (regardless if the transactions were sent through Alchemy or not). This provides your app with real-time state changes when an address sends or receives tokens.&#x20;
 
 {% hint style="info" %}
-If you are looking for historical activity, check out the [Transfers API](../documentation/enhanced-apis/transfers-api.md)! 
+If you are looking for historical activity, check out the [Transfers API](../documentation/enhanced-apis/transfers-api.md)!&#x20;
 {% endhint %}
 
 #### Types of Transfers
 
-There are three main types of transfers that are captured when receiving an address activity response.  
+There are three main types of transfers that are captured when receiving an address activity response. &#x20;
 
 **1. External Eth Transfers**
 
-These are top level Ethereum transactions that occur with a from address being an external (user created) address. External addresses have private keys and are accessed by users. 
+These are top level Ethereum transactions that occur with a from address being an external (user created) address. External addresses have private keys and are accessed by users.&#x20;
 
-**2. Token Transfers (ERC20 or ERC721)**
+**2. Token Transfers (ERC20, ERC721, ERC1155)**
 
-These are event logs for any ERC20 and ERC721 transfer.  
+These are event logs for any ERC20, ERC721, and ERC1155 transfers. &#x20;
 
 **3. Internal Eth Transfers**
 
@@ -124,7 +124,7 @@ These are transfers that occur where the `fromAddress` is an internal (smart con
 {% endhint %}
 
 {% hint style="info" %}
-**NOTE:  **For efficiency, we do not return internal transfers with 0 value as they don't provide useful information without digging deeper into the internal transaction itself. If you are interested in these type of events see our [Trace API](../documentation/enhanced-apis/trace-api.md). 
+**NOTE:  **For efficiency, we do not return internal transfers with 0 value as they don't provide useful information without digging deeper into the internal transaction itself. If you are interested in these type of events see our [Trace API](../documentation/enhanced-apis/trace-api.md).&#x20;
 
 Additionally, we do not include any internal transfers with call type`delegatecall `because although they have a _value  _associated with them they do not actually _transfer_  that value (see[ Appendix H of the Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) if you're curious). We also do not include miner rewards as an internal transfer.
 {% endhint %}
@@ -144,6 +144,7 @@ Additionally, we do not include any internal transfers with call type`delegateca
   * `address`: contract address (hex string). `null` if `external` or `internal` transfer
   * `decimal`: contract decimal (hex string). `null` if not defined in the contract and not available from other sources.
 * `typeTraceAddress`: the type of internal transfer (`call`, `staticcall`, `create`, `suicide`) followed by the trace address (ex. `call_0_1`).`null` if not internal transfer. (note you can use this as a unique id for internal transfers since they will have the same parent hash)
+* `log` : log emitted for this transfer event
 
 **Example Response**
 
@@ -155,20 +156,36 @@ Additionally, we do not include any internal transfers with call type`delegateca
   "timestamp": null,
   "activity": [
     {
-      "fromAddress": "0x7a250d5630b4cf539739df2c5dacb4c659f2488d",
-      "toAddress": "0x9314941c11d6dee1d7bf93113eb74d4718949f3b",
-      "blockNum": "0xbe09fb",
-      "category": "token",
-      "hash": "0x96bba899ebae1af0808421db6c2e78f78488ef4aa3f676f941ba72df10df3023",
-      "value": 0.3727,
+      "blockNum": "0xcec92a",
+      "hash": "0xbcbbd7c7de7b835939fb14d4ebe4d31ea6167f4c27c6f0940bb3fa1a90867abe",
+      "fromAddress": "0x86005b57be708e031ea60acf9d3852377e74a6c9",
+      "toAddress": "0x7a250d5630b4cf539739df2c5dacb4c659f2488d",
+      "value": 0.1,
       "erc721TokenId": null,
+      "erc1155Metadata": null,
       "asset": "WETH",
+      "category": "token",
       "rawContract": {
-        "rawValue": "0x000000000000000000000000000000000000000000000000052c18ace3c9c000",
+        "rawValue": "0x000000000000000000000000000000000000000000000000016345785d8a0000",
         "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
         "decimals": 18
       },
-      "typeTraceAddress": null
+      "typeTraceAddress": null,
+      "log": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "topics": [
+          "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+          "0x00000000000000000000000086005b57be708e031ea60acf9d3852377e74a6c9",
+          "0x0000000000000000000000007a250d5630b4cf539739df2c5dacb4c659f2488d"
+        ],
+        "data": "0x000000000000000000000000000000000000000000000000016345785d8a0000",
+        "blockNumber": "0xcec92a",
+        "transactionHash": "0xbcbbd7c7de7b835939fb14d4ebe4d31ea6167f4c27c6f0940bb3fa1a90867abe",
+        "transactionIndex": "0x4",
+        "blockHash": "0xb75dbed0d0c362fad4171c0e6bebb6e14288b871c02b82a3fc97ca8e05ed2fe2",
+        "logIndex": "0x11",
+        "removed": false
+      }
     },
     {
       "fromAddress": "0xca92a49187edce00ba235634b4ca13e89abb33fe",
@@ -185,6 +202,7 @@ Additionally, we do not include any internal transfers with call type`delegateca
         "decimals": null
       }
       "typeTraceAddress": null
+      "log": null
     },
     {
       "blockNum": "0xbe09fa",
@@ -201,6 +219,7 @@ Additionally, we do not include any internal transfers with call type`delegateca
         "address": null,
         "decimals": 18
       }
+      "log": null
     },
     {
       "fromAddress": "0x38f22e75642b91568ba9bdbf94c9c843b38f2721",
@@ -217,10 +236,17 @@ Additionally, we do not include any internal transfers with call type`delegateca
         "decimals": 18
       },
       "typeTraceAddress": null
+      "log": null
     },
   ]
 }
 ```
+
+{% hint style="warning" %}
+#### **HINT: Missing transactions? **
+
+Double check that you are parsing the response payload correctly- remember, transactions are returned in a list! Transactions that are mined within the same block will be returned within the same `"activity"` list.` `
+{% endhint %}
 
 ### 4. Gas Price
 
@@ -267,7 +293,7 @@ You should then see the result updated on website: [https://webhook.site/](https
 Setting up a webhook is as simple as adding a new URL to your application. There are two primary ways to activate Alchemy Notify.
 
 {% hint style="warning" %}
-**NOTE: **If you need to add over 10 addresses to the address activity webhook, we recommend adding them through an API call. See our [Notify API Reference page](../documentation/enhanced-apis/notify-api.md#create-webhook) for more information on this. 
+**NOTE: **If you need to add over 10 addresses to the address activity webhook, we recommend adding them through an API call. See our [Notify API Reference page](../documentation/enhanced-apis/notify-api.md#create-webhook) for more information on this.&#x20;
 {% endhint %}
 
 ### 1.  Setting Up Webhooks from the Dashboard
@@ -280,9 +306,9 @@ Navigate to the Notify tab in your [Alchemy Dashboard](https://dashboard.alchemy
 4. Add in your unique webhook URL, this can be any link that you want to receive requests at (your server, slack, etc.) **Note that the webhook payload might not **For instructions on how to set up Alchemy Notify programatically, check out the **always be compatible for 3rd party integrations. **
 5. Test out your webhook by hitting the "Test Webhook" button to ensure it works properly
 6. Hit "Create Webhook" and you should then see your webhook appear in the list!
-7. Check your endpoint to see responses rolling through! 
+7. Check your endpoint to see responses rolling through!&#x20;
 
-### 2. Setting up Webhooks Programmatically 
+### 2. Setting up Webhooks Programmatically&#x20;
 
 [Notify API page](../documentation/enhanced-apis/notify-api.md):
 
@@ -290,9 +316,9 @@ Navigate to the Notify tab in your [Alchemy Dashboard](https://dashboard.alchemy
 [notify-api.md](../documentation/enhanced-apis/notify-api.md)
 {% endcontent-ref %}
 
-## Webhook Signature and Security 
+## Webhook Signature and Security&#x20;
 
-If you want to make your webhooks extra secure, you can verify that they originated from Alchemy by generating a HMAC SHA-256 hash code using your Authentication Token and request body. 
+If you want to make your webhooks extra secure, you can verify that they originated from Alchemy by generating a HMAC SHA-256 hash code using your Authentication Token and request body.&#x20;
 
 #### 1. Find your Authentication Token
 
@@ -300,9 +326,9 @@ Navigate to the top right corner of your [Notify page](https://dashboard.alchemy
 
 ![](../.gitbook/assets/screen-shot-2021-04-19-at-3.00.20-pm.png)
 
-#### 2. Validate the signature received 
+#### 2. Validate the signature received&#x20;
 
-Every outbound request will contain a hashed authentication signature in the header which is computed by concatenating your auth token and request body then generating a hash using the HMAC SHA256 hash algorithm. 
+Every outbound request will contain a hashed authentication signature in the header which is computed by concatenating your auth token and request body then generating a hash using the HMAC SHA256 hash algorithm.&#x20;
 
 In order to verify this signature came from Alchemy, you simply have to generate the HMAC SHA256 hash and compare it with the signature received.
 
@@ -314,7 +340,7 @@ Content-Type: application/json;
 X-Alchemy-Signature: your-hashed-signature
 ```
 
-#### Example Signature Validation Function 
+#### Example Signature Validation Function&#x20;
 
 {% tabs %}
 {% tab title="JavaScript" %}

@@ -23,6 +23,14 @@ As a prerequisite, you should have a beginner-level understanding of React—kno
 
 Without further ado, let's get started!
 
+BTW - if you prefer to follow along with a video version of this tutorial, check out the video below!
+
+{% embed url="https://www.youtube.com/watch?v=OVGoJV5tcM8" %}
+NFT Minter Tutorial Video
+{% endembed %}
+
+
+
 ## Step 0: Making NFTs 101
 
 Before we even start looking at any code, it's important to understand how making an NFT works. It involves two steps:
@@ -66,7 +74,7 @@ When you open this cloned `nft-minter-tutorial` repository, you'll notice that i
 
 Next open your copy of `minter-starter-files`in to your favorite code editor (at Alchemy, we we're big fans of [VSCode](https://code.visualstudio.com/download)), and then navigate into your `src` folder:
 
-![We will work inside the "src" folder](https://static.slab.com/prod/uploads/7adb25ff/posts/images/RQXRr70mP174PjsKQI_jMKuq.png)
+![We will work inside the "src" folder](https://static.slab.com/prod/uploads/7adb25ff/posts/images/RQXRr70mP174PjsKQI\_jMKuq.png)
 
 All of the code we'll write will live under the `src` folder. We'll be editing the `Minter.js` component and writing additional javascript files to give our project Web3 functionality.
 
@@ -144,7 +152,7 @@ After the state variables, you'll see three un-implemented functions: `useEffect
   };
 ```
 
-* [`useEffect`](https://reactjs.org/docs/hooks-effect.html)- this is a React hook that is called after your component is rendered.  Because it has an empty array `[]` prop passed into it (see line 3),  it will only be called on the component's _first_ render. Here we'll call our wallet listener and another wallet function to update our UI to reflect whether a wallet is already connected. 
+* [`useEffect`](https://reactjs.org/docs/hooks-effect.html)- this is a React hook that is called after your component is rendered.  Because it has an empty array `[]` prop passed into it (see line 3),  it will only be called on the component's _first_ render. Here we'll call our wallet listener and another wallet function to update our UI to reflect whether a wallet is already connected.&#x20;
 * `connectWalletPressed`- this function will be called to connect the user's Metamask wallet to our dApp.
 * `onMintPressed` - this function will be called to mint the user's NFT.
 
@@ -228,7 +236,7 @@ In order to mint our NFTs (or sign any transactions on the Ethereum blockchain),
 
 ### Check your Balance <a href="step-5-check-your-balance" id="step-5-check-your-balance"></a>
 
-To double check our balance is there, let’s make an [eth_getBalance](https://docs.alchemyapi.io/alchemy/documentation/alchemy-api-reference/json-rpc#eth_getbalance) request using [Alchemy’s composer tool](https://composer.alchemyapi.io/?composer_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth_getBalance%22%2C%22paramValues%22%3A%5B%22%22%2C%22latest%22%5D%7D). This will return the amount of Eth in our wallet. After you input your Metamask account address and click “Send Request”, you should see a response like this:
+To double check our balance is there, let’s make an [eth\_getBalance](https://docs.alchemyapi.io/alchemy/documentation/alchemy-api-reference/json-rpc#eth\_getbalance) request using [Alchemy’s composer tool](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getBalance%22%2C%22paramValues%22%3A%5B%22%22%2C%22latest%22%5D%7D). This will return the amount of Eth in our wallet. After you input your Metamask account address and click “Send Request”, you should see a response like this:
 
 ```
 {"jsonrpc": "2.0", "id": 0, "result": "0xde0b6b3a7640000"}
@@ -476,7 +484,7 @@ Let's quickly break down what's happening here:
 
 * First, our function checks if `window.ethereum` is enabled (i.e. Metamask is installed).
   * If it's not, we simply set our `status`  state variable to a JSX string that prompts the user to install Metamask.
-  * If it is enabled, we set up the listener `window.ethereum.on("accountsChanged")` on line 3 that listens for state changes in the Metamask wallet, which include when the user connects an additional account to the dApp, switches accounts, or disconnects an account. If there is at least one account connected, the `walletAddress` state variable is updated as the first account in the `accounts` array returned by the listener. Otherwise, `walletAddress` is set as an empty string. 
+  * If it is enabled, we set up the listener `window.ethereum.on("accountsChanged")` on line 3 that listens for state changes in the Metamask wallet, which include when the user connects an additional account to the dApp, switches accounts, or disconnects an account. If there is at least one account connected, the `walletAddress` state variable is updated as the first account in the `accounts` array returned by the listener. Otherwise, `walletAddress` is set as an empty string.&#x20;
 
 Finally, we must call it in our `useEffect` function:
 
@@ -630,11 +638,11 @@ Once you’ve created an Alchemy account, you can generate an API key by creatin
 
 Navigate to the “Create App” page in your Alchemy Dashboard by hovering over “Apps” in the nav bar and clicking “Create App”
 
-![Create a new app](https://static.slab.com/prod/uploads/7adb25ff/posts/images/avF_wnWdWxL9X9YtBm8FO8bw.png)
+![Create a new app](https://static.slab.com/prod/uploads/7adb25ff/posts/images/avF\_wnWdWxL9X9YtBm8FO8bw.png)
 
 Name your app (we chose "My First NFT!"), offer a short description, select “Staging” for the Environment (used for your app bookkeeping), and choose “Ropsten” for your network.
 
-![Configure your app details](https://static.slab.com/prod/uploads/7adb25ff/posts/images/jFpUacfvT5qV052WW_aFjA00.png)
+![Configure your app details](https://static.slab.com/prod/uploads/7adb25ff/posts/images/jFpUacfvT5qV052WW\_aFjA00.png)
 
 Click “Create app” and that’s it! Your app should appear in the table below.
 
@@ -807,7 +815,7 @@ If you're already familiar with Ethereum transactions, you'll notice that the st
   * `to` specifies the recipient address (our smart contract)
   * `from` specifies the signer of the transaction (the user's connected address to Metamask: `window.ethereum.selectedAddress`)
   * `data`  contains the call to our smart contract `mintNFT` method, which receives our  `tokenURI` and the user's wallet address, `window.ethereum.selectedAddress`, as inputs
-* Then, we make an await call, `window.ethereum.request,` where we ask Metamask to sign the transaction. Notice, in this request, we're specifying our eth method (eth_SentTransaction) and passing in our `transactionParameters`. At this point, Metamask will open up in the browser, and prompt the user to sign or reject the transaction.
+* Then, we make an await call, `window.ethereum.request,` where we ask Metamask to sign the transaction. Notice, in this request, we're specifying our eth method (eth\_SentTransaction) and passing in our `transactionParameters`. At this point, Metamask will open up in the browser, and prompt the user to sign or reject the transaction.
   * If the transaction is successful, the function will return a JSON object where the boolean `success` is set to true and the `status` string prompts the user to check out Etherscan for more information about their transaction.
   * If the transaction fails, the function will return a JSON object where the `success` boolean is set to false, and the `status` string relays the error message.
 

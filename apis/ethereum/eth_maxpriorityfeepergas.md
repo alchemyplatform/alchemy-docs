@@ -8,6 +8,10 @@ description: >-
 
 Generally you will use the value returned from this method to set the `maxFeePerGas` in a subsequent transaction that you are submitting. This method was introduced with [EIP 1559](https://blog.alchemy.com/blog/eip-1559).
 
+{% hint style="danger" %}
+**NOTE: **This method is not currently supported on Kovan
+{% endhint %}
+
 ### Parameters
 
 none
@@ -54,4 +58,3 @@ Result
   "result": "0x12a05f1f9"
 }
 ```
-

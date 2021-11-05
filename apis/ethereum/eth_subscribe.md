@@ -5,7 +5,7 @@ description: >-
   first parameter.
 ---
 
-# eth_subscribe
+# eth\_subscribe
 
 ### Parameters
 
@@ -59,11 +59,11 @@ Result
 }
 ```
 
-### Optional Arguments: 
+### Optional Arguments:&#x20;
 
 ### 1. newHeads
 
-Fires a notification each time a new header is appended to the chain, including chain reorganizations. 
+Fires a notification each time a new header is appended to the chain, including chain reorganizations.&#x20;
 
 In case of a chain reorganization the subscription will emit all new headers for the new chain. Therefore the subscription can emit multiple headers on the same height.
 
@@ -204,17 +204,17 @@ Result
 
 ### 3. newPendingTransactions
 
-Returns the hash for all transactions that are added to the pending state. 
+Returns the hash for all transactions that are added to the pending state.&#x20;
 
 When a transaction that was previously part of the canonical chain isn’t part of the new canonical chain after a reorganization its again emitted.
 
 {% hint style="info" %}
 **NOTE:**
 
-* If you want the full transaction object instead of just the hash, check out the Enhanced API [`alchemy_newFullPendingTransactions`](../../guides/using-websockets.md#1-alchemy_newfullpendingtransactions)
-*   If you want pending transactions for a specific address, check out the Enhanced API 
+* If you want the full transaction object instead of just the hash, check out the Enhanced API [`alchemy_newFullPendingTransactions`](../../guides/using-websockets.md#1-alchemy\_newfullpendingtransactions)
+*   If you want pending transactions for a specific address, check out the Enhanced API&#x20;
 
-    ``[`alchemy_filteredNewFullPendingTransactions`](../../guides/using-websockets.md#2-alchemy_filterednewfullpendingtransactions)``
+    ``[`alchemy_filteredNewFullPendingTransactions`](../../guides/using-websockets.md#2-alchemy\_filterednewfullpendingtransactions)``
 {% endhint %}
 
 **Parameters**

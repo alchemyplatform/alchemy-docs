@@ -10,7 +10,7 @@ This tutorial will walk you through both the legacy and new ([EIP-1559](https://
 
 ## How sending transactions used to work <a href="how-sending-transactions-used-to-work" id="how-sending-transactions-used-to-work"></a>
 
-When you submitted a transaction you also sent a [`gasPrice`](../../apis/ethereum/eth_gasprice.md), which is an amount you are offering to pay per gas consumed. You probably called [`eth_estimateGas`](../../apis/ethereum/eth_estimategas.md) and [`eth_gasPrice`](../../apis/ethereum/eth_gasprice.md) in order to determine an approximate amount that the transaction was going to cost you. Then, when you submitted the transaction, miners could decide to include it or not based on your `gasPrice` bid. Miners would prioritize the highest gas prices.
+When you submitted a transaction you also sent a [`gasPrice`](../../apis/ethereum/eth\_gasprice.md), which is an amount you are offering to pay per gas consumed. You probably called [`eth_estimateGas`](../../apis/ethereum/eth\_estimategas.md) and [`eth_gasPrice`](../../apis/ethereum/eth\_gasprice.md) in order to determine an approximate amount that the transaction was going to cost you. Then, when you submitted the transaction, miners could decide to include it or not based on your `gasPrice` bid. Miners would prioritize the highest gas prices.
 
 ## How sending transactions work with EIP 1559 <a href="how-sending-transactions-work-with-eip-1559" id="how-sending-transactions-work-with-eip-1559"></a>
 
@@ -188,7 +188,7 @@ function sendOnlyMaxPriorityFeePerGasLondonTx(web3) {
 sendOnlyMaxPriorityFeePerGasLondonTx(web3);
 ```
 
-Note that we have substituted the `web3.eth.getGasPrice()` call in the legacy code with `web3.eth.getMaxPriorityFeePerGas()`. I won't bore you with the output, it looks the same. The [`eth_maxPriorityFeePerGas`](../../apis/ethereum/eth_maxpriorityfeepergas.md) method is documented [here](https://docs.alchemy.com/alchemy/documentation/apis/ethereum#eth_maxpriorityfeepergas).
+Note that we have substituted the `web3.eth.getGasPrice()` call in the legacy code with `web3.eth.getMaxPriorityFeePerGas()`. I won't bore you with the output, it looks the same. The [`eth_maxPriorityFeePerGas`](../../apis/ethereum/eth\_maxpriorityfeepergas.md) method is documented [here](https://docs.alchemy.com/alchemy/documentation/apis/ethereum#eth\_maxpriorityfeepergas).
 
 ## Add maxFeePerGas field only (a la [Eth Gas Station](https://ethgasstation.info)) <a href="viewing-the-base-fee" id="viewing-the-base-fee"></a>
 
@@ -226,6 +226,6 @@ Which returns a hex:
 
 ## Building a more sophisticated estimate of maxPriorityFeePerGas <a href="building-a-more-sophisticated-estimate-of-max-priority-fee-per-gas" id="building-a-more-sophisticated-estimate-of-max-priority-fee-per-gas"></a>
 
-Alchemy has exposed the [`eth_maxPriorityFeePerGas`](../../apis/ethereum/eth_maxpriorityfeepergas.md) method so that you can pretty much call that and not worry too much about fee calculations. However you might want to make your own calculations, similar to how you might currently offer a "low", "medium", and "high" fee (like what [Eth Gas Station](https://ethgasstation.info) offers). To do this, you can use the [`eth_feeHistory`](https://docs.alchemy.com/alchemy/documentation/apis/ethereum#eth_feehistory) API, which returns detailed information on historical fees for blocks, allowing you to build a better estimate. We will not go into detail on that here.
+Alchemy has exposed the [`eth_maxPriorityFeePerGas`](../../apis/ethereum/eth\_maxpriorityfeepergas.md) method so that you can pretty much call that and not worry too much about fee calculations. However you might want to make your own calculations, similar to how you might currently offer a "low", "medium", and "high" fee (like what [Eth Gas Station](https://ethgasstation.info) offers). To do this, you can use the [`eth_feeHistory`](../../apis/ethereum/eth\_feehistory.md) API, which returns detailed information on historical fees for blocks, allowing you to build a better estimate. We will not go into detail on that here.
 
 **If you're interested in learning more, or have feedback, suggestions, or questions, reach out to us in** [**Discord**](https://alchemy.com/discord)**! Get started with Alchemy today by** [**signing up for free**](https://alchemy.com/?r=affiliate:5494a54b-6ae1-4d33-9016-c331c0dcdc1f)**.**
