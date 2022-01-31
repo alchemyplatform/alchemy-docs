@@ -55,7 +55,7 @@ The example below is for Ethereum Mainnet. If you are using Polygon you'll need 
 {% tabs %}
 {% tab title="Curl" %}
 ```
-curl 'https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721&&refreshCache=true'
+curl 'https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721'
 ```
 {% endtab %}
 
@@ -66,7 +66,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721&refreshCache=true", requestOptions)
+fetch("https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -76,7 +76,7 @@ fetch("https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=
 {% tab title="JavaScript - jQuery" %}
 ```javascript
 var settings = {
-  "url": "https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721&refreshCache=true",
+  "url": "https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721",
   "method": "GET",
   "timeout": 0,
 };
@@ -89,7 +89,7 @@ $.ajax(settings).done(function (response) {
 
 {% tab title="Postman" %}
 ```http
-URL: https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721&refreshCache=true
+URL: https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721
 RequestType: GET
 ```
 {% endtab %}
