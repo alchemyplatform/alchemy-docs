@@ -546,6 +546,12 @@ vim .env
 
 This will pop open your `.env` file in vim (a text editor). To save it hit "esc" + ":" + "q" on your keyboard in that order.
 
+{% hint style="danger" %}
+WARNING: do not ship a production app with secrets in the .env file. This tutorial shows you how to upload to IPFS via your react client directly as a demonstration only. When you are ready for production, you should re-factor your application to upload IPFS files using a backend service.\
+\
+For more context on React environment variables: [https://create-react-app.dev/docs/adding-custom-environment-variables/#adding-development-environment-variables-in-env](https://create-react-app.dev/docs/adding-custom-environment-variables/#adding-development-environment-variables-in-env)
+{% endhint %}
+
 Next, in VSCode, navigate to your `.env` file and add your Pinata API key and API secret to it, like so:
 
 ```
