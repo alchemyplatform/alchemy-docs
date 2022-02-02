@@ -283,7 +283,7 @@ Only one contract in filter array:
 {% tabs %}
 {% tab title="Curl" %}
 ```
-curl 'https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045&contractAddresses%5B%5D=0x39ed051a1a3a1703b5e0557b122ec18365dbc184'
+curl 'https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045&contractAddresses[]=0x39ed051a1a3a1703b5e0557b122ec18365dbc184'
 ```
 {% endtab %}
 
@@ -294,7 +294,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045&contractAddresses%5B%5D=0x39ed051a1a3a1703b5e0557b122ec18365dbc184", requestOptions)
+fetch("https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045&contractAddresses[]=0x39ed051a1a3a1703b5e0557b122ec18365dbc184", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -304,7 +304,7 @@ fetch("https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0xd8dA6B
 {% tab title="JavaScript - jQuery" %}
 ```javascript
 var settings = {
-  "url": "https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045&contractAddresses%5B%5D=0x39ed051a1a3a1703b5e0557b122ec18365dbc184",
+  "url": "https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045&contractAddresses[]=0x39ed051a1a3a1703b5e0557b122ec18365dbc184",
   "method": "GET",
   "timeout": 0,
 };
@@ -317,7 +317,7 @@ $.ajax(settings).done(function (response) {
 
 {% tab title="Postman" %}
 ```python
-URL: https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D
+URL: https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D&contractAddresses[]=0x39ed051a1a3a1703b5e0557b122ec18365dbc184
 RequestType: GET
 ```
 {% endtab %}
@@ -328,7 +328,7 @@ Multiple contracts in filter array:
 {% tabs %}
 {% tab title="Curl" %}
 ```
-curl 'https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&contractAddresses%5B%5D=0x5ab21ec0bfa0b29545230395e3adaca7d552c948&contractAddresses%5B%5D=0x8f4ca9a9df620ac58152f5369650dbccd006de37'
+curl 'https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&contractAddresses[]=0x5ab21ec0bfa0b29545230395e3adaca7d552c948&contractAddresses[]=0x8f4ca9a9df620ac58152f5369650dbccd006de37'
 ```
 {% endtab %}
 
@@ -339,7 +339,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://eth-mainnet.g.alchemy.com/demo/v1/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&contractAddresses%5B%5D=0x5ab21ec0bfa0b29545230395e3adaca7d552c948&contractAddresses%5B%5D=0x8f4ca9a9df620ac58152f5369650dbccd006de37", requestOptions)
+fetch("https://eth-mainnet.g.alchemy.com/demo/v1/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&contractAddresses[]=0x5ab21ec0bfa0b29545230395e3adaca7d552c948&contractAddresses[]=0x8f4ca9a9df620ac58152f5369650dbccd006de37", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -349,7 +349,7 @@ fetch("https://eth-mainnet.g.alchemy.com/demo/v1/getNFTs/?owner=0x8e7644918b3e28
 {% tab title="JavaScript - jQuery" %}
 ```javascript
 var settings = {
-  "url": "https://eth-mainnet.g.alchemy.com/demo/v1/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&contractAddresses%5B%5D=0x5ab21ec0bfa0b29545230395e3adaca7d552c948&contractAddresses%5B%5D=0x8f4ca9a9df620ac58152f5369650dbccd006de37",
+  "url": "https://eth-mainnet.g.alchemy.com/demo/v1/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&contractAddresses[]=0x5ab21ec0bfa0b29545230395e3adaca7d552c948&contractAddresses[]=0x8f4ca9a9df620ac58152f5369650dbccd006de37",
   "method": "GET",
   "timeout": 0,
 };
@@ -362,7 +362,7 @@ $.ajax(settings).done(function (response) {
 
 {% tab title="Postman" %}
 ```python
-URL: https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&contractAddresses%5B%5D=0x5ab21ec0bfa0b29545230395e3adaca7d552c948&contractAddresses%5B%5D=0x8f4ca9a9df620ac58152f5369650dbccd006de37
+URL: https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&contractAddresses[]=0x5ab21ec0bfa0b29545230395e3adaca7d552c948&contractAddresses[]=0x8f4ca9a9df620ac58152f5369650dbccd006de37
 REQUEST: GET
 ```
 {% endtab %}
