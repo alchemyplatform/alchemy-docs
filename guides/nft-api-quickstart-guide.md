@@ -63,7 +63,7 @@ npm install @alch/alchemy-web3
 Run the following command to install `alchemy-web3` with `yarn`
 
 ```
-yarn add @alch/alchemy-web
+yarn add @alch/alchemy-web3
 ```
 {% endtab %}
 {% endtabs %}
