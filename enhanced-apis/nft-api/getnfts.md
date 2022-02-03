@@ -95,6 +95,8 @@ RequestType: GET
 {% endtab %}
 {% endtabs %}
 
+If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](../../guides/nft-api-quickstart-guide.md)****
+
 ### Response
 
 ```json
@@ -194,6 +196,8 @@ URL: https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0x8e764491
 ```
 {% endtab %}
 {% endtabs %}
+
+If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](../../guides/nft-api-quickstart-guide.md)****
 
 ### Response (with pagination)&#x20;
 
@@ -367,6 +371,8 @@ REQUEST: GET
 ```
 {% endtab %}
 {% endtabs %}
+
+If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](../../guides/nft-api-quickstart-guide.md)****
 
 ### Response (with contract filtering)
 
