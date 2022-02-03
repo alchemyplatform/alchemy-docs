@@ -351,44 +351,80 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
 Only one contract in filter array:
 
 {% tabs %}
-{% tab title="Curl" %}
-```
-curl 'https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045&contractAddresses[]=0x39ed051a1a3a1703b5e0557b122ec18365dbc184'
+{% tab title="Alchemy Web3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+
+import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+
+// Using HTTPS
+const web3 = createAlchemyWeb3(
+  "https://eth-mainnet.g.alchemy.com/v2/demo",
+);
+
+const nfts = await web3.alchemy.getNfts({owner: "0xC33881b8FD07d71098b440fA8A3797886D831061", contractAddresses: ["0x39ed051a1a3a1703b5e0557b122ec18365dbc184"]})
+
+console.log(nfts);
+
 ```
 {% endtab %}
 
-{% tab title="JavaScript - Fetch" %}
+{% tab title="Fetch (JS)" %}
 ```javascript
+import fetch from 'node-fetch';
+
 var requestOptions = {
   method: 'GET',
   redirect: 'follow'
 };
 
-fetch("https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045&contractAddresses[]=0x39ed051a1a3a1703b5e0557b122ec18365dbc184", requestOptions)
-  .then(response => response.text())
+const baseURL = "https://eth-mainnet.g.alchemy.com/demo/v1/getNFTs/";
+const ownerAddr = "0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2";
+const contractAddr = "0x34d77a17038491a2a9eaa6e690b7c7cd39fc8392";
+const fetchURL = `${baseURL}?owner=${ownerAddr}&contractAddresses[]=${contractAddr}`;
+
+fetch(fetchURL, requestOptions)
+  .then(response => response.json())
+  .then(response => JSON.stringify(response, null, 2))
   .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+  .catch(error => console.log('error', error))
+
 ```
 {% endtab %}
 
-{% tab title="JavaScript - jQuery" %}
+{% tab title="Axios (JS)" %}
 ```javascript
-var settings = {
-  "url": "https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045&contractAddresses[]=0x39ed051a1a3a1703b5e0557b122ec18365dbc184",
-  "method": "GET",
-  "timeout": 0,
+import axios from 'axios';
+
+// replace with your Alchemy api key
+const apiKey = "demo";
+const baseURL = `https://eth-mainnet.g.alchemy.com/${apiKey}/v1/getNFTs/`;
+// replace with the wallet address you want to query for NFTs
+const ownerAddr = "0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2";
+const contractAddr = "0x34d77a17038491a2a9eaa6e690b7c7cd39fc8392";
+
+var config = {
+  method: 'get',
+  url: `${baseURL}?owner=${ownerAddr}&contractAddresses[]=${contractAddr}`
 };
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
+axios(config)
+.then(response => console.log(JSON.stringify(response.data, null, 2)))
+.catch(error => console.log(error));
+
 ```
 {% endtab %}
 
 {% tab title="Postman" %}
 ```python
-URL: https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D&contractAddresses[]=0x39ed051a1a3a1703b5e0557b122ec18365dbc184
+URL: https://eth-mainnet.g.alchemy.com/demo/v1/getNFTs/?owner=0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D&contractAddresses[]=0x39ed051a1a3a1703b5e0557b122ec18365dbc184
 RequestType: GET
+```
+{% endtab %}
+
+{% tab title="Curl" %}
+```
+curl --location -g --request GET 'https://eth-mainnet.g.alchemy.com/demo/v1/getNFTs/?owner=0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D&contractAddresses[]=0x39ed051a1a3a1703b5e0557b122ec18365dbc184'
 ```
 {% endtab %}
 {% endtabs %}
@@ -442,20 +478,20 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
 
 ### Response (with contract filtering)
 
-```
+```javascript
 {
-    "ownedNfts": [
-        {
-            "contract": {
-                "address": "0x39ed051a1a3a1703b5e0557b122ec18365dbc184"
-            },
-            "id": {
-                "tokenId": "0x0000000000000000000000000000000000000000000000000000000000000742"
-            },
-            "balance": "1"
-        }
-    ],
-    "totalCount": 1,
-    "blockHash": "0x94d5ab52b8a6571733f6b183ef89f31573b82a4e78f8129b0ce90ef0beaf208b"
+  "ownedNfts": [
+    {
+      "contract": {
+        "address": "0x34d77a17038491a2a9eaa6e690b7c7cd39fc8392"
+      },
+      "id": {
+        "tokenId": "0x0000000000000000000000000000000000000000000000000000000000000277"
+      },
+      "balance": "1"
+    }
+  ],
+  "totalCount": 1,
+  "blockHash": "0x3d8bca59c08e41f55d46ebbe738327eb12955cf280bd06ef7d40352919c188d8"
 }
 ```
