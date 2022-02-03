@@ -4,6 +4,8 @@ description: API for fetching NFT data, including ownership, metadata attributes
 
 # NFT API
 
+Want to get started with code but not sure how to? Take a look at the [Quickstart Guide](https://docs.alchemy.com/alchemy/guides/nft-api-quickstart-guide).
+
 {% content-ref url="../../guides/nft-api-quickstart-guide.md" %}
 [nft-api-quickstart-guide.md](../../guides/nft-api-quickstart-guide.md)
 {% endcontent-ref %}
