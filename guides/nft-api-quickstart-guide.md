@@ -212,7 +212,7 @@ In your `alchemy-nft-api` directory, you can create a new file called `fetch-scr
 touch fetch-script.js
 ```
 
-and then paste the following code snippet into the file:
+and then paste the following code snippet into the file to explore the `getNFTs` method:
 
 ```javascript
 // alchemy-nft-api/fetch-script.js
@@ -284,13 +284,13 @@ For full documentation on the NFT API `getNFTs` method, check out the docs:
 [getnfts.md](../enhanced-apis/nft-api/getnfts.md)
 {% endcontent-ref %}
 
-In your `alchemy-nft-api` directory, let's now re-edit `fetch-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
+Now, in your `alchemy-nft-api` directory, let's now re-edit `fetch-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
 
 ```
 touch fetch-script.js
 ```
 
-Paste the following code snippet into the file:
+Paste the following code snippet into the file to explore the `getNFTMetadata` method:
 
 ```javascript
 import fetch from 'node-fetch';
@@ -418,7 +418,7 @@ In your `alchemy-nft-api` directory, you can create a new file called `axios-scr
 touch axios-script.js
 ```
 
-and then paste the following code snippet in:
+and then paste the following code snippet in to explore the `getNFTs` method
 
 ```javascript
 // alchemy-nft-api/axios-script.js
@@ -479,11 +479,105 @@ alchemy-nft-api % node axios-script.js
 }
 ```
 
-For full documentation on the available NFT API configurations, check out the docs:
+For full documentation on the available NFT API method  `getNFTs` , check out the docs:
 
 {% content-ref url="../enhanced-apis/nft-api/getnfts.md" %}
 [getnfts.md](../enhanced-apis/nft-api/getnfts.md)
 {% endcontent-ref %}
+
+Now, in your `alchemy-nft-api` directory, let's now re-edit `axios-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
+
+```
+touch axios-script.js
+```
+
+and then paste the following code snippet in to explore the `getNFTs` method
+
+```javascript
+import axios from 'axios';
+
+// replace with your Alchemy api key
+const apiKey = "demo";
+const baseURL = `https://eth-mainnet.g.alchemy.com/${apiKey}/v1/getNFTMetadata`;
+const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
+const tokenId = "2";
+const tokenType = "erc721";
+
+var config = {
+  method: 'get',
+  url: `${baseURL}?contractAddress=${contractAddr}&tokenId=${tokenId}&tokenType=${tokenType}`,
+  headers: { }
+};
+
+axios(config)
+.then(response => console.log(JSON.stringify(response.data, null, 2)))
+.catch(error => console.log(error));
+```
+
+From your command line, you can execute the script with:
+
+```javascript
+node axios-script.js
+```
+
+Your output should look like the following:
+
+```javascript
+{
+  "contract": {
+    "address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
+  },
+  "id": {
+    "tokenId": "2",
+    "tokenMetadata": {
+      "tokenType": "ERC721"
+    }
+  },
+  "title": "",
+  "description": "",
+  "tokenUri": {
+    "raw": "ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/2",
+    "gateway": "https://ipfs.io/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/2"
+  },
+  "media": [
+    {
+      "uri": {
+        "raw": "ipfs://QmcJYkCKK7QPmYWjp4FD2e3Lv5WCGFuHNUByvGKBaytif4",
+        "gateway": "https://ipfs.io/ipfs/QmcJYkCKK7QPmYWjp4FD2e3Lv5WCGFuHNUByvGKBaytif4"
+      }
+    }
+  ],
+  "metadata": {
+    "image": "ipfs://QmcJYkCKK7QPmYWjp4FD2e3Lv5WCGFuHNUByvGKBaytif4",
+    "attributes": [
+      {
+        "value": "3d",
+        "trait_type": "Eyes"
+      },
+      {
+        "value": "Bored Cigarette",
+        "trait_type": "Mouth"
+      },
+      {
+        "value": "Robot",
+        "trait_type": "Fur"
+      },
+      {
+        "value": "Sea Captain's Hat",
+        "trait_type": "Hat"
+      },
+      {
+        "value": "Aquamarine",
+        "trait_type": "Background"
+      }
+    ]
+  },
+  "timeLastUpdated": "2022-02-01T00:30:04.643Z"
+}
+
+```
+
+For full documentation on the available NFT API method  `getNFTMetadata` , check out the docs:
 
 {% content-ref url="../enhanced-apis/nft-api/getnftmetadata.md" %}
 [getnftmetadata.md](../enhanced-apis/nft-api/getnftmetadata.md)
