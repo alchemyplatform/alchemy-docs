@@ -104,7 +104,7 @@ The Dropped Transactions Webhook is used to notify your app anytime a transactio
 The Address Activity Webhook allows you to track all ETH, ERC20 and ERC721 external and internal [transfer events](eth\_getlogs.md#what-are-transfers) for as many Ethereum addresses as you'd like (regardless if the transactions were sent through Alchemy or not). This provides your app with real-time state changes when an address sends or receives tokens.
 
 {% hint style="info" %}
-If you are looking for historical activity, check out the [Transfers API](../enhanced-apis/transfers-api/)!
+If you are looking for historical activity, check out the [Transfers API](../enhanced-apis/transfers-api.md)!
 {% endhint %}
 
 #### Types of Transfers

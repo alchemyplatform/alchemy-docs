@@ -86,14 +86,14 @@ Returns an array of asset transfers based on the specified parameters.
     * `category`: list of any combination of `external`, `token`. optional, if blank, would include both.
     * `excludeZeroValue:` a`Boolean` . optional (default `true`)
     * `maxCount`: max number of results to return per call. optional (default `1000)`
-    * `pageKey`: for [pagination](../../enhanced-apis/transfers-api/#pagination). optional
+    * `pageKey`: for [pagination](../../enhanced-apis/transfers-api.md#pagination). optional
 * `fromBlock` and `toBlock` are inclusive. Both default to `latest` if not specified.
 * `fromAddress` and `toAddress` will be `AND`ed together when filtering. If left blank, will indicate a wildcard (any address).
 * `contractAddresses` only applies to `token` category transfers (eth log events). The list of addresses are `OR`ed together. This filter will be `AND`ed with `fromAddress` and `toAddress` for eth log events. If empty, or unspecified, it will be taken as a wildcard (any contract addresses).
 * `category`: `external` for primary level eth transfers, `token` for contract event transfers.
 * `excludeZeroValue:` an optional `Boolean` to exclude asset transfers with a value field of zero (defaults to `true`)
 * `maxCount`: The maximum number of results to return per call. Default and max will be 1000.
-* `pageKey`: If left blank, will return the first 1000 or `maxCount` number of results. If more results are available, a uuid pageKey will be returned in the response. Pass that uuid into `pageKey` to fetch the next 1000 or maxCount. See section on [pagination](../../enhanced-apis/transfers-api/#pagination).
+* `pageKey`: If left blank, will return the first 1000 or `maxCount` number of results. If more results are available, a uuid pageKey will be returned in the response. Pass that uuid into `pageKey` to fetch the next 1000 or maxCount. See section on [pagination](../../enhanced-apis/transfers-api.md#pagination).
 
 ### EIP 1559
 

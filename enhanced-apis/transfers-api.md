@@ -16,7 +16,7 @@ Transfers are a representation of value being exchanged between two accounts. Of
 If you don't have an account yet, [**you can sign up with Alchemy for free**](https://alchemy.com/?r=affiliate:4cf7f72f-9238-45c4-a230-6840fcd048ae).&#x20;
 
 {% hint style="success" %}
-**TIP:** Check out[ this tutorial](../../tutorials/transfers-tutorial.md) on [integrating historical transaction data into your dApp](../../tutorials/transfers-tutorial.md) to learn how to get started using the Transfers API!
+**TIP:** Check out[ this tutorial](../tutorials/transfers-tutorial.md) on [integrating historical transaction data into your dApp](../tutorials/transfers-tutorial.md) to learn how to get started using the Transfers API!
 {% endhint %}
 
 ## Types of Transfers
@@ -61,7 +61,7 @@ These are event logs for ERC1155 transfers.
 These are transfers that occur where the `fromAddress` is an internal (smart contract) address. (ex: a smart contract calling another smart contract or smart contract calling another external address).
 
 {% hint style="info" %}
-**NOTE:** For efficiency, we do not return **internal transfers with 0 value** as they don't provide useful information without digging deeper into the internal transaction itself. If you are interested in these type of events see our [Trace API](../trace-api.md).
+**NOTE:** For efficiency, we do not return **internal transfers with 0 value** as they don't provide useful information without digging deeper into the internal transaction itself. If you are interested in these type of events see our [Trace API](trace-api.md).
 
 Additionally, we do not include any **internal transfers with call type`delegatecall`**` ``` because although they have a \_value \_associated with them they do not actually _transfer_ that value (see[ Appendix H of the Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) if you're curious). We also do not include miner rewards as an internal transfer.
 {% endhint %}
@@ -69,7 +69,7 @@ Additionally, we do not include any **internal transfers with call type`delegate
 ## `alchemy_getAssetTransfers` (Ethereum Mainnet)
 
 {% hint style="warning" %}
-**NOTE:** The documentation in this section only applies to `alchemy_getAssetTransfers` on **Ethereum** **Mainnet**. For documentation on **Ethereum Testnets** and **Polygon (Mainnet and Mumbai)**, see [below](./#alchemy\_getassettransfers-ethereum-mainnet-1).&#x20;
+**NOTE:** The documentation in this section only applies to `alchemy_getAssetTransfers` on **Ethereum** **Mainnet**. For documentation on **Ethereum Testnets** and **Polygon (Mainnet and Mumbai)**, see [below](transfers-api.md#alchemy\_getassettransfers-ethereum-mainnet-1).&#x20;
 {% endhint %}
 
 ### Parameters
@@ -83,7 +83,7 @@ Additionally, we do not include any **internal transfers with call type`delegate
   * `category`: Optional array of categories, can be any of the following: "`external`", "`internal`", "`token`", "`erc20`", "`erc721`", "`erc1155`" (defaults to the following categories: \["`external`", "`internal`", "`token`"])
   * `excludeZeroValue:` a`Boolean` to exclude transfers with zero value. optional (default `true`)
   * `maxCount`: max hex string number of results to return per call. optional (default and max`1000` or `0x3e8`)
-  * `pageKey`: `uuid` for [pagination](./#pagination). optional. If more results are available, a uuid pageKey will be returned in the response. Pass that uuid into `pageKey` to fetch the next 1000 or `maxCount.`
+  * `pageKey`: `uuid` for [pagination](transfers-api.md#pagination). optional. If more results are available, a uuid pageKey will be returned in the response. Pass that uuid into `pageKey` to fetch the next 1000 or `maxCount.`
 
 {% hint style="info" %}
 **NOTE**:&#x20;
@@ -250,7 +250,7 @@ Body:
 
 ## `alchemy_getAssetTransfers` (Testnets and Layer 2s)
 
-The documentation in this section only applies to `alchemy_getAssetTransfers` on **Ethereum Testnets** and **Polygon (Mainnet and Mumbai).** For documentation on **Ethereum** **Mainnet**, see [above](./#alchemy\_getassettransfers-ethereum-mainnet).
+The documentation in this section only applies to `alchemy_getAssetTransfers` on **Ethereum Testnets** and **Polygon (Mainnet and Mumbai).** For documentation on **Ethereum** **Mainnet**, see [above](transfers-api.md#alchemy\_getassettransfers-ethereum-mainnet).
 
 {% hint style="danger" %}
 **NOTE: Types of Transfers supported**
