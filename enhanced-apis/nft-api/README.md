@@ -97,43 +97,6 @@ Or join our discord! [https://www.alchemy.com/discord](https://www.alchemy.com/d
 
 The `getNFTs` methods takes in a user address as input and will return all of the ERC721 and ERC1155 tokens owned by that address.
 
-Here's an example request that queries [@thatguyintech's](https://twitter.com/thatguyintech) wallet:
-
-```
-curl 'https://eth-mainnet.g.alchemy.com/demo/v1/getNFTs/?owner=0xF5FFF32CF83A1A614e15F25Ce55B0c0A6b5F8F2c'
-```
-
-_See if you can find his_ [_**Crypto Coven**_](https://opensea.io/assets/0x5180db8f5c931aae63c74266b211f580155ecac8/1590)_._
-
-Here's an example response:
-
-```
-{
-  "ownedNfts": [
-    {
-      "contract": {
-        "address": "0x5180db8f5c931aae63c74266b211f580155ecac8"
-      },
-      "id": {
-        "tokenId": "0x00000000000000000000000000000000000000000000000000000000000025a2"
-      },
-      "balance": "1"
-    },
-    {
-      "contract": {
-        "address": "0x5180db8f5c931aae63c74266b211f580155ecac8"
-      },
-      "id": {
-        "tokenId": "0x0000000000000000000000000000000000000000000000000000000000000636"
-      },
-      "balance": "1"
-    }
-  ],
-  "totalCount": 2,
-  "blockHash": "0x49d7bbfa46304a283cd2e280cb80ef022e34b9ed046dfcc25256730911ec903a"
-}
-```
-
 View the **full documentation** for getNFTs here:
 
 {% content-ref url="getnfts.md" %}
@@ -145,68 +108,6 @@ View the **full documentation** for getNFTs here:
 #### Get metadata for a specific NFT token
 
 The `getNFTMetadata` method takes in an NFT contract address and token ID as input and will return the metadata, including traits, and image URIs for displaying that NFT.&#x20;
-
-Here's an example request to fetch metadata for the very first Bored Ape Yacht Club NFT:
-
-```
-curl 'https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=1&tokenType=erc721&&refreshCache=true'
-```
-
-Example response:  __ &#x20;
-
-```
-{
-  "contract": {
-    "address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
-  },
-  "id": {
-    "tokenId": "1",
-    "tokenMetadata": {
-      "tokenType": "ERC721"
-    }
-  },
-  "title": "",
-  "description": "",
-  "externalDomainViewUrl": "ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/1",
-  "media": {
-    "uri": "ipfs://QmPbxeGcXhYQQNgsC6a36dDyYUcHgMLnGKnF8pVFmGsvqi"
-  },
-  "alternateMedia": [
-    {
-      "uri": "https://ipfs.io/ipfs/QmPbxeGcXhYQQNgsC6a36dDyYUcHgMLnGKnF8pVFmGsvqi"
-    }
-  ],
-  "metadata": {
-    "image": "ipfs://QmPbxeGcXhYQQNgsC6a36dDyYUcHgMLnGKnF8pVFmGsvqi",
-    "attributes": [
-      {
-        "trait_type": "Mouth",
-        "value": "Grin"
-      },
-      {
-        "trait_type": "Clothes",
-        "value": "Vietnam Jacket"
-      },
-      {
-        "trait_type": "Background",
-        "value": "Orange"
-      },
-      {
-        "trait_type": "Eyes",
-        "value": "Blue Beams"
-      },
-      {
-        "trait_type": "Fur",
-        "value": "Robot"
-      }
-    ]
-  },
-  "timeLastUpdated": "2022-01-25T21:54:23.108Z"
-}
-
-```
-
-
 
 View the **full documentation** for getNFTMetadata here:
 
