@@ -36,6 +36,8 @@ npm init --yes
 
 You can install `alchemy-web3`, a module that allows you to more easily interact with Alchemy APIs. We highly recommend using the `alchemy-web3` sdk because you also get websocket support and other benefits right out of the box!
 
+For full documentation on `alchemy-web3`, check the github repo: [https://github.com/alchemyplatform/alchemy-web3](https://github.com/alchemyplatform/alchemy-web3)
+
 ### Installation
 
 {% tabs %}
@@ -140,9 +142,15 @@ time last updated:  2022-01-25T07:41:32.003Z
 ===
 ```
 
+For full documentation on the available endpoints for `alchemy-web3` sdk, check the github repo:
+
+{% embed url="https://github.com/alchemyplatform/alchemy-web3" %}
+
 ## Javascript Fetch&#x20;
 
 `node-fetch` a lightweight, common module that brings the Fetch API to Node.js and allows us to make our HTTP requests.&#x20;
+
+See the documentation for more info: [https://www.npmjs.com/package/node-fetch](https://www.npmjs.com/package/node-fetch)
 
 ### Installation
 
