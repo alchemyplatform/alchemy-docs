@@ -5,7 +5,7 @@ description: Gets the metadata associated with a given NFT.
 # getNFTMetadata
 
 {% hint style="info" %}
-**NOTE:** This endpoint offers multi-chain support. [Check chains currently available](https://docs.alchemy.com/alchemy/introduction/getting-started) for the NFT API.
+**NOTE:** This endpoint offers multi-chain support. [Check chains currently available](https://docs.alchemy.com/alchemy/apis/feature-support-by-chain) for the NFT API.
 {% endhint %}
 
 ## Parameters

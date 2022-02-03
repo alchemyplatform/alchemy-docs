@@ -5,7 +5,7 @@ description: Gets all NFTs currently owned by a given address
 # getNFTs
 
 {% hint style="info" %}
-**NOTE:** This endpoint offers multi-chain support. [Check chains currently available](https://docs.alchemy.com/alchemy/introduction/getting-started) for the NFT API.
+**NOTE:** This endpoint offers multi-chain support.[ Check chains currently available](https://docs.alchemy.com/alchemy/apis/feature-support-by-chain) for the NFT API.
 {% endhint %}
 
 ## Parameters
