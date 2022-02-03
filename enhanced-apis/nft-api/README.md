@@ -4,6 +4,10 @@ description: API for fetching NFT data, including ownership, metadata attributes
 
 # NFT API
 
+{% content-ref url="../../guides/nft-api-quickstart-guide.md" %}
+[nft-api-quickstart-guide.md](../../guides/nft-api-quickstart-guide.md)
+{% endcontent-ref %}
+
 ## Introduction&#x20;
 
 Welcome! If you're here, that means you're looking for a great API to work with to build your next NFT project. Well, you're in the right place! Alchemy powers all major NFT platforms as well a majority of DeFi applications, so you can rest assured -- you're in good company.
