@@ -86,6 +86,8 @@ yarn add @alch/alchemy-web3
 
 ### Usage
 
+{% embed url="https://github.com/alchemyplatform/nft-api-javascript-scripts/blob/main/alchemy-web3-script.js" %}
+
 In your `alchemy-nft-api` directory, you can create a new file called `alchemy-web3-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
 
 ```
