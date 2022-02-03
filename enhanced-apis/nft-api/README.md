@@ -89,6 +89,18 @@ Alchemy is actively working on adding support for as many blockchains / NFT stan
 
 Or join our discord! [https://www.alchemy.com/discord](https://www.alchemy.com/discord)
 
+## Quickstart guides
+
+Check out the guide below to get a quick setup using:
+
+* [The `alchemy-web3` sdk,](../../guides/nft-api-quickstart-guide.md#alchemy-web3-sdk)
+* [the `node-fetch` module,](../../guides/nft-api-quickstart-guide.md#javascript-fetch)
+* [or the `axios`  module.](../../guides/nft-api-quickstart-guide.md#javascript-axios)
+
+{% content-ref url="../../guides/nft-api-quickstart-guide.md" %}
+[nft-api-quickstart-guide.md](../../guides/nft-api-quickstart-guide.md)
+{% endcontent-ref %}
+
 ## API Endpoints Overview
 
 ### getNFTs
@@ -113,17 +125,5 @@ View the **full documentation** for getNFTMetadata here:
 
 {% content-ref url="getnftmetadata.md" %}
 [getnftmetadata.md](getnftmetadata.md)
-{% endcontent-ref %}
-
-## Quickstart guides
-
-Check out the guide below to get a quick setup using:
-
-1. [The `alchemy-web3` sdk,](../../guides/nft-api-quickstart-guide.md#alchemy-web3-sdk)
-2. [the `node-fetch` module,](../../guides/nft-api-quickstart-guide.md#javascript-fetch)
-3. [or the `axios`  module.](../../guides/nft-api-quickstart-guide.md#javascript-axios)
-
-{% content-ref url="../../guides/nft-api-quickstart-guide.md" %}
-[nft-api-quickstart-guide.md](../../guides/nft-api-quickstart-guide.md)
 {% endcontent-ref %}
 
