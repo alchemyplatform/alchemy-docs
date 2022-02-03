@@ -206,6 +206,8 @@ yarn add node-fetch
 
 ### Usage
 
+{% embed url="https://github.com/alchemyplatform/nft-api-javascript-scripts/blob/main/fetch-script.js" %}
+
 In your `alchemy-nft-api` directory, you can create a new file called `fetch-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
 
 ```
@@ -412,7 +414,9 @@ yarn add axios
 
 ### Usage
 
-In your `alchemy-nft-api` directory, you can create a new file called `axios-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
+{% embed url="https://github.com/alchemyplatform/nft-api-javascript-scripts/blob/main/axios-script.js" %}
+
+In your `alchemy-nft-api` directory, you can create a new file called `axios-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command.&#x20;
 
 ```
 touch axios-script.js
