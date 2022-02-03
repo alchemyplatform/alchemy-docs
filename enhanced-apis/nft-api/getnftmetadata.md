@@ -87,7 +87,7 @@ import fetch from 'node-fetch';
   };
 
   const apiKey = "demo"
-  const baseURL = `https://eth-mainnet.g.alchemy.com/${demo}/v1/getNFTMetadata`;
+  const baseURL = `https://eth-mainnet.g.alchemy.com/${apiKey}/v1/getNFTMetadata`;
   const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
   const tokenId = "2";
   const tokenType = "erc721";
