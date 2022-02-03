@@ -6,7 +6,7 @@ description: >-
 
 # NFT API Quickstart Guide
 
-For this Javascript quickstart guide, we recommend using `alchemy-web3`, a module that allows you to more easily interact with Alchemy APIs. The `alchemy-web3` SDK give you websocket support and other benefits right out of the box! Fetch or Axios are two alternative modules that also allow you to make HTTP requests.
+For this **Javascript** quickstart guide, we recommend using `alchemy-web3`, a module that allows you to more easily interact with Alchemy APIs. The `alchemy-web3` SDK give you websocket support and other benefits right out of the box! Fetch or Axios are two alternative modules that also allow you to make HTTP requests.
 
 ## Common setup steps
 
