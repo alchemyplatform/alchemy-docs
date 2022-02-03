@@ -190,6 +190,7 @@
 
 ## 📜 Guides
 
+* [NFT API Quickstart Guide](guides/nft-api-quickstart-guide.md)
 * [EIP-1559 Resource and Tutorial Hub](guides/eip-1559/README.md)
   * [The Developer EIP-1559 Prep Kit](https://blog.alchemy.com/blog/eip-1559)
   * [How to Send Transactions with EIP 1559](guides/eip-1559/send-tx-eip-1559.md)
