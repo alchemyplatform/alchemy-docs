@@ -62,7 +62,6 @@ In your `alchemy-nft-api` directory, you can create a new file called `alchemy-w
 
 ```javascript
 // alchemy-web3-script.js
-
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 
 // Replace with your Alchemy api key:
@@ -79,16 +78,38 @@ const nfts = await web3.alchemy.getNfts({
   owner: ownerAddr
 })
 
+// Print owner's wallet address:
 console.log("fetching NFTs for address:", ownerAddr);
 console.log("...");
+
+// Print total NFT count returned in the response:
 console.log("number of NFTs found:", nfts.totalCount);
 console.log("...");
 
+// Print contract address and tokenId for each NFT:
 for (const nft of nfts.ownedNfts) {
   console.log("===");
   console.log("contract address:", nft.contract.address);
   console.log("token ID:", nft.id.tokenId);
 }
+console.log("===");
+
+// Fetch metadata for a particular NFT:
+console.log("fetching metadata for a crypto coven NFT...");
+const response = await web3.alchemy.getNftMetadata({
+  contractAddress: "0x5180db8F5c931aaE63c74266b211F580155ecac8",
+  tokenId: "1590"
+})
+
+// Uncomment this line to see the full api response:
+// console.log(metadata);
+
+// Print some commonly used fields:
+console.log("NFT name: ", response.title);
+console.log("token type: ", response.id.tokenMetadata.tokenType);
+console.log("tokenUri: ", response.tokenUri.gateway);
+console.log("image url: ", response.metadata.image);
+console.log("time last updated: ", response.timeLastUpdated);
 console.log("===");
 ```
 
@@ -102,7 +123,6 @@ You should see output like this:
 
 ```bash
 alchemy-nft-api % node alchemyweb3-script.js
-===
 fetching NFTs for address: 0xC33881b8FD07d71098b440fA8A3797886D831061
 ...
 number of NFTs found: 1
@@ -110,6 +130,13 @@ number of NFTs found: 1
 ===
 contract address: 0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85
 token ID: 0x3ee4ed8824659deea1bb8fa6d4090b11d263417704c0a0fbc78fa8c4fc177909
+===
+fetching metadata for a crypto coven NFT...
+NFT name:  balsa vault
+token type:  ERC721
+tokenUri:  https://ipfs.io/ipfs/QmZHKZDavkvNfA9gSAg7HALv8jF7BJaKjUc9U2LSuvUySB/1590.json
+image url:  https://cryptocoven.s3.amazonaws.com/a7875f5758f85544dcaab79a8a1ca406.png
+time last updated:  2022-01-25T07:41:32.003Z
 ===
 ```
 
@@ -165,7 +192,6 @@ And then from your command line, you can execute the script with:
 
 ```javascript
 node alchemy-web3-script.js
-
 ```
 
 Your output should look like the following:
