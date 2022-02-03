@@ -113,8 +113,91 @@ token ID: 0x3ee4ed8824659deea1bb8fa6d4090b11d263417704c0a0fbc78fa8c4fc177909
 ===
 ```
 
-Fetch
+## Javascript Fetch&#x20;
 
+`node-fetch` a lightweight, common module that brings the Fetch API to Node.js and allows us to make our HTTP requests.&#x20;
 
+### Installation
+
+{% tabs %}
+{% tab title="npm" %}
+Run the following command to install `alchemy-web3` with `npm`
+
+```
+npm install node-fetch
+```
+{% endtab %}
+
+{% tab title="yarn" %}
+Run the following command to install `alchemy-web3` with `yarn`
+
+```
+yarn add node-fetch
+```
+{% endtab %}
+{% endtabs %}
+
+### Usage
+
+In your `alchemy-nft-api` directory, you can create a new file called `alchemy-web3-script.js` and paste the following code snippet in:
+
+```javascript
+import fetch from 'node-fetch';
+
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+const baseURL = "https://eth-mainnet.g.alchemy.com/demo/v1/getNFTs/";
+const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
+const fetchURL = `${baseURL}?owner=${ownerAddr}`;
+
+fetch(fetchURL, requestOptions)
+  .then(response => response.json())
+  .then(response => JSON.stringify(response, null, 2))
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+```
+
+And then from your command line, you can execute the script with:
+
+```javascript
+node alchemy-web3-script.js
+
+```
+
+Your output should look like the following:
+
+```javascript
+{
+  "ownedNfts": [
+    {
+      "contract": {
+        "address": "0x0beed7099af7514ccedf642cfea435731176fb02"
+      },
+      "id": {
+        "tokenId": "0x000000000000000000000000000000000000000000000000000000000000001c"
+      },
+      "balance": "1"
+    },
+    ......
+    },
+    {
+      "contract": {
+        "address": "0xc4c377565a4b9eb6e657c2422bd33b6e4859b041"
+      },
+      "id": {
+        "tokenId": "0x01"
+      },
+      "balance": "1"
+    }
+  ],
+  "totalCount": 12,
+  "blockHash": "0x470e52bdaffff978b4a89b2cfb2b8a3f92ec523bffb4bdb3d9b656ff8be57f8d"
+}
+
+```
 
 Axios
