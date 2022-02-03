@@ -56,7 +56,7 @@ Since we'll be using import syntax to load ES6 modules, add `'type': 'module'` t
 
 See this discussion for more context: [https://stackoverflow.com/questions/61401475/why-is-type-module-in-package-json-file](https://stackoverflow.com/questions/61401475/why-is-type-module-in-package-json-file)
 
-## Alchemy Web3 SDK
+## Alchemy Web3 SDK (_**Recommended**_)
 
 You can install `alchemy-web3`, a module that allows you to more easily interact with Alchemy APIs. We highly recommend using the `alchemy-web3` sdk because you also get websocket support and other benefits right out of the box!
 
@@ -276,11 +276,107 @@ Your output should look like the following:
 
 ```
 
-For full documentation on the available NFT API configurations, check out the docs:
+For full documentation on the NFT API `getNFTs` method, check out the docs:
 
 {% content-ref url="../enhanced-apis/nft-api/getnfts.md" %}
 [getnfts.md](../enhanced-apis/nft-api/getnfts.md)
 {% endcontent-ref %}
+
+In your `alchemy-nft-api` directory, let's now re-edit `fetch-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
+
+```
+touch fetch-script.js
+```
+
+Paste the following code snippet into the file:
+
+```javascript
+import fetch from 'node-fetch';
+
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+
+  const apiKey = "demo"
+  const baseURL = `https://eth-mainnet.g.alchemy.com/${demo}/v1/getNFTMetadata`;
+  const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
+  const tokenId = "2";
+  const tokenType = "erc721";
+  const fetchURL = `${baseURL}?contractAddress=${contractAddr}&tokenId=${tokenId}&tokenType=${tokenType}`;
+
+  fetch(fetchURL, requestOptions)
+    .then(response => response.json())
+    .then(response => JSON.stringify(response, null, 2))
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
+```
+
+From your command line, you can execute the script with:
+
+```javascript
+node fetch-script.js
+```
+
+Your output should look like the following:
+
+```javascript
+{
+  "contract": {
+    "address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
+  },
+  "id": {
+    "tokenId": "2",
+    "tokenMetadata": {
+      "tokenType": "ERC721"
+    }
+  },
+  "title": "",
+  "description": "",
+  "tokenUri": {
+    "raw": "ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/2",
+    "gateway": "https://ipfs.io/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/2"
+  },
+  "media": [
+    {
+      "uri": {
+        "raw": "ipfs://QmcJYkCKK7QPmYWjp4FD2e3Lv5WCGFuHNUByvGKBaytif4",
+        "gateway": "https://ipfs.io/ipfs/QmcJYkCKK7QPmYWjp4FD2e3Lv5WCGFuHNUByvGKBaytif4"
+      }
+    }
+  ],
+  "metadata": {
+    "image": "ipfs://QmcJYkCKK7QPmYWjp4FD2e3Lv5WCGFuHNUByvGKBaytif4",
+    "attributes": [
+      {
+        "value": "3d",
+        "trait_type": "Eyes"
+      },
+      {
+        "value": "Bored Cigarette",
+        "trait_type": "Mouth"
+      },
+      {
+        "value": "Robot",
+        "trait_type": "Fur"
+      },
+      {
+        "value": "Sea Captain's Hat",
+        "trait_type": "Hat"
+      },
+      {
+        "value": "Aquamarine",
+        "trait_type": "Background"
+      }
+    ]
+  },
+  "timeLastUpdated": "2022-02-01T00:30:04.643Z"
+}
+
+```
+
+For full documentation on the NFT API `getNFTMetadata` method, check out the docs:
 
 {% content-ref url="../enhanced-apis/nft-api/getnftmetadata.md" %}
 [getnftmetadata.md](../enhanced-apis/nft-api/getnftmetadata.md)
@@ -288,7 +384,7 @@ For full documentation on the available NFT API configurations, check out the do
 
 ## Javascript Axios
 
-`axios` is a promise-based HTTP client for the browser and Node.js.
+`axios` is a promise-based HTTP client for the browser and Node.js, which allows us to make a raw request to the Alchemy API.
 
 See the documentation for more info: [https://www.npmjs.com/package/axios](https://www.npmjs.com/package/axios)
 
