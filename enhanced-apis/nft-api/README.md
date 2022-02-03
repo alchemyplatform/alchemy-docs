@@ -53,13 +53,11 @@ Tell us on [Twitter](https://twitter.com/AlchemyPlatform) what you're trying to 
 
 ### What do requests look like?
 
-You can check out the rest of our docs for more in-depth documentation about our endpoints, but for a quick video walkthrough with some demo scripts, start with this video!
+HERE ARE SOME SUPER EASY TO USE COPY AND PASTE CODE SNIPPETS :innocent:
 
-{% embed url="https://www.loom.com/share/d7e85ff04c3441dd8e7c312a9b718acb" %}
+You can check out the rest of our docs for more in-depth documentation about our endpoints, but for a quick walkthrough with some sample code ready to run, start with this GitHub repository!
 
-Here are the demo NFT API scripts mentioned in the video:
-
-{% embed url="https://github.com/alchemyplatform/nft-api-demo-scripts" %}
+{% embed url="https://github.com/alchemyplatform/nft-api-javascript-scripts" %}
 
 Ready to get started building?&#x20;
 
