@@ -33,7 +33,7 @@ description: Gets the metadata associated with a given NFT.
 {% hint style="danger" %}
 \***Note on metadata**&#x20;
 
-Some NFT contracts may not have metadata specified. You may need to parse the response on a case by case basis. &#x20;
+Some NFT contracts may not have metadata specified. You may need to parse the response on a case-by-case basis. &#x20;
 {% endhint %}
 
 ## Example
@@ -79,7 +79,7 @@ import fetch from 'node-fetch';
   };
 
   const apiKey = "demo"
-  const baseURL = `https://eth-mainnet.g.alchemy.com/${apiKey}/v1/getNFTMetadata`;
+  const baseURL = `https://eth-mainnet.g.alchemy.com/v2/${apiKey}/getNFTMetadata`;
   const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
   const tokenId = "2";
   const tokenType = "erc721";
@@ -99,7 +99,7 @@ import axios from 'axios';
 
 // replace with your Alchemy api key
 const apiKey = "demo";
-const baseURL = `https://eth-mainnet.g.alchemy.com/${apiKey}/v1/getNFTMetadata`;
+const baseURL = `https://eth-mainnet.g.alchemy.com/v2/${apiKey}/getNFTMetadata`;
 const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
 const tokenId = "2";
 const tokenType = "erc721";
@@ -118,14 +118,14 @@ axios(config)
 
 {% tab title="Postman" %}
 ```http
-URL: https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721
+URL: https://eth-mainnet.g.alchemy.com/v2/demo/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721
 RequestType: GET
 ```
 {% endtab %}
 
 {% tab title="Curl" %}
 ```
-curl 'https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721'
+curl 'https://eth-mainnet.g.alchemy.com/v2/demo/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721'
 ```
 {% endtab %}
 {% endtabs %}
