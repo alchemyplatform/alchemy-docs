@@ -39,7 +39,7 @@ For an example request with pagination, see [Request (with pagination)](getnfts.
 For examples with contract filtering, see [Request (with contract filtering)](getnfts.md#request-with-contract-filtering).
 
 {% hint style="info" %}
-The examples below is for Ethereum Mainnet. If you are using Polygon you'll need to use your polygon endpoint instead: `https://polygon-mainnet.g.alchemy.com/your-api-key/v1/getNFTs`...
+The examples below is for Ethereum Mainnet. If you are using Polygon you'll need to use your polygon endpoint instead: `https://polygon-mainnet.g.alchemy.com/v2/your-api-key/getNFTs`...
 {% endhint %}
 
 ### Request

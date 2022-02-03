@@ -38,16 +38,8 @@ Some NFT contracts may not have metadata specified. You may need to parse the re
 
 ## Example
 
-{% hint style="danger" %}
-#### Version
-
-You must update your api\_key from your dashboard from V2 --> V1, ie
-
-`https://eth-mainnet.g.alchemy.com/your-api-key/v2` should be `https://eth-mainnet.g.alchemy.com/your-api-key/v1`
-
-#### Network
-
-The example below is for Ethereum Mainnet. If you are using Polygon you'll need to use your polygon endpoint instead: `https://polygon-mainnet.g.alchemy.com/your-api-key/v1/getNFTs`...
+{% hint style="info" %}
+The example below is for Ethereum Mainnet. If you are using Polygon you'll need to use your polygon endpoint instead: `https://polygon-mainnet.g.alchemy.com/v2/your-api-key/getNFTs`...
 {% endhint %}
 
 ### Request
