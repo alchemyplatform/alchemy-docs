@@ -95,8 +95,6 @@ RequestType: GET
 {% endtab %}
 {% endtabs %}
 
-If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](../../guides/nft-api-quickstart-guide.md)****
-
 ### Response
 
 ```json
