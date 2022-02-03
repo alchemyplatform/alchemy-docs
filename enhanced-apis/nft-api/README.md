@@ -89,7 +89,7 @@ Alchemy is actively working on adding support for as many blockchains / NFT stan
 
 Or join our discord! [https://www.alchemy.com/discord](https://www.alchemy.com/discord)
 
-## Quickstart guides
+## Quickstart Guides
 
 Check out the guide below to get a quick setup using:
 
