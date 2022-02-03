@@ -1,7 +1,7 @@
 ---
 description: >-
-  From 0 to hero with the Alchemy NFT API. Learn how to query NFT data using
-  alchemy-web3, fetch, and axios.
+  Go from zero to hero with the Alchemy NFT API. Learn how to query NFT data
+  using alchemy-web3, fetch, or axios.
 ---
 
 # NFT API Quickstart Guide
@@ -63,7 +63,7 @@ yarn add @alch/alchemy-web
 In your `alchemy-nft-api` directory, you can create a new file called `alchemy-web3-script.js` and paste the following code snippet in:
 
 ```javascript
-// alchemy-web3-script.js
+// alchemy-nft-api/alchemy-web3-script.js
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 
 // Replace with your Alchemy api key:
@@ -156,7 +156,7 @@ See the documentation for more info: [https://www.npmjs.com/package/node-fetch](
 
 {% tabs %}
 {% tab title="npm" %}
-Run the following command to install `alchemy-web3` with `npm`
+Run the following command to install `node-fetch` with `npm`
 
 ```
 npm install node-fetch
@@ -164,7 +164,7 @@ npm install node-fetch
 {% endtab %}
 
 {% tab title="yarn" %}
-Run the following command to install `alchemy-web3` with `yarn`
+Run the following command to install `node-fetch` with `yarn`
 
 ```
 yarn add node-fetch
@@ -174,20 +174,26 @@ yarn add node-fetch
 
 ### Usage
 
-In your `alchemy-nft-api` directory, you can create a new file called `alchemy-web3-script.js` and paste the following code snippet in:
+In your `alchemy-nft-api` directory, you can create a new file called `fetch-script.js` and paste the following code snippet in:
 
 ```javascript
+// alchemy-nft-api/fetch-script.js
 import fetch from 'node-fetch';
 
+// Setup request options:
 var requestOptions = {
   method: 'GET',
   redirect: 'follow'
 };
 
-const baseURL = "https://eth-mainnet.g.alchemy.com/demo/v1/getNFTs/";
-const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
+// Replace with your Alchemy API key:
+const apiKey = "demo";
+const baseURL = `https://eth-mainnet.g.alchemy.com/${apiKey}/v1/getNFTs/`;
+// Replace with the wallet address you want to query:
+const ownerAddr = "0xF5FFF32CF83A1A614e15F25Ce55B0c0A6b5F8F2c";
 const fetchURL = `${baseURL}?owner=${ownerAddr}`;
 
+// Make the request and print the formatted response:
 fetch(fetchURL, requestOptions)
   .then(response => response.json())
   .then(response => JSON.stringify(response, null, 2))
@@ -199,7 +205,7 @@ fetch(fetchURL, requestOptions)
 And then from your command line, you can execute the script with:
 
 ```javascript
-node alchemy-web3-script.js
+node fetch-script.js
 ```
 
 Your output should look like the following:
@@ -234,4 +240,111 @@ Your output should look like the following:
 
 ```
 
-Axios
+For full documentation on the available NFT API configurations, check out the docs:
+
+{% content-ref url="../enhanced-apis/nft-api/getnfts.md" %}
+[getnfts.md](../enhanced-apis/nft-api/getnfts.md)
+{% endcontent-ref %}
+
+{% content-ref url="../enhanced-apis/nft-api/getnftmetadata.md" %}
+[getnftmetadata.md](../enhanced-apis/nft-api/getnftmetadata.md)
+{% endcontent-ref %}
+
+## Javascript Axios
+
+`axios` is a promise-based HTTP client for the browser and Node.js.
+
+See the documentation for more info: [https://www.npmjs.com/package/axios](https://www.npmjs.com/package/axios)
+
+### Installation
+
+{% tabs %}
+{% tab title="npm" %}
+Run the following command to install `axios` with `npm`
+
+```
+nnpm install axios
+```
+{% endtab %}
+
+{% tab title="yarn" %}
+Run the following command to install `axios` with `yarn`
+
+```
+yarn add axios
+```
+{% endtab %}
+{% endtabs %}
+
+### Usage
+
+In your `alchemy-nft-api` directory, you can create a new file called `axios-script.js` and paste the following code snippet in:
+
+```javascript
+// alchemy-nft-api/axios-script.js
+import axios from 'axios';
+
+// Replace with your Alchemy API key:
+const apiKey = "demo";
+const baseURL = `https://eth-mainnet.g.alchemy.com/${apiKey}/v1/getNFTs/`;
+// Replace with the wallet address you want to query for NFTs:
+const ownerAddr = "0xF5FFF32CF83A1A614e15F25Ce55B0c0A6b5F8F2c";
+
+// Construct the axios request:
+var config = {
+  method: 'get',
+  url: `${baseURL}?owner=${ownerAddr}`
+};
+
+// Make the request and print the formatted response:
+axios(config)
+.then(response => console.log(JSON.stringify(response.data, null, 2)))
+.catch(error => console.log(error));
+```
+
+And then from your command line, you can execute the script with:
+
+```javascript
+node axios-script.js
+```
+
+Your output should look like the following:
+
+```javascript
+alchemy-nft-api % node axios-script.js
+{
+  "ownedNfts": [
+    {
+      "contract": {
+        "address": "0x049aba7510f45ba5b64ea9e658e342f904db358d"
+      },
+      "id": {
+        "tokenId": "0x3651c7a73d3eea6a637f10a28ad1d8d296223e321b06626b2b4eac48eef4af4e"
+      },
+      "balance": "1"
+    },
+    ...
+    {
+      "contract": {
+        "address": "0xf3e778f839934fc819cfa1040aabacecba01e049"
+      },
+      "id": {
+        "tokenId": "0x00000000000000000000000000000000000000000000000000000000000060ed"
+      },
+      "balance": "1"
+    }
+  ],
+  "totalCount": 36,
+  "blockHash": "0x282c0c43a9eb14c0c42d72c3102421c76af27d9afa7f79cee595c4fec9e63535"
+}
+```
+
+For full documentation on the available NFT API configurations, check out the docs:
+
+{% content-ref url="../enhanced-apis/nft-api/getnfts.md" %}
+[getnfts.md](../enhanced-apis/nft-api/getnfts.md)
+{% endcontent-ref %}
+
+{% content-ref url="../enhanced-apis/nft-api/getnftmetadata.md" %}
+[getnftmetadata.md](../enhanced-apis/nft-api/getnftmetadata.md)
+{% endcontent-ref %}
