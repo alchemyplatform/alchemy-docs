@@ -187,43 +187,78 @@ This example request will not return anything in the response since the `pageKey
 {% endhint %}
 
 {% tabs %}
-{% tab title="Curl" %}
-```
-curl 'https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&pageKey=12e032c5-ce4a-4389-8764-b980e1a17da8'
+{% tab title="Alchemy Web3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+
+import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+
+// Using HTTPS
+const web3 = createAlchemyWeb3(
+  "https://eth-mainnet.g.alchemy.com/v2/demo",
+);
+
+const nfts = await web3.alchemy.getNfts({owner: "0xC33881b8FD07d71098b440fA8A3797886D831061", pageKey:"12e032c5-ce4a-4389-8764-b980e1a17da8"})
+
+console.log(nfts);
 ```
 {% endtab %}
 
-{% tab title="JavaScript - Fetch" %}
+{% tab title="Fetch (JS)" %}
 ```javascript
+import fetch from 'node-fetch';
+
 var requestOptions = {
   method: 'GET',
   redirect: 'follow'
 };
 
-fetch("https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&pageKey=12e032c5-ce4a-4389-8764-b980e1a17da8", requestOptions)
-  .then(response => response.text())
+const baseURL = "https://eth-mainnet.g.alchemy.com/demo/v1/getNFTs/";
+const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
+const pageKey = "12e032c5-ce4a-4389-8764-b980e1a17da8";
+const fetchURL = `${baseURL}?owner=${ownerAddr}?pageKey=${pageKey}`;
+
+fetch(fetchURL, requestOptions)
+  .then(response => response.json())
+  .then(response => JSON.stringify(response, null, 2))
   .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+  .catch(error => console.log('error', error))
+
 ```
 {% endtab %}
 
-{% tab title="JavaScript - jQuery" %}
+{% tab title="Axios (JS)" %}
 ```javascript
-var settings = {
-  "url": "https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&pageKey=12e032c5-ce4a-4389-8764-b980e1a17da8",
-  "method": "GET",
-  "timeout": 0,
+import axios from 'axios';
+
+// replace with your Alchemy api key
+const apiKey = "demo";
+const baseURL = `https://eth-mainnet.g.alchemy.com/${apiKey}/v1/getNFTs/`;
+// replace with the wallet address you want to query for NFTs
+const pageKey = "12e032c5-ce4a-4389-8764-b980e1a17da8";
+const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
+
+var config = {
+  method: 'get',
+  url: `${baseURL}?owner=${ownerAddr}?pageKey=${pageKey}`
 };
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
+axios(config)
+.then(response => console.log(JSON.stringify(response.data, null, 2)))
+.catch(error => console.log(error));
+
 ```
 {% endtab %}
 
 {% tab title="Postman" %}
 ```python
 URL: https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&pageKey=12e032c5-ce4a-4389-8764-b980e1a17da8
+```
+{% endtab %}
+
+{% tab title="Curl" %}
+```
+curl 'https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&pageKey=12e032c5-ce4a-4389-8764-b980e1a17da8'
 ```
 {% endtab %}
 {% endtabs %}
