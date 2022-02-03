@@ -450,7 +450,7 @@ console.log(nfts);
 ```
 {% endtab %}
 
-{% tab title="JavaScript - Fetch" %}
+{% tab title="Fetch (JS)" %}
 ```javascript
 import fetch from 'node-fetch';
 
@@ -473,7 +473,7 @@ fetch(fetchURL, requestOptions)
 ```
 {% endtab %}
 
-{% tab title="JavaScript - jQuery" %}
+{% tab title="Axios (JS)" %}
 ```javascript
 import axios from 'axios';
 
