@@ -42,6 +42,20 @@ cd alchemy-nft-api
 yarn init --yes
 ```
 
+### Support import syntax
+
+Since we'll be using import syntax to load ES6 modules, add `'type': 'module'` to your `package.json` file:
+
+```json
+// package.json
+{
+  ...
+  "type": "module"
+}
+```
+
+See this discussion for more context: [https://stackoverflow.com/questions/61401475/why-is-type-module-in-package-json-file](https://stackoverflow.com/questions/61401475/why-is-type-module-in-package-json-file)
+
 ## Alchemy Web3 SDK
 
 You can install `alchemy-web3`, a module that allows you to more easily interact with Alchemy APIs. We highly recommend using the `alchemy-web3` sdk because you also get websocket support and other benefits right out of the box!
