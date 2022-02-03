@@ -10,7 +10,7 @@ description: >-
 
 You should start with these steps before choosing any of the modules below.
 
-### Choose a package manager
+### Choose a package manager (npm or yarn)
 
 For this guide we will be using `npm`  or `yarn` as our package manager to install either `alchemy-web3`, `fetch`, or `axios`.&#x20;
 
@@ -22,7 +22,9 @@ To get started with `npm`, follow the documentation to install Node.js and `npm`
 
 To get started with `yarn`, follow these steps: [https://classic.yarnpkg.com/lang/en/docs/install](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable)
 
-### Set up your repo
+### Set up your repo (npm or yarn)
+
+#### npm
 
 Open up a terminal, and from the command line, create a new repository to hold your quickstart scripts. We'll also initialize the repo as an npm project.
 
@@ -30,6 +32,14 @@ Open up a terminal, and from the command line, create a new repository to hold y
 mkdir alchemy-nft-api
 cd alchemy-nft-api
 npm init --yes
+```
+
+#### yarn
+
+```
+mkdir alchemy-nft-api
+cd alchemy-nft-api
+yarn init --yes
 ```
 
 ## Alchemy Web3 SDK
