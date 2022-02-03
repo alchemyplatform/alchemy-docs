@@ -54,7 +54,27 @@ The example below is for Ethereum Mainnet. If you are using Polygon you'll need 
 
 {% tabs %}
 {% tab title="Alchemy Web3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
 
+import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+
+// Using HTTPS
+const web3 = createAlchemyWeb3(
+  "https://eth-mainnet.g.alchemy.com/v2/demo",
+);
+
+
+// Fetch metadata for a particular NFT:
+console.log("fetching metadata for a crypto coven NFT...");
+const response = await web3.alchemy.getNftMetadata({
+  contractAddress: "0x5180db8F5c931aaE63c74266b211F580155ecac8",
+  tokenId: "1590"
+})
+
+console.log(metadata);
+
+```
 {% endtab %}
 
 {% tab title="Fetch (JS)" %}
@@ -124,54 +144,44 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
 
 ```json
 {
-    "contract": {
-        "address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
+  contract: { address: '0x5180db8f5c931aae63c74266b211f580155ecac8' },
+  id: { tokenId: '1590', tokenMetadata: { tokenType: 'ERC721' } },
+  title: 'balsa vault',
+  description: 'You are a WITCH with eyes that hold eons. You write poems filled with charms. Your magic spawns from a few hours of sleep. You arch your back into a bridge between the living and the dead. SHINE!',
+  tokenUri: {
+    raw: 'ipfs://QmZHKZDavkvNfA9gSAg7HALv8jF7BJaKjUc9U2LSuvUySB/1590.json',
+    gateway: 'https://ipfs.io/ipfs/QmZHKZDavkvNfA9gSAg7HALv8jF7BJaKjUc9U2LSuvUySB/1590.json'
+  },
+  media: [ { uri: [Object] } ],
+  metadata: {
+    image: 'https://cryptocoven.s3.amazonaws.com/a7875f5758f85544dcaab79a8a1ca406.png',
+    external_url: 'https://www.cryptocoven.xyz/witches/1590',
+    background_color: '',
+    coven: {
+      skills: [Object],
+      name: 'balsa vault',
+      description: [Object],
+      styles: [Array],
+      id: 1590,
+      type: 'necromancer',
+      hash: 'a7875f5758f85544dcaab79a8a1ca406',
+      birthChart: [Object]
     },
-    "id": {
-        "tokenId": "2",
-        "tokenMetadata": {
-            "tokenType": "ERC721"
-        }
-    },
-    "title": "",
-    "description": "",
-    "tokenUri": {
-        "raw": "ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/2",
-        "gateway": "https://ipfs.io/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/2"
-    },
-    "media": [
-        {
-            "uri": {
-                "raw": "ipfs://QmcJYkCKK7QPmYWjp4FD2e3Lv5WCGFuHNUByvGKBaytif4",
-                "gateway": "https://ipfs.io/ipfs/QmcJYkCKK7QPmYWjp4FD2e3Lv5WCGFuHNUByvGKBaytif4"
-            }
-        }
-    ],
-    "metadata": {
-        "image": "ipfs://QmcJYkCKK7QPmYWjp4FD2e3Lv5WCGFuHNUByvGKBaytif4",
-        "attributes": [
-            {
-                "value": "3d",
-                "trait_type": "Eyes"
-            },
-            {
-                "value": "Bored Cigarette",
-                "trait_type": "Mouth"
-            },
-            {
-                "value": "Robot",
-                "trait_type": "Fur"
-            },
-            {
-                "value": "Sea Captain's Hat",
-                "trait_type": "Hat"
-            },
-            {
-                "value": "Aquamarine",
-                "trait_type": "Background"
-            }
-        ]
-    },
-    "timeLastUpdated": "2022-01-25T19:56:50.580Z"
+    name: 'balsa vault',
+    description: 'You are a WITCH with eyes that hold eons. You write poems filled with charms. Your magic spawns from a few hours of sleep. You arch your back into a bridge between the living and the dead. SHINE!',
+    attributes: [
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object]
+    ]
+  },
+  timeLastUpdated: '2022-01-25T07:41:32.003Z'
 }
+
 ```
