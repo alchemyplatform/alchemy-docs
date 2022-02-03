@@ -1,10 +1,12 @@
 ---
 description: >-
   Go from zero to hero with the Alchemy NFT API. Learn how to query NFT data
-  using alchemy-web3, fetch, or axios.
+  using alchemy-web3 (recommended), fetch, or axios.
 ---
 
 # NFT API Quickstart Guide
+
+For this Javascript quickstart guide, we recommend using `alchemy-web3`, a module that allows you to more easily interact with Alchemy APIs. The `alchemy-web3` SDK give you websocket support and other benefits right out of the box! Fetch or Axios are two alternative modules that also allow you to make HTTP requests.
 
 ## Common setup steps
 
@@ -58,7 +60,7 @@ See this discussion for more context: [https://stackoverflow.com/questions/61401
 
 ## Alchemy Web3 SDK (_**Recommended**_)
 
-You can install `alchemy-web3`, a module that allows you to more easily interact with Alchemy APIs. We highly recommend using the `alchemy-web3` sdk because you also get websocket support and other benefits right out of the box!
+You can install the `alchemy-web3` module to easily interact with Alchemy APIs. We highly recommend using the `alchemy-web3` sdk because you also get websocket support, retries, and other benefits without the complexity!
 
 For full documentation on `alchemy-web3`, check the github repo: [https://github.com/alchemyplatform/alchemy-web3](https://github.com/alchemyplatform/alchemy-web3)
 
