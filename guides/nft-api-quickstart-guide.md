@@ -397,7 +397,7 @@ See the documentation for more info: [https://www.npmjs.com/package/axios](https
 Run the following command to install `axios` with `npm`
 
 ```
-nnpm install axios
+npm install axios
 ```
 {% endtab %}
 
