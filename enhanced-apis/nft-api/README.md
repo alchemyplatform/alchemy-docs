@@ -119,9 +119,9 @@ View the **full documentation** for getNFTMetadata here:
 
 Check out the guide below to get a quick setup using:
 
-1. The `alchemy-web3` sdk,
-2. the `node-fetch` module,
-3. or the `axios`  module.
+1. [The `alchemy-web3` sdk,](../../guides/nft-api-quickstart-guide.md#alchemy-web3-sdk)
+2. [the `node-fetch` module,](../../guides/nft-api-quickstart-guide.md#javascript-fetch)
+3. [or the `axios`  module.](../../guides/nft-api-quickstart-guide.md#javascript-axios)
 
 {% content-ref url="../../guides/nft-api-quickstart-guide.md" %}
 [nft-api-quickstart-guide.md](../../guides/nft-api-quickstart-guide.md)
