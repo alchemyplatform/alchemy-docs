@@ -53,37 +53,54 @@ The example below is for Ethereum Mainnet. If you are using Polygon you'll need 
 ### Request
 
 {% tabs %}
-{% tab title="Curl" %}
-```
-curl 'https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721'
+{% tab title="Alchemy Web3.js" %}
+
+{% endtab %}
+
+{% tab title="Fetch (JS)" %}
+```javascript
+import fetch from 'node-fetch';
+
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+
+  const apiKey = "demo"
+  const baseURL = `https://eth-mainnet.g.alchemy.com/${demo}/v1/getNFTMetadata`;
+  const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
+  const tokenId = "2";
+  const tokenType = "erc721";
+  const fetchURL = `${baseURL}?contractAddress=${contractAddr}&tokenId=${tokenId}&tokenType=${tokenType}`;
+
+  fetch(fetchURL, requestOptions)
+    .then(response => response.json())
+    .then(response => JSON.stringify(response, null, 2))
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 ```
 {% endtab %}
 
-{% tab title="JavaScript - Fetch" %}
+{% tab title="Axios (JS)" %}
 ```javascript
-var requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
+import axios from 'axios';
+
+// replace with your Alchemy api key
+const apiKey = "demo";
+const baseURL = `https://eth-mainnet.g.alchemy.com/${apiKey}/v1/getNFTMetadata`;
+const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
+const tokenId = "2";
+const tokenType = "erc721";
+
+var config = {
+  method: 'get',
+  url: `${baseURL}?contractAddress=${contractAddr}&tokenId=${tokenId}&tokenType=${tokenType}`,
+  headers: { }
 };
 
-fetch("https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-{% endtab %}
-
-{% tab title="JavaScript - jQuery" %}
-```javascript
-var settings = {
-  "url": "https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721",
-  "method": "GET",
-  "timeout": 0,
-};
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
+axios(config)
+.then(response => console.log(JSON.stringify(response.data, null, 2)))
+.catch(error => console.log(error));
 ```
 {% endtab %}
 
@@ -93,7 +110,15 @@ URL: https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0x
 RequestType: GET
 ```
 {% endtab %}
+
+{% tab title="Curl" %}
+```
+curl 'https://eth-mainnet.g.alchemy.com/your-api-key/v1/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721'
+```
+{% endtab %}
 {% endtabs %}
+
+If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](../../guides/nft-api-quickstart-guide.md)****
 
 ### Response
 
