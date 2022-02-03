@@ -70,7 +70,13 @@ yarn add @alch/alchemy-web3
 
 ### Usage
 
-In your `alchemy-nft-api` directory, you can create a new file called `alchemy-web3-script.js` and paste the following code snippet in:
+In your `alchemy-nft-api` directory, you can create a new file called `alchemy-web3-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
+
+```
+touch alchemy-web3-script.js
+```
+
+and then paste the following code snippet into the file:
 
 ```javascript
 // alchemy-nft-api/alchemy-web3-script.js
@@ -125,7 +131,7 @@ console.log("time last updated: ", response.timeLastUpdated);
 console.log("===");
 ```
 
-And then from your command line, you can execute the script with:
+From your command line, you can execute the script with:
 
 ```bash
 node alchemy-web3-script.js
@@ -184,7 +190,13 @@ yarn add node-fetch
 
 ### Usage
 
-In your `alchemy-nft-api` directory, you can create a new file called `fetch-script.js` and paste the following code snippet in:
+In your `alchemy-nft-api` directory, you can create a new file called `fetch-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
+
+```
+touch fetch-script.js
+```
+
+and then paste the following code snippet into the file:
 
 ```javascript
 // alchemy-nft-api/fetch-script.js
@@ -212,7 +224,7 @@ fetch(fetchURL, requestOptions)
 
 ```
 
-And then from your command line, you can execute the script with:
+From your command line, you can execute the script with:
 
 ```javascript
 node fetch-script.js
@@ -288,7 +300,13 @@ yarn add axios
 
 ### Usage
 
-In your `alchemy-nft-api` directory, you can create a new file called `axios-script.js` and paste the following code snippet in:
+In your `alchemy-nft-api` directory, you can create a new file called `axios-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
+
+```
+touch axios-script.js
+```
+
+and then paste the following code snippet in:
 
 ```javascript
 // alchemy-nft-api/axios-script.js
@@ -312,7 +330,7 @@ axios(config)
 .catch(error => console.log(error));
 ```
 
-And then from your command line, you can execute the script with:
+From your command line, you can execute the script with:
 
 ```javascript
 node axios-script.js
