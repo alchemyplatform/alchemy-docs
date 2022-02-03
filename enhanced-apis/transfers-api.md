@@ -7,13 +7,15 @@ description: >-
 
 # Transfers API (Tx History)
 
-{% hint style="info" %}
-NOTE: The Transfers API is currently only available on **Ethereum** and **Polygon**.&#x20;
-{% endhint %}
+## What are Transfers?&#x20;
 
 Transfers are a representation of value being exchanged between two accounts. Often times users wish to see the historical transactions associated with a specific account or address. This is currently an extremely challenging and inefficient task, requiring users to scan the entire blockchain and index everything to search for transactions associated with the desired address. However, with the Transfers API users can query all types of historical transactions for a given address in a single request.
 
 If you don't have an account yet, [**you can sign up with Alchemy for free**](https://alchemy.com/?r=affiliate:4cf7f72f-9238-45c4-a230-6840fcd048ae).&#x20;
+
+{% hint style="info" %}
+NOTE: The Transfers API is currently only available on **Ethereum** and **Polygon**.&#x20;
+{% endhint %}
 
 {% hint style="success" %}
 **TIP:** Check out[ this tutorial](../tutorials/transfers-tutorial.md) on [integrating historical transaction data into your dApp](../tutorials/transfers-tutorial.md) to learn how to get started using the Transfers API!
