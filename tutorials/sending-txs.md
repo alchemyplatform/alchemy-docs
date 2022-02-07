@@ -63,9 +63,9 @@ Okay, now that we have a few of these questions out of the way, let's move on to
 
 Navigate to your [Alchemy Dashboard](https://dashboard.alchemyapi.io) and create a new app, choosing Rinkeby for your network. (In practice, you could use any testnet of your choice, but for this guide we're sticking to Rinkeby.)
 
-### 2. Request Eth from the [Rinkeby faucet](https://faucet.rinkeby.io)
+### 2. Request Eth from the [Alchemy Rinkeby faucet](https://www.rinkebyfaucet.com)
 
-Follow the instructions on the faucet homepage to receive Eth. You will have to share your public address on social media for this specific faucet. Make sure to include your **Rinkeby** Ethereum address (from Metamask) and not another network. After following the instructions, double check that you've received the Eth in your wallet. You can also [use the Alchemy Rinkeby Faucet](https://www.rinkebyfaucet.com).
+Follow the instructions on the faucet homepage to receive Eth. Make sure to include your **Rinkeby** Ethereum address (from Metamask) and not another network. After following the instructions, double check that you've received the Eth in your wallet.
 
 ### 3. Create a new project directory and `cd` into it
 
