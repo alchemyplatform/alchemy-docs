@@ -40,7 +40,7 @@ For this example, we’ll be creating a notification system that automatically d
 {% hint style="info" %}
 **NOTE:** If you don't want to spend real (mainnet) Ethereum for test notifications in this tutorial, you can use any Ethereum testnet, like Rinkeby, so that you can make transactions without paying for gas ⛽!\
 \
-For access to free Rinkeby, use this [dev faucet](https://faucet.rinkeby.io).
+For access to free Rinkeby, use the [Alchemy Rinkeby faucet](https://www.rinkebyfaucet.com).
 {% endhint %}
 
 Our tutorial specifically leverages two different Alchemy products to give a holistic picture of a transaction's inception and its completion.
