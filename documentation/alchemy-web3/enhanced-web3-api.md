@@ -14,7 +14,7 @@ To learn more about the standard web3.js API calls, check out their documentatio
 
 ### web3.alchemy.getTokenAllowance({contract, owner, spender})
 
-Returns token balances for a specific address given a list of contracts.
+Returns the amount which the spender is allowed to withdraw from the owner.
 
 #### **Parameters:**
 
