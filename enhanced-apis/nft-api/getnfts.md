@@ -13,9 +13,16 @@ description: Gets all NFTs currently owned by a given address
 * `owner`: address for NFT owner
 * `pageKey`: (optional) UUID for pagination. If more results are available, a UUID `pageKey` will be returned in the response. Pass that uuid into `pageKey` to fetch the next 100 NFTs. **NOTE:** pageKeys expire after 10 minutes.&#x20;
 * `contractAddresses[]`: (optional) array of contract addresses to filter the responses with. Max limit 20 contracts.
+* `withMetadata`: (optional) includes metadata for each returned token
 
 {% hint style="info" %}
-#### Note on pagination
+NOTE:
+
+Calling `getNFTs` with the`withMetadata`flag may result in a slower response time. It is suggested that api calls with this flag be intermixed with standard `getNFTs` calls for maximum performance.
+{% endhint %}
+
+{% hint style="info" %}
+#### Note on Pagination:&#x20;
 
 We paginate our responses with a default limit of **100 responses**. We've chosen this number via thorough testing to determine the best balance of reliability and speed. In the future, you will be able to specify your own default size. If the owner has more than 100 nfts, we'll provide a `pageKey` you can include in the next request to return the remaining responses. This uses cursor based pagination with an idempotent result. This means if you provide one it serves as a static reference to the NFTs owned at time of the first call. This means if an owner acquires or transfers an NFT in between a paginated call, this will **NOT** be reflected.
 {% endhint %}
