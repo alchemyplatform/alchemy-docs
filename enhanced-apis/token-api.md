@@ -310,7 +310,41 @@ console.log(metadata);
 {% endtab %}
 
 {% tab title="Fetch (JS)" %}
+```javascript
+import fetch from 'node-fetch';
 
+// Replace with your Alchemy API key:
+const apiKey = "demo";
+const fetchURL = `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`;
+
+// Replace with the token address you want to query:
+const tokenAddr = "0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be";
+
+var raw = JSON.stringify({
+  "jsonrpc": "2.0",
+  "method": "alchemy_getTokenMetadata",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "params": [
+    `${tokenAddr}`
+  ],
+  "id": 42
+});
+
+var requestOptions = {
+  method: 'POST',
+  body: raw,
+  redirect: 'follow'
+};
+
+// Make the request and print the formatted response:
+fetch(fetchURL, requestOptions)
+  .then(response => response.json())
+  .then(response => JSON.stringify(response, null, 2))
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
 {% endtab %}
 
 {% tab title="Axios (JS)" %}
