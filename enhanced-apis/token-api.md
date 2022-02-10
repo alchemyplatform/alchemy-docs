@@ -318,7 +318,7 @@ const apiKey = "demo";
 const fetchURL = `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`;
 
 // Replace with the token address you want to query:
-const tokenAddr = "0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be";
+const tokenAddr = "0x1985365e9f78359a9B6AD760e32412f4a445E862";
 
 var raw = JSON.stringify({
   "jsonrpc": "2.0",
@@ -356,16 +356,13 @@ import axios from 'axios';
 const apiKey = "demo";
 const baseURL = `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`;
 // Replace with the wallet address you want to query:
-const tokenAddr = "0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be";
+const tokenAddr = "0x1985365e9f78359a9B6AD760e32412f4a445E862";
 
 var data = JSON.stringify({
   "jsonrpc": "2.0",
-  "method": "alchemy_getTokenBalances",
+  "method": "alchemy_getTokenMetadata",
   "params": [
-    `${ownerAddr}`,
-    [
-      `${tokenAddr}`
-    ]
+    `${tokenAddr}`
   ],
   "id": 42
 });
