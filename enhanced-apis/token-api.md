@@ -6,6 +6,12 @@ description: >-
 
 # Token API
 
+Want to get started with code but not sure how to? Take a look at the [Quickstart Guide](../guides/token-api-quickstart-guide.md).
+
+{% content-ref url="../guides/token-api-quickstart-guide.md" %}
+[token-api-quickstart-guide.md](../guides/token-api-quickstart-guide.md)
+{% endcontent-ref %}
+
 {% hint style="info" %}
 Unless otherwise specified, Alchemy methods will return decoded values in their responses (e.g., for token decimals, 18 will be returned instead of "0x12"). We plan to eventually normalize all methods in our enhanced API to return decoded values.
 {% endhint %}
