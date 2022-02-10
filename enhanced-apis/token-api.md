@@ -39,13 +39,45 @@ Request
 
 {% tabs %}
 {% tab title="Alchemy Web3" %}
-```
+```javascript
+// alchemy-token-api/alchemy-web3-script.js
+import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+
+// Replace with your Alchemy api key:
+const apiKey = "demo";
+
+// Initialize an alchemy-web3 instance:
+const web3 = createAlchemyWeb3(
+  `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`,
+);
+
+const allowance = await web3.alchemy.getTokenAllowance({contract: "0xE41d2489571d322189246DaFA5ebDe1F4699F498", owner: "0xe8095A54C83b069316521835408736269bfb389C", spender:"0x3Bcc5bD4abBc853395eBE5103b7DbA20411E38db"})
+
+console.log("TOKEN ALLOWANCE->");
+console.log(allowance);
 ```
 {% endtab %}
 
 {% tab title="Fetch (JS)" %}
-```
-// Some code
+```javascript
+import fetch from 'node-fetch';
+
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+const baseURL = "https://eth-mainnet.g.alchemy.com/v2/demo/getTokenAllowance/";
+const contractAddr = "0xE41d2489571d322189246DaFA5ebDe1F4699F498";
+const ownerAddr = "0xe8095A54C83b069316521835408736269bfb389C";
+const spenderAddr = "0x3Bcc5bD4abBc853395eBE5103b7DbA20411E38db";
+const fetchURL = `${baseURL}?contract=${contractAddr}?owner=${ownerAddr}?spender=${spenderAddr}`;
+
+fetch(fetchURL, requestOptions)
+  .then(response => response.json())
+  .then(response => JSON.stringify(response, null, 2))
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error))
 ```
 {% endtab %}
 
