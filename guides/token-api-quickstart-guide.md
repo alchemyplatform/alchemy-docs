@@ -87,7 +87,7 @@ yarn add @alch/alchemy-web3
 
 ### Usage
 
-GITHUB REPO
+{% embed url="https://github.com/alchemyplatform/token-api-javascript-scripts/blob/main/alchemy-web3-script.js" %}
 
 ```
 touch alchemy-web3-script.js
