@@ -302,7 +302,7 @@ const web3 = createAlchemyWeb3(
 );
 
 // The token address we want to query for metadata:
-const metadata = await web3.alchemy.getTokenMetadata("0x607f4c5bb672230e8672085532f7e901544a7375")
+const metadata = await web3.alchemy.getTokenMetadata("0x1985365e9f78359a9B6AD760e32412f4a445E862")
 
 console.log("TOKEN METADATA->");
 console.log(metadata);
