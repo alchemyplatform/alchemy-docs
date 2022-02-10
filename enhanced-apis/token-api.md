@@ -68,6 +68,8 @@ var requestOptions = {
 };
 
 const baseURL = "https://eth-mainnet.g.alchemy.com/v2/demo/getTokenAllowance/";
+
+// replace with the respective address you want to query for
 const contractAddr = "0xE41d2489571d322189246DaFA5ebDe1F4699F498";
 const ownerAddr = "0xe8095A54C83b069316521835408736269bfb389C";
 const spenderAddr = "0x3Bcc5bD4abBc853395eBE5103b7DbA20411E38db";
@@ -82,8 +84,27 @@ fetch(fetchURL, requestOptions)
 {% endtab %}
 
 {% tab title="Axios (JS)" %}
-```
-// Some code
+```javascript
+import axios from 'axios';
+
+// replace with your Alchemy api key
+const apiKey = "demo";
+const baseURL = `https://eth-mainnet.g.alchemy.com/v2/${apiKey}/getNFTs/`;
+
+// replace with the respective address you want to query for
+cconst contractAddr = "0xE41d2489571d322189246DaFA5ebDe1F4699F498";
+const ownerAddr = "0xe8095A54C83b069316521835408736269bfb389C";
+const spenderAddr = "0x3Bcc5bD4abBc853395eBE5103b7DbA20411E38db";
+
+var config = {
+  method: 'get',
+  url: `${baseURL}?contract=${contractAddr}?owner=${ownerAddr}?spender=${spenderAddr}`
+};
+
+axios(config)
+.then(response => console.log(JSON.stringify(response.data, null, 2)))
+.catch(error => console.log(error));
+
 ```
 {% endtab %}
 
