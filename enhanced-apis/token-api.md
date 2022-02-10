@@ -38,6 +38,23 @@ Returns the amount which the spender is allowed to withdraw from the owner.
 Request
 
 {% tabs %}
+{% tab title="Alchemy Web3" %}
+```
+```
+{% endtab %}
+
+{% tab title="Fetch (JS)" %}
+```
+// Some code
+```
+{% endtab %}
+
+{% tab title="Axios (JS)" %}
+```
+// Some code
+```
+{% endtab %}
+
 {% tab title="Curl" %}
 ```bash
 curl https://eth-mainnet.alchemyapi.io/v2/your-api-key \
