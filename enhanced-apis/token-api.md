@@ -8,6 +8,11 @@ description: >-
 
 Want to get started with code but not sure how to? Take a look at the [Quickstart Guide](../guides/token-api-quickstart-guide.md).
 
+{% hint style="info" %}
+**NOTE:** This endpoint is currently only available on Ethereum Mainnet.\
+[Check chains currently available](https://docs.alchemy.com/alchemy/apis/feature-support-by-chain) for the Token API.
+{% endhint %}
+
 {% content-ref url="../guides/token-api-quickstart-guide.md" %}
 [token-api-quickstart-guide.md](../guides/token-api-quickstart-guide.md)
 {% endcontent-ref %}
