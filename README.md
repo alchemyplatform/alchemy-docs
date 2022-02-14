@@ -12,13 +12,13 @@ Use these docs to learn more about Alchemy's core products, explore guides, and 
 
 ## 📖 API Reference
 
-Check out Alchemy's API Reference pages to understand how to use the [Enhanced APIs, ](https://www.alchemy.com/enhanced-apis)a suite of higher level methods built to streamline your development workflow, and each of the chain specific endpoints for [Ethereum](apis/ethereum/), [Arbitrum](apis/arbitrum/), [Polygon](apis/polygon-api/), [Optimism](apis/optimism-api.md), [Flow](https://app.gitbook.com/o/-MB5OnTtI\_5pcZn7v2wm/s/-Mbe-myfcwH3hjIraizf/), and [Crypto.org](https://app.gitbook.com/o/-MB5OnTtI\_5pcZn7v2wm/s/-MR6M26d7HiK3wpCRH-V/)!
+Check out Alchemy's API Reference pages to understand how to use the [Enhanced APIs](broken-reference), a suite of higher level methods built to streamline your development workflow, and each of the chain specific endpoints for [Ethereum](apis/ethereum/), [Arbitrum](apis/arbitrum/), [Polygon](apis/polygon-api/), [Optimism](apis/optimism-api.md), [Flow](https://app.gitbook.com/o/-MB5OnTtI\_5pcZn7v2wm/s/-Mbe-myfcwH3hjIraizf/), and [Crypto.org](https://app.gitbook.com/o/-MB5OnTtI\_5pcZn7v2wm/s/-MR6M26d7HiK3wpCRH-V/)!
 
 ## 🤷 What is Alchemy?
 
-Alchemy is a blockchain developer platform focused on making blockchain development easy. We've built a suite of developer tools, enhanced APIs, and superior node infrastructure to make building and running blockchain applications seamless.
+Alchemy is a Web3 developer platform focused on making blockchain development easy. We've built a suite of developer tools, enhanced APIs, and superior node infrastructure to make building and running blockchain applications seamless.
 
-Our platform supports 70% of the top Ethereum applications, including the top blockchain companies in the world:
+Our platform supports 70% of the top Ethereum applications, including the top Web3 companies in the world:
 
 ![](<.gitbook/assets/Screen Shot 2021-11-23 at 11.40.16 AM.png>)
 
