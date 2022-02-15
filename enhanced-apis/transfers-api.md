@@ -110,6 +110,7 @@ Additionally, we do not include any **internal transfers with call type`delegate
   * `value`: converted asset transfer value as a number (raw value divided by contract decimal). `null` if ERC721 transfer or contract decimal not available.
   * `erc721TokenId`: raw ERC721 token id (hex string). `null` if not an ERC721 token transfer
   * `erc1155Metadata`: A list of objects containing the ERC1155 `tokenId` (hex string) and `value` (hex string). `null` if not an ERC1155 transfer
+  * `tokenId`: token ID for ERC721 (or other NFT) tokens
   * `asset`: `ETH` or the token's symbol. `null` if not defined in the contract and not available from other sources.
   * `hash`: transaction hash (hex string).
   * `rawContract`
@@ -257,11 +258,30 @@ Body:
     "transfers": [
       {
         "blockNum": "0xa97ae2",
+        "hash": "0x56a00d5fac0dcacfe1cd950c49506712ec5bf319e246701321e8a92643da349d",
+        "from": "0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be",
+        "to": "0xfd5d6417fdcf02f0627aafa9e594a67d4485642d",
+        "value": 5.73621309,
+        "erc721TokenId": null,
+        "erc1155Metadata": null,
+        "tokenId": null,
+        "asset": "ETH",
+        "category": "external",
+        "rawContract": {
+          "value": "0x4f9b1f69e1655400",
+          "address": null,
+          "decimal": "0x12"
+        }
+      },
+      {
+        "blockNum": "0xa97ae2",
         "hash": "0x6b0b85a7d202fbec16aea70f876298283b44b00629a3b472fbcadf2f9436e5fd",
         "from": "0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be",
         "to": "0xb4caa764e2bf087f1a7a0cec43250892022787d9",
         "value": 2.995,
         "erc721TokenId": null,
+        "erc1155Metadata": null,
+        "tokenId": null,
         "asset": "ETH",
         "category": "external",
         "rawContract": {
@@ -277,6 +297,8 @@ Body:
         "to": "0x66ee6fc2c17b3a2624c06ae8783eb265a747a23d",
         "value": 0.1,
         "erc721TokenId": null,
+        "erc1155Metadata": null,
+        "tokenId": null,
         "asset": "ETH",
         "category": "external",
         "rawContract": {
@@ -292,6 +314,8 @@ Body:
         "to": "0x8187d27641eaa9eca3a80f7a2f37af192fa43507",
         "value": 0.495,
         "erc721TokenId": null,
+        "erc1155Metadata": null,
+        "tokenId": null,
         "asset": "ETH",
         "category": "external",
         "rawContract": {
@@ -307,6 +331,8 @@ Body:
         "to": "0xe535d87c42d21af3166eb00bbace668b13d55ec7",
         "value": 17.625,
         "erc721TokenId": null,
+        "erc1155Metadata": null,
+        "tokenId": null,
         "asset": "ETH",
         "category": "external",
         "rawContract": {
@@ -314,24 +340,9 @@ Body:
           "address": null,
           "decimal": "0x12"
         }
-      },
-      {
-        "blockNum": "0xa97ae2",
-        "hash": "0x56a00d5fac0dcacfe1cd950c49506712ec5bf319e246701321e8a92643da349d",
-        "from": "0x3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be",
-        "to": "0xfd5d6417fdcf02f0627aafa9e594a67d4485642d",
-        "value": 5.73621309,
-        "erc721TokenId": null,
-        "asset": "ETH",
-        "category": "external",
-        "rawContract": {
-          "value": "0x4f9b1f69e1655400",
-          "address": null,
-          "decimal": "0x12"
-        }
       }
     ],
-    "pageKey": "755207c2-d187-40fe-87aa-f43e71126777"
+    "pageKey": "347664a8-a6fd-40dd-b421-9cd08ae8c067"
   },
   "jsonrpc": "2.0"
 }
@@ -385,6 +396,7 @@ If you'd like support for these transfer types, please [upvote and comment](http
   * `value`: converted asset transfer value as a number (raw value divided by contract decimal). `null` if ERC721 transfer or contract decimal not available.
   * `erc721TokenId`: raw ERC721 token id (hex string). `null` if not an ERC721 token transfer
   * `erc1155Metadata`: A list of objects containing the ERC1155 `tokenId` (hex string) and `value` (hex string). `null` if not an ERC1155 transfer
+  * `tokenId`: token ID for ERC721 (or other NFT) tokens
   * `asset`: `ETH` or the token's symbol. `null` if not defined in the contract and not available from other sources.
   * `hash`: transaction hash (hex string).
   * `rawContract`

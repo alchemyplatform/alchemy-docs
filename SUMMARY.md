@@ -20,6 +20,7 @@
 * [NFT API](enhanced-apis/nft-api/README.md)
   * [getNFTs](enhanced-apis/nft-api/getnfts.md)
   * [getNFTMetadata](enhanced-apis/nft-api/getnftmetadata.md)
+* [Transfers API (Tx History)](enhanced-apis/transfers-api.md)
 * [Transaction Receipts API](enhanced-apis/transaction-receipts-api.md)
 * [Token API](enhanced-apis/token-api.md)
 * [Parity API](enhanced-apis/block-api-beta.md)
@@ -30,7 +31,6 @@
   * [Get records for a domain](enhanced-apis/unstoppable-domains-apis/get-records-for-a-domain.md)
   * [Get records for owner addresses](enhanced-apis/unstoppable-domains-apis/get-records-for-owner-addresses.md)
   * [Get domain transfer events](enhanced-apis/unstoppable-domains-apis/get-domain-transfer-events.md)
-* [Transfers API (Tx History)](enhanced-apis/transfers-api.md)
 
 ## ⛓ Chain APIs <a href="#apis" id="apis"></a>
 
