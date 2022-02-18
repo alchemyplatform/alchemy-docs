@@ -6,11 +6,7 @@ description: >-
 
 # Optimism API
 
-{% hint style="warning" %}
-**IMPORTANT:** In order to deploy to Optimism, users have to apply to be whitelisted. [Click here](https://community.optimism.io/docs/developers/l2/deploy.html) for more information from the Optimism documentation, and use [this form](https://docs.google.com/forms/d/e/1FAIpQLSfBGsJN3nZQRLdMjqCS\_svfQoPkn35o\_cc4HUVnLlXN2BHmPw/viewform) to apply.
-{% endhint %}
-
-For more information on the Optimism, JSON-RPC check out the[ Optimism Wiki](https://community.optimism.io/docs/developers/l2/rpc.html#frontmatter-title).
+For more information on the Optimism, JSON-RPC check out the[Optimism docs site](https://community.optimism.io/docs/developers/build/json-rpc/).
 
 {% hint style="info" %}
 **HINT: **Most JSON-RPC methods in Optimistic Ethereum are identical to the corresponding methods in the Ethereum JSON-RPC API. However, a few JSON-RPC methods have been added or changed to better fit the needs of Optimistic Ethereum.&#x20;
@@ -26,6 +22,7 @@ There are two networks on Optimism: Mainnet and Kovan testnet. The endpoints are
 {% hint style="warning" %}
 Currently, Alchemy does not support pending transactions for Optimism websockets.
 {% endhint %}
+
 
 ## :package: Retrieving Blocks
 
