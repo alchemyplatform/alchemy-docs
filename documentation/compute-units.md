@@ -133,7 +133,7 @@ Turning on autoscale gives you instant access to on-demand compute at volume dis
 
 CUPS are a measure of the number of compute units used per second when making requests. Since each request is weighted differently, we base this on the total compute units used rather than the number of requests.
 
-For example, if you send one `eth_blockNumber` (10 CUs), two `eth_getLogs` (75 CUs), and two `eth_call` (26 CUs) requests in the same second, you will have a total of 310 CUPS.
+For example, if you send one `eth_blockNumber` (10 CUs), two `eth_getLogs` (75 CUs), and two `eth_call` (26 CUs) requests in the same second, you will have a total of 212 CUPS.
 
 | User       | CUPS   |
 | ---------- | ------ |
