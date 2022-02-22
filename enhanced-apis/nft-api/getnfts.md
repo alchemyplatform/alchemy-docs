@@ -6,15 +6,6 @@ description: Gets all NFTs currently owned by a given address
 
 _This endpoint offers multi-chain support._[ _Check chains currently available_](https://docs.alchemy.com/alchemy/apis/feature-support-by-chain) _for the NFT API._
 
-{% hint style="warning" %}
-**NOTE on API Key**
-
-* The NFT API uses [https://eth-mainnet.g.alchemy.com/v2/](https://eth-mainnet.g.alchemy.com/v2/demo/)your-api-key
-* Which is slightly different from what is displayed in your Alchemy dashboard: [https://eth-mainnet.alchemyapi.io/v2/](https://eth-mainnet.alchemyapi.io/v2/demo)your-api-key
-
-Make sure to update this when using the NFT API!
-{% endhint %}
-
 ## Parameters
 
 * `owner`: address for NFT owner
