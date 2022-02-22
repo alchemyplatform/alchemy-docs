@@ -652,3 +652,14 @@ To understand what's going on under the hood using your Alchemy dashboard, check
 That’s all for part 1 of this tutorial, in part 2 we’ll actually [interact with our smart contract](interacting-with-a-smart-contract.md) by updated our initial message, and in part 3 we’ll [publish our smart contract to Etherscan](interacting-with-a-smart-contract.md) so everyone will know how to interact with it.
 
 Once you complete this tutorial, let us know how your experience was or if you have any feedback by tagging us on Twitter [@alchemyplatform](https://twitter.com/AlchemyPlatform)!
+
+### Trubleshooting - FAQs
+
+<details>
+
+<summary>Error HH8: There's one or more errors in your config file</summary>
+
+This is caused by a misconfiguration of your API Keys in your .env file as described in step [#step-11-connect-metamask-and-alchemy-to-your-project](./#step-11-connect-metamask-and-alchemy-to-your-project "mention")\
+
+
+</details>
