@@ -37,7 +37,7 @@ Some NFT contracts may not have metadata specified. You may need to parse the re
 ## Example
 
 {% hint style="info" %}
-The example below is for Ethereum Mainnet. If you are using Polygon you'll need to use your polygon endpoint instead: `https://polygon-mainnet.g.alchemy.com/v2/your-api-key/getNFTs`...
+The example below is for Ethereum Mainnet. If you are using Polygon you'll need to use your polygon endpoint instead: `https://polygon-mainnet.alchemyapi.io/v2/your-api-key/getNFTs`...
 {% endhint %}
 
 ### Request
@@ -51,7 +51,7 @@ import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 
 // Using HTTPS
 const web3 = createAlchemyWeb3(
-  "https://eth-mainnet.g.alchemy.com/v2/demo",
+  "https://eth-mainnet.alchemyapi.io/v2/demo",
 );
 
 
@@ -77,7 +77,7 @@ import fetch from 'node-fetch';
   };
 
   const apiKey = "demo"
-  const baseURL = `https://eth-mainnet.g.alchemy.com/v2/${apiKey}/getNFTMetadata`;
+  const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata`;
   const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
   const tokenId = "2";
   const tokenType = "erc721";
@@ -97,7 +97,7 @@ import axios from 'axios';
 
 // replace with your Alchemy api key
 const apiKey = "demo";
-const baseURL = `https://eth-mainnet.g.alchemy.com/v2/${apiKey}/getNFTMetadata`;
+const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata`;
 const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
 const tokenId = "2";
 const tokenType = "erc721";
@@ -116,14 +116,14 @@ axios(config)
 
 {% tab title="Postman" %}
 ```http
-URL: https://eth-mainnet.g.alchemy.com/v2/demo/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721
+URL: https://eth-mainnet.alchemyapi.io/v2/demo/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721
 RequestType: GET
 ```
 {% endtab %}
 
 {% tab title="Curl" %}
 ```
-curl 'https://eth-mainnet.g.alchemy.com/v2/demo/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721'
+curl 'https://eth-mainnet.alchemyapi.io/v2/demo/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721'
 ```
 {% endtab %}
 {% endtabs %}
