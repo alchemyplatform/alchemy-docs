@@ -177,172 +177,6 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
 } 
 ```
 
-### Request (with pagination)&#x20;
-
-{% hint style="warning" %}
-This example request will not return anything in the response since the `pageKey` expires after 10 minutes.
-{% endhint %}
-
-{% tabs %}
-{% tab title="Alchemy Web3.js" %}
-```javascript
-// Installation: https://github.com/alchemyplatform/alchemy-web3
-
-import { createAlchemyWeb3 } from "@alch/alchemy-web3";
-
-// Using HTTPS
-const web3 = createAlchemyWeb3(
-  "https://eth-mainnet.alchemyapi.io/v2/demo",
-);
-
-const nfts = await web3.alchemy.getNfts({owner: "0xC33881b8FD07d71098b440fA8A3797886D831061", pageKey:"12e032c5-ce4a-4389-8764-b980e1a17da8"})
-
-console.log(nfts);
-```
-{% endtab %}
-
-{% tab title="Fetch (JS)" %}
-```javascript
-import fetch from 'node-fetch';
-
-var requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
-};
-
-const baseURL = "https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/";
-const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
-const pageKey = "12e032c5-ce4a-4389-8764-b980e1a17da8";
-const fetchURL = `${baseURL}?owner=${ownerAddr}?pageKey=${pageKey}`;
-
-fetch(fetchURL, requestOptions)
-  .then(response => response.json())
-  .then(response => JSON.stringify(response, null, 2))
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error))
-
-```
-{% endtab %}
-
-{% tab title="Axios (JS)" %}
-```javascript
-import axios from 'axios';
-
-// replace with your Alchemy api key
-const apiKey = "demo";
-const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTs/`;
-// replace with the wallet address you want to query for NFTs
-const pageKey = "12e032c5-ce4a-4389-8764-b980e1a17da8";
-const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
-
-var config = {
-  method: 'get',
-  url: `${baseURL}?owner=${ownerAddr}?pageKey=${pageKey}`
-};
-
-axios(config)
-.then(response => console.log(JSON.stringify(response.data, null, 2)))
-.catch(error => console.log(error));
-
-```
-{% endtab %}
-
-{% tab title="Postman" %}
-```python
-URL: https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&pageKey=12e032c5-ce4a-4389-8764-b980e1a17da8
-```
-{% endtab %}
-
-{% tab title="Curl" %}
-```
-curl 'https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&pageKey=12e032c5-ce4a-4389-8764-b980e1a17da8'
-```
-{% endtab %}
-{% endtabs %}
-
-If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](../../guides/nft-api-quickstart-guide.md)****
-
-### Response (with pagination)&#x20;
-
-```json
-{
-    "ownedNfts": [{
-        "contract": {
-            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
-        },
-        "id": {
-            "tokenId": "0x00000000000000000000000000000000000000000000000000000000000009cb"
-        }
-    }, {
-        "contract": {
-            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
-        },
-        "id": {
-            "tokenId": "0x00000000000000000000000000000000000000000000000000000000000009cc"
-        }
-    }, {
-        "contract": {
-            "address": "0x5ab21ec0bfa0b29545230395e3adaca7d552c948"
-        },
-        "id": {
-            "tokenId": "0x00000000000000000000000000000000000000000000000000000000000006dc"
-        }
-    }, {
-        "contract": {
-            "address": "0x3b3ee1931dc30c1957379fac9aba94d1c48a5405"
-        },
-        "id": {
-            "tokenId": "0x000000000000000000000000000000000000000000000000000000000000001a"
-        }
-    }, {
-        "contract": {
-            "address": "0x69c40e500b84660cb2ab09cb9614fa2387f95f64"
-        },
-        "id": {
-            "tokenId": "0x0000000000000000000000000000000000000000000000000000000000000391"
-        }
-    }, {
-        "contract": {
-            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
-        },
-        "id": {
-            "tokenId": "0x00000000000000000000000000000000000000000000000000000000000008d5"
-        }
-    }, {
-        "contract": {
-            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
-        },
-        "id": {
-            "tokenId": "0x0000000000000000000000000000000000000000000000000000000000000a1d"
-        }
-    }, {
-        "contract": {
-            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
-        },
-        "id": {
-            "tokenId": "0x000000000000000000000000000000000000000000000000000000000000002a"
-        }
-    }, {
-        "contract": {
-            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
-        },
-        "id": {
-            "tokenId": "0x000000000000000000000000000000000000000000000000000000000000038e"
-        }
-    }, {
-        "contract": {
-            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
-        },
-        "id": {
-            "tokenId": "0x000000000000000000000000000000000000000000000000000000000000244b"
-        }
-    }],
-    "pageKey": "88434286-7eaa-472d-8739-32a0497c2a18",
-    "totalCount": 277,
-    "blockHash": "0x94d5ab52b8a6571733f6b183ef89f31573b82a4e78f8129b0ce90ef0beaf208b"
-}
-```
-
 ### Request (with contract filtering)
 
 Only one contract in filter array:
@@ -526,5 +360,171 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
   ],
   "totalCount": 1,
   "blockHash": "0x3d8bca59c08e41f55d46ebbe738327eb12955cf280bd06ef7d40352919c188d8"
+}
+```
+
+### Request (with pagination)&#x20;
+
+{% hint style="warning" %}
+This example request will not return anything in the response since the `pageKey` expires after 10 minutes.
+{% endhint %}
+
+{% tabs %}
+{% tab title="Alchemy Web3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+
+import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+
+// Using HTTPS
+const web3 = createAlchemyWeb3(
+  "https://eth-mainnet.alchemyapi.io/v2/demo",
+);
+
+const nfts = await web3.alchemy.getNfts({owner: "0xC33881b8FD07d71098b440fA8A3797886D831061", pageKey:"12e032c5-ce4a-4389-8764-b980e1a17da8"})
+
+console.log(nfts);
+```
+{% endtab %}
+
+{% tab title="Fetch (JS)" %}
+```javascript
+import fetch from 'node-fetch';
+
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+const baseURL = "https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/";
+const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
+const pageKey = "12e032c5-ce4a-4389-8764-b980e1a17da8";
+const fetchURL = `${baseURL}?owner=${ownerAddr}?pageKey=${pageKey}`;
+
+fetch(fetchURL, requestOptions)
+  .then(response => response.json())
+  .then(response => JSON.stringify(response, null, 2))
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error))
+
+```
+{% endtab %}
+
+{% tab title="Axios (JS)" %}
+```javascript
+import axios from 'axios';
+
+// replace with your Alchemy api key
+const apiKey = "demo";
+const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTs/`;
+// replace with the wallet address you want to query for NFTs
+const pageKey = "12e032c5-ce4a-4389-8764-b980e1a17da8";
+const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
+
+var config = {
+  method: 'get',
+  url: `${baseURL}?owner=${ownerAddr}?pageKey=${pageKey}`
+};
+
+axios(config)
+.then(response => console.log(JSON.stringify(response.data, null, 2)))
+.catch(error => console.log(error));
+
+```
+{% endtab %}
+
+{% tab title="Postman" %}
+```python
+URL: https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&pageKey=12e032c5-ce4a-4389-8764-b980e1a17da8
+```
+{% endtab %}
+
+{% tab title="Curl" %}
+```
+curl 'https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&pageKey=12e032c5-ce4a-4389-8764-b980e1a17da8'
+```
+{% endtab %}
+{% endtabs %}
+
+If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](../../guides/nft-api-quickstart-guide.md)****
+
+### Response (with pagination)&#x20;
+
+```json
+{
+    "ownedNfts": [{
+        "contract": {
+            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
+        },
+        "id": {
+            "tokenId": "0x00000000000000000000000000000000000000000000000000000000000009cb"
+        }
+    }, {
+        "contract": {
+            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
+        },
+        "id": {
+            "tokenId": "0x00000000000000000000000000000000000000000000000000000000000009cc"
+        }
+    }, {
+        "contract": {
+            "address": "0x5ab21ec0bfa0b29545230395e3adaca7d552c948"
+        },
+        "id": {
+            "tokenId": "0x00000000000000000000000000000000000000000000000000000000000006dc"
+        }
+    }, {
+        "contract": {
+            "address": "0x3b3ee1931dc30c1957379fac9aba94d1c48a5405"
+        },
+        "id": {
+            "tokenId": "0x000000000000000000000000000000000000000000000000000000000000001a"
+        }
+    }, {
+        "contract": {
+            "address": "0x69c40e500b84660cb2ab09cb9614fa2387f95f64"
+        },
+        "id": {
+            "tokenId": "0x0000000000000000000000000000000000000000000000000000000000000391"
+        }
+    }, {
+        "contract": {
+            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
+        },
+        "id": {
+            "tokenId": "0x00000000000000000000000000000000000000000000000000000000000008d5"
+        }
+    }, {
+        "contract": {
+            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
+        },
+        "id": {
+            "tokenId": "0x0000000000000000000000000000000000000000000000000000000000000a1d"
+        }
+    }, {
+        "contract": {
+            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
+        },
+        "id": {
+            "tokenId": "0x000000000000000000000000000000000000000000000000000000000000002a"
+        }
+    }, {
+        "contract": {
+            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
+        },
+        "id": {
+            "tokenId": "0x000000000000000000000000000000000000000000000000000000000000038e"
+        }
+    }, {
+        "contract": {
+            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
+        },
+        "id": {
+            "tokenId": "0x000000000000000000000000000000000000000000000000000000000000244b"
+        }
+    }],
+    "pageKey": "88434286-7eaa-472d-8739-32a0497c2a18",
+    "totalCount": 277,
+    "blockHash": "0x94d5ab52b8a6571733f6b183ef89f31573b82a4e78f8129b0ce90ef0beaf208b"
 }
 ```
