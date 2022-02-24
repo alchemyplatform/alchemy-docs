@@ -13,10 +13,10 @@ _This endpoint offers multi-chain support._[ _Check chains currently available_]
 * `contractAddresses[]`: (optional) array of contract addresses to filter the responses with. Max limit 20 contracts.
 * `withMetadata`: (optional) includes metadata for each returned token
 
-{% hint style="info" %}
+{% hint style="success" %}
 **NOTE:**
 
-Calling `getNFTs` with the`withMetadata`flag may result in a slower response time. It is suggested that api calls with this flag be intermixed with standard `getNFTs` calls for maximum performance.
+Setting the`withMetadata`parameter to`False` will reduce payload size and may result in a faster API call.
 {% endhint %}
 
 {% hint style="info" %}
