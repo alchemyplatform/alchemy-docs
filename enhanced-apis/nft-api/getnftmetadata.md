@@ -42,6 +42,8 @@ The example below is for Ethereum Mainnet. If you are using Polygon you'll need 
 
 ### Request
 
+****[**Alchemy Compose Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22getNFTMetadata%22%2C%22paramValues%22%3A%5B%7B%22Contract%20Address%22%3A%220x5180db8F5c931aaE63c74266b211F580155ecac8%22%2C%22Token%20ID%22%3A%221590%22%7D%5D%7D)****
+
 {% tabs %}
 {% tab title="Alchemy Web3.js" %}
 ```javascript
