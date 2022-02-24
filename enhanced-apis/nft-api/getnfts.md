@@ -54,6 +54,8 @@ The examples below is for Ethereum Mainnet. If you are using Polygon you'll need
 
 ### Request
 
+[**Alchemy Composer Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22getNFTs%22%2C%22paramValues%22%3A%5B%7B%22Owner%22%3A%220xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D%22%7D%5D%7D)****
+
 {% tabs %}
 {% tab title="Alchemy Web3.js" %}
 ```javascript
@@ -185,6 +187,8 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
 ### Request (with contract filtering)
 
 Only one contract in filter array:
+
+
 
 {% tabs %}
 {% tab title="Alchemy Web3.js" %}
