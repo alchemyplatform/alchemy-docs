@@ -8,10 +8,13 @@ _**NOTE:** This endpoint offers multi-chain support._ [_Check chains currently a
 
 ## Parameters
 
-* `contractAddress`: address of NFT contract
-* `tokenId`: Id for NFT (integer)
-* `tokenType` : (optional) "`ERC721`" or "`ERC1155`" , type of token
-  * request may perform faster if this parameter is specified&#x20;
+* `contractAddress`: _**\[string]**_ address of NFT contract
+* `tokenId`: _**\[integer]**_ Id for NFT&#x20;
+* `tokenType` : _**\[string]**_ (optional) "`ERC721`" or "`ERC1155`"; specifies type of token to query for
+
+{% hint style="success" %}
+API requests will perform faster if `tokenType` is specified!
+{% endhint %}
 
 ## Returns
 
