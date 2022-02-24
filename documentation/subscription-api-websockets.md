@@ -105,7 +105,7 @@ Result
 Returns the transaction information for all transactions that are added to the pending state that match a given filter. Currently supports an address filter, which will return transactions from or to the address.
 
 {% hint style="warning" %}
-\*\*NOTE: \*\*This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
+NOTE: This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
 {% endhint %}
 
 **Example**
@@ -157,7 +157,7 @@ Returns the hash for all transactions that are added to the pending state.
 When a transaction that was previously part of the canonical chain isn’t part of the new canonical chain after a reorganization its again emitted.
 
 {% hint style="warning" %}
-\*\*NOTE: \*\*This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
+NOTE: This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
 {% endhint %}
 
 **Parameters**
@@ -293,7 +293,9 @@ Emits logs which are part of newly added blocks that match specified filter crit
 {% hint style="info" %}
 **NOTE: Chain Reorganizations (ReOrgs)**
 
-When a chain reorganization occurs, logs which are part of blocks on the old chain will be emitted again with the property `removed` set to `true`. Logs which are part of the blocks on the new chain are emitted, meaning that it is possible to see logs for the same transaction multiple times in the case of a reorganization.
+When a chain reorganization occurs, logs that are part of blocks on the old chain will be emitted **again** with the property `removed` set to `true`.&#x20;
+
+Logs which are part of the blocks on the new chain are also emitted, it is possible to see logs for the same transaction multiple times in the case of a reorganization.
 {% endhint %}
 
 #### Parameters
