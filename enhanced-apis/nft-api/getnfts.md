@@ -37,6 +37,11 @@ We paginate our responses with a default limit of **100 responses**. We've chose
 * `totalCount`: total number of NFTs owned by the given address.&#x20;
 * `blockHash`: the canonical head block hash of when your request was received
 
+{% hint style="info" %}
+NOTE: \
+We are working to support edge-case NFTs which don't conform to ERC721 or 1155 standards. As such, the `totalCount` reported may change as we work to support a growing number of NFTs. If you notice an NFT that our API does not currently support, please [submit a feature request](https://roadmap.alchemy.com/b/feature-requests) or reach out to us over [Discord](https://www.alchemy.com/discord).
+{% endhint %}
+
 ## Examples
 
 For an example request with pagination, see [Request (with pagination)](getnfts.md#request-with-pagination).&#x20;
