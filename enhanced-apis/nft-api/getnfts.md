@@ -8,10 +8,10 @@ _This endpoint offers multi-chain support._[ _Check chains currently available_]
 
 ## Parameters
 
-* `owner`: address for NFT owner
+* `owner`: _**\[string]**_ address for NFT owner
 * `pageKey`: (optional) UUID for pagination. If more results are available, a UUID `pageKey` will be returned in the response. Pass that uuid into `pageKey` to fetch the next 100 NFTs. **NOTE:** pageKeys expire after 10 minutes.&#x20;
 * `contractAddresses[]`: (optional) array of contract addresses to filter the responses with. Max limit 20 contracts.
-* `withMetadata`: (optional) includes metadata for each returned token
+* `withMetadata`: _**\[boolean]**_ `True` by default; if boolean is set to `True` the query will include metadata for each returned token
 
 {% hint style="success" %}
 **NOTE:**
@@ -187,8 +187,6 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
 ### Request (with contract filtering)
 
 Only one contract in filter array:
-
-
 
 {% tabs %}
 {% tab title="Alchemy Web3.js" %}
