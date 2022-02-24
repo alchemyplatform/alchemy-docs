@@ -39,7 +39,7 @@ We paginate our responses with a default limit of **100 responses**. We've chose
 
 {% hint style="info" %}
 NOTE: \
-We are working to support edge-case NFTs which don't conform to ERC721 or 1155 standards. As such, the `totalCount` reported may change as we work to support a growing number of NFTs. If you notice an NFT that our API does not currently support, please [submit a feature request](https://roadmap.alchemy.com/b/feature-requests) or reach out to us over [Discord](https://www.alchemy.com/discord).
+We are working to support edge-case NFTs which don't conform to ERC721 or 1155 standards. As such, the `totalCount` and `ownedNfts`reported may not reflect certain NFTs that we do not current support.  If you notice an NFT that our API does not currently support, please [submit a feature request](https://roadmap.alchemy.com/b/feature-requests) or reach out to us over [Discord](https://www.alchemy.com/discord).
 {% endhint %}
 
 ## Examples
