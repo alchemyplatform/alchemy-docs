@@ -45,12 +45,12 @@ While the subscription is active, you will receive events which are objects with
 
 ### Subscription types
 
-### \*\*1. alchemy\_newFullPendingTransactions \*\*
+### 1. alchemy\_newFullPendingTransactions
 
 {% hint style="warning" %}
-The `alchemy_newFullPendingTransactions`\*\* \*\*subscription type is a super costly to maintain and requires a large number of compute units since it emits full transaction information instead of just transaction hashes. We do not recommend keeping this subscription open for long periods of time for non-enterprise tier users.
+The `alchemy_newFullPendingTransactions`subscription type is a super costly to maintain and requires a large number of compute units since it emits full transaction information instead of just transaction hashes. We do not recommend keeping this subscription open for long periods of time for non-enterprise tier users.
 
-\*\*NOTE: \*\*
+NOTE:&#x20;
 
 * The naming of this subscription is different from the naming of the web3 subscription API, [`alchemy_fullPendingTransactions`](alchemy-web3/enhanced-web3-api.md#web-3-eth-subscribe-alchemy\_fullpendingtransactions).
 * This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
@@ -215,7 +215,11 @@ Result
 
 Emits an event any time a new header is added to the chain, including during a chain reorganization.
 
-When a chain reorganization occurs, this subscription will emit an event containing all new headers for the new chain. In particular, this means that you may see multiple headers emitted with the same height, and when this happens the later header should be taken as the correct one after a reorganization.
+{% hint style="info" %}
+**NOTE: Chain Reorganizations (ReOrgs)**
+
+When a chain reorganization occurs, this subscription will emit an event containing all new headers for the new chain. This means that you may see multiple headers emitted with the same height, and when this happens the later header should be taken as the correct one after a reorganization.
+{% endhint %}
 
 #### Parameters
 
@@ -286,7 +290,11 @@ Result
 
 Emits logs which are part of newly added blocks that match specified filter criteria.
 
-When a chain reorganization occurs, logs which are part of blocks on the old chain will be emitted again with the property `removed` set to `true`. Further, logs which are part of the blocks on the new chain are emitted, meaning that it is possible to see logs for the same transaction multiple times in the case of a reorganization.
+{% hint style="info" %}
+**NOTE: Chain Reorganizations (ReOrgs)**
+
+When a chain reorganization occurs, logs which are part of blocks on the old chain will be emitted again with the property `removed` set to `true`. Logs which are part of the blocks on the new chain are emitted, meaning that it is possible to see logs for the same transaction multiple times in the case of a reorganization.
+{% endhint %}
 
 #### Parameters
 
