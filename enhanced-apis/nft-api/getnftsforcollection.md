@@ -13,9 +13,9 @@ description: Gets all NFTs for a given NFT contract
 {% hint style="info" %}
 #### NOTE on`startToken`:&#x20;
 
-The`startToken`serves as an analog for the _tokenId_ for the NFT. If no`startToken`is specified, the query will start from the lowest _tokenId_. \
-\
-You can pass in any _tokenId_ from the collection as an offset, or, alternatively, each response will return a `nextToken`that can be used to return the next page of results for the given NFT collection, if there are additional results.
+The API response will contain a maximum of 100 tokens. Because many NFT collections include more than 100 tokens, the `startToken` param is used to paginate results.
+
+If no`startToken`is specified, the query will start from the lowest _tokenId_. Each response will return a `nextToken`that can be passed back to the API as a `startToken` to return the next page of results for the given NFT collection (if applicable). You can also use any _tokenId_ from the collection as the `startToken`, and the results in the response will start from that offset.
 {% endhint %}
 
 ## Returns
