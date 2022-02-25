@@ -28,11 +28,11 @@ API requests will perform faster if `tokenType` is specified!
   * `tokenUri`:
     * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
     * `gateway:` public gateway uri for the raw uri above.
-  * `metadata`: \[NOT GUARANTEED\*] relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata blob url in `tokenUri` to parse manually.&#x20;
+  * `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata blob url in `tokenUri` to parse manually.&#x20;
   * `timeLastUpdated`: ISO timestamp of the last cache refresh for the information returned in the `metadata` field.
 
-{% hint style="danger" %}
-\***Note on metadata**&#x20;
+{% hint style="warning" %}
+**Note on `metadata`:**
 
 Some NFT contracts may not have metadata specified. You may need to parse the response on a case-by-case basis. &#x20;
 {% endhint %}
