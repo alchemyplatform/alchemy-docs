@@ -20,7 +20,19 @@ You can pass in any _tokenId_ from the collection as an offset, or, alternativel
 
 ## Returns
 
+*   `nfts`: list of objects that represent NFTs stored under the queried contract address.&#x20;
 
+    Object schema:
+
+    * `id`
+      * `tokenId`: Id for NFT (integer)&#x20;
+      * `tokenMetadata`
+        * `tokenType`: "`ERC721`" or "`ERC1155`"
+    * `tokenUri`:
+      * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
+      * `gateway:` public gateway uri for the raw uri above.
+    * `metadata`: \[NOT GUARANTEED\*] relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata blob url in `tokenUri` to parse manually.&#x20;
+* `nextCursorKey` : an offset used for pagination
 
 ## Example
 
