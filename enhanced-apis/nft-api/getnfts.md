@@ -11,7 +11,7 @@ _This endpoint offers multi-chain support._[ _Check chains currently available_]
 * `owner`: _**\[string]**_ address for NFT owner
 * `pageKey`: _**\[string]**_ (optional) UUID for pagination. If more results are available, a UUID `pageKey` will be returned in the response. Pass that UUID into `pageKey` to fetch the next 100 NFTs.     _**NOTE:** pageKeys expire after 10 minutes._&#x20;
 * `contractAddresses[]`:  _**\[arrray of strings]**_ (optional) array of contract addresses to filter the responses with. Max limit 20 contracts.
-* `withMetadata`:  _**\[boolean]**_ `True` by default; if boolean is set to `True` the query will include metadata for each returned token
+* `withMetadata`:  _**\[boolean]**_ `true` by default; if boolean is set to `true` the query will include metadata for each returned token
 
 {% hint style="success" %}
 **NOTE:**
