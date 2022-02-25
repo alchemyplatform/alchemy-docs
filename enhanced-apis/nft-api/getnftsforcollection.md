@@ -8,14 +8,14 @@ description: Gets all NFTs for a given NFT contract
 
 * `contractAddress`: _**\[string]**_ - contract address for the NFT collection
 * `withMetadata`: _**\[boolean] -**_ (optional)  _****_  If set to `true`, returns NFT metadata; otherwise will only return tokenIds
-* `cursorKey` : _**\[string]**_ - an offset used for pagination
+* `startToken`: _**\[string]**_ - an offset used for pagination
 
 {% hint style="info" %}
-#### NOTE on`cursorKey`:&#x20;
+#### NOTE on`startToken`:&#x20;
 
-The`cursorKey`serves as an analog for the _tokenId_ for the NFT. If no`cursorKey`is specified, the query will start from the lowest _tokenId_. \
+The`startToken`serves as an analog for the _tokenId_ for the NFT. If no`startToken`is specified, the query will start from the lowest _tokenId_. \
 \
-You can pass in any _tokenId_ from the collection as an offset, or, alternatively, each response will return a`nextCursorKey`that can be used to return the next page of results for the given NFT collection, if there are additional results.
+You can pass in any _tokenId_ from the collection as an offset, or, alternatively, each response will return a `nextToken`that can be used to return the next page of results for the given NFT collection, if there are additional results.
 {% endhint %}
 
 ## Returns
@@ -32,7 +32,7 @@ You can pass in any _tokenId_ from the collection as an offset, or, alternativel
       * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
       * `gateway:` public gateway uri for the raw uri above.
     * `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata blob url in `tokenUri` to parse manually.&#x20;
-* `nextCursorKey` : an offset used for pagination
+* `nextToken` : an offset used for pagination
 
 ## Example
 
@@ -127,7 +127,7 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
     {"id":{"tokenId":"0x80"}},
     {"id":{"tokenId":"0x81"}},
     {"id":{"tokenId":"0x82"}}],
-"nextCursorKey":"0x83"}
+"nextToken":"0x83"}
 ```
 
 

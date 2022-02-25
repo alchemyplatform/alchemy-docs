@@ -107,7 +107,7 @@ Check out the guide below to get a quick setup using:
 
 ## API Endpoints Overview
 
-### getNFTs
+### `getNFTs`
 
 #### Get all NFTs owned by an address
 
@@ -119,7 +119,7 @@ View the **full documentation** for getNFTs here:
 [getnfts.md](getnfts.md)
 {% endcontent-ref %}
 
-### getNFTMetadata
+### `getNFTMetadata`
 
 #### Get metadata for a specific NFT token
 
@@ -131,3 +131,8 @@ View the **full documentation** for getNFTMetadata here:
 [getnftmetadata.md](getnftmetadata.md)
 {% endcontent-ref %}
 
+### Understanding differences between `getNFTs` & `getNFTMetadata`
+
+`getNFTs` is most commonly used when querying all NFTs owned by an address. By default, it will return both NFTs and any associated metadata per asset in the response. Common use cases include dashboards/wallets for viewing NFT assets held by a particular address.\
+\
+`getNFTMetadata` is more specific and is used for querying the metadata of a single NFT. Common use cases include NFT rarity tools and NFT searching applications.
