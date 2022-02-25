@@ -2,7 +2,7 @@
 description: A brief overview on the NFT API's metadata response
 ---
 
-# NFT API FAQ
+# NFT API Metadata
 
 ## Understanding NFT Metadata
 
@@ -17,5 +17,4 @@ Here's a quick overview of a common NFT metadata structure:
 | `background_color` | Background color of the NFT item. Usually must be defined as a six-character hexadecimal.                                                                                                                                                                         |
 | `name`             | Name of the NFT asset.                                                                                                                                                                                                                                            |
 | `description`      | A human-readable description of the NFT asset. (Markdown is supported/rendered on OpenSea and other NFT platforms)                                                                                                                                                |
-| `attributes`       | The traits/attributes/characteristics for each NFT asset.z                                                                                                                                                                                                        |
-
+| `attributes`       | The traits/attributes/characteristics for each NFT asset.                                                                                                                                                                                                         |
