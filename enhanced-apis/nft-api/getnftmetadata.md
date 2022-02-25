@@ -18,18 +18,22 @@ API requests will perform faster if `tokenType` is specified!
 
 ## Returns
 
-* JSON Object containing the following fields and potentially more fields.
-  * `contract`: contract for returned NFT
-    * `address`: address of NFT contract&#x20;
-  * `id`
-    * `tokenId`: Id for NFT (integer)&#x20;
-    * `tokenMetadata`
-      * `tokenType`: "`ERC721`" or "`ERC1155`"
-  * `tokenUri`:
-    * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
-    * `gateway:` public gateway uri for the raw uri above.
-  * `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata blob url in `tokenUri` to parse manually.&#x20;
-  * `timeLastUpdated`: ISO timestamp of the last cache refresh for the information returned in the `metadata` field.
+*   JSON Object containing the following fields and potentially more fields.
+
+    * `contract`: contract for returned NFT
+      * `address`: address of NFT contract&#x20;
+    * `id`
+      * `tokenId`: Id for NFT (integer)&#x20;
+      * `tokenMetadata`
+        * `tokenType`: "`ERC721`" or "`ERC1155`"
+    * `tokenUri`:
+      * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
+      * `gateway:` public gateway uri for the raw uri above.
+    * `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata blob url in `tokenUri` to parse manually.&#x20;
+
+    &#x20;       _**For more info on NFT metadata: check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
+
+    * `timeLastUpdated`: ISO timestamp of the last cache refresh for the information returned in the `metadata` field.
 
 {% hint style="warning" %}
 **Note on `metadata`:**

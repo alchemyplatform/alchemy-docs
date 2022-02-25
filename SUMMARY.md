@@ -191,7 +191,7 @@
 
 ## 📜 Guides
 
-* [NFT API FAQ](guides/nft-api-faq.md)
+* [NFT API FAQ](guides/nft-api-metadata.md)
 * [NFT API Quickstart Guide](guides/nft-api-quickstart-guide.md)
 * [Token API Quickstart Guide](guides/token-api-quickstart-guide.md)
 * [EIP-1559 Resource and Tutorial Hub](guides/eip-1559/README.md)
