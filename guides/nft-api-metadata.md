@@ -1,14 +1,14 @@
 ---
-description: A brief overview on common questions surrounding the NFT API
+description: A brief overview on the NFT API's metadata response
 ---
 
-# NFT API FAQ
+# NFT API Metadata
 
 ## Understanding NFT Metadata
 
 The primary object within the Alchemy NFT API is the **NFT asset**, which is an on-chain item that lives on the blockchain. Within each NFT, there can be many different fields that describe its on-prescence.&#x20;
 
-### General Metadata Structure
+Here's a quick overview of a common NFT metadata structure:
 
 |                    |                                                                                                                                                                                                                                                                   |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17,7 +17,4 @@ The primary object within the Alchemy NFT API is the **NFT asset**, which is an 
 | `background_color` | Background color of the NFT item. Usually must be defined as a six-character hexadecimal.                                                                                                                                                                         |
 | `name`             | Name of the NFT asset.                                                                                                                                                                                                                                            |
 | `description`      | A human-readable description of the NFT asset. (Markdown is supported/rendered on OpenSea and other NFT platforms)                                                                                                                                                |
-| `attributes`       | The traits/attributes/characteristics for each NFT asset.z                                                                                                                                                                                                        |
-
-
-
+| `attributes`       | The traits/attributes/characteristics for each NFT asset.                                                                                                                                                                                                         |
