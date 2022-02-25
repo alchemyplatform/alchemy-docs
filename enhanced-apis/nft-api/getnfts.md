@@ -13,7 +13,7 @@ _This endpoint offers multi-chain support._[ _Check chains currently available_]
 * `contractAddresses[]`:  _**\[arrray of strings]**_ (optional) array of contract addresses to filter the responses with. Max limit 20 contracts.
 * `withMetadata`:  _**\[boolean]**_ `true` by default; if boolean is set to `true` the query will include metadata for each returned token \
   \
-  _**For more info on NFT metadata: check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
+  _**For more info on NFT responses:  check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
 
 {% hint style="success" %}
 **NOTE:**
@@ -42,9 +42,15 @@ We paginate our responses with a default limit of **100 responses**. We've chose
     * `tokenUri`:
       * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
       * `gateway:` public gateway uri for the raw uri above.
-    *   `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually.&#x20;
+    * `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually.
+      * `image`: URL to the NFT asset image. Can be standard URLs pointing to images on conventional servers, [IPFS](https://github.com/ipfs/is-ipfs), or [Arweave](https://www.arweave.org). Most types of images (SVGs, PNGs, JPEGs, etc.) are supported by NFT marketplaces.
+      * `external_url`: The image URL that appears alongside the asset image on NFT platforms.
+      * `background_color`: Background color of the NFT item. Usually must be defined as a six-character hexadecimal.
+      * `name`Name of the NFT asset.
+      * `description`: human-readable description of the NFT asset. (Markdown is supported/rendered on OpenSea and other NFT platforms)
+      *   `attributes`: traits/attributes/characteristics for each NFT asset.
 
-        _**For more info on `metadata` specifics/its structure: check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
+          _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
 * `pageKey` : (optional) UUID for pagination - returned if there are more NFTs to fetch. Max NFTs per page = 100.
 * `totalCount`: total number of NFTs owned by the given address.&#x20;
 * `blockHash`: the canonical head block hash of when your request was received

@@ -18,20 +18,26 @@ API requests will perform faster if `tokenType` is specified!
 
 ## Returns
 
-*   JSON Object containing the following fields and potentially more fields.
+* JSON Object containing the following fields and potentially more fields.
+  * `contract`: contract for returned NFT
+    * `address`: address of NFT contract&#x20;
+  * `id`
+    * `tokenId`: Id for NFT (integer)&#x20;
+    * `tokenMetadata`
+      * `tokenType`: "`ERC721`" or "`ERC1155`"
+  * `tokenUri`:
+    * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
+    * `gateway:` public gateway uri for the raw uri above.
+  *   `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually.
 
-    * `contract`: contract for returned NFT
-      * `address`: address of NFT contract&#x20;
-    * `id`
-      * `tokenId`: Id for NFT (integer)&#x20;
-      * `tokenMetadata`
-        * `tokenType`: "`ERC721`" or "`ERC1155`"
-    * `tokenUri`:
-      * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
-      * `gateway:` public gateway uri for the raw uri above.
-    * `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually.&#x20;
+      * `image`: URL to the NFT asset image. Can be standard URLs pointing to images on conventional servers, [IPFS](https://github.com/ipfs/is-ipfs), or [Arweave](https://www.arweave.org). Most types of images (SVGs, PNGs, JPEGs, etc.) are supported by NFT marketplaces.
+      * `external_url`: The image URL that appears alongside the asset image on NFT platforms.
+      * `background_color`: Background color of the NFT item. Usually must be defined as a six-character hexadecimal.
+      * `name`Name of the NFT asset.
+      * `description`: human-readable description of the NFT asset. (Markdown is supported/rendered on OpenSea and other NFT platforms)
+      * `attributes`: traits/attributes/characteristics for each NFT asset.
 
-    &#x20;       _**For more info on `metadata` specifics/its structure: check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
+      _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
 * `timeLastUpdated`: ISO timestamp of the last cache refresh for the information returned in the `metadata` field.
 
 {% hint style="warning" %}
