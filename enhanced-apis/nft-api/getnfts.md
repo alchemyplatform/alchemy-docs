@@ -18,7 +18,7 @@ _This endpoint offers multi-chain support._[ _Check chains currently available_]
 {% hint style="success" %}
 **NOTE:**
 
-Setting the`withMetadata`parameter to`False` will reduce payload size and may result in a faster API call.
+Setting the`withMetadata`parameter to`false` will reduce payload size and may result in a faster API call.
 {% endhint %}
 
 {% hint style="info" %}
@@ -27,14 +27,37 @@ Setting the`withMetadata`parameter to`False` will reduce payload size and may re
 We paginate our responses with a default limit of **100 responses**. We've chosen this number via thorough testing to determine the best balance of reliability and speed. In the future, you will be able to specify your own default size. If the owner has more than 100 nfts, we'll provide a `pageKey` you can include in the next request to return the remaining responses. This uses cursor based pagination with an idempotent result. This means if you provide one it serves as a static reference to the NFTs owned at time of the first call. This means if an owner acquires or transfers an NFT in between a paginated call, this will **NOT** be reflected.
 {% endhint %}
 
-## Returns
+## Returns (by default)
 
 * `ownedNfts`: list of objects that represent NFTs owned by the address. Max results per response = 100.&#x20;
   * Object schema:
     * `contract`:&#x20;
       * `address`: address of NFT contract
-    * `id`:&#x20;
-      * `token_id`: token ID of given NFT
+    * `id`:
+      * `tokenId`: Id for NFT (integer)&#x20;
+      * `tokenMetadata`
+        * `tokenType`: "`ERC721`" or "`ERC1155`"
+    * `title`: name of the NFT asset
+    * `description`: brief human-readable description
+    * `tokenUri`:
+      * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
+      * `gateway:` public gateway uri for the raw uri above.
+    *   `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually.&#x20;
+
+        _**For more info on `metadata` specifics/its structure: check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
+* `pageKey` : (optional) UUID for pagination - returned if there are more NFTs to fetch. Max NFTs per page = 100.
+* `totalCount`: total number of NFTs owned by the given address.&#x20;
+* `blockHash`: the canonical head block hash of when your request was received
+
+## Returns (`withMetadata` = false)
+
+* `ownedNfts`: list of objects that represent NFTs owned by the address. Max results per response = 100.&#x20;
+  * Object schema:
+    * `contract`:&#x20;
+      * `address`: address of NFT contract
+    * `id`:
+      * `tokenId`: Id for NFT (integer)&#x20;
+    * `balance`: token balance
 * `pageKey` : (optional) UUID for pagination - returned if there are more NFTs to fetch. Max NFTs per page = 100.
 * `totalCount`: total number of NFTs owned by the given address.&#x20;
 * `blockHash`: the canonical head block hash of when your request was received
