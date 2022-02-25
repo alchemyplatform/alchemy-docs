@@ -157,56 +157,144 @@ curl 'https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0xfAE46f94Ee7B2Ac
 
 If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](../../guides/nft-api-quickstart-guide.md)****
 
-### Response
+### Response (by default)
 
 ```json
 {
-    "ownedNfts": [{
-        "contract": {
-            "address": "0x7eef591a6cc0403b9652e98e88476fe1bf31ddeb"
+    "ownedNfts": [
+        {
+            "contract": {
+                "address": "0x0beed7099af7514ccedf642cfea435731176fb02"
+            },
+            "id": {
+                "tokenId": "28",
+                "tokenMetadata": {
+                    "tokenType": "ERC721"
+                }
+            },
+            "title": "DuskBreaker #28",
+            "description": "Breakers have the honor of serving humanity through their work on The Dusk. They are part of a select squad of 10,000 recruits who spend their days exploring a mysterious alien spaceship filled with friends, foes, and otherworldly technology.",
+            "tokenUri": {
+                "raw": "https://duskbreakers.gg/api/breakers/28",
+                "gateway": "https://duskbreakers.gg/api/breakers/28"
+            },
+            "media": [
+                {
+                    "raw": "https://duskbreakers.gg/breaker_images/28.png",
+                    "gateway": "https://duskbreakers.gg/breaker_images/28.png"
+                }
+            ],
+            "metadata": {
+                "name": "DuskBreaker #28",
+                "description": "Breakers have the honor of serving humanity through their work on The Dusk. They are part of a select squad of 10,000 recruits who spend their days exploring a mysterious alien spaceship filled with friends, foes, and otherworldly technology.",
+                "image": "https://duskbreakers.gg/breaker_images/28.png",
+                "external_url": "https://duskbreakers.gg",
+                "attributes": [
+                    {
+                        "value": "Locust Rider Armor (Red)",
+                        "trait_type": "Clothes"
+                    },
+                    ......
+                    {
+                        "value": "Big Smile (Purple)",
+                        "trait_type": "Mouth"
+                    },
+                    {
+                        "value": "Yellow",
+                        "trait_type": "Background"
+                    }
+                ]
+            },
+            "timeLastUpdated": "2022-02-16T22:52:54.719Z"
         },
-        "id": {
-            "tokenId": "0x2a"
+        ......
+        {
+            "contract": {
+                "address": "0x97597002980134bea46250aa0510c9b90d87a587"
+            },
+            "id": {
+                "tokenId": "5527",
+                "tokenMetadata": {
+                    "tokenType": "ERC721"
+                }
+            },
+            "title": "Runner #5527",
+            "description": "Chain Runners are Mega City renegades 100% generated on chain.",
+            "tokenUri": {
+                "raw": "https://api.chainrunners.xyz/tokens/metadata/5527?dna=73247164192459371523281785218958151913554625578441142916970699984935810987041",
+                "gateway": "https://api.chainrunners.xyz/tokens/metadata/5527?dna=73247164192459371523281785218958151913554625578441142916970699984935810987041"
+            },
+            "media": [
+                {
+                    "raw": "https://img.chainrunners.xyz/api/v1/tokens/png/5527",
+                    "gateway": "https://img.chainrunners.xyz/api/v1/tokens/png/5527"
+                }
+            ],
+            "metadata": {
+                "name": "Runner #5527",
+                "description": "Chain Runners are Mega City renegades 100% generated on chain.",
+                "image": "https://img.chainrunners.xyz/api/v1/tokens/png/5527",
+                "attributes": [
+                    {
+                        "value": "Purple Green Diag",
+                        "trait_type": "Background"
+                    },
+                    {
+                        "value": "Human",
+                        "trait_type": "Race"
+                    },
+                    ....
+                    {
+                        "value": "Cig",
+                        "trait_type": "Mouth Accessory"
+                    }
+                ]
+            },
+            "timeLastUpdated": "2022-02-18T00:42:04.401Z"
         }
-    }, {
-        "contract": {
-            "address": "0x9abb7bddc43fa67c76a62d8c016513827f59be1b"
+    ],
+    "totalCount": 6,
+    "blockHash": "0xeb2d26af5b6175344a14091777535a2cb21c681665a734a8285f889981987630"
+}
+
+```
+
+### Response (`withMetadata` = false)
+
+```json
+{
+    "ownedNfts": [
+        {
+            "contract": {
+                "address": "0x0beed7099af7514ccedf642cfea435731176fb02"
+            },
+            "id": {
+                "tokenId": "0x000000000000000000000000000000000000000000000000000000000000001c"
+            },
         },
-        "id": {
-            "tokenId": "0x0000000000000000000000000000000000000000000000000000000000000baa"
-        }
-    }, {
-        "contract": {
-            "address": "0x495f947276749ce646f68ac8c248420045cb7b5e"
+        {
+            "contract": {
+                "address": "0x0beed7099af7514ccedf642cfea435731176fb02"
+            },
+            "id": {
+                "tokenId": "0x000000000000000000000000000000000000000000000000000000000000001d"
+            },
+            "balance": "1"
         },
-        "id": {
-            "tokenId": "0x7b1507011c173ea0b6365f54131e1fefa1562032000000000000850000000001"
+        ......
+        {
+            "contract": {
+                "address": "0x97597002980134bea46250aa0510c9b90d87a587"
+            },
+            "id": {
+                "tokenId": "0x0000000000000000000000000000000000000000000000000000000000001597"
+            },
+            "balance": "1"
         }
-    }, {
-        "contract": {
-            "address": "0x97597002980134bea46250aa0510c9b90d87a587"
-        },
-        "id": {
-            "tokenId": "0x0000000000000000000000000000000000000000000000000000000000001597"
-        }
-    }, {
-        "contract": {
-            "address": "0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85"
-        },
-        "id": {
-            "tokenId": "0x80d3ddec2574b25ee9237c0ca14095c163b335a4b48ffcc717ad882954eeff97"
-        }
-    }, {
-        "contract": {
-            "address": "0x3f4a885ed8d9cdf10f3349357e3b243f3695b24a"
-        },
-        "id": {
-            "tokenId": "0x0000000000000000000000000000000000000000000000000000000000001527"
-        }
-    }],
-    "totalCount": 11,
-    "blockHash": "0x94d5ab52b8a6571733f6b183ef89f31573b82a4e78f8129b0ce90ef0beaf208b"
-} 
+    ],
+    "totalCount": 6,
+    "blockHash": "0xf9a2a4e15116680e22b160c734529f62d89d54cde0759daf5135672fad0ecebc"
+}
 ```
 
 ### Request (with contract filtering)
@@ -387,7 +475,6 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
       "id": {
         "tokenId": "0x0000000000000000000000000000000000000000000000000000000000000277"
       },
-      "balance": "1"
     }
   ],
   "totalCount": 1,
