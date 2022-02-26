@@ -12,6 +12,10 @@ For more information on Polygon's API check out the [official documentation](htt
 **NOTE:** Not all standard Ethereum methods are supported by Polygon. Likewise, not all Polygon methods are currently supported on Alchemy. For the full list of supported Polygon methods, check out the [official documentation](https://docs.matic.network).
 {% endhint %}
 
+{% hint style="warning" %}
+**NOTE**: Due to network constraints, transactions on Polygon Mainnet must be submitted with a minimum gasPrice of 30 gwei.
+{% endhint %}
+
 ## Mainnet vs. Testnet
 
 There are two networks on Polygon: Mainnet and Mumbai testnet. The endpoints are as follows:
@@ -1403,6 +1407,10 @@ Creates a new message call transaction or a contract creation for signed transac
 
 {% hint style="warning" %}
 Alchemy does not store keys, so transactions sent via Alchemy must be signed ahead of time using another provider like [ethers](https://docs.ethers.io/v5/api/signer/) (via `eth_signTransaction`) and sent with `eth_sendRawTransaction`.
+{% endhint %}
+
+{% hint style="warning" %}
+**NOTE**: Due to network constraints, transactions on Polygon Mainnet must be submitted with a minimum gasPrice of 30 gwei.
 {% endhint %}
 
 #### Parameters
