@@ -6,6 +6,10 @@ description: >-
 
 # eth\_sendRawTransaction
 
+{% hint style="warning" %}
+**NOTE**: Due to network constraints, transactions on Polygon Mainnet must be submitted with a minimum gasPrice of 30 gwei.
+{% endhint %}
+
 ## Parameters
 
 `DATA`, The signed transaction data.
