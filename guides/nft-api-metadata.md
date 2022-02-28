@@ -1,14 +1,14 @@
 ---
-description: A brief overview on the NFT API's metadata response
+description: A brief overview on common questions surrounding the NFT API
 ---
 
-# NFT API Metadata
+# NFT API FAQ
 
 ## Understanding NFT Metadata
 
 The primary object within the Alchemy NFT API is the **NFT asset**, which is an on-chain item that lives on the blockchain. Within each NFT, there can be many different fields that describe its on-prescence.&#x20;
 
-Here's a quick overview of a common NFT metadata structure:
+### General Metadata Structure
 
 |                    |                                                                                                                                                                                                                                                                   |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18,3 +18,10 @@ Here's a quick overview of a common NFT metadata structure:
 | `name`             | Name of the NFT asset.                                                                                                                                                                                                                                            |
 | `description`      | A human-readable description of the NFT asset. (Markdown is supported/rendered on OpenSea and other NFT platforms)                                                                                                                                                |
 | `attributes`       | The traits/attributes/characteristics for each NFT asset.                                                                                                                                                                                                         |
+
+{% hint style="info" %}
+Not all metadata fields may be filled out by the NFT creator. NFTs can be published on-chain without these fields and still conform to the ERC721/ERC1155 standards.
+{% endhint %}
+
+
+

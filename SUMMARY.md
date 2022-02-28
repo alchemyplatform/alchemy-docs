@@ -20,7 +20,7 @@
 * [NFT API](enhanced-apis/nft-api/README.md)
   * [getNFTs](enhanced-apis/nft-api/getnfts.md)
   * [getNFTMetadata](enhanced-apis/nft-api/getnftmetadata.md)
-  * [getNFTsForCollection](enhanced-apis/nft-api/getnftsforcollection.md)
+  * [getNFTsForCollection (BETA)](enhanced-apis/nft-api/getnftsforcollection-beta.md)
 * [Transfers API (Tx History)](enhanced-apis/transfers-api.md)
 * [Transaction Receipts API](enhanced-apis/transaction-receipts-api.md)
 * [Token API](enhanced-apis/token-api.md)
