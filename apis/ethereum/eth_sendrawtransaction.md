@@ -65,4 +65,15 @@ Result
   "jsonrpc": "2.0",
   "result": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331"
 }
+
+
 ```
+
+{% hint style="info" %}
+**Common Error Code:**\
+****`-32000`&#x20;
+
+"transaction underpriced"
+
+* transaction was sent with too low gas. Re-send the transaction with higher gas
+{% endhint %}
