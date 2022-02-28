@@ -118,6 +118,12 @@ Additionally, we do not include any **internal transfers with call type`delegate
     * `address`: contract address (hex string). `null` if `external` or `internal` transfer
     * `decimal`: contract decimal (hex string). `null` if not defined in the contract and not available from other sources.
 
+{% hint style="info" %}
+### **How to get the timestamp for a transaction**
+
+A transaction object will have a block number associated with it, the block number is Ethereum's measure of time, however, if you want a standard timestamp you can easily get that by grabbing the `blockNum` result and making a call to [`eth_getBlockByNumber`](../apis/ethereum/#eth\_getblockbynumber). Here is an [example request](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getBlockByNumber%22%2C%22paramValues%22%3A%5B%22latest%22%2Cfalse%5D%7D).&#x20;
+{% endhint %}
+
 ### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22fromBlock%22%3A%220xA97AB8%22%2C%22toBlock%22%3A%220xA97CAC%22%2C%22contractAddresses%22%3A%22%5B%5C%220x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9%5C%22%5D%22%2C%22maxCount%22%3A%225%22%2C%22fromAddress%22%3A%220x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE%22%2C%22excludeZeroValue%22%3Atrue%2C%22category%22%3A%5B%22external%22%2C%22token%22%5D%7D%5D%7D)
 
 #### Request
