@@ -76,12 +76,12 @@ import axios from 'axios';
 const apiKey = "demo";
 const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTsForCollection`;
 const contractAddr = "0x61fce80d72363b731425c3a2a46a1a5fed9814b2";
-const cursorKey = "0x1ea2";
+const startToken = "0x1ea2";
 const withMetadata = "false";
 
 var config = {
   method: 'get',
-  url: `${baseURL}?contractAddress=${contractAddr}&cursorKey=${tokenId}&withMetadata=${withMetadata}`,
+  url: `${baseURL}?contractAddress=${contractAddr}&startToken=${startToken}&withMetadata=${withMetadata}`,
   headers: { }
 };
 
