@@ -60,7 +60,7 @@ We paginate our responses with a default limit of **100 responses**. We've chose
 
 {% hint style="info" %}
 **NOTE:**\
-****To parse and view an NFT's media asset, use either the `gateway` URI within `media` objector the`external_url`within `metadata` object.
+****To parse and view an NFT's media asset, use either the `gateway` URI within `media` objector the`external_url`within `metadata`object. [Visit the FAQ](../../guides/nft-api-metadata.md#gateway-vs.-raw-uris) for more info on IPFS gateways.
 {% endhint %}
 
 ## Returns (`withMetadata` = false)
