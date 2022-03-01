@@ -14,20 +14,17 @@ To learn more about how webhooks work, check out [this guide](using-notify.md).&
 
 ## Types of Webhooks <a href="#types-of-wehooks" id="types-of-wehooks"></a>
 
-There are two types of webhooks that are supported on Layer 2 chains: mined transactions and dropped transactions.&#x20;
+There are three types of webhooks that are supported on Layer 2 chains: mined transactions, dropped transactions and address activity.&#x20;
 
 ### Webhook Format&#x20;
 
-Both webhook types have the same format:
+All webhook types have the same format:
 
 * `webhookId`: Unique id for the webhook that this event was sent to&#x20;
 * `id`: Unique id of the event itself&#x20;
 * `createdAt`: Timestamp that the event was created
-* `type`: Type of webhook event, can be `"MINED_TRANSACTION"` or `"DROPPED_TRANSACTION"`
-* `event`: Object - event object, see mined transaction object and dropped transaction object.
-  * `appId`: Unique ID for Alchemy app configured with this webhook
-  * `network`: Network for the event, can be `ARB_MAINNET`, `ARB_RINKEBY`, `MATIC_MAINNET`, `MATIC_MUMBAI`, `OPT_MAINNET`, `OPT_KOVAN`
-  * `transaction`: transaction object
+* `type`: Type of webhook event, can be `"MINED_TRANSACTION"`, `"DROPPED_TRANSACTION"`, or `"ADDRESS_ACTIVITY"`
+* `event`: Object - event object, see mined transaction object, dropped transaction object and address activity object below
 
 ```
 {
@@ -42,6 +39,14 @@ Both webhook types have the same format:
 ### 1. Mined Transactions <a href="#mined-transactions" id="mined-transactions"></a>
 
 The Mined Transaction Webhook is used to notify your app anytime a transaction gets successfully mined that was sent through your Alchemy API key. This is extremely useful if you want to notify customers the moment their transactions goes through.
+
+**Mined Transaction Event Object:**
+
+`event`: Object - mined transaction object
+
+* `appId`: Unique ID for Alchemy app that sent the transaction and is configured to this webhook
+* `network`: Network for the event, can be `ARB_MAINNET`, `ARB_RINKEBY`, `MATIC_MAINNET`, `MATIC_MUMBAI`, `OPT_MAINNET`, `OPT_KOVAN`
+* `transaction`: transaction object (same output as calling eth\_getTransactionByHash)
 
 #### Example Response
 
@@ -79,6 +84,14 @@ The Mined Transaction Webhook is used to notify your app anytime a transaction g
 
 The Dropped Transactions Webhook is used to notify your app anytime a transaction gets dropped that was sent through your Alchemy API key.
 
+**Dropped Transaction Event Object:**
+
+`event`: Object - dropped transaction object
+
+* `appId`: Unique ID for Alchemy app that sent the transaction and is configured to this webhook
+* `network`: Network for the event, can be `ARB_MAINNET`, `ARB_RINKEBY`, `MATIC_MAINNET`, `MATIC_MUMBAI`, `OPT_MAINNET`, `OPT_KOVAN`
+* `transaction`: transaction object  (same output as calling eth\_getTransactionByHash)
+
 **Example Response**
 
 ```
@@ -107,6 +120,99 @@ The Dropped Transactions Webhook is used to notify your app anytime a transactio
     "value": "0x1bc16d674ec80000"
   }
  } 
+}
+```
+
+### 3. Address Activity
+
+The Address Activity Webhook allows you to track all ETH, ERC20 and ERC721 external and internal [transfer events](eth\_getlogs.md#what-are-transfers) for as many Ethereum addresses as you'd like (regardless if the transactions were sent through Alchemy or not). This provides your app with real-time state changes when an address sends or receives tokens.
+
+{% hint style="info" %}
+If you are looking for historical activity, check out the [Transfers API](../enhanced-apis/transfers-api.md)!
+{% endhint %}
+
+#### Types of Transfers
+
+There are three main types of transfers that are captured when receiving an address activity response.
+
+**1. External Eth Transfers**
+
+These are top level Ethereum transactions that occur with a from address being an external (user created) address. External addresses have private keys and are accessed by users.
+
+**2. Token Transfers (ERC20, ERC721, ERC1155)**
+
+These are event logs for any ERC20, ERC721, and ERC1155 transfers.
+
+**3. Internal Eth Transfers**
+
+These are transfers that occur where the `fromAddress` is an internal (smart contract) address. (ex: a smart contract calling another smart contract or smart contract calling another external address).
+
+{% hint style="warning" %}
+**NOTE:** Internal transfers are not yet available for `ARB_MAINNET`, `ARB_RINKEBY`, `MATIC_MAINNET`, `MATIC_MUMBAI`, `OPT_MAINNET`, `OPT_KOVAN`
+{% endhint %}
+
+{% hint style="info" %}
+**NOTE:** For efficiency, we do not return internal transfers with 0 value as they don't provide useful information without digging deeper into the internal transaction itself. If you are interested in these type of events see our [Trace API](../enhanced-apis/trace-api.md).
+
+Additionally, we do not include any internal transfers with call type`delegatecall` because although they have a \_value \_associated with them they do not actually _transfer_ that value (see[ Appendix H of the Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) if you're curious). We also do not include miner rewards as an internal transfer.
+{% endhint %}
+
+**Address Activity Event Object:**
+
+`event`: Object - address activity object
+
+* `network`: Network for the event, can be `ARB_MAINNET`, `ARB_RINKEBY`, `MATIC_MAINNET`, `MATIC_MUMBAI`, `OPT_MAINNET`, `OPT_KOVAN`
+* `activity`: List of transfers whose from or to address matches the address configured in the webhook
+  * `fromAddress`: from address of transfer (hex string).
+  * `toAddress`: to address of transfer (hex string). `null` if contract creation.
+  * `blockNum`: the block where the transfer occurred (hex string).
+  * `hash`: transaction hash (hex string).
+  * `category`: `external`, `internal`, or `token`- label for the transfer
+  * `value`: converted asset transfer value as a number (raw value divided by contract decimal). `null` if erc721 transfer or contract decimal not available.
+  * `asset`: `ETH` or the token's symbol. `null` if not defined in the contract and not available from other sources.
+  * `erc721TokenId`: raw erc721 token id (hex string). `null` if not an erc721 token transfer
+  * `erc1155Metadata`: A list of objects containing the ERC1155 `tokenId` (hex string) and `value` (hex string). `null` if not an ERC1155 transfer
+  * `rawContract`
+    * `rawValue`: raw transfer value (hex string). `null` if erc721 transfer
+    * `address`: contract address (hex string). `null` if `external` or `internal` transfer
+    * `decimal`: contract decimal (hex string). `null` if not defined in the contract and not available from other sources.
+  * `typeTraceAddress`: the type of internal transfer (`call`, `staticcall`, `create`, `suicide`) followed by the trace address (ex. `call_0_1`).`null` if not internal transfer. (note you can use this as a unique id for internal transfers since they will have the same parent hash)
+  * `log` : log emitted for the `token` transfer event. `null` if `external` or `internal` transfer
+
+**Example Response**
+
+```
+{
+  "webhookId": "wh_octjglnywaupz6th",
+  "id": "whevt_ogrc5v64myey69ux",
+  "createdAt": "2022-02-28T17:48:53.306Z",
+  "type": "ADDRESS_ACTIVITY",
+  "event": {
+    "network": "MATIC_MAINNET",
+    "activity": [
+      {
+        "category": "token",
+        "fromAddress": "0x59479de9d374bdbcba6c791e5d036591976fe422",
+        "toAddress": "0x59479de9d374bdbcba6c791e5d036591976fe425",
+        "erc721TokenId": "0x1",
+        "rawContract": {
+          "rawValue": "0x",
+          "address": "0x93C46aA4DdfD0413d95D0eF3c478982997cE9861"
+        },
+        "log": {
+          "removed": false,
+          "address": "0x93C46aA4DdfD0413d95D0eF3c478982997cE9861",
+          "data": "0x",
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x00000000000000000000000059479de9d374bdbcba6c791e5d036591976fe422",
+            "0x00000000000000000000000059479de9d374bdbcba6c791e5d036591976fe425",
+            "0x0000000000000000000000000000000000000000000000000000000000000001"
+          ]
+        }
+      }
+    ]
+  }
 }
 ```
 
