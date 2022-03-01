@@ -44,7 +44,7 @@ We paginate our responses with a default limit of **100 responses**. We've chose
       * `gateway:` public gateway uri for the raw uri above.
     * `media`:
       * `raw:` uri representing the location of the NFT media asset. This is a backup for you to parse when the `metadata` field is not automatically populated.
-      * `gateway:` public gateway uri for the raw asset uri above.&#x20;
+      * `gateway:` public gateway uri for the raw asset above.&#x20;
     * `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually.
       * `image`: URL to the NFT asset image. Can be standard URLs pointing to images on conventional servers, [IPFS](https://github.com/ipfs/is-ipfs), or [Arweave](https://www.arweave.org). Most types of images (SVGs, PNGs, JPEGs, etc.) are supported by NFT marketplaces.
       * `external_url`: The image URL that appears alongside the asset image on NFT platforms.
@@ -57,6 +57,11 @@ We paginate our responses with a default limit of **100 responses**. We've chose
 * `pageKey` : (optional) UUID for pagination - returned if there are more NFTs to fetch. Max NFTs per page = 100.
 * `totalCount`: total number of NFTs owned by the given address.&#x20;
 * `blockHash`: the canonical head block hash of when your request was received
+
+{% hint style="info" %}
+**NOTE:**\
+****To parse and view an NFT's media asset, use either the `gateway` URI within `media` objector the`external_url`within `metadata` object.
+{% endhint %}
 
 ## Returns (`withMetadata` = false)
 
@@ -72,7 +77,7 @@ We paginate our responses with a default limit of **100 responses**. We've chose
 * `blockHash`: the canonical head block hash of when your request was received
 
 {% hint style="info" %}
-NOTE: \
+**NOTE:** \
 We are working to support edge-case NFTs which don't conform to ERC721 or 1155 standards. As such, the `totalCount` and `ownedNfts`reported may not reflect certain NFTs that we do not current support.  If you notice an NFT that our API does not currently support, please [submit a feature request](https://roadmap.alchemy.com/b/feature-requests) or reach out to us over [Discord](https://www.alchemy.com/discord).
 {% endhint %}
 

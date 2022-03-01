@@ -28,6 +28,9 @@ API requests will perform faster if `tokenType` is specified!
   * `tokenUri`:
     * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
     * `gateway:` public gateway uri for the raw uri above.
+  * `media`:
+    * `raw`: uri representing the location of the NFT media asset. This is a backup for you to parse when the `metadata` field is not automatically populated.
+    * `gateway`: public gateway uri for the raw asset above.&#x20;
   *   `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually.
 
       * `image`: URL to the NFT asset image. Can be standard URLs pointing to images on conventional servers, [IPFS](https://github.com/ipfs/is-ipfs), or [Arweave](https://www.arweave.org). Most types of images (SVGs, PNGs, JPEGs, etc.) are supported by NFT marketplaces.
@@ -40,10 +43,11 @@ API requests will perform faster if `tokenType` is specified!
       _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
 * `timeLastUpdated`: ISO timestamp of the last cache refresh for the information returned in the `metadata` field.
 
-{% hint style="warning" %}
-**Note on `metadata`:**
-
-Some NFT contracts may not have metadata specified. You may need to parse the response on a case-by-case basis. &#x20;
+{% hint style="info" %}
+**NOTE:**\
+****To parse and view an NFT's media asset, use either the `gateway` URI within `media` objector the`external_url`within `metadata` object.\
+\
+Select NFT contracts may not have metadata specified by its creator. You may need to parse the response on a case-by-case basis. &#x20;
 {% endhint %}
 
 ## Example
