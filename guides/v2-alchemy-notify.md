@@ -90,7 +90,7 @@ The Dropped Transactions Webhook is used to notify your app anytime a transactio
 
 * `appId`: Unique ID for Alchemy app that sent the transaction and is configured to this webhook
 * `network`: Network for the event, can be `ARB_MAINNET`, `ARB_RINKEBY`, `MATIC_MAINNET`, `MATIC_MUMBAI`, `OPT_MAINNET`, `OPT_KOVAN`
-* `transaction`: transaction object  (same output as calling eth\_getTransactionByHash)
+* `transaction`: transaction object  (same output as calling [_**eth\_getTransactionByHash**_](../apis/ethereum/eth\_gettransactionbyhash.md#returns))
 
 **Example Response**
 

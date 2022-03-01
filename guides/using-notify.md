@@ -34,7 +34,7 @@ The difference between webhooks and WebSockets is that webhooks can only facilit
 Alchemy offers four different types of webhooks each described below.
 
 {% hint style="danger" %}
-**NOTE:** The examples below only apply to V1 Alchemy Notify used on Ethereum. For V2 Alchemy Notify on Layer 2s (Polygon, Arbritum & Optimism), check out the [**V2 Alchemy Notify Doc**](v2-alchemy-notify.md).
+**NOTE:** The examples below only apply to V1 Alchemy Notify used on Ethereum. For V2 Alchemy Notify on Layer 2s, check out the [V2 Alchemy Notify Doc](v2-alchemy-notify.md).
 {% endhint %}
 
 ### 1. Mined Transactions <a href="#mined-transactions" id="mined-transactions"></a>
