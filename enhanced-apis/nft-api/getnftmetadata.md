@@ -45,7 +45,7 @@ API requests will perform faster if `tokenType` is specified!
 
 {% hint style="info" %}
 **NOTE:**\
-****To parse and view an NFT's media asset, use either the `gateway` URI within `media` objector the`external_url`within `metadata` object.\
+****To parse and view an NFT's media asset, use either the `gateway`URI within the`media` objector the`external_url`within `metadata`object. [Visit the FAQ](../../guides/nft-api-metadata.md#gateway-vs.-raw-uris) for more info on IPFS gateways.\
 \
 Select NFT contracts may not have metadata specified by its creator. You may need to parse the response on a case-by-case basis. &#x20;
 {% endhint %}
