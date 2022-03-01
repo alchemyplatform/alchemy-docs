@@ -2,7 +2,7 @@
 description: Gets all NFTs for a given NFT contract
 ---
 
-# getNFTsForCollection
+# getNFTsForCollection (BETA)
 
 ## Parameters
 
@@ -56,9 +56,9 @@ import fetch from 'node-fetch';
   const apiKey = "demo"
   const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTsForCollection`;
   const contractAddr = "0x61fce80d72363b731425c3a2a46a1a5fed9814b2";
-  const cursorKey = "0x1ea2";
+  const tokenId = "0x1ea2";
   const withMetadata = "false";
-  const fetchURL = `${baseURL}?contractAddress=${contractAddr}&cursorKey=${tokenId}&withMetadata=${withMetadata}`;
+  const fetchURL = `${baseURL}?contractAddress=${contractAddr}&startToken=${tokenId}&withMetadata=${withMetadata}`;
 
   fetch(fetchURL, requestOptions)
     .then(response => response.json())
