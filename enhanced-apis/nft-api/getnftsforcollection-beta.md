@@ -93,7 +93,7 @@ axios(config)
 
 {% tab title="Postman" %}
 ```http
-URL: https://eth-mainnet.g.alchemy.com/v2/demo/getNFTsForCollection/?contractAddress=0x61fce80d72363b731425c3a2a46a1a5fed9814b2&cursorKey=0x1ea2&withMetadata=false
+URL: https://eth-mainnet.g.alchemy.com/v2/demo/getNFTsForCollection/?contractAddress=0x61fce80d72363b731425c3a2a46a1a5fed9814b2&startToken=0x1ea2&withMetadata=false
 RequestType: GET
 ```
 {% endtab %}
