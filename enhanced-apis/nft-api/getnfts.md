@@ -11,7 +11,7 @@ _This endpoint offers multi-chain support._[ _Check chains currently available_]
 * `owner`: _**\[string]**_ address for NFT owner (can be in _**ENS format**_!)
 * `pageKey`: _**\[string]**_ (optional) UUID for pagination. If more results are available, a UUID `pageKey` will be returned in the response. Pass that UUID into `pageKey` to fetch the next 100 NFTs.     _**NOTE:** pageKeys expire after 10 minutes._&#x20;
 * `contractAddresses[]`:  _**\[arrray of strings]**_ (optional) array of contract addresses to filter the responses with. Max limit 20 contracts.
-* `withMetadata`:  _**\[boolean]**_ `true` by default; if boolean is set to `true` the query will include metadata for each returned token \
+* `withMetadata`:  _**\[boolean]**_ `true` by default (optional); if boolean is set to `true` the query will include metadata for each returned token \
   \
   _**For more info on NFT responses:  check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
 
@@ -42,6 +42,9 @@ We paginate our responses with a default limit of **100 responses**. We've chose
     * `tokenUri`:
       * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
       * `gateway:` public gateway uri for the raw uri above.
+    * `media`:
+      * `raw:` uri representing the location of the NFT media asset. This is a backup for you to parse when the `metadata` field is not automatically populated.
+      * `gateway:` public gateway uri for the raw asset uri above.&#x20;
     * `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually.
       * `image`: URL to the NFT asset image. Can be standard URLs pointing to images on conventional servers, [IPFS](https://github.com/ipfs/is-ipfs), or [Arweave](https://www.arweave.org). Most types of images (SVGs, PNGs, JPEGs, etc.) are supported by NFT marketplaces.
       * `external_url`: The image URL that appears alongside the asset image on NFT platforms.
