@@ -23,5 +23,11 @@ The primary object within the Alchemy NFT API is the **NFT asset**, which is an 
 Not all metadata fields may be filled out by the NFT creator. NFTs can be published on-chain without these fields and still conform to the ERC721/ERC1155 standards.
 {% endhint %}
 
+## Gateway vs. Raw URIs
 
+Gateways are an important part of NFT infrastructure. Behind the scenes, they allow users to access IPFS content without running an IPFS node. With a gateway provider, a third-party service downloads data off of IPFS nodes and then serves it whenever requested. \
+\
+NFT creators/developers can also choose to "pin" their content, effectively caching and storing their content on gateway nodes/servers. This ensures that the content is always available online.
+
+While NFT gateway and raw URIs tend to be pointed at the same links, gateway URIs generally offer better performance.
 
