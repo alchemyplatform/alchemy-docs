@@ -130,7 +130,7 @@ async function main() {
      'to': '0x31B98D14007bDEe637298086988A0bBd31184523', // faucet address to return eth
      'value': 100,
      'gas': 30000,
-     'maxFeePerGas': 1000000108,
+     'maxPriorityFeePerGas': 1000000108,
      'nonce': nonce,
      // optional data field to send message or execute smart contract
     };
