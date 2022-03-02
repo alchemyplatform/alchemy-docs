@@ -70,7 +70,7 @@ For JSON-RPC specific errors, Alchemy returns a `200` with the JSON-RPC error in
 
 * Gateway timeouts (usually from nodes). Clients should retry the request.
 
-"transaction underpriced"
+"`transaction underpriced`"
 
 * Transaction was sent with too low gas. Re-send the transaction with higher gas!
 {% endhint %}
