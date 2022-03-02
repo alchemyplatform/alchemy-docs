@@ -560,6 +560,17 @@ Gas prices typically fall in a range, where a lower gas price means that the tra
 }
 ```
 
+## Webhook Security
+
+### Webhook IP Addresses
+
+As an added security measure, you can ensure your webhook notification originated from Alchemy by verifying that the event originated from one of the following IP addresses:
+
+```
+54.236.136.17
+34.237.24.169
+```
+
 For instructions on how to set up webhooks from the dashboard check out the page below:
 
 {% content-ref url="../guides/using-notify.md" %}
