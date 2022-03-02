@@ -278,3 +278,12 @@ return (signature == digest);
 ```
 {% endtab %}
 {% endtabs %}
+
+## Webhook IP Addresses
+
+As an added security measure, you can ensure your webhook notification originated from Alchemy by verifying that the event originated from one of the following IP addresses:
+
+```
+54.236.136.17
+34.237.24.169
+```
