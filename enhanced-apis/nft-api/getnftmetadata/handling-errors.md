@@ -37,7 +37,10 @@ The second most common reason for a "token does not exist" error is that the tok
 
 ### Malformed token uri
 
-> Example: [https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbfde6246df72d3ca86419628cac46a9d2b60393c\&tokenId=14506](https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbfde6246df72d3ca86419628cac46a9d2b60393c\&tokenId=14506)
+> [Composer Example ](https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbfde6246df72d3ca86419628cac46a9d2b60393c\&tokenId=14506)
+>
+> Contract Address: 0xbfde6246df72d3ca86419628cac46a9d2b60393c\
+> Token ID: 14506
 
 #### Why this happens
 
