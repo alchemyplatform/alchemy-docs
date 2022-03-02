@@ -127,8 +127,8 @@ The `getNFTMetadata` method takes in an NFT contract address and token ID as inp
 
 View the **full documentation** for getNFTMetadata here:
 
-{% content-ref url="getnftmetadata.md" %}
-[getnftmetadata.md](getnftmetadata.md)
+{% content-ref url="getnftmetadata/" %}
+[getnftmetadata](getnftmetadata/)
 {% endcontent-ref %}
 
 ### Understanding differences between `getNFTs` & `getNFTMetadata`

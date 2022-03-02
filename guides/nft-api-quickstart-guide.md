@@ -384,8 +384,8 @@ Your output should look like the following:
 
 For full documentation on the NFT API `getNFTMetadata` method, check out the docs:
 
-{% content-ref url="../enhanced-apis/nft-api/getnftmetadata.md" %}
-[getnftmetadata.md](../enhanced-apis/nft-api/getnftmetadata.md)
+{% content-ref url="../enhanced-apis/nft-api/getnftmetadata/" %}
+[getnftmetadata](../enhanced-apis/nft-api/getnftmetadata/)
 {% endcontent-ref %}
 
 ## Javascript Axios
@@ -585,6 +585,6 @@ Your output should look like the following:
 
 For full documentation on the available NFT API method  `getNFTMetadata` , check out the docs:
 
-{% content-ref url="../enhanced-apis/nft-api/getnftmetadata.md" %}
-[getnftmetadata.md](../enhanced-apis/nft-api/getnftmetadata.md)
+{% content-ref url="../enhanced-apis/nft-api/getnftmetadata/" %}
+[getnftmetadata](../enhanced-apis/nft-api/getnftmetadata/)
 {% endcontent-ref %}

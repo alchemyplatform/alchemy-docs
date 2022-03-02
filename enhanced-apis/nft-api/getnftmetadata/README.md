@@ -40,12 +40,13 @@ API requests will perform faster if `tokenType` is specified!
       * `description`: human-readable description of the NFT asset. (Markdown is supported/rendered on OpenSea and other NFT platforms)
       * `attributes`: traits/attributes/characteristics for each NFT asset.
 
-      _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
-* `timeLastUpdated`: ISO timestamp of the last cache refresh for the information returned in the `metadata` field.
+      _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](../../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
+  * `timeLastUpdated`: ISO timestamp of the last cache refresh for the information returned in the `metadata` field.
+  * `error`: A string describing a particular reason that we were unable to fetch complete metadata for the NFT. See the [Handling Errors](handling-errors.md) section for a complete list of potential errors.
 
 {% hint style="info" %}
 **NOTE:**\
-****To parse and view an NFT's media asset, use either the `gateway`URI within the`media` objector the`external_url`within `metadata`object. [Visit the FAQ](../../guides/nft-api-metadata.md#gateway-vs.-raw-uris) for more info on IPFS gateways.\
+****To parse and view an NFT's media asset, use either the `gateway`URI within the`media` objector the`external_url`within `metadata`object. [Visit the FAQ](../../../guides/nft-api-metadata.md#gateway-vs.-raw-uris) for more info on IPFS gateways.\
 \
 Select NFT contracts may not have metadata specified by its creator. You may need to parse the response on a case-by-case basis. &#x20;
 {% endhint %}
@@ -146,7 +147,7 @@ curl 'https://eth-mainnet.alchemyapi.io/v2/demo/getNFTMetadata?contractAddress=0
 {% endtab %}
 {% endtabs %}
 
-If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](../../guides/nft-api-quickstart-guide.md)****
+If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](../../../guides/nft-api-quickstart-guide.md)****
 
 ### Response
 

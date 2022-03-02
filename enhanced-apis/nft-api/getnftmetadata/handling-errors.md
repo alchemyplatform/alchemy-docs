@@ -1,0 +1,80 @@
+---
+description: Understanding NFT API error codes
+---
+
+# Handling errors
+
+While we work to ensure that every NFT's metadata is returned when requested from the API, there are various reasons why we may not able to fulfill your request.&#x20;
+
+{% hint style="info" %}
+If present, errors in metadata fulfillment will appear in the `error` field of the response payload.&#x20;
+{% endhint %}
+
+Here are the various errors you can receive and what they mean.
+
+### "Token does not exist"
+
+> Example: [https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0x60e4d786628fea6478f785a6d7e704777c86a7c6\&tokenId=2079999](https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0x60e4d786628fea6478f785a6d7e704777c86a7c6\&tokenId=2079999)
+
+#### Why this happens
+
+In order to fetch the metadata for a given NFT, we call one of two potential methods on the contract with the token ID as the input. For ERC721 contracts we call the `tokenURI` method and for ERC1155 contracts we call `uri`. These methods take in a token ID and return a uri that points to the metadata for that token ID.
+
+If we pass a token ID into the method that the contract does not recognize, we will get one of several errors that each mean that the token does not exist. Essentially, the contract does not recognize the token ID that you provided.
+
+You can see the specific error for the example above in Etherscan's contract interface here: [https://etherscan.io/address/0x60e4d786628fea6478f785a6d7e704777c86a7c6#readContract](https://etherscan.io/address/0x60e4d786628fea6478f785a6d7e704777c86a7c6#readContract).
+
+![The contract throws an exception on etherscan](<../../../.gitbook/assets/image (39).png>)
+
+#### What you can do about it
+
+The primary reason that a contract will return a "token does not exist" error is that the token is _not yet minted_. So in fact, the token ID may exist at a later date once it is minted. If you are confident that the token ID you provided _should_ exist then you can retry at a later date. After some time has passed, the token may get minted and your request may succeed. Some contracts do return un-minted tokens, so this is not always the reason.
+
+The second most common reason to get a "token does not exist" error is that the token truly does not exist. For an older contract that is completely minted this error should be trusted and you should not try to get that token's metadata again.
+
+### Malformed token uri
+
+> Example: [https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbfde6246df72d3ca86419628cac46a9d2b60393c\&tokenId=14506](https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xbfde6246df72d3ca86419628cac46a9d2b60393c\&tokenId=14506)
+
+#### Why this happens
+
+Once we know where an NFT's metadata is stored (by calling `tokenURI` or `uri` on the contract as described above), we visit the resulting website in order to access the metadata. However, if the website that is returned by `tokenURI` or `uri` is malformed, then we cannot visit it and return this error instead. By "malformed" we mean any website that cannot be visited. In the example above (click on it to see) you can see that the `tokenUri.raw` field is an empty string. That is because the `tokenURI` method of that contract returned an empty string instead of a valid website.
+
+You can see the empty response in etherscan's contract interface here: [https://etherscan.io/address/0xbfde6246df72d3ca86419628cac46a9d2b60393c#readContract](https://etherscan.io/address/0xbfde6246df72d3ca86419628cac46a9d2b60393c#readContract)
+
+![The contract returns a malformed URI on etherscan](<../../../.gitbook/assets/image (40).png>)
+
+#### What you can do about it
+
+Unfortunately there isn't much you can do here. If you are the project owner or you happen to know a special URI that Alchemy should return for a contract that is _not_ included in the `tokenURI` or `uri` methods, then let us know!
+
+### Failed to get token uri
+
+> Example: [https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xffdf17652cca46eb98a214cb3e413c8661241e49\&tokenId=7818](https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xffdf17652cca46eb98a214cb3e413c8661241e49\&tokenId=7818)
+
+#### Why this happens
+
+In the "token does not exist" section we talked about how a contract can throw an exception when we ask for the `tokenURI`. If the exception indicates that the token does not exist, then we return the "token does not exist" error. If the exception is _any other type_ then we return the generic "Failed to get token uri" error.
+
+You can see the specific error for the example above in etherscan's contract interface here: [https://etherscan.io/address/0xffdf17652cca46eb98a214cb3e413c8661241e49#readContract](https://etherscan.io/address/0xffdf17652cca46eb98a214cb3e413c8661241e49#readContract)
+
+![The contract throws an exception on etherscan](<../../../.gitbook/assets/image (38).png>)
+
+#### What you can do about it
+
+There isn't much you can do if the contract doesn't properly return a token URI. It is _possible_ that there was a transient error running an eth\_call on our nodes, but it's pretty unlikely. Feel free to retry the request!
+
+### Token uri responded with a non 200 response code
+
+> Example: [https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0x909899c5dbb5002610dd8543b6f638be56e3b17e\&tokenId=955](https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0x909899c5dbb5002610dd8543b6f638be56e3b17e\&tokenId=955)
+
+#### Why this happens
+
+In the section above we talked about how we get the URI where the NFT metadata lives. Once we have the URI we then attempt to visit it in order to access the metadata. If the URI responds with anything other than a 2xx response code, like for instance a 502 Bad Gateway (the [PlasmaBear](https://plasmabears.com/api/nft/getMeta/955) contract above is an example) then we return this error.
+
+#### What you can do about it
+
+In this case it is _possible_ that retrying the request can succeed. If the contract's metadata website is down for some transient reason then a retry could work. A more common case is that the website may be rate-limiting Alchemy servers and returning 4xx. We are working on infrastructure to reduce the occurrence of this error. In the meantime, we suggest retries with a reasonable backoff strategy.
+
+
+
