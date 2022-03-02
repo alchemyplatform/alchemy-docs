@@ -41,7 +41,7 @@ The second most common reason for a "token does not exist" error is that the tok
 > Contract Address: 0xbfde6246df72d3ca86419628cac46a9d2b60393c\
 > Token ID: 14506
 
-#### Why this happens
+#### Why?
 
 Once we know where an NFT's metadata is stored (by calling `tokenURI` or `uri` on the contract as described above), we visit the resulting website in order to access the metadata. However, if the website that is returned by `tokenURI` or `uri` is malformed, then we cannot visit it and return this error instead. By "malformed" we mean any website that cannot be visited. In the example above (click on it to see) you can see that the `tokenUri.raw` field is an empty string. That is because the `tokenURI` method of that contract returned an empty string instead of a valid website.
 
@@ -49,9 +49,9 @@ You can see the empty response in etherscan's contract interface here: [https://
 
 ![The contract returns a malformed URI on etherscan](<../../../.gitbook/assets/image (40).png>)
 
-#### What you can do about it
+#### Next Steps
 
-Unfortunately there isn't much you can do here. If you are the project owner or you happen to know a special URI that Alchemy should return for a contract that is _not_ included in the `tokenURI` or `uri` methods, then let us know!
+Unfortunately, there isn't much you can do here. If you are the project owner or you happen to know a special URI that Alchemy should return for a contract that is _not_ included in the `tokenURI` or `uri` methods, then let us know!
 
 ### Failed to get token uri
 
@@ -60,7 +60,7 @@ Unfortunately there isn't much you can do here. If you are the project owner or 
 >
 > Token ID: 7818
 
-#### Why this happens
+#### Why?
 
 In the "token does not exist" section we talked about how a contract can throw an exception when we ask for the `tokenURI`. If the exception indicates that the token does not exist, then we return the "token does not exist" error. If the exception is _any other type_ then we return the generic "Failed to get token uri" error.
 
@@ -68,15 +68,18 @@ You can see the specific error for the example above in etherscan's contract int
 
 ![The contract throws an exception on etherscan](<../../../.gitbook/assets/image (38).png>)
 
-#### What you can do about it
+#### Next Steps
 
 Unfortunately, there isn't much you can do if the contract doesn't properly return a token URI. It is _possible_ that there was a transient error running an eth\_call on our nodes, but it's pretty unlikely. Feel free to retry the request!
 
 ### Token uri responded with a non 200 response code
 
-> Example: [https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0x909899c5dbb5002610dd8543b6f638be56e3b17e\&tokenId=955](https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0x909899c5dbb5002610dd8543b6f638be56e3b17e\&tokenId=955)
+> [Composer Example](https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0x909899c5dbb5002610dd8543b6f638be56e3b17e\&tokenId=955)\
+> Contract Address: 0x909899c5dbb5002610dd8543b6f638be56e3b17e
+>
+> Token ID: 955
 
-#### Why this happens
+Why?
 
 In the section above we talked about how we get the URI where the NFT metadata lives. Once we have the URI we then attempt to visit it in order to access the metadata. If the URI responds with anything other than a 2xx response code, like for instance a 502 Bad Gateway (the [PlasmaBear](https://plasmabears.com/api/nft/getMeta/955) contract above is an example) then we return this error.
 
