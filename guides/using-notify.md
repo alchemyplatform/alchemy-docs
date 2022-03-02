@@ -34,7 +34,7 @@ The difference between webhooks and WebSockets is that webhooks can only facilit
 Alchemy offers four different types of webhooks each described below.
 
 {% hint style="danger" %}
-**NOTE:** The examples below only apply to V1 Alchemy Notify used on Ethereum. For V2 Alchemy Notify on Layer 2s, check out the [V2 Alchemy Notify Doc](v2-alchemy-notify.md).
+**NOTE:** The examples below only apply to V1 Alchemy Notify used on Ethereum. For V2 Alchemy Notify on Layer 2s (Polygon, Arbritum & Optimism), check out the [**V2 Alchemy Notify Doc**](v2-alchemy-notify.md).
 {% endhint %}
 
 ### 1. Mined Transactions <a href="#mined-transactions" id="mined-transactions"></a>
@@ -283,14 +283,24 @@ Gas prices typically fall in a range, where a lower gas price means that the tra
 
 ## Test Out Webhooks <a href="#test-out-webhooks" id="test-out-webhooks"></a>
 
-There are many websites you can use to test out webhooks. For example, you can use [https://webhook.site/](https://webhook.site) and copy **your unique URL**. Once you have the URL, you can test using the following steps:
+There are many tools you can use to test out webhooks. In this guide, you will learn how to use [ngrok](https://ngrok.com), which allows you to test your webhooks locally.
+
+To set up ngrok:
+
+1. Sign up for a [free ngrok account](https://dashboard.ngrok.com/signup)
+2. Install ngrok using [the ngrok guide](https://dashboard.ngrok.com/get-started/setup) or if you are on macOS run: `brew install ngrok`
+3. Connect your ngrok account by running: `ngrok authtoken YOUR_AUTH_TOKEN`
+4. Fire up your local forwarding tunnel: `ngrok http 80`
+
+![](<../.gitbook/assets/Screen Shot 2022-03-01 at 1.33.31 PM.png>)
+
+Once you have a URL to test your webhook (in this case [https://461a-199-116-73-171.ngrok.io](https://461a-199-116-73-171.ngrok.io) from  the picture above), you can test using the following steps:
 
 1. Navigate to your [Notify dashboard](https://dashboard.alchemyapi.io/notify)
 2. Click "Create Webhook" on the webhook you want to test
-3. Specify which app you wish to add notifications to
-4. Paste in **your unique URL** and hit the "Test Webhook" button
+3. Paste in **your unique URL** and hit the "Test Webhook" button
 
-You should then see the result updated on website: [https://webhook.site/](https://webhook.site)
+If you are using ngrok, you should then see the webhooks roll in here: [http://localhost:4040/inspect/http](http://localhost:4040/inspect/http)
 
 ## How to Set Up Webhooks <a href="#how-to-set-up-webhooks" id="how-to-set-up-webhooks"></a>
 
