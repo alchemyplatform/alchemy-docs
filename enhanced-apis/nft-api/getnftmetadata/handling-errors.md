@@ -15,7 +15,6 @@ Here are the various errors you can receive and what they mean.
 ### "Token does not exist"
 
 > [Composer Example](https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0x60e4d786628fea6478f785a6d7e704777c86a7c6\&tokenId=2079999)\
-> \
 > Contract Address = 0x60e4d786628fea6478f785a6d7e704777c86a7c6\
 > Token ID = 2079999
 
@@ -57,7 +56,6 @@ Unfortunately there isn't much you can do here. If you are the project owner or 
 ### Failed to get token uri
 
 > [Composer Example](https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0xffdf17652cca46eb98a214cb3e413c8661241e49\&tokenId=7818)\
-> \
 > Contract Address: 0xffdf17652cca46eb98a214cb3e413c8661241e49
 >
 > Token ID: 7818
