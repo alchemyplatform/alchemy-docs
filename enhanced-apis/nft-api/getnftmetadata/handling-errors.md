@@ -19,21 +19,21 @@ Here are the various errors you can receive and what they mean.
 > Contract Address = 0x60e4d786628fea6478f785a6d7e704777c86a7c6\
 > Token ID = 2079999
 
-#### Why this happens
+#### Why?
 
-In order to fetch the metadata for a given NFT, we call one of two potential methods on the contract with the token ID as the input. For ERC721 contracts we call the `tokenURI` method and for ERC1155 contracts we call `uri`. These methods take in a token ID and return a uri that points to the metadata for that token ID.
+In order to fetch the metadata for a given NFT, we call one of two potential methods on the contract with the token ID as the input. For ERC721 contracts, we call the `tokenURI` method. For ERC1155 contracts, we call `uri`. These two methods take in a token ID and return a uri which points to the metadata for that token ID.
 
 If we pass a token ID into the method that the contract does not recognize, we will get one of several errors that each mean that the token does not exist. Essentially, the contract does not recognize the token ID that you provided.
 
-You can see the specific error for the example above in Etherscan's contract interface here: [https://etherscan.io/address/0x60e4d786628fea6478f785a6d7e704777c86a7c6#readContract](https://etherscan.io/address/0x60e4d786628fea6478f785a6d7e704777c86a7c6#readContract).
+[See the specific error for the example above via Etherscan's contract interface. ](https://etherscan.io/address/0x60e4d786628fea6478f785a6d7e704777c86a7c6#readContract)
 
 ![The contract throws an exception on etherscan](<../../../.gitbook/assets/image (39).png>)
 
-#### What you can do about it
+#### Next Steps
 
-The primary reason that a contract will return a "token does not exist" error is that the token is _not yet minted_. So in fact, the token ID may exist at a later date once it is minted. If you are confident that the token ID you provided _should_ exist then you can retry at a later date. After some time has passed, the token may get minted and your request may succeed. Some contracts do return un-minted tokens, so this is not always the reason.
+More often than not, a contract will return a "token does not exist" error when the token is _not yet minted_. It's important to note that the token ID may, however, exist at a later date once it is minted. If you are confident that the token ID you provided _should_ exist, you can retry your query at a later date. Once the token has been minted and recognized by our service, your request may succeed. Note that some contracts do return un-minted tokens, so this error message is not to be used as an indicator for whether a token has been minted yet.
 
-The second most common reason to get a "token does not exist" error is that the token truly does not exist. For an older contract that is completely minted this error should be trusted and you should not try to get that token's metadata again.
+The second most common reason for a "token does not exist" error is that the token truly does not exist! For older contracts that have been completely minted, this error should be trusted. Repeated attempts at finding metadata will fail simply because it does not exist!&#x20;
 
 ### Malformed token uri
 
