@@ -79,7 +79,7 @@ Unfortunately, there isn't much you can do if the contract doesn't properly retu
 >
 > Token ID: 955
 
-Why?
+**Why?**
 
 In the section above we talked about how we get the URI where the NFT metadata lives. Once we have the URI we then attempt to visit it in order to access the metadata. If the URI responds with anything other than a 2xx response code, like for instance a 502 Bad Gateway (the [PlasmaBear](https://plasmabears.com/api/nft/getMeta/955) contract above is an example) then we return this error.
 
