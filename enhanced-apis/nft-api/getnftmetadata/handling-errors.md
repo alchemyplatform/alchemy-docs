@@ -83,7 +83,7 @@ Why?
 
 In the section above we talked about how we get the URI where the NFT metadata lives. Once we have the URI we then attempt to visit it in order to access the metadata. If the URI responds with anything other than a 2xx response code, like for instance a 502 Bad Gateway (the [PlasmaBear](https://plasmabears.com/api/nft/getMeta/955) contract above is an example) then we return this error.
 
-#### What you can do about it
+#### Next Steps
 
 In this case it is _possible_ that retrying the request can succeed. If the contract's metadata website is down for some transient reason then a retry could work. A more common case is that the website may be rate-limiting Alchemy servers and returning 4xx. We are working on infrastructure to reduce the occurrence of this error. In the meantime, we suggest retries with a reasonable backoff strategy.
 
