@@ -91,11 +91,11 @@ In this case it is _possible_ that retrying the request can succeed. If the cont
 
 #### Why?
 
-If a token URI containing metadata responds to our attempts to retrieve it with a "429 Too Many Requests" they site is instructing us that we have requested metadata too often. When this happens, we will not visit the website again in order to release the "rate limit" that they have put on us. During this "waiting period" if you request NFT metadata that requires hitting that website we will temporarily block the request.
+If a token URI containing metadata responds to our retrieval attempts with a "429 Too Many Requests," the site is informing us that we have requested metadata too often. When this happens, we will not visit the website again in order to release the "rate limit" that they have put on us. During this "waiting period," requesting NFT metadata for that same asset requires hitting that website and, therefore, we will temporarily block the request.
 
 #### Next Steps
 
-In this case you should retry your request after a variable number of seconds, but wait at least 10 seconds. If you get throttled a second time then keep on waiting a bit longer after each retry.
+In this case, you should retry your request after a variable number of seconds. (We suggest waiting at least 10 seconds) If you continue to be throttled, increase the wait period a bit longer after each retry.
 
 
 
