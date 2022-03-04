@@ -52,3 +52,14 @@ For block details and blockchain mechanics, here are a few important concepts to
 The blockchain space has seen a lot increasingly more action. We, Alchemy API, act as as blockchain infrastructure provider amongst other things, and work with a lot of cool projects that are built on top of the Ethereum blockchain. Here are some of our [customers](https://alchemyapi.io/customers) and links to their platforms.
 
 We want to keep this as current as possible. Please reach out with suggestions and follow us on Twitter [@AlchemyPlatform](https://twitter.com/alchemyplatform)!
+
+## 6. Ecosystem Learning
+
+Alchemy is always publishing useful guides for our ecosystem to learn more about web3. Here are some articles to check out:
+
+[OpenSea API Overview](https://www.alchemy.com/opensea-api-overview)\
+[What is the Ethereum Virtual Machine?](https://www.alchemy.com/overviews/what-is-the-ethereum-virtual-machine-evm)\
+[What are alternatives to Infura?](https://www.alchemy.com/infura-alternative)\
+[What are Web3 wallets?](https://www.alchemy.com/web3-wallets-overview)\
+[How to Create a Successful NFT Project](https://www.alchemy.com/overviews/how-to-create-a-successful-nft-project)&#x20;
+
