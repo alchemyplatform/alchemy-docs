@@ -35,7 +35,7 @@ At the time of writing, the Resolution Service supports the following TLD’s:
 
 A single object with the following fields:
 
-* `records`: This field is a key-value dictionary with all domain records that were set on chain. This includes cryptocurrency addresses and IPFS website hashes. To get more details - visit the Unstoppable Domains records reference section: [https://docs.unstoppabledomains.com/domain-registryessentials/records-reference](https://docs.unstoppabledomains.com/domain-registryessentials/records-reference)
+* `records`: This field is a key-value dictionary with all domain records that were set on chain. This includes cryptocurrency addresses and IPFS website hashes. To get more details - visit the Unstoppable Domains records reference section: [https://docs.unstoppabledomains.com/domain-registry-essentials/records-reference](https://docs.unstoppabledomains.com/domain-registry-essentials/records-reference)
 * `meta`: This field is a key-value dictionary with general information about the domain:
   * `domain`: (string) Domain name
   * `blockchain`: (string) On what blockchain the domain is located. Blockchain names are coin types according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md)
