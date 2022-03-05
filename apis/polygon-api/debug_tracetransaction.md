@@ -5,7 +5,11 @@ description: >-
   will replay any transaction that may have been ex
 ---
 
-# debug\_traceTransaction
+# debug\_traceTransaction (Unsupported)
+
+{% hint style="danger" %}
+This method is not currently supported on Polygon
+{% endhint %}
 
 ### Parameters
 

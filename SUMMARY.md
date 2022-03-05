@@ -155,7 +155,7 @@
   * [eth\_syncing](apis/polygon-api/eth\_syncing.md)
   * [eth\_subscribe](apis/polygon-api/eth\_subscribe.md)
   * [eth\_unsubscribe](apis/polygon-api/eth\_unsubscribe.md)
-  * [debug\_traceTransaction](apis/polygon-api/debug\_tracetransaction.md)
+  * [debug\_traceTransaction (Unsupported)](apis/polygon-api/debug\_tracetransaction.md)
 * [Optimism API](apis/optimism-api.md)
 * [Flow Docs](https://docs.alchemy.com/flow/)
 * [Crypto.org Docs](https://docs.alchemy.com/cro/)
