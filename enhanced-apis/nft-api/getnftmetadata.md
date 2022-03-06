@@ -4,7 +4,13 @@ description: Gets the metadata associated with a given NFT.
 
 # getNFTMetadata
 
-_**NOTE:** This endpoint offers multi-chain support._ [_Check chains currently available_](https://docs.alchemy.com/alchemy/apis/feature-support-by-chain) _for the NFT API._
+This endpoint is supported on the following chains and networks:
+
+* **Ethereum**: Mainnet, Rinkeby, Kovan, Goerli, Ropsten
+* **Polygon**: Mainnet and Mumbai
+* **Flow**: Mainnet and Testnet
+
+_To see chain support accross all features, check out the_ [_feature matrix_](../../apis/feature-support-by-chain.md)_._
 
 ## Parameters
 
