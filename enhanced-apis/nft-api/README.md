@@ -97,7 +97,7 @@ Or join our discord! [https://www.alchemy.com/discord](https://www.alchemy.com/d
 
 Check out the guide below to get a quick setup using:
 
-* [The `alchemy-web3` sdk,](../../guides/nft-api-quickstart-guide.md#alchemy-web3-sdk)
+* [The `alchemy-web3` sdk,](https://docs.alchemy.com/alchemy/guides/nft-api-quickstart-guide#alchemy-web3-sdk-recommended)
 * [the `node-fetch` module,](../../guides/nft-api-quickstart-guide.md#javascript-fetch)
 * [or the `axios`  module.](../../guides/nft-api-quickstart-guide.md#javascript-axios)
 
