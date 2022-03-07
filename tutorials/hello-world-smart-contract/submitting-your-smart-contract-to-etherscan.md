@@ -43,7 +43,6 @@ If you were following the [Hardhat tutorial](./#create-and-deploy-your-smart-con
 
 ```javascript
 API_URL = "https://eth-ropsten.alchemyapi.io/v2/your-api-key"
-API_KEY = "your-api-key"
 PRIVATE_KEY = "your-private-account-address"
 ETHERSCAN_API_KEY = "your-etherscan-key" 
 ```
