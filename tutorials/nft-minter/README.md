@@ -111,7 +111,7 @@ If you try clicking "Connect Wallet" or "Mint NFT" buttons, you'll notice they d
 
 Let's go back into the `src` folder in our editor and open the `Minter.js` file. It's super important that we understand everything in this file, as it is the primary React component we will be working on.
 
-At the top of our this file, we have our state variables that we will update after specific events.
+At the top of this file, we have our state variables that we will update after specific events.
 
 ```javascript
 //State variables
