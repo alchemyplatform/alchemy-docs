@@ -26,7 +26,7 @@ See the table below for the number of compute units per second (CUPS) permitted 
 | Growth     | 660    |
 | Enterprise | Custom |
 
-## \*\*\*\*:inbox\_tray: **Response**
+## :inbox\_tray: **Response**
 
 When you exceed your capacity, you will receive a rate limit response. This response will be different depending on whether you are connecting to Alchemy using HTTP or [WebSockets](using-websockets.md).
 
