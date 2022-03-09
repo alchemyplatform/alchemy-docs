@@ -283,6 +283,10 @@ return (signature == digest);
 
 As an added security measure, you can ensure your webhook notification originated from Alchemy by verifying that the event originated from one of the following IP addresses:
 
+{% hint style="warning" %}
+**NOTE:** This does not apply for test webhooks done through the Notify dashboard.
+{% endhint %}
+
 ```
 54.236.136.17
 34.237.24.169
