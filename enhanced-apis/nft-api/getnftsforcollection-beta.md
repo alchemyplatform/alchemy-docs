@@ -38,7 +38,8 @@ If no`startToken`is specified, the query will start from the lowest _tokenId_. E
 ## Example
 
 {% hint style="info" %}
-The example below is for Ethereum Mainnet. If you are using Polygon you'll need to use your polygon endpoint instead: `https://polygon-mainnet.alchemyapi.io/v2/your-api-key/getNFTs`...
+The example below is for Ethereum Mainnet. If you are using Polygon you'll need to use your polygon endpoint instead: \
+https://polygon-mainnet.g.alchemy.com/`v2/your-api-key/getNFTs`...
 {% endhint %}
 
 ### Request
