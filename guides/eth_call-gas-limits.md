@@ -13,6 +13,6 @@ description: >-
 | Ethereum  | 50 Million |
 | Polygon   | 50 Million |
 | Optimism  | 50 Million |
-| Arbitrum  | 2 Million  |
+| Arbitrum  | 5 Million  |
 
 _Alchemy has the highest gas limits for any provider, if you're interested in increasing these limits even further, reach out to us at support@alchemy.com!_

@@ -7,7 +7,7 @@ description: All of the Arbitrum JSON-RPC API methods that are supported by Alch
 For more information on Arbitrum's API check out the [official documentation](https://developer.offchainlabs.com/docs/developer\_quickstart).
 
 {% hint style="info" %}
-\*\*HINT: \*\*If you click on the "**Example**" title you can try out all the example requests in real-time using our [Composer](https://composer.alchemyapi.io) tool, however all the example requests are on **Ethereum mainnet**, to switch to **Arbitrum** simply toggle the "network" dropdown.
+**HINT:** If you click on the "**Example**" title you can try out all the example requests in real-time using our [Composer](https://composer.alchemyapi.io) tool, however all the example requests are on **Ethereum mainnet**, to switch to **Arbitrum** simply toggle the "network" dropdown.
 {% endhint %}
 
 ## Mainnet vs. Rinkeby Testnet
