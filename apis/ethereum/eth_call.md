@@ -23,7 +23,7 @@ In these two cases, even though the `eth_call` requests don't consume any gas, t
 * `Object` - The transaction call object
   * `from`: `DATA`, 20 Bytes - (optional) The address the transaction is sent from.
   * `to`: `DATA`, 20 Bytes - The address the transaction is directed to.
-  * `gas`: `QUANTITY` - (optional) Integer of the gas provided for the transaction execution. `eth_call` consumes zero gas, but this parameter may be needed by some executions. **NOTE: this parameter has a cap of 350 Million gas per request. Reach out to us at support@alchemy.com if you want to increase this limit!**
+  * `gas`: `QUANTITY` - (optional) Integer of the gas provided for the transaction execution. `eth_call` consumes zero gas, but this parameter may be needed by some executions. **NOTE: this parameter has a cap of 550 Million gas per request. Reach out to us at support@alchemy.com if you want to increase this limit!**
   * `gasPrice`: `QUANTITY` - (optional) Integer of the gasPrice used for each paid gas.
   * `value`: `QUANTITY` - (optional) Integer of the value sent with this transaction
   * `data`: `DATA` - (optional) Hash of the method signature and encoded parameters. For details see [Ethereum Contract ABI](https://docs.soliditylang.org/en/v0.7.0/abi-spec.html)
