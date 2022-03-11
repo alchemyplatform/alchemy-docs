@@ -8,14 +8,16 @@ description: Gets all NFTs for a given NFT contract
 
 * `contractAddress`: _**\[string]**_ - contract address for the NFT collection
 * `withMetadata`: _**\[boolean] -**_ (optional)  _****_  If set to `true`, returns NFT metadata; otherwise will only return tokenIds
-* `startToken`: _**\[string]**_ - an offset used for pagination
+* `startToken`: _**\[string]**_ - an offset used for pagination. Can be a hex string, or a decimal.
 
 {% hint style="info" %}
 #### NOTE on`startToken`:&#x20;
 
 The API response will contain a maximum of 100 tokens. Because many NFT collections include more than 100 tokens, the `startToken` param is used to paginate results.
 
-If no`startToken`is specified, the query will start from the lowest _tokenId_. Each response will return a `nextToken`that can be passed back to the API as a `startToken` to return the next page of results for the given NFT collection (if applicable). You can also use any _tokenId_ from the collection as the `startToken`, and the results in the response will start from that offset.
+If no`startToken`is specified, the query will start from the lowest _tokenId_. Each response will return a `nextToken`that can be passed back to the API as a `startToken` to return the next page of results for the given NFT collection (if applicable). You can also use any _tokenId_ from the collection as the `startToken`, and the results in the response will start from that offset.\
+\
+See the 'examples' section for an example of how to use this parameter to fetch all of the NFTS in a collection.
 {% endhint %}
 
 ## Returns
@@ -101,7 +103,7 @@ RequestType: GET
 
 {% tab title="Curl" %}
 ```
-curl 'https://eth-mainnet.g.alchemy.com/v2/demo/getNFTsForCollection/?contractAddress=0x61fce80d72363b731425c3a2a46a1a5fed9814b2&cursorKey=0x1ea2&withMetadata=false'
+curl 'https://eth-mainnet.g.alchemy.com/v2/demo/getNFTsForCollection/?contractAddress=0x61fce80d72363b731425c3a2a46a1a5fed9814b2&startToken=0x1ea2&withMetadata=false'
 ```
 {% endtab %}
 {% endtabs %}
@@ -132,5 +134,38 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
 "nextToken":"0x83"}
 ```
 
+### Getting the full collection
 
+The `startToken` and `nextToken` fields are designed to allow users to fetch all of the NFTs in a collection using the following pattern:
 
+```javascript
+import axios from 'axios';
+
+// replace with your Alchemy api key
+const apiKey = "demo";
+const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTsForCollection`;
+const contractAddr = "0x61fce80d72363b731425c3a2a46a1a5fed9814b2";
+
+async function callGetNFTsForCollectionOnce(
+  startToken = ""
+) {
+  const url = `${baseURL}/?contractAddress=${contractAddr}&startToken=${startToken}`;
+  const response = await axios.get(url);
+  return response.data;
+}
+
+let startToken = "";
+let hasNextPage = true;
+totalNftsFound = 0;
+while (hasNextPage) {
+  const { nfts, nextToken } = await callGetNFTsForCollectionOnce(
+    startToken
+  );
+  if (!nextToken) {
+    // When nextToken is not present, then there are no more NFTs to fetch.
+    hasNextPage = false;
+  }
+  startToken = nextToken;
+  totalNftsFound += nfts.length;
+}
+```
