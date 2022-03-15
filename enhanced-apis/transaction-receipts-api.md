@@ -6,10 +6,6 @@ description: >-
 
 # Transaction Receipts API
 
-{% hint style="warning" %}
-Note:  This API is in Beta.
-{% endhint %}
-
 Users often want to find all the transaction receipts for a block on the blockchain. Currently the only way to do this is to fetch the transaction from a block using [`eth_getBlockByNumber`](https://docs.alchemy.com/alchemy/apis/ethereum/eth\_getblockbynumber) or [`eth_getBlockByHash`](https://docs.alchemy.com/alchemy/apis/ethereum/eth\_getblockbyhash), then call [`eth_getTransactionReceipt`](https://docs.alchemy.com/alchemy/apis/ethereum/eth\_gettransactionreceipt) for each transaction hash.&#x20;
 
 This can result in numerous API calls as blocks can have 200-400 transactions. We can batch these call into one JSON-RPC call to speed things up but this is still slow and expensive.

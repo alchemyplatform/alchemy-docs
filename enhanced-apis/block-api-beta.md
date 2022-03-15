@@ -10,6 +10,10 @@ description: >-
 
 Get receipts from all transactions from particular block, instead of fetching the receipts one-by-one.
 
+{% hint style="danger" %}
+Starting March 15, 2021`parity_getBlockReceipts` will be depreciated. Any users looking for BlockReceipt functionality should now use[`alchemy_getTransactionReceipts`](transaction-receipts-api.md#alchemy\_gettransactionreceipts)&#x20;
+{% endhint %}
+
 ### **Parameters**
 
 1. `Quantity` or `Tag` - integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`, as in the default block parameter.
