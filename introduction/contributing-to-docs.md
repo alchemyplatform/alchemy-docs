@@ -22,7 +22,7 @@ Yes, we are giving out rewards for people who contribute! These include but are 
 * Free Alchemy Swag
 * Twitter shout out from the Alchemy account
 
-_\*Note: The type of award given will be determined on a case-by-case basis_
+_Note: The type of award given will be determined on a case-by-case basis_
 
 ## Identifying An Area to Contribute: <a href="identifying-an-area-to-contribute" id="identifying-an-area-to-contribute"></a>
 
@@ -54,7 +54,7 @@ There are three ways to contribute to the [Alchemy Docs:](https://github.com/alc
 3. [Submit an issue](contributing-to-docs.md#submitting-issues)
 
 {% hint style="info" %}
-**NOTE:** If you \__\*\*_\_want your Github to be featured on the Alchemy Docs for your contributions, please submit a pull request with your changes
+**NOTE:** If you want your Github to be featured on the Alchemy Docs for your contributions, please submit a pull request with your changes
 {% endhint %}
 
 ### 1. Make a Pull Request with Changes <a href="make-a-pull-request-with-changes" id="make-a-pull-request-with-changes"></a>
@@ -65,7 +65,7 @@ Please note that our docs are written in the Markdown. For more info about Markd
 
 #### 1. Clone the [Alchemy Docs repo](https://github.com/alchemyplatform/alchemy-docs)
 
-`git clone` [`https://github.com/alchemyplatform/alchemy-docs.git`](https://github.com/alchemyplatform/alchemy-docs.git)
+`git clone https://github.com/alchemyplatform/alchemy-docs.git`
 
 #### 2. Navigate to the appropriate files / make your edits to your local repo.
 
@@ -101,7 +101,7 @@ If you notice any particular bugs, mistakes, or unclear components in published 
 
 For example, if you wanted to submit an issue with [https://github.com/alchemyplatform/Alchemy-Notify-Tutorial](https://github.com/alchemyplatform/Alchemy-Notify-Tutorial), you would navigate to [https://github.com/alchemyplatform/Alchemy-Notify-Tutorial/issues](https://github.com/alchemyplatform/Alchemy-Notify-Tutorial/issues) and submit an issue through the UI.
 
-( Don't forget to raise an appropriate flag for the issue at hand!)
+(Don't forget to raise an appropriate flag for the issue at hand!)
 
 #### For issues that cannot be easily conveyed through the Github issues tab, please reach out to the Community Maintainers through [Discord](https://alchemy.com/discord) or email.
 

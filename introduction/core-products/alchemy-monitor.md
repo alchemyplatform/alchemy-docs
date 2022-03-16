@@ -7,11 +7,11 @@ description: >-
 
 # 🔬 Alchemy Monitor
 
-_**Get access to **_[_**Alchemy for free here.**_](https://alchemy.com/?r=affiliate:e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_****_
+#### _Get access to_ [_Alchemy for free here_](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_._
 
 ## Benefits 
 
-### 1. :raised_hand: Prevent not React
+### 1. :raised_hand: Prevent, don't React
 
 Improve developer experience by allowing your team to prevent issues before they happen. 
 

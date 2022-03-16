@@ -4,7 +4,7 @@ description: Alchemy Notify gives your users the UX they demand and deserve.
 
 # 🔔 Alchemy Notify
 
-#### _**Get access to **_[_**Alchemy for free here**_](https://alchemy.com/?r=affiliate:e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_**. **_
+#### _Get access to_ [_Alchemy for free here_](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_._
 
 #### _**Looking to use Alchemy Notify? Check out our documentation below**_
 
@@ -63,7 +63,7 @@ The Gas Price Webhook allows you to receive a notification every minute when the
 
 ## **Ready to use Alchemy Notify?**
 
-** Check out our docs on Notify below! **
+**Check out our docs on Notify below!**
 
 {% content-ref url="../../guides/using-notify.md" %}
 [using-notify.md](../../guides/using-notify.md)
