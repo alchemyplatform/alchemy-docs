@@ -31,9 +31,9 @@ In this tutorial, we’ll look at an example of how, with just a few lines of co
 
 ## **Our Example**
 
-For our pre-packaged example, we’ll create a dApp dashboard that tracks transaction activity for a particular address, processes it in the backend, and then pushes it in real-time to the frontend. \*\* \*\*
+For our pre-packaged example, we’ll create a dApp dashboard that tracks transaction activity for a particular address, processes it in the backend, and then pushes it in real-time to the frontend.
 
-### \*\*Problem Statement: \*\*🐕
+### Problem Statement:🐕
 
 Instead of sending burnt tokens to 0xdead, which is recommended for most token burning, creators of Akita Inu (AKITA) and Shiba Inu (SHIBA) chose to gift Vitalik Buterin with large swaths of their dog-themed tokens. However, rather than leaving the meme tokens untouched, Vitalik instead chose to sell tokens in batches to Uniswap, swapping them for ETH, and donated both the ETH proceeds and the rest of the tokens that could not be sold to a whole host of charities. Check out [this article](https://www.theblockcrypto.com/post/104676/vitalik-buterin-donates-more-than-60m-to-charity-after-selling-meme-tokens-including-shiba-inu) for more info.
 
@@ -109,17 +109,17 @@ You should then see something like this pop up:
 
 ![](<../.gitbook/assets/image (26).png>)
 
-Make sure you take note of the URL that pops up \*\*`http://xxxxxxxxx.herokuapp.com/`. \*\*We'll be using it since it's the URL of our sample dashboard!
+Make sure you take note of the URL that pops up (`http://xxxxxxxxx.herokuapp.com/`). We'll be using it since it's the URL of our sample dashboard!
 
 {% hint style="info" %}
 For more detailed instructions on setting up your environment to be configured for Heroku, check out the [official Heroku docs](https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true).
 {% endhint %}
 
-### **2. Create a **[**Free Alchemy Account**](https://alchemy.com/?r=affiliate:edc790e6-b0b0-41ce-9c6b-25959178d827)
+### 2. Create a [Free Alchemy Account](https://alchemy.com/?r=affiliate:edc790e6-b0b0-41ce-9c6b-25959178d827)
 
 If you don’t already have one, you’ll first need to [create an account on Alchemy.](https://alchemy.com/?r=affiliate:edc790e6-b0b0-41ce-9c6b-25959178d827) The free version will work fine for getting started!
 
-### \*\*3. Integrate Alchemy Transfers API \*\*
+### 3. Integrate Alchemy Transfers API
 
 Once you have an account, you are now able to use the [`alchemy_getAssetTransfers`](../enhanced-apis/transfers-api.md) method which allows you to query asset transfers.
 
@@ -155,7 +155,7 @@ For our Akita Token Rescue dashboard, this is the specific request that we use:
 Navigate to the `main.py` to find where your API key is being used. Note that to get an Alchemy API key you will need to [create an App](https://www.youtube.com/watch?v=tfggWxfG9o0) in the Alchemy dashboard.
 
 {% hint style="info" %}
-\*\*NOTE: \*\*For this tutorial, we require using an app that is pointed towards the Ethereum mainnet since our contract is deployed on mainnet.
+**NOTE:** For this tutorial, we require using an app that is pointed towards the Ethereum mainnet since our contract is deployed on mainnet.
 {% endhint %}
 
 Our Heroku app is configured to accept the Alcehmy API key as an environment variable to encourage safe, best practices. Once you get your API key after creating an account, run the following command in the same file directory that you previously ran `heroku create` to set your environment variables within Heroku itself .
@@ -165,13 +165,11 @@ heroku config:set KEY="<YOUR ALCHEMY KEY>"
 ```
 
 {% hint style="info" %}
-\*\*NOTE: \*\*When you copy your key from the dashboard you should get a full url like this:
+**NOTE:** When you copy your key from the dashboard you should get a full url like this:
 
-[`https://eth-mainnet.alchemyapi.io/v2/kXtBl52Cr0hNbOn0rI2up7lhUiGk_2eS`](https://eth-mainnet.alchemyapi.io/v2/kXtAc2qCG7HnbON0fI4ho3NHUiWj\_2cS)\`\`
+`https://eth-mainnet.alchemyapi.io/v2/kXtBl52Cr0hNbOn0rI2up7lhUiGk_2eS`
 
-Your key is just the last portion in the URL:
-
-[`kXtBl52Cr0hNbOn0rI2up7lhUiGk_2eS`](https://eth-mainnet.alchemyapi.io/v2/kXtAc2qCG7HnbON0fI4ho3NHUiWj\_2cS)\`\`
+Your key is just the last portion in the URL (`kXtBl52Cr0hNbOn0rI2up7lhUiGk_2eS`).
 {% endhint %}
 
 You've set up your API key! To confirm that it is properly configured, you can view environment variables on Heroku with: `heroku config`
@@ -180,7 +178,7 @@ Your Heroku environment variables should look similar to this:
 
 ![](../.gitbook/assets/img.png)
 
-### **5. Deploy Heroku App!**
+### 5. Deploy Heroku App!
 
 Now, we're in the final steps! Confirm that you are navigated to the file that your Heroku project lives within. Once there, run the following commands to save your changes on Git and deploy the app.
 
@@ -198,15 +196,15 @@ Note that upon refreshing the page, we see that the dashboard's data is updated.
 
 And now, with everything in place, you can test out your dApp!
 
-_🎉\*\* Congratulations on your dApp deployment! Feel free to edit your app, point the target address at other interesting contracts / public figures, or make the frontend more spiffy!\*\*_
+_**🎉 Congratulations on your dApp deployment! Feel free to edit your app, point the target address at other interesting contracts / public figures, or make the frontend more spiffy!**_
 
-## **Option 2: Build the dApp From Scratch**
+## Option 2: Build the dApp From Scratch
 
 In this tutorial, we provide a generalized setup for a Python webapp that allows you to query the Alchemy Transfers API, process the JSON response, and then push the data to the frontend.
 
-### \*\*1-2. Complete [**Steps 2 & 3**](https://docs.alchemy.com/alchemy/tutorials/transfers-tutorial#2-create-a-free-alchemy-account) from the Heroku Project. \*\*
+### 1-2. Complete [Steps 2 & 3](https://docs.alchemy.com/alchemy/tutorials/transfers-tutorial#2-create-a-free-alchemy-account) from the Heroku Project.
 
-### **3. Configure your App with your Alchemy API Key**
+### 3. Configure your App with your Alchemy API Key
 
 To follow safe, best practices, we encourage you to store your API key in an `.env` file. Taking the key that we generated from the previous step, create an `.env` file with the following contents:
 
@@ -220,7 +218,7 @@ KEY="<YOUR ALCHEMY KEY>"
 
 Congrats! You've set up your API key!
 
-### **4. Create Backend Processing Script**
+### 4. Create Backend Processing Script
 
 For this tutorial, we use Python / React for sending our API requests, decoding the JSON response, and for processing it.
 
@@ -255,7 +253,7 @@ Then, run the following command to install the packages:
 pip install requirements.txt
 ```
 
-**b) Create a file called `main.py`**
+#### b) Create a file called `main.py`
 
 This is where our backend processing script will live. We'll also add a few installations and define our Alchemy key variable at the top:
 
@@ -270,7 +268,7 @@ import requests
 ALCHEMY_KEY = os.environ.get('KEY')
 ```
 
-**c) Define Web3 functions**
+#### c) Define Web3 functions
 
 In our tutorial, we have a total of two different native Web3 calls. In particular, we call `get_block` and`balanceOf`.
 
@@ -297,9 +295,9 @@ def get_gtc_akita_bal():
     return str(akita.functions.balanceOf(GITCOIN_ADDRESS).call())
 ```
 
-Note that we include the ERC20 ABI in this code snippet in order to properly read the AKITA balance of the Gitcoin multisig wallet.The Contract Application Binary Interface ([**ABI**](../guides/eth\_getlogs.md#what-are-ab-is)) is the standard way to interact with contracts in the Ethereum ecosystem and we use the ERC20 ABI to interact with ERC20 contracts such as the AKITA contract.
+Note that we include the ERC20 ABI in this code snippet in order to properly read the AKITA balance of the Gitcoin multisig wallet. The Contract Application Binary Interface ([**ABI**](../guides/eth\_getlogs.md#what-are-ab-is)) is the standard way to interact with contracts in the Ethereum ecosystem and we use the ERC20 ABI to interact with ERC20 contracts such as the AKITA contract.
 
-**d) Define Alchemy Transfer function**
+#### d) Define Alchemy Transfer function
 
 Here, we use the Alchemy specific method [`alchemy_getAssetTransfers`](../enhanced-apis/transfers-api.md#alchemy\_getassettransfers) to get the total number of AKITA tokens burned by the Gitcoin contract.
 
@@ -318,10 +316,10 @@ def get_total_burn(): total_burn = requests.post('https://eth-mainnet.alchemyapi
 To understand the parameter breakdown, read more [above](transfers-tutorial.md#3-integrate-alchemy-transfers-api).
 
 {% hint style="info" %}
-\*\*NOTE: \*\*We parse our JSON response by using the imported Python package `json` to help us easily sort through the response and filter for the desired fields. To get a better idea of what this response looks like raw, try the [Alchemy Composer App](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22eth\_getBlockByNumber%22%2C%22paramValues%22%3A%5B%22latest%22%2Cfalse%5D%7D) or try executing an Alchemy API call from Postman.
+**NOTE:** We parse our JSON response by using the imported Python package `json` to help us easily sort through the response and filter for the desired fields. To get a better idea of what this response looks like raw, try the [Alchemy Composer App](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22eth\_getBlockByNumber%22%2C%22paramValues%22%3A%5B%22latest%22%2Cfalse%5D%7D) or try executing an Alchemy API call from Postman.
 {% endhint %}
 
-**e) Configure Flask routing**
+#### e) Configure Flask routing
 
 To ensure that "Refresh Data" command from the frontend button triggers the execution of the 3 functions defined above, we need to configure our flask to handle this logic! Add the following to your `main.py` file:
 
@@ -352,7 +350,7 @@ Whenever the "Refresh Data" button is triggered, we fire off a request to the Al
 
 Once we are able to get the most updated values from each of the 3 functions, we can then pass this data into our`render_template `function which pushes the new information to the frontend.
 
-\*\*Our script is ready! \*\*Here is the entire sample `main.py` we have created together:
+**Our script is ready!** Here is the entire sample `main.py` we have created together:
 
 ```python
 from flask import Flask, jsonify, render_template, request
@@ -418,9 +416,9 @@ if __name__ == '__main__':
 ```
 
 {% hint style="info" %}
-Note that one of the import statements in our previous Python file refers to \_DataTriggerForm \_in a file named`forms.py` This piece of code effects the text that appears on our frontend button and contains a default form from Flask.\
-\
-Include below is the code for \_DataTriggerForm \_which lives in our`forms.py` file.
+Note that one of the import statements in our previous Python file refers to _DataTriggerForm_ in a file named`forms.py`. This piece of code effects the text that appears on our frontend button and contains a default form from Flask.
+
+Include below is the code for _DataTriggerForm_ which lives in our `forms.py` file.
 {% endhint %}
 
 ```python
@@ -438,7 +436,7 @@ With our Python script ready, we’ll now build our dashboard. Our example clien
 
 Our dashboard is a simple HTML page that displays any information that was processed by the Python scripts in the background.
 
-#### a) Create your `index.html` **file**
+#### a) Create your `index.html` file
 
 This is the file where we will store all of our frontend code.
 
@@ -476,7 +474,7 @@ This piece of code "POSTS" a trigger to the Python script, we created previously
 </div>
 ```
 
-This piece of code gathers variables that was previously passed into our `render_template `function. Retrieving the variables, we can update the frontend as soon as we have parsed and received new data from the Alchemy API.
+This piece of code gathers variables that was previously passed into our `render_template` function. Retrieving the variables, we can update the frontend as soon as we have parsed and received new data from the Alchemy API.
 
 #### d) Add Other HTML Elements
 
@@ -578,8 +576,8 @@ This is a simple example, but there are many ways you can expand on this to buil
 
 Fork 🍴, build 🏗️, and design 📝off this repo!
 
-## **Conclusion**
+## Conclusion
 
 Blockchain has evolved quickly, but not all developer features are easy or intuitive to use. In particular, the querying of historical transaction information is something that has plagued development. However, with the Alchemy Transfers API, your users can stay informed and confident about understanding their transaction activity both in the present and the past!
 
-**Ready to start using Alchemy Transfers? **[**Create a free Alchemy account**](https://alchemy.com/?r=affiliate:ba2189be-b27d-4ce9-9d52-78ce131fdc2d)** and get started today!**
+**Ready to start using Alchemy Transfers? [Create a free Alchemy account](https://alchemy.com/?r=affiliate:ba2189be-b27d-4ce9-9d52-78ce131fdc2d) and get started today!**
