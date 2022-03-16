@@ -4,7 +4,7 @@ description: Various systems in place to support you through your developer expe
 
 # 👥 Support
 
-#### _**Get access to **_[_**Alchemy for free here**_](https://alchemy.com/?r=affiliate:e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_**.**_
+#### _Get access to_ [_Alchemy for free here_](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_._
 
 There are three main avenues of support for Alchemy users: Discord, support tickets, and Telegram. We recommend checking the developer community discord if you run into issues or have questions before submitting a support ticket. &#x20;
 
