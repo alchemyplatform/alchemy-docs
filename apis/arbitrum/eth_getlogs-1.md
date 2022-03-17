@@ -22,7 +22,7 @@ description: >-
 * `address`: `DATA|Array`, 20 Bytes - (optional) Contract address or a list of addresses from which logs should originate.
 * `topics`: `Array` of `DATA`, - (optional) Array of 32 Bytes DATA topics.
   * Topics are order-dependent. Each topic can also be an array of DATA with "or" options.
-  * Check out more details on how to format topics in [eth\_newFilter](./#eth\_newfilter).
+  * Check out more details on how to format topics in [eth\_newFilter](../ethereum/#eth\_newfilter).
 * `blockHash`: `DATA`, 32 Bytes - (optional) With the addition of EIP-234 (Geth >= v1.8.13 or Parity >= v2.1.0), blockHash is a new filter option which restricts the logs returned to the single block with the 32-byte hash blockHash. Using blockHash is equivalent to fromBlock = toBlock = the block number with hash `blockHash`.\*\* If blockHash is present in the filter criteria, then neither `fromBlock` nor `toBlock` are allowed.\*\*
 
 ```javascript

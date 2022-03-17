@@ -18,7 +18,7 @@ params: ["0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb97
 
 `DATA`, 32 Bytes - the transaction hash, or the zero hash if the transaction is not yet available.
 
-Use [`eth_getTransactionReceipt`](./#eth\_gettransactionreceipt) to get the contract address after the transaction was mined when you created a contract.
+Use [`eth_getTransactionReceipt`](../ethereum/#eth\_gettransactionreceipt) to get the contract address after the transaction was mined when you created a contract.
 
 ## Example
 

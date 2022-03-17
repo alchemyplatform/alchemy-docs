@@ -10,7 +10,7 @@ description: >-
 ## Parameters <a href="#parameters" id="parameters"></a>
 
 1. subscription name
-2. optional arguments ([see below](./#optional-arguments))
+2. optional arguments ([see below](../ethereum/#optional-arguments))
 
 ## \*\*Returns \*\*
 
