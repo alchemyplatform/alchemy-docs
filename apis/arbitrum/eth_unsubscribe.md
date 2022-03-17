@@ -1,45 +1,29 @@
 ---
 description: >-
-  Arbitrum API - Subscriptions are cancelled with a regular RPC call with
-  eth_unsubscribe as method and the subscription id as first parameter. It
-  returns a bool indicating if the subscription was cance
+  Arbitrum API - Cancels an existing subscription so that no further events are
+  sent.
 ---
 
-# eth\_unsubscribe
+# eth\_unsubscribe - Arbitrum
 
-#### Parameters <a href="#parameters-1" id="parameters-1"></a>
+### Parameters
 
-1. subscription id
+1. Subscription ID, as previously returned from an [`eth_subscribe`](eth\_subscribe.md) call.
 
-## Example <a href="#example-1" id="example-1"></a>
+### Returns
 
-{% hint style="info" %}
-**NOTE**: `eth_unsubscribe` requests cannot be replicated in the [composer](https://composer.alchemyapi.io) tool
-{% endhint %}
+`true` if a subscription was successfully cancelled, or `false` if no subscription existed with the given ID.
 
-### Request
+### Example <a href="#example-1" id="example-1"></a>
+
+Request
 
 {% tabs %}
-{% tab title="Curl" %}
+{% tab title="wscat" %}
 ```bash
-curl https://arb-mainnet.g.alchemy.com/v2/your-api-key \
--X POST \
--H "Content-Type: application/json" \
--d '{"jsonrpc":"2.0","id": 1, "method": "eth_unsubscribe", "params": ["0x9cef478923ff08bf67fde6c64013158d"]}'
-```
-{% endtab %}
+wscat -c wss://arb-mainnet.g.alchemy.com/v2/your-api-key
 
-{% tab title="Postman" %}
-```http
-URL: https://arb-mainnet.g.alchemy.com/v2/your-api-key
-RequestType: POST
-Body: 
-{
-    "jsonrpc":"2.0",
-    "method":"eth_subscribe",
-    "params":["0x9cef478923ff08bf67fde6c64013158d"],
-    "id":1
-}
+{"jsonrpc":"2.0", "id": 1, "method": "eth_unsubscribe", "params": ["0x9cef478923ff08bf67fde6c64013158d"]}
 ```
 {% endtab %}
 {% endtabs %}

@@ -11,7 +11,7 @@ description: >-
 1. `DATA` - the data in hex form to convert into a SHA3 hash
 
 {% hint style="warning" %}
-\*\*Note: \*\*web3\_sha3 takes in a hexidecimal number, not a direct string. So, if you wanted to convert "hello world" to it's Keccak-256 hash you would need to input the hex number for "hello world", which is "68656c6c6f20776f726c64".
+Note: `web3_sha3` takes in a hexidecimal number, not a direct string. So, if you wanted to convert "hello world" to it's Keccak-256 hash you would need to input the hex number for "hello world", which is "68656c6c6f20776f726c64".
 {% endhint %}
 
 ```bash
