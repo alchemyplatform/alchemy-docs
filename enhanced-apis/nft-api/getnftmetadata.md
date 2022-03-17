@@ -48,20 +48,21 @@ API requests will perform faster if `tokenType` is specified!
 
       _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
   * `timeLastUpdated`: ISO timestamp of the last cache refresh for the information returned in the `metadata` field.
-  * `error`: A string describing a particular reason that we were unable to fetch complete metadata for the NFT. See the [Handling Errors](getnftmetadata/handling-errors.md) section for a complete list of potential errors.
+  * `error`: A string describing a particular reason that we were unable to fetch complete metadata for the NFT. \
+    **See the** [**Handling Errors**](getnftmetadata/handling-errors.md) **section for a complete list of potential errors.**
 
 {% hint style="info" %}
 **NOTE:**\
 ****To parse and view an NFT's media asset, use either the `gateway`URI within the`media` objector the`external_url`within `metadata`object. [Visit the FAQ](../../guides/nft-api-metadata.md#gateway-vs.-raw-uris) for more info on IPFS gateways.\
 \
-Select NFT contracts may not have metadata specified by its creator. You may need to parse the response on a case-by-case basis. &#x20;
+Select NFT contracts may not have metadata specified by their creator. You may need to parse the response on a case-by-case basis. &#x20;
 {% endhint %}
 
 ## Example
 
 {% hint style="info" %}
 The example below is for Ethereum Mainnet. If you are using Polygon you'll need to use your polygon endpoint instead: \
-https://polygon-mainnet.g.alchemy.com`/v2/your-api-key/getNFTs`...
+`https://polygon-mainnet.g.alchemy.com/v2/your-api-key/getNFTs...`
 {% endhint %}
 
 ### Request

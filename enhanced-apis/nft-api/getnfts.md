@@ -63,6 +63,8 @@ We paginate our responses with a default limit of **100 responses**. We've chose
 * `pageKey` : (optional) UUID for pagination - returned if there are more NFTs to fetch. Max NFTs per page = 100.
 * `totalCount`: total number of NFTs owned by the given address.&#x20;
 * `blockHash`: the canonical head block hash of when your request was received
+* `error`: A string describing a particular reason that we were unable to fetch complete metadata for the NFT. \
+  **See the** [**Handling Errors**](getnftmetadata/handling-errors.md) **section for a complete list of potential errors.**
 
 {% hint style="info" %}
 **NOTE:**\
