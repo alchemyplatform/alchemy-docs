@@ -10,7 +10,7 @@ This endpoint is supported on the following chains and networks:
 * **Polygon**: Mainnet and Mumbai
 * **Flow**: Mainnet and Testnet
 
-_To see chain support accross all features, check out the_ [_feature matrix_](../../apis/feature-support-by-chain.md)_._
+_To see chain support across all features, check out the_ [_feature matrix_](../../apis/feature-support-by-chain.md)_._
 
 ## Parameters
 
