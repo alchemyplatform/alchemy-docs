@@ -10,7 +10,7 @@ Users often want to find all the transaction receipts for a block on the blockch
 
 This can result in numerous API calls as blocks can have 200-400 transactions. We can batch these call into one JSON-RPC call to speed things up but this is still slow and expensive.
 
-The `alchemy_getTransactionReceipts` method allows us to fetch all transaction receipts for a **block number** or a **block hash** in one API call - for mainnet and testnets on Ethereum, Polygon, and Arbitrum. [It also uses less CUs](https://docs.alchemy.com/alchemy/documentation/compute-units#raw-method-costs) then batching all the transaction receipts - saving you on compute cost :white\_check\_mark:
+The `alchemy_getTransactionReceipts` method allows us to fetch all transaction receipts for a **block number** or a **block hash** in one API call - for mainnet and testnets on Ethereum, Polygon, Optimism, and Arbitrum. [It also uses less CUs](https://docs.alchemy.com/alchemy/documentation/compute-units#raw-method-costs) then batching all the transaction receipts - saving you on compute cost :white\_check\_mark:
 
 ## `alchemy_getTransactionReceipts`
 
