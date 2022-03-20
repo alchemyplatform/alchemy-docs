@@ -1,7 +1,7 @@
 ---
 description: >-
   A detailed guide to choosing which Network to deploy on. Compares Layer 1
-  chains vs Layer 2 chains as well as Mainntet vs Testnets environments.
+  chains vs Layer 2 chains as well as Mainnet vs Testnets environments.
 ---
 
 # 🌐 Choosing a Network
