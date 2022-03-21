@@ -20,11 +20,11 @@ For example, if you send one `eth_blockNumber` (10 CUs), two `eth_getLogs` (75 C
 
 See the table below for the number of compute units per second (CUPS) permitted for each user type.
 
-| User       | CUPS   |
-| ---------- | ------ |
-| Free       | 330    |
-| Growth     | 660    |
-| Enterprise | Custom |
+| User                                          | CUPS                                      |
+| --------------------------------------------- | ----------------------------------------- |
+| Free                                          | 330                                       |
+| Growth                                        | 660                                       |
+| [Enterprise](https://www.alchemy.com/pricing) | [Custom](https://www.alchemy.com/pricing) |
 
 ## :inbox\_tray: **Response**
 
