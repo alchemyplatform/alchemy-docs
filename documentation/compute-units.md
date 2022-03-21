@@ -141,4 +141,4 @@ For example, if you send one `eth_blockNumber` (10 CUs), two `eth_getLogs` (75 C
 | Growth     | 660    |
 | Enterprise | Custom |
 
-If you are experiencing rate limits, or want create a more robust and reliable experience for your users, we recommend [implementing retries](https://app.gitbook.com/@alchemyapi/s/alchemy/\~/drafts/-MQsfYK26fbJzMbpYgTc/guides/rate-limits#retries).
+If you are experiencing rate limits, or want create a more robust and reliable experience for your users, we recommend [implementing retries](../guides/rate-limits.md#retries).
