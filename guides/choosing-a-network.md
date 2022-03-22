@@ -18,6 +18,26 @@ Every blockchain (including both Layer 1s and Layer 2s) has a mainnet. The mainn
 
 There are four different types of testnets that Alchemy supports.
 
+### [**Goerli**](https://goerli.etherscan.io)
+
+Goerli is a proof-of-authority blockchain, supported by multiple clients. This testnet has the goal of being both widely usable across all client implementations supporting Clique Proof of Authority (PoA) engine and robust enough to guarantee consistent availability and high reliability.
+
+{% hint style="info" %}
+**NOTE**: Goerli is the recommended testnet to build on as other testnets are unlikely to be maintained in the future.&#x20;
+{% endhint %}
+
+* Average block time: 15 seconds.
+* Chain ID: 5
+* Status Dashboard:
+  * [https://stats.goerli.net/](https://stats.goerli.net)
+  * [https://goerli.ethstats.io/](https://goerli.ethstats.io)
+* Block Explorer:
+  * [https://goerli.etherscan.io/](https://goerli.etherscan.io)
+* Faucet:
+  * [goerlifaucet.com](http://goerlifaucet.com)
+
+Check out more info about Goerli on the [GitHub](https://github.com/goerli/testnet).
+
 ### [**Rinkeby**](https://rinkeby.etherscan.io)
 
 Rinkeby is a proof-of-authority blockchain that uses the Clique PoA consensus protocol, and is only supported by Geth. This testnet is immune to spam attacks since the Ether supply is controlled by trusted parties and has to be requested from a [faucet](https://www.rinkebyfaucet.com), not mined.
@@ -25,27 +45,13 @@ Rinkeby is a proof-of-authority blockchain that uses the Clique PoA consensus pr
 **Note:** Rinkeby doesn't fully reproduce the current production environment since it uses PoA.
 
 * Average block time: 15 seconds.
-* Explorer: [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io)
+* Chain ID: 4
+* Block Explorer&#x20;
+  * [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io)
+* Faucet
+  * [https://rinkebyfaucet.com/](https://rinkebyfaucet.com)
 
 Check out more info about Rinkeby on the [website](https://www.rinkeby.io).
-
-### [**Goerli**](https://goerli.etherscan.io)
-
-Goerli is a proof-of-authority blockchain, supported by multiple clients. This testnet has the goal of being both widely usable across all client implementations supporting Clique Proof of Authority (PoA) engine and robust enough to guarantee consistent availability and high reliability.
-
-* Average block time: 15 seconds.
-* Status Dashboard:
-  * [https://stats.goerli.net/](https://stats.goerli.net)
-  * [https://goerli.ethstats.io/](https://goerli.ethstats.io)
-* Block Explorer:
-  * [https://goerli.etherscan.io/](https://goerli.etherscan.io)
-  * [https://expedition.dev/?network=goerli](https://expedition.dev/?network=goerli)
-* Faucets:
-  * [https://goerli-faucet.dappnode.net/](https://goerli-faucet.dappnode.net)
-  * [https://faucet.goerli.mudit.blog/](https://faucet.goerli.mudit.blog)
-  * [https://goerli-faucet.slock.it/](https://goerli-faucet.slock.it)
-
-Check out more info about Goerli on the [GitHub](https://github.com/goerli/testnet).
 
 ### [**Kovan**](https://kovan.etherscan.io)
 
@@ -53,8 +59,11 @@ Kovan is a proof-of-authority blockchain, started by the Parity team and support
 
 **Note:** Kovan doesn't fully reproduce the current production environment since it uses PoA.
 
-* Explorer: [https://kovan.etherscan.io/](https://kovan.etherscan.io)
-* Faucet: [https://github.com/kovan-testnet/faucet.](https://github.com/kovan-testnet/faucet.)
+* Chain ID: 42
+* Explorer:
+  * [https://kovan.etherscan.io/](https://kovan.etherscan.io)
+* Faucet:
+  * &#x20;[https://github.com/kovan-testnet/faucet.](https://github.com/kovan-testnet/faucet.)
 
 Check out more info about Kovan on the [GitHub](https://github.com/kovan-testnet/proposal).
 
@@ -66,11 +75,13 @@ Ropsten is a proof-of-work blockchain that most closely resembles the current Et
 
 You can easily mine faux-Ether or request it from a faucet:
 
+* Chain ID: 3
 * Faucets
   * [https://faucet.metamask.io/](https://faucet.metamask.io)
   * [http://faucet.ropsten.be:3001](http://faucet.ropsten.be:3001)
   * [https://faucet.bitfwd.xyz/](https://faucet.bitfwd.xyz)
-* Explorer: [https://ropsten.etherscan.io/](https://ropsten.etherscan.io)
+* Explorer:
+  * [https://ropsten.etherscan.io/](https://ropsten.etherscan.io)
 
 Check out more info about Ropsten on the [GitHub](https://github.com/ethereum/ropsten).
 
@@ -93,3 +104,15 @@ Arbitrum currently has one testnet on connected to Ethereum's Rinkeby testnet. T
 * ChainID: 421611
 * Symbol: ETH
 * Block Explorer URL: [https://rinkeby-explorer.arbitrum.io/#/](https://rinkeby-explorer.arbitrum.io/#/)
+
+## Polygon
+
+### Mumbai&#x20;
+
+Polygon has one testnet known as the Mumbai network, which operates exactly the same as the Polygon mainnet.
+
+* Chain ID: 80001
+* Faucet
+  * [https://mumbaifaucet.com/](https://mumbaifaucet.com)
+* Block Explorer&#x20;
+  * [https://mumbai.polygonscan.com/](https://mumbai.polygonscan.com)
