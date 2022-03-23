@@ -8,7 +8,7 @@ This endpoint is supported on the following chains and networks:
 
 * **Ethereum**: Mainnet, Rinkeby, Kovan, Goerli, Ropsten
 * **Polygon**: Mainnet and Mumbai
-* **Flow**: Mainnet and Testnet
+* **Flow**: Mainnet and Testnet (see docs [here](https://docs.alchemy.com/flow/documentation/flow-nft-apis))
 
 _To see chain support accross all features, check out the_ [_feature matrix_](../../apis/feature-support-by-chain.md)_._
 
