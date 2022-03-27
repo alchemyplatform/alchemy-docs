@@ -164,7 +164,8 @@
 
 ## 📖 Documentation
 
-* [Subscription API (Websockets)](documentation/subscription-api-websockets.md)
+* [Subscription API (Websockets)](documentation/subscription-api-websockets/README.md)
+  * [👂 How to Listen to NFT Mints](documentation/subscription-api-websockets/how-to-listen-to-nft-mints.md)
 * [Alchemy Web3.js](documentation/alchemy-web3/README.md)
   * [Enhanced Web3 API](documentation/alchemy-web3/enhanced-web3-api.md)
 * [Error Reference](documentation/error-reference.md)

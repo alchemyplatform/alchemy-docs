@@ -8,8 +8,8 @@ description: >-
 
 To learn more about how to use websockets check out the guide below👇
 
-{% content-ref url="../guides/using-websockets.md" %}
-[using-websockets.md](../guides/using-websockets.md)
+{% content-ref url="../../guides/using-websockets.md" %}
+[using-websockets.md](../../guides/using-websockets.md)
 {% endcontent-ref %}
 
 When connected by a WebSocket, you may use two additional methods: `eth_subscribe` and `eth_unsubscribe`. These methods will allow you to listen for particular events and be notified immediately.
@@ -24,7 +24,7 @@ There is a limit of 20,000 websocket connections per API Key as well as 1,000 pa
 
 ### Parameters
 
-1. [Subscription type](../guides/using-websockets.md#subscription-types)
+1. [Subscription type](../../guides/using-websockets.md#subscription-types)
 2. Optional params
 
 The first argument specifies the type of event for which to listen. The second argument contains additional options which depend on the first argument. The different description types, their options, and their event payloads are described below.
@@ -54,7 +54,7 @@ The `alchemy_newFullPendingTransactions`subscription type is a super costly to m
 
 NOTE:&#x20;
 
-* The naming of this subscription is different from the naming of the web3 subscription API, [`alchemy_fullPendingTransactions`](alchemy-web3/enhanced-web3-api.md#web-3-eth-subscribe-alchemy\_fullpendingtransactions).
+* The naming of this subscription is different from the naming of the web3 subscription API, [`alchemy_fullPendingTransactions`](../alchemy-web3/enhanced-web3-api.md#web-3-eth-subscribe-alchemy\_fullpendingtransactions).
 * This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
 {% endhint %}
 
