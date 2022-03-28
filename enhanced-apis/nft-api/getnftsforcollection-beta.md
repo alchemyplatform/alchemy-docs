@@ -7,8 +7,8 @@ description: Gets all NFTs for a given NFT contract
 ## Parameters
 
 * `contractAddress`: _**\[string]**_ - contract address for the NFT collection
-* `withMetadata`: _**\[boolean] -**_ (optional)  _****_  If set to `true`, returns NFT metadata; otherwise will only return tokenIds
-* `startToken`: _**\[string]**_ - an offset used for pagination. Can be a hex string, or a decimal.
+* `withMetadata`: _**\[boolean] -**_ (optional) _****_ if set to `true`, returns NFT metadata; otherwise will only return tokenIds. Defaults to `false`.
+* `startToken`: _**\[string]**_ - (optional) an offset used for pagination. Can be a hex string, or a decimal.
 
 {% hint style="info" %}
 #### NOTE on`startToken`:&#x20;
@@ -27,7 +27,7 @@ See the 'examples' section for an example of how to use this parameter to fetch 
     Object schema:
 
     * `id`
-      * `tokenId`: Id for NFT (integer)&#x20;
+      * `tokenId`: _**\[string]**_ Hexadecimal token ID for NFT
       * `tokenMetadata`
         * `tokenType`: "`ERC721`" or "`ERC1155`"
     * `tokenUri`:
@@ -35,7 +35,7 @@ See the 'examples' section for an example of how to use this parameter to fetch 
       * `gateway:` public gateway uri for the raw uri above.
     * `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually. \
       _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
-* `nextToken` : an offset used for pagination
+* `nextToken`: _**\[string]**_ an offset used for pagination
 
 ## Example
 
