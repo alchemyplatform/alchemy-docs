@@ -1,6 +1,6 @@
 ---
 description: >-
-  "What is the best way to listen to a successful NFT contra mint even on a
+  "What is the best way to listen to a successful NFT contract mint even on a
   smart contract on node.js backend app?"
 ---
 
