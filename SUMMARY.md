@@ -171,6 +171,7 @@
 * [Error Reference](documentation/error-reference.md)
 * [Compute Units (CUs)](documentation/compute-units.md)
 * [Rate Limits](guides/rate-limits.md)
+* [Gas Limits for eth\_call and eth\_estimateGas](documentation/gas-limits-for-eth\_call-and-eth\_estimategas.md)
 
 ## 💻 Tutorials
 
@@ -208,7 +209,6 @@
 * [Using WebSockets](guides/using-websockets.md)
 * [Dashboard Walkthrough](guides/demo-app.md)
 * [Deep Dive into eth\_getLogs](guides/eth\_getlogs.md)
-* [Gas Limits for eth\_call and eth\_estimateGas](guides/gas-limits-for-eth\_call-and-eth\_estimategas.md)
 * [How to Speed Up MetaMask Transactions](guides/connecting-metamask-to-alchemy.md)
 * [Alchemy Set-up for Macs](guides/alchemy-for-macs.md)
 * [Choosing a Network](guides/choosing-a-network.md)
