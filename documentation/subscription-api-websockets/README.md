@@ -1,68 +1,69 @@
 ---
 description: >-
-  Learn how to subscribe to pending transactions, log events, new block headers
-  and more using Websockets on Ethereum, Polygon, and Arbitrum.
+  Learn how to subscribe to pending transactions, log events, new blocks and
+  more using Websockets on Ethereum, Polygon, and Arbitrum.
 ---
 
 # Subscription API (Websockets)
 
-To learn more about how to use websockets check out the guide below👇
+## How to use Websockets
+
+The subscription API endpoints ([`eth_subscribe`](./#eth\_subscribe) and [`eth_unsubscribe`](./#eth\_unsubscribe)) are only supported over [Websockets](../../guides/using-websockets.md).&#x20;
+
+Websockets are different from HTTP requests. To learn more about how to use websockets check out the guide below👇
 
 {% content-ref url="../../guides/using-websockets.md" %}
 [using-websockets.md](../../guides/using-websockets.md)
 {% endcontent-ref %}
 
-When connected by a WebSocket, you may use two additional methods: `eth_subscribe` and `eth_unsubscribe`. These methods will allow you to listen for particular events and be notified immediately.
-
 ## eth\_subscribe
 
-Creates a new subscription for specified events.
+Creates a new subscription for desired events. Sends data as soon as it occurs.
 
 {% hint style="warning" %}
-There is a limit of 20,000 websocket connections per API Key as well as 1,000 parallel websocket subscriptions per websocket connection, creating a maximum of 20 million subscriptions per application.
+There is a limit of 20,000 **** websocket connections per API Key as well as 1,000 parallel websocket subscriptions per websocket connection, creating a maximum of 20 million subscriptions per application.
 {% endhint %}
 
 ### Parameters
 
-1. [Subscription type](../../guides/using-websockets.md#subscription-types)
-2. Optional params
-
-The first argument specifies the type of event for which to listen. The second argument contains additional options which depend on the first argument. The different description types, their options, and their event payloads are described below.
+* [**Subscription type**](../../guides/using-websockets.md#subscription-types) **** - specifies the type of event to listen to (ex: [new pending transactions](./#3.-newpendingtransactions), [logs](./#5.-logs), etc.)
+* **Optional params** - optional parameters to include to describe the type of event to listen to (ex: `address`)&#x20;
 
 ### Returns
 
-The subscription ID. This ID will be attached to any received events, and can also be used to cancel the subsciption using `eth_unsubscribe`.
+* **Subscription ID**: This ID will be attached to all received events and can also be used to cancel the subsciption using [`eth_unsubscribe`](./#eth\_unsubscribe).
 
 ### Subscription Events
 
-While the subscription is active, you will receive events which are objects with the following fields:
+While the subscription is active, you will receive events formatted as an object described below:
 
-* `jsonrpc`: Always "2.0"
-* `method`: Always "eth\_subscription"
-* `params`: An object with the following fields:
-  * `subscription`: The subscription ID returned by the `eth_subscription` call which created this subscription.
-  * `result`: An object whose contents vary depending on the type of subscription.
+* Event Object:
+  * `jsonrpc`: Always "2.0"
+  * `method`: Always "eth\_subscription"
+  * `params`: An object with the following fields:
+    * `subscription`: The subscription ID returned by the `eth_subscribe` call which created this subscription.
+    * `result`: An object whose contents vary depending on the [type of subscription](./#subscription-types).
 
-### Subscription types
+## Subscription types
 
-### 1. alchemy\_newFullPendingTransactions
+The following subscription types are accepted in all `eth_subscribe` websocket requests through your Alchemy endpoint.&#x20;
 
-Returns the transaction information for all transactions that are added to the pending state. This subscription type subscribes to pending transactions, similar to the standard Web3 call `web3.eth.subscribe("pendingTransactions")`, but differs in that it emits full transaction information rather than just transaction hashes.
+### alchemy\_newFullPendingTransactions
+
+Returns the transaction information for all transactions that are added to the pending state. This subscription type subscribes to pending transactions, similar to the standard Web3 call `web3.eth.subscribe("pendingTransactions")`, but differs in that it emits **full** transaction information rather than just transaction hashes.
 
 {% hint style="warning" %}
-The `alchemy_newFullPendingTransactions`subscription type is a super costly to maintain and requires a large number of compute units since it emits full transaction information instead of just transaction hashes. We do not recommend keeping this subscription open for long periods of time for non-enterprise tier users.
+The `alchemy_newFullPendingTransactions` subscription type is costly to maintain and thus requires a large number of compute units since it emits full transaction information instead of just transaction hashes. We do not recommend keeping this subscription open for long periods of time for non-enterprise tier users.
 
-NOTE:&#x20;
+**NOTE:**&#x20;
 
-* The naming of this subscription is different from the naming of the web3 subscription API, [`alchemy_fullPendingTransactions`](../alchemy-web3/enhanced-web3-api.md#web-3-eth-subscribe-alchemy\_fullpendingtransactions).
+* The naming of this subscription is different from the naming of the web3 subscription API, [`alchemy_fullPendingTransactions`](../alchemy-web3/enhanced-web3-api.md#web-3-eth-subscribe-alchemy\_fullpendingtransactions). This is to maintain naming standard with  Web3.js.
 * This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
 {% endhint %}
 
-### **Parameters**
+#### **Parameters**
 
 * None
-
-### **Example**
 
 #### Request
 
@@ -80,6 +81,7 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
 
 ```javascript
 {"id":1,"result":"0x9a52eeddc2b289f985c0e23a7d8427c8","jsonrpc":"2.0"}
+
 {
     "jsonrpc":"2.0",
     "method":"eth_subscription",
@@ -104,19 +106,17 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
 }
 ```
 
-### 2. alchemy\_filteredNewFullPendingTransactions
+### alchemy\_filteredNewFullPendingTransactions
 
-Returns the transaction information for all transactions that are added to the pending state that match a given filter. Currently supports an address filter, which will return transactions from or to the address.
+Returns the transaction information for all transactions that are added to the pending state that match a given filter. Currently supports an address filter, which will return transactions **from** or **to** the address.
 
 {% hint style="warning" %}
-NOTE: This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
+**NOTE:** This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
 {% endhint %}
 
-### **Parameters**&#x20;
+#### **Parameters**&#x20;
 
-* `address`: address to receive pending transactions for (sent from this address).&#x20;
-
-### **Example**
+* `address`: address to receive pending transactions for (sent `from` or `to` this address).&#x20;
 
 #### Request
 
@@ -125,7 +125,7 @@ NOTE: This method is only supported on Ethereum and Polygon networks (Mainnet an
 ```bash
 wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
 
-{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["alchemy_filteredNewFullPendingTransactions", {"address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2"}]}
+{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["alchemy_filteredNewFullPendingTransactions", {"address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"}]}
 ```
 {% endtab %}
 {% endtabs %}
@@ -134,6 +134,7 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
 
 ```javascript
 {"id":1,"result":"0x9a52eeddc2b289f985c0e23a7d8427c8","jsonrpc":"2.0"}
+
 {
     "jsonrpc":"2.0",
     "method":"eth_subscription",
@@ -158,21 +159,17 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
 }
 ```
 
-### 3. newPendingTransactions
+### newPendingTransactions
 
-Returns the hash for all transactions that are added to the pending state.
-
-When a transaction that was previously part of the canonical chain isn’t part of the new canonical chain after a reorganization its again emitted.
+Returns the hash for all transactions that are added to the pending state (regardless if you sent them or not).
 
 {% hint style="warning" %}
 NOTE: This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
 {% endhint %}
 
-### **Parameters**
+#### **Parameters**
 
 * None
-
-### **Example**
 
 **Request**
 
@@ -190,11 +187,8 @@ NOTE: This method is only supported on Ethereum and Polygon networks (Mainnet an
 **Result**
 
 ```javascript
-{
-    "jsonrpc":"2.0",
-    "id":2,
-    "result":"0xc3b33aa549fb9a60e95d21862596617c"
-}
+{"id":1,"result":"0xc3b33aa549fb9a60e95d21862596617c","jsonrpc":"2.0"}
+
 {
     "jsonrpc":"2.0",
     "method":"eth_subscription",
@@ -205,21 +199,19 @@ NOTE: This method is only supported on Ethereum and Polygon networks (Mainnet an
 }
 ```
 
-### 4. newHeads
+### newHeads
 
-Emits an event any time a new header is added to the chain, including during a chain reorganization.
+Emits an event any time a new header (block) is added to the chain, including during a chain reorganization.
 
 {% hint style="info" %}
 **NOTE: Chain Reorganizations (ReOrgs)**
 
-When a chain reorganization occurs, this subscription will emit an event containing all new headers for the new chain. This means that you may see multiple headers emitted with the same height, and when this happens the later header should be taken as the correct one after a reorganization.
+When a chain reorganization occurs, this subscription will emit an event containing all new headers (blocks) for the new chain. This means that you may see multiple headers emitted with the same height, and when this happens the later header should be taken as the correct one after a reorganization.
 {% endhint %}
 
-### Parameters
+#### Parameters
 
 * None
-
-### Example
 
 **Request**
 
@@ -236,11 +228,8 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
 **Result**
 
 ```java
-{
-  "jsonrpc":"2.0",
-  "id":1,
-  "result":"0x9ce59a13059e417087c02d3236a0b1cc"
-}
+{"jsonrpc":"2.0", "id":1, "result":"0x9ce59a13059e417087c02d3236a0b1cc"}
+
 {
    "jsonrpc": "2.0",
    "method": "eth_subscription",
@@ -266,7 +255,7 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
  }
 ```
 
-### 5. logs
+### logs
 
 Emits logs which are part of newly added blocks that match specified filter criteria.
 
@@ -278,24 +267,25 @@ When a chain reorganization occurs, logs that are part of blocks on the old chai
 Logs which are part of the blocks on the new chain are also emitted, it is possible to see logs for the same transaction multiple times in the case of a reorganization.
 {% endhint %}
 
-### Parameters
+#### Parameters
 
-1. An object with the following fields:
-   * `adddress` (optional): either a string representing an address or an array of such strings.
-     * Only logs created from one of these addresses will be emitted.
-   * `topics`: an array of topic specifiers.
-     * Each topic specifier is either `null`, a string representing a topic, or an array of strings.
-     * Each position in the array which is not `null` restricts the emitted logs to only those who have one of the given topics in that position.
+An object with the following fields:
 
-Some examples of topic specifications:
+* `adddress` (optional): \[`string`] Singular address or array of addresses (all of type `string`)
+  * Only logs created from one of these addresses will be emitted.
+* `topics`: an array of topic specifiers.
+  * Each topic specifier is either `null`, a single string, or an array of strings.
+  * For every non `null` topic, a log will be emitted when activity associated with that topic occurs.
+
+{% hint style="info" %}
+**Topic Specifications:**&#x20;
 
 * `[]`: Any topics allowed.
 * `[A]`: A in first position (and anything after).
 * `[null, B]`: Anything in first position and B in second position (and anything after).
 * `[A, B]`: A in first position and B in second position (and anything after).
 * `[[A, B], [A, B]]`: (A or B) in first position and (A or B) in second position (and anything after).
-
-### Example
+{% endhint %}
 
 #### Request
 
@@ -337,15 +327,13 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
 }
 ```
 
-### 6. syncing
+### syncing
 
 Indicates when the node starts or stops synchronizing. The result can either be a boolean indicating that the synchronization has started (true), finished (false) or an object with various progress indicators.
 
-### **Parameters**
+#### **Parameters**
 
 * None
-
-### **Example**
 
 **Request**
 
@@ -388,15 +376,13 @@ Cancels an existing subscription so that no further events are sent.
 
 #### Parameters
 
-1. Subscription ID, as previously returned from an `eth_subscribe` call.
+* **Subscription ID** - ID for the subscription to cancel, previously returned from an [`eth_subscribe`](./#eth\_subscribe) call.
 
 #### Returns
 
 `true` if a subscription was successfully cancelled, or `false` if no subscription existed with the given ID.
 
-#### Example <a href="#example-1" id="example-1"></a>
-
-Request
+**Request**
 
 {% tabs %}
 {% tab title="wscat" %}
@@ -408,7 +394,7 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
 {% endtab %}
 {% endtabs %}
 
-Result
+**Result**
 
 ```javascript
 {
