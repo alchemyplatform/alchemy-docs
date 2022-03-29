@@ -8,12 +8,18 @@ description: >-
 
 ## How to use Websockets
 
-The subscription API endpoints ([`eth_subscribe`](./#eth\_subscribe) and [`eth_unsubscribe`](./#eth\_unsubscribe)) are only supported over [Websockets](../../guides/using-websockets.md).&#x20;
-
-Websockets are different from HTTP requests. To learn more about how to use websockets check out the guide below👇
+The subscription API endpoints ([`eth_subscribe`](./#eth\_subscribe) and [`eth_unsubscribe`](./#eth\_unsubscribe)) are only supported over [Websockets](../../guides/using-websockets.md). Websockets are different from HTTP requests. To learn more about how to use websockets check out the guide below👇
 
 {% content-ref url="../../guides/using-websockets.md" %}
 [using-websockets.md](../../guides/using-websockets.md)
+{% endcontent-ref %}
+
+## Use Cases&#x20;
+
+We recommend using websocket subscriptions anytime you want to continually receive information or data. Check out the guide below for an example use case:
+
+{% content-ref url="how-to-listen-to-nft-mints.md" %}
+[how-to-listen-to-nft-mints.md](how-to-listen-to-nft-mints.md)
 {% endcontent-ref %}
 
 ## eth\_subscribe
@@ -285,6 +291,8 @@ An object with the following fields:
 * `[null, B]`: Anything in first position and B in second position (and anything after).
 * `[A, B]`: A in first position and B in second position (and anything after).
 * `[[A, B], [A, B]]`: (A or B) in first position and (A or B) in second position (and anything after).
+
+To learn more about how log topics work, check out [this page](how-to-listen-to-nft-mints.md#what-are-log-topics).&#x20;
 {% endhint %}
 
 #### Request
@@ -374,11 +382,11 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
 
 Cancels an existing subscription so that no further events are sent.
 
-#### Parameters
+### Parameters
 
 * **Subscription ID** - ID for the subscription to cancel, previously returned from an [`eth_subscribe`](./#eth\_subscribe) call.
 
-#### Returns
+### Returns
 
 `true` if a subscription was successfully cancelled, or `false` if no subscription existed with the given ID.
 
