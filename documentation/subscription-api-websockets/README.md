@@ -76,9 +76,22 @@ The `alchemy_newFullPendingTransactions` subscription type is costly to maintain
 {% tabs %}
 {% tab title="wscat" %}
 ```bash
-wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
+wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
 {"jsonrpc":"2.0","id": 2, "method": "eth_subscribe", "params": ["alchemy_newFullPendingTransactions"]}
+```
+{% endtab %}
+
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+// Initialize alchemy-web3 object.
+const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
+
+// Subcribes to the event and prints results 
+web3.eth.subscribe("alchemy_newFullPendingTransactions").on("data", (data) => console.log(data));
 ```
 {% endtab %}
 {% endtabs %}
@@ -129,9 +142,22 @@ Returns the transaction information for all transactions that are added to the p
 {% tabs %}
 {% tab title="wscat" %}
 ```bash
-wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
+wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
 {"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["alchemy_filteredNewFullPendingTransactions", {"address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"}]}
+```
+{% endtab %}
+
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+// Initialize alchemy-web3 object.
+const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
+
+// Subcribes to the event and prints results 
+web3.eth.subscribe("alchemy_filteredNewFullPendingTransactions", {"address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"}).on("data", (data) => console.log(data));
 ```
 {% endtab %}
 {% endtabs %}
@@ -182,10 +208,23 @@ NOTE: This method is only supported on Ethereum and Polygon networks (Mainnet an
 {% tabs %}
 {% tab title="wscat" %}
 ```bash
- wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
+ wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
  
 
 {"jsonrpc":"2.0","id": 2, "method": "eth_subscribe", "params": ["newPendingTransactions"]}
+```
+{% endtab %}
+
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+// Initialize alchemy-web3 object.
+const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
+
+// Subcribes to the event and prints results 
+web3.eth.subscribe("newPendingTransactions").on("data", (data) => console.log(data));
 ```
 {% endtab %}
 {% endtabs %}
@@ -205,7 +244,7 @@ NOTE: This method is only supported on Ethereum and Polygon networks (Mainnet an
 }
 ```
 
-### newHeads
+### newBlockHeaders
 
 Emits an event any time a new header (block) is added to the chain, including during a chain reorganization.
 
@@ -224,9 +263,22 @@ When a chain reorganization occurs, this subscription will emit an event contain
 {% tabs %}
 {% tab title="wscat" %}
 ```bash
-wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
+wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
-{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["newHeads"]}
+{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["newBlockHeaders"]}
+```
+{% endtab %}
+
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+// Initialize alchemy-web3 object.
+const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
+
+// Subcribes to the event and prints results 
+web3.eth.subscribe("newBlockHeaders").on("data", (data) => console.log(data));
 ```
 {% endtab %}
 {% endtabs %}
@@ -277,7 +329,7 @@ Logs which are part of the blocks on the new chain are also emitted, it is possi
 
 An object with the following fields:
 
-* `adddress` (optional): \[`string`] Singular address or array of addresses (all of type `string`)
+* `adddress` (optional): \[`string`] or \[`array of strings`] Singular address or array of addresses.
   * Only logs created from one of these addresses will be emitted.
 * `topics`: an array of topic specifiers.
   * Each topic specifier is either `null`, a single string, or an array of strings.
@@ -302,7 +354,20 @@ To learn more about how log topics work, check out [this page](how-to-listen-to-
 ```bash
 wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
 
-{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["logs", {"address": "0x8320fe7702b96808f7bbc0d4a888ed1468216cfd", "topics": ["0xd78a0cb8bb633d06981248b816e7bd33c2a35a6089241d099fa519e361cab902"]}]}
+{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["logs", {"address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "topics": ["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"]}]}
+```
+{% endtab %}
+
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+// Initialize alchemy-web3 object.
+const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
+
+// Subcribes to the event and prints results 
+web3.eth.subscribe("logs", {"address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "topics": ["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"]}).on("data", (data) => console.log(data));
 ```
 {% endtab %}
 {% endtabs %}
@@ -348,9 +413,22 @@ Indicates when the node starts or stops synchronizing. The result can either be 
 {% tabs %}
 {% tab title="wscat" %}
 ```bash
-wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
+wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
 {"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["syncing"]}
+```
+{% endtab %}
+
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+// Initialize alchemy-web3 object.
+const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
+
+// Subcribes to the event and prints results 
+web3.eth.subscribe("syncing").on("data", (data) => console.log(data));
 ```
 {% endtab %}
 {% endtabs %}
@@ -395,9 +473,31 @@ Cancels an existing subscription so that no further events are sent.
 {% tabs %}
 {% tab title="wscat" %}
 ```bash
-wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
+wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
 {"jsonrpc":"2.0", "id": 1, "method": "eth_unsubscribe", "params": ["0x9cef478923ff08bf67fde6c64013158d"]}
+```
+{% endtab %}
+
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+// Initialize alchemy-web3 object.
+const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
+
+// Example subscription
+sub = web3.eth.subscribe("newBlockHeaders");
+
+// Unsubscribe
+sub.unsubscribe((error, success) => {
+    if (success) {
+         console.log("F yea, I freed my resources");
+    }
+);
+// unsubscribes the subscription
+subscription.unsubscribe(
 ```
 {% endtab %}
 {% endtabs %}
