@@ -409,64 +409,6 @@ web3.eth.subscribe("logs", {"address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb
 }
 ```
 
-### syncing
-
-Indicates when the node starts or stops synchronizing. The result can either be a boolean indicating that the synchronization has started (true), finished (false) or an object with various progress indicators.
-
-#### **Parameters**
-
-* None
-
-**Request**
-
-{% tabs %}
-{% tab title="wscat" %}
-```javascript
-// initiate websocket stream first
-wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
-
-// then call subscription 
-{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["syncing"]}
-```
-{% endtab %}
-
-{% tab title="alchemyweb3.js" %}
-```javascript
-// Installation: https://github.com/alchemyplatform/alchemy-web3
-const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
-
-// Initialize alchemy-web3 object.
-const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
-
-// Subcribes to the event and prints results 
-web3.eth.subscribe("syncing").on("data", (data) => console.log(data));
-```
-{% endtab %}
-{% endtabs %}
-
-**Result**
-
-```java
-{
-    "jsonrpc":"2.0",
-    "id":1,
-    "result":"0xe2ffeb2703bcf602d42922385829ce96"
-}
-
-{
-    "subscription":"0xe2ffeb2703bcf602d42922385829ce96",
-    "result":{
-        "syncing":true,
-        "status":{
-            "startingBlock":674427,
-            "currentBlock":67400,
-            "highestBlock":674432,
-            "pulledStates":0,
-            "knownStates":0}
-    }
-}
-```
-
 ## eth\_unsubscribe
 
 Cancels an existing subscription so that no further events are sent.
