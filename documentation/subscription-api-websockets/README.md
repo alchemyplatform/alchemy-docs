@@ -75,9 +75,11 @@ The `alchemy_newFullPendingTransactions` subscription type is costly to maintain
 
 {% tabs %}
 {% tab title="wscat" %}
-```bash
+```javascript
+// initiate websocket stream first
 wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
+// then call subscription 
 {"jsonrpc":"2.0","id": 2, "method": "eth_subscribe", "params": ["alchemy_newFullPendingTransactions"]}
 ```
 {% endtab %}
@@ -141,9 +143,11 @@ Returns the transaction information for all transactions that are added to the p
 
 {% tabs %}
 {% tab title="wscat" %}
-```bash
+```javascript
+// initiate websocket stream first
 wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
+// then call subscription 
 {"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["alchemy_filteredNewFullPendingTransactions", {"address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"}]}
 ```
 {% endtab %}
@@ -207,10 +211,11 @@ NOTE: This method is only supported on Ethereum and Polygon networks (Mainnet an
 
 {% tabs %}
 {% tab title="wscat" %}
-```bash
- wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
- 
+```java
+// initiate websocket stream first
+wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
+// then call subscription 
 {"jsonrpc":"2.0","id": 2, "method": "eth_subscribe", "params": ["newPendingTransactions"]}
 ```
 {% endtab %}
@@ -262,9 +267,11 @@ When a chain reorganization occurs, this subscription will emit an event contain
 
 {% tabs %}
 {% tab title="wscat" %}
-```bash
+```javascript
+// initiate websocket stream first
 wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
+// then call subscription 
 {"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["newBlockHeaders"]}
 ```
 {% endtab %}
@@ -351,9 +358,11 @@ To learn more about how log topics work, check out [this page](how-to-listen-to-
 
 {% tabs %}
 {% tab title="wscat" %}
-```bash
-wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
+```javascript
+// initiate websocket stream first
+wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
+// then call subscription 
 {"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["logs", {"address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "topics": ["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"]}]}
 ```
 {% endtab %}
@@ -412,9 +421,11 @@ Indicates when the node starts or stops synchronizing. The result can either be 
 
 {% tabs %}
 {% tab title="wscat" %}
-```bash
+```javascript
+// initiate websocket stream first
 wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
+// then call subscription 
 {"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["syncing"]}
 ```
 {% endtab %}
@@ -472,9 +483,11 @@ Cancels an existing subscription so that no further events are sent.
 
 {% tabs %}
 {% tab title="wscat" %}
-```bash
+```javascript
+// initiate websocket stream first
 wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
+// then call unsubscribe 
 {"jsonrpc":"2.0", "id": 1, "method": "eth_unsubscribe", "params": ["0x9cef478923ff08bf67fde6c64013158d"]}
 ```
 {% endtab %}
