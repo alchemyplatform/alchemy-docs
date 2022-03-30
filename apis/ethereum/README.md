@@ -1,7 +1,8 @@
 ---
 description: >-
-  Below you will find the api documentation for the standard Ethereum JSON-RPC
-  calls that Alchemy supports.
+  The Ethereum API follows a JSON-RPC standard. This doc contains the methods
+  that Alchemy supports for Ethereum development (smart contracts &
+  decentralized applications) on mainnet and testnets.
 ---
 
 # Ethereum API
