@@ -6,9 +6,9 @@ description: >-
 
 # Getting Started
 
-:wave: _\*\*New to Alchemy? Get access to Alchemy for free \*\*_[_**here**_](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_**.**_
+:wave: _New to Alchemy? Get access to Alchemy for free_ [_**here**_](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_**.**_
 
-_Estimated time to complete this guide: < 10 minutes\*\* \*\*_
+_Estimated time to complete this guide: < 10 minutes_
 
 ## :clipboard: Steps to get started with Alchemy
 
@@ -139,7 +139,7 @@ Hint: You should ultimately replace `<api-key>` with your Alchemy HTTP API key.
 ```javascript
 async function main() {
  const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
- const web3 = createAlchemyWeb3("https://eth-mainnet.alchemyapi.io/<api-key>");
+ const web3 = createAlchemyWeb3("https://eth-mainnet.alchemyapi.io/v2/<api-key>");
  const blockNumber = await web3.eth.getBlockNumber();
  console.log("The latest block number is " + blockNumber);
 }
