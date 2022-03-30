@@ -249,7 +249,7 @@ web3.eth.subscribe("newPendingTransactions").on("data", (data) => console.log(da
 }
 ```
 
-### newBlockHeaders
+### newHeads
 
 Emits an event any time a new header (block) is added to the chain, including during a chain reorganization.
 
@@ -272,7 +272,7 @@ When a chain reorganization occurs, this subscription will emit an event contain
 wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
 // then call subscription 
-{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["newBlockHeaders"]}
+{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["newHeads"]}
 ```
 {% endtab %}
 
@@ -285,7 +285,7 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
 
 // Subcribes to the event and prints results 
-web3.eth.subscribe("newBlockHeaders").on("data", (data) => console.log(data));
+web3.eth.subscribe("newHeads").on("data", (data) => console.log(data));
 ```
 {% endtab %}
 {% endtabs %}
@@ -443,7 +443,7 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
 
 // Example subscription
-sub = web3.eth.subscribe("newBlockHeaders");
+sub = web3.eth.subscribe("newHeads");
 
 // Unsubscribe
 sub.unsubscribe((error, success) => {
