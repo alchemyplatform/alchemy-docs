@@ -34,15 +34,15 @@ Or follow the written steps below:
 
 First navigate to the "create app" button in the "Apps" tab.
 
-![](<../.gitbook/assets/Screen Shot 2020-11-01 at 6.53.45 PM.png>)
+![](<../../.gitbook/assets/Screen Shot 2020-11-01 at 6.53.45 PM.png>)
 
 Fill in the details under "Create App" to get your new key. You can also see apps you previously made and those made by your team here. Pull existing keys by clicking on "View Key" for any app.
 
-![](<../.gitbook/assets/Create App Details.png>)
+![](<../../.gitbook/assets/Create App Details.png>)
 
 You can also pull existing API keys by hovering over "Apps" and selecting one. You can "View Key" here, as well as "Edit App" to whitelist specific domains, see several developer tools, and view analytics.
 
-![](<../.gitbook/assets/ezgif.com-gif-maker (1).gif>)
+![](<../../.gitbook/assets/ezgif.com-gif-maker (1).gif>)
 
 ## 2.:writing\_hand:Make a Request
 
@@ -51,7 +51,7 @@ You can interact with Alchemy's Ethereum infrastructure provider using JSON-RPC 
 For manual requests, we recommend interacting with the `JSON-RPC` via `POST` requests. Simply pass in the `Content-Type: application/json` header and your query as the `POST` body with the following fields:
 
 * `jsonrpc`: The JSON-RPC version—currently, only `2.0` is supported.
-* `method`: The ETH API method. [See API reference.](../apis/ethereum/)
+* `method`: The ETH API method. [See API reference.](../../apis/ethereum/)
 * `params`: A list of parameters to pass to the method.
 * `id`: The ID of your request. Will be returned by the response so you can keep track of which request a response belongs to.
 
@@ -164,9 +164,9 @@ Woo! Congrats! You just wrote your first web3 script using Alchemy and sent your
 
 The project associated with your API key should now look like this on the dashboard:
 
-![](<../.gitbook/assets/Alchemy Tutorial Result1.png>)
+![](<../../.gitbook/assets/Alchemy Tutorial Result1.png>)
 
-![](<../.gitbook/assets/Alchemy Tutorial Result2 (1).png>)
+![](<../../.gitbook/assets/Alchemy Tutorial Result2 (1).png>)
 
 ### Other Web3 Libraries
 
@@ -217,9 +217,9 @@ const customHttpProvider = new ethers.providers.JsonRpcProvider(url);
 
 Don't know where to start? Check out these four tutorials to get more familiar with Alchemy and blockchain development:
 
-1. Test out your dashboard knowledge with the [Dashboard Demo App](../guides/demo-app.md)
-2. Write a [simple web3 script](../tutorials/simple-web3-script.md) that gets the latest block number
-3. Learn how to send an [Ethereum transaction](../tutorials/sending-txs.md) using Web3 and Alchemy
-4. Try deploying your first [smart contract ](../tutorials/hello-world-smart-contract/)and get your hands dirty with some solidity programming
+1. Test out your dashboard knowledge with the [Dashboard Demo App](../../guides/demo-app.md)
+2. Write a [simple web3 script](simple-web3-script.md) that gets the latest block number
+3. Learn how to send an [Ethereum transaction](sending-txs.md) using Web3 and Alchemy
+4. Try deploying your first [smart contract ](../../tutorials/hello-world-smart-contract/)and get your hands dirty with some solidity programming
 
 Once you complete this tutorial, let us know how your experience was or if you have any feedback by tagging us on Twitter [@alchemyplatform](https://twitter.com/AlchemyPlatform)!

@@ -133,4 +133,4 @@ Top blockchain companies and millions of users around the world trust our produc
 
 ## \*\*\*\*:star\_struck: Sounds Good?
 
-[Sign up for free here](https://dashboard.alchemyapi.io/signup/). [Get started here](getting-started.md).
+[Sign up for free here](https://dashboard.alchemyapi.io/signup/). [Get started here](getting-started/).

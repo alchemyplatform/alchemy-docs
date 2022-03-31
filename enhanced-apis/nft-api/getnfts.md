@@ -19,7 +19,7 @@ _To see chain support accross all features, check out the_ [_feature matrix_](..
 * `contractAddresses[]`:  _**\[arrray of strings]**_ (optional) array of contract addresses to filter the responses with. Max limit 20 contracts.
 * `withMetadata`:  _**\[boolean]**_ `true` by default (optional); if boolean is set to `true` the query will include metadata for each returned token \
   \
-  _**For more info on NFT responses:  check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
+  _**For more info on NFT responses:  check out the**_ [_**NFT API FAQ.**_](nft-api-faq.md#understanding-nft-metadata)_****_
 
 {% hint style="success" %}
 **NOTE:**
@@ -59,7 +59,7 @@ We paginate our responses with a default limit of **100 responses**. We've chose
       * `description`: human-readable description of the NFT asset. (Markdown is supported/rendered on OpenSea and other NFT platforms)
       *   `attributes`: traits/attributes/characteristics for each NFT asset.
 
-          _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
+          _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](nft-api-faq.md#understanding-nft-metadata)_****_
 * `pageKey` : (optional) UUID for pagination - returned if there are more NFTs to fetch. Max NFTs per page = 100.
 * `totalCount`: total number of NFTs owned by the given address.&#x20;
 * `blockHash`: the canonical head block hash of when your request was received
@@ -68,7 +68,7 @@ We paginate our responses with a default limit of **100 responses**. We've chose
 
 {% hint style="info" %}
 **NOTE:**\
-****To parse and view an NFT's media asset, use either the `gateway` URI within `media` objector the`external_url`within `metadata`object. [Visit the FAQ](../../guides/nft-api-metadata.md#gateway-vs.-raw-uris) for more info on IPFS gateways.
+****To parse and view an NFT's media asset, use either the `gateway` URI within `media` objector the`external_url`within `metadata`object. [Visit the FAQ](nft-api-faq.md#gateway-vs.-raw-uris) for more info on IPFS gateways.
 {% endhint %}
 
 ## Returns (`withMetadata` = false)
@@ -178,7 +178,7 @@ curl 'https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0xfAE46f94Ee7B2Ac
 {% endtab %}
 {% endtabs %}
 
-If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](../../guides/nft-api-quickstart-guide.md)****
+If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](nft-api-quickstart-guide.md)****
 
 ### Response (by default)
 
@@ -484,7 +484,7 @@ curl --location -g --request GET 'https://eth-mainnet.alchemyapi.io/v2/demo/getN
 {% endtab %}
 {% endtabs %}
 
-If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](../../guides/nft-api-quickstart-guide.md)****
+If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](nft-api-quickstart-guide.md)****
 
 ### Response (with contract filtering)
 
@@ -588,7 +588,7 @@ curl 'https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0x8e7644918b3e280
 {% endtab %}
 {% endtabs %}
 
-If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](../../guides/nft-api-quickstart-guide.md)****
+If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](nft-api-quickstart-guide.md)****
 
 ### Response (with pagination)&#x20;
 

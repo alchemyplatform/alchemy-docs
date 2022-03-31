@@ -4,10 +4,10 @@ description: Using Alchemy Notify API.
 
 # Notify API
 
-_**Want to learn more about Alchemy Notify? Check out this** _ [_**guide on using Alchemy Notify and webhooks**_](../guides/using-notify.md)_**:**_
+_**Want to learn more about Alchemy Notify? Check out this** _ [_**guide on using Alchemy Notify and webhooks**_](using-notify.md)_**:**_
 
-{% content-ref url="../guides/using-notify.md" %}
-[using-notify.md](../guides/using-notify.md)
+{% content-ref url="using-notify.md" %}
+[using-notify.md](using-notify.md)
 {% endcontent-ref %}
 
 We recommend using this Notify API to automate the creation of webhooks and when dealing with Address Activity Webhooks for **10+ addresses,** otherwise, you can easily create webhooks from the [dashboard](https://dashboard.alchemyapi.io/notify)!
@@ -357,7 +357,7 @@ curl https://dashboard.alchemyapi.io/api/delete-webhook?webhook_id=104 \
 
 ## Types of Webhooks
 
-To see in depth explanations for each of the Alchemy Notify webhooks check out the [Using Webhooks](../guides/using-notify.md) guide.
+To see in depth explanations for each of the Alchemy Notify webhooks check out the [Using Webhooks](using-notify.md) guide.
 
 ### For V1 Webhooks (Ethereum)
 
@@ -425,14 +425,14 @@ The Dropped Transactions Webhook is used to notify your app anytime a transactio
 
 ### Address Activity <a href="#address-activity" id="address-activity"></a>
 
-The Address Activity Webhook allows you to track all ETH, ERC20 and ERC721 [transfer events](../guides/eth\_getlogs.md#what-are-transfers) for as many Ethereum addresses as you'd like. This provides your app with real-time state changes when an address sends or receives tokens. For more details on this API specification check out the page below.
+The Address Activity Webhook allows you to track all ETH, ERC20 and ERC721 [transfer events](../../guides/eth\_getlogs.md#what-are-transfers) for as many Ethereum addresses as you'd like. This provides your app with real-time state changes when an address sends or receives tokens. For more details on this API specification check out the page below.
 
-{% content-ref url="../guides/using-notify.md" %}
-[using-notify.md](../guides/using-notify.md)
+{% content-ref url="using-notify.md" %}
+[using-notify.md](using-notify.md)
 {% endcontent-ref %}
 
 {% hint style="info" %}
-If you are looking for historical activity, check out the [Transfers API](transfers-api.md)!
+If you are looking for historical activity, check out the [Transfers API](../transfers-api.md)!
 {% endhint %}
 
 **Example Response**
@@ -573,6 +573,6 @@ As an added security measure, you can ensure your webhook notification originate
 
 For instructions on how to set up webhooks from the dashboard check out the page below:
 
-{% content-ref url="../guides/using-notify.md" %}
-[using-notify.md](../guides/using-notify.md)
+{% content-ref url="using-notify.md" %}
+[using-notify.md](using-notify.md)
 {% endcontent-ref %}

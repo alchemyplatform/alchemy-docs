@@ -8,8 +8,8 @@ description: Alchemy Notify gives your users the UX they demand and deserve.
 
 #### _**Looking to use Alchemy Notify? Check out our documentation below**_
 
-{% content-ref url="../../guides/using-notify.md" %}
-[using-notify.md](../../guides/using-notify.md)
+{% content-ref url="../../enhanced-apis/notify-api/using-notify.md" %}
+[using-notify.md](../../enhanced-apis/notify-api/using-notify.md)
 {% endcontent-ref %}
 
 ## Benefits
@@ -41,23 +41,23 @@ Alchemy Notify enables you to send relevant, timely notifications on the most im
 
 ## Features
 
-### :pick: [Mined Transactions](../../guides/using-notify.md#mined-transactions)
+### :pick: [Mined Transactions](../../enhanced-apis/notify-api/using-notify.md#mined-transactions)
 
 Let your users know exactly when their deposits, purchases, in-game actions or other on-chain activity has officially occurred — the perfect time to re-engage and keep using your application.
 
-### :hole: [Dropped Transactions](../../guides/using-notify.md#dropped-transactions)
+### :hole: [Dropped Transactions](../../enhanced-apis/notify-api/using-notify.md#dropped-transactions)
 
 Let your users respond immediately when transactions fail, eliminating the most frustrating part of blockchain UX. No more missed trades, lost auctions, or disappearing tokens.
 
-### :money\_with\_wings: [Address Activity](../../guides/using-notify.md#address-activity)
+### :money\_with\_wings: [Address Activity](../../enhanced-apis/notify-api/using-notify.md#address-activity)
 
 Let your users know when transaction activity occurs on their address. No more refreshing the page or having to watch each new block and create custom filters to track user’s data. The Address Activity webhooks include notifications for:
 
-1. [External Transfers](../../guides/using-notify.md#types-of-transfers)
-2. [Internal Transfers](../../guides/using-notify.md#types-of-transfers)
-3. [Token Transfers](../../guides/using-notify.md#address-activity)
+1. [External Transfers](../../enhanced-apis/notify-api/using-notify.md#types-of-transfers)
+2. [Internal Transfers](../../enhanced-apis/notify-api/using-notify.md#types-of-transfers)
+3. [Token Transfers](../../enhanced-apis/notify-api/using-notify.md#address-activity)
 
-### :fuelpump:[ Gas Price](../../guides/using-notify.md#4-gas-price) <a href="#address-activity" id="address-activity"></a>
+### :fuelpump:[ Gas Price](../../enhanced-apis/notify-api/using-notify.md#4-gas-price) <a href="#address-activity" id="address-activity"></a>
 
 The Gas Price Webhook allows you to receive a notification every minute when the Mainnet gas price rises above or drops below a certain threshold that you can select.
 
@@ -65,6 +65,6 @@ The Gas Price Webhook allows you to receive a notification every minute when the
 
 \*\* Check out our docs on Notify below! \*\*
 
-{% content-ref url="../../guides/using-notify.md" %}
-[using-notify.md](../../guides/using-notify.md)
+{% content-ref url="../../enhanced-apis/notify-api/using-notify.md" %}
+[using-notify.md](../../enhanced-apis/notify-api/using-notify.md)
 {% endcontent-ref %}

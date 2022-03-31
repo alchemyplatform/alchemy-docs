@@ -52,4 +52,4 @@ As you start to send traffic, this page will give you an idea of your [compute u
 
 We hope your Demo App was helpful in getting familiar with our product! When you are done, feel free to delete it. If you don't delete it, we will automatically delete it for you in 7 days.
 
-\_Not sure what to do next? Follow \_[\_this guide \_](../tutorials/simple-web3-script.md)\_to write a simple web3 script to see how easy it is to interact with the blockchain using Alchemy. \_
+\_Not sure what to do next? Follow \_[\_this guide \_](../introduction/getting-started/simple-web3-script.md)\_to write a simple web3 script to see how easy it is to interact with the blockchain using Alchemy. \_

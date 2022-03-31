@@ -6,8 +6,8 @@ description: API for fetching NFT data, including ownership, metadata attributes
 
 Want to get started with code but not sure how to? Take a look at the [Quickstart Guide](https://docs.alchemy.com/alchemy/guides/nft-api-quickstart-guide).
 
-{% content-ref url="../../guides/nft-api-quickstart-guide.md" %}
-[nft-api-quickstart-guide.md](../../guides/nft-api-quickstart-guide.md)
+{% content-ref url="nft-api-quickstart-guide.md" %}
+[nft-api-quickstart-guide.md](nft-api-quickstart-guide.md)
 {% endcontent-ref %}
 
 ## Introduction&#x20;
@@ -98,11 +98,11 @@ Or join our discord! [https://www.alchemy.com/discord](https://www.alchemy.com/d
 Check out the guide below to get a quick setup using:
 
 * [The `alchemy-web3` sdk,](https://docs.alchemy.com/alchemy/guides/nft-api-quickstart-guide#alchemy-web3-sdk-recommended)
-* [the `node-fetch` module,](../../guides/nft-api-quickstart-guide.md#javascript-fetch)
-* [or the `axios`  module.](../../guides/nft-api-quickstart-guide.md#javascript-axios)
+* [the `node-fetch` module,](nft-api-quickstart-guide.md#javascript-fetch)
+* [or the `axios`  module.](nft-api-quickstart-guide.md#javascript-axios)
 
-{% content-ref url="../../guides/nft-api-quickstart-guide.md" %}
-[nft-api-quickstart-guide.md](../../guides/nft-api-quickstart-guide.md)
+{% content-ref url="nft-api-quickstart-guide.md" %}
+[nft-api-quickstart-guide.md](nft-api-quickstart-guide.md)
 {% endcontent-ref %}
 
 ## API Endpoints Overview

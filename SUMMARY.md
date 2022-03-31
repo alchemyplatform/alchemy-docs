@@ -5,7 +5,9 @@
 ## 🚀 Introduction
 
 * [Why Use Alchemy?](introduction/why-use-alchemy.md)
-* [Getting Started](introduction/getting-started.md)
+* [Getting Started](introduction/getting-started/README.md)
+  * [Simple Web3 Script](introduction/getting-started/simple-web3-script.md)
+  * [Sending Transactions Using Web3](introduction/getting-started/sending-txs.md)
 * [Core Products](introduction/core-products/README.md)
   * [🦸 Alchemy Supernode](introduction/core-products/alchemy-supernode.md)
   * [🔔 Alchemy Notify](introduction/core-products/alchemy-notify.md)
@@ -23,11 +25,16 @@
     * [Handling errors](enhanced-apis/nft-api/getnftmetadata/handling-errors.md)
   * [getNFTsForCollection (BETA)](enhanced-apis/nft-api/getnftsforcollection-beta.md)
   * [getOwnersForToken (BETA)](enhanced-apis/nft-api/getownersfortoken-beta.md)
+  * [NFT API FAQ](enhanced-apis/nft-api/nft-api-faq.md)
+  * [NFT API Quickstart Guide](enhanced-apis/nft-api/nft-api-quickstart-guide.md)
 * [Transfers API (Tx History)](enhanced-apis/transfers-api.md)
 * [Transaction Receipts API](enhanced-apis/transaction-receipts-api.md)
-* [Token API](enhanced-apis/token-api.md)
+* [Token API](enhanced-apis/token-api/README.md)
+  * [Token API Quickstart Guide](enhanced-apis/token-api/token-api-quickstart-guide.md)
 * [Parity API](enhanced-apis/block-api-beta.md)
-* [Notify API](enhanced-apis/notify-api.md)
+* [Notify API](enhanced-apis/notify-api/README.md)
+  * [Using Alchemy Notify/Webhooks](enhanced-apis/notify-api/using-notify.md)
+  * [V2 Alchemy Notify](enhanced-apis/notify-api/v2-alchemy-notify.md)
 * [Debug API](enhanced-apis/debug-api.md)
 * [Trace API](enhanced-apis/trace-api.md)
 * [Unstoppable Domains APIs](enhanced-apis/unstoppable-domains-apis/README.md)
@@ -173,8 +180,6 @@
 
 ## 💻 Tutorials
 
-* [Simple Web3 Script](tutorials/simple-web3-script.md)
-* [Sending Transactions Using Web3](tutorials/sending-txs.md)
 * [Hello World Smart Contract](tutorials/hello-world-smart-contract/README.md)
   * [Interacting with a Smart Contract](tutorials/hello-world-smart-contract/interacting-with-a-smart-contract.md)
   * [Submitting your Smart Contract to Etherscan](tutorials/hello-world-smart-contract/submitting-your-smart-contract-to-etherscan.md)
@@ -193,17 +198,12 @@
 
 ## 📜 Guides
 
-* [NFT API FAQ](guides/nft-api-metadata.md)
-* [NFT API Quickstart Guide](guides/nft-api-quickstart-guide.md)
-* [Token API Quickstart Guide](guides/token-api-quickstart-guide.md)
 * [EIP-1559 Resource and Tutorial Hub](guides/eip-1559/README.md)
   * [The Developer EIP-1559 Prep Kit](https://blog.alchemy.com/blog/eip-1559)
   * [How to Send Transactions with EIP 1559](guides/eip-1559/send-tx-eip-1559.md)
   * [maxPriorityFeePerGas vs maxFeePerGas](guides/eip-1559/maxpriorityfeepergas-vs-maxfeepergas.md)
   * [Retrying an EIP 1559 transaction](guides/eip-1559/retry-eip-1559-tx.md)
   * [How to Build a Gas Fee Estimator using EIP-1559](guides/eip-1559/gas-estimator.md)
-* [Using Alchemy Notify/Webhooks](guides/using-notify.md)
-* [V2 Alchemy Notify](guides/v2-alchemy-notify.md)
 * [Using WebSockets](guides/using-websockets.md)
 * [Dashboard Walkthrough](guides/demo-app.md)
 * [Deep Dive into eth\_getLogs](guides/eth\_getlogs.md)

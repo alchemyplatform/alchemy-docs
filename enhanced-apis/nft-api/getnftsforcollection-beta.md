@@ -34,7 +34,7 @@ See the 'examples' section for an example of how to use this parameter to fetch 
       * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
       * `gateway:` public gateway uri for the raw uri above.
     * `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually. \
-      _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](../../guides/nft-api-metadata.md#understanding-nft-metadata)_****_
+      _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](nft-api-faq.md#understanding-nft-metadata)_****_
 * `nextToken`: _**\[string]**_ an offset used for pagination
 
 ## Example
@@ -108,7 +108,7 @@ curl 'https://eth-mainnet.g.alchemy.com/v2/demo/getNFTsForCollection/?contractAd
 {% endtab %}
 {% endtabs %}
 
-If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](../../guides/nft-api-quickstart-guide.md)****
+If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](nft-api-quickstart-guide.md)****
 
 ### Response
 

@@ -90,7 +90,7 @@ The Dropped Transactions Webhook is used to notify your app anytime a transactio
 
 * `appId`: Unique ID for Alchemy app that sent the transaction and is configured to this webhook
 * `network`: Network for the event, can be `ARB_MAINNET`, `ARB_RINKEBY`, `MATIC_MAINNET`, `MATIC_MUMBAI`, `OPT_MAINNET`, `OPT_KOVAN`
-* `transaction`: transaction object  (same output as calling [_**eth\_getTransactionByHash**_](../apis/ethereum/eth\_gettransactionbyhash.md#returns))
+* `transaction`: transaction object  (same output as calling [_**eth\_getTransactionByHash**_](../../apis/ethereum/eth\_gettransactionbyhash.md#returns))
 
 **Example Response**
 
@@ -125,10 +125,10 @@ The Dropped Transactions Webhook is used to notify your app anytime a transactio
 
 ### 3. Address Activity
 
-The Address Activity Webhook allows you to track all ETH, ERC20 and ERC721 external and internal [transfer events](eth\_getlogs.md#what-are-transfers) for as many Ethereum addresses as you'd like (regardless if the transactions were sent through Alchemy or not). This provides your app with real-time state changes when an address sends or receives tokens.
+The Address Activity Webhook allows you to track all ETH, ERC20 and ERC721 external and internal [transfer events](../../guides/eth\_getlogs.md#what-are-transfers) for as many Ethereum addresses as you'd like (regardless if the transactions were sent through Alchemy or not). This provides your app with real-time state changes when an address sends or receives tokens.
 
 {% hint style="info" %}
-If you are looking for historical activity, check out the [Transfers API](../enhanced-apis/transfers-api.md)!
+If you are looking for historical activity, check out the [Transfers API](../transfers-api.md)!
 {% endhint %}
 
 #### Types of Transfers
@@ -222,7 +222,7 @@ If you want to make your webhooks extra secure, you can verify that they origina
 
 Navigate to the [Notify page](https://dashboard.alchemyapi.io/notify) in your dashboard, click on the three dots for the webhook you want to  get the signature for and copy the "signing key".&#x20;
 
-![](<../.gitbook/assets/Screen Shot 2021-12-13 at 10.41.56 AM.png>)
+![](<../../.gitbook/assets/Screen Shot 2021-12-13 at 10.41.56 AM.png>)
 
 ### 2. Validate the signature received
 

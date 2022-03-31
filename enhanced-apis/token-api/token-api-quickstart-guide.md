@@ -261,8 +261,8 @@ Your output should look like the following:
 
 For full documentation on the NFT API `getNFTs` method, check out the docs:
 
-{% content-ref url="../enhanced-apis/token-api.md" %}
-[token-api.md](../enhanced-apis/token-api.md)
+{% content-ref url="./" %}
+[.](./)
 {% endcontent-ref %}
 
 ## Javascript Axios
@@ -373,6 +373,6 @@ alchemy-token-api % node axios-script.js
 
 For full documentation on the available Token API methods , check out the docs:
 
-{% content-ref url="../enhanced-apis/token-api.md" %}
-[token-api.md](../enhanced-apis/token-api.md)
+{% content-ref url="./" %}
+[.](./)
 {% endcontent-ref %}

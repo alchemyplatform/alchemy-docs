@@ -7,7 +7,7 @@ description: This is a beginners guide for sending Ethereum transactions using w
 There are three main steps in order to send a transaction to the Ethereum blockchain: create, sign, and broadcast. We'll go through all three, hopefully answering any questions you might have! In this tutorial, we'll be using [Alchemy](https://dashboard.alchemyapi.io/signup?referral=affiliate:9efcc9a2-ef89-4a2b-a5f3-1dd52ad32c4c) to send our transactions to the Ethereum chain. You can [create a free Alchemy account here.](https://alchemy.com/?r=affiliate:9efcc9a2-ef89-4a2b-a5f3-1dd52ad32c4c)
 
 {% hint style="warning" %}
-\*\*NOTE: \*\*This guide is for signing your transactions on the _backend_ for your app, if you want to integrate signing your transactions on the frontend, you'll need to integrate a [browser provider with Web3](../documentation/alchemy-web3/#with-a-browser-provider).
+\*\*NOTE: \*\*This guide is for signing your transactions on the _backend_ for your app, if you want to integrate signing your transactions on the frontend, you'll need to integrate a [browser provider with Web3](../../documentation/alchemy-web3/#with-a-browser-provider).
 {% endhint %}
 
 ## The Basics
@@ -45,7 +45,7 @@ When using web3, `eth_sendRawTransaction` is accessed by calling the function [w
 ### 6. What is the web3 library?
 
 * Web3 is a wrapper library around the standard JSON-RPC calls that is quite common to use in Ethereum development.
-* There are many different web3 libraries for different languages. In this tutorial we'll be using Alchemy web3 which is written in JavaScript. You can check out other options [here](../introduction/getting-started.md#other-web3-libraries).
+* There are many different web3 libraries for different languages. In this tutorial we'll be using Alchemy web3 which is written in JavaScript. You can check out other options [here](./#other-web3-libraries).
 
 Okay, now that we have a few of these questions out of the way, let's move on to the tutorial. Feel free to ask questions anytime in our [discord](https://discord.gg/sqYmQ7fB)!
 
@@ -54,7 +54,7 @@ Okay, now that we have a few of these questions out of the way, let's move on to
 
 1. [**\*\*Create a free Alchemy account \*\***](https://dashboard.alchemyapi.io/signup?referral=affiliate:9efcc9a2-ef89-4a2b-a5f3-1dd52ad32c4c)
 2. \*\*[**Create Metamask account**](https://metamask.io) (or get an Ethereum account) \*\*
-3. [**Follow these steps to install NodeJs and NPM**](../guides/alchemy-for-macs.md#1-install-nodejs-and-npm)
+3. [**Follow these steps to install NodeJs and NPM**](../../guides/alchemy-for-macs.md#1-install-nodejs-and-npm)
 {% endhint %}
 
 ## Steps to Sending your Transaction
@@ -76,7 +76,7 @@ mkdir sendtx-example
 cd sendtx-example
 ```
 
-### 4. Install [Alchemy Web3](../documentation/alchemy-web3/) (or any web3 library)
+### 4. Install [Alchemy Web3](../../documentation/alchemy-web3/) (or any web3 library)
 
 Run the following command in your project directory:
 
@@ -153,11 +153,11 @@ Be sure to replace the address on line 6 with your own public address.
 
 Now, before we jump into running this code, let's talk about some of the components here.
 
-* `nonce` : The nonce specification is used to keep track of the number of transactions sent from your address. We need this for security purposes and to prevent [replay attacks](../resources/web3-glossary.md#account-nonce). To get the number of transactions sent from your address we use [getTransactionCount](../apis/ethereum/#eth\_gettransactioncount).
+* `nonce` : The nonce specification is used to keep track of the number of transactions sent from your address. We need this for security purposes and to prevent [replay attacks](../../resources/web3-glossary.md#account-nonce). To get the number of transactions sent from your address we use [getTransactionCount](../../apis/ethereum/#eth\_gettransactioncount).
 * `transaction`: The transaction object has a few aspects we need to specify
   * `to`: This is the address we want to send Eth to. In this case, we are sending Eth back to the [Rinkeby faucet](https://faucet.rinkeby.io) we initially requested from.
   * `value`: This is the amount we wish to send, specified in wei where 10^18 wei = 1 ETH
-  * `gas`: There are many ways to determine the right amount of gas to include with your transaction. Alchemy even has a [gas price webhook](../guides/using-notify.md#address-activity-1) to notify you when the gas price falls within a certain threshold. For mainnet transactions, it's good practice to check a gas estimator like [Eth Gas Station](https://ethgasstation.info) to determine the right amount of gas to include. 21000 is the minimum amount of gas an operation on Ethereum will use, so to ensure our transaction will be executed we put 30000 here.
+  * `gas`: There are many ways to determine the right amount of gas to include with your transaction. Alchemy even has a [gas price webhook](../../enhanced-apis/notify-api/using-notify.md#address-activity-1) to notify you when the gas price falls within a certain threshold. For mainnet transactions, it's good practice to check a gas estimator like [Eth Gas Station](https://ethgasstation.info) to determine the right amount of gas to include. 21000 is the minimum amount of gas an operation on Ethereum will use, so to ensure our transaction will be executed we put 30000 here.
   * `maxFeePerGas`: This is the amount you are willing to pay per gas for the transaction to execute. Since EIP 1559, this field or the `maxPriorityFeePerGas` field is required.
   * `nonce`: see above nonce definition. Nonce starts counting from zero.
   * \[OPTIONAL] `data`: Used for sending additional information with your transfer, or calling a smart contract, not required for balance transfers, check out the note below.
@@ -172,7 +172,7 @@ There are a two main types of transactions that can be sent in Ethereum.
 * \*\*Balance transfer: \*\*Send eth from one address to another. No `data` field required, however, if you'd like to send additional information alongside your transaction, you can include that information in HEX format in this field.
   * For example, let's say we wanted to write the hash of an IPFS document to the ethereum chain in order to give it an immutable timestamp. Our data field should then look like `data: web3.utils.toHex(‘IPFS hash‘)`. And now anyone can query the chain and see when that document was added.
 * \*\*Smart contact transaction: \*\*Execute some smart contract code on the chain. In this case, the `data` field should contain the smart function you wish to execute, alongside any parameters.
-  * For a practical example, check out Step 8 in this [Hello World Tutorial](hello-world-smart-contract/#step-8-create-the-transaction).
+  * For a practical example, check out Step 8 in this [Hello World Tutorial](../../tutorials/hello-world-smart-contract/#step-8-create-the-transaction).
 {% endhint %}
 
 ### 8. Run the code using `node sendTx.js`
@@ -189,7 +189,7 @@ Open up the [Mempool page](https://dashboard.alchemyapi.io/mempool) in your Alch
 
 To view the details of your transaction once you've found it, select the tx hash, which should take you to a view that looks like this:
 
-![View your transaction on the Alchemy Mempool Watcher](<../.gitbook/assets/Screen Shot 2021-08-02 at 8.50.18 PM.png>)
+![View your transaction on the Alchemy Mempool Watcher](<../../.gitbook/assets/Screen Shot 2021-08-02 at 8.50.18 PM.png>)
 
 From there you can view your transaction on Etherscan by clicking on the icon circled in red!
 
@@ -199,4 +199,4 @@ Once you complete this tutorial, let us know how your experience was or if you h
 
 \_For feedback and suggestions about this guide, please message Elan on Alchemy's [_Discord_](https://discord.gg/A39JVCM)! \_
 
-\_Not sure what to do next? As a final test of your skills, get your hands dirty with some solidity programming by implementing our [_Hello World Smart Contract_](hello-world-smart-contract/) tutorial. \_
+\_Not sure what to do next? As a final test of your skills, get your hands dirty with some solidity programming by implementing our [_Hello World Smart Contract_](../../tutorials/hello-world-smart-contract/) tutorial. \_

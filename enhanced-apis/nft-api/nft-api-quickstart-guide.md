@@ -284,8 +284,8 @@ Your output should look like the following:
 
 For full documentation on the NFT API `getNFTs` method, check out the docs:
 
-{% content-ref url="../enhanced-apis/nft-api/getnfts.md" %}
-[getnfts.md](../enhanced-apis/nft-api/getnfts.md)
+{% content-ref url="getnfts.md" %}
+[getnfts.md](getnfts.md)
 {% endcontent-ref %}
 
 Now, in your `alchemy-nft-api` directory, let's now re-edit `fetch-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
@@ -384,8 +384,8 @@ Your output should look like the following:
 
 For full documentation on the NFT API `getNFTMetadata` method, check out the docs:
 
-{% content-ref url="../enhanced-apis/nft-api/getnftmetadata.md" %}
-[getnftmetadata.md](../enhanced-apis/nft-api/getnftmetadata.md)
+{% content-ref url="getnftmetadata.md" %}
+[getnftmetadata.md](getnftmetadata.md)
 {% endcontent-ref %}
 
 ## Javascript Axios
@@ -487,8 +487,8 @@ alchemy-nft-api % node axios-script.js
 
 For full documentation on the available NFT API method  `getNFTs` , check out the docs:
 
-{% content-ref url="../enhanced-apis/nft-api/getnfts.md" %}
-[getnfts.md](../enhanced-apis/nft-api/getnfts.md)
+{% content-ref url="getnfts.md" %}
+[getnfts.md](getnfts.md)
 {% endcontent-ref %}
 
 Now, in your `alchemy-nft-api` directory, let's now re-edit `axios-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
@@ -585,6 +585,6 @@ Your output should look like the following:
 
 For full documentation on the available NFT API method  `getNFTMetadata` , check out the docs:
 
-{% content-ref url="../enhanced-apis/nft-api/getnftmetadata.md" %}
-[getnftmetadata.md](../enhanced-apis/nft-api/getnftmetadata.md)
+{% content-ref url="getnftmetadata.md" %}
+[getnftmetadata.md](getnftmetadata.md)
 {% endcontent-ref %}

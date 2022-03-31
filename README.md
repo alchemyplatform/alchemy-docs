@@ -40,16 +40,16 @@ Alchemy has a full suite of products built to accelerate blockchain development.
 
 Get set up to use the Alchemy API in under 5 minutes. Learn how to get and use your API key, start making requests, and set up your application to use Alchemy's endpoints!
 
-{% content-ref url="introduction/getting-started.md" %}
-[getting-started.md](introduction/getting-started.md)
+{% content-ref url="introduction/getting-started/" %}
+[getting-started](introduction/getting-started/)
 {% endcontent-ref %}
 
 ## 💻 Learn how to build in Web3
 
 Not sure where to start? New to building in Web3? Check out some of the beginner tutorials below!
 
-{% content-ref url="tutorials/simple-web3-script.md" %}
-[simple-web3-script.md](tutorials/simple-web3-script.md)
+{% content-ref url="introduction/getting-started/simple-web3-script.md" %}
+[simple-web3-script.md](introduction/getting-started/simple-web3-script.md)
 {% endcontent-ref %}
 
 {% content-ref url="tutorials/hello-world-smart-contract/" %}

@@ -220,7 +220,7 @@ We’ve created a Metamask wallet, Alchemy account, and written our smart contra
 
 Every transaction sent from your virtual wallet requires a signature using your unique private key. To provide our program with this permission, we can safely store our private key (and Alchemy API key) in an environment file.
 
-> To learn more about sending transactions, check out [this tutorial](../sending-txs.md) on sending transactions using web3.
+> To learn more about sending transactions, check out [this tutorial](../../introduction/getting-started/sending-txs.md) on sending transactions using web3.
 
 First, install the dotenv package in your project directory:
 
@@ -372,7 +372,7 @@ To understand what’s going on under the hood, let’s navigate to the Explorer
 
 ![](<../../.gitbook/assets/hello world explorer.png>)
 
-Here you’ll see a handful of JSON-RPC calls that Hardhat/Ethers made under the hood for us when we called the `.deploy()` function. Two important ones to call out here are [`eth_sendRawTransaction`](https://docs.alchemyapi.io/alchemy/documentation/alchemy-api-reference/json-rpc#eth\_sendrawtransaction), which is the request to actually write our contract onto the Ropsten chain, and [`eth_getTransactionByHash`](https://docs.alchemyapi.io/alchemy/documentation/alchemy-api-reference/json-rpc#eth\_gettransactionbyhash) which is a request to read information about our transaction given the hash (a typical pattern when sending transactions). To learn more about sending transactions, check out this tutorial on [sending transactions using Web3](../sending-txs.md).
+Here you’ll see a handful of JSON-RPC calls that Hardhat/Ethers made under the hood for us when we called the `.deploy()` function. Two important ones to call out here are [`eth_sendRawTransaction`](https://docs.alchemyapi.io/alchemy/documentation/alchemy-api-reference/json-rpc#eth\_sendrawtransaction), which is the request to actually write our contract onto the Ropsten chain, and [`eth_getTransactionByHash`](https://docs.alchemyapi.io/alchemy/documentation/alchemy-api-reference/json-rpc#eth\_gettransactionbyhash) which is a request to read information about our transaction given the hash (a typical pattern when sending transactions). To learn more about sending transactions, check out this tutorial on [sending transactions using Web3](../../introduction/getting-started/sending-txs.md).
 
 That’s all for part 1 of this tutorial, in part 2 we’ll actually [interact with our smart contract](interacting-with-a-smart-contract.md) by updated our initial message, and in part 3 we’ll [publish our smart contract to Etherscan](interacting-with-a-smart-contract.md) so everyone will know how to interact with it.
 

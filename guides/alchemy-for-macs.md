@@ -8,7 +8,7 @@ _\*\*Get access to Alchemy for free \*\*_[_**here**_](https://alchemy.com/?r=aff
 
 _Estimated time to complete this guide: \~5 minutes\*\* \*\*_
 
-For a quick start, you can interact with Ethereum nodes using JSON RPC shell commands. This can be quite manual, and you can write POST requests, GET requests, or others. See examples [here](../introduction/getting-started.md#2-make-a-request).
+For a quick start, you can interact with Ethereum nodes using JSON RPC shell commands. This can be quite manual, and you can write POST requests, GET requests, or others. See examples [here](../introduction/getting-started/#2-make-a-request).
 
 Rather than writing out requests manually, you can use Web3 to interact with the Ethereum blockchain. Web3 is a collection of libraries that allow you to connect to a node using HTTP, WebSockets, or IPC. You can use Web3 libraries in whichever language you are most comfortable with, the most common being Javascript, Java, and Python.
 
@@ -74,6 +74,6 @@ const web3 = new Web3("wss://eth-mainnet.ws.alchemyapi.io/ws/demo");
 
 Now that you have everything you need installed, start building your first app. Here are a couple great starting points:
 
-1. Write your first [web3 script](../tutorials/simple-web3-script.md)
+1. Write your first [web3 script](../introduction/getting-started/simple-web3-script.md)
 2. Check out the [Demo App](demo-app.md) we seeded in your Alchemy dashboard
 3. Follow this [tutorial to create a smart contract](../tutorials/hello-world-smart-contract/)!

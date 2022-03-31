@@ -204,8 +204,8 @@ We have a lot of other APIs that help you query for blockchain data easily. Chec
 [transfers-api.md](../../enhanced-apis/transfers-api.md)
 {% endcontent-ref %}
 
-{% content-ref url="../../enhanced-apis/notify-api.md" %}
-[notify-api.md](../../enhanced-apis/notify-api.md)
+{% content-ref url="../../enhanced-apis/notify-api/" %}
+[notify-api](../../enhanced-apis/notify-api/)
 {% endcontent-ref %}
 
 Finally, if you're a big tweeter, check out this guide in tweet form and reply to it if you have requests for any other guides you'd like us to write!

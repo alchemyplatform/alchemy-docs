@@ -9,8 +9,8 @@ description: >-
 
 _**Looking for the instructions on how to create webhooks programmatically? Check out the page below!**_
 
-{% content-ref url="../enhanced-apis/notify-api.md" %}
-[notify-api.md](../enhanced-apis/notify-api.md)
+{% content-ref url="./" %}
+[.](./)
 {% endcontent-ref %}
 
 Alchemy Notify works by using webhooks, a way for you to subscribe to events that occur on your application. This guide will walk through what webhooks are and how you can use them in order to get started with Alchemy Notify.
@@ -101,10 +101,10 @@ The Dropped Transactions Webhook is used to notify your app anytime a transactio
 
 ### 3. Address Activity <a href="#address-activity" id="address-activity"></a>
 
-The Address Activity Webhook allows you to track all ETH, ERC20 and ERC721 external and internal [transfer events](eth\_getlogs.md#what-are-transfers) for as many Ethereum addresses as you'd like (regardless if the transactions were sent through Alchemy or not). This provides your app with real-time state changes when an address sends or receives tokens.
+The Address Activity Webhook allows you to track all ETH, ERC20 and ERC721 external and internal [transfer events](../../guides/eth\_getlogs.md#what-are-transfers) for as many Ethereum addresses as you'd like (regardless if the transactions were sent through Alchemy or not). This provides your app with real-time state changes when an address sends or receives tokens.
 
 {% hint style="info" %}
-If you are looking for historical activity, check out the [Transfers API](../enhanced-apis/transfers-api.md)!
+If you are looking for historical activity, check out the [Transfers API](../transfers-api.md)!
 {% endhint %}
 
 #### Types of Transfers
@@ -290,7 +290,7 @@ To set up ngrok:
 3. Connect your ngrok account by running: `ngrok authtoken YOUR_AUTH_TOKEN`
 4. Fire up your local forwarding tunnel: `ngrok http 80`
 
-![](<../.gitbook/assets/Screen Shot 2022-03-01 at 1.33.31 PM.png>)
+![](<../../.gitbook/assets/Screen Shot 2022-03-01 at 1.33.31 PM.png>)
 
 Once you have a URL to test your webhook (in this case [https://461a-199-116-73-171.ngrok.io](https://461a-199-116-73-171.ngrok.io) from  the picture above), you can test using the following steps:
 
@@ -305,7 +305,7 @@ If you are using ngrok, you should then see the webhooks roll in here: [http://l
 Setting up a webhook is as simple as adding a new URL to your application. There are two primary ways to activate Alchemy Notify.
 
 {% hint style="warning" %}
-**NOTE:** If you need to add over 10 addresses to the address activity webhook, we recommend adding them through an API call. See our [Notify API Reference page](../enhanced-apis/notify-api.md#create-webhook) for more information on this.
+**NOTE:** If you need to add over 10 addresses to the address activity webhook, we recommend adding them through an API call. See our [Notify API Reference page](./#create-webhook) for more information on this.
 {% endhint %}
 
 ### 1. Setting Up Webhooks from the Dashboard
@@ -322,10 +322,10 @@ Navigate to the Notify tab in your [Alchemy Dashboard](https://dashboard.alchemy
 
 ### 2. Setting up Webhooks Programmatically
 
-[Notify API page](../enhanced-apis/notify-api.md):
+[Notify API page](./):
 
-{% content-ref url="../enhanced-apis/notify-api.md" %}
-[notify-api.md](../enhanced-apis/notify-api.md)
+{% content-ref url="./" %}
+[.](./)
 {% endcontent-ref %}
 
 ## Webhook Signature and Security
@@ -340,7 +340,7 @@ If you want to make your webhooks extra secure, you can verify that they origina
 
 Navigate to the top right corner of your [Notify page](https://dashboard.alchemyapi.io/notify) to copy your "Auth Token".
 
-![](<../.gitbook/assets/Screen Shot 2021-04-19 at 3.00.20 PM.png>)
+![](<../../.gitbook/assets/Screen Shot 2021-04-19 at 3.00.20 PM.png>)
 
 #### 2. Validate the signature received
 

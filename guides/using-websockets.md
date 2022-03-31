@@ -34,7 +34,7 @@ To begin, open a WebSocket using the WebSocket URL for your app. You can find yo
 
 ![](<../.gitbook/assets/websocket key copy.gif>)
 
-Any of the APIs listed in the [Alchemy API Reference](../apis/ethereum/) or [Enhanced API](../enhanced-apis/token-api.md) can also be used via WebSocket. To do so, use the same payload that would be sent as the body of a POST request, but instead send that payload through the WebSocket.
+Any of the APIs listed in the [Alchemy API Reference](../apis/ethereum/) or [Enhanced API](../enhanced-apis/token-api/) can also be used via WebSocket. To do so, use the same payload that would be sent as the body of a POST request, but instead send that payload through the WebSocket.
 
 ### With Web3
 

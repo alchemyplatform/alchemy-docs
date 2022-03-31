@@ -7,7 +7,7 @@ description: >-
 
 # Simple Web3 Script
 
-_This guide assumes you've gone through the_ [_getting started_](../introduction/getting-started.md) _steps and have an_ [_Alchemy account!_](https://alchemy.com/?r=affiliate:b92f4e01-cafb-4038-83f4-372a42df5171)
+_This guide assumes you've gone through the_ [_getting started_](./) _steps and have an_ [_Alchemy account!_](https://alchemy.com/?r=affiliate:b92f4e01-cafb-4038-83f4-372a42df5171)
 
 ### 1. From your [command line](https://www.computerhope.com/jargon/c/commandi.htm), create a new project directory and `cd` into it:
 
@@ -18,7 +18,7 @@ cd web3-example
 
 ### 2. Install the Alchemy Web3 dependency if you have not already:
 
-You can use any [web3 library](../introduction/getting-started.md#other-web3-libraries) of your choosing, however there are tons of benefits to using [Alchemy Web3](../documentation/alchemy-web3/)!
+You can use any [web3 library](./#other-web3-libraries) of your choosing, however there are tons of benefits to using [Alchemy Web3](../../documentation/alchemy-web3/)!
 
 ```
 npm install @alch/alchemy-web3
