@@ -40,7 +40,7 @@ We paginate our responses with a default limit of **100 responses**. We've chose
     * `contract`:&#x20;
       * `address`: address of NFT contract
     * `id`:
-      * `tokenId`: Id for NFT (integer)&#x20;
+      * `tokenId`: Id for NFT _**(hex)**_&#x20;
       * `tokenMetadata`
         * `tokenType`: "`ERC721`" or "`ERC1155`"
     * `title`: name of the NFT asset
