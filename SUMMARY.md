@@ -168,7 +168,7 @@
   * [Enhanced Web3 API](documentation/alchemy-web3/enhanced-web3-api.md)
 * [Error Reference](documentation/error-reference.md)
 * [Compute Units (CUs)](documentation/compute-units.md)
-* [Rate Limits](guides/rate-limits.md)
+* [Throughput (Rate Limits)](guides/rate-limits.md)
 * [Gas Limits for eth\_call and eth\_estimateGas](documentation/gas-limits-for-eth\_call-and-eth\_estimategas.md)
 
 ## 💻 Tutorials
