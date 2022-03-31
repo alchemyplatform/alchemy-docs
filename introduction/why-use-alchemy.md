@@ -1,22 +1,23 @@
 ---
 description: >-
-  Reasons why you should choose Alchemy as your blockchain developer platform
-  and Ethereum node service.
+  Alchemy powers some of the top Web3 applications on Ethereum, Polygon,
+  Optimism, Arbitrum, and Flow, here's why you should use this developer
+  platform for your dApp and smart contracts.
 ---
 
 # Why Use Alchemy?
 
-#### _\*\*Get access to \*\*_[_**Alchemy for free here**_](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_\*\*. \*\*_
+#### Don't have an account yet? _Get access to_ [_**Alchemy for free here**_](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_**.**_
 
-## \*\*\*\*:mega: Calling all Ethereum developers...
+## :mega: Calling all Web3 developers...
 
-Whether you are using Ethereum for the first time, working on a solo project, or working for the largest teams in the space, Alchemy is here to make your life as an Ethereum developer exponentially better.
+Whether you are building Web3 applications for the first time, working on a solo project, or working for the largest teams in the space, Alchemy is here to make your life as an dApp developer exponentially better.
 
 ## :calling: Want to build a dApp? You're going to need nodes...
 
 With the current blockchain landscape, maintaining self-hosted nodes is expensive, unreliable, and extremely time-consuming. Alchemy gives you access to our custom [Supernode](core-products/alchemy-supernode.md) API that is built for production, requires only 1-minute to integrate, and has 100% data correctness. We also provide an additional suite of developer tools to make your life as a blockchain developer even easier.
 
-## :thumbsdown: The Downside of Self-Hosted Nodes
+## :thumbsdown: Why is it hard to run blockchain nodes?
 
 Running and maintaining self-hosted nodes can be a blockchain developer's #1 pain.
 
@@ -44,7 +45,7 @@ Running and maintaining self-hosted nodes can be a blockchain developer's #1 pai
 
 Trust us, you don't want to be doing this.
 
-## :sunglasses: Leave Node Hosting to the Experts
+## :sunglasses: Alchemy's core products
 
 Alchemy's core products are here to eliminate the pains of self-hosting nodes, in addition to providing world-class developer tools.
 
@@ -62,9 +63,9 @@ Alchemy Supernode is our infrastructure engine that replaces the typical self-ho
 * [x] Instant Testnet
 * [x] Enhanced APIs
 
-\*\*Learn more about Alchemy Supernode [**here**](core-products/alchemy-supernode.md). \*\*
+Learn more about Alchemy Supernode [**here**](core-products/alchemy-supernode.md).&#x20;
 
-### \*\*\*\*[Alchemy Build](core-products/alchemy-build.md)
+[Alchemy Build](core-products/alchemy-build.md)
 
 Alchemy Build is our powerful suite of developer tools to help you spend less time debugging, and more time creating:
 
@@ -121,7 +122,7 @@ Top blockchain companies and millions of users around the world trust our produc
 
 ### User Quotes
 
-> \*\*"Alchemy is extremely reliable and robust, and sets the standard for how blockchain infrastructure should be. Alchemy just works. Very rarely does a company come along that takes 30 seconds to integrate with and saves you substantial time and money." - Joey Krug, CIO Plantera \*\*
+> "Alchemy is extremely reliable and robust, and sets the standard for how blockchain infrastructure should be. Alchemy just works. Very rarely does a company come along that takes 30 seconds to integrate with and saves you substantial time and money." - Joey Krug, CIO Plantera&#x20;
 
 > "Using your own node or an error-prone service means wasting hundreds of valuable engineering hours on problems that have nothing to do with your company. Nothing else compares to Alchemy's amazing level of reliability, speed, support." - Alex Atallah, CTO OpeanSea
 
@@ -131,6 +132,6 @@ Top blockchain companies and millions of users around the world trust our produc
 
 > **"We ran our own Ethereum infrastructure for long enough, partnering with Alchemy to instead focus on building our business. Now we leave Ethereum infrastructure to the pros." - Adam Link, Engineer, Airswap**
 
-## \*\*\*\*:star\_struck: Sounds Good?
+## :star\_struck: Sounds Good?
 
 [Sign up for free here](https://dashboard.alchemyapi.io/signup/). [Get started here](getting-started/).
