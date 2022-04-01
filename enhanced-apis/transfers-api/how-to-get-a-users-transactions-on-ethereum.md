@@ -415,7 +415,7 @@ Now, on your command line, you can execute the script by calling:
 node axios-transfers-to-script.js
 ```
 
-### Parsing API Response&#x20;
+## Parsing API Response&#x20;
 
 Now that we have made a query and see our response, let's learn how to handle it and make useful information out of it!\
 \
