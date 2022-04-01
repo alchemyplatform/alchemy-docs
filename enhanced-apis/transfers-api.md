@@ -77,10 +77,10 @@ Additionally, we do not include any **internal transfers with call type`delegate
 ### Parameters
 
 * Object - An object with the following fields (required):
-  * `fromBlock`: inclusive from block (hex string or `latest`). optional (defaults to`latest`)
-  * `toBlock`: inclusive to block (hex string or `latest`). optional (defaults to `latest`)
-  * `fromAddress`: from address (hex string). optional (default wildcard - any address)
-  * `toAddress`: to address (hex string). optional (default wildcard - any address)
+  * `fromBlock`: inclusive from block (hex string, int, or `latest`). _optional_ (defaults to`latest`)
+  * `toBlock`: inclusive to block (hex string, int, or `latest`). _optional_ (defaults to `latest`)
+  * `fromAddress`: from address (hex string). _optional_ (default wildcard - any address)
+  * `toAddress`: to address (hex string). _optional_ (default wildcard - any address)
   * `contractAddresses`: list of contract addresses (hex strings) for `token` transfers. optional (default wildcard - any address)
   * `category`: Optional array of categories, can be any of the following: "`external`", "`internal`", "`token`", "`erc20`", "`erc721`", "`erc1155`" (defaults to the following categories: \["`external`", "`internal`", "`token`"])
   * `excludeZeroValue:` a`Boolean` to exclude transfers with zero value. optional (default `true`)
