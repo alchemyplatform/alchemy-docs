@@ -42,7 +42,7 @@ Request
 curl https://eth-mainnet.alchemyapi.io/v2/your-api-key \
 -X POST \
 -H "Content-Type: application/json" \
--d '{"jsonrpc":"2.0","method":"eth_estimateGas","params":[{see above}],"id":1}'
+-d '{"jsonrpc":"2.0","method":"eth_estimateGas","params":[{"from": "0x8D97689C9818892B700e27F316cc3E41e17fBeb9","to": "0xd3CdA913deB6f67967B99D67aCDFa1712C293601","value": "0x186a0"}],"id":1}'
 ```
 {% endtab %}
 
@@ -54,7 +54,11 @@ Body:
 {
     "jsonrpc":"2.0",
     "method":"eth_estimateGas",
-    "params":[{see above}],
+    "params":[{
+    "from": "0x8D97689C9818892B700e27F316cc3E41e17fBeb9",
+    "to": "0xd3CdA913deB6f67967B99D67aCDFa1712C293601",
+    "value": "0x186a0"
+    }],
     "id":1
 }
 ```
