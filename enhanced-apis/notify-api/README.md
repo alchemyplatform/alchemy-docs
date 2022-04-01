@@ -432,7 +432,7 @@ The Address Activity Webhook allows you to track all ETH, ERC20 and ERC721 [tran
 {% endcontent-ref %}
 
 {% hint style="info" %}
-If you are looking for historical activity, check out the [Transfers API](../transfers-api/)!
+If you are looking for historical activity, check out the [Transfers API](../transfers-api.md)!
 {% endhint %}
 
 **Example Response**
