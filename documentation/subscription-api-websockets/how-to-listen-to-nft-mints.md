@@ -200,8 +200,8 @@ That's it!
 
 We have a lot of other APIs that help you query for blockchain data easily. Check out these related APIs and services:
 
-{% content-ref url="../../enhanced-apis/transfers-api.md" %}
-[transfers-api.md](../../enhanced-apis/transfers-api.md)
+{% content-ref url="../../enhanced-apis/transfers-api/" %}
+[transfers-api](../../enhanced-apis/transfers-api/)
 {% endcontent-ref %}
 
 {% content-ref url="../../enhanced-apis/notify-api/" %}
