@@ -33,7 +33,7 @@ Web3 netizens are accustomed to seeing a historical list of interactions with di
 
 For more detailed information on the [Alchemy Transfers API](https://docs.alchemy.com/alchemy/enhanced-apis/transfers-api), please refer to its [docs page](../transfers-api.md)!
 
-## Querying **Transactions Sent by Target **_**`from` A**_**ddress**
+## **Transactions Sent by Target **_**`from` A**_**ddress**
 
 When using the [Transfers API](../transfers-api.md) for querying a user’s full on-chain history, its important to have a few key API parameters on hand.
 
@@ -237,7 +237,7 @@ Now, on your command line, you can execute the script by calling:
 node axios-transfers-from-script.js
 ```
 
-## **Querying Transactions Sent To Target **_**`to` A**_**ddress**
+## **Transactions Sent To Target **_**`to` A**_**ddress**
 
 #### **1. Select an address for transaction history**
 
