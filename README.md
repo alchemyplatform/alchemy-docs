@@ -6,7 +6,7 @@ description: >-
 
 # 👋 Welcome to Alchemy
 
-Use these docs to learn more about Alchemy's core products, explore guides, and check out our API references.
+This documentation contains resources to learn more about Alchemy's core products, learn how to build web3 applications, explore developer guides, and check out our API references.
 
 ### _Get access to_ [_Alchemy for free here_](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_._
 
@@ -38,11 +38,13 @@ Check out Alchemy's API Reference pages to understand how to use the [Enhanced A
 [Alchemy x Flow](https://app.gitbook.com/o/-MB5OnTtI\_5pcZn7v2wm/s/-Mbe-myfcwH3hjIraizf/)
 {% endcontent-ref %}
 
-## Tutorials&#x20;
+## 💻 Tutorials: Learn how to build in Web3
 
-Check out these tutorials to learn how to build in Web3.
+Check out these tutorials to learn how to build in smart contracts and decentralized applications.
 
 ### Basics
+
+Not sure where to start? New to building in Web3? Check out some of the beginner tutorials below!
 
 {% content-ref url="introduction/getting-started/simple-web3-script.md" %}
 [simple-web3-script.md](introduction/getting-started/simple-web3-script.md)
@@ -54,6 +56,8 @@ Check out these tutorials to learn how to build in Web3.
 
 ### Smart Contract Development&#x20;
 
+Curious how smart contracts work, these tutorials will walk you through the fundamentals of smart contract development.&#x20;
+
 {% content-ref url="tutorials/hello-world-smart-contract/" %}
 [hello-world-smart-contract](tutorials/hello-world-smart-contract/)
 {% endcontent-ref %}
@@ -63,6 +67,8 @@ Check out these tutorials to learn how to build in Web3.
 {% endcontent-ref %}
 
 ### NFT Development&#x20;
+
+This contains end to end NFT development from smart contract to website to analytics.&#x20;
 
 {% content-ref url="tutorials/how-to-create-an-nft/" %}
 [how-to-create-an-nft](tutorials/how-to-create-an-nft/)
@@ -77,6 +83,8 @@ Check out these tutorials to learn how to build in Web3.
 {% endcontent-ref %}
 
 ### Intermediate-Advanced&#x20;
+
+These tutorials require a bit more coding experience and involve integrating historical transactions and notifications into your dApp.&#x20;
 
 {% content-ref url="tutorials/transfers-tutorial.md" %}
 [transfers-tutorial.md](tutorials/transfers-tutorial.md)
@@ -118,20 +126,4 @@ Get set up to use the Alchemy API in under 5 minutes. Learn how to get and use y
 
 {% content-ref url="introduction/getting-started/" %}
 [getting-started](introduction/getting-started/)
-{% endcontent-ref %}
-
-## 💻 Learn how to build in Web3
-
-Not sure where to start? New to building in Web3? Check out some of the beginner tutorials below!
-
-{% content-ref url="introduction/getting-started/simple-web3-script.md" %}
-[simple-web3-script.md](introduction/getting-started/simple-web3-script.md)
-{% endcontent-ref %}
-
-{% content-ref url="tutorials/hello-world-smart-contract/" %}
-[hello-world-smart-contract](tutorials/hello-world-smart-contract/)
-{% endcontent-ref %}
-
-{% content-ref url="tutorials/how-to-create-an-nft/" %}
-[how-to-create-an-nft](tutorials/how-to-create-an-nft/)
 {% endcontent-ref %}
