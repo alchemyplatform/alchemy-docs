@@ -6,9 +6,9 @@ description: >-
 
 # eth\_newFilter
 
-Unlike `eth_newBlockFilter`which notifies you of \*\*all **new** \*\*blocks, you can pass in filter options to track new logs matching the topics specified. \*\* \*\*
+Unlike [`eth_newBlockFilter`](eth\_newblockfilter.md)which notifies you of all **new** blocks, you can pass in filter options to track new logs matching the topics specified.&#x20;
 
-To check if the state has changed, call [`eth_getFilterChanges.`](./#eth\_getfilterchanges)\`\`
+To check if the state has changed, call [`eth_getFilterChanges`](../polygon-api/eth\_getfilterchanges.md)``
 
 {% hint style="info" %}
 **A note on specifying topic filters:**
