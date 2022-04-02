@@ -29,6 +29,7 @@
   * [NFT API Quickstart Guide](enhanced-apis/nft-api/nft-api-quickstart-guide.md)
 * [Transfers API (Tx History)](enhanced-apis/transfers-api.md)
   * [How to get a users transactions on Ethereum](enhanced-apis/transfers-api/how-to-get-a-users-transactions-on-ethereum.md)
+  * [How to find NFT mints](enhanced-apis/transfers-api/how-to-find-nft-mints.md)
 * [Transaction Receipts API](enhanced-apis/transaction-receipts-api.md)
 * [Token API](enhanced-apis/token-api/README.md)
   * [Token API Quickstart Guide](enhanced-apis/token-api/token-api-quickstart-guide.md)

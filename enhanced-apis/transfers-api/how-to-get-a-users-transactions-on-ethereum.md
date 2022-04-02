@@ -37,9 +37,11 @@ For more detailed information on the [Alchemy Transfers API](https://docs.alchem
 
 When using the [Transfers API](../transfers-api.md) for querying a user’s full on-chain history, its important to have a few key API parameters on hand.
 
+[Check the Composer App for a no-code version of the query we're making together.](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22toAddress%22%3A%22%22%2C%22toBlock%22%3A%22%22%2C%22fromAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22fromBlock%22%3A%220x0%22%7D%5D%7D)
+
 #### **1.** _**Select an address for transaction history**_
 
-* You have a target from address that you want to query transactions for. This address is equivalent to the `fromAddress` parameter within the [Transfers API](../transfers-api.md).&#x20;
+* You have a target from address that you want to query transactions that originated from. This address is equivalent to the `fromAddress` parameter within the [Transfers API](../transfers-api.md).&#x20;
 
 #### **2.**  _**Pick a block range for transaction query**_
 
@@ -238,6 +240,8 @@ node axios-transfers-from-script.js
 ```
 
 ## **Transactions Sent To Target **_**`to` A**_**ddress**
+
+[Check the Composer App for a no-code version of the query we're making together.](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22toAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22toBlock%22%3A%22%22%2C%22fromAddress%22%3A%22%22%2C%22fromBlock%22%3A%220x0%22%7D%5D%7D)
 
 #### **1. Select an address for transaction history**
 
