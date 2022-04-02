@@ -6,15 +6,11 @@ description: >-
 
 # How to get a users transactions on Ethereum
 
-While UI/UX for Web3 dApps is constantly evolving, one piece of key functionality has persisted throughout the years: the concept of a user’s historical transactions.
-
-Web3 netizens are accustomed to seeing a historical list of interactions with different DeFi staking protocols, deposits/withdrawals to centralized exchanges, or Uniswap transactions. While block explorers like Etherscan provide an unfiltered portal of a user’s account and all its on-chain interactions, many dApps also have a more condensed view of a user’s previous interactions on that specific application.&#x20;
-
 **In this tutorial, we’ll be using Alchemy’s** [**Transfers API** ](../transfers-api.md)**to fetch all transactions sent **_**`from`**_** and sent **_**`to`**_** addresses you care about to create a complete picture of a user's transaction history.**
 
-![Harvest Finance Dashboard view](../../.gitbook/assets/harv.png)
+> If your Web3 application has a user interface, there's a high change you’ll want to display your user’s transaction history. This includes everything from interactions with specific smart contracts to or an entire picture of a user’s Web3 transactions. **** Regardless of the different types of transaction history you want to look up, this process can be extremely burdensome for developers to stitch together without the [Alchemy Transfers API](../transfers-api.md).&#x20;
 
-## **Tutorial Overview**
+## How to query transaction history
 
 ### ****[**Querying Transactions Sent by Target **_**`from` A**_**ddress**](how-to-get-a-users-transactions-on-ethereum.md#getting-started)****
 
