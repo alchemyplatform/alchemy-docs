@@ -381,8 +381,6 @@ node fetch-transfers-from-script.js
 {% endtab %}
 
 {% tab title="Axios" %}
-###
-
 {% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/axios-transfers-to-script.js" %}
 
 If you're using Javascript `axios`, a promise-based HTTP client for the browser and Node.js which allows us to make a raw request to the Alchemy API, here's a code snipper for the request you'd make!
