@@ -80,7 +80,6 @@ We're obsessed with providing the most developer-friendly experience across our 
 | eth\_getProof                            | 21                                              |
 | eth\_getBlockByHash                      | 21                                              |
 | trace\_block                             | 24                                              |
-| parity\_getBlockReceipts                 | 24                                              |
 | erigon\_forks                            | 24                                              |
 | erigon\_getHeaderByHash                  | 24                                              |
 | erigon\_getHeaderByNumber                | 24                                              |
@@ -101,6 +100,8 @@ We're obsessed with providing the most developer-friendly experience across our 
 | alchemy\_getTransactionReceipts          | 250                                             |
 | eth\_sendRawTransaction                  | 250                                             |
 | debug\_traceTransaction                  | 309                                             |
+| parity\_getBlockReceipts                 | 500                                             |
+| eth\_getBlockReceipts                    | 500                                             |
 | trace\_replayTransaction                 | 2983                                            |
 | trace\_replayBlockTransactions           | 2983                                            |
 | batch\*                                  | CU of method \* # of times the method is called |
