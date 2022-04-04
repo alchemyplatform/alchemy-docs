@@ -533,7 +533,7 @@ Two of the many different response objects you may be interested in parsing are:
 
 Let's walk through an example that parses the returned JSON object.
 
-#### **1. Save the response object in a constant**
+#### **Save the response object in a constant**
 
 Whether we're querying via `alchemy web3`, `axios`, or `node-fetch`, we'll need to save the queried response object into a constant.
 
