@@ -27,7 +27,10 @@ We recommend using websocket subscriptions anytime you want to continually recei
 Creates a new subscription for desired events. Sends data as soon as it occurs.
 
 {% hint style="warning" %}
-There is a limit of 20,000 **** websocket connections per API Key as well as 1,000 parallel websocket subscriptions per websocket connection, creating a maximum of 20 million subscriptions per application.
+#### Note on limits
+
+* There is a limit of 20,000 **** websocket connections per API Key as well as 1,000 parallel websocket subscriptions per websocket connection, creating a maximum of 20 million subscriptions per application.
+* The maximum `batch` size that can be sent over a websocket connection is 10.
 {% endhint %}
 
 ### Parameters
