@@ -4,11 +4,11 @@ description: Get the owner(s) for a token.
 
 # getOwnersForToken (BETA)
 
-{% hint style="info" %}
-This endpoint is currently supported on the following chains and networks:
+This endpoint is supported on the following chains and networks:
 
-**+ Ethereum**: Mainnet
-{% endhint %}
+* **Ethereum**: Mainnet
+
+_To see chain support across all features, check out the_ [_feature matrix_](../../apis/feature-support-by-chain.md)_._
 
 ## Parameters
 

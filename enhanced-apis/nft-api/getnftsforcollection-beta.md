@@ -4,6 +4,12 @@ description: Gets all NFTs for a given NFT contract
 
 # getNFTsForCollection (BETA)
 
+This endpoint is supported on the following chains and networks:
+
+* **Ethereum**: Mainnet
+
+_To see chain support across all features, check out the_ [_feature matrix_](../../apis/feature-support-by-chain.md)_._
+
 ## Parameters
 
 * `contractAddress`: _**\[string]**_ - contract address for the NFT collection
