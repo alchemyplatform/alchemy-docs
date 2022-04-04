@@ -1,72 +1,74 @@
 ---
 description: >-
-  Learn how to get the full transaction history for a contract or user address
-  including ERC-20, ERC-721 and ERC-1155 token transfers in a single request.
+  Learn how to get the full transaction history for a smart contract or a user
+  address including external, internal, token, ERC-20, ERC-721 and ERC-1155
+  token transfers in a single request.
 ---
 
-# How to get a users transactions on Ethereum
+# How to get address transaction history on Ethereum
 
 **In this tutorial, we’ll be using Alchemy’s** [**Transfers API** ](../transfers-api.md)**to fetch all transactions sent **_**`from`**_** and sent **_**`to`**_** addresses you care about to create a complete picture of a user's transaction history.**
 
-> If your Web3 application has a user interface, there's a high change you’ll want to display your user’s transaction history. This includes everything from interactions with specific smart contracts to or an entire picture of a user’s Web3 transactions. **** Regardless of the different types of transaction history you want to look up, this process can be extremely burdensome for developers to stitch together without the [Alchemy Transfers API](../transfers-api.md).&#x20;
+If your Web3 application has a user interface, there's a high change you’ll want to display your user’s transaction history. This includes everything from interactions with specific smart contracts to or an entire history of all their Web3 transactions. **** Regardless of the different types of transaction history you want to look up, this process can be extremely burdensome for developers to stitch together without the [Alchemy Transfers API](../transfers-api.md).&#x20;
 
 ## How to query transaction history
 
-1.  [Select an address for transaction history](how-to-get-a-users-transactions-on-ethereum.md#1.-select-an-address-for-transaction-history)
+1.  ****[**Select an address to fetch transaction history for**](how-to-get-address-transaction-history-on-ethereum.md#1.-select-an-address-for-transaction-history)****
 
-    a) This address can be a contract address or user-owned address and will be used to set the _**from**_ and the _**to**_** ** parameters!
-2.  [Pick a block range for transaction query](how-to-get-a-users-transactions-on-ethereum.md#2.-pick-a-block-range-for-transaction-query)
+    This address can be a contract address or user-owned address and will be used to set the _**from**_ and the _**to**_** ** parameters in our request
+2.  ****[**Pick a block range**](how-to-get-address-transaction-history-on-ethereum.md#2.-pick-a-block-range-for-transaction-query)****
 
-    a) Set the `fromBlock` and `toBlock` for our transaction history range
-3.  [Specify filter type for transactions/transfers](how-to-get-a-users-transactions-on-ethereum.md#3.-specify-filter-type-for-transactions-transfers)
+    Set the `fromBlock` and `toBlock` for our transaction history range, this will specify the time period we want to get transactions over&#x20;
+3.  [**Specify the types of transactions/transfers**](how-to-get-address-transaction-history-on-ethereum.md#3.-specify-filter-type-for-transactions-transfers)****
 
-    a) Transaction filters can by external txs, internal tx, or by token type. Learn more about transfer types [here](https://docs.alchemy.com/alchemy/enhanced-apis/transfers-api#types-of-transfers)!&#x20;
-4. [Send API request!](how-to-get-a-users-transactions-on-ethereum.md#4.-send-api-request)
-5. [Repeat with the `to` address specified instead of the `from` address](how-to-get-a-users-transactions-on-ethereum.md#5.-repeat-with-the-to-address-specified-instead-of-the-from-address)
-6. [Parsing API response.](how-to-get-a-users-transactions-on-ethereum.md#api-response)
+    We can filter transactions by external, internal, or token type. Learn more about transfer types [here](https://docs.alchemy.com/alchemy/enhanced-apis/transfers-api#types-of-transfers)!&#x20;
+4.  [Send API request!](how-to-get-address-transaction-history-on-ethereum.md#4.-send-api-request)
 
-For more detailed information on the [Alchemy Transfers API](https://docs.alchemy.com/alchemy/enhanced-apis/transfers-api), please refer to its [docs page](../transfers-api.md)!
+    Check the [Composer tool](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22toAddress%22%3A%22%22%2C%22toBlock%22%3A%22%22%2C%22fromAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22fromBlock%22%3A%220x0%22%7D%5D%7D) to see the request from the browser
+5. [Repeat with the `to` address specified instead of the `from` address](how-to-get-address-transaction-history-on-ethereum.md#5.-repeat-with-the-to-address-specified-instead-of-the-from-address)
+6. [Parse the API response.](how-to-get-address-transaction-history-on-ethereum.md#api-response)
 
-## **Querying Transactions Sent by Target **_**`from` **_** or **_**`to` A**_**ddress**
+## **Using the** [**Transfers API**](../transfers-api.md) **to get transaction history**
 
-When using the [Transfers API](../transfers-api.md) for querying a user’s full on-chain history, its important to have a few key API parameters on hand.
+When using the [Transfers API](../transfers-api.md) for querying a user’s full on-chain history, its important to have a few key parameters on hand.
 
-[Check the Composer App for a no-code version of the query we're making together.](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22toAddress%22%3A%22%22%2C%22toBlock%22%3A%22%22%2C%22fromAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22fromBlock%22%3A%220x0%22%7D%5D%7D)
-
-### **1.** _**Select an address for transaction history**_
+### **1.** _**Select an address to fetch transaction history for**_
 
 > Your target address can be anything from a contract address like the [Uniswap V3](https://etherscan.io/address/0xe592427a0aece92de3edee1f18e0157c05861564) contract: 0xE592427A0AEce92De3Edee1F18E0157C05861564  or a user-owned address like [vitalik.eth](https://etherscan.io/address/0xd8da6bf26964af9d7eed9e03e53415d37aa96045): 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045.&#x20;
 
-For transaction information that originates from your target sender address, use the `fromAddress` parameter within the [Transfers API](../transfers-api.md). For recipient-based transactions, use the `toAddress` parameter! You can also use the `fromAddress` and `toAddress` in combination as an AND operation for further filtering!
-
-### **2.**  _**Pick a block range for transaction query**_
-
-* The `fromBlock`API parameter determines the start of the block range that you seek to query address information for.&#x20;
-* The `toBlock`API parameter determines the end of the block query range. You can use `"latest"` if you want the query to include data up to the most recent block.&#x20;
+For transaction information that originates from your target sender address, use the `fromAddress` parameter within the [Transfers API](../transfers-api.md). For recipient-based transactions, use the `toAddress` parameter.&#x20;
 
 {% hint style="info" %}
-NOTE: When querying the full history of an address’s on-chain interactions, we suggest looking back to the very beginning or the 0th block (**0x0**). If you’re looking to offer a condensed view of an address’s interactions with a particular DeFi protocol, you can also start your search with the date of the protocol’s contract deployment. \
-By default, we'll use `"latest"` as the API parameter!
+If you want to get transactions that have a specific from AND to address, you can specify the `fromAddress` and `toAddress` in your request.
 {% endhint %}
 
-### **3.  **_**Specify filter type for transactions/transfers**_
+### **2.**  _**Pick a block range**_
 
-* The `category` parameter helps you filter for specific transfers.&#x20;
-* You can pass in any of the following strings as a list: `external`, `internal`, `token`, `erc20`, `erc721`, `erc1155` If unprompted, the default will be \["`external`", "`internal`", "`token`"]).
+* The `fromBlock` parameter determines the start of the block range. You should use `0x0` if you want to start from the earliest block.
+* The `toBlock`API parameter determines the end of the block range. You should use `"latest"` if you want the query to include data up to the most recent block.&#x20;
 
-When searching through a user’s entire transfer history, the default parameter will work!
+{% hint style="info" %}
+NOTE: When querying the full history of an address’s on-chain interactions, we suggest looking back to the very beginning or the 0th block (**0x0**). If you’re looking to offer a condensed view of an address’s interactions with a particular DeFi protocol, you can also start your search with the date of the protocol’s contract deployment. By default, we'll use `"latest"` as the API parameter for both `fromBlock` and `toBlock`.
+{% endhint %}
+
+### **3.  Specify the types of transactions/transfers**
+
+* The `category` parameter helps you filter for specific [transfer types](../transfers-api.md#types-of-transfers).&#x20;
+* You can pass in any of the following strings as a list: `external`, `internal`, `token`, `erc20`, `erc721`, `erc1155.` If unprompted, the default will be \["`external`", "`internal`", "`token`"]).
 
 _**OPTIONAL**_
 
-If you’re looking to query historical transactions limited to a particular set of tokens, you can also use the `contractAddresses`parameter which accepts a list of contract addresses in a hex string format and can be used to filter the ERC20/721/1155 token addresses returned in the response.&#x20;
+If you’re looking to query historical transactions limited to a particular set of tokens, you can also use the `contractAddresses` parameter which accepts a list of contract addresses in a hex string format and can be used to filter the ERC20/721/1155 token addresses returned in the response.&#x20;
 
 For addresses with a large number of transfers due to spam, passing in this parameter will help speed up your queries!
 
 {% hint style="info" %}
-NOTE: The default use of this parameter, without specifying an address, returns any and all transfers by any token address.
+**NOTE:** The default use of this parameter, without specifying an address, returns any and all transfers by any token address.
 {% endhint %}
 
 ### **4. **_**Send API request!**_
+
+**For a no-code view of the API request check out the** [**composer tool**](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22toAddress%22%3A%22%22%2C%22toBlock%22%3A%22%22%2C%22fromAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22fromBlock%22%3A%220x0%22%7D%5D%7D)**.**&#x20;
 
 {% tabs %}
 {% tab title="Alchemy Web3.js (Recommended)" %}
@@ -253,7 +255,7 @@ node axios-transfers-from-script.js
 
 ### **5.** Repeat with the `to` address specified instead of the `from` address
 
-[Check the Composer App for a no-code version of the query we're making together.](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22toAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22toBlock%22%3A%22%22%2C%22fromAddress%22%3A%22%22%2C%22fromBlock%22%3A%220x0%22%7D%5D%7D)
+**For a no-code view of the API request check out the** [**composer tool**](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22toAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22toBlock%22%3A%22%22%2C%22fromAddress%22%3A%22%22%2C%22fromBlock%22%3A%220x0%22%7D%5D%7D)**.**&#x20;
 
 {% tabs %}
 {% tab title="Alchemy Web3.js (Recommended)" %}
@@ -446,7 +448,7 @@ node axios-transfers-to-script.js
 
 ### 6. Parsing API Response&#x20;
 
-Now that we have made a query and see our response, let's learn how to handle it and make useful information out of it!\
+Now that we have made a query and can see the response, let's learn how to handle it.\
 \
 If you feel like jumping ahead and grabbing some pre-built code, choose a repo that matches your preferred library.
 
@@ -455,24 +457,18 @@ If you feel like jumping ahead and grabbing some pre-built code, choose a repo t
 #### Parsing with `Alchemy Web3` Responses
 
 {% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/parsed-alchemy-web3-transfers-from-script.js" %}
-
-
 {% endtab %}
 
 {% tab title="Node-Fetch" %}
 #### Parsing with `Axios` Responses
 
 {% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/parsed-axios-transfers-to-script.js" %}
-
-
 {% endtab %}
 
 {% tab title="Axios" %}
 #### Parsing with `Node-Fetch` Responses
 
 {% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/parsed-fetch-transfers-to-script.js" %}
-
-
 {% endtab %}
 {% endtabs %}
 
@@ -571,7 +567,7 @@ Whether we're querying via `alchemy web3`, `axios`, or `node-fetch`, we'll need 
 {% endtab %}
 {% endtabs %}
 
-With our queried response object saved as a constant, we can now index through the transfers. In particular, we first access the transfers list and then iterate across each element's `value` and `asset` field, printing them out as we go!
+With our queried response object saved as a constant, we can now index through the transfers. In particular, we first access the transfers list and then iterate across each element's `value` and `asset` field, printing them out as we go.&#x20;
 
 ```javascript
   // Print token asset name and its associated value
@@ -606,3 +602,9 @@ Token Transfer:  0.0633910153108353   ETH
 Token Transfer:  0.0335   ETH
 Token Transfer:  2   GTC
 ```
+
+And that's it! You've now learned how to fetch transaction history for address on Ethereum. For more, check out the tutorial below:
+
+{% content-ref url="../../tutorials/transfers-tutorial.md" %}
+[transfers-tutorial.md](../../tutorials/transfers-tutorial.md)
+{% endcontent-ref %}
