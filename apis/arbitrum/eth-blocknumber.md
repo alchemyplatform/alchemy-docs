@@ -2,7 +2,7 @@
 description: Arbitrum API -Returns the number of the most recent block.
 ---
 
-# eth\_blockNumber
+# eth\_blockNumber - Arbitrum
 
 ## Parameters
 
@@ -54,3 +54,7 @@ Body:
   "result": "0xa1c054"
 }
 ```
+
+{% content-ref url="./" %}
+[.](./)
+{% endcontent-ref %}
