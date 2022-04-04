@@ -134,7 +134,7 @@
   * [eth\_unsubscribe - Polygon](apis/polygon-api/eth\_unsubscribe.md)
   * [debug\_traceTransaction (Unsupported)](apis/polygon-api/debug\_tracetransaction.md)
 * [Arbitrum API](apis/arbitrum/README.md)
-  * [eth\_blockNumber](apis/arbitrum/eth\_blocknumber.md)
+  * [eth\_blockNumber - Arbitrum](apis/arbitrum/eth-blocknumber.md)
   * [eth\_getBlockByHash](apis/arbitrum/eth\_getblockbyhash-1.md)
   * [eth\_getBlockByNumber](apis/arbitrum/eth\_getblockbynumber-1.md)
   * [eth\_getTransactionByHash](apis/arbitrum/eth\_gettransactionbyhash-1.md)
