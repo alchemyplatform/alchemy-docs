@@ -81,7 +81,7 @@ Additionally, we do not include any **internal transfers with call type`delegate
   * `toBlock`: inclusive to block (hex string, int, or `latest`). _optional_ (defaults to `latest`)
   * `fromAddress`: from address (hex string). _optional_ (default wildcard - any address)
   * `toAddress`: to address (hex string). _optional_ (default wildcard - any address)
-  * `contractAddresses`: list of contract addresses (hex strings) for `token` transfers. optional (default wildcard - any address)
+  * `contractAddresses`: list of contract addresses (hex strings) to filter for - only applies to `token` transfers. optional (default wildcard - any address)
   * `category`: Optional array of categories, can be any of the following: "`external`", "`internal`", "`token`", "`erc20`", "`erc721`", "`erc1155`" (defaults to the following categories: \["`external`", "`internal`", "`token`"])
   * `excludeZeroValue:` a`Boolean` to exclude transfers with zero value. optional (default `true`)
   * `maxCount`: max hex string number of results to return per call. optional (default and max`1000` or `0x3e8`)
