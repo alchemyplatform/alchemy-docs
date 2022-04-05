@@ -110,23 +110,15 @@ App Id. See note above on where to find it.
 {% swagger-parameter in="body" name="webhook_type" type="integer" required="false" %}
 An Integer representing webhook type.
 
-\\
+
 
 Dropped Transactions: 1
 
-\\
-
 Mined Transactions: 2
-
-\\
 
 Address Activity: 4
 
-\\
-
 Gas Price: 5
-
-\\
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="webhook_url" type="string" required="false" %}
@@ -148,23 +140,17 @@ If the gas price (in 10x gwei) is higher than this threshold, send a notificatio
 {% swagger-parameter in="body" name="gas_price_type" type="integer" required="false" %}
 Selects the metric to be used as the threshold price.
 
-\\
+
 
 SAFE\_LOW = 0
 
-\\
-
 AVERAGE = 1
-
-\\
 
 FAST = 2
 
-\\
-
 FASTEST = 3
 
-\\
+
 
 For gas price webhooks only.
 {% endswagger-parameter %}
