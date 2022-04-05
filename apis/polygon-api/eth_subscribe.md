@@ -5,7 +5,9 @@ description: Polygon API - Creates a new subscription for specified events.
 # eth\_subscribe - Polygon
 
 {% hint style="warning" %}
-There is a limit of 20,000 websocket connections per API Key as well as 1,000 parallel websocket subscriptions per websocket connection, creating a maximum of 20 million subscriptions per application.
+There is a limit of 20,000 websocket connections per API Key as well as 1,000 parallel websocket subscriptions per websocket connection, creating a maximum of 20 million subscriptions per application.\
+\
+NOTE: Free tier users will be limited to 10 concurrent requests per websocket connection
 {% endhint %}
 
 ### Parameters
