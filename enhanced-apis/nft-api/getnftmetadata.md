@@ -49,7 +49,7 @@ API requests will perform faster if `tokenType` is specified!
       _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](nft-api-faq.md#understanding-nft-metadata)_****_
   * `timeLastUpdated`: ISO timestamp of the last cache refresh for the information returned in the `metadata` field.
   * `error`: A string describing a particular reason that we were unable to fetch complete metadata for the NFT. \
-    **See the** [**Handling Errors**](getnftmetadata/handling-errors.md) **section for a complete list of potential errors.**
+    **See the** [**Handling Errors**](handling-errors.md) **section for a complete list of potential errors.**
 
 {% hint style="info" %}
 **NOTE:**\
