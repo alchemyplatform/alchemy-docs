@@ -82,6 +82,10 @@ Alchemy Auth token to use the Notify API (see note above).
 {% endswagger-response %}
 {% endswagger %}
 
+{% swagger src="../../.gitbook/assets/openapi.yml" path="undefined" method="undefined" %}
+[openapi.yml](../../.gitbook/assets/openapi.yml)
+{% endswagger %}
+
 #### Example Request
 
 ```

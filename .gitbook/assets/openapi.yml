@@ -1,0 +1,137 @@
+openapi: 3.0.0
+info:
+  title: Alchemy Notify API
+  description: |
+    The Alchemy Notify API enables you to manage and configure 
+    your Alchemy webhook resources
+  version: 0.0.1
+servers:
+- url: https://dashboard.alchemyapi.io
+tags:
+  - name: Notify
+
+security:
+  - ApiKeyAuth: []
+paths:
+  /api/webhook-addresses:
+    get:
+      summary: Get all the addresses for an Address Activity webhook
+      description: |
+        Paginated endpoint to get all of the addresses an 
+        Address Activity webhook is subscribed to.
+      tags:
+        - Notify
+      operationId: getWebhookAddresses
+      parameters:
+        - $ref: "#/components/parameters/authHeader"
+        - name: webhook_id
+          description: Id of webhook subscribed to addressed
+          in: query
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/paginationLimit"
+        - $ref: "#/components/parameters/paginationAfter"
+        
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  data:
+                    type: array
+                    items:
+                        type: string
+                        example: "0xF2250E2eD4a774D54d238B75643175C4D0c24057"
+                  pagination:
+                    $ref: "#/components/schemas/paginationCursor"
+
+components:
+  securitySchemes:
+    auth:
+      description: Your alchemy authentication token - can be found in the upper right corner of your dashboard Notify page under the "AUTH TOKEN" button.
+      name: X-Alchemy-Token
+      type: apiKey
+      in: header
+  parameters:
+    # Duplicate/redundant needed for gitbooks
+    authHeader:
+      description: Your alchemy authentication token - can be found in the upper right corner of your dashboard Notify page under the "AUTH TOKEN" button.
+      name: X-Alchemy-Token
+      in: header
+      required: true
+      schema:
+        type: string
+        example: "Your-Alchemy-API-Token"
+    paginationLimit:
+      description: Number of items per page (omit for default)
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+    paginationAfter:
+      description: Page cursor for the next page (omit for first page)
+      name: after
+      in: query
+      required: false
+      schema:
+        type: string
+    paginationBefore:
+      description: Page cursor for the previous page
+      name: before
+      in: query
+      required: false
+      schema:
+        type: string
+    paginationSortBy:
+      description: A field name to sort by
+      name: sortBy
+      in: query
+      required: false
+      schema:
+        type: string
+    paginationSortDir:
+      description: Page cursor for the next page (omit for first page)
+      name: sortDir
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: ["ASC", "DESC"]
+  schemas:
+    paginationCursor:
+      type: object
+      properties:
+        cursors:
+          type: object
+          properties:
+            after: 
+              type: string
+              example: "after_X"
+    paginationCursorWithBefore:
+      allOf:
+        - $ref: '#/components/schemas/paginationCursor'
+        - type: object
+          properties:
+            cursors:
+              type: object
+              properties:
+                before: 
+                  type: string
+                  example: "before_Z"
+    paginationCursorWithTotalCount:
+      allOf:
+        - $ref: '#/components/schemas/paginationCursor'
+        - type: object
+          properties:
+            total_count:
+              type: integer
+              example: 1
+    paginationCursorWithTotalCountAndBefore:
+      allOf:
+        - $ref: '#/components/schemas/paginationCursorWithBefore'
+        - $ref: '#/components/schemas/paginationCursorWithTotalCount'
