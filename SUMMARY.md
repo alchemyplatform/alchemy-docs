@@ -186,6 +186,7 @@
   * [Interacting with a Smart Contract](tutorials/hello-world-smart-contract/interacting-with-a-smart-contract.md)
   * [Submitting your Smart Contract to Etherscan](tutorials/hello-world-smart-contract/submitting-your-smart-contract-to-etherscan.md)
   * [Integrating Your Smart Contract with the Frontend](tutorials/hello-world-smart-contract/part-4.md)
+* [How to Deploy a Polygon Smart Contract](tutorials/how-to-deploy-a-polygon-smart-contract.md)
 * [How to Create an NFT Tutorial](tutorials/how-to-create-an-nft/README.md)
   * [How to Mint an NFT Using Web3.js (option 1)](tutorials/how-to-create-an-nft/how-to-mint-a-nft.md)
   * [How to Mint an NFT with Ethers.js (option 2)](tutorials/how-to-create-an-nft/how-to-mint-an-nft-with-ethers.md)
