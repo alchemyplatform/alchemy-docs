@@ -113,7 +113,6 @@ const data = await web3.alchemy.getAssetTransfers({
 
 // Print response:
 console.log(data);
-
 ```
 
 
@@ -225,7 +224,6 @@ import axios from 'axios';
   ]
 });
 
-
   var requestOptions = {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
@@ -285,7 +283,6 @@ Copy and paste in the following code snippet into your new file: `alchemy-web3-t
 ``
 
 ```javascript
-// alchemy-nft-api/alchemy-web3-script.js
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 
 // Replace with your Alchemy api key:
@@ -460,15 +457,15 @@ If you feel like jumping ahead and grabbing some pre-built code, choose a repo t
 {% endtab %}
 
 {% tab title="Node-Fetch" %}
-#### Parsing with `Axios` Responses
+#### Parsing with `Node-Fetch` Responses
 
-{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/parsed-axios-transfers-to-script.js" %}
+{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/parsed-fetch-transfers-from-script.js" %}
 {% endtab %}
 
 {% tab title="Axios" %}
-#### Parsing with `Node-Fetch` Responses
+#### Parsing with `Axios` Responses
 
-{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/parsed-fetch-transfers-to-script.js" %}
+{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/parsed-axios-transfers-from-script.js" %}
 {% endtab %}
 {% endtabs %}
 
@@ -538,7 +535,7 @@ Whether we're querying via `alchemy web3`, `axios`, or `node-fetch`, we'll need 
 #### Saving response objects with `Alchemy Web3`
 
 ```javascript
- // Alchmey Web3
+ // Alchemy Web3
 
   const res = await web3.alchemy.getAssetTransfers({
   fromBlock: "0x0",
@@ -552,7 +549,22 @@ Whether we're querying via `alchemy web3`, `axios`, or `node-fetch`, we'll need 
 
 ```javascript
   // Node-Fetch
-  const res = await fetch(fetchURL, requestOptions)
+  
+  fetch(fetchURL, requestOptions)
+    .then((res) => {
+      return res.json()
+    })
+    .then((jsonResponse) => {
+      //Print token name / asset value
+      for (const events of jsonResponse.result.transfers) {
+       console.log("Token Transfer: ", events.value, " ", events.asset);
+      }
+    })
+    .catch((err) => {
+      // handle error
+      console.error(err);
+    });
+
 ```
 {% endtab %}
 
