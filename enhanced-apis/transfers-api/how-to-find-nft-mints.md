@@ -360,8 +360,7 @@ With our queried response saved as a JSON object, we now effectively index throu
 
 In this code block, as we iterate through the transfers list, we have a simple if-else statement that checks for whether each returned NFT is ERC1155 or not. Given that we are only looking at ERC721 and ERC1155 contracts, any NFTs that return a null for `erc1155Metadata` means that we are handling a ERC721 contract. In this case, we can simply print the `tokenId` and associated `rawContract.address`. Otherwise, we know we are working with a ERC1155 contract and will in turn again iterate through all tokens within the contract!
 
-If you followed along, your response should look like the following:\
-
+If you followed along, your response should look like the following:
 
 ```python
 ERC-721 Token Minted: ID-  0x0000000000000000000000000000000000000000000000000000000000000012  Contract-  0x18a808dd312736fc75eb967fc61990af726f04e4
@@ -375,3 +374,5 @@ ERC-721 Token Minted: ID-  0x000000000000000000000000000000000000000000000000000
 ERC-721 Token Minted: ID-  0x000000000000000000000000000000000000000000000000000000000000026d  Contract-  0x947600ad1ad2fadf88faf7d30193d363208fc76d
 ERC-721 Token Minted: ID-  0x00000000000000000000000000000000000000000000000000000000000000fb  Contract-  0x947600ad1ad2fadf88faf7d30193d363208fc76d
 ```
+
+And that's it! You've now learned how to fetch NFT mints for an address on Ethereum!
