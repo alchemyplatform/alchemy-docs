@@ -12,17 +12,17 @@ Developers and NFT enthusiasts alike often seek to find NFTs minted by influence
 
 ## **Detecting NFT Mint Events**
 
-1. Select an address for finding NFT mints\
+1. [Select an address for finding NFT mints](how-to-find-nft-mints.md#1.-select-an-address-for-finding-nft-mints)\
    This address can be a contract address or user-owned address and will be used in the the _**to**_** ** parameter in our request
-2.  Pick a block range for your query
+2.  [Pick a block range for your query](how-to-find-nft-mints.md#2.-pick-a-block-range-for-your-query)
 
     Set the `fromBlock` and `toBlock` for our transaction history range, this will specify the time period we want to get transactions over&#x20;
-3. Specify/filter for only ERC-721 and ERC-1155 NFT minting events\
+3. [Specify/filter for only ERC-721 and ERC-1155 NFT minting events](how-to-find-nft-mints.md#3.-specify-filter-for-only-erc-721-and-erc-1155-nft-minting-events)\
    We can filter transactions by external, internal, or token type. In this example, we only want to see NFT data. Learn more about transfer types [here](https://docs.alchemy.com/alchemy/enhanced-apis/transfers-api#types-of-transfers)!&#x20;
-4.  Send API request!
+4.  [Send API request!](how-to-find-nft-mints.md#4.-send-api-request)
 
     Check the [Composer tool](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22fromBlock%22%3A%220x0%22%2C%22toBlock%22%3A%22latest%22%2C%22fromAddress%22%3A%220x0000000000000000000000000000000000000000%22%2C%22toAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22category%22%3A%5B%22external%22%2C%22erc721%22%2C%22erc1155%22%5D%7D%5D%7D) to see the request from the browser
-5. Parse API response
+5. [Parse API response](how-to-find-nft-mints.md#5.-parse-api-response)
 
 For more detailed information on the [Alchemy Transfers API](https://docs.alchemy.com/alchemy/enhanced-apis/transfers-api), please refer to its [docs page](../transfers-api.md)!
 
