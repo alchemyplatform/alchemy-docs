@@ -83,6 +83,10 @@ npm install --save-dev hardhat
 
 Inside our `polygon-smart-contract-tutorial` project folder, run:
 
+```
+npx hardhat
+```
+
 You should then see a welcome message and option to select what you want to do. Select `Create a basic sample project`:
 
 ![](../.gitbook/assets/cnenayr5r1xww2hfqv40.jpeg)
@@ -246,12 +250,10 @@ Then click on "Networks" and then the "Add network" button.
 
 Input the following settings:
 
-* Network Name: Polygon Mumbai
-* New RPC URL:
-* Chain ID: 80001
-* Currency Symbol: MATIC
-* Block Explorer URL
-* [https://mumbai.polygonscan.com](https://mumbai.polygonscan.com)
+* **Network Name**: Polygon Mumbai
+* **New RPC URL**: Chain ID: 80001
+* **Currency Symbol**: MATIC
+* **Block Explorer URL**: [https://mumbai.polygonscan.com](https://mumbai.polygonscan.com)
 
 ![](../.gitbook/assets/wch6qk2dwm71e4769yfh.png)
 
@@ -390,6 +392,9 @@ Copy your contract address (i.e. `0x8Fab93D28e52a93d4b00E25Eaa04B64223382f89`) a
 Your `.env` file should look like this:
 
 ```
+API_URL="https://polygon-mumbai.g.alchemy.com/v2/<your-api-key>"
+PRIVATE_KEY="your-wallet-private-key"
+CONTRACT_ADDRESS="your-deployed-contract-address"
 ```
 
 Congrats! You just deployed a smart contract to the Polygon sidechain 🎉
@@ -442,7 +447,7 @@ async function main() {
     // The first transaction sets a new greeting with setGreeting, and then
     // waits for the transaction to be mined before doing a sanity
     // check and checking the new greeting state.
-    const setTx1 = await Greeter.setGreeting("web3 sucks!");
+    const setTx1 = await Greeter.setGreeting("web3 is ngmi!");
     await setTx1.wait();
     console.log("before: " + await Greeter.greet());
 
@@ -486,7 +491,7 @@ After running that command on your command line, you should see output like this
 
 ```
 thatguyintech@albert polygon-smart-contract-tutorial % npx hardhat run scripts/greet.js
-before: web3 sucks!
+before: web3 is ngmi!
 after: web3 is awesome!
 ```
 
