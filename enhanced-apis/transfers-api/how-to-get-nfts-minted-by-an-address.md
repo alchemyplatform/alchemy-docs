@@ -347,7 +347,7 @@ Without parsing the response, we have a console log that looks a bit as follows.
 #### Understanding API Response:
 
 * `blockNum`: the block number where an NFT mint event occurred&#x20;
-* `hash`: the transaction hash of NFT mint
+* `hash`: the transaction hash of NFT minting transaction
 * `from`: where the transaction originated from, in our case that’s always 0x0000000000000000000000000000000000000000
 * `to`: the address we want to see mints from (NFTs go **to** the address that minted them)
 * `value`:  the ETH transferred as part of the NFT mint \[`null` if ERC721 transfer]
