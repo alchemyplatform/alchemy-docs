@@ -20,8 +20,8 @@ And don’t worry if you don’t understand what any of this means yet, I'll exp
 If you have questions at any point in this tutorial, I recommend going through the following steps, **in order**:
 
 1. Look for your question on [Ethereum StackExchange](https://dev.to/thatguyintech/how-to-deploy-a-polygon-smart-contract-tutorial-4k46-temp-slug-3983764?preview=2cedc557bb3a9a1bb329d6731ab2ac6397b61973ba6aa41af6d2df806ff5cc7f551177a7c0f1c42c799ef0b7d025a042f779846533cf9d3983721311) using the [Polygon](https://ethereum.stackexchange.com/questions/tagged/polygon) or [Alchemy](https://ethereum.stackexchange.com/questions/tagged/alchemy) tags.
-2. Reach out for help in the [Alchemy Discord](https://www.alchemy.com/discord)!
-3. Tweet at us [@AlchemyPlatform](https://twitter.com/AlchemyPlatform) or ask me directly [@thatguyintech](https://twitter.com/thatguyintech).
+2. Tweet at us [@AlchemyPlatform](https://twitter.com/AlchemyPlatform) or ask me directly [@thatguyintech](https://twitter.com/thatguyintech).
+3. Reach out for help in the [Alchemy Discord](https://www.alchemy.com/discord)!
 
 #### Our tools for this tutorial:
 
