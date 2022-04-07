@@ -29,7 +29,7 @@
   * [Handling errors](enhanced-apis/nft-api/handling-errors.md)
 * [Transfers API (Tx History)](enhanced-apis/transfers-api.md)
   * [How to get address transaction history on Ethereum](enhanced-apis/transfers-api/how-to-get-address-transaction-history-on-ethereum.md)
-  * [How to find NFT mints](enhanced-apis/transfers-api/how-to-find-nft-mints.md)
+  * [How to get NFTs minted by an address](enhanced-apis/transfers-api/how-to-get-nfts-minted-by-an-address.md)
 * [Transaction Receipts API](enhanced-apis/transaction-receipts-api.md)
 * [Token API](enhanced-apis/token-api/README.md)
   * [Token API Quickstart Guide](enhanced-apis/token-api/token-api-quickstart-guide.md)
