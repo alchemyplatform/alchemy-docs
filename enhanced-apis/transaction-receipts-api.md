@@ -17,7 +17,7 @@ The `alchemy_getTransactionReceipts` method allows us to fetch all transaction r
 ### Parameters
 
 {% hint style="info" %}
-The `alchemy_getTransactionReceipts`api only takes in one parameter - an object with **at least**`a`blockNumber`or`blockHash. If both are provided, `blockNumber` is prioritized.
+The `alchemy_getTransactionReceipts`api only takes in one parameter - an object with **at least**`a`blockNumber`or`blockHash. If both are provided, `blockHash` is prioritized.
 {% endhint %}
 
 * `blockNumber` - (hex) The block number you want to get transaction receipts for
