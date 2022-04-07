@@ -24,7 +24,7 @@ Without simple API endpoints like the [Alchemy Transfers API](../transfers-api.m
 4.  [Send API request!](how-to-get-nfts-minted-by-an-address.md#4.-send-api-request)
 
     Check the [Composer tool](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22fromBlock%22%3A%220x0%22%2C%22toBlock%22%3A%22latest%22%2C%22fromAddress%22%3A%220x0000000000000000000000000000000000000000%22%2C%22toAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22category%22%3A%5B%22external%22%2C%22erc721%22%2C%22erc1155%22%5D%7D%5D%7D) to see the request from the browser
-5. [Decoding API response](how-to-get-nfts-minted-by-an-address.md#5.-parse-api-response)
+5. [Decoding API response](how-to-get-nfts-minted-by-an-address.md#5.-decoding-api-response)
 
 For more detailed information on the [Alchemy Transfers API](https://docs.alchemy.com/alchemy/enhanced-apis/transfers-api), please refer to its [docs page](../transfers-api.md)!
 
