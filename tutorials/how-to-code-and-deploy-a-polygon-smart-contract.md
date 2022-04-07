@@ -5,21 +5,33 @@ description: >-
   way to get started learning Solidity!
 ---
 
-# How to Deploy a Polygon Smart Contract
+# How to Code and Deploy a Polygon Smart Contract
 
 HELLO!
 
 If you are new to blockchain development and don’t know where to start, or if you've explored Ethereum mainnet a bit and found it wayy tooo expensive.. this guide is for you :)
 
-We will walk through coding, deploying, and interacting a simple smart contract on the Polygon Mumbai test network using [Metamask](https://metamask.io), [Solidity](https://docs.soliditylang.org), [Hardhat](https://hardhat.org), [Ethers.js](https://docs.ethers.io/v5/), and [Alchemy](https://alchemy.com/?a=polygon-smart-contract).
+We will walk through coding, deploying, and interacting with a simple smart contract on the Polygon Mumbai test network using [Metamask](https://metamask.io), [Solidity](https://docs.soliditylang.org), [Hardhat](https://hardhat.org), [Ethers.js](https://docs.ethers.io/v5/), and [Alchemy](https://alchemy.com/?a=polygon-smart-contract).
 
 And don’t worry if you don’t understand what any of this means yet, I'll explain everything!
 
-If you have questions at any point, here are some ways to debug:
+If you have questions at any point in this tutorial, I recommend going through the following steps, **in order**:
 
-1. Look for your question on [Ethereum StackExchange](https://dev.to/thatguyintech/how-to-deploy-a-polygon-smart-contract-tutorial-4k46-temp-slug-3983764?preview=2cedc557bb3a9a1bb329d6731ab2ac6397b61973ba6aa41af6d2df806ff5cc7f551177a7c0f1c42c799ef0b7d025a042f779846533cf9d3983721311) using the [polygon](https://ethereum.stackexchange.com/questions/tagged/polygon) tag or the [alchemy](https://ethereum.stackexchange.com/questions/tagged/alchemy) tag.
+1. Look for your question on [Ethereum StackExchange](https://dev.to/thatguyintech/how-to-deploy-a-polygon-smart-contract-tutorial-4k46-temp-slug-3983764?preview=2cedc557bb3a9a1bb329d6731ab2ac6397b61973ba6aa41af6d2df806ff5cc7f551177a7c0f1c42c799ef0b7d025a042f779846533cf9d3983721311) using the [Polygon](https://ethereum.stackexchange.com/questions/tagged/polygon) or [Alchemy](https://ethereum.stackexchange.com/questions/tagged/alchemy) tags.
 2. Reach out for help in the [Alchemy Discord](https://www.alchemy.com/discord)!
-3. Tweet at us [@AlchemyPlatform](https://twitter.com/AlchemyPlatform) or [@thatguyintech](https://twitter.com/thatguyintech).
+3. Tweet at us [@AlchemyPlatform](https://twitter.com/AlchemyPlatform) or ask me directly [@thatguyintech](https://twitter.com/thatguyintech).
+
+#### Our tools for this tutorial:
+
+1. [Alchemy](https://alchemy.com/?a=polygon-smart-contract) provides a connection to the blockchain. It's like how Comcast provides the wires for you to connect to the rest of the internet, or how a copper or PVC pipe connects your kitchen sink to the rest of your neighborhood's plumbing. Alchemy also provides other tools and services such as [testnet ether faucets](https://mumbaifaucet.com) and [Enhanced APIs](https://docs.alchemy.com/alchemy/enhanced-apis/nft-api).
+2. [Hardhat](https://hardhat.org) provides a developer environment so that we can easily configure environments, settings, and tests.
+3. [Ethers.js](https://docs.ethers.io/v5/) is a Javascript SDK that provides a nice developer experience when you're writing code by wrapping lower-level JSON-RPC API calls.
+4. [Solidity](https://docs.soliditylang.org) is the programming language we'll use for the smart contract portion of this project.
+5. [Metamask](https://metamask.io) is a the crypto wallet we'll use to create and manage your Ethereum wallet address. You'll need this address to deploy to Polygon (or any other EVM-based blockchain).
+
+Don't worry if that's a bit overwhelming at this point, you'll see how each of these tools works in action as we go through the tutorial!
+
+Now buckle up and let's get started.
 
 ### Step 1. Initialize Your Project
 
@@ -257,7 +269,7 @@ Once you input your wallet address into the faucet input box and click "Send Me 
 
 Good stuff! Now that you have some "money", we can actually go back to our contract and deploy it!
 
-### Step 9. Connect MetaMask and Alchemy to your project.
+### Step 9. Connect MetaMask and Alchemy to your project. <a href="#step9" id="step9"></a>
 
 We’ve created a MetaMask wallet, Alchemy account, and written our smart contract, now it’s time to connect the three.
 
@@ -281,8 +293,8 @@ Your environment file must be named `.env` or it won't be recognized as an envir
 So at this point, your `.env` file should look like this:
 
 ```
-API_URL = "https://polygon-mumbai.g.alchemy.com/v2/<your-api-key>"
-PRIVATE_KEY = "your-metamask-private-key"
+API_URL=https://polygon-mumbai.g.alchemy.com/v2/<your-api-key>
+PRIVATE_KEY="your-metamask-private-key"
 ```
 
 Now let's make sure these environment variables are correctly loaded in our hardhat project.
@@ -330,7 +342,7 @@ module.exports = {
 
 Note that with `dotenv`, we can access variables defined in our `.env` file by using `process.env`.
 
-Inside the \[hardhat config], we define a new network called `mumbai` that uses the Alchemy HTTP URL and our MetaMask account to talk to the blockchain.
+Inside the [hardhat config](https://hardhat.org/config/), we define a new network called `mumbai` that uses the Alchemy HTTP URL and our MetaMask account to talk to the blockchain.
 
 ### Step 14: Compile our contract
 
@@ -349,7 +361,7 @@ thatguyintech@albert new % npx hardhat compile
 Compiled 1 Solidity file successfully
 ```
 
-At this point, if you have any issues, please check previous discussions on [Ethereum Stackexchange](https://ethereum.stackexchange.com) using the "Alchemy" and "Polygon" tags, or create your own question!
+At this point, if you have any issues, please check previous discussions on [Ethereum Stackexchange](https://ethereum.stackexchange.com) using the [Alchemy](https://ethereum.stackexchange.com/questions/tagged/alchemy), [Polygon](https://ethereum.stackexchange.com/questions/tagged/polygon), or [Hardhat](https://ethereum.stackexchange.com/questions/tagged/hardhat) tags, or create your own question!
 
 ### Step 15: Deploy our contract
 
@@ -371,6 +383,13 @@ For example, you can see when the contract was deployed, how much the transactio
 
 ![](../.gitbook/assets/gf90snj91w6z5umqofpy.png)
 
+Copy your contract address (i.e. `0x8Fab93D28e52a93d4b00E25Eaa04B64223382f89`) and create a new line in your `.env` file to keep track of it for the next step.
+
+Your `.env` file should look like this:
+
+```
+```
+
 Congrats! You just deployed a smart contract to the Polygon sidechain 🎉
 
 To understand what’s going on under the hood, let’s navigate to the Explorer tab in our [Alchemy dashboard](https://dashboard.alchemyapi.io/explorer). If you have multiple Alchemy apps, make sure to filter by app and select "Polygon Smart Contract".
@@ -379,6 +398,102 @@ To understand what’s going on under the hood, let’s navigate to the Explorer
 
 Here you’ll see a handful of JSON-RPC calls that Hardhat/Ethers made under the hood for us when we called the `.deploy()` function. Two important ones to call out here are [eth\_sendRawTransaction](https://docs.alchemy.com/alchemy/apis/ethereum/eth\_sendrawtransaction), which is the request to actually write our contract onto the Polygon chain, and [eth\_getTransactionByHash](https://docs.alchemy.com/alchemy/apis/ethereum/eth\_gettransactionbyhash) which is a request to read information about our transaction given the hash (a typical pattern when sending transactions).
 
-That's all for now! You've learned a little bit about Solidity, set up some key accounts and tooling for building smart contracts, and then deployed your first smart contract to Polygon! You're well on your way to becoming a blockchain developer :)
+### Step 16: Create greet.js to interact with the contract
+
+Now that we have a contract deployed to the blockchain, we interact with it by writing a script!&#x20;
+
+In your `scripts` folder, creates a file called `scripts/greet.js`. Read through the comments to understand what's going on!
+
+```javascript
+// scripts/greet.js
+
+const hre = require("hardhat");
+const ContractJson = require("../artifacts/contracts/Greeter.sol/Greeter.json");
+// The ABI is very important -- it's the interface to your contract, including
+// the different available functions that are exposed for other contracts,
+// accounts, etc. to call.
+const abi = ContractJson.abi;
+
+async function main() {
+    // Notice that we're using process.env.ALCHEMY_API_KEY to load an
+    // environment variable. If you are seeing errors, make sure to go
+    // back to Step 12 and 13 to set up the dotenv dependency and .env
+    // file correctly!
+    const alchemy = new hre.ethers.providers.AlchemyProvider(
+        'maticmum',
+        process.env.ALCHEMY_API_KEY
+    );
+    // We're using the same wallet private key for the wallet that you
+    // created in Step 6. 
+    const userWallet = new hre.ethers.Wallet(process.env.PRIVATE_KEY, alchemy);
+
+    // Get the deployed contract. We need both the specific CONTRACT_ADDRESS
+    const Greeter = new hre.ethers.Contract(
+        process.env.CONTRACT_ADDRESS,
+        abi,
+        userWallet
+    )
+
+    // We're going to issue two write-transactions to modify the state
+    // of the Polygon blockchain via our Greeter smart contract.
+    
+    // The first transaction sets a new greeting with setGreeting, and then
+    // waits for the transaction to be mined before doing a sanity
+    // check and checking the new greeting state.
+    const setTx1 = await Greeter.setGreeting("web3 sucks!");
+    await setTx1.wait();
+    console.log("before: " + await Greeter.greet());
+
+    // The second transaction does the exact same thing with a new input.
+    const setTx2 = await Greeter.setGreeting("web3 is awesome!");
+    await setTx2.wait();
+    console.log("after: " + await Greeter.greet());
+}
+
+main()
+    .then(() => process.exit(0))
+    .catch((error) => {
+        console.error(error);
+        process.exit(1);
+    });
+
+```
+
+{% hint style="info" %}
+Notice that we're using `process.env.ALCHEMY_API_KEY`, etc., to load environment variables. If you're getting errors related to this, there may be something off with your `dotenv` dependency or `hardhat.config.js` configurations. Retry Steps 12 and 13 to set up the `dotenv` dependency again!
+
+Also check [Ethereum StackExchange](https://ethereum.stackexchange.com/questions/111731/error-hh8-theres-one-or-more-errors-in-your-config-file-expected-a-value-of-t) to see if anyone else has seen the same issues!
+{% endhint %}
+
+Before you run the script, we also need to define some new environment variables. Remember your  `.env` file from [Step 9](https://docs.alchemy.com/alchemy/tutorials/how-to-deploy-a-polygon-smart-contract#step-9)? We're going to add a few variable definitions, like this:
+
+```
+API_URL=https://polygon-mumbai.g.alchemy.com/v2/<your-api-key>
+PRIVATE_KEY="your-wallet-private-key"
+CONTRACT_ADDRESS="your-contract-address-deployed-to-polygon-mumbai"
+ALCHEMY_API_KEY="<your-api-key>"
+```
+
+Make sure you **save** after editing your `.env` file so that the changes are persisted!
+
+And now we're ready to run the script:
+
+`npx hardhat run scripts/greet.js`
+
+After running that command on your command line, you should see output like this:
+
+```
+thatguyintech@albert polygon-smart-contract-tutorial % npx hardhat run scripts/greet.js
+before: web3 sucks!
+after: web3 is awesome!
+```
+
+You can also verify that Alchemy has broadcasted and mined your transaction by going to the [Alchemy Mempool Watcher](https://dashboard.alchemyapi.io/mempool) and taking a look at your most recent transaction. By clicking into that transaction, you should see something like this that provides all the information you might want to know about your transaction, including what `Block Number` it was mined in, which `From Address` initiated the transaction, which `To Address` is the recipient of the transaction, how much `Value` (in MATIC) exchanged hands, what the transaction fees were, and much more:
+
+![](<../.gitbook/assets/Screen Shot 2022-04-07 at 10.24.50 AM.png>)
+
+And that's all for now! You've learned a little bit about Solidity, set up some key accounts and tooling for building smart contracts,  deployed your first smart contract to Polygon, and wrote a script to interact with the contract! You're well on your way to becoming a blockchain developer :)
 
 If you enjoyed this tutorial, give us a tweet [@AlchemyPlatform](https://twitter.com/AlchemyPlatform)!
+
+And join our [Discord server](https://www.alchemy.com/discord) to meet other blockchain devs, builders, and entrepreneurs!&#x20;
