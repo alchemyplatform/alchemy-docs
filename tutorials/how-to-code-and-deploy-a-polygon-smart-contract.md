@@ -7,6 +7,8 @@ description: >-
 
 # How to Code and Deploy a Polygon Smart Contract
 
+![](../.gitbook/assets/polygon-smart-contract-2.png)
+
 HELLO!
 
 If you are new to blockchain development and don’t know where to start, or if you've explored Ethereum mainnet a bit and found it wayy tooo expensive.. this guide is for you :)
