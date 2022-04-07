@@ -494,6 +494,8 @@ You can also verify that Alchemy has broadcasted and mined your transaction by g
 
 And that's all for now! You've learned a little bit about Solidity, set up some key accounts and tooling for building smart contracts,  deployed your first smart contract to Polygon, and wrote a script to interact with the contract! You're well on your way to becoming a blockchain developer :)
 
-If you enjoyed this tutorial, give us a tweet [@AlchemyPlatform](https://twitter.com/AlchemyPlatform)!
+If you enjoyed this tutorial, give us a tweet [@AlchemyPlatform](https://twitter.com/AlchemyPlatform)!&#x20;
+
+(Or you can also just tell the original author of this tutorial [@thatguyintech](https://twitter.com/thatguyintech) how awesome he is :joy:)
 
 And join our [Discord server](https://www.alchemy.com/discord) to meet other blockchain devs, builders, and entrepreneurs!&#x20;
