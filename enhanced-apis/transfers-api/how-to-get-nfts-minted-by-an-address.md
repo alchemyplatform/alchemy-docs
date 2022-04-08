@@ -56,7 +56,7 @@ For a no-code demonstration of this request, check out Alchemy's [Composer tool]
 {% tab title="Alchemy Web3.js (Recommended)" %}
 Check out the complete script at the GitHub Repo below, or follow along with the instructions to write the script from scratch.
 
-{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/alchemy-web3-finding-nftmints-script.js" %}
+{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/javascript/alchemyweb3/nft-mints/nft-mints-alchemyweb3.js" %}
 NFT Mints GitHub Repo
 {% endembed %}
 
@@ -82,10 +82,10 @@ Copy and paste in the following code snippet into your new file: `nft-mints-alch
 ```javascript
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 
-// Replace with your Alchemy api key:
+// Replace with your Alchemy API key:
 const apiKey = "demo";
 
-// Address we want get mints from
+// Address we want get NFT mints from
 const toAddress = "0x5c43B1eD97e52d009611D89b74fA829FE4ac56b1";
 
 // Initialize an alchemy-web3 instance:
@@ -93,14 +93,15 @@ const web3 = createAlchemyWeb3(
   `https://eth-mainnet.alchemyapi.io/v2/${apiKey}`,
 );
 
-// Request NFT mints from block 0 to latest 
 const res = await web3.alchemy.getAssetTransfers({
   fromBlock: "0x0",
   fromAddress: "0x0000000000000000000000000000000000000000",
-  toAddress: toAddress
+  toAddress: toAddress,
+  excludeZeroValue:true,
+  category: ["erc721","erc1155"]
 })
 
-// Print contract address and tokenId for each NFT:
+// Print contract address and tokenId for each NFT (ERC721 or ERC1155):
 for (const events of res.transfers) {
     if (events.erc1155Metadata == null) {
       console.log("ERC-721 Token Minted: ID- ", events.tokenId, " Contract- ", events.rawContract.address);
@@ -111,7 +112,6 @@ for (const events of res.transfers) {
       }
     }
 }
-
 ```
 {% endcode %}
 
@@ -122,14 +122,16 @@ for (const events of res.transfers) {
 Now, on your command line, you can run the script by calling:
 
 ```javascript
-node alchemy-web3-finding-nftmints-script.js
+node nft-mints-alchemyweb3.js
 ```
 {% endtab %}
 
 {% tab title="Node-Fetch" %}
 If you're using [`node-fetch`](https://www.npmjs.com/package/node-fetch) a lightweight, common module that brings the Fetch API to Node.js and allows us to make our HTTP requests, below is a code snippet for the request you'd make!
 
-{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/fetch-finding-nftmints-script.js" %}
+{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/javascript/fetch/nft-mints/nft-mints-fetch.js" %}
+NFT Mints GitHub Repo
+{% endembed %}
 
 #### 1. Create a file.
 
@@ -143,11 +145,19 @@ touch nft-mints-fetch.js
 
 #### 2. Write script!
 
-Copy and paste in the following code snippet into your new file: `nft-mints-fetch.js`
+Copy and paste in the following code snippet into your new file: `nft-mints-fetch.js`=
 
 {% code title="nft-mints-fetch.js" %}
 ```javascript
 import fetch from 'node-fetch';
+
+  // Replace with your Alchemy API key:
+  const apiKey = "demo"
+  const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}`;
+  const fetchURL = `${baseURL}`;
+
+  // Address we want get NFT mints from
+  const toAddress = "0x5c43B1eD97e52d009611D89b74fA829FE4ac56b1";
 
   let data = JSON.stringify({
   "jsonrpc": "2.0",
@@ -157,7 +167,9 @@ import fetch from 'node-fetch';
     {
       "fromBlock": "0x0",
       "fromAddress": "0x0000000000000000000000000000000000000000",
-      "toAddress": "0x5c43B1eD97e52d009611D89b74fA829FE4ac56b1",
+      "toAddress": toAddress,
+      "excludeZeroValue":true,
+      "category": ["erc721","erc1155"]
     }
   ]
 });
@@ -169,10 +181,6 @@ import fetch from 'node-fetch';
     body: data,
     redirect: 'follow'
   };
-
-  const apiKey = "demo"
-  const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}`;
-  const fetchURL = `${baseURL}`;
 
   fetch(fetchURL, requestOptions)
     .then((res) => {
@@ -214,7 +222,9 @@ node nft-mints-fetch.js
 {% tab title="Axios" %}
 If you're using Javascript [`axios`](https://www.axios.com), a promise-based HTTP client for the browser and Node.js which allows us to make a raw request to the Alchemy API, below is a code snippet for the request you'd make!
 
-{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/axios-finding-nftmints-script.js" %}
+{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/javascript/axios/nft-mints/nft-mints-axios.js" %}
+NFT Mints GitHub Repo
+{% endembed %}
 
 #### 1. Create a file.
 
@@ -234,6 +244,14 @@ Copy and paste in the following code snippet into your new file: `nft-mints-axio
 ```javascript
 import axios from 'axios';
 
+  // Replace with your Alchemy API key:
+  const apiKey = "demo"
+  const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}`;
+  const axiosURL = `${baseURL}`;
+
+  // Address we want get NFT mints from
+  const toAddress = "0x5c43B1eD97e52d009611D89b74fA829FE4ac56b1";
+
   let data = JSON.stringify({
   "jsonrpc": "2.0",
   "id": 0,
@@ -242,7 +260,9 @@ import axios from 'axios';
     {
       "fromBlock": "0x0",
       "fromAddress": "0x0000000000000000000000000000000000000000",
-      "toAddress": "0x5c43B1eD97e52d009611D89b74fA829FE4ac56b1",
+      "toAddress": toAddress,
+      "excludeZeroValue":true,
+      "category": ["erc721","erc1155"]
     }
   ]
 });
@@ -253,10 +273,6 @@ import axios from 'axios';
     headers: { 'Content-Type': 'application/json' },
     data: data,
   };
-
-  const apiKey = "demo"
-  const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}`;
-  const axiosURL = `${baseURL}`;
 
   const res = await axios(axiosURL, requestOptions);
 
@@ -271,7 +287,6 @@ import axios from 'axios';
         }
       }
   }
-
 ```
 {% endcode %}
 
