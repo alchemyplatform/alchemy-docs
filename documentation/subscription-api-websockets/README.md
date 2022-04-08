@@ -27,11 +27,11 @@ We recommend using websocket subscriptions anytime you want to continually recei
 Creates a new subscription for desired events. Sends data as soon as it occurs.
 
 {% hint style="warning" %}
-#### Note on limits
+#### A note on limits over WebSocket connections
 
-* There is a limit of 20,000 **** websocket connections per API Key as well as 1,000 parallel websocket subscriptions per websocket connection, creating a maximum of 20 million subscriptions per application.
-* The maximum`batch`size that can be sent over a websocket connection is 10.
-* Free tier users will be limited to 10 concurrent requests per websocket connection.
+* There is a limit of 20,000 **** WebSocket connections per API Key as well as 1,000 parallel WebSocket subscriptions per WebSocket connection, creating a maximum of 20 million subscriptions per application.
+* The maximum size of a JSON-RPC `batch` request that can be sent over a WebSocket connection is 10
+* Free tier users will be limited to 10 concurrent requests per WebSocket connection.
 {% endhint %}
 
 ### Parameters
