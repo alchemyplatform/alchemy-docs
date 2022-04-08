@@ -1,108 +1,103 @@
 ---
 description: >-
-  Learn how to get a list of ERC-721 and ERC-1155 NFT mints for a user address
-  in a single request.
+  In one request, fetch all ERC-721 and ERC-1155 NFTs minted by a given Ethereum
+  address, user or contract, over any time period.
 ---
 
 # How to get NFTs minted by an address
 
-**In this tutorial, we’ll be using Alchemy’s** [**Transfers API** ](../transfers-api.md)**to fetch all NFTs minted by a particular account address.**
+Some of the reasons why you'd want to get NFTs minted by an address include:
 
-Developers and NFT enthusiasts alike often seek to find NFTs minted by influencers or to compile analyses of NFTs minted over time. Beyond data analytics, this functionality allows NFT marketplaces and websites to filter by NFTs originally minted by the current owner, giving customers a more feature-rich experience!\
-\
-Without simple API endpoints like the [Alchemy Transfers API](../transfers-api.md), this data compilation process can be quite challenging.
+* Displaying all NFTs minted by a user (created and sent to their address)
+* Displaying all NFTs minted by a contract (shows you how many have been created)
+* Understand  ****  which NFTs were "first owned" or originally minted by a given address&#x20;
 
-## **Detecting NFT Mint Events**
+Surprisingly, this type of information is not easy to gather with the current [Ethereum API](../../apis/ethereum/). That's why Alchemy builds a higher level [Enhanced APIs](broken-reference) to make building in Web3 much easier.&#x20;
 
-1. [Select an address for finding NFT mints](how-to-get-nfts-minted-by-an-address.md#1.-select-an-address-for-finding-nft-mints)\
-   This address can be a contract address or a user-owned address and will be used in the _**to**_** ** parameter in our request
-2.  [Pick a block range for your query](how-to-get-nfts-minted-by-an-address.md#2.-pick-a-block-range-for-your-query)
+In this tutorial, we'll be leveraging Alchemy's [Transfers API ](../transfers-api.md)(`alchemy_getAssetTransfers`) to fetch all NFTs minted by a particular account address.
 
-    Set the `fromBlock` and `toBlock` for our transaction history range, this will specify the time period we want to get transactions over&#x20;
-3. [Specify/filter for only ERC-721 and ERC-1155 NFT minting events](how-to-get-nfts-minted-by-an-address.md#3.-specify-filter-for-only-erc-721-and-erc-1155-nft-minting-events)\
-   We can filter transactions by external, internal, or token type. In this example, we only want to see NFT data. Learn more about transfer types [here](https://docs.alchemy.com/alchemy/enhanced-apis/transfers-api#types-of-transfers)!&#x20;
-4.  [Send API request!](how-to-get-nfts-minted-by-an-address.md#4.-send-api-request)
+## **What happens when NFTs are minted?**
 
-    Check the [Composer tool](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22fromBlock%22%3A%220x0%22%2C%22toBlock%22%3A%22latest%22%2C%22fromAddress%22%3A%220x0000000000000000000000000000000000000000%22%2C%22toAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22category%22%3A%5B%22external%22%2C%22erc721%22%2C%22erc1155%22%5D%7D%5D%7D) to see the request from the browser
-5. [Decoding API response](how-to-get-nfts-minted-by-an-address.md#5.-decoding-api-response)
+Under the hood, when an NFT is minted, it is transferred from the [null **** address](https://etherscan.io/address/0x0000000000000000000000000000000000000000): 0x0000000000000000000000000000000000000000 to the user account or contract that minted it.
 
-For more detailed information on the [Alchemy Transfers API](https://docs.alchemy.com/alchemy/enhanced-apis/transfers-api), please refer to its [docs page](../transfers-api.md)!
+All token **creations** and **destructions** typically are **from** and **to** the null address respectively, so it's a good filter when looking for mint or burn events.&#x20;
 
-## **Using the** [**Transfers API**](../transfers-api.md) **to get NFT Minting Events**
+This on-chain minting emits a standard [transfer event](../transfers-api.md#what-are-transfers) since the asset is being _transferred_ from one account to another.&#x20;
 
-Before using the [Transfers API](../transfers-api.md) for querying a user’s NFT mints, here's a quick recap on what the API is doing behind the scenes.&#x20;
+Since we can filter for transfer events using the [Transfers API](../transfers-api.md), we can easily fetch NFT mints with the right parameter specification!
 
-When an NFT is minted by a user, it is transferred from the address: 0x0000000000000000000000000000000000000000, where all NFT mints on Ethereum originate from, to the user's address. This on-chain minting emits a standard [transfer event](https://docs.alchemy.com/alchemy/enhanced-apis/transfers-api#types-of-transfers) since the asset has traveled from one account to another. Then, with the [Transfers API](../transfers-api.md), you can easily filter for specific types of transfer events, including NFT mints!
+## How to get NFT Mint Events
 
-### **1.** _Select an address for finding NFT mints_
+In order to fetch NFTs minted by a given address we'll need to specify a few things in our [`alchemy_getAssetTransfers`](../transfers-api.md#alchemy\_getassettransfers-ethereum-mainnet) request:
 
-* `fromAddress`: where the transaction originated from, in our case that’s always 0x0000000000000000000000000000000000000000. This allows us to find transfers from the 0x00 address to our target address.
+* `fromAddress`: where the transaction originated from, in our case that’s always 0x0000000000000000000000000000000000000000
 * `toAddress`: the address we want to see mints from (NFTs go **to** the address that minted them)
+* `fromBlock`: the starting time range we want to fetch NFT mints over (defaults to `latest`)
+* `toBlock` : the ending time range we want to fetch NFT mints over (defaults to `latest`)
+* `category` : the type of transfer events we care about, in our case we want to see NFTs which are ERC721 and ERC1155 events&#x20;
 
-### **2.** _Pick a block range for your query_
+TBD maybe external as well - We use `external` since we are looking for the transfer of an NFT from an address to another address, both of which are not smart contracts.
 
-* &#x20;`fromBlock`: the start of the block range we want to fetch NFT mints over
-* `toBlock`: the end of the block range we want to fetch NFT mints over. You can use `"latest"` if you want the query to include NFT data up to the most recent block.&#x20;
+Once we've specified these inputs we can send the request!&#x20;
 
-{% hint style="info" %}
-When querying the full history of an address’s on-chain interactions, we suggest looking back to the very beginning or the 0th block (**0x0**).&#x20;
+## **Example: Getting NFT Mint Events**&#x20;
+
+To demonstrate how to get the NFT mint events from an address we're going to walk through an example using address [0x5c43B1eD97e52d009611D89b74fA829FE4ac56b1](https://etherscan.io/address/0x5c43B1eD97e52d009611D89b74fA829FE4ac56b1) and get all NFT mint events from block 0 to latest.&#x20;
+
+{% hint style="success" %}
+### **No-code Example**
+
+For a no-code demonstration of this request, check out Alchemy's [Composer tool](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22fromBlock%22%3A%220x0%22%2C%22toBlock%22%3A%22latest%22%2C%22fromAddress%22%3A%220x0000000000000000000000000000000000000000%22%2C%22toAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22category%22%3A%5B%22external%22%2C%22erc721%22%2C%22erc1155%22%5D%7D%5D%7D)!
 {% endhint %}
 
-### **3.**  _Specify/filter for only ERC-721 and ERC-1155 NFT minting events_
-
-* `category`: the type of transfer events we care about, in our case we want to see NFTs which are ERC721 and ERC1155 events
-
-Since we are looking for minting events, we pass in the following strings as a list: **\["`external`",  "`erc721`", " `erc1155`"]**\
-\
-\- We use `external` since we are looking for the transfer of an NFT from an address to another address, both of which are not smart contracts.
-
-\- We pass in `erc721` & `erc1155` since we are looking for the transfers of NFTs that adhere to the ERC-721 and ERC-1155 standards.&#x20;
-
-### **4. **_**Send API request!**_
-
-**For a no-code view of the API request check out the** [**Composer tool**](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22fromBlock%22%3A%220x0%22%2C%22toBlock%22%3A%22latest%22%2C%22fromAddress%22%3A%220x0000000000000000000000000000000000000000%22%2C%22toAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22category%22%3A%5B%22external%22%2C%22erc721%22%2C%22erc1155%22%5D%7D%5D%7D).
+&#x20;Follow along with any of the code examples below to make the request.&#x20;
 
 {% tabs %}
 {% tab title="Alchemy Web3.js (Recommended)" %}
+Check out the complete script at the GitHub Repo below, or follow along with the instructions to write the script from scratch.
+
 {% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/alchemy-web3-finding-nftmints-script.js" %}
+NFT Mints GitHub Repo
+{% endembed %}
 
-If you don't already have Alchemy Web3 installed, you can install the `alchemy-web3` module to easily interact with Alchemy APIs. We highly recommend using the `alchemy-web3` sdk because you also get websocket support, retries, and other benefits without the complexity!
+**1. Install** [**AlchemyWeb3.js**](https://github.com/alchemyplatform/alchemy-web3)****
 
-For full documentation on `alchemy-web3`, check the [Github repo](https://github.com/alchemyplatform/alchemy-web3).\
+If you don't already have AlchemyWeb3.js installed, you can follow the instructions [here](https://github.com/alchemyplatform/alchemy-web3).
 
+#### 2. Create a file for the script
 
-#### 1. Create a file.
-
-In your current directory, create a new file called `alchemy-web3-transfers-to-script.js`
+In your current directory, create a new file called `nft-mints-alchemyweb3.js`
 
 Use your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
 
 ```javascript
-touch alchemy-web3-finding-nftmints-script.js
+touch nft-mints-alchemyweb3.js
 ```
 
-####
+#### 3. Write script!
 
-#### 2. Write script!
+Copy and paste in the following code snippet into your new file: `nft-mints-alchemyweb3.js`
 
-Copy and paste in the following code snippet into your new file: `alchemy-web3-finding-nftmints-script.js`\
-``
-
+{% code title="nft-mints-alchemyweb3.js" %}
 ```javascript
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 
 // Replace with your Alchemy api key:
 const apiKey = "demo";
 
+// Address we want get mints from
+const toAddress = "0x5c43B1eD97e52d009611D89b74fA829FE4ac56b1";
+
 // Initialize an alchemy-web3 instance:
 const web3 = createAlchemyWeb3(
   `https://eth-mainnet.alchemyapi.io/v2/${apiKey}`,
 );
 
+// Request NFT mints from block 0 to latest 
 const res = await web3.alchemy.getAssetTransfers({
   fromBlock: "0x0",
   fromAddress: "0x0000000000000000000000000000000000000000",
-  toAddress: "0x5c43B1eD97e52d009611D89b74fA829FE4ac56b1"
+  toAddress: toAddress
 })
 
 // Print contract address and tokenId for each NFT:
@@ -118,12 +113,13 @@ for (const events of res.transfers) {
 }
 
 ```
+{% endcode %}
 
 ####
 
 #### 3. Run script!
 
-Now, on your command line, you can execute the script by calling:
+Now, on your command line, you can run the script by calling:
 
 ```javascript
 node alchemy-web3-finding-nftmints-script.js
@@ -131,24 +127,25 @@ node alchemy-web3-finding-nftmints-script.js
 {% endtab %}
 
 {% tab title="Node-Fetch" %}
-If you're using`node-fetch` a lightweight, common module that brings the Fetch API to Node.js and allows us to make our HTTP requests, here's a code snipper for the request you'd make!
+If you're using [`node-fetch`](https://www.npmjs.com/package/node-fetch) a lightweight, common module that brings the Fetch API to Node.js and allows us to make our HTTP requests, below is a code snippet for the request you'd make!
 
 {% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/fetch-finding-nftmints-script.js" %}
 
 #### 1. Create a file.
 
-In your current directory, create a new file called `fetch-transfers-from-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
+In your current directory, create a new file called `nft-mints-fetch.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
 
 ```
-touch fetch-finding-nftmints-script.js
+touch nft-mints-fetch.js
 ```
 
 ####
 
 #### 2. Write script!
 
-Copy and paste in the following code snippet into your new file: `fetch-finding-nftmints-script.js`
+Copy and paste in the following code snippet into your new file: `nft-mints-fetch.js`
 
+{% code title="nft-mints-fetch.js" %}
 ```javascript
 import fetch from 'node-fetch';
 
@@ -201,6 +198,7 @@ import fetch from 'node-fetch';
     });
 
 ```
+{% endcode %}
 
 
 
@@ -209,29 +207,30 @@ import fetch from 'node-fetch';
 Now, on your command line, you can execute the script by calling:
 
 ```javascript
-node fetch-finding-nftmints-script.js
+node nft-mints-fetch.js
 ```
 {% endtab %}
 
 {% tab title="Axios" %}
-If you're using Javascript `axios`, a promise-based HTTP client for the browser and Node.js which allows us to make a raw request to the Alchemy API, here's a code snipper for the request you'd make!
+If you're using Javascript [`axios`](https://www.axios.com), a promise-based HTTP client for the browser and Node.js which allows us to make a raw request to the Alchemy API, below is a code snippet for the request you'd make!
 
 {% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/axios-finding-nftmints-script.js" %}
 
 #### 1. Create a file.
 
-In your current directory, create a new file called `axios-transfers-from-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command.&#x20;
+In your current directory, create a new file called `nft-mints-axios.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command.&#x20;
 
 ```
-touch axios-finding-nftmints-script.js
+touch nft-mints-axios.js
 ```
 
 ####
 
 #### 2. Write script!
 
-Copy and paste in the following code snippet into your new file: `axios-finding-nftmints-script.js`
+Copy and paste in the following code snippet into your new file: `nft-mints-axios.js`
 
+{% code title="nft-mints-axios.js" %}
 ```javascript
 import axios from 'axios';
 
@@ -274,6 +273,7 @@ import axios from 'axios';
   }
 
 ```
+{% endcode %}
 
 ####
 
@@ -282,92 +282,95 @@ import axios from 'axios';
 Now, on your command line, you can execute the script by calling:
 
 ```javascript
-node axios-finding-nftmints-script.js
+node nft-mints-axios.js
 ```
 {% endtab %}
 {% endtabs %}
 
-### **5.**  _Decoding API response_
+## How to process the API response
 
 Now that we have made a query and can see the response, let's learn how to handle the returned data.
 
-#### Raw API Response:
+### Raw API Response:
 
-Without parsing the response, we have a console log that looks a bit as follows.
+Without parsing the response, we have a console log that looks like this:
 
 ```javascript
 {
-  transfers: [
-    {
-      blockNum: '0xb7389b',
-      hash: '0xfde2a5157eda40b90514751f74e3c7314f452a41890b19a342ee147f5336dfd6',
-      from: '0x0000000000000000000000000000000000000000',
-      to: '0xe9b29ae1b4da8ba5b1de76bfe775fbc5e25bc69a',
-      value: 0.245,
-      erc721TokenId: null,
-      erc1155Metadata: null,
-      tokenId: null,
-      asset: 'ETH',
-      category: 'external',
-      rawContract: [Object]
-    },
-    
-    ......
-    
-    {
-      blockNum: '0xcf5dea',
-      hash: '0x701f837467ae3112d787ddedf8051c4996ea82914f7a7735cb3db2d805799286',
-      from: '0x0000000000000000000000000000000000000000',
-      to: '0x92560c178ce069cc014138ed3c2f5221ba71f58a',
-      value: 152.89962568845024,
-      erc721TokenId: null,
-      erc1155Metadata: null,
-      tokenId: null,
-      asset: 'ENS',
-      category: 'token',
-      rawContract: [Object]
-    },
-    {
-      blockNum: '0xd14898',
-      hash: '0x2f5d93a9db65548eb43794aa43698acd653e6b2df35c6028b8599a234f2c6dc0',
-      from: '0x0000000000000000000000000000000000000000',
-      to: '0x83abecf7204d5afc1bea5df734f085f2535a9976',
-      value: 27579.060635486854,
-      erc721TokenId: null,
-      erc1155Metadata: null,
-      tokenId: null,
-      asset: 'PEOPLE',
-      category: 'token',
-      rawContract: [Object]
+  [
+  {
+    "blockNum": "0xc75329",
+    "hash": "0xd89b54cb5aca6f501d43ee3363dcc892d31d1c185c9059c22d686ca0a1b93314",
+    "from": "0x0000000000000000000000000000000000000000",
+    "to": "0x5c43b1ed97e52d009611d89b74fa829fe4ac56b1",
+    "value": null,
+    "erc721TokenId": "0x0000000000000000000000000000000000000000000000000000000000000012",
+    "erc1155Metadata": null,
+    "tokenId": "0x0000000000000000000000000000000000000000000000000000000000000012",
+    "asset": "BURN",
+    "category": "erc721",
+    "rawContract": {
+      "value": null,
+      "address": "0x18a808dd312736fc75eb967fc61990af726f04e4",
+      "decimal": null
     }
-  ]
+  },
+  ...
+  {
+    "blockNum": "0xd8315a",
+    "hash": "0x270aa9026d69b0924341e0ce60b24182f1f2af8a4bcc752b8e65595bdeca565f",
+    "from": "0x0000000000000000000000000000000000000000",
+    "to": "0x5c43b1ed97e52d009611d89b74fa829fe4ac56b1",
+    "value": null,
+    "erc721TokenId": "0x00000000000000000000000000000000000000000000000000000000000000fb",
+    "erc1155Metadata": null,
+    "tokenId": "0x00000000000000000000000000000000000000000000000000000000000000fb",
+    "asset": null,
+    "category": "erc721",
+    "rawContract": {
+      "value": null,
+      "address": "0x947600ad1ad2fadf88faf7d30193d363208fc76d",
+      "decimal": null
+    }
+  }
+]
 }
 ```
 
-#### Understanding API Response:
+### Understanding API Response:
 
-* `blockNum`: the block number where an NFT mint event occurred&#x20;
+Below are the components of the each transfer in our response.&#x20;
+
+* `blockNum`: the block number where an NFT mint event occurred, in `hex`&#x20;
 * `hash`: the transaction hash of NFT minting transaction
 * `from`: where the transaction originated from, in our case that’s always 0x0000000000000000000000000000000000000000
-* `to`: the address we want to see mints from (NFTs go **to** the address that minted them)
-* `value`:  the ETH transferred as part of the NFT mint \[`null` if ERC721 transfer]
-* `erc721TokenId`: the ERC721 token \[`null` if not an ERC721 token transfer]
-* `erc1155Metadata`: a list of objects containing the ERC1155 `tokenId`  and `value` \[`null` if not an ERC1155 transfer]
-* `tokenId`: the token ID for ERC721 tokens
-* `asset`: `ETH` or the token's symbol.&#x20;
+* `to`: the address we want to see mints from (NFTs go to **** the address that minted them), should be the same address specified in our request
+* `value`:  the amount of ETH transferred, should always be `null` in our case since we're only looking at NFT mints, not sales&#x20;
+* `erc721TokenId`: the ERC721 token ID. `null` if not an ERC721 token transfer.
+* `erc1155Metadata`: a list of objects containing the ERC1155 `tokenId`  and `value`. `null` if not an ERC1155 transfer
+* `tokenId`: the token ID for ERC721 tokens or other NFT token standards&#x20;
+* `asset`: `ETH` or the token's symbol. `null` if not defined in the contract and not available from other sources.
 * `rawContract`
   * `value`: `null` since we're looking at ERC721 & ERC1155 transfer
   * `address`: NFT contract address
   * `decimal`:  `null`
 
-#### Breaking down the API Response
+### Printing out the token type, tokenId and contract address&#x20;
 
-A few of the many different response objects you may be interested in parsing are: NFT contract standard (ERC721 or ERC1155), `contractAddress`, and `tokenId`
+There's lots of information we can pull from this response. One example you may be interested in displaying are: NFT contract standard (`ERC721` or `ERC1155`), `contractAddress`, and `tokenId`
 
-Let's walk through the sample code provided above to understand how to parse the returned JSON object.
+With our queried response saved as a JSON object, we can index through the transfers. In particular, we first access the transfers list and then iterate accross a few key parameters: `erc1155Metadata` , `tokenId`, and `rawContract`.&#x20;
 
-With our queried response saved as a JSON object, we now effectively index through the transfers. In particular, we first access the transfers list and then iterate across a few key parameters: `erc1155Metadata` , `tokenId`, and `rawContract`
+The steps we want to take are:
 
+1. Loop through all transfers in the result
+2. Check whether the returned transfer is ERC1155 or not
+   1. If so, loop through tokens within ERC1155
+      1. print tokenId and address for each
+   2. If not, assume transfer is ERC721
+      1. print tokenID of contract and address&#x20;
+
+{% code title="nft-mints.js" %}
 ```javascript
   for (const events of res.data.result.transfers) {
       if (events.erc1155Metadata == null) {
@@ -380,8 +383,7 @@ With our queried response saved as a JSON object, we now effectively index throu
       }
   }
 ```
-
-In this code block, as we iterate through the transfers list, we have a simple if-else statement that checks for whether each returned NFT is ERC1155 or not. Given that we are only looking at ERC721 and ERC1155 contracts, any NFTs that return a null for `erc1155Metadata` means that we are handling a ERC721 contract. In this case, we can simply print the `tokenId` and associated `rawContract.address`. Otherwise, we know we are working with a ERC1155 contract and will in turn again iterate through all tokens within the contract!
+{% endcode %}
 
 If you followed along, your response should look like the following:
 
