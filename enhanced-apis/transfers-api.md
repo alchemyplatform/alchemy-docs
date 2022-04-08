@@ -361,7 +361,7 @@ The documentation in this section only applies to `alchemy_getAssetTransfers` on
 {% hint style="danger" %}
 **NOTE: Types of Transfers supported**
 
-`alchemy_getAssetTransfers` **** on Polygon only supports `token`, `ERC20`, `ERC721`, and `ERC1155` transfers, not `external` or `internal` MATIC transfers.&#x20;
+`alchemy_getAssetTransfers` **** on Polygon only supports `token`, `ERC20`, `ERC721`, and `ERC1155` transfers, **not** `external` or `internal` MATIC transfers.&#x20;
 
 If you'd like support for these transfer types, please [upvote and comment](https://roadmap.alchemy.com/b/feature-requests/support-internal-external-transfers-on-polygon) to add this to our roadmap.
 {% endhint %}
@@ -374,7 +374,7 @@ If you'd like support for these transfer types, please [upvote and comment](http
   * `fromAddress`: from address (hex string). optional (default wildcard - any address)
   * `toAddress`: to address (hex string). optional (default wildcard - any address)
   * `contractAddresses`: list of contract addresses (hex strings) for `token` transfers. optional (default wildcard - any address)
-  * `category`: Optional array of categories, can be any of the following: "`token`", "`erc20`", "`erc721`", "`erc1155`" (defaults to the following categories: \["`external`", "`internal`", "`token`"])
+  * `category`: Optional array of categories, can be any of the following: "`token`", "`erc20`", "`erc721`", "`erc1155`" (defaults to \["`token`"])
   * `excludeZeroValue:` a`Boolean` to exclude transfers with zero value. optional (default `true`)
   * `maxCount`: max hex string number of results to return per call. optional (default and max`1000` or `0x3e8`)
   * `pageKey`: `uuid` for [pagination](https://docs.alchemy.com/alchemy/enhanced-apis/transfers-api#pagination). optional. If more results are available, a uuid pageKey will be returned in the response. Pass that uuid into `pageKey` to fetch the next 1000 or `maxCount.`
@@ -394,7 +394,7 @@ If you'd like support for these transfer types, please [upvote and comment](http
   * `pageKey`: uuid of next page of results (if exists, else blank).
   * `transfers:` array of objects (defined below) - sorted in ascending order by block number, ties broken by category (`external` , `internal`, `token`)
 * Object schema:
-  * `category`: "`external`", "`internal`", "`token`", "`erc20`", "`erc721`", "`erc1155`" - label for the transfer
+  * `category`: "`token`", "`erc20`", "`erc721`", "`erc1155`" - label for the transfer
     * "`token`" includes "`erc20`" and "`erc721`" transfers
   * `blockNum`: the block where the transfer occurred (hex string).
   * `from`: from address of transfer (hex string).
