@@ -397,7 +397,9 @@ return (signature == digest);
 {% endtab %}
 {% endtabs %}
 
-## **Capacity Limit**
+## Common Questions&#x20;
+
+### **Capacity Limit**
 
 If you receive a capacity limit error, meaning you have exceeded your total monthly compute units, you should receive a response similar to the one below. You can upgrade your limits directly through the [Alchemy dashboard.](https://dashboard.alchemyapi.io/settings/billing)
 
@@ -411,9 +413,7 @@ If you receive a capacity limit error, meaning you have exceeded your total mont
 }
 ```
 
-
-
-## Webhook IP Addresses
+### Webhook IP Addresses
 
 As an added security measure, you can ensure your webhook notification originated from Alchemy by verifying that the event originated from one of the following IP addresses:
 
@@ -425,3 +425,12 @@ As an added security measure, you can ensure your webhook notification originate
 54.236.136.17
 34.237.24.169
 ```
+
+### Why am I seeing duplicate addresses for different webhook URLs?
+
+If you've created multiple [address activity webhooks](using-notify.md#address-activity) under the same application you might see duplicate addresses in each of the webhooks. This is known behavior since webhooks are associated by app (api\_key) instead of by URL. &#x20;
+
+There are two solutions to this:
+
+1. If you want address activity webhooks with different webhook URLs you'll need to [create different apps](../../introduction/getting-started/#1.create-an-alchemy-key) for each of the distinct URLs
+2. If you're fine with using the same webhook url for all addresses, you can simply add additional addresses to the list through the dashboard or via the [PATCH api endpoint](./#add-remove-webhook-addresses).&#x20;
