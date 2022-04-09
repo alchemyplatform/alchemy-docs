@@ -131,11 +131,9 @@ Turning on autoscale gives you instant access to on-demand compute at volume dis
 
 ## Throughput (CUPS)
 
-[Throughput](compute-units.md#rate-limits-cups) serves to protect users from malicious actors or runaway scripts. Each tier has prioritized throughput allocations designed for ultimate reliability.
+Each application has reserved dedicated [throughput](compute-units.md#rate-limits-cups), measured in Compute Units per Second. Applications can greatly exceed their dedicated throughputs based off of elastic demand in our system.&#x20;
 
-CUPS are a measure of the number of compute units used per second when making requests. Since each request is weighted differently, we base this on the total compute units used rather than the number of requests.
-
-For example, if you send one `eth_blockNumber` (10 CUs), two `eth_getLogs` (75 CUs), and two `eth_call` (26 CUs) requests in the same second, you will have a total of 212 CUPS.
+Since each request is weighted differently, we base this on the total compute units used rather than the number of requests. For example, if you send one `eth_blockNumber` (10 CUs), two `eth_getLogs` (75 CUs), and two `eth_call`(26 CUs) requests in the same second, you will have a total of 212 CUPS. _Note that even if your application limit is 200 CUPS, this throughput will likely be allowed still by the system!_
 
 | User       | CUPS   |
 | ---------- | ------ |
