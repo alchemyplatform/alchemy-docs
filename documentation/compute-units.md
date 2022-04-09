@@ -15,7 +15,7 @@ We're obsessed with providing the most developer-friendly experience across our 
 | Compute Units                                                                                                                                                                  |      300,000,000     |      400,000,000     |        Custom        |
 | Approx. # Requests                                                                                                                                                             |      12,000,000      |      16,000,000      |        Custom        |
 | # of apps                                                                                                                                                                      |           5          |          15          |       Unlimited      |
-| Rate Limits (CUPS)                                                                                                                                                             |          330         |          660         |        Custom        |
+| Throughput (CUPS)                                                                                                                                                              |          330         |          660         |        Custom        |
 | Full Archive Data                                                                                                                                                              | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
 | Supernode                                                                                                                                                                      | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
 | Build                                                                                                                                                                          | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
@@ -129,9 +129,9 @@ Turning on autoscale gives you instant access to on-demand compute at volume dis
 | 400,000,000                | $49.00 |
 | Every 1,000,000 over 400M  | $1.20  |
 
-## Rate Limits (CUPS)
+## Throughput (CUPS)
 
-[Rate Limits](../guides/rate-limits.md) serve to protect users from malicious actors or runaway scripts. Each tier has prioritized rate limit allocations designed for ultimate reliability.
+[Throughput](compute-units.md#rate-limits-cups) serves to protect users from malicious actors or runaway scripts. Each tier has prioritized throughput allocations designed for ultimate reliability.
 
 CUPS are a measure of the number of compute units used per second when making requests. Since each request is weighted differently, we base this on the total compute units used rather than the number of requests.
 
@@ -143,4 +143,4 @@ For example, if you send one `eth_blockNumber` (10 CUs), two `eth_getLogs` (75 C
 | Growth     | 660    |
 | Enterprise | Custom |
 
-If you are experiencing rate limits, or want create a more robust and reliable experience for your users, we recommend [implementing retries](../guides/rate-limits.md#retries).
+If you are experiencing throughput errors, or want create a more robust and reliable experience for your users, we recommend [implementing retries](../guides/rate-limits.md#retries).
