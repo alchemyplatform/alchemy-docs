@@ -35,6 +35,8 @@ Don't worry if that's a bit overwhelming at this point, you'll see how each of t
 
 Now buckle up, and let's get started.
 
+(And if you like to have a fully implemented example repo to reference, check out the AlchemyPlatform github [here](https://github.com/alchemyplatform/polygon-smart-contract-tutorial).)
+
 ### Step 1. Initialize Your Polygon Smart Contract Repo
 
 First, we’ll need to create a folder for our polygon smart contract example. Navigate to your command line and type:
