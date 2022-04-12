@@ -7,7 +7,9 @@ description: >-
 
 # How to Code and Deploy a Polygon Smart Contract
 
-![](../.gitbook/assets/polygon-smart-contract-2.png)
+{% embed url="https://youtu.be/iM8AcSpIZGo" %}
+for the visual learners
+{% endembed %}
 
 HELLO!
 
