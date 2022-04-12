@@ -15,7 +15,7 @@ _To see chain support across all features, check out the_ [_feature matrix_](../
 ## Parameters
 
 * `contractAddress`: _**\[string]**_ address of NFT contract
-* `tokenId`: _**\[integer]**_ Id for NFT&#x20;
+* `tokenId`: _**\[integer or hexadecimal]**_ Id for NFT&#x20;
 * `tokenType` : _**\[string]**_ (optional) "`ERC721`" or "`ERC1155`"; specifies type of token to query for
 
 {% hint style="success" %}
@@ -28,7 +28,7 @@ API requests will perform faster if `tokenType` is specified!
   * `contract`: contract for returned NFT
     * `address`: address of NFT contract&#x20;
   * `id`
-    * `tokenId`: Id for NFT (integer)&#x20;
+    * `tokenId`: Id for NFT (integer or hexadecimal, depending on parameter tokenId type)&#x20;
     * `tokenMetadata`
       * `tokenType`: "`ERC721`" or "`ERC1155`"
   * `tokenUri`:
