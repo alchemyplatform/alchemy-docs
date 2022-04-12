@@ -2,7 +2,7 @@
 description: Returns token balances for a specific address given a list of contracts.
 ---
 
-# getTokenBalances
+# alchemy\_getTokenBalances
 
 {% hint style="warning" %}
 This method returns hex encoded values in the `tokenBalance` fields.

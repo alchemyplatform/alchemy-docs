@@ -2,7 +2,7 @@
 description: Returns the amount which the spender is allowed to withdraw from the owner.
 ---
 
-# getTokenAllowance
+# alchemy\_getTokenAllowance
 
 ## **Parameters**
 

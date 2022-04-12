@@ -4,7 +4,7 @@ description: >-
   address.
 ---
 
-# getTokenMetadata
+# alchemy\_getTokenMetadata
 
 `name` ,`symbol`and`decimals`are optional methods in the ERC-20 token standard. Therefore, not all contracts will respond correctly to calls requesting this information. While the incorrectness or absence of`name` and `symbol`can be an inconvenience, having the correct `decimals`is absolutely crucial in displaying token balances or converting user inputs accurately when communicating with the contract.
 
