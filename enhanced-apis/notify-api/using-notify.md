@@ -1,7 +1,7 @@
 ---
 description: >-
-  Everything you need to know for using Alchemy Notify in your decentralized
-  Ethereum app. Get notifications for external, internal, and token transfers,
+  Setting up Alchemy Notify (webhooks) in your Ethereum, Polygon, Optimism, or
+  Arbitrum dapp. Get notifications for external, internal, & token transfers,
   mined and dropped transactions, and gas price.
 ---
 

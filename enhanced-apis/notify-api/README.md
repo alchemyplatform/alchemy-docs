@@ -1,5 +1,5 @@
 ---
-description: Using Alchemy Notify API.
+description: Webhooks for Ethereum events, transactions, gas price, and more.
 ---
 
 # Notify API

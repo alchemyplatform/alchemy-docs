@@ -1,7 +1,7 @@
 ---
 description: >-
-  Guide for using Version 2 of Alchemy Notify on Layer 2s (Polygon, Optimism,
-  and Arbitrum).
+  Webhooks for Polygon, Arbitrum, and Optimism events, transactions, gas price,
+  and more.
 ---
 
 # V2 Alchemy Notify
