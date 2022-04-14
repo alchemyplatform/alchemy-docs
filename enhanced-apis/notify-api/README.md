@@ -107,7 +107,7 @@ Number of items per page
 \
 
 
-{Omitted by default}
+{Omit this field if you want the default value of 100}
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="after" type="String" %}
@@ -116,7 +116,7 @@ Page cursor for the next page
 \
 
 
-{Omitted for the first page}
+{Omit this field to get the first page}
 {% endswagger-parameter %}
 
 {% swagger-parameter in="header" name="X-Alchemy-Token *REQUIRED*" required="false" %}
