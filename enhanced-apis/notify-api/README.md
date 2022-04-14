@@ -102,17 +102,8 @@ Alchemy Auth token to use the Notify API (see note above).
 Paginated endpoint to get all of the addresses an Address Activity webhook is subscribed to.
 {% endswagger-description %}
 
-{% swagger-parameter in="query" name=" webhook_id" required="true" type="String" %}
- \*
-
-_REQUIRED*_
-
-\
-
-
-__
-
-ID of the webhook subscribed to address
+{% swagger-parameter in="query" name=" webhook_id   *REQUIRED*" required="true" type="String" %}
+ ID of the webhook subscribed to address
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name=" limit" type="Integer" %}
@@ -134,13 +125,6 @@ Page cursor for the next page
 {% endswagger-parameter %}
 
 {% swagger-parameter in="header" name="X-Alchemy-Token *REQUIRED*" required="true" %}
- \*
-
-_REQUIRED*_
-
-\
-
-
 Your Alchemy authentication token
 
 \
