@@ -33,7 +33,7 @@ For transaction information that originates from your target sender address, use
 If you want to get transactions that have a specific from AND to address, you can specify the `fromAddress`and`toAddress` in your request.
 {% endhint %}
 
-## **Example: Getting Transactions O**riginating From  **An Address**
+## **Example: Getting Transactions O**riginating `From` **An Address**
 
 {% hint style="success" %}
 ### **No-code Example**
