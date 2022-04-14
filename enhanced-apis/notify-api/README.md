@@ -59,6 +59,11 @@ This endpoint allows you to get all webhooks from every app on your team.
 {% endswagger-description %}
 
 {% swagger-parameter in="header" name="X-Alchemy-Token" type="string" required="true" %}
+\*REQUIRED*
+
+\
+
+
 Alchemy Auth token to use the Notify API (see note above).
 {% endswagger-parameter %}
 
@@ -97,17 +102,26 @@ Alchemy Auth token to use the Notify API (see note above).
 Paginated endpoint to get all of the addresses an Address Activity webhook is subscribed to.
 {% endswagger-description %}
 
-{% swagger-parameter in="query" name="webhook_id" required="true" %}
-ID of the webhook subscribed to address
-{% endswagger-parameter %}
+{% swagger-parameter in="query" name=" webhook_id" required="true" type="String" %}
+ \*
 
-{% swagger-parameter in="query" name="limit" type="Integer" %}
-Number of items per page
+_REQUIRED*_
 
 \
 
 
-{omitted by default}
+__
+
+ID of the webhook subscribed to address
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name=" limit" type="Integer" %}
+Number of items per page 
+
+\
+
+
+{Omitted by default}
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="after" %}
@@ -116,10 +130,17 @@ Page cursor for the next page
 \
 
 
-{omitted for the first page}
+{Omitted for the first page}
 {% endswagger-parameter %}
 
-{% swagger-parameter in="header" name="X-Alchemy-Token" required="true" %}
+{% swagger-parameter in="header" name="X-Alchemy-Token *REQUIRED*" required="true" %}
+ \*
+
+_REQUIRED*_
+
+\
+
+
 Your Alchemy authentication token
 
 \
