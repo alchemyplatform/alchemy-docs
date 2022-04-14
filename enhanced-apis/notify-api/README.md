@@ -69,28 +69,22 @@ Alchemy Auth token to use the Notify API (see note above).
         {
             "id": 3,
             "app_id": "nd7cdkfe3cb4",
-            "network": 0,
-            "webhook_type": 1,
+            "network": "ETH_MAINNET",
+            "webhook_type": "MINED_TRANSACTION",
             "webhook_url": "http://www.YOUR-APP-URL.com",
             "is_active": true,
             "time_created": 1585779080000,
-            "addresses": null
+            "version":"V1"
         },
         {
             "id": 17,
             "app_id": "pd63r8git3dlll0n",
-            "network": 0,
-            "webhook_type": 4,
+            "network": "ETH_MAINNET",
+            "webhook_type": "ADDRESS_ACTIVITY",
             "webhook_url": "http://www.YOUR-APP-URL.com",
             "is_active": true,
             "time_created": 1596635655000,
-            "addresses": [
-                "0xfdb16996831753d5331ff813c29a93c76834a0ad",
-                "0x6b175474e89094c44da98b954eedeac495271d0f",
-                "0x48ea66f94518534ecbc863fbf521896d52b025d9",
-                "0xdac17f958d2ee523a2206206994597c13d831ec7",
-                "0x6f8d0c2a2c3a189803f5c6482c88be46a55058c1"
-            ]
+            "version":"V1"
         }
     ]
 }
