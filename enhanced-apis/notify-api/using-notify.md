@@ -434,3 +434,8 @@ There are two solutions to this:
 
 1. If you want address activity webhooks with different webhook URLs you'll need to [create different apps](../../introduction/getting-started/#1.create-an-alchemy-key) for each of the distinct URLs
 2. If you're fine with using the same webhook url for all addresses, you can simply add additional addresses to the list through the dashboard or via the [PATCH api endpoint](./#add-remove-webhook-addresses).&#x20;
+
+### What are some best practices when using webhooks with a large number of addresses?&#x20;
+
+When working with large address lists, we suggest that users assign no more than 50,000 addresses to each webhook. If you find yourself using many addresses, spin up a new webhook to ensure that you have a reliable and scalable system.
+
