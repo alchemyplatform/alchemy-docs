@@ -7,9 +7,15 @@ description: >-
 
 # How to get address transaction history on Ethereum
 
-**In this tutorial, we’ll be using Alchemy’s** [**Transfers API** ](../transfers-api.md)**to fetch all transactions sent **_**`from`**_** and sent **_**`to`**_** addresses you care about to create a complete picture of a user's transaction history.**
+A few reasons for why you'd want to get address transaction history by an address:
 
-If your Web3 application has a user interface, there's a high change you’ll want to display your user’s transaction history. This includes everything from interactions with specific smart contracts to or an entire history of all their Web3 transactions. **** Regardless of the different types of transaction history you want to look up, this process can be extremely burdensome for developers to stitch together without the [Alchemy Transfers API](../transfers-api.md).&#x20;
+* Displaying your a user’s full transaction history
+* Querying an address's transactions filtered by smart contract interactions&#x20;
+* Analyzing a user's historical profit and loss&#x20;
+
+Regardless of the different types of transaction history you want to look up, this process can be extremely burdensome for developers to stitch together without the [Alchemy Transfers API](../transfers-api.md). \
+\
+**In this tutorial, we’ll be using Alchemy’s** [**Transfers API** ](../transfers-api.md)**to fetch all transactions sent **_**`from`**_** and sent **_**`to`**_** addresses you care about to create a complete picture of a user's transaction history.**
 
 ## How to query transaction history
 
