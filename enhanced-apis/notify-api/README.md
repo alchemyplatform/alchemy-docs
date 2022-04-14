@@ -63,7 +63,7 @@ Alchemy Auth token to use the Notify API (see note above).
 {% endswagger-parameter %}
 
 {% swagger-response status="200" description="Sample Response:   " %}
-```
+```javascript
 {
     "data": [
         {
