@@ -14,13 +14,13 @@ _Estimated time to complete this guide: < 10 minutes_
 
 This guide assumes you already have an [Alchemy account](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5) and access to our [Dashboard](https://dashboard.alchemyapi.io).
 
-**1**. :key: Create an Alchemy key
+**1**. :key: [Create an Alchemy key](./#1.create-an-alchemy-key)
 
-**2**. :writing\_hand: Make a request
+**2**. :writing\_hand: [Make a request](./#2.make-a-request)
 
-**3**. :handshake: Set up Alchemy as your client
+**3**. :handshake: [Set up Alchemy as your client](./#3.set-up-alchemy-as-your-client)
 
-4\. :computer: Start building!
+4\. :computer:[ Start building!](./#4.-start-building)
 
 ## 1.:key:Create an Alchemy Key
 
