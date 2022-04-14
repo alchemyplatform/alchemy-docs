@@ -29,7 +29,11 @@ If you want to get transactions that have a specific from AND to address, you ca
 
 ## **Example: Getting Transactions O**riginating From  **An Address**
 
+{% hint style="success" %}
+### **No-code Example**
+
 **For a no-code view of the API request check out the** [**composer tool**](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22toAddress%22%3A%22%22%2C%22toBlock%22%3A%22%22%2C%22fromAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22fromBlock%22%3A%220x0%22%7D%5D%7D)**.**&#x20;
+{% endhint %}
 
 {% tabs %}
 {% tab title="Alchemy Web3.js (Recommended)" %}
@@ -226,7 +230,11 @@ node tx-history-from-axios.js
 
 ## **Example: Getting Recipient-based Transactions**&#x20;
 
+{% hint style="success" %}
+### **No-code Example**
+
 **For a no-code view of the API request check out the** [**composer tool**](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22toAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22toBlock%22%3A%22%22%2C%22fromAddress%22%3A%22%22%2C%22fromBlock%22%3A%220x0%22%7D%5D%7D)**.**&#x20;
+{% endhint %}
 
 {% tabs %}
 {% tab title="Alchemy Web3.js (Recommended)" %}
