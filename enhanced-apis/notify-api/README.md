@@ -58,7 +58,7 @@ This is a unique identifier for the webhook. You can find the webhook\_id by fir
 This endpoint allows you to get all webhooks from every app on your team.
 {% endswagger-description %}
 
-{% swagger-parameter in="header" name="X-Alchemy-Token" type="string" required="false" %}
+{% swagger-parameter in="header" name="X-Alchemy-Token" type="string" required="true" %}
 Alchemy Auth token to use the Notify API (see note above).
 {% endswagger-parameter %}
 
@@ -92,8 +92,56 @@ Alchemy Auth token to use the Notify API (see note above).
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger src="../../.gitbook/assets/openapi.yml" path="undefined" method="undefined" %}
-[openapi.yml](../../.gitbook/assets/openapi.yml)
+{% swagger baseUrl="https://dashboard.alchemyapi.io" path="/api/webhook-addresses" method="get" summary="Get all the addresses for an Address Activity webhook" %}
+{% swagger-description %}
+Paginated endpoint to get all of the addresses an Address Activity webhook is subscribed to.
+{% endswagger-description %}
+
+{% swagger-parameter in="query" name="webhook_id" required="true" %}
+ID of the webhook subscribed to address
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="limit" type="Integer" %}
+Number of items per page
+
+\
+
+
+{omitted by default}
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="after" %}
+Page cursor for the next page 
+
+\
+
+
+{omitted for the first page}
+{% endswagger-parameter %}
+
+{% swagger-parameter in="header" name="X-Alchemy-Token" required="true" %}
+Your Alchemy authentication token
+
+\
+
+
+\- Found in the upper right-hand corner of the Notify dashboard page, under the "AUTH TOKEN" button
+{% endswagger-parameter %}
+
+{% swagger-response status="200" description="Sample Response:   " %}
+```javascript
+{
+  "data": [
+    "0xF2250E2eD4a774D54d238B75643175C4D0c24057"
+  ],
+  "pagination": {
+    "cursors": {
+      "after": "after_X"
+    }
+  }
+}
+```
+{% endswagger-response %}
 {% endswagger %}
 
 #### Example Request
