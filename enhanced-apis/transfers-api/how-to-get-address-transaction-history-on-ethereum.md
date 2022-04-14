@@ -13,66 +13,29 @@ If your Web3 application has a user interface, there's a high change you’ll wa
 
 ## How to query transaction history
 
-1.  ****[**Select an address to fetch transaction history for**](how-to-get-address-transaction-history-on-ethereum.md#1.-select-an-address-for-transaction-history)****
-
-    This address can be a contract address or user-owned address and will be used to set the _**from**_ and the _**to**_** ** parameters in our request
-2.  ****[**Pick a block range**](how-to-get-address-transaction-history-on-ethereum.md#2.-pick-a-block-range-for-transaction-query)****
-
-    Set the `fromBlock` and `toBlock` for our transaction history range, this will specify the time period we want to get transactions over&#x20;
-3.  [**Specify the types of transactions/transfers**](how-to-get-address-transaction-history-on-ethereum.md#3.-specify-filter-type-for-transactions-transfers)****
-
-    We can filter transactions by external, internal, or token type. Learn more about transfer types [here](https://docs.alchemy.com/alchemy/enhanced-apis/transfers-api#types-of-transfers)!&#x20;
-4.  [Send API request!](how-to-get-address-transaction-history-on-ethereum.md#4.-send-api-request)
-
-    Check the [Composer tool](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22toAddress%22%3A%22%22%2C%22toBlock%22%3A%22%22%2C%22fromAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22fromBlock%22%3A%220x0%22%7D%5D%7D) to see the request from the browser
-5. [Repeat with the `to` address specified instead of the `from` address](how-to-get-address-transaction-history-on-ethereum.md#5.-repeat-with-the-to-address-specified-instead-of-the-from-address)
-6. [Parse the API response.](how-to-get-address-transaction-history-on-ethereum.md#api-response)
-
-## **Using the** [**Transfers API**](../transfers-api.md) **to get transaction history**
-
 When using the [Transfers API](../transfers-api.md) for querying a user’s full on-chain history, its important to have a few key parameters on hand.
 
-### **1.** _**Select an address to fetch transaction history for**_
-
-> Your target address can be anything from a contract address like the [Uniswap V3](https://etherscan.io/address/0xe592427a0aece92de3edee1f18e0157c05861564) contract: 0xE592427A0AEce92De3Edee1F18E0157C05861564  or a user-owned address like [vitalik.eth](https://etherscan.io/address/0xd8da6bf26964af9d7eed9e03e53415d37aa96045): 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045.&#x20;
+* `fromAddress`: the address we want to see transaction information originating from
+* `toAddress`: the address we want to see for recipient-based transactions
+* `fromBlock`: the starting time range we want to fetch transactions over (defaults to `latest`)
+* `toBlock` : the ending time range we want to fetch transactions over (defaults to `latest`)
+* `category`: the type of transfer events we care about, in our case we want to see all transactions so we can simply let the param use its default argument of \["`external`", "`internal`", "`token`"]
 
 For transaction information that originates from your target sender address, use the `fromAddress` parameter within the [Transfers API](../transfers-api.md). For recipient-based transactions, use the `toAddress` parameter.&#x20;
 
 {% hint style="info" %}
-If you want to get transactions that have a specific from AND to address, you can specify the `fromAddress` and `toAddress` in your request.
+If you want to get transactions that have a specific from AND to address, you can specify the `fromAddress`and`toAddress` in your request.
 {% endhint %}
 
-### **2.**  _**Pick a block range**_
-
-* The `fromBlock` parameter determines the start of the block range. You should use `0x0` if you want to start from the earliest block.
-* The `toBlock`API parameter determines the end of the block range. You should use `"latest"` if you want the query to include data up to the most recent block.&#x20;
-
-{% hint style="info" %}
-NOTE: When querying the full history of an address’s on-chain interactions, we suggest looking back to the very beginning or the 0th block (**0x0**). If you’re looking to offer a condensed view of an address’s interactions with a particular DeFi protocol, you can also start your search with the date of the protocol’s contract deployment. By default, we'll use `"latest"` as the API parameter for both `fromBlock` and `toBlock`.
-{% endhint %}
-
-### **3.  Specify the types of transactions/transfers**
-
-* The `category` parameter helps you filter for specific [transfer types](../transfers-api.md#types-of-transfers).&#x20;
-* You can pass in any of the following strings as a list: `external`, `internal`, `token`, `erc20`, `erc721`, `erc1155.` If unprompted, the default will be \["`external`", "`internal`", "`token`"]).
-
-_**OPTIONAL**_
-
-If you’re looking to query historical transactions limited to a particular set of tokens, you can also use the `contractAddresses` parameter which accepts a list of contract addresses in a hex string format and can be used to filter the ERC20/721/1155 token addresses returned in the response.&#x20;
-
-For addresses with a large number of transfers due to spam, passing in this parameter will help speed up your queries!
-
-{% hint style="info" %}
-**NOTE:** The default use of this parameter, without specifying an address, returns any and all transfers by any token address.
-{% endhint %}
-
-### **4. **_**Send API request!**_
+## **Example: Getting Transactions O**riginating From  **An Address**
 
 **For a no-code view of the API request check out the** [**composer tool**](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22toAddress%22%3A%22%22%2C%22toBlock%22%3A%22%22%2C%22fromAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22fromBlock%22%3A%220x0%22%7D%5D%7D)**.**&#x20;
 
 {% tabs %}
 {% tab title="Alchemy Web3.js (Recommended)" %}
-{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/alchemy-web3-transfers-from-script.js" %}
+{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/javascript/alchemyweb3/tx-history/tx-history-from-alchemyweb3.js" %}
+Tx History GitHub Repo
+{% endembed %}
 
 If you don't already have Alchemy Web3 installed, you can install the `alchemy-web3` module to easily interact with Alchemy APIs. We highly recommend using the `alchemy-web3` sdk because you also get websocket support, retries, and other benefits without the complexity!
 
@@ -86,15 +49,16 @@ _****_\
 _****_Use your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
 
 ```
-touch alchemy-web3-transfers-from-script.js
+touch tx-history-from-alchemyweb3.js
 ```
 
 \
 **2. Write script!**
 
-Copy and paste in the following code snippet into your new file: `alchemy-web3-transfers-from-script.js`\
+Copy and paste in the following code snippet into your new file: `tx-history-from-alchemyweb3.js`\
 ``
 
+{% code title="tx-history-from-alchemyweb3.js" %}
 ```javascript
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 
@@ -114,6 +78,7 @@ const data = await web3.alchemy.getAssetTransfers({
 // Print response:
 console.log(data);
 ```
+{% endcode %}
 
 
 
@@ -129,22 +94,25 @@ node alchemy-web3-transfers-from-script.js
 {% tab title="Node-Fetch" %}
 If you're using`node-fetch` a lightweight, common module that brings the Fetch API to Node.js and allows us to make our HTTP requests, here's a code snipper for the request you'd make!
 
-{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/fetch-transfers-from-script.js" %}
+{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/javascript/axios/tx-history/tx-history-from-axios.js" %}
+Tx History GitHub Repo
+{% endembed %}
 
 #### 1. Create a file.
 
-In your current directory, create a new file called `fetch-transfers-from-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
+In your current directory, create a new file called `tx-history-from-fetch.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
 
 ```
-touch fetch-transfers-from-script.js
+touch tx-history-from-fetch.js
 ```
 
 ####
 
 #### 2. Write script!
 
-Copy and paste in the following code snippet into your new file: `fetch-transfers-from-script.js`
+Copy and paste in the following code snippet into your new file: `tx-history-from-fetch.js`
 
+{% code title="tx-history-from-fetch.js" %}
 ```javascript
 import fetch from 'node-fetch';
 
@@ -178,6 +146,7 @@ import fetch from 'node-fetch';
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
 ```
+{% endcode %}
 
 
 
@@ -186,29 +155,32 @@ import fetch from 'node-fetch';
 Now, on your command line, you can execute the script by calling:
 
 ```javascript
-node fetch-transfers-from-script.js
+node tx-history-from-fetch.js
 ```
 {% endtab %}
 
 {% tab title="Axios" %}
 If you're using Javascript `axios`, a promise-based HTTP client for the browser and Node.js which allows us to make a raw request to the Alchemy API, here's a code snipper for the request you'd make!
 
-{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/axios-transfers-from-script.js" %}
+{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/javascript/fetch/tx-history/tx-history-from-fetch.js" %}
+Tx History Github Repo
+{% endembed %}
 
 #### 1. Create a file.
 
-In your current directory, create a new file called `axios-transfers-from-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command.&#x20;
+In your current directory, create a new file called `tx-history-from-axios.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command.&#x20;
 
 ```
-touch axios-transfers-from-script.js
+touch tx-history-from-axios.js
 ```
 
 ####
 
 #### 2. Write script!
 
-Copy and paste in the following code snippet into your new file: `axios-transfers-from-script.j`s
+Copy and paste in the following code snippet into your new file: `tx-history-from-axios.js`
 
+{% code title="tx-history-from-axios.js" %}
 ```javascript
 import axios from 'axios';
 
@@ -238,6 +210,7 @@ import axios from 'axios';
     .then(response => console.log(JSON.stringify(response.data, null, 2)))
     .catch(error => console.log(error));
 ```
+{% endcode %}
 
 ####
 
@@ -246,18 +219,20 @@ import axios from 'axios';
 Now, on your command line, you can execute the script by calling:
 
 ```javascript
-node axios-transfers-from-script.js
+node tx-history-from-axios.js
 ```
 {% endtab %}
 {% endtabs %}
 
-### **5.** Repeat with the `to` address specified instead of the `from` address
+## **Example: Getting Recipient-based Transactions**&#x20;
 
 **For a no-code view of the API request check out the** [**composer tool**](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22excludeZeroValue%22%3Atrue%2C%22toAddress%22%3A%220x5c43B1eD97e52d009611D89b74fA829FE4ac56b1%22%2C%22toBlock%22%3A%22%22%2C%22fromAddress%22%3A%22%22%2C%22fromBlock%22%3A%220x0%22%7D%5D%7D)**.**&#x20;
 
 {% tabs %}
 {% tab title="Alchemy Web3.js (Recommended)" %}
-{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/alchemy-web3-transfers-to-script.js" %}
+{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/javascript/alchemyweb3/tx-history/tx-history-to-alchemyweb3.js" %}
+Tx History GitHub Repo
+{% endembed %}
 
 If you don't already have Alchemy Web3 installed, you can install the `alchemy-web3` module to easily interact with Alchemy APIs. We highly recommend using the `alchemy-web3` sdk because you also get websocket support, retries, and other benefits without the complexity!
 
@@ -314,10 +289,11 @@ node alchemy-web3-transfers-to-script.js
 {% endtab %}
 
 {% tab title="Node-Fetch" %}
-{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/fetch-transfers-to-script.js" %}
+If you're using`node-fetch` a lightweight, common module that brings the Fetch API to Node.js and allows us to make our HTTP requests, here's a code snipper for the request you'd make!
 
-If you're using`node-fetch` a lightweight, common module that brings the Fetch API to Node.js and allows us to make our HTTP requests, here's a code snipper for the request you'd make!\
-
+{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/javascript/fetch/tx-history/tx-history-to-fetch.js" %}
+Tx History GitHub Repo
+{% endembed %}
 
 #### 1. Create a file.
 
@@ -380,11 +356,11 @@ node fetch-transfers-from-script.js
 {% endtab %}
 
 {% tab title="Axios" %}
-{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/axios-transfers-to-script.js" %}
-
 If you're using Javascript `axios`, a promise-based HTTP client for the browser and Node.js which allows us to make a raw request to the Alchemy API, here's a code snipper for the request you'd make!
 
-####
+{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/javascript/axios/tx-history/tx-history-to-axios.js" %}
+Tx History GitHub Repo
+{% endembed %}
 
 #### 1. Create a file.
 
@@ -443,7 +419,7 @@ node axios-transfers-to-script.js
 {% endtab %}
 {% endtabs %}
 
-### 6. Parsing API Response&#x20;
+## How to process the API response
 
 Now that we have made a query and can see the response, let's learn how to handle it.\
 \
@@ -453,23 +429,23 @@ If you feel like jumping ahead and grabbing some pre-built code, choose a repo t
 {% tab title="Alchemy Web3 (Recommended)" %}
 #### Parsing with `Alchemy Web3` Responses
 
-{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/parsed-alchemy-web3-transfers-from-script.js" %}
+{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/javascript/alchemyweb3/tx-history/tx-history-parsed-alchemyweb3.js" %}
 {% endtab %}
 
 {% tab title="Node-Fetch" %}
 #### Parsing with `Node-Fetch` Responses
 
-{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/parsed-fetch-transfers-from-script.js" %}
+{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/javascript/fetch/tx-history/tx-history-parsed-fetch.js" %}
 {% endtab %}
 
 {% tab title="Axios" %}
 #### Parsing with `Axios` Responses
 
-{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/parsed-axios-transfers-from-script.js" %}
+{% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/javascript/axios/tx-history/tx-history-parsed-axios.js" %}
 {% endtab %}
 {% endtabs %}
 
-#### Raw API Response:
+### Raw API Response:
 
 Without parsing the response, we have a console log that looks as follows.
 
@@ -522,11 +498,27 @@ Without parsing the response, we have a console log that looks as follows.
 }
 ```
 
+### Understanding API Response:
+
+* `blockNum`: the block number where a transaction event occurred, in `hex`&#x20;
+* `hash`: the transaction hash of a transaction
+* `from`: where the transaction originated from
+* `to`: where ETH or another asset was transferred to
+* `value`:  the amount of ETH transferred
+* `erc721TokenId`: the ERC721 token ID. `null` if not an ERC721 token transfer.
+* `erc1155Metadata`: a list of objects containing the ERC1155 `tokenId`  and `value`. `null` if not an ERC1155 transfer
+* `tokenId`: the token ID for ERC721 tokens or other NFT token standards&#x20;
+* `asset`: `ETH` or the token's symbol. `null` if not defined in the contract and not available from other sources.
+* `rawContract`
+  * `value`: raw transfer value denominated in the relevant Ethereum token
+  * `address`: Ethereum token contract address
+  * `decimal`:  contract decimal
+
+### Printing out the `asset` and `value`&#x20;
+
 Two of the many different response objects you may be interested in parsing are: `asset` and `value`.&#x20;
 
 Let's walk through an example that parses the returned JSON object.
-
-#### **Save the response object in a constant**
 
 Whether we're querying via `alchemy web3`, `axios`, or `node-fetch`, we'll need to save the queried response object into a constant.
 
@@ -579,7 +571,12 @@ Whether we're querying via `alchemy web3`, `axios`, or `node-fetch`, we'll need 
 {% endtab %}
 {% endtabs %}
 
-With our queried response object saved as a constant, we can now index through the transfers. In particular, we first access the transfers list and then iterate across each element's `value` and `asset` field, printing them out as we go.&#x20;
+With our queried response object saved as a constant, we can now index through the transfers. \
+\
+In particular, the steps we take are:
+
+1. Loop through all transfers in the result
+2. Print each element's `value` and `asset` field
 
 ```javascript
   // Print token asset name and its associated value
@@ -620,3 +617,7 @@ And that's it! You've now learned how to fetch transaction history for address o
 {% content-ref url="../../tutorials/transfers-tutorial.md" %}
 [transfers-tutorial.md](../../tutorials/transfers-tutorial.md)
 {% endcontent-ref %}
+
+If you enjoyed this tutorial for getting address transaction history on Ethereum, give us a tweet [@AlchemyPlatform](https://twitter.com/AlchemyPlatform)!  (Or give the author [@crypt0zeke](https://twitter.com/crypt0zeke) a shoutout!)
+
+Don't forget to join our [Discord server](https://www.alchemy.com/discord) to meet other blockchain devs, builders, and entrepreneurs!&#x20;

@@ -36,8 +36,6 @@ In order to fetch NFTs minted by a given address we'll need to specify a few thi
 * `toBlock` : the ending time range we want to fetch NFT mints over (defaults to `latest`)
 * `category` : the type of transfer events we care about, in our case we want to see NFTs which are ERC721 and ERC1155 events&#x20;
 
-TBD maybe external as well - We use `external` since we are looking for the transfer of an NFT from an address to another address, both of which are not smart contracts.
-
 Once we've specified these inputs we can send the request!&#x20;
 
 ## **Example: Getting NFT Mint Events**&#x20;
@@ -370,7 +368,7 @@ Below are the components of the each transfer in our response.&#x20;
   * `address`: NFT contract address
   * `decimal`:  `null`
 
-### Printing out the token type, tokenId and contract address&#x20;
+### Printing out the token `type`, `tokenId` and contract `address`&#x20;
 
 There's lots of information we can pull from this response. One example you may be interested in displaying are: NFT contract standard (`ERC721` or `ERC1155`), `contractAddress`, and `tokenId`
 
@@ -381,9 +379,9 @@ The steps we want to take are:
 1. Loop through all transfers in the result
 2. Check whether the returned transfer is ERC1155 or not
    1. If so, loop through tokens within ERC1155
-      1. print tokenId and address for each
+      1. print `tokenId` and `address` for each
    2. If not, assume transfer is ERC721
-      1. print tokenID of contract and address&#x20;
+      1. print `tokenID` of contract and address&#x20;
 
 {% code title="nft-mints.js" %}
 ```javascript
@@ -415,4 +413,8 @@ ERC-721 Token Minted: ID-  0x000000000000000000000000000000000000000000000000000
 ERC-721 Token Minted: ID-  0x00000000000000000000000000000000000000000000000000000000000000fb  Contract-  0x947600ad1ad2fadf88faf7d30193d363208fc76d
 ```
 
-And that's it! You've now learned how to fetch NFT mints for an address on Ethereum!
+And that's it! You've now learned how to fetch NFT mints for an address on Ethereum!\
+\
+If you enjoyed this tutorial for getting address transaction history on Ethereum, give us a tweet [@AlchemyPlatform](https://twitter.com/AlchemyPlatform)!  (Or give the author [@crypt0zeke](https://twitter.com/crypt0zeke) a shoutout!)
+
+Also, join our [Discord server](https://www.alchemy.com/discord) to meet other blockchain devs, builders, and entrepreneurs!&#x20;
