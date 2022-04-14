@@ -415,6 +415,6 @@ ERC-721 Token Minted: ID-  0x000000000000000000000000000000000000000000000000000
 
 And that's it! You've now learned how to fetch NFT mints for an address on Ethereum!\
 \
-If you enjoyed this tutorial for getting address transaction history on Ethereum, give us a tweet [@AlchemyPlatform](https://twitter.com/AlchemyPlatform)!  (Or give the author [@crypt0zeke](https://twitter.com/crypt0zeke) a shoutout!)
+If you enjoyed this tutorial for getting NFTs minted by an address, give us a tweet [@AlchemyPlatform](https://twitter.com/AlchemyPlatform)!  (Or give the author [@crypt0zeke](https://twitter.com/crypt0zeke) a shoutout!)
 
 Also, join our [Discord server](https://www.alchemy.com/discord) to meet other blockchain devs, builders, and entrepreneurs!&#x20;
