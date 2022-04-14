@@ -59,7 +59,11 @@ Since we'll be using import syntax to load ES6 modules, add `'type': 'module'` t
 
 See this discussion for more context: [https://stackoverflow.com/questions/61401475/why-is-type-module-in-package-json-file](https://stackoverflow.com/questions/61401475/why-is-type-module-in-package-json-file)
 
-## Alchemy Web3 SDK (_**Recommended**_)
+## How to Query the Token API
+
+{% tabs %}
+{% tab title="Alchemy Web3 SDK (Recommended)" %}
+
 
 You can install the `alchemy-web3` module to easily interact with Alchemy APIs. We highly recommend using the `alchemy-web3` sdk because you also get websocket support, retries, and other benefits without the complexity!
 
@@ -85,6 +89,8 @@ yarn add @alch/alchemy-web3
 {% endtab %}
 {% endtabs %}
 
+
+
 ### Usage
 
 {% embed url="https://github.com/alchemyplatform/token-api-javascript-scripts/blob/main/alchemy-web3-script.js" %}
@@ -93,7 +99,8 @@ yarn add @alch/alchemy-web3
 touch alchemy-web3-script.js
 ```
 
-and then paste the following code snippet into the file:
+\
+And then paste the following code snippet into the file:
 
 ```javascript
 // alchemy-token-api/alchemy-web3-script.js
@@ -154,9 +161,9 @@ TOKEN METADATA->
 For full documentation on the available endpoints for `alchemy-web3` sdk, check the github repo:
 
 {% embed url="https://github.com/alchemyplatform/alchemy-web3" %}
+{% endtab %}
 
-## Javascript Fetch&#x20;
-
+{% tab title="Node Fetch" %}
 `node-fetch` a lightweight, common module that brings the Fetch API to Node.js and allows us to make our HTTP requests.&#x20;
 
 See the documentation for more info: [https://www.npmjs.com/package/node-fetch](https://www.npmjs.com/package/node-fetch)
@@ -264,9 +271,9 @@ For full documentation on the NFT API `getNFTs` method, check out the docs:
 {% content-ref url="./" %}
 [.](./)
 {% endcontent-ref %}
+{% endtab %}
 
-## Javascript Axios
-
+{% tab title="Axios" %}
 `axios` is a promise-based HTTP client for the browser and Node.js, which allows us to make a raw request to the Alchemy API.
 
 See the documentation for more info: [https://www.npmjs.com/package/axios](https://www.npmjs.com/package/axios)
@@ -372,6 +379,14 @@ alchemy-token-api % node axios-script.js
 ```
 
 For full documentation on the available Token API methods , check out the docs:
+
+{% content-ref url="./" %}
+[.](./)
+{% endcontent-ref %}
+{% endtab %}
+{% endtabs %}
+
+
 
 {% content-ref url="./" %}
 [.](./)
