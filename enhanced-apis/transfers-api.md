@@ -63,7 +63,7 @@ These are event logs for ERC1155 transfers.
 These are transfers that occur where the `fromAddress` is an internal (smart contract) address. (ex: a smart contract calling another smart contract or smart contract calling another external address).
 
 {% hint style="info" %}
-**NOTE:** For efficiency, we do not return **internal transfers with 0 value** as they don't provide useful information without digging deeper into the internal transaction itself. If you are interested in these type of events see our [Trace API](trace-api.md).
+**NOTE:** For efficiency, we do not return **internal transfers with 0 value** as they don't provide useful information without digging deeper into the internal transaction itself. If you are interested in these type of events see our [Trace API](trace-api/).
 
 Additionally, we do not include any **internal transfers with call type`delegatecall`**` ``` because although they have a \_value \_associated with them they do not actually _transfer_ that value (see[ Appendix H of the Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) if you're curious). We also do not include miner rewards as an internal transfer.
 {% endhint %}
