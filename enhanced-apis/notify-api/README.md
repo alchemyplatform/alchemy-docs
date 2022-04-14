@@ -25,12 +25,28 @@ Your `app_id` can be found within the URL of your specific app. For example, giv
 
 **`webhook_type`**
 
-Each type of webhook is represented as a different integer:
+Each type of webhook is represented as a different string enum:
 
-* Mined Transactions: 0
-* Dropped Transactions: 1
-* Address Activity: 4
-* Gas Price: 5
+* "MINED\_TRANSACTION"
+* "DROPPED\_TRANSACTION"
+* "ADDRESS\_ACTIVITY"
+* "GAS\_PRICE"
+
+**network**
+
+Each type of supported network is represented as a different string enum:
+
+* "ETH\_MAINNET"
+* "ETH\_GOERLI"
+* "ETH\_ROPSTEN"
+* "ETH\_RINKEBY"
+* "ETH\_KOVAN"
+* "MATIC\_MAINNET"
+* "MATIC\_MUMBAI"
+* "ARB\_MAINNET"
+* "ARB\_RINKEBY"
+* "OPT\_MAINNET"
+* "OPT\_KOVAN"
 
 **`webhook_id`**
 
