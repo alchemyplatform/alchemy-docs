@@ -58,7 +58,7 @@ This is a unique identifier for the webhook. You can find the webhook\_id by fir
 This endpoint allows you to get all webhooks from every app on your team.
 {% endswagger-description %}
 
-{% swagger-parameter in="header" name="X-Alchemy-Token *REQUIRED*" type="string" required="false" %}
+{% swagger-parameter in="header" name="X-Alchemy-Token *REQUIRED*" type="String" required="false" %}
 Alchemy Auth token to use the Notify API (see note above).
 {% endswagger-parameter %}
 
@@ -110,7 +110,7 @@ Number of items per page
 {Omitted by default}
 {% endswagger-parameter %}
 
-{% swagger-parameter in="query" name="after" %}
+{% swagger-parameter in="query" name="after" type="String" %}
 Page cursor for the next page 
 
 \
