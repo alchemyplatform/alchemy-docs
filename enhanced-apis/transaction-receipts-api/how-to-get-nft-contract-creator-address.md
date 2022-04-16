@@ -43,11 +43,7 @@ We use this endpoint so that we can get the latest block, constraining our searc
 * `QUANTITY|TAG` - integer block number
 
 ```python
-params: [
-    '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D',
-    12412441
-]
-
+params: ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', 12412441]
 ```
 
 {% hint style="info" %}
@@ -60,9 +56,7 @@ params: [
 * `blockNumber` - the block number you want to get transaction receipts for
 
 ```javascript
-params: [{
-    "blockNumber": 12412441
-}]
+params: [{"blockNumber": 12412441}]
 ```
 
 ## **Example: How to Get a Contract's Deployer Address**
