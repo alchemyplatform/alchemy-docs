@@ -268,18 +268,21 @@ As you can visually confirm with the print-outs from our script, at each step, w
 \
 Our last print statement of `high:  12287507 mid:  12287507 low:  12287507` tells us our search converged at block number **12287507**
 
-### Filtering For a Transaction Hash:
+### Understanding Transaction Receipts:
 
 As we can see from the script's raw response, we can pull a lot of data out from the [Transaction Receipts API](./). However, we're only interested in the deployer address of our given smart contract.
 
-* `transactionHash`: hash of a transaction
-* `blockHash`: block hash where this transaction was in.
-* `blockNumber`: block number where this transaction was in
-* `contractAddress`: contract address a given transaction interacted with
-* `cumulativeGasUsed`: total amount of gas used by the transaction plus gas used by transactions executed before the current one in the same block
-* `effectiveGasPrice`: if a tx is made with EIP1559, it is equal to the actual gas price paid; if made using the old standard, it is equal to the transaction’s `gasPrice`
-* `from`: address of the transaction sender
-* `gasUsed`: gas used by this transaction
+* `receipts`: list of transaction receipts
+  * `transactionHash`: hash of a transaction
+  * `blockHash`: block hash where this transaction was in.
+  * `blockNumber`: block number where this transaction was in
+  * `contractAddress`: contract address a given transaction interacted with
+  * `cumulativeGasUsed`: total amount of gas used by the transaction plus gas used by transactions executed before the current one in the same block
+  * `effectiveGasPrice`: if a tx is made with EIP1559, it is equal to the actual gas price paid; if made using the old standard, it is equal to the transaction’s `gasPrice`
+  * `from`: address of the transaction sender
+  * `gasUsed`: gas used by this transaction
+
+### Filtering Transaction Receipts:
 
 With our queried response saved as a JSON object, we can index through the transfers to find the information useful for us.
 
@@ -299,7 +302,7 @@ If you followed along thus far and commented out intermediate print statements, 
 ('0xaba7161a7fb69c88e16ed9f455ce62b791ee4d03', 12287507)
 ```
 
-And that's it! You've now learned how to fetch a smart contract's deployer address on Ethereum!\
+And that's it! You can confirm that your query was indeed correct with [Etherscan](https://etherscan.io/tx/0x22199329b0aa1aa68902a78e3b32ca327c872fab166c7a2838273de6ad383eba). \
 \
 If you liked this tutorial, give us a tweet [@AlchemyPlatform](https://twitter.com/AlchemyPlatform)!  \
 (Or give the author [@crypt0zeke](https://twitter.com/crypt0zeke) a shoutout!)
