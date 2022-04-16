@@ -184,7 +184,8 @@ def find_contract_deployer(contract_address):
     for r in receipts:
         if ((r["contractAddress"]) == contract_address.lower()):
             return(r["from"], result_block_num)
-        
+
+# Find the deployer address of the BAYC contract
 print(find_contract_deployer("0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D"))
 
 ```
@@ -296,7 +297,7 @@ If you followed along thus far and commented out intermediate print statements, 
 ('0xaba7161a7fb69c88e16ed9f455ce62b791ee4d03', 12287507)
 ```
 
-And that's it! You can confirm that your query was indeed correct with [Etherscan](https://etherscan.io/tx/0x22199329b0aa1aa68902a78e3b32ca327c872fab166c7a2838273de6ad383eba). \
+And that's it! You can confirm that your query was indeed correct with [Etherscan](https://etherscan.io/tx/0x22199329b0aa1aa68902a78e3b32ca327c872fab166c7a2838273de6ad383eba) showing that `0xaba7161a7fb69c88e16ed9f455ce62b791ee4d03` is the deployer of the BAYC contract.\
 \
 If you liked this tutorial, give us a tweet [@AlchemyPlatform](https://twitter.com/AlchemyPlatform)!  \
 (Or give the author [@crypt0zeke](https://twitter.com/crypt0zeke) a shoutout!)
