@@ -90,7 +90,7 @@ Below you will find how to set up or switch your current provider to Alchemy for
 
 ### Alchemy Web3
 
-There are tons of Web3 libraries you can integrate with Alchemy, however, we recommend using [Alchemy Web3](notion://www.notion.so/alchemy/documentation/alchemy-web3), a drop-in replacement for web3.js, built and configured to work seamlessly with Alchemy. This provides multiple advantages such as automatic retries and robust WebSocket support.
+There are tons of Web3 libraries you can integrate with Alchemy, however, we recommend using [Alchemy Web3](https://github.com/alchemyplatform/alchemy-web3), a drop-in replacement for web3.js, built and configured to work seamlessly with Alchemy. This provides multiple advantages such as automatic retries and robust WebSocket support.
 
 To install AlchemyWeb3.js, you want to create a project, and then navigate to your project directory to run the installation. Let's go ahead and do that! Once we're in our home directory, let's execute the following:
 
