@@ -27,7 +27,7 @@ Currently, Alchemy does not support pending transactions for Optimism websockets
 
 Calls related to retrieving blocks and block information.
 
-### eth\_blockNumber
+### eth\_blockNumber - Optimism
 
 Returns the number of the most recent block.
 
@@ -76,7 +76,7 @@ Result
 }
 ```
 
-### eth\_getBlockByHash
+### eth\_getBlockByHash - Optimism
 
 {% hint style="info" %}
 Currently, Optimistic Ethereum blocks only include a single transaction. If you query `eth_getBlockByNumber` or `eth_getBlockByHash`, you should expect to only see one transaction.
@@ -180,7 +180,7 @@ Result
 }
 ```
 
-### eth\_getBlockByNumber
+### eth\_getBlockByNumber - Optimism
 
 {% hint style="info" %}
 Currently, Optimistic Ethereum blocks only include a single transaction. If you query `eth_getBlockByNumber` or `eth_getBlockByHash`, you should expect to only see one transaction.
@@ -202,7 +202,7 @@ params: [
 
 #### Returns
 
-See [`eth_getBlockByHash`](ethereum/#eth\_getblockbyhash)
+See [`eth_getBlockByHash`](../ethereum/#eth\_getblockbyhash)
 
 Request
 
@@ -295,7 +295,7 @@ Calls for reading transactions.
 \*\*NOTE: \*\*On Optimism, there is one L2 block mined for each L2 transaction.
 {% endhint %}
 
-### eth\_getTransactionByHash
+### eth\_getTransactionByHash - Optimism
 
 Returns the information about a transaction requested by transaction hash. In the response object, `blockHash`, `blockNumber`, and `transactionIndex` are `null` when the transaction is pending.
 
@@ -388,7 +388,7 @@ Result
 }
 ```
 
-### eth\_getTransactionCount
+### eth\_getTransactionCount - Optimism
 
 Returns the number of transactions sent from an address.
 
@@ -445,11 +445,11 @@ Result
 }
 ```
 
-### eth\_getTransactionReceipt
+### eth\_getTransactionReceipt - Optimism
 
 Returns the receipt of a transaction by transaction hash.
 
-This can also be used to track the status of a transaction, since the result will be null until the transaction is mined. However, unlike [`eth_getTransactionByHash`](ethereum/#eth\_gettransactionbyhash) , which returns `null` for unknown transactions, and a non-null response with 3 null fields for a pending transaction, `eth_getTransactionReceipt` returns null for both pending and unknown transactions.
+This can also be used to track the status of a transaction, since the result will be null until the transaction is mined. However, unlike [`eth_getTransactionByHash`](../ethereum/#eth\_gettransactionbyhash) , which returns `null` for unknown transactions, and a non-null response with 3 null fields for a pending transaction, `eth_getTransactionReceipt` returns null for both pending and unknown transactions.
 
 This call is also commonly used to get the contract address for a contract creation tx.
 
@@ -599,7 +599,7 @@ Result
 }
 ```
 
-### eth\_getBlockTransactionCountByHash
+### eth\_getBlockTransactionCountByHash - Optimism
 
 Returns the number of transactions in a block matching the given block hash.
 
@@ -654,7 +654,7 @@ Result
 }
 ```
 
-### eth\_getBlockTransactionCountByNumber
+### eth\_getBlockTransactionCountByNumber - Optimism
 
 Returns the number of transactions in a block matching the given block number.
 
@@ -709,7 +709,7 @@ Result
 }
 ```
 
-### eth\_getTransactionByBlockHashAndIndex
+### eth\_getTransactionByBlockHashAndIndex - Optimism
 
 Returns information about a transaction by block hash and transaction index position.
 
@@ -728,7 +728,7 @@ params: [
 
 #### Returns
 
-See [`eth_getTransactionByHash`](ethereum/#eth\_gettransactionbyhash)\`\`
+See [`eth_getTransactionByHash`](../ethereum/#eth\_gettransactionbyhash)\`\`
 
 Request
 
@@ -790,7 +790,7 @@ Result
 }
 ```
 
-### eth\_getTransactionByBlockNumberAndIndex
+### eth\_getTransactionByBlockNumberAndIndex - Optimism
 
 Returns information about a transaction by block number and transaction index position.
 
@@ -808,7 +808,7 @@ Returns information about a transaction by block number and transaction index po
 
 #### Returns
 
-See [`eth_getTransactionByHash`](ethereum/#eth\_gettransactionbyhash)\`\`
+See [`eth_getTransactionByHash`](../ethereum/#eth\_gettransactionbyhash)\`\`
 
 Request
 
@@ -874,7 +874,7 @@ Result
 
 Call to write to the blockchain.
 
-### eth\_sendRawTransaction
+### eth\_sendRawTransaction - Optimism
 
 Creates a new message call transaction or a contract creation for signed transactions.
 
@@ -898,7 +898,7 @@ params: ["0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb97
 
 `DATA`, 32 Bytes - the transaction hash, or the zero hash if the transaction is not yet available.
 
-Use [`eth_getTransactionReceipt`](ethereum/#eth\_gettransactionreceipt) to get the contract address after the transaction was mined when you created a contract.
+Use [`eth_getTransactionReceipt`](../ethereum/#eth\_gettransactionreceipt) to get the contract address after the transaction was mined when you created a contract.
 
 {% hint style="danger" %}
 \*\*Note: \*\*Since `eth_sendRawTransaction` is a request used for writing to the blockchain and changes its state, it is impossible to execute the same request twice. This means if you were to copy the example given below you will not get the expected response.
@@ -945,7 +945,7 @@ Result
 
 Calls to get information about an account.
 
-### eth\_getBalance
+### eth\_getBalance - Optimism
 
 Returns the balance of the account of a given address.
 
@@ -1002,9 +1002,9 @@ Result
 }
 ```
 
-### eth\_getCode
+### eth\_getCode - Optimism
 
-Returns code at a given address. This method can be used to [distinguish between contract addresses and wallet addresses](../resources/faq.md#how-do-i-distinguish-between-a-contract-address-and-a-wallet-address).
+Returns code at a given address. This method can be used to [distinguish between contract addresses and wallet addresses](../../resources/faq.md#how-do-i-distinguish-between-a-contract-address-and-a-wallet-address).
 
 #### Parameters
 
@@ -1059,7 +1059,7 @@ Result
 }
 ```
 
-### eth\_getStorageAt
+### eth\_getStorageAt - Optimism
 
 Returns the value from a storage position at a given address, or in other words, returns the state of the contract's storage, which may not be exposed via the contract's methods.
 
@@ -1128,7 +1128,7 @@ Result
 }
 ```
 
-### eth\_accounts
+### eth\_accounts - Optimism
 
 Returns a list of addresses owned by client.
 
@@ -1183,23 +1183,23 @@ Result
 }
 ```
 
-### eth\_getProof
+### eth\_getProof - Optimism
 
 Returns the account and storage values of the specified account including the Merkle-proof. This call can be used to verify that the data you are pulling from is not tampered with.
 
 #### **Parameters**
 
 1. `DATA`, 20 Bytes - address of the account.
-2. `ARRAY`, 32 Bytes - array of storage-keys which should be proofed and included. See[`eth_getStorageAt`](ethereum/#eth\_getstorageat)
+2. `ARRAY`, 32 Bytes - array of storage-keys which should be proofed and included. See[`eth_getStorageAt`](../ethereum/#eth\_getstorageat)
 3. `QUANTITY|TAG` - integer block number, or the string `"latest"` or `"earliest"`, see the [default block parameter](https://eth.wiki/json-rpc/API#the-default-block-parameter)
 
 #### **Returns**
 
 `Object` - A account object:
 
-* `balance`: `QUANTITY` - the balance of the account. See[`eth_getBalance`](ethereum/#eth\_getbalance)
+* `balance`: `QUANTITY` - the balance of the account. See[`eth_getBalance`](../ethereum/#eth\_getbalance)
 * `codeHash`: `DATA`, 32 Bytes - hash of the code of the account. For a simple Account without code it will return `"0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"`
-* `nonce`: `QUANTITY`, - nonce of the account. See [`eth_getTransactionCount`](ethereum/#eth\_gettransactioncount)\`\`
+* `nonce`: `QUANTITY`, - nonce of the account. See [`eth_getTransactionCount`](../ethereum/#eth\_gettransactioncount)\`\`
 * `storageHash`: `DATA`, 32 Bytes - SHA3 of the StorageRoot. All storage will deliver a MerkleProof starting with this rootHash.
 * `accountProof`: `ARRAY` - Array of rlp-serialized MerkleTree-Nodes, starting with the stateRoot-Node, following the path of the SHA3 (address) as key.
 * `storageProof`: `ARRAY` - Array of storage-entries as requested. Each entry is a object with these properties:
@@ -1267,7 +1267,7 @@ Result
 
 ## :brain: EVM/Smart Contract Execution
 
-### eth\_call
+### eth\_call - Optimism
 
 Executes a new message call immediately without creating a transaction on the block chain.
 
@@ -1351,16 +1351,16 @@ Result
 
 ## :bookmark\_tabs: Event Logs
 
-### eth\_getLogs
+### eth\_getLogs - Optimism
 
-Returns an array of all logs matching a given filter object. For more information about `eth_getLogs` check out our [Deep Dive into eth\_getLogs](../guides/eth\_getlogs.md) page.
+Returns an array of all logs matching a given filter object. For more information about `eth_getLogs` check out our [Deep Dive into eth\_getLogs](../../guides/eth\_getlogs.md) page.
 
 {% hint style="warning" %}
 **NOTE**: You can make `eth_getLogs` requests with up to a _**2K block range**_ and _**a 150MB limit on the response size**_.
 
 If you absolutely need to query larger block ranges, please contact us over [discord](https://alchemy.com/discord) or at support@alchemy.com. We can open access to larger block ranges based on your use case.
 
-\_If you need to pull logs frequently, we recommend [_using WebSockets_](../guides/using-websockets.md) to push new logs to you when they are available. \_
+\_If you need to pull logs frequently, we recommend [_using WebSockets_](../../guides/using-websockets.md) to push new logs to you when they are available. \_
 {% endhint %}
 
 #### Parameters
@@ -1378,7 +1378,7 @@ If you absolutely need to query larger block ranges, please contact us over [dis
 * `address`: `DATA|Array`, 20 Bytes - (optional) Contract address or a list of addresses from which logs should originate.
 * `topics`: `Array` of `DATA`, - (optional) Array of 32 Bytes DATA topics.
   * Topics are order-dependent. Each topic can also be an array of DATA with "or" options.
-  * Check out more details on how to format topics in [eth\_newFilter](ethereum/#eth\_newfilter).
+  * Check out more details on how to format topics in [eth\_newFilter](../ethereum/#eth\_newfilter).
 * `blockHash`: `DATA`, 32 Bytes - (optional) With the addition of EIP-234 (Geth >= v1.8.13 or Parity >= v2.1.0), blockHash is a new filter option which restricts the logs returned to the single block with the 32-byte hash blockHash. Using blockHash is equivalent to fromBlock = toBlock = the block number with hash `blockHash`.\*\* If blockHash is present in the filter criteria, then neither `fromBlock` nor `toBlock` are allowed.\*\*
 
 ```javascript
@@ -1395,7 +1395,7 @@ params: [
 
 #### Returns
 
-See [`eth_getFilterChanges`](ethereum/#eth\_getfilterchanges)
+See [`eth_getFilterChanges`](../ethereum/#eth\_getfilterchanges)
 
 #### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getLogs%22%2C%22paramValues%22%3A%5B%7B%22address%22%3A%220xb59f67a8bff5d8cd03f6ac17265c550ed8f33907%22%2C%22topics%22%3A%22%5B%5C%220xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef%5C%22%5D%22%2C%22blockHash%22%3A%220x8243343df08b9751f5ca0c5f8c9c0460d8a9b6351066fae0acbd4d3e776de8bb%22%7D%5D%7D)
 
@@ -1456,7 +1456,7 @@ Result
 
 Calls to receive information about the current blockchain.
 
-### eth\_protocolVersion
+### eth\_protocolVersion - Optimism
 
 Returns the current ethereum protocol version.
 
@@ -1507,7 +1507,7 @@ Result
 }
 ```
 
-### eth\_gasPrice
+### eth\_gasPrice - Optimism
 
 Returns the current price per gas in wei.
 
@@ -1562,7 +1562,7 @@ Result
 }
 ```
 
-### eth\_estimateGas
+### eth\_estimateGas - Optimism
 
 Generates and returns an estimate of how much gas is necessary to allow the transaction to complete. The transaction will not be added to the blockchain.
 
@@ -1631,7 +1631,7 @@ Result
 }
 ```
 
-### eth\_chainId
+### eth\_chainId - Optimism
 
 Returns the currently configured chain ID, a value used in replay-protected transaction signing as introduced by [EIP-155](https://eips.ethereum.org/EIPS/eip-155).
 
@@ -1688,7 +1688,7 @@ Result
 }
 ```
 
-### net\_version
+### net\_version - Optimism
 
 Returns the current network id.
 
@@ -1745,7 +1745,7 @@ Result
 }
 ```
 
-### net\_listening
+### net\_listening - Optimism
 
 Returns `true` if client is actively listening for network connections.
 
@@ -1804,7 +1804,7 @@ Calls to get information about uncles.
 **Note**: An uncle doesn't contain individual transactions.
 {% endhint %}
 
-### eth\_getUncleByBlockNumberAndIndex
+### eth\_getUncleByBlockNumberAndIndex - Optimism
 
 Returns information about an uncle of a block by number and uncle index position.
 
@@ -1822,7 +1822,7 @@ params: [
 
 #### Returns
 
-See [`eth_getBlockByHash`](ethereum/#eth\_getblockbyhash)
+See [`eth_getBlockByHash`](../ethereum/#eth\_getblockbyhash)
 
 #### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getUncleByBlockNumberAndIndex%22%2C%22paramValues%22%3A%5B%220x29c%22%2C%220x0%22%5D%7D)
 
@@ -1882,7 +1882,7 @@ Result
 }
 ```
 
-### eth\_getUncleByBlockHashAndIndex
+### eth\_getUncleByBlockHashAndIndex - Optimism
 
 Returns information about an uncle of a block by hash and uncle index position.
 
@@ -1902,7 +1902,7 @@ params: [
 
 #### Returns
 
-See [`eth_getBlockByHash`](ethereum/#eth\_getblockbyhash)
+See [`eth_getBlockByHash`](../ethereum/#eth\_getblockbyhash)
 
 #### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getUncleByBlockHashAndIndex%22%2C%22paramValues%22%3A%5B%220xb3b20624f8f0f86eb50dd04688409e5cea4bd02d700bf6e79e9384d47d6a5a35%22%2C%220x0%22%5D%7D)
 
@@ -1962,7 +1962,7 @@ Result
 }
 ```
 
-### eth\_getUncleCountByBlockHash
+### eth\_getUncleCountByBlockHash - Optimism
 
 Returns the number of uncles in a block matching the given block hash.
 
@@ -2019,7 +2019,7 @@ Result
 }
 ```
 
-### eth\_getUncleCountByBlockNumber
+### eth\_getUncleCountByBlockNumber - Optimism
 
 Returns the number of uncles in a block matching the give block number.
 
@@ -2080,13 +2080,13 @@ Result
 
 Calls related to creating, getting, and reading from filters.
 
-Eth filters expose the same information as the [`eth_subscribe`](ethereum/#eth\_subscribe) methods, except that updates are received by polling rather than receiving pushes. A user may create a filter than repeatedly call `eth_getFilterChanges`on it, each time receiving events that have occurred since the last time `eth_getFilterChanges`was called (or since the filter was created if this is the first time `eth_getFilterChanges`is being called.
+Eth filters expose the same information as the [`eth_subscribe`](../ethereum/#eth\_subscribe) methods, except that updates are received by polling rather than receiving pushes. A user may create a filter than repeatedly call `eth_getFilterChanges`on it, each time receiving events that have occurred since the last time `eth_getFilterChanges`was called (or since the filter was created if this is the first time `eth_getFilterChanges`is being called.
 
 {% hint style="warning" %}
 **Note**: Filters expire after 5 minutes of inactivity, so several of the example requests below will return`"filter not found"` if you try and call them.
 {% endhint %}
 
-### eth\_getFilterChanges
+### eth\_getFilterChanges - Optimism
 
 Polling method for a filter, which returns an array of logs which occurred since last poll.
 
@@ -2177,12 +2177,12 @@ Result
 }
 ```
 
-### eth\_getFilterLogs
+### eth\_getFilterLogs - Optimism
 
 Returns an array of all logs matching filter with given id. Can compute the same results with an `eth_getLogs` call (see hint below).
 
 {% hint style="warning" %}
-This method only works for filters creates with [`eth_newFilter`](ethereum/#eth\_newfilter)not for filters created using [`eth_newBlockFilter`](ethereum/#eth\_newblockfilter) or [`eth_newPendingTransactionFilter`](ethereum/#eth\_newpendingtransactionfilter), which will return `"filter not found".`
+This method only works for filters creates with [`eth_newFilter`](../ethereum/#eth\_newfilter)not for filters created using [`eth_newBlockFilter`](../ethereum/#eth\_newblockfilter) or [`eth_newPendingTransactionFilter`](../ethereum/#eth\_newpendingtransactionfilter), which will return `"filter not found".`
 
 #### eth\_getLogs vs. eth\_getFilterLogs
 
@@ -2204,7 +2204,7 @@ params: [
 
 #### **Returns**
 
-See [`eth_getFilterChanges`](ethereum/#eth\_getfilterchanges)\`\`
+See [`eth_getFilterChanges`](../ethereum/#eth\_getfilterchanges)\`\`
 
 #### [**Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getFilterLogs%22%2C%22paramValues%22%3A%5B%220xfe704947a3cd3ca12541458a4321c869%22%5D%7D)
 
@@ -2265,9 +2265,9 @@ Result
 }
 ```
 
-### eth\_newBlockFilter
+### eth\_newBlockFilter - Optimism
 
-Creates a filter in the node, to notify when a new block arrives. To check if the state has changed, call [`eth_getFilterChanges`](ethereum/#eth\_getfilterchanges).
+Creates a filter in the node, to notify when a new block arrives. To check if the state has changed, call [`eth_getFilterChanges`](../ethereum/#eth\_getfilterchanges).
 
 #### **Parameters**
 
@@ -2316,11 +2316,11 @@ Result
 }
 ```
 
-### eth\_newFilter
+### eth\_newFilter - Optimism
 
 Creates a filter object, based on filter options, to notify when the state changes (logs). Unlike `eth_newBlockFilter`which notifies you of \*\*all **new** \*\*blocks, you can pass in filter options to track new logs matching the topics specified. \*\* \*\*
 
-To check if the state has changed, call [`eth_getFilterChanges.`](ethereum/#eth\_getfilterchanges)\`\`
+To check if the state has changed, call [`eth_getFilterChanges.`](../ethereum/#eth\_getfilterchanges)\`\`
 
 {% hint style="info" %}
 **A note on specifying topic filters:**
@@ -2394,9 +2394,9 @@ Result
 }
 ```
 
-### eth\_uninstallFilter
+### eth\_uninstallFilter - Optimism
 
-Uninstalls a filter with given id. Should always be called when watch is no longer needed. Additionally, Filters timeout when they aren’t requested with [`eth_getFilterChanges`](ethereum/#eth\_getfilterchanges)for a period of time.
+Uninstalls a filter with given id. Should always be called when watch is no longer needed. Additionally, Filters timeout when they aren’t requested with [`eth_getFilterChanges`](../ethereum/#eth\_getfilterchanges)for a period of time.
 
 #### **Parameters**
 
@@ -2453,7 +2453,7 @@ Result
 
 ## :desktop: Web3
 
-### web3\_clientVersion
+### web3\_clientVersion - Optimism
 
 Returns the current client version.
 
@@ -2504,7 +2504,7 @@ Result
 }
 ```
 
-### web3\_sha3
+### web3\_sha3 - Optimism
 
 Returns Keccak-256 (_not_ the standardized SHA3-256) of the given data.
 
@@ -2571,7 +2571,7 @@ It works by subscribing to particular events where the node will return a subscr
 
 Below are several methods used for retrieving real time events.
 
-### eth\_syncing
+### eth\_syncing - Optimism
 
 Returns an object with data about the sync status or `false`if the node is fully synced.
 
@@ -2628,7 +2628,7 @@ Response
 }
 ```
 
-### eth\_subscribe
+### eth\_subscribe - Optimism
 
 If successful this returns the subscription id. Subscriptions are created through websockets
 
@@ -2643,7 +2643,7 @@ If successful this returns the subscription id. Subscriptions are created throug
 #### Parameters <a href="#parameters" id="parameters"></a>
 
 1. subscription name
-2. optional arguments ([see below](ethereum/#optional-arguments))
+2. optional arguments ([see below](../ethereum/#optional-arguments))
 
 #### \*\*Returns \*\*
 
@@ -2768,7 +2768,7 @@ Result
 }
 ```
 
-### eth\_unsubscribe
+### eth\_unsubscribe - Optimism
 
 Subscriptions are canceled with a regular RPC call with `eth_unsubscribe` as method and the subscription id as first parameter. It returns a bool indicating if the subscription was canceled successfully.
 
