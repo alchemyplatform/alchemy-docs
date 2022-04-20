@@ -16,10 +16,14 @@ _To see chain support accross all features, check out the_ [_feature matrix_](..
 
 * `owner`: _**\[string]**_ address for NFT owner (can be in _**ENS format**_!)
 * `pageKey`: _**\[string]**_ (optional) UUID for pagination. If more results are available, a UUID `pageKey` will be returned in the response. Pass that UUID into `pageKey` to fetch the next 100 NFTs.     _**NOTE:** pageKeys expire after 10 minutes._&#x20;
-* `contractAddresses[]`:  _**\[arrray of strings]**_ (optional) array of contract addresses to filter the responses with. Max limit 20 contracts.
-* `withMetadata`:  _**\[boolean]**_ `true` by default (optional); if boolean is set to `true` the query will include metadata for each returned token \
-  \
-  _**For more info on NFT responses:  check out the**_ [_**NFT API FAQ.**_](nft-api-faq.md#understanding-nft-metadata)_****_
+* `contractAddresses[]`:  _**\[array of strings]**_ (optional) array of contract addresses to filter the responses with. Max limit 20 contracts.
+* `withMetadata`:  _**\[boolean]**_ `true` by default (optional); if boolean is set to `true` the query will include metadata for each returned token&#x20;
+* `filters[]`:  _**\[array of strings]**_ (optional) array of filters (as strings) that will be applied to the query. NFTs that are match one or more of these filters will be excluded from the response. &#x20;
+  * **NOTE:** _This is a beta feature._
+  * Filters:
+    * SPAM: NFTs that have been classified as spammy in some way. Spam classification has a wide range of criteria that includes but is not limited to emitting fake events and copying other well-known NFTs.\
+      \
+      _**For more info on NFT responses:  check out the**_ [_**NFT API FAQ.**_](nft-api-faq.md#understanding-nft-metadata)_****_
 
 {% hint style="success" %}
 **NOTE:**
@@ -670,3 +674,86 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
     "blockHash": "0x94d5ab52b8a6571733f6b183ef89f31573b82a4e78f8129b0ce90ef0beaf208b"
 }
 ```
+
+
+
+### Request (with filters)&#x20;
+
+{% tabs %}
+{% tab title="Alchemy Web3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+
+import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+
+// Using HTTPS
+const web3 = createAlchemyWeb3(
+  "https://eth-mainnet.alchemyapi.io/v2/demo",
+);
+
+const nfts = await web3.alchemy.getNfts({owner: "0xC33881b8FD07d71098b440fA8A3797886D831061", "filters[]":"SPAM"})
+
+console.log(nfts);
+```
+{% endtab %}
+
+{% tab title="FetchJS" %}
+```javascript
+import fetch from 'node-fetch';
+
+var requestOptions = {
+  method: 'GET',java
+  redirect: 'follow'
+};
+
+const baseURL = "https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/";
+const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
+const fetchURL = `${baseURL}?owner=${ownerAddr}?filters[]=SPAM`;
+
+fetch(fetchURL, requestOptions)
+  .then(response => response.json())
+  .then(response => JSON.stringify(response, null, 2))
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error))
+
+```
+{% endtab %}
+
+{% tab title="Axios" %}
+```javascript
+import axios from 'axios';
+
+// replace with your Alchemy api key
+const apiKey = "demo";
+const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTs/`;
+// replace with the wallet address you want to query for NFTs
+const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
+
+var config = {
+  method: 'get',
+  url: `${baseURL}?owner=${ownerAddr}?filters[]=SPAM`
+};
+
+axios(config)
+.then(response => console.log(JSON.stringify(response.data, null, 2)))
+.catch(error => console.log(error));
+
+```
+{% endtab %}
+
+{% tab title="Postman" %}
+```
+URL: https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&filters[]=SPAM
+```
+
+
+{% endtab %}
+
+{% tab title="Curl" %}
+```shell
+curl 'https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&filters[]=SPAM'
+```
+
+
+{% endtab %}
+{% endtabs %}
