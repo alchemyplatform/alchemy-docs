@@ -11,9 +11,9 @@ A few reasons why you'd want to get a smart contract's deployer address:
 * Verify the provenance of smart contracts deployed on-chain&#x20;
 * Find the owner/OG deployer of an NFT collection
 
-While this type of query can seem intimidating, developers are able to leverage the power of Alchemy’s [Transaction Receipts API](./) with a few Ethereum RPC calls to get in-depth on-chain data.
+While this type of query can seem intimidating, developers are able to leverage the power of Alchemy’s [Transaction Receipts API](../transaction-receipts-api.md) with a few Ethereum RPC calls to get in-depth on-chain data.
 
-**In this tutorial, we’ll be using a combination of Ethereum RPC methods and Alchemy’s** [**Transaction Receipts API**](./) **to fetch a smart contract deployer address.**
+**In this tutorial, we’ll be using a combination of Ethereum RPC methods and Alchemy’s** [**Transaction Receipts API**](../transaction-receipts-api.md) **to fetch a smart contract deployer address.**
 
 ## How to find a smart contract deployer address
 
@@ -265,7 +265,7 @@ Our last print statement of `high:  12287507 mid:  12287507 low:  12287507` tell
 
 ### Understanding Transaction Receipts:
 
-As we can see from the script's raw response, we can pull a lot of data out from the [Transaction Receipts API](./). However, we're only interested in the deployer address of our given smart contract.
+As we can see from the script's raw response, we can pull a lot of data out from the [Transaction Receipts API](../transaction-receipts-api.md). However, we're only interested in the deployer address of our given smart contract.
 
 * `receipts`: list of transaction receipts
   * `transactionHash`: hash of a transaction

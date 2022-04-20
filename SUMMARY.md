@@ -31,7 +31,7 @@
   * [How to get address transaction history on Ethereum](enhanced-apis/transfers-api/how-to-get-address-transaction-history-on-ethereum.md)
   * [How to get NFTs minted by an address](enhanced-apis/transfers-api/how-to-get-nfts-minted-by-an-address.md)
   * [How to get all NFT transactions by an address](enhanced-apis/transfers-api/how-to-get-all-nft-transactions-by-an-address.md)
-* [Transaction Receipts API](enhanced-apis/transaction-receipts-api/README.md)
+* [Transaction Receipts API](enhanced-apis/transaction-receipts-api.md)
   * [How to get NFT contract creator address](enhanced-apis/transaction-receipts-api/how-to-get-nft-contract-creator-address.md)
 * [Token API](enhanced-apis/token-api/README.md)
   * [Token API Quickstart Guide](enhanced-apis/token-api/token-api-quickstart-guide.md)

@@ -48,6 +48,7 @@ We paginate our responses with a default limit of **100 responses**. We've chose
       * `tokenId`: Id for NFT _**(hex)**_&#x20;
       * `tokenMetadata`
         * `tokenType`: "`ERC721`" or "`ERC1155`"
+    * `balance`: token balance
     * `title`: name of the NFT asset
     * `description`: brief human-readable description
     * `tokenUri`:

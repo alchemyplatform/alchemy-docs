@@ -11,7 +11,7 @@ description: >-
 Get receipts from all transactions from particular block, instead of fetching the receipts one-by-one.
 
 {% hint style="danger" %}
-Starting May 1, 2022`parity_getBlockReceipts` will be depreciated. Any users looking for BlockReceipt functionality should now use [`alchemy_getTransactionReceipts`](transaction-receipts-api/#alchemy\_gettransactionreceipts) to achieve the same functionality.&#x20;
+Starting May 1, 2022`parity_getBlockReceipts` will be depreciated. Any users looking for BlockReceipt functionality should now use [`alchemy_getTransactionReceipts`](transaction-receipts-api.md#alchemy\_gettransactionreceipts) to achieve the same functionality.&#x20;
 {% endhint %}
 
 ### **Parameters**
