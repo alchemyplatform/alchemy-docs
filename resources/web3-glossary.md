@@ -167,6 +167,10 @@ Ether is the primary internal cryptographic token of the Ethereum network. Ether
 
 The smallest denomination of ether. 10^18 wei = 1 ether.
 
+### gwei <a href="#why-cant-i-invite-a-user-who-is-already-on-a-team" id="why-cant-i-invite-a-user-who-is-already-on-a-team"></a>
+
+A gwei or gigawei is defined as 1,000,000,000 [wei](web3-glossary.md#wei). One gwei equals 0.000000001 or 10-9 ETH.
+
 ### **Gas**
 
 Gas is a measurement roughly equivalent to computational steps. Every transaction is required to include a gas limit and a fee that it is willing to pay per gas; miners have the choice of including the transaction and collecting the fee or not.

@@ -41,7 +41,7 @@
 * [Parity API](enhanced-apis/block-api-beta.md)
 * [Notify API](enhanced-apis/notify-api/README.md)
   * [Using Alchemy Notify/Webhooks](enhanced-apis/notify-api/using-notify.md)
-  * [V2 Alchemy Notify](enhanced-apis/notify-api/v2-alchemy-notify.md)
+  * [Copy of v2 notify](enhanced-apis/notify-api/copy-of-v2-notify.md)
 * [Debug API](enhanced-apis/debug-api.md)
 * [Trace API](enhanced-apis/trace-api/README.md)
   * [trace\_call](enhanced-apis/trace-api/trace\_call.md)
