@@ -677,11 +677,11 @@ As an added security measure, you can ensure your webhook notification originate
 
 The changes in webhook V2 are mostly formatting and parameter name differences. Thus, the primary changes that will need to be made are how you process response payloads. Although V1 webhooks will still be supported, all net-new webhooks created after **Tuesday, April 26, 2022** will be V2, with the exception of [gas price webhooks](using-notify.md#4.-gas-price).&#x20;
 
-Here is an overview of the changes from V1 to V2:
+Here is an overview of the payload changes from V1 to V2:
 
 * `app` is replaced with `appId` field and is now under the `event` field
 * `network` field is now under the `event` field
-* `app` field is no longer there for Address Activity web hooks
+* `app` field is no longer included for Address Activity webhooks
 * `webhookType` is renamed to `type`
 * `timestamp` is renamed to `createdAt`
 * `fullTransaction` is renamed to `transaction`, which is under the `event` field

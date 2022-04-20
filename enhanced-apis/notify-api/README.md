@@ -64,9 +64,9 @@ The following endpoints are supported for [all networks](./#network).
 {% hint style="info" %}
 ### V1 vs. V2
 
-All API Endpoints below are supported for both V1 and V2 versions of Alchemy Notify, however, the response payloads for both versions will differ, see the [types of webhooks section](./#types-of-webhooks) to see examples for the difference.
+All API Endpoints below are supported for both V1 and V2 versions of Alchemy Notify, however, the response payloads for both versions will differ, see the [the difference between V1 and V2 question](using-notify.md#whats-the-difference-between-notify-v1-and-v2) for more info.
 
-_**NOTE:**  **We highly recommend switching over to V2 webhooks, see instructions for**_ [_**migrating from Notify V1 to V2**_](using-notify.md#migrating-from-notify-v1-to-v2)_**.**_ &#x20;
+_**NOTE:**  **We highly recommend switching over to V2 webhooks, all net-new webhooks created after Tuesday, April 26th, 2022 will be V2.**_&#x20;
 {% endhint %}
 
 {% swagger baseUrl="https://dashboard.alchemyapi.io" path="/api/team-webhooks" method="get" summary="Get all webhooks" %}
