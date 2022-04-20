@@ -18,10 +18,11 @@ _To see chain support accross all features, check out the_ [_feature matrix_](..
 * `pageKey`: _**\[string]**_ (optional) UUID for pagination. If more results are available, a UUID `pageKey` will be returned in the response. Pass that UUID into `pageKey` to fetch the next 100 NFTs.     _**NOTE:** pageKeys expire after 10 minutes._&#x20;
 * `contractAddresses[]`:  _**\[array of strings]**_ (optional) array of contract addresses to filter the responses with. Max limit 20 contracts.
 * `withMetadata`:  _**\[boolean]**_ `true` by default (optional); if boolean is set to `true` the query will include metadata for each returned token&#x20;
-* `filters[]`:  _**\[array of strings]**_ (optional) array of filters (as strings) that will be applied to the query. NFTs that are match one or more of these filters will be excluded from the response. &#x20;
-  * **NOTE:** _This is a beta feature._
-  * Filters:
-    * SPAM: NFTs that have been classified as spammy in some way. Spam classification has a wide range of criteria that includes but is not limited to emitting fake events and copying other well-known NFTs.\
+*   `filters[]`:  _**\[array of strings]**_ (optional) array of filters (as strings) that will be applied to the query. NFTs that are match one or more of these filters will be excluded from the response. &#x20;
+
+    **NOTE:** _This is a beta feature._
+
+    * `"SPAM"`: NFTs that have been classified as spam. Spam classification has a wide range of criteria that includes but is not limited to emitting fake events and copying other well-known NFTs.\
       \
       _**For more info on NFT responses:  check out the**_ [_**NFT API FAQ.**_](nft-api-faq.md#understanding-nft-metadata)_****_
 
