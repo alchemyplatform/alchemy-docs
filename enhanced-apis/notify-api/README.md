@@ -545,7 +545,7 @@ See [frequently asked questions](using-notify.md#common-questions) on the using 
 
 * [Capcity Limit](using-notify.md#capacity-limit)
 * [Webhook IP Addresses](using-notify.md#webhook-ip-addresses)
-* [Migrating from Notify V1 to V2](using-notify.md#migrating-from-notify-v1-to-v2)
+* [Difference between V1 and V2](using-notify.md#whats-the-difference-between-notify-v1-and-v2)
 * [Best practices](using-notify.md#what-are-some-best-practices-when-using-webhooks-with-a-large-number-of-addresses)&#x20;
 
 {% content-ref url="using-notify.md" %}
