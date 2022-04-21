@@ -470,3 +470,9 @@ subscription.unsubscribe(
     "result":true
 }
 ```
+
+## Understanding Error Codes
+
+&#x20;`32600` - `The maximum batch size that can be sent over a websocket connection is 10. Please decrease the batch size and try again.`
+
+In general, we recommend all JSON RPC traffic be sent over HTTP instead of over a websocket connection. In particular, HTTP retries have better support and load scales more optimially on the backend. By reducing reliance on a single websocket connection, users will also reduce points of failure. Please reach out to our team if you need assistance migrating!
