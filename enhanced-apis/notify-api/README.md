@@ -559,7 +559,7 @@ If you want to learn more about how to leverage webhooks for your application, o
 
 For tutorials on integrating notifications into your dApp try out the following:
 
-* [Integrating Historical Transaction Data into your dApp](../../tutorials/transfers-tutorial.md)
+* [Alchemy Notify Tutorial: Tracking Transaction Life Cycles](../../tutorials/tracking-transaction-life-cycles.md)
 * [Building a dApp with Real-Time Transaction Notifications](../../tutorials/building-a-dapp-with-real-time-transaction-notifications.md)
 
 {% content-ref url="using-notify.md" %}
