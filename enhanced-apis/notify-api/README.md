@@ -223,12 +223,12 @@ Alchemy
  to use the Notify API 
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" name="app_id" type="string" required="false" %}
+{% swagger-parameter in="body" name="network *REQUIRED*" type="string" required="true" %}
 
 
-[App Id](./#app_id)
+[Network](./#network)
 
-.
+ for webhook
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="webhook_type *REQUIRED*" type="string" required="true" %}
@@ -241,6 +241,14 @@ Webhook type, see
 
 {% swagger-parameter in="body" name="webhook_url *REQUIRED*" type="string" required="true" %}
 URL where requests are sent.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="app_id" type="string" required="false" %}
+
+
+[App Id](./#app_id)
+
+. Required for mined and dropped webhooks, optional for address activity. 
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="addresses" type="array" required="false" %}
