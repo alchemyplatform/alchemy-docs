@@ -1,10 +1,17 @@
 ---
-description: >-
-  Follow this two step guide to integrate your MetaMask wallet with Alchemy's
-  endpoint!
+description: Follow this guide if you're looking for an Infura alternative for Metamask.
 ---
 
 # How to Speed Up MetaMask Transactions
+
+## Steps to update your Metamask
+
+1. [Create a free account on Alchemy](connecting-metamask-to-alchemy.md#1.-create-a-free-account-on-alchemy)&#x20;
+2. [Create an API key for the desired Network on Metamask](connecting-metamask-to-alchemy.md#2.-create-an-api-key-for-the-desired-network-on-metamask)&#x20;
+3. [Choose "Custom RPC" in Metamask](connecting-metamask-to-alchemy.md#3.-choose-custom-rpc-in-metamask)
+4. [Fill in the network details](connecting-metamask-to-alchemy.md#4.-fill-in-the-required-information)
+
+## Why is Metamask not working?
 
 MetaMask uses a default node provider to display and send transactions for your account. Because the node provider does not allocate dedicated resources to each user, it may be slow sometimes, i.e. for transaction broadcasting.
 
@@ -12,27 +19,27 @@ Alchemy provides a much better experience when it is used as your MetaMask RPC p
 
 **NOTE:** This does not mean that Alchemy will have access to your private keys or wallet!
 
-For a video version of this doc, check this out:
+For a video version of this guide, check this out:
 
 {% embed url="https://www.youtube.com/watch?v=VUkhkSgMtdk" %}
 
-### 1. Create a free account on [Alchemy](https://alchemy.com/?a=991c4e82df)
+## Step 1: Create a free account on [Alchemy](https://alchemy.com/?a=991c4e82df)
 
 We'll need to use an Alchemy API key to replace our Metamask endpoint. You can create a free account [here](https://alchemy.com/?a=991c4e82df).&#x20;
 
-### 2. Create an API key for the desired Network on Metamask&#x20;
+## Step 2: Create an API key for the desired Network on Metamask&#x20;
 
 If we want to replace our Ethereum Mainnet endpoint (most popular) in Metamask we'll need to create an Ethereum Mainnet API key on Alchemy. For instructions on how to do so, check out [step 1 on this guide](../introduction/getting-started/#1.create-an-alchemy-key). Or watch the video below.&#x20;
 
 {% embed url="https://youtu.be/tfggWxfG9o0" %}
 
-### 3. Choose "Custom RPC" in Metamask
+## Step 3: Choose "Custom RPC" in Metamask
 
 Navigate to your MetaMask wallet and click the network dropdown at the top, selecting **"Custom RPC"** at the bottom
 
 ![Click on "Custom RPC" at the very bottom of the network dropdown.](<../.gitbook/assets/Screen Shot 2021-11-15 at 9.47.25 AM.png>)
 
-### 4. Fill in the required information
+## Step 4: Fill in the network details
 
 This is where you'll grab your Alchemy API Key for the desired network.
 
