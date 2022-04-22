@@ -10,20 +10,33 @@ MetaMask uses a default node provider to display and send transactions for your 
 
 Alchemy provides a much better experience when it is used as your MetaMask RPC provider. If you'd like to switch this over to Alchemy to be able to see your transactions in your Alchemy dashboard and use Alchemy specific features and tools, this doc will show you how to integrate your MetaMask account in _two easy steps_.
 
-\*\*NOTE: \*\*This does not mean that Alchemy will have access to your private keys or wallet!
+**NOTE:** This does not mean that Alchemy will have access to your private keys or wallet!
 
 For a video version of this doc, check this out:
 
 {% embed url="https://www.youtube.com/watch?v=VUkhkSgMtdk" %}
 
-#### 1. Navigate to your MetaMask wallet and click the network dropdown at the top, selecting "Custom RPC" at the bottom
+### 1. Create a free account on [Alchemy](https://alchemy.com/?a=991c4e82df)
+
+We'll need to use an Alchemy API key to replace our Metamask endpoint. You can create a free account [here](https://alchemy.com/?a=991c4e82df).&#x20;
+
+### 2. Create an API key for the desired Network on Metamask&#x20;
+
+If we want to replace our Ethereum Mainnet endpoint (most popular) in Metamask we'll need to create an Ethereum Mainnet API key on Alchemy. For instructions on how to do so, check out [step 1 on this guide](../introduction/getting-started/#1.create-an-alchemy-key). Or watch the video below.&#x20;
+
+{% embed url="https://youtu.be/tfggWxfG9o0" %}
+
+### 3. Choose "Custom RPC" in Metamask
+
+Navigate to your MetaMask wallet and click the network dropdown at the top, selecting **"Custom RPC"** at the bottom
 
 ![Click on "Custom RPC" at the very bottom of the network dropdown.](<../.gitbook/assets/Screen Shot 2021-11-15 at 9.47.25 AM.png>)
 
-#### 2. Fill in the required information
+### 4. Fill in the required information
 
-* Make sure you use the correct Alchemy API URL for your desired network
-* Alchemy supported chains:
+This is where you'll grab your Alchemy API Key for the desired network.
+
+Here is the information on specific Netoworks:
 
 | Network                 | RPC Base URL                                                                                     | Chain ID | Block Explorer URL                                            | Symbol (optional) |
 | ----------------------- | ------------------------------------------------------------------------------------------------ | -------- | ------------------------------------------------------------- | ----------------- |
