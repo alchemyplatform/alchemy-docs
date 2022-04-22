@@ -67,7 +67,7 @@ The `alchemy_newFullPendingTransactions` subscription type is costly to maintain
 
 **NOTE:**&#x20;
 
-* The naming of this subscription is different from the naming of the web3 subscription API, [`alchemy_fullPendingTransactions`](../alchemy-web3/enhanced-web3-api.md#web-3-eth-subscribe-alchemy\_fullpendingtransactions). This is to maintain naming standard with  Web3.js.
+* The naming of this subscription is different from the naming of the web3 subscription API, [`alchemy_fullPendingTransactions`](../../documentation/alchemy-web3/enhanced-web3-api.md#web-3-eth-subscribe-alchemy\_fullpendingtransactions). This is to maintain naming standard with  Web3.js.
 * This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
 {% endhint %}
 
@@ -471,12 +471,9 @@ subscription.unsubscribe(
 }
 ```
 
-## Understanding Error Codes
+## Error Codes
 
-* Error Code: `32600`
+| Error Code | Error Message                                                                                                                | Solution                                                                                                                                                         |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `32600`    | `"The maximum batch size that can be sent over a websocket connection is 10. Please decrease the batch size and try again."` | Occurs when user attempts to send high-volume JSON-RPC traffic over Websockets. We recommend this traffic be sent over HTTP instead to optimize server backends. |
 
-`"The maximum batch size that can be sent over a websocket connection is 10. Please decrease the batch size and try again."`
-
-In general, this type of error message is thrown when users are attempting to send high-volume JSON RPC traffic over websockets. We recommend that all JSON RPC traffic be sent over HTTP instead of over a websocket connection to take advantage of better HTTP retries support and to optimize server backends.&#x20;
-
-Please reach out to our team if you need assistance migrating!

@@ -52,6 +52,8 @@
   * [trace\_filter](enhanced-apis/trace-api/trace\_filter.md)
   * [trace\_get](enhanced-apis/trace-api/trace\_get.md)
   * [trace\_transaction](enhanced-apis/trace-api/trace\_transaction.md)
+* [Subscription API (Websockets)](enhanced-apis/subscription-api-websockets/README.md)
+  * [👂 How to Listen to NFT Mints](enhanced-apis/subscription-api-websockets/how-to-listen-to-nft-mints.md)
 * [Unstoppable Domains APIs](enhanced-apis/unstoppable-domains-apis/README.md)
   * [Get records for a domain](enhanced-apis/unstoppable-domains-apis/get-records-for-a-domain.md)
   * [Get records for owner addresses](enhanced-apis/unstoppable-domains-apis/get-records-for-owner-addresses.md)
@@ -222,8 +224,6 @@
 
 ## 📖 Documentation
 
-* [Subscription API (Websockets)](documentation/subscription-api-websockets/README.md)
-  * [👂 How to Listen to NFT Mints](documentation/subscription-api-websockets/how-to-listen-to-nft-mints.md)
 * [Alchemy Web3.js](documentation/alchemy-web3/README.md)
   * [Enhanced Web3 API](documentation/alchemy-web3/enhanced-web3-api.md)
 * [Error Reference](documentation/error-reference.md)
