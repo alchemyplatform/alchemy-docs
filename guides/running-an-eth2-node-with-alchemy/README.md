@@ -141,5 +141,5 @@ Review the requirements and click continue. When ready, submit your transaction 
 
 Congrats! You have successfully submitted your initial deposit to the beacon chain. The final step is to set up your Eth 2.0 client! Alchemy has guides on how to set up both Prysm and Teku:
 
-* [Setting up an Eth 2.0 Node or Validator with Prysm](https://docs.alchemy.com/alchemy/guides/running-an-eth2-node-with-alchemy/setting-up-an-eth-2.0-node-or-validator-with-prysm)
-* [Setting up an Eth 2.0 Validator with Teku](https://docs.alchemy.com/alchemy/guides/running-an-eth2-node-with-alchemy/eth2-staking-teku)
+* [Setting up an Eth 2.0 Node or Validator with Prysm](eth2-staking-prysm.md)
+* [Setting up an Eth 2.0 Validator with Teku](eth2-staking-teku.md)
