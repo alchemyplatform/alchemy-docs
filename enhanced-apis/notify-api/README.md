@@ -547,14 +547,19 @@ There are four types of webhooks to receive notifications for:
 
 To see in depth explanations for each of the Alchemy Notify webhooks check out the [Using Webhooks](using-notify.md) guide.
 
-## Other Resources&#x20;
+## Other Resources
 
-See [frequently asked questions](using-notify.md#common-questions) on the using Alchemy Notify/Webhooks page for information on:
+If you want to learn more about how to leverage webhooks for your application, or have specific questions about Alchemy Notify, check out the [Using Alchemy Notify ](using-notify.md)doc and get information like:&#x20;
 
-* [Capcity Limit](using-notify.md#capacity-limit)
+* [What are webooks?](using-notify.md#what-are-webhooks)
+* [Capcity Limit for Webhooks](using-notify.md#capacity-limit)
 * [Webhook IP Addresses](using-notify.md#webhook-ip-addresses)
 * [Difference between V1 and V2](using-notify.md#whats-the-difference-between-notify-v1-and-v2)
 * [Best practices](using-notify.md#what-are-some-best-practices-when-using-webhooks-with-a-large-number-of-addresses)&#x20;
+
+For tutorials on integrating notifications into your dApp try out the following:
+
+*
 
 {% content-ref url="using-notify.md" %}
 [using-notify.md](using-notify.md)
