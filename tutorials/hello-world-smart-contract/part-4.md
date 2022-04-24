@@ -512,7 +512,7 @@ You can download and create a Metamask account for free [here](https://metamask.
 
 ### Add ether from a Faucet <a href="step-4-add-ether-from-a-faucet" id="step-4-add-ether-from-a-faucet"></a>
 
-To sign a transaction on the Ethereum blockchain, we’ll need some fake Eth. To get Eth you can go to the [Ropsten faucet](https://faucet.ropsten.be) and enter your Ropsten account address, then click “Send Ropsten Eth.” You should see Eth in your Metamask account soon after!
+To sign a transaction on the Ethereum blockchain, we’ll need some fake Eth. To get Eth you can go to the [Ropsten faucet](https://fauceth.komputing.org) and enter your Ropsten account address, then click “Send Ropsten Eth.” You should see Eth in your Metamask account soon after!
 
 ### Check your Balance <a href="step-5-check-your-balance" id="step-5-check-your-balance"></a>
 
