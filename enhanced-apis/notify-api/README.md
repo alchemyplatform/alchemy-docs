@@ -343,6 +343,20 @@ curl https://dashboard.alchemyapi.io/api/create-webhook \
 {% swagger baseUrl="https://dashboard.alchemyapi.io" path="/api/update-webhook-addresses" method="patch" summary="Add & remove webhook addresses " %}
 {% swagger-description %}
 Add or remove addresses from a specific webhook.
+
+\
+
+
+
+
+\
+
+
+
+
+**`*`**
+
+`This webhook endpoint is idempotent, meaning that identical requests can be made once or several times in a row with the same effect`
 {% endswagger-description %}
 
 {% swagger-parameter in="header" name="X-Alchemy-Token *REQUIRED*" type="string" required="true" %}
