@@ -141,4 +141,4 @@ Since each request is weighted differently, we base this on the total compute un
 | Growth     | 660    |
 | Enterprise | Custom |
 
-If you are experiencing throughput errors, or want create a more robust and reliable experience for your users, we recommend [implementing retries](../guides/rate-limits.md#retries).
+If you are experiencing throughput errors, or want create a more robust and reliable experience for your users, we recommend [implementing retries](throughput.md#retries).

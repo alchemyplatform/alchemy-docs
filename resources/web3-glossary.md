@@ -217,7 +217,7 @@ Compute units or CUs represent the cost associated with given API calls. See the
 
 ### **Rate Limit**
 
-Rate limit is the cap on FCUs permitted. See the [Rate Limit](../guides/rate-limits.md) page to learn more.
+Rate limit is the cap on FCUs permitted. See the [Rate Limit](../documentation/throughput.md) page to learn more.
 
 ### **Alchemy Web3**
 

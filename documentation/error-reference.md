@@ -12,13 +12,13 @@ In addition to the standard [Ethereum JSON-RPC error codes](https://eth.wiki/jso
 
 ### HTTP Status Codes
 
-| Code | Meaning                                                                                                                                                                                                    |
-| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 400  | Bad Request -- Your request is invalid. Double-check your JSON-RPC body.                                                                                                                                   |
-| 401  | Unauthorized -- You must authenticate your request with an API key. Check out how to [create a key](../introduction/getting-started/#1-create-an-alchemy-key) if you do not have one.                      |
-| 403  | Forbidden -- You've hit your **capacity limit**, or your request was rejected by your app's **whitelist settings**.                                                                                        |
-| 429  | Too Many Requests -- You've exceeded your concurrent requests capacity or [compute units](compute-units.md) per second capacity. Check out the [Rate Limits](../guides/rate-limits.md) page for solutions. |
-| 500  | Internal Server Error -- We're unable to process your request right now. Get in touch with us if you see this.                                                                                             |
+| Code | Meaning                                                                                                                                                                                         |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 400  | Bad Request -- Your request is invalid. Double-check your JSON-RPC body.                                                                                                                        |
+| 401  | Unauthorized -- You must authenticate your request with an API key. Check out how to [create a key](../introduction/getting-started/#1-create-an-alchemy-key) if you do not have one.           |
+| 403  | Forbidden -- You've hit your **capacity limit**, or your request was rejected by your app's **whitelist settings**.                                                                             |
+| 429  | Too Many Requests -- You've exceeded your concurrent requests capacity or [compute units](compute-units.md) per second capacity. Check out the [Rate Limits](throughput.md) page for solutions. |
+| 500  | Internal Server Error -- We're unable to process your request right now. Get in touch with us if you see this.                                                                                  |
 
 ### Example Response
 
@@ -42,7 +42,7 @@ For JSON-RPC specific errors, Alchemy returns a `200` with the JSON-RPC error in
 
 | Code             | Possible Return message                                     | Description                                                                                                                                                 |
 | ---------------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 429              | Your app has exceeded its compute unit per second capacity. | Check out the [Rate Limits](../guides/rate-limits.md) page for solutions.                                                                                   |
+| 429              | Your app has exceeded its compute unit per second capacity. | Check out the [Rate Limits](throughput.md) page for solutions.                                                                                              |
 | -32700           | Parse error                                                 | Invalid JSON was received by the server. An error occurred on the server while parsing the JSON text.                                                       |
 | -32600           | Invalid Request                                             | The JSON sent is not a valid Request object.                                                                                                                |
 | -32601           | Method not found                                            | The method does not exist / is not available.                                                                                                               |

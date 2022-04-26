@@ -8,7 +8,7 @@ description: Understand how throughput works on Alchemy and how to handle them.
 
 Throughput is a measure of the number of requests your application can send per second. It is often known as the applications "rate limit".&#x20;
 
-If a large number of requests are sent at the same time, you may hit your throughput capacity. In most instances, this will not affect your user's experience engaging with your application. As long as retries are implemented, the requests will go through in the following second. As a general rule of thumb, if you are experiencing **under 30%** rate limited requests, [using retries](rate-limits.md#retries) is the best solution.
+If a large number of requests are sent at the same time, you may hit your throughput capacity. In most instances, this will not affect your user's experience engaging with your application. As long as retries are implemented, the requests will go through in the following second. As a general rule of thumb, if you are experiencing **under 30%** rate limited requests, [using retries](throughput.md#retries) is the best solution.
 
 ## :scroll: What are Compute Units Per Second (CUPS)?
 
@@ -26,7 +26,7 @@ See the table below for the number of compute units per second (CUPS) permitted 
 
 ## :inbox\_tray: Error **Response**
 
-When you exceed your capacity, you will receive an error response. This response will be different depending on whether you are connecting to Alchemy using HTTP or [WebSockets](using-websockets.md).
+When you exceed your capacity, you will receive an error response. This response will be different depending on whether you are connecting to Alchemy using HTTP or [WebSockets](../guides/using-websockets.md).
 
 {% hint style="info" %}
 If you would like to test receiving a 429 response, send a POST request to [https://httpstat.us/429](https://httpstat.us/429).
@@ -52,21 +52,21 @@ You will receive a JSON-RPC error response with error code 429. For example, the
 
 ## :right\_facing\_fist: Retries
 
-All you need to do to easily handle 429 errors is to retry the request. This will ensure a great user experiences with any API even if you aren't hitting rate limits. Once you've implemented retries, [test out the behavior](rate-limits.md#test-rate-limits-retries) to make sure they work as expected.
+All you need to do to easily handle 429 errors is to retry the request. This will ensure a great user experiences with any API even if you aren't hitting rate limits. Once you've implemented retries, [test out the behavior](throughput.md#test-rate-limits-retries) to make sure they work as expected.
 
 There are several options for implementing retries.
 
 ### **Option 1: Alchemy Web3**
 
-[Alchemyweb3.js](../documentation/alchemy-web3/) is a Web3.js wrapper that automatically handles retry logic for you. It's the easiest way to build retry logic into all of your requests.&#x20;
+[Alchemyweb3.js](alchemy-web3/) is a Web3.js wrapper that automatically handles retry logic for you. It's the easiest way to build retry logic into all of your requests.&#x20;
 
 ### **Option 2: `Retry-After`**
 
-If you are using HTTP and not WebSockets you may receive a `Retry-After` header in the HTTP response. This indicates how long you should wait before making a follow-up request. We still recommend using [exponential backoff ](rate-limits.md#option-4-exponential-backoff)since `Retry-After` only accepts an integer number of seconds.
+If you are using HTTP and not WebSockets you may receive a `Retry-After` header in the HTTP response. This indicates how long you should wait before making a follow-up request. We still recommend using [exponential backoff ](throughput.md#option-4-exponential-backoff)since `Retry-After` only accepts an integer number of seconds.
 
 ### **Option 3: Simple Retries**
 
-If [exponential backoff](rate-limits.md#option-3-exponential-backoff) poses an challenge to you, a simple retry solution is to wait a random interval between 1000 and 1250 milliseconds after receiving a `429` response, and sending the request again, up to some maximum number of attempts you are willing to wait.
+If [exponential backoff](throughput.md#option-3-exponential-backoff) poses an challenge to you, a simple retry solution is to wait a random interval between 1000 and 1250 milliseconds after receiving a `429` response, and sending the request again, up to some maximum number of attempts you are willing to wait.
 
 ### **Option 4: Exponential Backoff**
 
