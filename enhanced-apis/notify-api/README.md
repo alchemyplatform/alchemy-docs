@@ -354,9 +354,11 @@ Add or remove addresses from a specific webhook.
 
 
 
-**`*`**
+*****
 
-`This webhook endpoint is idempotent, meaning that identical requests can be made once or several times in a row with the same effect`
+_This webhook endpoint is idempotent, meaning that identical requests can be made once or several times in a row with the same effect_
+
+\*
 {% endswagger-description %}
 
 {% swagger-parameter in="header" name="X-Alchemy-Token *REQUIRED*" type="string" required="true" %}
