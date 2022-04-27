@@ -20,7 +20,7 @@ params: [
 
 #### Returns
 
-See [`eth_getBlockByHash`](<eth-getblockbyhash .md>)
+See [`eth_getBlockByHash`](eth-getblockbyhash.md)
 
 #### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getUncleByBlockNumberAndIndex%22%2C%22paramValues%22%3A%5B%220x29c%22%2C%220x0%22%5D%7D)
 

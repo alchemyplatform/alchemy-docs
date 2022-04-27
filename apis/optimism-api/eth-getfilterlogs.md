@@ -7,7 +7,7 @@ description: >-
 # eth\_getFilterLogs - Optimism
 
 {% hint style="warning" %}
-This method only works for filters creates with [`eth_newFilter`](<eth-newfilter .md>)not for filters created using [`eth_newBlockFilter`](<eth\_newblockfilter .md>) or [`eth_newPendingTransactionFilter`](eth-newpendingtransactionfilter.md), which will return `"filter not found".`
+This method only works for filters creates with [`eth_newFilter`](eth-newfilter.md)not for filters created using [`eth_newBlockFilter`](eth\_newblockfilter.md) or [`eth_newPendingTransactionFilter`](eth-newpendingtransactionfilter.md), which will return `"filter not found".`
 
 #### eth\_getLogs vs. eth\_getFilterLogs
 
@@ -29,7 +29,7 @@ params: [
 
 #### **Returns**
 
-See [`eth_getFilterChanges`](<eth-getfilterchanges .md>)
+See [`eth_getFilterChanges`](eth-getfilterchanges.md)
 
 #### [**Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getFilterLogs%22%2C%22paramValues%22%3A%5B%220xfe704947a3cd3ca12541458a4321c869%22%5D%7D)
 

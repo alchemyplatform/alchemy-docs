@@ -22,7 +22,7 @@ params: [
 
 #### Returns
 
-See [`eth_getBlockByHash`](<eth-getblockbyhash .md>)
+See [`eth_getBlockByHash`](eth-getblockbyhash.md)
 
 Request
 

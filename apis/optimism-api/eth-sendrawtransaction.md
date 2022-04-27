@@ -26,7 +26,7 @@ params: ["0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb97
 
 `DATA`, 32 Bytes - the transaction hash, or the zero hash if the transaction is not yet available.
 
-Use [`eth_getTransactionReceipt`](<eth-gettransactionreceipt .md>) to get the contract address after the transaction was mined when you created a contract.
+Use [`eth_getTransactionReceipt`](eth-gettransactionreceipt.md) to get the contract address after the transaction was mined when you created a contract.
 
 {% hint style="danger" %}
 \*\*Note: \*\*Since `eth_sendRawTransaction` is a request used for writing to the blockchain and changes its state, it is impossible to execute the same request twice. This means if you were to copy the example given below you will not get the expected response.

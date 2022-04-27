@@ -8,7 +8,7 @@ description: >-
 
 Unlike `eth_newBlockFilter`which notifies you of \*\*all **new** \*\*blocks, you can pass in filter options to track new logs matching the topics specified. \*\* \*\*
 
-To check if the state has changed, call [`eth_getFilterChanges.`](<eth-getfilterchanges .md>)
+To check if the state has changed, call [`eth_getFilterChanges.`](eth-getfilterchanges.md)
 
 {% hint style="info" %}
 **A note on specifying topic filters:**
