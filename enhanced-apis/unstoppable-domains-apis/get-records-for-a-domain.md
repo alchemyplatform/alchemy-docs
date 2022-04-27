@@ -1,31 +1,24 @@
 ---
-description: GET /domains/<name>
+description: Gets all the records attached to a domain name.
 ---
 
 # Get records for a domain
 
+```
+GET https://unstoppabledomains.g.alchemy.com/domains/<domain name>
+```
 
-
-`GET https://unstoppabledomains.g.alchemy.com/domains/<domain name>`
-
-The domains endpoint is the main endpoint to resolve Unstoppable domain name into records. All known records will be returned In a single response.
-
-At the time of writing, the Resolution Service supports the following TLD’s:
-
-* .zil
-* .crypto
-* .nft
-* .blockchain
-* .bitcoin
-* .coin
-* .wallet
-* .888
-* .dao
-* .x
+The `domains` endpoint is the main endpoint to resolve Unstoppable domain names into records. The endpoint will return all configured resolution records in a single response.
 
 ## URL Params
 
-* `domain name`: This can be any domain name or TLD. To simplify communication resolution service will not return error in case of invalid domain or unsupported TLD.
+| Name | Type | Mandatory | Description |
+| - | - | - | - |
+| domain name | STRING | YES | A domain name registered by Unstoppable Domains. See all the [supported domain endings](https://docs.unstoppabledomains.com/developer-toolkit/resolution-service-api/#supported-domains-for-resolution-service-api) |
+
+{% hint style="info" %}
+The resolution service will not return an error in the case of an invalid domain or unsupported domain ending to simplify communication.
+{% endhint %}
 
 ## Query Params
 
@@ -35,26 +28,27 @@ At the time of writing, the Resolution Service supports the following TLD’s:
 
 A single object with the following fields:
 
-* `records`: This field is a key-value dictionary with all domain records that were set on chain. This includes cryptocurrency addresses and IPFS website hashes. To get more details - visit the Unstoppable Domains records reference section: [https://docs.unstoppabledomains.com/domain-registry-essentials/records-reference](https://docs.unstoppabledomains.com/domain-registry-essentials/records-reference)
-* `meta`: This field is a key-value dictionary with general information about the domain:
-  * `domain`: (string) Domain name
-  * `blockchain`: (string) On what blockchain the domain is located. Blockchain names are coin types according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md)
-  * `networkId`: (number) Blockchain network ID
-    * 1 - Ethereum or Zilliqa Mainnet
-    * 137 - Polygon (Matic) Mainnet
-    * 80001 - Polygon (matic) Mumbai Testnet
-    * 4 - Ethereum Rinkeby Testnet
-    * 5 - Ethereum Goerli Testnet
-* `resolver` - (string) resolver smart contract address. This contract is responsible for managing domain records.
-* `registry` - (string) registry smart contract address. Registry is the most essential smart contract in UNS. This is the contract that defines ownership rules, how domains are minted, provides ERC-721 token metadata, and stores a metadata-enriched list of all domains.
+* `records`: a key-value dictionary with all domain records set on-chain. This includes wallet addresses and IPFS website hashes. To get more details, visit the Unstoppable Domains [Records Reference](https://docs.unstoppabledomains.com/getting-started/domain-registry-essentials/records-reference/) section.
+* `meta`: a key-value dictionary with general information about the domain:
+    * domain: (string) domain name.
+    * blockchain: (string) the blockchain the domain is located (MATIC, ETH, ZIL). The blockchain names are coin types according to [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md).
+    * networkId: (number) the blockchain network ID.
+        * 1 - Ethereum or Zilliqa Mainnet
+        * 137 - Polygon (Matic) Mainnet
+        * 80001 - Polygon (Matic) Mumbai Testnet
+        * 4 - Ethereum Rinkeby Testnet
+        * 5 - Ethereum Goerli Testnet
+* `owner`: (string) the wallet address that owns the domain.
+* `resolver`: (string) the Resolver smart contract address. This contract is responsible for managing domain records.
+* `registry`: (string) the Registry smart contract address. Registry manages domain ownership, minting domains and subdomains, storing domain metadata, and burning domains. The registry also stores and manages domain records in the Unstoppable Name Service (UNS).
 
 ## Example
 
-Here is an example request to query for the records and metadata for the domain `brad.crypto`.
+Here is an example request to query for the records and metadata of the `brad.crypto` domain.
 
 ### Request
 
-```
+```bash
 curl \
 --request GET 'https://unstoppabledomains.g.alchemy.com/domains/brad.crypto' \
 --header 'Authorization: Bearer <YOUR API KEY>'
