@@ -8,7 +8,9 @@ description: >-
 
 ## What testnet should developers use for Ethereum development?
 
-For devs looking to build on testnets, the Ethereum Foundation will be winding down support for the Rinkeby, Ropsten, and Kovan networks after Ethereum's transition to a proof-of-stake model. To ensure that your testnet applications remain fully functional after the transition, we recommend using Goerli, which will remain unchanged.
+#### All developers getting started on Alchemy should use Goerli as their testnet of choice for development!
+
+The Ethereum Foundation will be winding down support for the Rinkeby, Ropsten, and Kovan networks after Ethereum's transition to a proof-of-stake model. To ensure that your testnet applications remain fully functional after the transition, we recommend using Goerli, which will remain unchanged.
 
 ## How do I get the timestamp for a transaction?
 
