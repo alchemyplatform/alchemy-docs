@@ -1,10 +1,11 @@
 ---
 description: >-
-  A detailed guide to choosing which Network to deploy on. Compares Layer 1
-  chains vs Layer 2 chains as well as Mainntet vs Testnets environments.
+  A detailed guide to choosing which Network to deploy on for Ethereum and Layer
+  2s. Compares Layer 1 chains vs Layer 2 chains as well as Mainnet vs Testnet
+  environments.
 ---
 
-# Choosing a Network
+# Choosing a Web3 Network
 
 ## Layer 1 vs. Layer 2
 
@@ -18,7 +19,7 @@ Every blockchain (including both Layer 1s and Layer 2s) has a mainnet. The mainn
 
 There are four different types of testnets that Alchemy supports.
 
-### [**Goerli**](https://goerli.etherscan.io)
+### **Goerli**
 
 Goerli is a proof-of-authority blockchain, supported by multiple clients. This testnet has the goal of being both widely usable across all client implementations supporting Clique Proof of Authority (PoA) engine and robust enough to guarantee consistent availability and high reliability.
 
@@ -38,7 +39,7 @@ Goerli is a proof-of-authority blockchain, supported by multiple clients. This t
 
 Check out more info about Goerli on the [GitHub](https://github.com/goerli/testnet).
 
-### [**Rinkeby**](https://rinkeby.etherscan.io)
+### **Rinkeby**
 
 Rinkeby is a proof-of-authority blockchain that uses the Clique PoA consensus protocol, and is only supported by Geth. This testnet is immune to spam attacks since the Ether supply is controlled by trusted parties and has to be requested from a [faucet](https://www.rinkebyfaucet.com), not mined.
 
@@ -53,7 +54,7 @@ Rinkeby is a proof-of-authority blockchain that uses the Clique PoA consensus pr
 
 Check out more info about Rinkeby on the [website](https://www.rinkeby.io).
 
-### [**Kovan**](https://kovan.etherscan.io)
+### **Kovan**
 
 Kovan is a proof-of-authority blockchain, started by the Parity team and supported by Parity only. Ether can’t be mined; it has to be requested from the [faucet](https://github.com/kovan-testnet/faucet). This testnet is known for being immune to spam attacks.
 
@@ -67,7 +68,7 @@ Kovan is a proof-of-authority blockchain, started by the Parity team and support
 
 Check out more info about Kovan on the [GitHub](https://github.com/kovan-testnet/proposal).
 
-### [**Ropsten**](https://ropsten.etherscan.io)
+### **Ropsten**
 
 Ropsten is a proof-of-work blockchain that most closely resembles the current Ethereum production environment, it is supported by Geth and Parity.
 
@@ -87,7 +88,7 @@ Check out more info about Ropsten on the [GitHub](https://github.com/ethereum/ro
 
 ## Arbitrum
 
-### [Mainnet](https://developer.offchainlabs.com/docs/developer\_quickstart)
+### Mainnet
 
 Arbitrum currently has one testnet on connected to Ethereum's Kovan testnet ([described ](choosing-a-network.md#kovan)[above](choosing-a-network.md#kovan)). This operates exactly the same as Arbitrum mainnet but is built as a smart contract on Kovan instead of on Ethtereum mainnet. It is currently under development and will be released shortly.
 
@@ -96,7 +97,7 @@ Arbitrum currently has one testnet on connected to Ethereum's Kovan testnet ([de
 * Symbol: ETH
 * Block Explorer URL: [https://explorer.arbitrum.io](https://explorer.arbitrum.io)
 
-### [Rinkeby](https://developer.offchainlabs.com/docs/public\_testnet)
+### Rinkeby
 
 Arbitrum currently has one testnet on connected to Ethereum's Rinkeby testnet. This operates exactly the same as Arbitrum mainnet but is built as a smart contract on Rinkeby instead of on Ethtereum mainnet.
 
@@ -116,3 +117,7 @@ Polygon has one testnet known as the Mumbai network, which operates exactly the 
   * [https://mumbaifaucet.com/](https://mumbaifaucet.com)
 * Block Explorer&#x20;
   * [https://mumbai.polygonscan.com/](https://mumbai.polygonscan.com)
+
+## Which Ethereum Testnet Should I use?
+
+We recommend using the [Goerli testnet](choosing-a-network.md#goerli) as all other testnets on Ethereum are expected to be deprecated after the Merge.&#x20;
