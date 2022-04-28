@@ -102,6 +102,7 @@
   * [web3\_sha3](apis/ethereum/web3\_sha3-1.md)
   * [eth\_subscribe - Ethereum](apis/ethereum/eth\_subscribe-1.md)
   * [eth\_unsubscribe - Ethereum](apis/ethereum/eth\_unsubscribe-1.md)
+  * [Ethereum API FAQ](apis/ethereum/ethereum-api-faq.md)
 * [Polygon API](apis/polygon-api/README.md)
   * [eth\_blockNumber](apis/polygon-api/eth\_blocknumber.md)
   * [eth\_getBlockByHash](apis/polygon-api/eth\_getblockbyhash.md)

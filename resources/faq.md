@@ -44,10 +44,6 @@ If you run into your capacity limit, we recommend switching on [autoscale](https
 
 Archive data is free and available for all of our customers, no additional set up necessary!
 
-## How do I get the timestamp for a transaction?
-
-A transaction object will have a block number associated with it, the block number is Ethereum's measure of time, however, if you want a standard timestamp you can easily get that by making a call to [`eth_getBlockByNumber`](../apis/ethereum/#eth\_getblockbynumber) and specifying the `blockNumber` field. Here is an [example request](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getBlockByNumber%22%2C%22paramValues%22%3A%5B%22latest%22%2Cfalse%5D%7D). If you only have the transaction hash, you can get the full object by making a request to [`eth_getTransactionByHash`](../apis/ethereum/#eth\_gettransactionbyhash).
-
 ## Why can't I invite a user who is already on a team? <a href="#why-cant-i-invite-a-user-who-is-already-on-a-team" id="why-cant-i-invite-a-user-who-is-already-on-a-team"></a>
 
 You can! While we don't allow a single email to be on multiple teams due to UX concerns, one thing you can do is invite the user by appending a + to their email. For example, a user with email example@gmail.com could use example+team1@gmail.com and example+team2@gmail.com to be on two different teams, while still getting all their emails to one inbox!
@@ -91,13 +87,6 @@ We do support compressed response payloads by using a Content-Encoding of gzip o
 Compute units are a way of measuring the resources it takes to serve your traffic, we implemented this to make sure pricing is sustainable and cost-effective as you scale. Check out [this blog post](https://blog.alchemyapi.io/customer-blog-posts/alchemy-usage) for the reason we decided to implement a compute unit system.
 
 You can see a breakdown of each method and its associated compute unit [here](https://docs.alchemyapi.io/documentation/compute-units).
-
-## How do I distinguish between a contract address and a wallet address? <a href="#how-do-i-distinguish-between-a-contract-address-and-a-wallet-address" id="how-do-i-distinguish-between-a-contract-address-and-a-wallet-address"></a>
-
-A super easy way to distinguish between these two addresses is by calling [eth\_getCode](https://alchemyapi/s/alchemy/documentation/alchemy-api-reference/json-rpc#eth\_getcode), which will return contract code if it's a contract and nothing if it's a wallet. Here's an example of both using our composer tool:
-
-* [**0x Contract Address**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getCode%22%2C%22paramValues%22%3A%5B%220xe41d2489571d322189246dafa5ebde1f4699f498%22%2C%22latest%22%5D%7D)
-* [**Vitalik's Wallet Address**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getCode%22%2C%22paramValues%22%3A%5B%220xAb5801a7D398351b8bE11C439e05C5B3259aeC9B%22%2C%22latest%22%5D%7D)
 
 ## What are best practices for avoiding re-orgs when calling JSON-RPC methods? <a href="#how-do-i-distinguish-between-a-contract-address-and-a-wallet-address" id="how-do-i-distinguish-between-a-contract-address-and-a-wallet-address"></a>
 
