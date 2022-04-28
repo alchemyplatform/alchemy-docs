@@ -30,8 +30,8 @@ There are five main types of transfers that are captured when using this API.
 
 * **Ethereum Mainnet:** External, Internal, Token, ERC20, ERC721, ERC1155
 * **Ethereum Testnets:**\
-  **-** Rinkeby, Kovan, Ropsten: Token, ERC20, ERC721, ERC1155\
-  \- Goerli: Exteranl, Token, ERC20, ERC721, ERC1155
+  **- Rinkeby, Kovan, Ropsten**: Token, ERC20, ERC721, ERC1155\
+  \- **Goerli**: Exteranl, Token, ERC20, ERC721, ERC1155
 * **Polygon Mainnet:** External, Token, ERC20, ERC721, ERC1155
 * **Polygon Mumbai:** External, Token, ERC20, ERC721, ERC1155
 {% endhint %}
