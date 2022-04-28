@@ -36,9 +36,9 @@ This method takes a domain name as input and returns all the records and metadat
 
 ### Get records for owner addresses
 
-#### Gets all the domain names, records, and metadata owned by a wallet address
+#### Gets all the domain names, records, and metadata owned by a wallet address or configured to a resolution record
 
-This method takes a wallet address as input and returns all the domain names that the address owns with their records and metadata. View the complete documentation for `get records for owner addresses` here:
+This method takes a wallet address or resolution record as input and returns all the domain names that the address owns or configured to the resolution record with their records and metadata. View the complete documentation for `get records for owner addresses` here:
 
 {% content-ref url="get-records-for-owner-addresses.md" %}
 [get-records-for-owner-addresses.md](get-records-for-owner-addresses.md)
