@@ -677,7 +677,7 @@ As an added security measure, you can ensure your webhook notification originate
 
 The changes in webhook V2 are mostly formatting and parameter name differences. Thus, the primary changes that will need to be made are how you process response payloads.
 
-To learn more about why we made this change, check out the [blog post here](https://alchemy.com/blog/launching-notify-v2-with-improvements-to-reliability-scalability-and-security). Although V1 webhooks will still be supported, all net-new webhooks created after **Tuesday, April 26, 2022** will be V2, with the exception of [gas price webhooks](using-notify.md#4.-gas-price).&#x20;
+To learn more about why we made this change, check out the [blog post here](https://alchemy.com/blog/launching-notify-v2-with-improvements-to-reliability-scalability-and-security). Although V1 webhooks will still be supported, all net-new webhooks created after **Wednesday, April 27, 2022** will be V2, with the exception of [gas price webhooks](using-notify.md#4.-gas-price).&#x20;
 
 Here is an overview of the payload changes from V1 to V2:
 
