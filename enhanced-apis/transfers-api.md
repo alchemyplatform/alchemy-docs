@@ -362,10 +362,10 @@ Body:
 
 The documentation in this section only applies to `alchemy_getAssetTransfers` on **Ethereum Testnets** and **Polygon (Mainnet and Mumbai).** For documentation on **Ethereum** **Mainnet**, see [above](transfers-api.md#alchemy\_getassettransfers-ethereum-mainnet).
 
-{% hint style="danger" %}
+{% hint style="warning" %}
 **NOTE: Types of Transfers supported**
 
-`alchemy_getAssetTransfers` **** on Polygon only supports `token`, `ERC20`, `ERC721`, and `ERC1155` transfers, **not** `external` or `internal` MATIC transfers.&#x20;
+`alchemy_getAssetTransfers` **** on Polygon only supports  `external` ,`token`, `ERC20`, `ERC721`, and `ERC1155` transfers, **not**`internal` MATIC transfers.&#x20;
 
 If you'd like support for these transfer types, please [upvote and comment](https://roadmap.alchemy.com/b/feature-requests/support-internal-external-transfers-on-polygon) to add this to our roadmap.
 {% endhint %}
