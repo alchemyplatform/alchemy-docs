@@ -441,7 +441,7 @@ New list of addresses to track. This
 curl https://dashboard.alchemyapi.io/api/update-webhook-addresses \
 -X PUT \
 -H "X-Alchemy-Token":"your-X-Alchemy-Token" \ 
--d '{"webhook_id":104,"addresses":["0x6f8d0c2a2c3a189803f5c6482c88be46a55058c1","0xfdb16996831753d5331ff813c29a93c76834a0ad"]}'
+-d '{"webhook_id":"104","addresses":["0x6f8d0c2a2c3a189803f5c6482c88be46a55058c1","0xfdb16996831753d5331ff813c29a93c76834a0ad"]}'
 ```
 {% endtab %}
 {% endtabs %}
