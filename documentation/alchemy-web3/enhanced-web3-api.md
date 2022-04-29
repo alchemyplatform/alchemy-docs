@@ -6,11 +6,11 @@ description: >-
 
 # Enhanced Web3 API
 
-#### _\*\*Get access to \*\*_[_**Alchemy for free here**_](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_**.**_
+#### _Get access to_ [_**Alchemy for free here**_](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_**.**_
 
 To learn more about the standard web3.js API calls, check out their documentation [here](https://web3js.readthedocs.io/en/v1.2.9/).
 
-## :sunglasses: Enhanced API Calls
+## Enhanced API Calls
 
 ### web3.alchemy.getTokenAllowance({contract, owner, spender})
 

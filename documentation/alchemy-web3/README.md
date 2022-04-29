@@ -7,9 +7,9 @@ description: >-
 
 # Alchemy Web3.js
 
-#### _\*\*Get access to \*\*_[_**Alchemy for free here**_](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_**.**_
+#### _Get access to_ [_**Alchemy for free here**_](https://alchemy.com/?r=e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_**.**_
 
-## :wave: Introduction
+## Introduction
 
 [Alchemy Web3 ](https://github.com/alchemyplatform/alchemy-web3)is a wrapper around [Web3.js](https://web3js.readthedocs.io/en/v1.2.9/), providing enhanced API methods and other crucial benefits listed below. It is designed to require minimal configuration so you can start using it in your app right away.
 
