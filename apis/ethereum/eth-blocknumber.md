@@ -21,6 +21,45 @@ Or check out the example below:
 ### Request
 
 {% tabs %}
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation instructions: https://github.com/alchemyplatform/alchemy-web3
+
+async function main() {
+    const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+    const web3 = createAlchemyWeb3("https://eth-mainnet.alchemyapi.io/v2/your-api-key");
+    const blockNumber = await web3.eth.getBlockNumber();
+    console.log(blockNumber);
+   }
+main();
+```
+{% endtab %}
+
+{% tab title="ethers.js" %}
+```javascript
+// Installation instructions: https://docs.ethers.io/v5/getting-started/#installing
+
+async function main() {
+   const { ethers } = require("ethers");
+   const provider = new ethers.providers.JsonRpcProvider("https://eth-mainnet.alchemyapi.io/v2/your-api-key");
+   const blockNumber = await provider.getBlockNumber();
+   console.log(blockNumber);
+main()
+```
+{% endtab %}
+
+{% tab title="web3.py" %}
+```python
+# Installation Instructions: https://web3py.readthedocs.io/en/latest/quickstart.html#installation
+
+from web3 import Web3, HTTPProvider
+
+web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/your-api-key'))
+blockNumber = web3.eth.blockNumber
+print(blockNumber)
+```
+{% endtab %}
+
 {% tab title="Curl" %}
 ```bash
 curl https://eth-mainnet.alchemyapi.io/v2/your-api-key \
