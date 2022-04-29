@@ -1,5 +1,5 @@
 ---
-description: Understanding NFT API error codes
+description: How to handle NFT API error codes
 ---
 
 # Handling errors
@@ -12,7 +12,7 @@ If present, errors in metadata fulfillment will appear in the `error` field of t
 
 Here are the various errors you can receive and what they mean.
 
-### "Token does not exist"
+### Token does not exist
 
 > [Composer Example](https://eth-mainnet.g.alchemy.com/demo/v1/getNFTMetadata?contractAddress=0x60e4d786628fea6478f785a6d7e704777c86a7c6\&tokenId=2079999)\
 > Contract Address = 0x60e4d786628fea6478f785a6d7e704777c86a7c6\
@@ -99,7 +99,7 @@ In this case, you should retry your request after a variable number of seconds. 
 
 ### Contract does not have any code
 
-**why?**
+**Why?**
 
 Not all addresses are token contracts! If you send us an address for which there is no contract code then we return this error. In order to determine if the address is a contract we call eth\_getCode on the address.
 
@@ -107,3 +107,12 @@ Not all addresses are token contracts! If you send us an address for which there
 
 You should not retry this request. Perhaps you are accessing the contract on the wrong network. For instance you might want to find the contract on Polygon rather than Ethereum.
 
+### Contract returned a broken token uri, do not retry
+
+#### Why?
+
+This occurs when the tokenUri associated with the NFT does not respond to the web request at the time the request was made. This can happen for many reasons including the url not existing, being deprecated, or lacking DNS set up.&#x20;
+
+#### Next steps
+
+There is a chance that the URL gets fixed, in which case retrying the request will return the updated tokenUri if the URL has been updated in time. Otherwise, the URL may be permanently dead.
