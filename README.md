@@ -12,7 +12,7 @@ This documentation contains resources to learn more about Alchemy's core product
 
 ## 📖 API Reference
 
-Check out Alchemy's API Reference pages to understand how to use the [Enhanced APIs](broken-reference), a suite of higher level methods built to streamline your development workflow, and each of the chain specific endpoints for [Ethereum](apis/ethereum/), [Arbitrum](apis/arbitrum/), [Polygon](apis/polygon-api/), [Optimism](apis/optimism-api/), [Flow](https://app.gitbook.com/o/-MB5OnTtI\_5pcZn7v2wm/s/-Mbe-myfcwH3hjIraizf/), and [Crypto.org](https://app.gitbook.com/o/-MB5OnTtI\_5pcZn7v2wm/s/-MR6M26d7HiK3wpCRH-V/)!
+Check out Alchemy's API Reference pages to understand how to use the [Enhanced APIs](broken-reference), a suite of higher level methods built to streamline your development workflow, and each of the chain specific endpoints for [Ethereum](apis/ethereum/), [Arbitrum](apis/arbitrum/), [Polygon](apis/polygon/), [Optimism](apis/optimism/), [Flow](https://app.gitbook.com/o/-MB5OnTtI\_5pcZn7v2wm/s/-Mbe-myfcwH3hjIraizf/), and [Crypto.org](https://app.gitbook.com/o/-MB5OnTtI\_5pcZn7v2wm/s/-MR6M26d7HiK3wpCRH-V/)!
 
 {% content-ref url="broken-reference" %}
 [Broken link](broken-reference)
@@ -22,12 +22,12 @@ Check out Alchemy's API Reference pages to understand how to use the [Enhanced A
 [ethereum](apis/ethereum/)
 {% endcontent-ref %}
 
-{% content-ref url="apis/polygon-api/" %}
-[polygon-api](apis/polygon-api/)
+{% content-ref url="apis/polygon/" %}
+[polygon](apis/polygon/)
 {% endcontent-ref %}
 
-{% content-ref url="apis/optimism-api/" %}
-[optimism-api](apis/optimism-api/)
+{% content-ref url="apis/optimism/" %}
+[optimism](apis/optimism/)
 {% endcontent-ref %}
 
 {% content-ref url="apis/arbitrum/" %}

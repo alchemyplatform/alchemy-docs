@@ -104,7 +104,7 @@ The Mined Transaction Webhook is used to notify your app anytime a transaction s
 *   `network`: Network for the event, can be&#x20;
 
     &#x20;`ARB_MAINNET`, `ARB_RINKEBY`, `MATIC_MAINNET`, `MATIC_MUMBAI`, `OPT_MAINNET`, `OPT_KOVAN`, `ETH_MAINNET`, `ETH_GOERLI`, `ETH_ROPSTEN`, `ETH_RINKEBY`, `ETH_KOVAN`
-* `transaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon-api/eth\_gettransactionbyhash.md))
+* `transaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth\_gettransactionbyhash.md))
 
 **Example:**
 
@@ -144,7 +144,7 @@ The Mined Transaction Webhook is used to notify your app anytime a transaction s
 
 Object - mined transaction object
 
-* `fullTransaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon-api/eth\_gettransactionbyhash.md))
+* `fullTransaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth\_gettransactionbyhash.md))
 
 **Example:**
 
@@ -228,7 +228,7 @@ The Dropped Transactions Webhook is used to notify your app anytime a transactio
 
 Object - dropped transaction object
 
-* `fullTransaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon-api/eth\_gettransactionbyhash.md))
+* `fullTransaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth\_gettransactionbyhash.md))
 
 **Example:**
 
