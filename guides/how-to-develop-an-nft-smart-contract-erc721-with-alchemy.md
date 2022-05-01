@@ -1,9 +1,4 @@
----
-cover: ../.gitbook/assets/community-challenge-1-yt-banner.png
-coverY: 0
----
-
-# 1. Beginner: How to develop an NFT Smart Contract (ERC721) with Alchemy
+# How to develop an NFT Smart Contract (ERC721) with Alchemy
 
 **Developing a Smart Contract with Solidity and deploying it on the blockchain** might sound daunting at first: solidity, security, gas optimization, developer environment, and gas fees, are only some of the things you’ll need to go through to host your code on the blockchain.
 

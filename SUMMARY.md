@@ -253,7 +253,7 @@
 
 ## 📜 Guides
 
-* [1. Beginner: How to develop an NFT Smart Contract (ERC721) with Alchemy](guides/1.-beginner-how-to-develop-an-nft-smart-contract-erc721-with-alchemy.md)
+* [How to develop an NFT Smart Contract (ERC721) with Alchemy](guides/how-to-develop-an-nft-smart-contract-erc721-with-alchemy.md)
 * [EIP-1559 Resource and Tutorial Hub](guides/eip-1559/README.md)
   * [The Developer EIP-1559 Prep Kit](https://blog.alchemy.com/blog/eip-1559)
   * [How to Send Transactions with EIP 1559](guides/eip-1559/send-tx-eip-1559.md)
