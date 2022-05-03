@@ -64,7 +64,7 @@ Kovan is a proof-of-authority blockchain, started by the Parity team and support
 * Explorer:
   * [https://kovan.etherscan.io/](https://kovan.etherscan.io)
 * Faucet:
-  * &#x20;[https://github.com/kovan-testnet/faucet.](https://github.com/kovan-testnet/faucet.)
+  * &#x20;[https://github.com/kovan-testnet/faucet](https://github.com/kovan-testnet/faucet.).
 
 Check out more info about Kovan on the [GitHub](https://github.com/kovan-testnet/proposal).
 
