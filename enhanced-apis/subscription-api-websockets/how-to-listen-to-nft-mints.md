@@ -12,7 +12,7 @@ description: >-
 
 In this guide we will write a script to fetch real-time updates whenever anyone mints a new NFT.
 
-These updates can be pushed to your website, server, etc. Collections like [Bored Ape Yacht Club](https://boredapeyachtclub.com/#/home) are sold out, but projects like [Chibi Shinobis](https://www.chibishinobis.com) or [HackrDAO](https://www.hackrdao.com) NFTs are brand new.
+These updates can be pushed to your website, server, etc. Collections like [Bored Ape Yacht Club](https://boredapeyachtclub.com/#/home) are sold out, but projects like [Chibi Shinobis](https://www.chibishinobis.com/) or [HackrDAO](https://www.hackrdao.com/) NFTs are brand new.
 
 So how do we watch the mints for newer projects that are still minting?
 
@@ -200,12 +200,12 @@ That's it!
 
 We have a lot of other APIs that help you query for blockchain data easily. Check out these related APIs and services:
 
-{% content-ref url="../../enhanced-apis/transfers-api.md" %}
-[transfers-api.md](../../enhanced-apis/transfers-api.md)
+{% content-ref url="../transfers-api/" %}
+[transfers-api](../transfers-api/)
 {% endcontent-ref %}
 
-{% content-ref url="../../enhanced-apis/notify-api/" %}
-[notify-api](../../enhanced-apis/notify-api/)
+{% content-ref url="../notify-api/" %}
+[notify-api](../notify-api/)
 {% endcontent-ref %}
 
 Finally, if you're a big tweeter, check out this guide in tweet form and reply to it if you have requests for any other guides you'd like us to write!

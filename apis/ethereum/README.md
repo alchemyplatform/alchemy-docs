@@ -6,193 +6,178 @@ description: >-
 
 # Ethereum API
 
-The Ethereum API allows applications to connect to an Ethereum node that is part of the Ethereum blockchain. Developers can interact with on-chain data and send different types of transactions to the network by utilizing the endpoints provided by the API. The API follows a JSON-RPC standard. JSON-RPC is a stateless, lightweight, remote procedure call (RPC) protocol that is commonly used when interacting with Ethereum.\
+## What is the Ethereum API?
 
+The Ethereum API allows applications to connect to an Ethereum node that is part of the Ethereum blockchain. Developers can interact with on-chain data and send different types of transactions to the network by utilizing the endpoints provided by the API. The API follows a JSON-RPC standard. JSON-RPC is a stateless, lightweight, remote procedure call (RPC) protocol that is commonly used when interacting with Ethereum.
 
-## Getting Blocks&#x20;
+## Types of Requests in the Ethereum API
 
-{% content-ref url="../polygon/eth_blocknumber.md" %}
-[eth\_blocknumber.md](../polygon/eth\_blocknumber.md)
-{% endcontent-ref %}
+### Getting Blocks&#x20;
 
-{% content-ref url="eth_getblockbyhash.md" %}
-[eth\_getblockbyhash.md](eth\_getblockbyhash.md)
-{% endcontent-ref %}
+Retrieves information from a particular block in the blockchain.
 
-{% content-ref url="eth_getblockbynumber.md" %}
-[eth\_getblockbynumber.md](eth\_getblockbynumber.md)
-{% endcontent-ref %}
+* [eth\_blockNumber](eth-blocknumber.md)
+* [eth\_getBlockByHash](eth-getblockbyhash.md)
+* [eth\_getBlockByNumber](eth-getblockbynumber.md)
 
-## Reading Transactions
+### Reading Transactions
 
-{% content-ref url="eth_gettransactionbyhash.md" %}
-[eth\_gettransactionbyhash.md](eth\_gettransactionbyhash.md)
-{% endcontent-ref %}
+Retrieves information on the state data for addresses regardless of whether it is a user or a smart contract.
 
-{% content-ref url="eth_gettransactioncount.md" %}
-[eth\_gettransactioncount.md](eth\_gettransactioncount.md)
-{% endcontent-ref %}
+* [eth\_getTransactionByHash](eth-gettransactionbyhash.md)
+* [eth\_getTransactionCount](eth-gettransactioncount.md)
+* [eth\_getTransactionReceipt](eth-gettransactionreceipt.md)
+* [eth\_getBlockTransactionCountByHash](eth-getblocktransactioncountbyhash.md)
+* [eth\_getBlockTransactionCountByNumber](eth-getblocktransactioncountbynumber.md)
+* [eth\_getTransactionByBlockHashAndIndex](eth-gettransactionbyblockhashandindex.md)
+* [eth\_getTransactionByBlockNumberAndIndex](eth-gettransactionbyblocknumberandindex.md)
+* [eth\_getBlockReceipts](eth-getBlockReceipts.md)
 
-{% content-ref url="eth_gettransactionreceipt.md" %}
-[eth\_gettransactionreceipt.md](eth\_gettransactionreceipt.md)
-{% endcontent-ref %}
+### Writing Transactions
 
-{% content-ref url="eth_getblocktransactioncountbyhash.md" %}
-[eth\_getblocktransactioncountbyhash.md](eth\_getblocktransactioncountbyhash.md)
-{% endcontent-ref %}
+Allows developers to both send ETH from one address to another, write data on-chain, and interact with smart contracts.
 
-{% content-ref url="eth_getblocktransactioncountbynumber.md" %}
-[eth\_getblocktransactioncountbynumber.md](eth\_getblocktransactioncountbynumber.md)
-{% endcontent-ref %}
+* [eth\_sendRawTransaction](eth-sendrawtransaction.md)
+* [eth\_sendPrivateTransaction](eth-sendPrivateTransaction.md)
+* [eth\_cancelPrivateTransaction](eth\_cancelPrivateTransaction.md)
 
-{% content-ref url="eth_gettransactionbyblockhashandindex.md" %}
-[eth\_gettransactionbyblockhashandindex.md](eth\_gettransactionbyblockhashandindex.md)
-{% endcontent-ref %}
+### Account Information
 
-{% content-ref url="eth_gettransactionbyblocknumberandindex.md" %}
-[eth\_gettransactionbyblocknumberandindex.md](eth\_gettransactionbyblocknumberandindex.md)
-{% endcontent-ref %}
+Returns information regarding an address's stored on-chain data.
 
-## Writing Transactions
+* [eth\_getBalance](eth-getbalance.md)
+* [eth\_getStorageAt](eth-getstorageat.md)
+* [eth\_getCode](eth-getcode.md)
+* [eth\_accounts](eth-accounts.md)
+* [eth\_getProof](eth-getproof.md)
 
-{% content-ref url="eth_sendrawtransaction.md" %}
-[eth\_sendrawtransaction.md](eth\_sendrawtransaction.md)
-{% endcontent-ref %}
+### EVM/Smart Contract Execution
 
-## Account Information
+Allows developers to read data from the blockchain which includes executing smart contracts. However, no data is published to the Ethereum network.&#x20;
 
-{% content-ref url="eth_getbalance.md" %}
-[eth\_getbalance.md](eth\_getbalance.md)
-{% endcontent-ref %}
+* [eth\_call](eth-call.md)
 
-{% content-ref url="eth_getcode.md" %}
-[eth\_getcode.md](eth\_getcode.md)
-{% endcontent-ref %}
+### Event Logs
 
-{% content-ref url="eth_getstorageat.md" %}
-[eth\_getstorageat.md](eth\_getstorageat.md)
-{% endcontent-ref %}
+Returns logs which are records that denote/provide context on specific events within a smart contract, like a token transfer or a change of ownership for example.
 
-{% content-ref url="eth_accounts.md" %}
-[eth\_accounts.md](eth\_accounts.md)
-{% endcontent-ref %}
+* [eth\_getLogs](eth-getlogs.md)
 
-{% content-ref url="eth_getproof.md" %}
-[eth\_getproof.md](eth\_getproof.md)
-{% endcontent-ref %}
+### Chain Information
 
-## EVM/Smart Contract Execution
+Returns information on the Ethereum network and internal settings.
 
-{% content-ref url="eth_call.md" %}
-[eth\_call.md](eth\_call.md)
-{% endcontent-ref %}
+* [eth\_protocolVersion](eth-protocolversion.md)
+* [eth\_gasPrice](eth-gasprice.md)
+* [eth\_estimateGas](eth-estimategas.md)
+* [eth\_feeHistory](eth-feehistory.md)
+* [eth\_maxPriorityFeePerGas](eth-maxpriorityfeepergas.md)
+* [eth\_chainId](eth-chainid.md)
+* [net\_version](net-version.md)
+* [net\_listening](net-listening.md)
 
-## Event Logs
+### Getting Uncles
 
-{% content-ref url="eth_getlogs.md" %}
-[eth\_getlogs.md](eth\_getlogs.md)
-{% endcontent-ref %}
+Returns information on uncle blocks are which are network rejected blocks and replaced by a canonical block instead.
 
-## Chain Information
+* [eth\_getUncleByBlockHashAndIndex](eth-getunclebyblockhashandindex.md)
+* [eth\_getUncleByBlockNumberAndIndex](eth-getunclebyblocknumberandindex.md)
+* [eth\_getUncleCountByBlockHash](eth-getunclecountbyblockhash.md)
+* [eth\_getUncleCountByBlockNumber](eth-getunclecountbyblocknumber.md)
 
-{% content-ref url="eth_protocolversion.md" %}
-[eth\_protocolversion.md](eth\_protocolversion.md)
-{% endcontent-ref %}
+### Filters
 
-{% content-ref url="eth_gasprice.md" %}
-[eth\_gasprice.md](eth\_gasprice.md)
-{% endcontent-ref %}
+Allows developers to filter and query for specific Ethereum logs.&#x20;
 
-{% content-ref url="eth_estimategas.md" %}
-[eth\_estimategas.md](eth\_estimategas.md)
-{% endcontent-ref %}
+* [eth\_getFilterChanges](eth-getfilterchanges.md)
+* [eth\_getFilterLogs](eth-getfilterlogs.md)
+* [eth\_newBlockFilter](eth-newblockfilter.md)
+* [eth\_newFilter](eth-newfilter.md)
+* [eth\_newPendingTransactionFilter](eth-newpendingtransactionfilter.md)
+* [eth\_uninstallFilter](eth-uninstallfilter.md)&#x20;
 
-{% content-ref url="eth_feehistory.md" %}
-[eth\_feehistory.md](eth\_feehistory.md)
-{% endcontent-ref %}
+### Web3
 
-{% content-ref url="eth_maxpriorityfeepergas.md" %}
-[eth\_maxpriorityfeepergas.md](eth\_maxpriorityfeepergas.md)
-{% endcontent-ref %}
+Returns Ethereum network configuration information.
 
-{% content-ref url="eth_chainid.md" %}
-[eth\_chainid.md](eth\_chainid.md)
-{% endcontent-ref %}
+* [web3\_clientVersion](web3-clientversion-1.md)&#x20;
+* [web3\_sha3](web3-sha3-1.md)
 
-{% content-ref url="net_version.md" %}
-[net\_version.md](net\_version.md)
-{% endcontent-ref %}
+### Real-time Events
 
-{% content-ref url="net_listening.md" %}
-[net\_listening.md](net\_listening.md)
-{% endcontent-ref %}
+Introduces WebSocket-based requests/responses which leverage a network connection allowing developers to listen for changes continuously without the need for HTTP polling.
 
-## Retrieving Uncles
+* [eth\_subscribe](eth-subscribe-1.md)
+* [eth\_unsubscribe](eth-unsubscribe-1.md)&#x20;
 
-{% content-ref url="eth_getunclebyblocknumberandindex.md" %}
-[eth\_getunclebyblocknumberandindex.md](eth\_getunclebyblocknumberandindex.md)
-{% endcontent-ref %}
+## What testnet should developers use for Ethereum development?
 
-{% content-ref url="eth_getunclebyblockhashandindex.md" %}
-[eth\_getunclebyblockhashandindex.md](eth\_getunclebyblockhashandindex.md)
-{% endcontent-ref %}
+All developers getting started on Alchemy should use **Goerli** as their testnet of choice for development!
 
-{% content-ref url="eth_getunclecountbyblockhash.md" %}
-[eth\_getunclecountbyblockhash.md](eth\_getunclecountbyblockhash.md)
-{% endcontent-ref %}
+The Ethereum Foundation will be winding down support for the Rinkeby, Ropsten, and Kovan networks after Ethereum's transition to a proof-of-stake model. To ensure that your testnet applications remain fully functional after the transition, we recommend using Goerli, which will remain unchanged. Learn more about [Ethereum networks and testnets here](../../guides/choosing-a-network.md#ethereum-testnets).&#x20;
 
-{% content-ref url="eth_getunclecountbyblocknumber.md" %}
-[eth\_getunclecountbyblocknumber.md](eth\_getunclecountbyblocknumber.md)
-{% endcontent-ref %}
+## What API does Ethereum use?
 
-## Filters
+Ethereum uses the JSON-RPC API standard. The Ethereum JSON-RPC API serves as the backbone for the Ethereum network and powers any blockchain interaction. In aggregate, this API suite allows users to read block/transaction data, query chain information, execute smart contracts, store data on-chain etc. Developers and consumers alike interact with Ethereum’s base JSON-RPC APIs to communicate with its decentralized network of nodes.
 
-{% content-ref url="eth_getfilterchanges.md" %}
-[eth\_getfilterchanges.md](eth\_getfilterchanges.md)
-{% endcontent-ref %}
+## What is an Ethereum API Key?
 
-{% content-ref url="eth_getfilterlogs.md" %}
-[eth\_getfilterlogs.md](eth\_getfilterlogs.md)
-{% endcontent-ref %}
+When accessing the Ethereum network via a node provider, API services like Alchemy require an API key, which allows developers to monitor personal apps and access usage metrics.
 
-{% content-ref url="eth_newblockfilter.md" %}
-[eth\_newblockfilter.md](eth\_newblockfilter.md)
-{% endcontent-ref %}
+While many Ethereum development environments have a set of default shared API keys, they are often throttled during periods of high usage leading to slower response times and a higher likelihood of request failures.
 
-{% content-ref url="eth_newfilter.md" %}
-[eth\_newfilter.md](eth\_newfilter.md)
-{% endcontent-ref %}
+For the best development experience, we recommend that you [sign up for a free API key](https://alchemy.com/?a=bad6a69700)!
 
-{% content-ref url="eth_newpendingtransactionfilter.md" %}
-[eth\_newpendingtransactionfilter.md](eth\_newpendingtransactionfilter.md)
-{% endcontent-ref %}
+With a dedicated API key, developers are able to:
 
-{% content-ref url="eth_uninstallfilter.md" %}
-[eth\_uninstallfilter.md](eth\_uninstallfilter.md)
-{% endcontent-ref %}
+* access **higher request throughput** and **increased concurrent requests**
+* query [**enhanced APIs**](broken-reference), gaining access to free archive data, logs, and higher-level API abstractions
+* leverage **individualized usage metrics**
 
-## Web3
+## Does Ethereum only use JSON-RPC?
 
-{% content-ref url="web3_clientversion-1.md" %}
-[web3\_clientversion-1.md](web3\_clientversion-1.md)
-{% endcontent-ref %}
+The raw Ethereum client only uses JSON-RPC notation to encode remote procedure calls for interpreting requests and serving up responses. However, most developers use libraries that actually abstract away the JSON-RPC standard. Libraries like [AlchemyWeb3](../../documentation/alchemy-web3/) wrap the base Ethereum JSON-RPC API to create more intuitive methods that make debugging and developing easier. Likewise, developers can find a host of different [wrapper libraries](../../introduction/getting-started/#other-web3-libraries) spanning different programming languages like Javascript, Python, Golang, etc. which use JSON-RPC under the hood.
 
-{% content-ref url="web3_sha3-1.md" %}
-[web3\_sha3-1.md](web3\_sha3-1.md)
-{% endcontent-ref %}
+## How does Alchemy's Ethereum API work?
 
-## Real Time Events
+Alchemy's Ethereum API gives developers and users access to read and write data to the Ethereum blockchain.
 
-{% content-ref url="eth_subscribe-1.md" %}
-[eth\_subscribe-1.md](eth\_subscribe-1.md)
-{% endcontent-ref %}
+If you’re not familiar with [how a blockchain works](https://docs.alchemy.com/alchemy/resources/blockchain-101), here’s a quick recap:
 
-{% content-ref url="eth_unsubscribe-1.md" %}
-[eth\_unsubscribe-1.md](eth\_unsubscribe-1.md)
-{% endcontent-ref %}
+* The Ethereum blockchain is made up of blocks of data.
+* Blocks are stored on distributed Ethereum nodes.
+* Each node in the network serves as a “mini-server” that allows its operator to read/write blocks of data.
 
-## Debug API
+Alchemy provides access to our higher level infrastructure that allows developers to interface with the Ethereum network. With API access, Alchemy developers are able to send read/write requests to the blockchain.&#x20;
 
-{% content-ref url="ethereum-api-faq.md" %}
-[ethereum-api-faq.md](ethereum-api-faq.md)
-{% endcontent-ref %}
+We take care of the hard stuff so that developers can focus on their products!
+
+## Can you use Python for Ethereum?
+
+Yes! While Javascript libraries have historically gained traction in the Ethereum development community, Python developers are also able to read and write the same data. One commonly used blockchain interaction library is [web3.py](http://web3.py/) which wraps many of the same methods featured in web3.js and Ethers.js.
+
+For Python-based EVM development, [Brownie](https://eth-brownie.readthedocs.io/en/stable/) offers a full suite of Web3 developer tools for compiling, testing, and deploying dApps similar to its peer environments Hardhat and Truffle.
+
+## How do I get the timestamp for a transaction?
+
+There are three steps to get the timestamp for a transaction:
+
+1. Grab the `blockNumber` field in your transaction object
+   1. If you only have the transaction hash, you can get the full object by making a request to [`eth_getTransactionByHash`](./#eth\_gettransactionbyhash).
+2. Get the block info by calling [eth\_getBlockByNumber](eth-getblockbynumber.md)
+3. Grab the `timestamp` field in the returned block object
+
+Here is an [example request](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getBlockByNumber%22%2C%22paramValues%22%3A%5B%22latest%22%2Cfalse%5D%7D).
+
+It's important to note that block numbers themselves are Ethereum's measure of time, however standard timestamps are available by looking at the block data.&#x20;
+
+## How do I distinguish between a contract address and a wallet address? <a href="#how-do-i-distinguish-between-a-contract-address-and-a-wallet-address" id="how-do-i-distinguish-between-a-contract-address-and-a-wallet-address"></a>
+
+A super easy way to distinguish between a contract address and a wallet address is by calling [eth\_getCode](https://alchemyapi/s/alchemy/documentation/alchemy-api-reference/json-rpc#eth\_getcode), which will return contract code if it's a contract and nothing if it's a wallet. Here's an example of both using our composer tool:
+
+* [**0x Contract Address**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getCode%22%2C%22paramValues%22%3A%5B%220xe41d2489571d322189246dafa5ebde1f4699f498%22%2C%22latest%22%5D%7D)
+* [**Vitalik's Wallet Address**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getCode%22%2C%22paramValues%22%3A%5B%220xAb5801a7D398351b8bE11C439e05C5B3259aeC9B%22%2C%22latest%22%5D%7D)
+
+## My question isn't here, where can I get help?
+
+Don't worry, we got you. Check out our [support page](https://docs.alchemyapi.io/other/contact-us) for plenty of options!

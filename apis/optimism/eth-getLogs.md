@@ -7,11 +7,9 @@ description: >-
 # eth\_getLogs - Optimism
 
 {% hint style="warning" %}
-**NOTE**: You can make `eth_getLogs` requests with up to a _**2K block range**_ and _**a 150MB limit on the response size**_.
+**NOTE**: You can make `eth_getLogs` requests with up to a _**2K block range**_ and _**150MB**_ _**limit on the response size** OR you can_ request _**any block range**_ with a cap of _**10K logs in the response**_.
 
-If you absolutely need to query larger block ranges, please contact us over [discord](https://alchemy.com/discord) or at support@alchemy.com. We can open access to larger block ranges based on your use case.
-
-\_If you need to pull logs frequently, we recommend [_using WebSockets_](../../guides/using-websockets.md) to push new logs to you when they are available. \_
+_If you need to pull logs frequently, we recommend_ [_using WebSockets_](../../enhanced-apis/subscription-api-websockets/) _to push new logs to you when they are available_
 {% endhint %}
 
 #### Parameters

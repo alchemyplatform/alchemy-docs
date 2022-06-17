@@ -34,12 +34,15 @@ API requests will perform faster if `tokenType` is specified!
   * `tokenUri`:
     * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
     * `gateway:` public gateway uri for the raw uri above.
-  * `media`:
-    * `raw`: uri representing the location of the NFT media asset. This is a backup for you to parse when the `metadata` field is not automatically populated.
-    * `gateway`: public gateway uri for the raw asset above.&#x20;
+  *   `media`:
+
+      * `raw`: uri representing the location of the NFT media asset. This is a backup for you to parse when the `metadata` field is not automatically populated.
+      * `gateway`: public gateway uri for the raw asset above.&#x20;
+
+      **NOTE:** **Where possible, **_**Alchemy-hosted NFT media are used in the `gateway` field and feature a Cloudinary URL for faster loading times and can be configured for image re-sizing. For more info on using Alchemy-hosted media, see**_ [_**this doc**_](nft-image-caching.md)_**.**_&#x20;
   *   `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually.
 
-      * `image`: URL to the NFT asset image. Can be standard URLs pointing to images on conventional servers, [IPFS](https://github.com/ipfs/is-ipfs), or [Arweave](https://www.arweave.org). Most types of images (SVGs, PNGs, JPEGs, etc.) are supported by NFT marketplaces.
+      * `image`: URL to the NFT asset image. Can be standard URLs pointing to images on conventional servers, [IPFS](https://github.com/ipfs/is-ipfs), or [Arweave](https://www.arweave.org/). Most types of images (SVGs, PNGs, JPEGs, etc.) are supported by NFT marketplaces.
       * `external_url`: The image URL that appears alongside the asset image on NFT platforms.
       * `background_color`: Background color of the NFT item. Usually must be defined as a six-character hexadecimal.
       * `name`Name of the NFT asset.
@@ -62,7 +65,7 @@ Select NFT contracts may not have metadata specified by their creator. You may n
 
 {% hint style="info" %}
 The example below is for Ethereum Mainnet. If you are using Polygon you'll need to use your polygon endpoint instead: \
-`https://polygon-mainnet.g.alchemy.com/v2/your-api-key/getNFTs...`
+`https://polygon-mainnet.g.alchemy.com/`nft/`v2/your-api-key/getNFTs...`
 {% endhint %}
 
 ### Request
@@ -78,7 +81,7 @@ import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 
 // Using HTTPS
 const web3 = createAlchemyWeb3(
-  "https://eth-mainnet.alchemyapi.io/v2/demo",
+  "https://eth-mainnet.alchemyapi.io/nft/v2/demo",
 );
 
 
@@ -104,7 +107,7 @@ import fetch from 'node-fetch';
   };
 
   const apiKey = "demo"
-  const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata`;
+  const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTMetadata`;
   const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
   const tokenId = "2";
   const tokenType = "erc721";
@@ -124,7 +127,7 @@ import axios from 'axios';
 
 // replace with your Alchemy api key
 const apiKey = "demo";
-const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata`;
+const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTMetadata`;
 const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
 const tokenId = "2";
 const tokenType = "erc721";
@@ -143,14 +146,14 @@ axios(config)
 
 {% tab title="Postman" %}
 ```http
-URL: https://eth-mainnet.alchemyapi.io/v2/demo/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721
+URL: https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721
 RequestType: GET
 ```
 {% endtab %}
 
 {% tab title="Curl" %}
 ```
-curl 'https://eth-mainnet.alchemyapi.io/v2/demo/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721'
+curl 'https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTMetadata?contractAddress=0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d&tokenId=2&tokenType=erc721'
 ```
 {% endtab %}
 {% endtabs %}

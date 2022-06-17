@@ -88,7 +88,11 @@ For JSON-RPC specific errors, Alchemy returns a `200` with the JSON-RPC error in
 }
 ```
 
-### Parity Error Codes
+### Error Messages
+
+* `out of gas`: not enough gas for the transaction or call, contact us at support
+
+### Kovan Error Codes
 
 These errors should occur when using the Kovan network.
 

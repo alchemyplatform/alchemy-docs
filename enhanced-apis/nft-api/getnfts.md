@@ -10,7 +10,7 @@ This endpoint is supported on the following chains and networks:
 * **Polygon**: Mainnet and Mumbai
 * **Flow**: Mainnet and Testnet (see docs [here](https://docs.alchemy.com/flow/documentation/flow-nft-apis))
 
-_To see chain support accross all features, check out the_ [_feature matrix_](../../apis/feature-support-by-chain.md)_._
+_To see chain support across all features, check out the_ [_feature matrix_](../../apis/feature-support-by-chain.md)_._
 
 ## Parameters
 
@@ -18,13 +18,13 @@ _To see chain support accross all features, check out the_ [_feature matrix_](..
 * `pageKey`: _**\[string]**_ (optional) UUID for pagination. If more results are available, a UUID `pageKey` will be returned in the response. Pass that UUID into `pageKey` to fetch the next 100 NFTs.     _**NOTE:** pageKeys expire after 10 minutes._&#x20;
 * `contractAddresses[]`:  _**\[array of strings]**_ (optional) array of contract addresses to filter the responses with. Max limit 20 contracts.
 * `withMetadata`:  _**\[boolean]**_ `true` by default (optional); if boolean is set to `true` the query will include metadata for each returned token&#x20;
+  * _**For more information on NFT metadata structure, go to our**_ [_**NFT API FAQ**_](https://docs.alchemy.com/alchemy/enhanced-apis/nft-api/nft-api-faq#understanding-nft-metadata)_**.**_
 *   `filters[]`:  _**\[array of strings]**_ (optional) array of filters (as strings) that will be applied to the query. NFTs that are match one or more of these filters will be excluded from the response. &#x20;
 
-    **NOTE:** _This is a beta feature._
+    **NOTE:** _This is a beta feature._ Valid filter strings include:&#x20;
 
-    * `"SPAM"`: NFTs that have been classified as spam. Spam classification has a wide range of criteria that includes but is not limited to emitting fake events and copying other well-known NFTs.\
-      \
-      _**For more info on NFT responses:  check out the**_ [_**NFT API FAQ.**_](nft-api-faq.md#understanding-nft-metadata)_****_
+    * `"SPAM"`: NFTs that have been classified as spam. Spam classification has a wide range of criteria that includes but is not limited to emitting fake events and copying other well-known NFTs.&#x20;
+      * _**For more information on how we classify spam, go to our**_ [_**NFT API FAQ**_](https://docs.alchemy.com/alchemy/enhanced-apis/nft-api/nft-api-faq#nft-spam-classification)_**.**_
 
 {% hint style="success" %}
 **NOTE:**
@@ -38,7 +38,11 @@ Setting the`withMetadata`parameter to`false` will reduce payload size and may re
 We paginate our responses with a default limit of **100 responses**. We've chosen this number via thorough testing to determine the best balance of reliability and speed. In the future, you will be able to specify your own default size. If the owner has more than 100 nfts, we'll provide a `pageKey` you can include in the next request to return the remaining responses. This uses cursor based pagination with an idempotent result. This means if you provide one it serves as a static reference to the NFTs owned at time of the first call. This means if an owner acquires or transfers an NFT in between a paginated call, this will **NOT** be reflected.
 {% endhint %}
 
-## Returns (by default)
+## Returns&#x20;
+
+{% tabs %}
+{% tab title="(By default)" %}
+### Returns (by default)
 
 * `ownedNfts`: list of objects that represent NFTs owned by the address. Max results per response = 100.&#x20;
   * Object schema:
@@ -54,11 +58,15 @@ We paginate our responses with a default limit of **100 responses**. We've chose
     * `tokenUri`:
       * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
       * `gateway:` public gateway uri for the raw uri above.
-    * `media`:
-      * `raw:` uri representing the location of the NFT media asset. This is a backup for you to parse when the `metadata` field is not automatically populated.
-      * `gateway:` public gateway uri for the raw asset above.&#x20;
-    * `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually.
-      * `image`: URL to the NFT asset image. Can be standard URLs pointing to images on conventional servers, [IPFS](https://github.com/ipfs/is-ipfs), or [Arweave](https://www.arweave.org). Most types of images (SVGs, PNGs, JPEGs, etc.) are supported by NFT marketplaces.
+    *   `media`:
+
+        * `raw:` uri representing the location of the NFT media asset. This is a backup for you to parse when the `metadata` field is not automatically populated.
+        * `gateway:` public gateway uri for the raw asset above.&#x20;
+
+        **NOTE:** **Where possible, **_**Alchemy-hosted NFT media are used in the `gateway` field and feature a Cloudinary URL for faster loading times and can be configured for image re-sizing. For more info on using Alchemy-hosted media, see**_ [_**this doc**_](nft-image-caching.md)_**.**_&#x20;
+    * `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually.\
+      <mark style="background-color:yellow;">**NOTE:**</mark> <mark style="background-color:yellow;"></mark><mark style="background-color:yellow;"></mark> <mark style="background-color:yellow;"></mark>_<mark style="background-color:yellow;">Not all metadata fields may be filled in if the provided NFT contract does not contain relevant information.</mark>_
+      * `image`: URL to the NFT asset image. Can be standard URLs pointing to images on conventional servers, [IPFS](https://github.com/ipfs/is-ipfs), or [Arweave](https://www.arweave.org/). Most types of images (SVGs, PNGs, JPEGs, etc.) are supported by NFT marketplaces.
       * `external_url`: The image URL that appears alongside the asset image on NFT platforms.
       * `background_color`: Background color of the NFT item. Usually must be defined as a six-character hexadecimal.
       * `name`Name of the NFT asset.
@@ -73,11 +81,17 @@ We paginate our responses with a default limit of **100 responses**. We've chose
   **See the** [**Handling Errors**](handling-errors.md) **section for a complete list of potential errors.**
 
 {% hint style="info" %}
+
+{% endhint %}
+
+{% hint style="info" %}
 **NOTE:**\
 ****To parse and view an NFT's media asset, use either the `gateway` URI within `media` objector the`external_url`within `metadata`object. [Visit the FAQ](nft-api-faq.md#gateway-vs.-raw-uris) for more info on IPFS gateways.
 {% endhint %}
+{% endtab %}
 
-## Returns (`withMetadata` = false)
+{% tab title="(withMetadata = false)" %}
+### Returns (`withMetadata` = false)
 
 * `ownedNfts`: list of objects that represent NFTs owned by the address. Max results per response = 100.&#x20;
   * Object schema:
@@ -94,6 +108,8 @@ We paginate our responses with a default limit of **100 responses**. We've chose
 **NOTE:** \
 We are working to support edge-case NFTs which don't conform to ERC721 or 1155 standards. As such, the `totalCount` and `ownedNfts`reported may not reflect certain NFTs that we do not current support.  If you notice an NFT that our API does not currently support, please [submit a feature request](https://roadmap.alchemy.com/b/feature-requests) or reach out to us over [Discord](https://www.alchemy.com/discord).
 {% endhint %}
+{% endtab %}
+{% endtabs %}
 
 ## Examples
 
@@ -103,7 +119,7 @@ For examples with contract filtering, see [Request (with contract filtering)](ge
 
 {% hint style="info" %}
 The examples below is for Ethereum Mainnet. If you are using Polygon you'll need to use your polygon endpoint instead: \
-`https://polygon-mainnet.alchemyapi.io/v2/your-api-key/getNFTs`...
+`https:/`[polygon-mainnet.g.alchemy.com](http://polygon-mainnet.g.alchemyapi.io/)`/nft/v2/your-api-key/getNFTs`...
 {% endhint %}
 
 ### Request
@@ -119,10 +135,10 @@ import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 
 // Using HTTPS
 const web3 = createAlchemyWeb3(
-  "https://eth-mainnet.alchemyapi.io/v2/demo",
+  "https://eth-mainnet.alchemyapi.io/nft/v2/demo",
 );
 
-const nfts = await web3.alchemy.getNfts({owner: "0xC33881b8FD07d71098b440fA8A3797886D831061"})
+const nfts = await web3.alchemy.getNfts({owner: "0xfae46f94ee7b2acb497cecaff6cff17f621c693d"})
 
 console.log(nfts);
 ```
@@ -137,8 +153,8 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-const baseURL = "https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/";
-const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
+const baseURL = "https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/";
+const ownerAddr = "0xfae46f94ee7b2acb497cecaff6cff17f621c693d";
 const fetchURL = `${baseURL}?owner=${ownerAddr}`;
 
 fetch(fetchURL, requestOptions)
@@ -155,9 +171,9 @@ import axios from 'axios';
 
 // replace with your Alchemy api key
 const apiKey = "demo";
-const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTs/`;
+const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTs/`;
 // replace with the wallet address you want to query for NFTs
-const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
+const ownerAddr = "0xfae46f94ee7b2acb497cecaff6cff17f621c693d";
 
 var config = {
   method: 'get',
@@ -172,19 +188,19 @@ axios(config)
 
 {% tab title="Postman" %}
 ```http
-URL: https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D
+URL: https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/?owner=0xfae46f94ee7b2acb497cecaff6cff17f621c693d
 RequestType: GET
 ```
 {% endtab %}
 
 {% tab title="Curl" %}
 ```
-curl 'https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D'
+curl 'https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/?owner=0xfae46f94ee7b2acb497cecaff6cff17f621c693d'
 ```
 {% endtab %}
 {% endtabs %}
 
-If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](nft-api-quickstart-guide.md)****
+If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](nft-api-quickstart-guide.md)
 
 ### Response (by default)
 
@@ -339,7 +355,7 @@ import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 
 // Using HTTPS
 const web3 = createAlchemyWeb3(
-  "https://eth-mainnet.alchemyapi.io/v2/demo",
+  "https://eth-mainnet.alchemyapi.io/nft/v2/demo",
 );
 
 const nfts = await web3.alchemy.getNfts({owner: "0xC33881b8FD07d71098b440fA8A3797886D831061", contractAddresses: ["0x39ed051a1a3a1703b5e0557b122ec18365dbc184"]})
@@ -358,7 +374,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-const baseURL = "https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/";
+const baseURL = "https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/";
 const ownerAddr = "0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2";
 const contractAddr = "0x34d77a17038491a2a9eaa6e690b7c7cd39fc8392";
 const fetchURL = `${baseURL}?owner=${ownerAddr}&contractAddresses[]=${contractAddr}`;
@@ -378,7 +394,7 @@ import axios from 'axios';
 
 // replace with your Alchemy api key
 const apiKey = "demo";
-const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTs/`;
+const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTs/`;
 // replace with the wallet address you want to query for NFTs
 const ownerAddr = "0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2";
 const contractAddr = "0x34d77a17038491a2a9eaa6e690b7c7cd39fc8392";
@@ -397,14 +413,14 @@ axios(config)
 
 {% tab title="Postman" %}
 ```python
-URL: https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D&contractAddresses[]=0x39ed051a1a3a1703b5e0557b122ec18365dbc184
+URL: https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/?owner=0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D&contractAddresses[]=0x39ed051a1a3a1703b5e0557b122ec18365dbc184
 RequestType: GET
 ```
 {% endtab %}
 
 {% tab title="Curl" %}
 ```
-curl --location -g --request GET 'https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D&contractAddresses[]=0x39ed051a1a3a1703b5e0557b122ec18365dbc184'
+curl --location -g --request GET 'https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/?owner=0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D&contractAddresses[]=0x39ed051a1a3a1703b5e0557b122ec18365dbc184'
 ```
 {% endtab %}
 {% endtabs %}
@@ -420,7 +436,7 @@ import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 
 // Using HTTPS
 const web3 = createAlchemyWeb3(
-  "https://eth-mainnet.g.alchemy.com/v2/demo",
+  "https://eth-mainnet.g.alchemy.com/nft/v2/demo",
 );
 
 const nfts = await web3.alchemy.getNfts({owner: "0xC33881b8FD07d71098b440fA8A3797886D831061", contractAddresses: ["0x39ed051a1a3a1703b5e0557b122ec18365dbc184", "0x76be3b62873462d2142405439777e971754e8e77"]})
@@ -439,7 +455,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-const baseURL = "https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/";
+const baseURL = "https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/";
 const ownerAddr = "0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2";
 const contractAddrs = ["0x34d77a17038491a2a9eaa6e690b7c7cd39fc8392", "0x76be3b62873462d2142405439777e971754e8e77"];
 const fetchURL = `${baseURL}?owner=${ownerAddr}&contractAddresses[]=${contractAddr[0]}&contractAddresses[]=${contractAddr[1]}`;
@@ -459,7 +475,7 @@ import axios from 'axios';
 
 // replace with your Alchemy api key
 const apiKey = "demo";
-const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTs/`;
+const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTs/`;
 // replace with the wallet address you want to query for NFTs
 const ownerAddr = "0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2";
 const contractAddrs = ["0x34d77a17038491a2a9eaa6e690b7c7cd39fc8392", "0x76be3b62873462d2142405439777e971754e8e77"];
@@ -478,14 +494,14 @@ axios(config)
 
 {% tab title="Postman" %}
 ```python
-URL: https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2&contractAddresses[]=0x34d77a17038491a2a9eaa6e690b7c7cd39fc8392&contractAddresses[]=0x76be3b62873462d2142405439777e971754e8e77
+URL: https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/?owner=0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2&contractAddresses[]=0x34d77a17038491a2a9eaa6e690b7c7cd39fc8392&contractAddresses[]=0x76be3b62873462d2142405439777e971754e8e77
 REQUEST: GET
 ```
 {% endtab %}
 
 {% tab title="Curl" %}
 ```
-curl --location -g --request GET 'https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2&contractAddresses[]=0x34d77a17038491a2a9eaa6e690b7c7cd39fc8392&contractAddresses[]=0x76be3b62873462d2142405439777e971754e8e77'
+curl --location -g --request GET 'https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/?owner=0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2&contractAddresses[]=0x34d77a17038491a2a9eaa6e690b7c7cd39fc8392&contractAddresses[]=0x76be3b62873462d2142405439777e971754e8e77'
 ```
 {% endtab %}
 {% endtabs %}
@@ -526,7 +542,7 @@ import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 
 // Using HTTPS
 const web3 = createAlchemyWeb3(
-  "https://eth-mainnet.alchemyapi.io/v2/demo",
+  "https://eth-mainnet.alchemyapi.io/nft/v2/demo",
 );
 
 const nfts = await web3.alchemy.getNfts({owner: "0xC33881b8FD07d71098b440fA8A3797886D831061", pageKey:"12e032c5-ce4a-4389-8764-b980e1a17da8"})
@@ -544,7 +560,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-const baseURL = "https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/";
+const baseURL = "https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/";
 const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
 const pageKey = "12e032c5-ce4a-4389-8764-b980e1a17da8";
 const fetchURL = `${baseURL}?owner=${ownerAddr}?pageKey=${pageKey}`;
@@ -564,7 +580,7 @@ import axios from 'axios';
 
 // replace with your Alchemy api key
 const apiKey = "demo";
-const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTs/`;
+const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTs/`;
 // replace with the wallet address you want to query for NFTs
 const pageKey = "12e032c5-ce4a-4389-8764-b980e1a17da8";
 const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
@@ -583,13 +599,13 @@ axios(config)
 
 {% tab title="Postman" %}
 ```python
-URL: https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&pageKey=12e032c5-ce4a-4389-8764-b980e1a17da8
+URL: https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&pageKey=12e032c5-ce4a-4389-8764-b980e1a17da8
 ```
 {% endtab %}
 
 {% tab title="Curl" %}
 ```
-curl 'https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&pageKey=12e032c5-ce4a-4389-8764-b980e1a17da8'
+curl 'https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&pageKey=12e032c5-ce4a-4389-8764-b980e1a17da8'
 ```
 {% endtab %}
 {% endtabs %}
@@ -690,7 +706,7 @@ import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 
 // Using HTTPS
 const web3 = createAlchemyWeb3(
-  "https://eth-mainnet.alchemyapi.io/v2/demo",
+  "https://eth-mainnet.alchemyapi.io/nft/v2/demo",
 );
 
 const nfts = await web3.alchemy.getNfts({owner: "0xC33881b8FD07d71098b440fA8A3797886D831061", "filters[]":"SPAM"})
@@ -708,7 +724,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-const baseURL = "https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/";
+const baseURL = "https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/";
 const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
 const fetchURL = `${baseURL}?owner=${ownerAddr}?filters[]=SPAM`;
 
@@ -727,7 +743,7 @@ import axios from 'axios';
 
 // replace with your Alchemy api key
 const apiKey = "demo";
-const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTs/`;
+const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTs/`;
 // replace with the wallet address you want to query for NFTs
 const ownerAddr = "0xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D";
 
@@ -745,7 +761,7 @@ axios(config)
 
 {% tab title="Postman" %}
 ```
-URL: https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&filters[]=SPAM
+URL: https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&filters[]=SPAM
 ```
 
 
@@ -753,7 +769,7 @@ URL: https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0x8e7644918b3e280f
 
 {% tab title="Curl" %}
 ```shell
-curl 'https://eth-mainnet.alchemyapi.io/v2/demo/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&filters[]=SPAM'
+curl 'https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/?owner=0x8e7644918b3e280fb3b599ca381a4efcb7ade201&filters[]=SPAM'
 ```
 
 

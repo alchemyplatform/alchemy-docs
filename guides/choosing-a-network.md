@@ -35,13 +35,13 @@ Goerli is a proof-of-authority blockchain, supported by multiple clients. This t
 * Block Explorer:
   * [https://goerli.etherscan.io/](https://goerli.etherscan.io)
 * Faucet:
-  * [goerlifaucet.com](http://goerlifaucet.com)
+  * [goerlifaucet.com](http://goerlifaucet.com/)
 
 Check out more info about Goerli on the [GitHub](https://github.com/goerli/testnet).
 
 ### **Rinkeby**
 
-Rinkeby is a proof-of-authority blockchain that uses the Clique PoA consensus protocol, and is only supported by Geth. This testnet is immune to spam attacks since the Ether supply is controlled by trusted parties and has to be requested from a [faucet](https://www.rinkebyfaucet.com), not mined.
+Rinkeby is a proof-of-authority blockchain that uses the Clique PoA consensus protocol, and is only supported by Geth. This testnet is immune to spam attacks since the Ether supply is controlled by trusted parties and has to be requested from a [faucet](https://www.rinkebyfaucet.com/), not mined.
 
 **Note:** Rinkeby doesn't fully reproduce the current production environment since it uses PoA.
 
@@ -50,7 +50,7 @@ Rinkeby is a proof-of-authority blockchain that uses the Clique PoA consensus pr
 * Block Explorer&#x20;
   * [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io)
 * Faucet
-  * [https://rinkebyfaucet.com/](https://rinkebyfaucet.com)
+  * [https://rinkebyfaucet.com/](https://rinkebyfaucet.com/)
 
 Check out more info about Rinkeby on the [website](https://www.rinkeby.io).
 
@@ -114,9 +114,9 @@ Polygon has one testnet known as the Mumbai network, which operates exactly the 
 
 * Chain ID: 80001
 * Faucet
-  * [https://mumbaifaucet.com/](https://mumbaifaucet.com)
+  * [https://mumbaifaucet.com/](https://mumbaifaucet.com/)
 * Block Explorer&#x20;
-  * [https://mumbai.polygonscan.com/](https://mumbai.polygonscan.com)
+  * [https://mumbai.polygonscan.com/](https://mumbai.polygonscan.com/)
 
 ## Which Ethereum Testnet Should I use?
 

@@ -1,5 +1,5 @@
 ---
-description: Understand how throughput works on Alchemy and how to handle them.
+description: Understand how throughput works on Alchemy and how to handle 429 errors.
 ---
 
 # Throughput (Rate Limits)
@@ -8,13 +8,15 @@ description: Understand how throughput works on Alchemy and how to handle them.
 
 Throughput is a measure of the number of requests your application can send per second. It is often known as the applications "rate limit".&#x20;
 
-If a large number of requests are sent at the same time, you may hit your throughput capacity. In most instances, this will not affect your user's experience engaging with your application. As long as retries are implemented, the requests will go through in the following second. As a general rule of thumb, if you are experiencing **under 30%** rate limited requests, [using retries](throughput.md#retries) is the best solution.
+If a large number of requests are sent at the same time, you may hit your throughput capacity. However, under Alchemy's elastic throughput system, users are _guaranteed_ their given throughput limit (measured in [compute units per second](throughput.md#what-are-compute-units-per-second-cups)), but will often experience higher throughput in practice.&#x20;
+
+In most instances, hitting your throughput limit will not affect your user's experience engaging with your application. As long as retries are implemented, the requests will go through in the following second. As a general rule of thumb, if you are experiencing **under 30%** rate limited requests, [using retries](throughput.md#retries) is the best solution.
 
 ## :scroll: What are Compute Units Per Second (CUPS)?
 
 CUPS are a measure of the number of [compute units](https://docs.alchemyapi.io/documentation/compute-units) used per second when making requests. Since each request is weighted differently, we base this on the total compute units used rather than the number of requests.
 
-For example, if you send one [`eth_blockNumber`](../apis/ethereum/eth-blocknumber.md) (10 CUs), two [`eth_getLogs`](../apis/arbitrum/eth\_getlogs-1.md) (75 CUs), and two [`eth_call`](../apis/polygon/eth\_call.md) (26 CUs) requests in the same second, you will have a total of 310 CUPS.
+For example, if you send one [`eth_blockNumber`](../apis/ethereum/eth-blocknumber.md) (10 CUs), two [`eth_getLogs`](../apis/arbitrum/eth-getlogs.md) (75 CUs), and two [`eth_call`](../apis/polygon/eth-call.md) (26 CUs) requests in the same second, you will have a total of 310 CUPS.
 
 See the table below for the number of compute units per second (CUPS) permitted for each user type.
 
@@ -24,9 +26,15 @@ See the table below for the number of compute units per second (CUPS) permitted 
 | Growth                                        | 660                                       |
 | [Enterprise](https://www.alchemy.com/pricing) | [Custom](https://www.alchemy.com/pricing) |
 
+{% hint style="success" %}
+### **Elastic Throughput**
+
+With Alchemy's elastic Alchemy's throughput system, users often experience higher throughput than their guaranteed limit outlined above.&#x20;
+{% endhint %}
+
 ## :inbox\_tray: Error **Response**
 
-When you exceed your capacity, you will receive an error response. This response will be different depending on whether you are connecting to Alchemy using HTTP or [WebSockets](../guides/using-websockets.md).
+When you exceed your capacity, you will receive an error response. This response will be different depending on whether you are connecting to Alchemy using HTTP or [WebSockets](../enhanced-apis/subscription-api-websockets/).
 
 {% hint style="info" %}
 If you would like to test receiving a 429 response, send a POST request to [https://httpstat.us/429](https://httpstat.us/429).

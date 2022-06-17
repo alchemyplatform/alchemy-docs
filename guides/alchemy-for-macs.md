@@ -44,7 +44,7 @@ npm install @alch/alchemy-web3
 
 ## 3. \[Optional] Install WebSockets
 
-WebSockets are a great way to subscribe to events and changes, learn more through our [Using WebSockets](using-websockets.md) page. To use WebSockets, first install WebSocket cat.
+WebSockets are a great way to subscribe to events and changes, learn more through our [Using WebSockets](../enhanced-apis/subscription-api-websockets/) page. To use WebSockets, first install WebSocket cat.
 
 ```
 npm install -g wscat

@@ -2,7 +2,7 @@
 description: This is a beginners guide for sending Ethereum transactions using web3.
 ---
 
-# Sending Transactions Using Web3
+# How to Send Transactions on Ethereum
 
 There are three main steps in order to send a transaction to the Ethereum blockchain: create, sign, and broadcast. We'll go through all three, hopefully answering any questions you might have! In this tutorial, we'll be using [Alchemy](https://dashboard.alchemyapi.io/signup?referral=affiliate:9efcc9a2-ef89-4a2b-a5f3-1dd52ad32c4c) to send our transactions to the Ethereum chain. You can [create a free Alchemy account here.](https://alchemy.com/?r=affiliate:9efcc9a2-ef89-4a2b-a5f3-1dd52ad32c4c)
 
@@ -63,7 +63,7 @@ Okay, now that we have a few of these questions out of the way, let's move on to
 
 Navigate to your [Alchemy Dashboard](https://dashboard.alchemyapi.io) and create a new app, choosing Rinkeby for your network. (In practice, you could use any testnet of your choice, but for this guide we're sticking to Rinkeby.)
 
-### 2. Request Eth from the [Alchemy Rinkeby faucet](https://www.rinkebyfaucet.com)
+### 2. Request Eth from the [Alchemy Rinkeby faucet](https://www.rinkebyfaucet.com/)
 
 Follow the instructions on the faucet homepage to receive Eth. Make sure to include your **Rinkeby** Ethereum address (from Metamask) and not another network. After following the instructions, double check that you've received the Eth in your wallet.
 
@@ -153,7 +153,7 @@ Be sure to replace the address on line 6 with your own public address.
 
 Now, before we jump into running this code, let's talk about some of the components here.
 
-* `nonce` : The nonce specification is used to keep track of the number of transactions sent from your address. We need this for security purposes and to prevent [replay attacks](../../resources/web3-glossary.md#account-nonce). To get the number of transactions sent from your address we use [getTransactionCount](../../apis/ethereum/#eth\_gettransactioncount).
+* `nonce` : The nonce specification is used to keep track of the number of transactions sent from your address. We need this for security purposes and to prevent [replay attacks](../../resources/web3-glossary/#account-nonce). To get the number of transactions sent from your address we use [getTransactionCount](../../apis/ethereum/#eth\_gettransactioncount).
 * `transaction`: The transaction object has a few aspects we need to specify
   * `to`: This is the address we want to send Eth to. In this case, we are sending Eth back to the [Rinkeby faucet](https://faucet.rinkeby.io) we initially requested from.
   * `value`: This is the amount we wish to send, specified in wei where 10^18 wei = 1 ETH

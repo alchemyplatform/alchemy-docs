@@ -1,26 +1,76 @@
 ---
 description: >-
   Learn how to subscribe to pending transactions, log events, new blocks and
-  more using Websockets on Ethereum, Polygon, and Arbitrum.
+  more using WebSockets on Ethereum, Polygon, and Arbitrum.
 ---
 
-# Subscription API (Websockets)
+# Subscription API (WebSockets)
 
-## How to use Websockets
+## WebSockets vs. HTTP
 
-The subscription API endpoints ([`eth_subscribe`](./#eth\_subscribe) and [`eth_unsubscribe`](./#eth\_unsubscribe)) are only supported over [Websockets](../../guides/using-websockets.md). Websockets are different from HTTP requests. To learn more about how to use websockets check out the guide below👇
+WebSockets is a bidirectional communication protocol that maintains a network connection between a server and a client. Unlike HTTP, with WebSockets clients don't need to continuously make requests when they want information.&#x20;
 
-{% content-ref url="../../guides/using-websockets.md" %}
-[using-websockets.md](../../guides/using-websockets.md)
-{% endcontent-ref %}
+Instead, an open WebSocket connection can push network updates to clients by allowing them to subscribe to certain network states, such as new transactions or blocks being added to the blockchain.
 
-## Use Cases&#x20;
+As with any network connection, you should not assume that a WebSocket will remain open forever without interruption.
 
-We recommend using websocket subscriptions anytime you want to continually receive information or data. Check out the guide below for an example use case:
+{% hint style="info" %}
+[Alchemy Web3 ](../../documentation/alchemy-web3/)automatically adds handling for WebSocket failures with no configuration necessary.
+{% endhint %}
+
+## Try It Out
+
+The easiest way to test our APIs with WebSockets is to install a command line tool for making WebSocket requests such as [wscat](https://github.com/websockets/wscat). Using wscat, you can send requests as follows:
+
+```bash
+$ wscat -c wss://eth-mainnet.ws.alchemyapi.io/ws/demo
+
+> {"jsonrpc": "2.0", "id": 0, "method": "eth_gasPrice"}
+< {"jsonrpc": "2.0", "result": "0xb2d05e00", "id": 0}
+```
+
+{% hint style="warning" %}
+Though it's currently possible to send all your JSON-RPC requests over Websockets, we discourage our developers from doing so. Instead, you should primarily send `eth_subscribe` __ and __ `eth_unsubscribe` __ requests to WebSockets.&#x20;
+
+This is for several reasons:&#x20;
+
+* You won't receive HTTP status codes in WebSockets responses, which can be useful and actionable.
+* Because individual HTTP requests are load-balanced in our infrastructure to the fastest possible server, you'll add additional latency by sending JSON-RPC requests over WebSockets.
+* WebSockets client-side handling has many tricky edge cases and silent failure modes, which can make your dApp less stable.
+{% endhint %}
+
+## How to Use WebSockets
+
+To begin, open a WebSocket using the WebSocket URL for your app. You can find your app's WebSocket URL by opening the app's page in [your dashboard](https://dashboard.alchemyapi.io) and clicking "View Key". Note that your app's URL for WebSockets is different from its URL for HTTP requests, but both can be found by clicking "View Key".
+
+![](<../../.gitbook/assets/websocket key copy.gif>)
+
+Any of the APIs listed in the [Alchemy API Reference](../../apis/ethereum/) or Enhanced APIs can also be used via WebSocket. To do so, use the same payload that would be sent as the body of a POST request, but instead send that payload through the WebSocket.
+
+{% hint style="warning" %}
+**NOTE:** We do not recommend using Geth's WebSocket library for subscriptions as there are known issues in the websocket keep-alive and reconnection logic.
+{% endhint %}
+
+### Use [AlchemyWeb3.js](../../documentation/alchemy-web3/)
+
+Transitioning to WebSockets while using a client library like Web3 is simple. Simply pass the WebSocket URL instead of the HTTP one when instantiating your Web3 client. For example:
+
+```javascript
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+const web3 = createAlchemyWeb3("wss://eth-mainnet.ws.alchemyapi.io/ws/demo");
+web3.eth.getBlockNumber().then(console.log);  // -> 7946893
+```
+
+### Example Projects
+
+Check out the guide below for an example use case:
 
 {% content-ref url="how-to-listen-to-nft-mints.md" %}
 [how-to-listen-to-nft-mints.md](how-to-listen-to-nft-mints.md)
 {% endcontent-ref %}
+
+
 
 ## eth\_subscribe
 
@@ -30,13 +80,13 @@ Creates a new subscription for desired events. Sends data as soon as it occurs.
 #### A note on limits over WebSocket connections
 
 * There is a limit of 20,000 **** WebSocket connections per API Key as well as 1,000 parallel WebSocket subscriptions per WebSocket connection, creating a maximum of 20 million subscriptions per application.
-* The maximum size of a JSON-RPC `batch` request that can be sent over a WebSocket connection is 10
+* The maximum size of a JSON-RPC `batch` request that can be sent over a WebSocket connection is 20
 * Free tier users will be limited to 10 concurrent requests per WebSocket connection.
 {% endhint %}
 
 ### Parameters
 
-* [**Subscription type**](../../guides/using-websockets.md#subscription-types) **** - specifies the type of event to listen to (ex: [new pending transactions](./#3.-newpendingtransactions), [logs](./#5.-logs), etc.)
+* ****[**Subscription type**](./#subscription-types) **** - specifies the type of event to listen to (ex: [new pending transactions](./#3.-newpendingtransactions), [logs](./#5.-logs), etc.)
 * **Optional params** - optional parameters to include to describe the type of event to listen to (ex: `address`)&#x20;
 
 ### Returns
@@ -58,6 +108,14 @@ While the subscription is active, you will receive events formatted as an object
 
 The following subscription types are accepted in all `eth_subscribe` websocket requests through your Alchemy endpoint.&#x20;
 
+| Subscription Type                                                                    | Description                                                                                                                     |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| [newFullPendingTransactions](./#alchemy\_newfullpendingtransactions)                 | Emits full transactions that are sent to the network and marked as "pending".                                                   |
+| [filteredNewFullPendingTransactions](./#alchemy\_filterednewfullpendingtransactions) | Emits full transactions that are sent to the network, marked as "pending", and are sent from **** or to **** a certain address. |
+| [newPendingTransactions](./#newpendingtransactions)                                  | Emits transaction hashes that are sent to the network and marked as "pending".                                                  |
+| [newHeads](./#newheads)                                                              | Emits new blocks that are added to the blockchain.                                                                              |
+| [logs](./#logs)                                                                      | Emits logs attached to a new block that match certain topic filters.                                                            |
+
 ### alchemy\_newFullPendingTransactions
 
 Returns the transaction information for all transactions that are added to the pending state. This subscription type subscribes to pending transactions, similar to the standard Web3 call `web3.eth.subscribe("pendingTransactions")`, but differs in that it emits **full** transaction information rather than just transaction hashes.
@@ -74,6 +132,10 @@ The `alchemy_newFullPendingTransactions` subscription type is costly to maintain
 #### **Parameters**
 
 * None
+
+#### Returns
+
+* Transaction object for pending transaction, same response payload as [eth\_getTransactionByHash](../../apis/ethereum/eth-gettransactionbyhash.md#returns)&#x20;
 
 #### Request
 
@@ -133,7 +195,7 @@ web3.eth.subscribe("alchemy_newFullPendingTransactions").on("data", (data) => co
 
 ### alchemy\_filteredNewFullPendingTransactions
 
-Returns the transaction information for all transactions that are added to the pending state that match a given filter. Currently supports an address filter, which will return transactions **from** or **to** the address.
+Returns the transaction information for all transactions that are added to the pending state that match a given filter. Currently supports a `fromAddress` filter, which will return all transactions **from** an address, a `toAddress` filter, which will return all transactions **to** an address, and a `hashesOnly` filter, which when set to `true` specifies that the payload only contain the transaction hashes.
 
 {% hint style="warning" %}
 **NOTE:** This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
@@ -141,7 +203,20 @@ Returns the transaction information for all transactions that are added to the p
 
 #### **Parameters**&#x20;
 
-* `address`: address to receive pending transactions for (sent `from` or `to` this address).&#x20;
+* `fromAddress` (optional): `string` or \[`array of strings`]
+  * Singular address or array of addresses to receive pending transactions sent **from** this address.
+* `toAddress` (optional): `string` or \[`array of strings`]
+  * Singular address or array of addresses to receive pending transactions **to** this address
+* `hashesOnly` (optional): `boolean`&#x20;
+  * Default value is `false`, where the response matches the payload of [eth\_getTransactionByHash](https://www.notion.so/alchemy/apis/ethereum/eth-gettransactionbyhash#returns) . If set to `true`, the payload returned contains _only the hashes of the transactions_ that are added to the pending state, which matches the payload of [newPendingTransactions](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#newpendingtransactions))
+
+{% hint style="info" %}
+**NOTE:** Excluding all parameters returns the transaction information for all transactions that are added to the pending state.
+{% endhint %}
+
+#### Returns
+
+* The transaction object for pending transactions has the same payload as [eth\_getTransactionByHash](https://www.notion.so/alchemy/apis/ethereum/eth-gettransactionbyhash#returns) unless `hashesOnly` is set to `true`, in which case the payload contains only the hash of the transaction (same payload as [newPendingTransactions](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#newpendingtransactions)).
 
 #### Request
 
@@ -152,7 +227,7 @@ Returns the transaction information for all transactions that are added to the p
 wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
 // then call subscription 
-{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["alchemy_filteredNewFullPendingTransactions", {"address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"}]}
+{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["alchemy_filteredNewFullPendingTransactions", {"toAddress": ["0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", "0xdAC17F958D2ee523a2206206994597C13D831ec7" ], "hashesOnly": false}]}
 ```
 {% endtab %}
 
@@ -165,7 +240,7 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
 
 // Subcribes to the event and prints results 
-web3.eth.subscribe("alchemy_filteredNewFullPendingTransactions", {"address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"}).on("data", (data) => console.log(data));
+web3.eth.subscribe("alchemy_filteredNewFullPendingTransactions", {"toAddress": ["0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", "0xdAC17F958D2ee523a2206206994597C13D831ec7"], "hashesOnly": false}).on("data", (data) => console.log(data));
 ```
 {% endtab %}
 {% endtabs %}
@@ -173,29 +248,31 @@ web3.eth.subscribe("alchemy_filteredNewFullPendingTransactions", {"address": "0x
 #### Result
 
 ```javascript
-{"id":1,"result":"0x9a52eeddc2b289f985c0e23a7d8427c8","jsonrpc":"2.0"}
+{"id":1,"result":"0xf13f7073ddef66a8c1b0c9c9f0e543c3","jsonrpc":"2.0"}
 
 {
-    "jsonrpc":"2.0",
-    "method":"eth_subscription",
-    "params":{
-        "result":{
-            "blockHash":null,
-            "blockNumber":null,
-            "from":"0xa36452fc31f6f482ad823cd1cf5515177d57667f",
-            "gas":"0x1adb0",
-            "gasPrice":"0x7735c4d40",
-            "hash":"0x50bff0736c713458c92dd1848d12f3354149be1363123dae35e94e0f2a9d56bf",
-            "input":"0xa9059cbb0000000000000000000000000d0707963952f2fba59dd06f2b425ace40b492fe0000000000000000000000000000000000000000000015b1111266cfca100000",
-            "nonce":"0x0",
-            "to":"0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-            "transactionIndex":null,
-            "value":"0x0",
-            "v":"0x26",
-            "r":"0x195c2c1ed126088e12d290aa93541677d3e3b1d10f137e11f86b1b9227f01e3b",
-            "s":"0x60fc4edbf1527832a2a36dbc1e63ed6193a6eee654472fbebbf88ef1750b5344"},
-            "subscription":"0x9a52eeddc2b289f985c0e23a7d8427c8"
-        }
+  "jsonrpc": "2.0",
+  "method": "eth_subscription",
+  "params": {
+    "result": {
+      "blockHash": null,
+      "blockNumber": null,
+      "from": "0x098bdcdc84ab11a57b7c156557dca8cef853523d",
+      "gas": "0x1284a",
+      "gasPrice": "0x6fc23ac00",
+      "hash": "0x10466101bd8979f3dcba18eb72155be87bdcd4962527d97c84ad93fc4ad5d461",
+      "input": "0xa9059cbb00000000000000000000000054406f1ec84f89532f83768f3f159b73b237257f0000000000000000000000000000000000000000000000000000000001c9c380",
+      "nonce": "0x11",
+      "to": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "transactionIndex": null,
+      "value": "0x0",
+      "type": "0x0",
+      "v": "0x26",
+      "r": "0x93ddd646056f365352f7e53dfe5dc81bde53f5b7c7bbe5deea555a62540d6995",
+      "s": "0x79ed82a681930feb11eb68feccd1df2e53e1b96cf9171ae4ffcf53e9b2a40e8e"
+    },
+    "subscription": "0xf13f7073ddef66a8c1b0c9c9f0e543c3"
+  }
 }
 ```
 

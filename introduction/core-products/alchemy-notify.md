@@ -4,7 +4,7 @@ description: Alchemy Notify gives your users the UX they demand and deserve.
 
 # 🔔 Alchemy Notify
 
-#### _\*\*Get access to \*\*_[_**Alchemy for free here**_](https://alchemy.com/?r=affiliate:e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)_\*\*. \*\*_
+#### _Get access to_ [_**Alchemy for free here**_](https://alchemy.com/?r=affiliate:e68b2f77-7fc7-4ef7-8e9c-cdfea869b9b5)
 
 #### _**Looking to use Alchemy Notify? Check out our documentation below**_
 
@@ -57,13 +57,9 @@ Let your users know when transaction activity occurs on their address. No more r
 2. [Internal Transfers](../../enhanced-apis/notify-api/using-notify.md#types-of-transfers)
 3. [Token Transfers](../../enhanced-apis/notify-api/using-notify.md#address-activity)
 
-### :fuelpump:[ Gas Price](../../enhanced-apis/notify-api/using-notify.md#4-gas-price) <a href="#address-activity" id="address-activity"></a>
-
-The Gas Price Webhook allows you to receive a notification every minute when the Mainnet gas price rises above or drops below a certain threshold that you can select.
-
 ## **Ready to use Alchemy Notify?**
 
-\*\* Check out our docs on Notify below! \*\*
+Check out our docs on Notify below!
 
 {% content-ref url="../../enhanced-apis/notify-api/using-notify.md" %}
 [using-notify.md](../../enhanced-apis/notify-api/using-notify.md)

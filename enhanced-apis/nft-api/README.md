@@ -1,5 +1,7 @@
 ---
-description: API for fetching NFT data, including ownership, metadata attributes, and more.
+description: >-
+  Fetch NFTs, metadata, owners, collections, and more with speed and accuracy
+  across Ethereum, Polygon, Flow, testnets, and more.
 ---
 
 # NFT API
@@ -53,13 +55,11 @@ Tell us on [Twitter](https://twitter.com/AlchemyPlatform) what you're trying to 
 
 ### What do requests look like?
 
-HERE ARE SOME SUPER EASY TO USE COPY AND PASTE CODE SNIPPETS :innocent:
+We've compiled some super easy to use, copy-and-paste code snippets :innocent:
 
 You can check out the rest of our docs for more in-depth documentation about our endpoints, but for a quick walkthrough with some sample code ready to run, start with this GitHub repository!
 
 {% embed url="https://github.com/alchemyplatform/nft-api-javascript-scripts" %}
-
-Ready to get started building?&#x20;
 
 ## What Chains and Networks are Supported?
 

@@ -291,7 +291,7 @@ For our dApp, **we'll be using our Websockets API key** instead of our HTTP API 
 Once you have your API key, create a `.env` file in your root directory and add your Alchemy Websockets url to it. Afterwards, your `.env` file should look like so:
 
 ```javascript
-REACT_APP_ALCHEMY_KEY = wss://eth-ropsten.ws.alchemyapi.io/v2/<key>
+REACT_APP_ALCHEMY_KEY = wss://eth-goerli.ws.alchemyapi.io/v2/<key>
 ```
 
 Now, we're ready to set up our Alchemy Web3 endpoint in our dApp! Let's go back to our `interact.js`, which is nested inside our `util` folder and add the following code at the top of the file:
@@ -506,13 +506,15 @@ If you want to understand more about how transactions on Ethereum work, check ou
 
 ### Download Metamask
 
-You can download and create a Metamask account for free [here](https://metamask.io/download.html). When you are creating an account, or if you already have an account, make sure to switch over to the “Ropsten Test Network” in the upper right (so that we’re not dealing with real money).
+You can download and create a Metamask account for free [here](https://metamask.io/download.html). When you are creating an account, or if you already have an account, make sure to switch over to the “Goerli Test Network” in the upper right (so that we’re not dealing with real money).
 
-![Sample Metamask Wallet](<../../.gitbook/assets/image (17).png>)
+![](<../../.gitbook/assets/Screen Shot 2022-06-15 at 9.25.25 AM.png>)
 
 ### Add ether from a Faucet <a href="#step-4-add-ether-from-a-faucet" id="step-4-add-ether-from-a-faucet"></a>
 
-To sign a transaction on the Ethereum blockchain, we’ll need some fake Eth. To get Eth you can go to the [Ropsten faucet](https://faucet.ropsten.be) and enter your Ropsten account address, then click “Send Ropsten Eth.” You should see Eth in your Metamask account soon after!
+To sign a transaction on the Ethereum blockchain, we’ll need some fake Eth. To get Eth you can go to the [Goerli faucet](https://goerlifaucet.com/) and enter your wallet address, then click “Send Me Eth.” You should see Eth in your Metamask account soon after!
+
+In order to deploy our smart contract to the test network, we’ll need some fake Eth. To get Eth you can go to the [Goerli Faucet](https://goerlifaucet.com/) and enter your Metamask address, then click “Send Me Eth.” You should see Eth in your Metamask account soon after!
 
 ### Check your Balance <a href="#step-5-check-your-balance" id="step-5-check-your-balance"></a>
 
@@ -839,7 +841,7 @@ If you're already comfortable with traditional web3 Ethereum transactions, the c
       status: (
         <span>
           ✅{" "}
-          <a target="_blank" href={`https://ropsten.etherscan.io/tx/${txHash}`}>
+          <a target="_blank" href={`https://goerli.etherscan.io/tx/${txHash}`}>
             View the status of your transaction on Etherscan!
           </a>
           <br />
@@ -906,7 +908,7 @@ export const updateMessage = async (address, message) => {
       status: (
         <span>
           ✅{" "}
-          <a target="_blank" href={`https://ropsten.etherscan.io/tx/${txHash}`}>
+          <a target="_blank" href={`https://goerli.etherscan.io/tx/${txHash}`}>
             View the status of your transaction on Etherscan!
           </a>
           <br />

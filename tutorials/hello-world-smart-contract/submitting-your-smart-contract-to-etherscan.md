@@ -42,7 +42,7 @@ Now, let's update your `.env` file to include your Etherscan API Key.
 If you were following the [Hardhat tutorial](./#create-and-deploy-your-smart-contract-using-hardhat), your `.env`file should look like this:
 
 ```javascript
-API_URL = "https://eth-ropsten.alchemyapi.io/v2/your-api-key"
+API_URL = "https://eth-goerli.alchemyapi.io/v2/your-api-key"
 API_KEY = "your-api-key"
 PRIVATE_KEY = "your-private-account-address"
 ETHERSCAN_API_KEY = "your-etherscan-key" 
@@ -51,7 +51,7 @@ ETHERSCAN_API_KEY = "your-etherscan-key"
 If you were following the [Truffle tutorial](./#create-and-deploy-your-smart-contract-using-truffle), your .env file should look like this:
 
 ```javascript
-API_URL = "https://eth-ropsten.alchemyapi.io/v2/your-api-key"
+API_URL = "https://eth-goerli.alchemyapi.io/v2/your-api-key"
 MNEMONIC = "your-metamask-seed-reference"
 PUBLIC_KEY = "your-public-account-address"
 PRIVATE_KEY = "your-private-account-address"
@@ -86,10 +86,10 @@ const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 
 module.exports = {
   solidity: "0.7.3",
-  defaultNetwork: "ropsten",
+  defaultNetwork: "goerli",
   networks: {
       hardhat: {},
-      ropsten: {
+      goerli: {
          url: API_URL,
          accounts: [`0x${PRIVATE_KEY}`]
       }
@@ -109,11 +109,11 @@ Make sure your files are properly saved (especially if you're in VSCode) and you
 Finally, run the `verify` task, passing the address of the contract, and the first message argument string that we deployed it with:
 
 ```
-npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS 'Hello World!'
+npx hardhat verify --network goerli DEPLOYED_CONTRACT_ADDRESS 'Hello World!'
 ```
 
 {% hint style="info" %}
-Make sure that `DEPLOYED_CONTRACT_ADDRESS` is the address of your deployed smart contract on the Ropsten test network. Also, the last argument,`'Hello World!'` must be the same string value that you used during the deploy step in Part 1.
+Make sure that `DEPLOYED_CONTRACT_ADDRESS` is the address of your deployed smart contract on the Goerli test network. Also, the last argument,`'Hello World!'` must be the same string value that you used during the deploy step in Part 1.
 {% endhint %}
 
 If all goes well, you should see the following message in your terminal:
@@ -125,7 +125,7 @@ for verification on Etherscan. Waiting for verification result...
 
 
 Successfully verified contract HelloWorld on Etherscan.
-https://ropsten.etherscan.io/address/<contract-address>#contracts
+https://goerli.etherscan.io/address/<contract-address>#contracts
 ```
 
 Congrats! Your smart contract code should be on Etherescan! Check out [Step 4](submitting-your-smart-contract-to-etherscan.md#step-4-check-out-your-smart-contract-on-etherscan) to see how to view your smart contract code!
@@ -160,7 +160,7 @@ module.exports = {
       network_id: "*", // Match any network id
       gas: 5000000
     },
-    ropsten: {
+    goerli: {
       provider: function() {
         return new HDWalletProvider(MNEMONIC, API_URL)
       },
@@ -199,7 +199,7 @@ module.exports = {
       network_id: "*", // Match any network id
       gas: 5000000
     },
-    ropsten: {
+    goerli: {
       provider: function() {
         return new HDWalletProvider(MNEMONIC, API_URL)
       },
@@ -229,14 +229,14 @@ module.exports = {
 Last but not least, run the following command in your terminal:
 
 ```
-truffle run verify HelloWorld --network ropsten
+truffle run verify HelloWorld --network goerli
 ```
 
 If all goes well, you should see the following message in your terminal.
 
 ```
 Verifying HelloWorld 
-Pass - Verified: https://ropsten.etherscan.io/address/<contract-address>#contracts
+Pass - Verified: https://goerli.etherscan.io/address/<contract-address>#contracts
 Successfully verified 1 contract(s).
 ```
 

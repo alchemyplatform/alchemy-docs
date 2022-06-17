@@ -1,7 +1,5 @@
 ---
-description: >-
-  Welcome to Alchemy Docs - documentation for the world’s most powerful
-  blockchain developer platform.
+description: Alchemy Developer Documentation - Web3 Tutorials, APIs, & RPC Methods
 ---
 
 # 👋 Welcome to Alchemy
@@ -90,12 +88,12 @@ These tutorials require a bit more coding experience and involve integrating his
 [transfers-tutorial.md](tutorials/transfers-tutorial.md)
 {% endcontent-ref %}
 
-{% content-ref url="tutorials/tracking-transaction-life-cycles.md" %}
-[tracking-transaction-life-cycles.md](tutorials/tracking-transaction-life-cycles.md)
+{% content-ref url="tutorials/how-to-track-ethereum-transactions.md" %}
+[how-to-track-ethereum-transactions.md](tutorials/how-to-track-ethereum-transactions.md)
 {% endcontent-ref %}
 
-{% content-ref url="tutorials/building-a-dapp-with-real-time-transaction-notifications.md" %}
-[building-a-dapp-with-real-time-transaction-notifications.md](tutorials/building-a-dapp-with-real-time-transaction-notifications.md)
+{% content-ref url="enhanced-apis/notify-api/building-a-dapp-with-real-time-transaction-notifications.md" %}
+[building-a-dapp-with-real-time-transaction-notifications.md](enhanced-apis/notify-api/building-a-dapp-with-real-time-transaction-notifications.md)
 {% endcontent-ref %}
 
 ## 🤷 What is Alchemy?

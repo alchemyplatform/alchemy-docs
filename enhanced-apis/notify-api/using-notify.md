@@ -2,7 +2,7 @@
 description: >-
   Setting up Alchemy Notify (webhooks) in your Ethereum, Polygon, Optimism, or
   Arbitrum dapp. Get notifications for external, internal, & token transfers,
-  mined and dropped transactions, and gas price.
+  mined and dropped transactions.
 ---
 
 # Using Alchemy Notify/Webhooks
@@ -36,7 +36,6 @@ There are four types of webhooks to receive notifications for:
 1. [Mined Transactions](using-notify.md#mined-transactions) (all networks)
 2. [Dropped Transactions](using-notify.md#dropped-transactions) (all networks)
 3. [Address Activity ](using-notify.md#address-activity)(all networks)&#x20;
-4. [Gas Price](using-notify.md#gas-price) (V1 only, Ethereum)&#x20;
 
 To see in depth explanations for each of the Alchemy Notify webhooks check out the [Using Webhooks](using-notify.md) guide.
 
@@ -70,7 +69,7 @@ The following format applies to all webhooks.
 *   `network`: Network for the event, can be Ethereum only
 
     &#x20;`MAINNET`, `GOERLI`, `ROPSTEN`, `RINKEBY`, `KOVAN`
-* `webhookType`: Type of webhook event, can be `"MINED_TRANSACTION"`, `"DROPPED_TRANSACTION"`, `"ADDRESS_ACTIVITY",` or `"GAS_PRICE`
+* `webhookType`: Type of webhook event, can be `"MINED_TRANSACTION"`, `"DROPPED_TRANSACTION"`, `"ADDRESS_ACTIVITY"`
 * `timestamp`: Timestamp that the webhook event was created (might be different from the block timestamp that the event was in)
 * Object - event object, see [mined transaction](using-notify.md#mined-transactions) object, [dropped transaction](using-notify.md#dropped-transactions) object, [address activity](using-notify.md#address-activity) object, and [gas price](using-notify.md#4.-gas-price) object below.
 
@@ -104,7 +103,7 @@ The Mined Transaction Webhook is used to notify your app anytime a transaction s
 *   `network`: Network for the event, can be&#x20;
 
     &#x20;`ARB_MAINNET`, `ARB_RINKEBY`, `MATIC_MAINNET`, `MATIC_MUMBAI`, `OPT_MAINNET`, `OPT_KOVAN`, `ETH_MAINNET`, `ETH_GOERLI`, `ETH_ROPSTEN`, `ETH_RINKEBY`, `ETH_KOVAN`
-* `transaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth\_gettransactionbyhash.md))
+* `transaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth-gettransactionbyhash.md))
 
 **Example:**
 
@@ -144,7 +143,7 @@ The Mined Transaction Webhook is used to notify your app anytime a transaction s
 
 Object - mined transaction object
 
-* `fullTransaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth\_gettransactionbyhash.md))
+* `fullTransaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth-gettransactionbyhash.md))
 
 **Example:**
 
@@ -189,7 +188,7 @@ The Dropped Transactions Webhook is used to notify your app anytime a transactio
 
 * `appId`: Unique ID for Alchemy app that sent the transaction and is configured to this webhook
 * `network`: Network for the event, can be `ARB_MAINNET`, `ARB_RINKEBY`, `MATIC_MAINNET`, `MATIC_MUMBAI`, `OPT_MAINNET`, `OPT_KOVAN,ETH_MAINNET`, `ETH_GOERLI`, `ETH_ROPSTEN`, `ETH_RINKEBY`, `ETH_KOVAN`
-* `transaction`: transaction object  (same output as calling [_**eth\_getTransactionByHash**_](../../apis/ethereum/eth\_gettransactionbyhash.md#returns))
+* `transaction`: transaction object  (same output as calling [_**eth\_getTransactionByHash**_](../../apis/ethereum/eth-gettransactionbyhash.md#returns))
 
 **Example Response**
 
@@ -228,7 +227,7 @@ The Dropped Transactions Webhook is used to notify your app anytime a transactio
 
 Object - dropped transaction object
 
-* `fullTransaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth\_gettransactionbyhash.md))
+* `fullTransaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth-gettransactionbyhash.md))
 
 **Example:**
 
@@ -264,7 +263,7 @@ Object - dropped transaction object
 The Address Activity Webhook allows you to track all ETH, ERC20 and ERC721 [transfer events](../../guides/eth\_getlogs.md#what-are-transfers) for as many Ethereum addresses as you'd like. This provides your app with real-time state changes when an address sends or receives tokens.
 
 {% hint style="info" %}
-If you are looking for historical activity, check out the [Transfers API](../transfers-api.md)!
+If you are looking for historical activity, check out the [Transfers API](../transfers-api/)!
 {% endhint %}
 
 #### Types of Transfers
@@ -304,20 +303,20 @@ These are transfers that occur where the `fromAddress` is an internal (smart con
 * `network`: Network for the event, can be `ARB_MAINNET`, `ARB_RINKEBY`, `MATIC_MAINNET`, `MATIC_MUMBAI`, `OPT_MAINNET`, `OPT_KOVAN,ETH_MAINNET`, `ETH_GOERLI`, `ETH_ROPSTEN`, `ETH_RINKEBY`, `ETH_KOVAN`
 * `activity`: List of transfer events whose `from` or `to` address matches the address configured in the webhook. Events are included in the same list if they occurred in the same block, each transfer event has the following values.&#x20;
   * `fromAddress`: from address of transfer (hex string).
-  * `toAddress`: to address of transfer (hex string). `null` if contract creation.
+  * `toAddress`: to address of transfer (hex string). Omitted if contract creation.
   * `blockNum`: the block where the transfer occurred (hex string).
   * `hash`: transaction hash (hex string).
   * `category`: `external`, `internal`, or `token`- label for the transfer
-  * `value`: converted asset transfer value as a number (raw value divided by contract decimal). `null` if erc721 transfer or contract decimal not available.
-  * `asset`: `ETH` or the token's symbol. `null` if not defined in the contract and not available from other sources.
-  * `erc721TokenId`: raw erc721 token id (hex string). `null` if not an erc721 token transfer
-  * `erc1155Metadata`: A list of objects containing the ERC1155 `tokenId` (hex string) and `value` (hex string). `null` if not an ERC1155 transfer
+  * `value`: converted asset transfer value as a number (raw value divided by contract decimal). Omitted if erc721 transfer or contract decimal not available.
+  * `asset`: `ETH` or the token's symbol. Omitted if not defined in the contract and not available from other sources.
+  * `erc721TokenId`: raw erc721 token id (hex string). Omitted if not an erc721 token transfer
+  * `erc1155Metadata`: A list of objects containing the ERC1155 `tokenId` (hex string) and `value` (hex string). Omitted if not an ERC1155 transfer
   * `rawContract`
-    * `rawValue`: raw transfer value (hex string). `null` if erc721 transfer
-    * `address`: contract address (hex string). `null` if `external` or `internal` transfer
-    * `decimal`: contract decimal (hex string). `null` if not defined in the contract and not available from other sources.
-  * `typeTraceAddress`: the type of internal transfer (`call`, `staticcall`, `create`, `suicide`) followed by the trace address (ex. `call_0_1`).`null` if not internal transfer. (note you can use this as a unique id for internal transfers since they will have the same parent hash)
-  * `log` : log emitted for the `token` transfer event. `null` if `external` or `internal` transfer
+    * `rawValue`: raw transfer value (hex string). Omitted if erc721 transfer
+    * `address`: contract address (hex string). Omitted if `external` or `internal` transfer
+    * `decimal`: contract decimal (hex string). Omitted if not defined in the contract and not available from other sources.
+  * `typeTraceAddress`: the type of internal transfer (`call`, `staticcall`, `create`, `suicide`) followed by the trace address (ex. `call_0_1`).Omitted if not internal transfer. (note you can use this as a unique id for internal transfers since they will have the same parent hash)
+  * `log` : log emitted for the `token` transfer event. Omitted if `external` or `internal` transfer
 
 #### Example
 
@@ -471,70 +470,14 @@ Object - address activity object
       "log": null
     },
   ]
-}
-```
-{% endtab %}
-{% endtabs %}
-
-### 4. Gas Price
-
-The Gas Price Webhook allows you to receive a notification every minute when the Mainnet gas price rises above or drops below a certain threshold that you can select. It works by pulling the current gas prices from [ETH Gas Station](https://ethgasstation.info) every minute.
-
-Gas prices typically fall in a range, where a lower gas price means that the transaction will take longer to be mined, and a higher gas price means that the transaction will be mined more quickly. The Execution Speed metric allows you to specify a metric in that range that you would like to receive notifications, corresponding to ETH Gas Station's [Price Type metric documented here](https://docs.ethgasstation.info/gas-price). For example, selecting an Average Execution Speed means that you will receive notifications when a gas price typically mined in under 5 minutes rises above or drops below your selected threshold
-
-{% hint style="info" %}
-**NOTE:** Gas price webhooks are currently only supported on V1.&#x20;
-{% endhint %}
-
-**Example Response**
-
-{% tabs %}
-{% tab title="V1" %}
-**Event Object:**
-
-Object - gas price object
-
-* `gasPriceMetadata`: object containing info about gas price, all gas price values are measured in [Gwei](../../resources/web3-glossary.md#why-cant-i-invite-a-user-who-is-already-on-a-team)
-  * `fast`: Recommended fast gas price (expected to be mined in < 2 minutes)
-  * `fastest`: Recommended fastest gas price (expected to be mined in < 30 seconds)
-  * `safeLow`: Recommended safe gas price (expected to be mined in < 30 minutes)
-  * `average`: Recommended average gas price (expected to be mined in < 5 minutes)
-  * `block_time`: Average time (in seconds) to mine one single block
-  * `blockNum`: Latest block number
-  * `speed`: Smallest value of (gasUsed / gaslimit) from last 10 blocks
-  * `safeLowWait`: Waiting time (in minutes) for `safeLow` gas price
-  * `avgWait`: Waiting time (in minutes) for `average` gas price
-  * `fastWait`: Waiting time (in minutes) for `fast` gas price
-  * `fastestWait`: Waiting time (in minutes) for `fastest` gas price
-
-#### Example Response:
-
-```
-{
-  "app": "Alchemy Mainnet",
-  "network": "MAINNET",
-  "timestamp": "2020-09-09T15:14:19.175Z",
-  "gasPriceMetadata": {
-    "fast": 160,
-    "fastest": 167,
-    "safeLow": 147,
-    "average": 150,
-    "block_time": 11.894736842105264,
-    "blockNum": 10828228,
-    "speed": 0.9968284026882861,
-    "safeLowWait": 14.6,
-    "avgWait": 3.9,
-    "fastWait": 0.4,
-    "fastestWait": 0.4
-  }
-}
+}x
 ```
 {% endtab %}
 {% endtabs %}
 
 ## Test Out Webhooks <a href="#test-out-webhooks" id="test-out-webhooks"></a>
 
-There are many tools you can use to test out webhooks. In this guide, you will learn how to use [ngrok](https://ngrok.com), which allows you to test your webhooks locally.
+There are many tools you can use to test out webhooks. In this guide, you will learn how to use [ngrok](https://ngrok.com/), which allows you to test your webhooks locally.
 
 To set up ngrok:
 
@@ -568,7 +511,7 @@ Navigate to the Notify tab in your [Alchemy Dashboard](https://dashboard.alchemy
 1. Determine which type of webhook you want to activate
 2. Click the "Create Webhook" button
 3. Specify which app you wish to add notifications to
-4. Add in your unique webhook URL, this can be any link that you want to receive requests at (your server, slack, etc.) \*\*Note that the webhook payload might not \*\*For instructions on how to set up Alchemy Notify programatically, check out the \*\*always be compatible for 3rd party integrations. \*\*
+4. Add in your unique webhook URL, this can be any link that you want to receive requests at (your server, slack, etc.) **Note that the webhook payload might not always be compatible for 3rd party integrations.**
 5. Test out your webhook by hitting the "Test Webhook" button to ensure it works properly
 6. Hit "Create Webhook" and you should then see your webhook appear in the list!
 7. Check your endpoint to see responses rolling through!
@@ -607,42 +550,97 @@ X-Alchemy-Signature: your-hashed-signature
 
 #### Example Signature Validation Function
 
+* `body`: must be raw string body, not json transformed version of the body
+* `signature`: your "`X-Alchemy-Signature`" received from header
+* `signing_key`: Signing key from dashboard, see [above](using-notify.md#1.-find-your-signing-key) on how to find it
+
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
-function isValidSignature(request) {    
-    const signingKey = 'Signing key from by Alchemy dashboard for your Webhook';
-    const headers = request.headers;
-    const signature = headers['x-alchemy-signature']; // Lowercase for NodeJS
-    const body = request.body;    
-    const hmac = crypto.createHmac('sha256', token) // Create a HMAC SHA256 hash using the auth token
-    hmac.update(JSON.stringify(body), 'utf8') // Update the token hash with the request body using utf8
-    const digest = hmac.digest('hex');     
-    return (signature === digest); // If signature equals your computed hash, return true
+import * as crypto from "crypto";
+
+function isValidSignatureForStringBody(
+    body: string, // must be raw string body, not json transformed version of the body
+    signature: string, // your "X-Alchemy-Signature" from header
+    signingKey: string, // taken from dashboard for specific webhook
+  ): boolean {
+    const hmac = crypto.createHmac("sha256", signingKey); // Create a HMAC SHA256 hash using the signing key
+    hmac.update(body, "utf8"); // Update the token hash with the request body using utf8
+    const digest = hmac.digest("hex");
+    return signature === digest;
 }
 ```
 {% endtab %}
 
 {% tab title="Python" %}
 ```python
-import hmac 
-import hashlib 
-import json 
-def isValidSignature(request):
-     signingKey = 'Signing key from by Alchemy dashboard for your Webhook';
-     headers = request['headers'];
-     signature = headers['x-alchemy-signature'];
-     body = request['body'];
-     string_body = json.dumps(body, separators=(',', ':'))
-     digest = hmac.new(
-          bytes(token, 'utf-8'),
-          msg=bytes(string_body, 'utf-8'), 
-          digestmod=hashlib.sha256
-     ).hexdigest()
-return (signature == digest);
+import hmac
+import hashlib
+
+
+
+def is_valid_signature_for_string_body(
+    body: str, signature: str, signing_key: str
+) -> bool:
+    digest = hmac.new(
+        bytes(signing_key, "utf-8"), msg=bytes(body, "utf-8"), digestmod=hashlib.sha256
+    ).hexdigest()
+
+    return signature == digest
+```
+{% endtab %}
+
+{% tab title="Go" %}
+```go
+func isValidSignatureForStringBody(
+  body []byte, // must be raw string body, not json transformed version of the body
+  signature string, // your "X-Alchemy-Signature" from header
+  signingKey []byte, // taken from dashboard for specific webhook
+) bool {
+  h := hmac.New(sha256.New, signingKey)
+  h.Write([]byte(body))
+  digest := hex.EncodeToString(h.Sum(nil))
+  return digest == signature
+}
+```
+{% endtab %}
+
+{% tab title="Rust" %}
+```rust
+fn is_valid_signature_for_string_body(
+    body: &[u8], // must be raw string body, not json transformed version of the body
+    signature: &str, // your "X-Alchemy-Signature" from header
+    signing_key: &str, // taken from dashboard for specific webhook
+) -> Result<bool, Box<dyn std::error::Error>> {
+    let signing_key_bytes: Vec<u8> = signing_key.bytes().collect();
+    let mut mac = Hmac::<Sha256>::new_from_slice(&signing_key_bytes)?;
+    mac.update(&body);
+    let hex_decode_signature = hex::decode(signature)?;
+    let verification = mac.verify_slice(&hex_decode_signature).is_ok();
+    Ok(verification)
+}
 ```
 {% endtab %}
 {% endtabs %}
+
+## Webhook Retry-logic&#x20;
+
+Alchemy Notify V2 has built in retry-logic for webhooks. Here is some information you need to know on how retry-logic works.
+
+#### When are requests retried?
+
+Requests are retried for non-200 response codes and upon failures to reach your server
+
+#### How often are requests retried?
+
+Requests are retried up to 6 times before failing over. Here are the times after the initial failure that the request is retried, with each time interval building off the previous:
+
+1. 15 seconds
+2. 1 minute&#x20;
+3. 10 minutes&#x20;
+4. 1 hour
+5. 1 day
+6. 1 day
 
 ## Common Questions&#x20;
 
@@ -677,16 +675,19 @@ As an added security measure, you can ensure your webhook notification originate
 
 The changes in webhook V2 are mostly formatting and parameter name differences. Thus, the primary changes that will need to be made are how you process response payloads.
 
-To learn more about why we made this change, check out the [blog post here](https://alchemy.com/blog/launching-notify-v2-with-improvements-to-reliability-scalability-and-security). Although V1 webhooks will still be supported, all net-new webhooks created after **Wednesday, April 27, 2022** will be V2, with the exception of [gas price webhooks](using-notify.md#4.-gas-price).&#x20;
+To learn more about why we made this change, check out the [blog post here](https://alchemy.com/blog/launching-notify-v2-with-improvements-to-reliability-scalability-and-security). Although V1 webhooks will still be supported, all net-new webhooks created after **Wednesday, April 27, 2022** will be V2.
 
-Here is an overview of the payload changes from V1 to V2:
+Here is an overview of the changes from V1 to V2:
 
+* [Retry logic](using-notify.md#webhook-retry-logic) is enabled for all V2 webhooks
 * `app` is replaced with `appId` field and is now under the `event` field
 * `network` field is now under the `event` field
 * `app` field is no longer included for Address Activity webhooks
 * `webhookType` is renamed to `type`
+* `webhook_id` changed from an `int` to a `string`
 * `timestamp` is renamed to `createdAt`
 * `fullTransaction` is renamed to `transaction`, which is under the `event` field
+* `null` fields will be omitted from the response payload entirely to improve latency and save users on bandwidth&#x20;
 
 ### Why am I missing transactions in the response?
 

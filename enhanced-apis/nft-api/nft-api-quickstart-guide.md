@@ -230,7 +230,7 @@ var requestOptions = {
 
 // Replace with your Alchemy API key:
 const apiKey = "demo";
-const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTs/`;
+const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTs/`;
 // Replace with the wallet address you want to query:
 const ownerAddr = "0xF5FFF32CF83A1A614e15F25Ce55B0c0A6b5F8F2c";
 const fetchURL = `${baseURL}?owner=${ownerAddr}`;
@@ -305,7 +305,7 @@ import fetch from 'node-fetch';
   };
 
   const apiKey = "demo"
-  const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${demo}/getNFTMetadata`;
+  const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${demo}/getNFTMetadata`;
   const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
   const tokenId = "2";
   const tokenType = "erc721";
@@ -432,7 +432,7 @@ import axios from 'axios';
 
 // Replace with your Alchemy API key:
 const apiKey = "demo";
-const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTs/`;
+const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTs/`;
 // Replace with the wallet address you want to query for NFTs:
 const ownerAddr = "0xF5FFF32CF83A1A614e15F25Ce55B0c0A6b5F8F2c";
 
@@ -504,7 +504,7 @@ import axios from 'axios';
 
 // replace with your Alchemy api key
 const apiKey = "demo";
-const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata`;
+const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTMetadata`;
 const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
 const tokenId = "2";
 const tokenType = "erc721";

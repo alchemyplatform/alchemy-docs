@@ -14,7 +14,7 @@ Some of the reasons why you'd want to get NFTs minted by an address include:
 
 Surprisingly, this type of information is not easy to gather with the current [Ethereum API](../../apis/ethereum/). That's why Alchemy builds a higher level [Enhanced APIs](broken-reference) to make building in Web3 much easier.&#x20;
 
-**In this tutorial, we'll be leveraging Alchemy's** [**Transfers API** ](../transfers-api.md)**(`alchemy_getAssetTransfers`) to fetch all NFTs minted by a particular account address.**
+**In this tutorial, we'll be leveraging Alchemy's** [**Transfers API** ](./)**(`alchemy_getAssetTransfers`) to fetch all NFTs minted by a particular account address.**
 
 ## **What happens when NFTs are minted?**
 
@@ -22,13 +22,13 @@ Under the hood, when an NFT is minted, it is transferred from the [null **** add
 
 All token **creations** and **destructions** typically are **from** and **to** the null address respectively, so it's a good filter when looking for mint or burn events.&#x20;
 
-This on-chain minting emits a standard [transfer event](../transfers-api.md#what-are-transfers) since the asset is being _transferred_ from one account to another.&#x20;
+This on-chain minting emits a standard [transfer event](./#what-are-transfers) since the asset is being _transferred_ from one account to another.&#x20;
 
-Since we can filter for transfer events using the [Transfers API](../transfers-api.md), we can easily fetch NFT mints with the right parameter specification!
+Since we can filter for transfer events using the [Transfers API](./), we can easily fetch NFT mints with the right parameter specification!
 
 ## How to get NFT Mint Events
 
-In order to fetch NFTs minted by a given address we'll need to specify a few things in our [`alchemy_getAssetTransfers`](../transfers-api.md#alchemy\_getassettransfers-ethereum-mainnet) request:
+In order to fetch NFTs minted by a given address we'll need to specify a few things in our [`alchemy_getAssetTransfers`](./#alchemy\_getassettransfers-ethereum-mainnet) request:
 
 * `fromAddress`: where the transaction originated from, in our case that’s always 0x0000000000000000000000000000000000000000
 * `toAddress`: the address we want to see mints from (NFTs go **to** the address that minted them)
@@ -218,7 +218,7 @@ node nft-mints-fetch.js
 {% endtab %}
 
 {% tab title="Axios" %}
-If you're using Javascript [`axios`](https://www.axios.com), a promise-based HTTP client for the browser and Node.js which allows us to make a raw request to the Alchemy API, below is a code snippet for the request you'd make!
+If you're using Javascript [`axios`](https://www.axios.com/), a promise-based HTTP client for the browser and Node.js which allows us to make a raw request to the Alchemy API, below is a code snippet for the request you'd make!
 
 {% embed url="https://github.com/alchemyplatform/transfers_api_javascript_scripts/blob/main/javascript/axios/nft-mints/nft-mints-axios.js" %}
 NFT Mints GitHub Repo

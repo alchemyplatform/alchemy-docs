@@ -8,7 +8,7 @@ description: >-
 
 dApps on Ethereum have grown in complexity, depth, and breadth in the past few years. One missing piece is the efficient querying of historical block information. With standard Ethereum JSON-RPC methods, developers either need to maintain centralized databases containing large swaths of the blockchain history, or repeatedly query blocks across long time periods in order to scrap the entire transaction history of a particular address. These two options complicate the process in which users like wallet providers supply information such as the history of a particular user's interactions on the blockchain. Without easy access to this information, developers must rely on expensive, slow methods that limit the feature set of their apps.
 
-While building historical queries into dApps has traditionally been complicated, time-consuming, and error-prone, the [Alchemy Transfers API](../enhanced-apis/transfers-api.md) allows for developers to query historical wallet activity, token transfers, and other account-driven transactions in a simple transaction.
+While building historical queries into dApps has traditionally been complicated, time-consuming, and error-prone, the [Alchemy Transfers API](../enhanced-apis/transfers-api/) allows for developers to query historical wallet activity, token transfers, and other account-driven transactions in a simple transaction.
 
 In this tutorial, we’ll look at an example of how, with just a few lines of code, your dApp can integrate the power of the Alchemy Transfers API.
 
@@ -31,9 +31,9 @@ In this tutorial, we’ll look at an example of how, with just a few lines of co
 
 ## **Our Example**
 
-For our pre-packaged example, we’ll create a dApp dashboard that tracks transaction activity for a particular address, processes it in the backend, and then pushes it in real-time to the frontend. \*\* \*\*
+For our pre-packaged example, we’ll create a dApp dashboard that tracks transaction activity for a particular address, processes it in the backend, and then pushes it in real-time to the frontend.
 
-### \*\*Problem Statement: \*\*🐕
+### Problem Statement: 🐕
 
 Instead of sending burnt tokens to 0xdead, which is recommended for most token burning, creators of Akita Inu (AKITA) and Shiba Inu (SHIBA) chose to gift Vitalik Buterin with large swaths of their dog-themed tokens. However, rather than leaving the meme tokens untouched, Vitalik instead chose to sell tokens in batches to Uniswap, swapping them for ETH, and donated both the ETH proceeds and the rest of the tokens that could not be sold to a whole host of charities. Check out [this article](https://www.theblockcrypto.com/post/104676/vitalik-buterin-donates-more-than-60m-to-charity-after-selling-meme-tokens-including-shiba-inu) for more info.
 
@@ -121,7 +121,7 @@ If you don’t already have one, you’ll first need to [create an account on Al
 
 ### \*\*3. Integrate Alchemy Transfers API \*\*
 
-Once you have an account, you are now able to use the [`alchemy_getAssetTransfers`](../enhanced-apis/transfers-api.md) method which allows you to query asset transfers.
+Once you have an account, you are now able to use the [`alchemy_getAssetTransfers`](../enhanced-apis/transfers-api/) method which allows you to query asset transfers.
 
 For our Akita Token Rescue dashboard, this is the specific request that we use:
 
@@ -148,7 +148,7 @@ For our Akita Token Rescue dashboard, this is the specific request that we use:
 * `fromAddress`: `0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6` is the Gitcoin multisig address
 * `toAddress` : `0xDead000000000000000000000000000000000d06` is the address used for burning tokens
 * `contractAddresses` : `0x3301Ee63Fb29F863f2333Bd4466acb46CD8323E6` contract where the Akita rescue logic is stored
-* `category`: `["external","token"]` are the [types of transfer events](../enhanced-apis/transfers-api.md#types-of-transfers) we want to monitor
+* `category`: `["external","token"]` are the [types of transfer events](../enhanced-apis/transfers-api/#types-of-transfers) we want to monitor
 
 ### 4. Insert Alchemy API Key
 
@@ -158,7 +158,7 @@ Navigate to the `main.py` to find where your API key is being used. Note that to
 \*\*NOTE: \*\*For this tutorial, we require using an app that is pointed towards the Ethereum mainnet since our contract is deployed on mainnet.
 {% endhint %}
 
-Our Heroku app is configured to accept the Alcehmy API key as an environment variable to encourage safe, best practices. Once you get your API key after creating an account, run the following command in the same file directory that you previously ran `heroku create` to set your environment variables within Heroku itself .
+Our Heroku app is configured to accept the Alchemy API key as an environment variable to encourage safe, best practices. Once you get your API key after creating an account, run the following command in the same file directory that you previously ran `heroku create` to set your environment variables within Heroku itself .
 
 ```
 heroku config:set KEY="<YOUR ALCHEMY KEY>"
@@ -167,7 +167,7 @@ heroku config:set KEY="<YOUR ALCHEMY KEY>"
 {% hint style="info" %}
 \*\*NOTE: \*\*When you copy your key from the dashboard you should get a full url like this:
 
-[`https://eth-mainnet.alchemyapi.io/v2/kXtBl52Cr0hNbOn0rI2up7lhUiGk_2eS`](https://eth-mainnet.alchemyapi.io/v2/kXtAc2qCG7HnbON0fI4ho3NHUiWj\_2cS)\`\`
+``[`https://eth-mainnet.alchemyapi.io/v2/kXtBl52Cr0hNbOn0rI2up7lhUiGk_2eS`](https://eth-mainnet.alchemyapi.io/v2/kXtBl52Cr0hNbOn0rI2up7lhUiGk\_2eS)
 
 Your key is just the last portion in the URL:
 
@@ -301,7 +301,7 @@ Note that we include the ERC20 ABI in this code snippet in order to properly rea
 
 **d) Define Alchemy Transfer function**
 
-Here, we use the Alchemy specific method [`alchemy_getAssetTransfers`](../enhanced-apis/transfers-api.md#alchemy\_getassettransfers) to get the total number of AKITA tokens burned by the Gitcoin contract.
+Here, we use the Alchemy specific method [`alchemy_getAssetTransfers`](../enhanced-apis/transfers-api/#alchemy\_getassettransfers) to get the total number of AKITA tokens burned by the Gitcoin contract.
 
 ```python
 def get_total_burn(): total_burn = requests.post('https://eth-mainnet.alchemyapi.io/v2/'+ALCHEMY_KEY, json={"jsonrpc": "2.0","id": 0,"method": "alchemy_getAssetTransfers","params": [{"fromBlock": "0xC30965","toBlock": "latest","fromAddress": "0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6","toAddress": "0xDead000000000000000000000000000000000d06","contractAddresses": ["0x3301Ee63Fb29F863f2333Bd4466acb46CD8323E6"],"category": ["external","token"]}]})

@@ -26,11 +26,24 @@ Or check out the example below:
 // Installation instructions: https://github.com/alchemyplatform/alchemy-web3
 
 async function main() {
-    const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
-    const web3 = createAlchemyWeb3("https://eth-mainnet.alchemyapi.io/v2/your-api-key");
-    const blockNumber = await web3.eth.getBlockNumber();
-    console.log(blockNumber);
+    // Import the AlchemyWeb3 library. Filepath to functions: 
+	// /@alch/alchemy-web3/dist/alchemyWeb3.js
+	const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+   	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+	
+	// Initialize an alchemy-web3 instance:
+	const web3 = createAlchemyWeb3(
+	  `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`);
+	
+	// Query the blockchain
+    	const blockNumber = await web3.eth.getBlockNumber();
+    
+	// Print the output to console
+	console.log(blockNumber);
    }
+
 main();
 ```
 {% endtab %}
@@ -41,9 +54,20 @@ main();
 
 async function main() {
    const { ethers } = require("ethers");
-   const provider = new ethers.providers.JsonRpcProvider("https://eth-mainnet.alchemyapi.io/v2/your-api-key");
-   const blockNumber = await provider.getBlockNumber();
-   console.log(blockNumber);
+   
+	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+
+	// Initialize an ethers instance
+	const provider = new ethers.providers.AlchemyProvider("homestead", apiKey);
+
+	// Query the blockchain
+    	const blockNumber = await provider.getBlockNumber();
+
+	// Print the output to console
+  	console.log(blockNumber);
+   }
+
 main()
 ```
 {% endtab %}
@@ -54,8 +78,16 @@ main()
 
 from web3 import Web3, HTTPProvider
 
-web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/your-api-key'))
-blockNumber = web3.eth.blockNumber
+#Replace with your Alchemy API key:
+apiKey = "demo"
+
+# Initialize a Web3.py instance
+web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/'+apiKey))
+
+# Query the blockchain
+blockNumber = web3.eth.block_number
+
+# Print the output to console
 print(blockNumber)
 ```
 {% endtab %}

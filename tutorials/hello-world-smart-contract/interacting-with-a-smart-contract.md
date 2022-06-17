@@ -12,7 +12,7 @@ Before starting this tutorial on interacting with a smart contract, you should h
 
 ## Part 2: Interact with your Smart Contract
 
-Now that we've successfully deployed a smart contract to the ropsten network, let's test out our web3 skills and interact with it!
+Now that we've successfully deployed a smart contract to the Goerli network, let's test out our web3 skills and interact with it!
 
 ### Step 1: Create a interact.js file
 
@@ -39,7 +39,7 @@ Your `.env` file should look something like this:
 ```bash
 # .env
 
-API_URL = "https://eth-ropsten.alchemyapi.io/v2/<your-api-key>"
+API_URL = "https://eth-goerli.alchemyapi.io/v2/<your-api-key>"
 API_KEY = "<your-api-key>"
 PRIVATE_KEY = "<your-metamask-private-key>"
 CONTRACT_ADDRESS = "0x<your contract address>"
@@ -93,7 +93,7 @@ We'll use the contract ABI from the previous step to create our instance of the 
 // interact.js
 
 // Provider
-const alchemyProvider = new ethers.providers.AlchemyProvider(network="ropsten", API_KEY);
+const alchemyProvider = new ethers.providers.AlchemyProvider(network="goerli", API_KEY);
 
 // Signer
 const signer = new ethers.Wallet(PRIVATE_KEY, alchemyProvider);
@@ -172,7 +172,7 @@ const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS;
 const contract = require("../artifacts/contracts/HelloWorld.sol/HelloWorld.json");
 
 // provider - Alchemy
-const alchemyProvider = new ethers.providers.AlchemyProvider(network="ropsten", API_KEY);
+const alchemyProvider = new ethers.providers.AlchemyProvider(network="goerli", API_KEY);
 
 // signer - you
 const signer = new ethers.Wallet(PRIVATE_KEY, alchemyProvider);
@@ -197,7 +197,7 @@ main();
 
 Now just run the script and you should be able to see the old message, the updating status, and the new message printed out to your terminal!
 
-`npx hardhat run scripts/interact.js --network ropsten`
+`npx hardhat run scripts/interact.js --network goerli`
 
 ```
 The message is: Hello World!
@@ -205,7 +205,7 @@ Updating the message...
 The new message is: This is the new message.
 ```
 
-While you are running that script, you may notice that the `Updating the message...` step takes a while to load before the new message is set. That is due to the mining process! If you are curious about how to track transactions while they are being mined, visit the [Alchemy mempool](https://dashboard.alchemyapi.io/mempool) to see the status of your transaction (whether it's pending, mined, or got dropped by the network). If your transaction got dropped, it's also helpful to check [Ropsten Etherscan](https://ropsten.etherscan.io) and search for your transaction hash.
+While you are running that script, you may notice that the `Updating the message...` step takes a while to load before the new message is set. That is due to the mining process! If you are curious about how to track transactions while they are being mined, visit the [Alchemy mempool](https://dashboard.alchemyapi.io/mempool) to see the status of your transaction (whether it's pending, mined, or got dropped by the network). If your transaction got dropped, it's also helpful to check [Goerli Etherscan](https://goerli.etherscan.io/) and search for your transaction hash.
 
 And that's it! You've now deployed AND interacted with an Ethereum smart contract. If you'd like to publish your contract to Etherscan so that anyone will know how to interact with it, check out [part 3: submitting your smart contract to etherscan](submitting-your-smart-contract-to-etherscan.md)! :tada:
 

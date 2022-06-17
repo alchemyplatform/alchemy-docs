@@ -10,26 +10,26 @@ We're obsessed with providing the most developer-friendly experience across our 
 
 ## Pricing Plans
 
-| Feature                                                                                                                                                                        |       Free Tier      |      Growth Tier     |    Enterprise Tier   |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------: | :------------------: | :------------------: |
-| Compute Units                                                                                                                                                                  |      300,000,000     |      400,000,000     |        Custom        |
-| Approx. # Requests                                                                                                                                                             |      12,000,000      |      16,000,000      |        Custom        |
-| # of apps                                                                                                                                                                      |           5          |          15          |       Unlimited      |
-| Throughput (CUPS)                                                                                                                                                              |          330         |          660         |        Custom        |
-| Full Archive Data                                                                                                                                                              | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
-| Supernode                                                                                                                                                                      | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
-| Build                                                                                                                                                                          | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
-| Monitor                                                                                                                                                                        | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
-| Notify                                                                                                                                                                         | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
-| Multichain (Mainnet & Testets)                                                                                                                                                 | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
-| No daily request limit                                                                                                                                                         | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
-| 24/7 Support                                                                                                                                                                   | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
-| Enhanced APIS ([NFT](../enhanced-apis/nft-api/), [Transfers](../enhanced-apis/transfers-api.md), [Token](../enhanced-apis/token-api/), [Notify](../enhanced-apis/notify-api/)) | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
-| [Trace](../enhanced-apis/trace-api/), [Parity](../enhanced-apis/block-api-beta.md), [Debug](../enhanced-apis/debug-api.md) APIs                                                |          :x:         | :white\_check\_mark: | :white\_check\_mark: |
-| Auto-scaling Compute Units                                                                                                                                                     |          :x:         | :white\_check\_mark: | :white\_check\_mark: |
-| Custom SLAs                                                                                                                                                                    |          :x:         |          :x:         | :white\_check\_mark: |
-| Committed Use Discounts                                                                                                                                                        |          :x:         |          :x:         | :white\_check\_mark: |
-| Pay in Crypto or NFTs                                                                                                                                                          |          :x:         |          :x:         | :white\_check\_mark: |
+| Feature                                                                                                                                                                      |       Free Tier      |      Growth Tier     |    Enterprise Tier   |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------: | :------------------: | :------------------: |
+| Compute Units                                                                                                                                                                |      300,000,000     |      400,000,000     |        Custom        |
+| Approx. # Requests                                                                                                                                                           |      12,000,000      |      16,000,000      |        Custom        |
+| # of apps                                                                                                                                                                    |           5          |          15          |       Unlimited      |
+| Throughput (CUPS)                                                                                                                                                            |          330         |          660         |        Custom        |
+| Full Archive Data                                                                                                                                                            | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
+| Supernode                                                                                                                                                                    | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
+| Build                                                                                                                                                                        | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
+| Monitor                                                                                                                                                                      | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
+| Notify                                                                                                                                                                       | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
+| Multichain (Mainnet & Testets)                                                                                                                                               | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
+| No daily request limit                                                                                                                                                       | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
+| 24/7 Support                                                                                                                                                                 | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
+| Enhanced APIS ([NFT](../enhanced-apis/nft-api/), [Transfers](../enhanced-apis/transfers-api/), [Token](../enhanced-apis/token-api/), [Notify](../enhanced-apis/notify-api/)) | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
+| [Trace](../enhanced-apis/trace-api/), [Debug](../enhanced-apis/debug-api.md) APIs                                                                                            |          :x:         | :white\_check\_mark: | :white\_check\_mark: |
+| Auto-scaling Compute Units                                                                                                                                                   |          :x:         | :white\_check\_mark: | :white\_check\_mark: |
+| Custom SLAs                                                                                                                                                                  |          :x:         |          :x:         | :white\_check\_mark: |
+| Committed Use Discounts                                                                                                                                                      |          :x:         |          :x:         | :white\_check\_mark: |
+| Pay in Crypto or NFTs                                                                                                                                                        |          :x:         |          :x:         | :white\_check\_mark: |
 
 ## Raw Method Costs
 
@@ -99,6 +99,8 @@ We're obsessed with providing the most developer-friendly experience across our 
 | alchemy\_getAssetTransfers               | 150                                             |
 | alchemy\_getTransactionReceipts          | 250                                             |
 | eth\_sendRawTransaction                  | 250                                             |
+| eth\_sendPrivateTransaction              | 250                                             |
+| eth\_cancelPrivateTransaction            | 250                                             |
 | debug\_traceTransaction                  | 309                                             |
 | parity\_getBlockReceipts                 | 500                                             |
 | eth\_getBlockReceipts                    | 500                                             |
@@ -118,7 +120,7 @@ Each subscription type is priced identically, per byte:
 | --------- | --- |
 | 1 byte    | .04 |
 
-On average, a typical webhook or WebSocket subscription event is about 1000 bytes, so would consume 40 compute units. Note that this can vary significantly based on the specific event delivered ([`alchemy_newFullPendingTransactions`](../guides/using-websockets.md#1-alchemy\_newfullpendingtransactions) subscription type has a much higher compute unit cost than others).
+On average, a typical webhook or WebSocket subscription event is about 1000 bytes, so would consume 40 compute units. Note that this can vary significantly based on the specific event delivered ([`alchemy_newFullPendingTransactions`](../enhanced-apis/subscription-api-websockets/#alchemy\_newfullpendingtransactions) subscription type has a much higher compute unit cost than others).
 
 ## Auto-Scale Compute (Growth Tier Only)
 

@@ -16,7 +16,6 @@ Note: Alchemy is the only service that provides access to this Debug API method 
 Our current debug\_traceTransaction method only works on the following networks:
 
 * Ethereum Rinkeby
-* Polygon Mainnet
 {% endhint %}
 
 The `traceTransaction` debugging method will attempt to run the transaction in the exact same manner as it was executed on the network. It will replay any transaction that may have been executed prior to this one before it will finally attempt to execute the transaction that corresponds to the given hash.

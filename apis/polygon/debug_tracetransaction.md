@@ -5,7 +5,7 @@ description: >-
   will replay any transaction that may have been ex
 ---
 
-# debug\_traceTransaction (Unsupported)
+# debug\_traceTransaction (Unsupported) - Polygon
 
 {% hint style="danger" %}
 This method is not currently supported on Polygon
@@ -115,3 +115,5 @@ debug.traceTransaction("0x2059dd53ecac9827faad14d364f9e04b1d5fe5b506e3acc886eff7
       }
   }]
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

@@ -6,12 +6,18 @@ description: >-
 
 # Token API
 
-Want to get started with code but not sure how to? Take a look at the [Quickstart Guide](token-api-quickstart-guide.md).
-
 {% hint style="info" %}
 **NOTE:** This endpoint is currently only available on Ethereum Mainnet.\
 [Check chains currently available](https://docs.alchemy.com/alchemy/apis/feature-support-by-chain) for the Token API.
 {% endhint %}
+
+With the Token API, you can easily request information on specific tokens such as metadata or balances. Alchemy currently supports the following endpoints:&#x20;
+
+* `alchemy_getTokenAllowance`: Returns the amount which the spender is allowed to withdraw from the owner.
+* `alchemy_getTokenBalances`: Returns token balances for a specific address given a list of contracts.
+* `alchemy_getTokenMetadata`: Returns metadata (name, symbol, decimals, logo) for a given token contract address.
+
+Want to get started with code but not sure how to? Take a look at our [Quickstart Guide](token-api-quickstart-guide.md).
 
 {% content-ref url="token-api-quickstart-guide.md" %}
 [token-api-quickstart-guide.md](token-api-quickstart-guide.md)

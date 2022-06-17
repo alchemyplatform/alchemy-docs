@@ -1,63 +1,104 @@
 ---
-description: Tutorial for deploying your own ERC-20 token on Rinkeby
+description: Tutorial for deploying your own ERC-20 token on Ethereum (testnet) in 4 steps.
 ---
 
-# How to Deploy Your Own ERC-20 Token
+# How to Create an ERC-20 Token (4 Steps)
 
-In this guide, we'll be setting up an ERC-20 token on the Rinkeby test network - start thinking what name you would like to name your very own ERC-20!
+An Ethereum Token is an incredibly powerful feature of the Ethereum virtual machine, as it can represent virtually anything from financial assets, to skills of a game character, to a fiat currency, and so much more.
 
-{% hint style="info" %}
-Don't know what an ERC-20 (fungible) token is? Check out this [resource](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) from the Ethereum Foundation for a helpful overview!
-{% endhint %}
+## Table of Contents
 
-## Guide Requirements
+[Why build your Own ERC-20 token?](deploy-your-own-erc20-token.md#why-build-your-own-erc-20-token)
 
-* [**Hardhat**](https://hardhat.org): Hardhat is an Ethereum development platform that provides all the tools needed to build, debug and deploy smart contracts.
-* [**Alchemy**](https://www.alchemy.com): Alchemy is a blockchain development platform from which we will use some APIs to help query the Ethereum blockchain.
+[What is ERC-20?](deploy-your-own-erc20-token.md#what-is-the-erc-20-token-standard)
 
-## Step 1: Hardhat Guides Setup
+[How to create your own ERC-20 tokens](deploy-your-own-erc20-token.md#how-to-create-an-erc-20-token)
 
-Go to [the ChainShot Hardhat guides setup doc](https://www.chainshot.com/article/hardhat-guides-setup) and follow the steps to set up Hardhat and dotenv!
+## Why build your own ERC-20 token?
 
-## Step 2: Set Up ERC-20 Contracts And Scripts
+**The** [**ERC-20 token standard**](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) **is the most popular way to create fungible cryptocurrencies on Ethereum and EVM-compatible blockchains, and therefore allows builders and creators to develop digital assets for their protocol, marketplace, metaverse, or community.**
 
-1. Once you have scaffolded out your project using the guide in Step #1, let's set up the rest of our project
+This tutorial will teach you how to create your own ERC-20 token on Ethereum’s Rinkeby testnet using [Alchemy](https://alchemy.com/?a=c4a776f6dc), MetaMask, HardHat, and Solidity code snippets. At the end of this tutorial you will be able to deploy your own ERC-20 token smart contract. The estimated time to complete this guide is 15 minutes.
 
-Now, it is time to name your token! 😱 In the next step, you will create your contract file - you must match the name of your smart contract file with the name of your token, so if you choose `GoofyGooberToken`, you must name your contract file `GoofyGooberToken.sol`.
+## What is the ERC-20 token standard?
 
-For this guide and since ChainShot is full of true Goofy Goobers, we will go with `GoofyGoober` for our token name (the same as above, just without the "Token") - thus, we will name our contract `GoofyGoober.sol`:
+**The ERC-20 token standard ensures that all tokens have the same properties, including that all tokens are fungible (any one token is exactly equal to any other token), and no tokens have special properties or rights associated with them.**
 
-1. `cd` into your `/contracts` folder (which should be empty right now!), and run `touch GoofyGoober.sol`
+This means that for a token to follow the ERC-20 token standard, it must implement the following API methods and events:
 
-> Follow along if you want to create a GoofyGoober token like us but also feel free to replace the name with yours and make your own token!
+* `totalSupply` - a method that defines the total supply of your tokens, and stops creating new tokens when the totalSupply limit is reached
+* `balanceOf` - a method that returns the number of tokens a wallet address contains
+* `transfer` - a method that transfers in a certain amount of tokens from the total supply and sends it to a user
+* `transferFrom` - a transfer method that transfers ERC-20 tokens between users
+* `approve` - verifies whether a smart contract is allowed to allocate a certain amount of tokens to a user, considering the total supply
+* `allowance` - checks if a user has enough balance to send a tokens to another user
 
-1. Open the newly-create `.sol` file and copy-paste the following:
+_ERC-20 tokens are fungible (can be interchanged) because they have the same value and properties. There are also non-fungible token standards and semi-fungible token standards such as_ [_ERC-721 and ERC-1155 tokens_](https://www.alchemy.com/blog/comparing-erc-721-to-erc-1155)_._
+
+## How to Create an ERC-20 Token&#x20;
+
+In four steps you’ll create and deploy an ERC-20 token on the Goerli test network, using Metamask, Solidity, Hardhat, and [Alchemy](https://alchemy.com/?a=c4a776f6dc). This Rinkeby ERC-20 token will have all the characteristics required above, making it a valid ERC-20 token.
+
+### 1. Set Up your Developer Environment
+
+First, [create an Alchemy account](https://alchemy.com/?a=c4a776f6dc), setup Metamask, HardHat, and Solidity for this project. For a walkthrough, read through the [ChainShot HardHat guide](https://www.chainshot.com/article/hardhat-guides-setup).&#x20;
+
+Next, enter `mk my-token` and `cd my-token` to create a folder for your project and change directories to your my-token folder, then run `npm init`
+
+If you don't already have NPM installed, use this **** [**developer environment setup guide**](https://docs.alchemyapi.io/alchemy/guides/alchemy-for-macs#1-install-nodejs-and-npm)**.**
+
+```
+mk my-token
+cd my-token
+npm init
+```
+
+Next, go to the `my-token` project root directory and type `mkdir contracts` and `mkdir scripts` into your command line to create two new folders that will organize your ERC-20 smart contracts and your deployment scripts:
+
+```
+mkdir contracts
+mkdir scripts
+```
+
+### 2. Write ERC-20 Token Smart Contract
+
+Here’s how to write the token contract for your ERC-20 token using Solidity, which is like Java and JavaScript, or C and C++:
+
+1. Open up the `my-token` project in your code editor.
+2. Navigate to your `/contracts` folder
+3. Open a new .`sol` file and name the .`sol` file the same name as your token
+   1. **Note:** To create and work with your smart contract file, you must have a name that matches the name of your token. For example, to create a token named Web3Token, your contract file name should be `Web3Token.sol`.
+4. Copy and paste this code snippet based on the [OpenZeppelin](https://docs.openzeppelin.com/contracts/3.x/erc20) ERC 20 implementation:
 
 ```solidity
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";  // OpenZeppelin package contains implementation of the ERC 20 standard, which our NFT smart contract will inherit
 
 contract GoofyGoober is ERC20 {
-    uint constant _initial_supply = 100 * (10**18);
+    uint constant _initial_supply = 100 * (10**18);  // setting variable for how many of your own tokens are initially put into your wallet, feel free to edit the first number but make sure to leave the second number because we want to make sure our supply has 18 decimals
+
+    /* ERC 20 constructor takes in 2 strings, feel free to change the first string to the name of your token name, and the second string to the corresponding symbol for your custom token name */
     constructor() ERC20("GoofyGoober", "GG") public {
         _mint(msg.sender, _initial_supply);
     }
 }
 ```
 
-> The token symbol you choose, in our case "GG" can be any arbitrary character length but do keep in mind that some UIs may display ones that are too long differently.
+* The token symbol you choose, in our case "GG" can be any arbitrary character length but do keep in mind that some UIs may display ones that are too long differently.
+* Feel free to edit the initial supply by changing the `100` to how many tokens you would like your initial supply to be - we put 100 because there are very few true Goofy Goobers in the world! You can put any number you'd like for this - make sure to leave the `(10**18)` as that multiplies the number we want as our supply to have 18 decimals.
 
-1. If you are going with an ERC-20 of your own name (you should!), make sure to change all the Goofy Goober references to match the name of your `.sol` file
-2. Feel free to edit the initial supply by changing the `100` to how many tokens you would like your initial supply to be - we put 100 because there are very few true Goofy Goobers in the world! You can put any number you'd like for this - make sure to leave the `(10**18)` as that multiplies the number we want as our supply to have 18 decimals.
-3. Save and close the file
+### **3. Write a Deployment Script for your ERC-20 Token**
 
-Now that we've got a whole contract set up, let's create the deployment script for it!
+Now that your token contract is written, write your smart contract deployment script by:
 
-1. `cd ..` back into your project root directory and then `cd` into your `scripts` directory (which should be empty right now!)
-2. Run `touch deploy.js`, open the newly-created file and copy-paste the following:
+1. Navigating to the /scripts folde**r**
+2. Creating a new file called `deploy.js`
+3. Opening the `deploy.js` file
+4. Copying and pasting this ERC-20 deployment code snippet:
 
+{% code title="deploy.js" %}
 ```javascript
 async function main() {
   const [deployer] = await ethers.getSigners();
@@ -82,21 +123,21 @@ main()
     process.exit(1);
 });
 ```
+{% endcode %}
 
-1. Just one action item: replace the reference to "GoofyGoober" in the file if you went with another name for your ERC-20 token
-2. Save and close the file
-3. `cd ..` back into your project root directory
+### 4. Deploy your ERC-20 Token to Goerli
 
-## Step 3: Deploy Your ERC-20 Token!
+To deploy your ERC-20 token, navigate to your root directory and run the following command:&#x20;
 
-1. Run `npx hardhat run scripts/deploy.js --network rinkeby`
-2. Your contract will be compiled and deployed to the Rinkeby network! You should see something similar to this in your terminal output:
+&#x20;`npx hardhat run scripts/deploy.js --network goerli`
+
+Your contract will be compiled and deployed to the Goerli network! You should see a message appear with information about the smart contracts you are deploying including your account address, account balance, and token address.
 
 ![formatEther](https://i.imgur.com/2FXHuVw.png)
 
-1. Go to https://rinkeby.etherscan.io/ and input your outputted Token address to see your deployed ERC-20 contract on Rinkeby!
+Go to [https://goerli.etherscan.io/](https://goerli.etherscan.io/) and input your outputted Token address to see your deployed ERC-20 contract on Goerli!
 
-Now it's time to have the real fun! Send some of your new tokens to your friends and family, stimulate an economy - create the Bitcoin/Ethereum of the future! In this guide, you deployed your own ERC-20 token on Rinkeby using the OpenZeppelin ERC20 standard - great job!
+Now it's time to have the real fun! Send some of your new tokens to your friends and family, stimulate an economy - create the Bitcoin/Ethereum of the future! In this guide, you deployed your own ERC-20 token on Goerli using the OpenZeppelin ERC20 standard - great job!
 
 ## Step 4: Send Some Tokens!
 

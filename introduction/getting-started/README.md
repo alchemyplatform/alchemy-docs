@@ -178,6 +178,7 @@ Check out the documentation for each library:
 * [Web3.py](https://web3py.readthedocs.io/en/stable/)
 * [Web3j](https://docs.web3j.io)
 * [Ethers.js](https://docs.ethers.io/v5/)
+* [Flutter](https://pub.dev/packages/alchemy\_web3)
 
 Now you can add any one of the below code snippets to your new file depending on your respective library!
 

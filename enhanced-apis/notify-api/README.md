@@ -1,7 +1,7 @@
 ---
 description: >-
-  Webhooks for address activity, mined transactions, dropped transactions, and
-  gas price on Ethereum, Polygon, Optimism, and Arbitrum.
+  Webhooks for address activity, mined transactions, and dropped transactions,
+  on Ethereum, Polygon, Optimism, and Arbitrum.
 ---
 
 # Notify API
@@ -35,7 +35,6 @@ Each type of webhook is represented as a different string enum:
 * "MINED\_TRANSACTION"
 * "DROPPED\_TRANSACTION"
 * "ADDRESS\_ACTIVITY"
-* "GAS\_PRICE"
 
 #### **`network`**
 
@@ -258,7 +257,7 @@ List of addresses you want to track. Required for address activity webhooks only
 {% swagger-parameter in="body" name="gas_price_low" type="integer" required="false" %}
 If the gas price (in 
 
-[gwei](../../resources/web3-glossary.md#why-cant-i-invite-a-user-who-is-already-on-a-team)
+[gwei](../../resources/web3-glossary/#why-cant-i-invite-a-user-who-is-already-on-a-team)
 
 ) is lower than this threshold, send a notification every minute. For gas price webhooks only.
 {% endswagger-parameter %}
@@ -266,7 +265,7 @@ If the gas price (in
 {% swagger-parameter in="body" name="gas_price_high" type="integer" required="false" %}
 If the gas price (in 10x 
 
-[gwei](../../resources/web3-glossary.md#why-cant-i-invite-a-user-who-is-already-on-a-team)
+[gwei](../../resources/web3-glossary/#why-cant-i-invite-a-user-who-is-already-on-a-team)
 
 ) is higher than this threshold, send a notification every minute. For gas price webhooks only.
 {% endswagger-parameter %}
@@ -554,12 +553,11 @@ curl https://dashboard.alchemyapi.io/api/delete-webhook?webhook_id=104 \
 
 ## Types of Webhooks
 
-There are four types of webhooks to receive notifications for:
+There are three types of webhooks to receive notifications for:
 
 1. [Mined Transactions](using-notify.md#mined-transactions) (all networks)
 2. [Dropped Transactions](using-notify.md#dropped-transactions) (all networks)
 3. [Address Activity](using-notify.md#address-activity) (all networks)&#x20;
-4. [Gas Price](using-notify.md#4.-gas-price) (V1 only, Ethereum)&#x20;
 
 To see in depth explanations for each of the Alchemy Notify webhooks check out the [Using Webhooks](using-notify.md) guide.
 
@@ -572,11 +570,12 @@ If you want to learn more about how to leverage webhooks for your application, o
 * [Webhook IP Addresses](using-notify.md#webhook-ip-addresses)
 * [Difference between V1 and V2](using-notify.md#whats-the-difference-between-notify-v1-and-v2)
 * [Best practices](using-notify.md#what-are-some-best-practices-when-using-webhooks-with-a-large-number-of-addresses)&#x20;
+* [Alchemy Notify retry logic](using-notify.md#webhook-retry-logic)
 
 For tutorials on integrating notifications into your dApp try out the following:
 
-* [Alchemy Notify Tutorial: Tracking Transaction Life Cycles](../../tutorials/tracking-transaction-life-cycles.md)
-* [Building a dApp with Real-Time Transaction Notifications](../../tutorials/building-a-dapp-with-real-time-transaction-notifications.md)
+* [Alchemy Notify Tutorial: Tracking Transaction Life Cycles](../../tutorials/how-to-track-ethereum-transactions.md)
+* [Building a dApp with Real-Time Transaction Notifications](building-a-dapp-with-real-time-transaction-notifications.md)
 
 {% content-ref url="using-notify.md" %}
 [using-notify.md](using-notify.md)

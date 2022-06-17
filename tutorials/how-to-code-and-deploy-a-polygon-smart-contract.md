@@ -27,11 +27,11 @@ If you have questions at any point, I recommend going through the following step
 
 #### Our tools today for creating a smart contract on Polygon:
 
-1. [Alchemy](https://alchemy.com/?a=polygon-smart-contract) provides a connection to the blockchain. It's like how Comcast provides the wires for you to connect to the rest of the internet, or how a copper or PVC pipe connects your kitchen sink to the rest of your neighborhood's plumbing. Alchemy also provides other tools and services such as [testnet ether faucets](https://mumbaifaucet.com) and [Enhanced APIs](https://docs.alchemy.com/alchemy/enhanced-apis/nft-api).
-2. [Hardhat](https://hardhat.org) provides a developer environment so that we can easily configure environments, settings, and tests.
+1. [Alchemy](https://alchemy.com/?a=polygon-smart-contract) provides a connection to the blockchain. It's like how Comcast provides the wires for you to connect to the rest of the internet, or how a copper or PVC pipe connects your kitchen sink to the rest of your neighborhood's plumbing. Alchemy also provides other tools and services such as [testnet ether faucets](https://mumbaifaucet.com/) and [Enhanced APIs](https://docs.alchemy.com/alchemy/enhanced-apis/nft-api).
+2. [Hardhat](https://hardhat.org/) provides a developer environment so that we can easily configure environments, settings, and tests.
 3. [Ethers.js](https://docs.ethers.io/v5/) is a Javascript SDK that provides a nice developer experience when you're writing code by wrapping lower-level JSON-RPC API calls.
-4. [Solidity](https://docs.soliditylang.org) is the programming language we'll use for the smart contract portion of this project.
-5. [Metamask](https://metamask.io) is a the crypto wallet we'll use to create and manage your Ethereum wallet address. You'll need an Ethereum wallet address in order to deploy a smart contract to Polygon (or any other EVM-based blockchain).
+4. [Solidity](https://docs.soliditylang.org/) is the programming language we'll use for the smart contract portion of this project.
+5. [Metamask](https://metamask.io/) is a the crypto wallet we'll use to create and manage your Ethereum wallet address. You'll need an Ethereum wallet address in order to deploy a smart contract to Polygon (or any other EVM-based blockchain).
 
 Don't worry if that's a bit overwhelming at this point, you'll see how each of these tools works in action.
 
@@ -242,7 +242,7 @@ Now we need an Ethereum account to send and receive transactions.
 
 For this tutorial, we’ll use MetaMask, a virtual wallet in the browser used to manage your Ethereum account address.
 
-You can download and create a MetaMask account for free [here](https://metamask.io).
+You can download and create a MetaMask account for free [here](https://metamask.io/).
 
 ### Step 7. Switch to the Polygon Mumbai test network
 
@@ -265,7 +265,7 @@ Input the following settings:
 * **Network Name**: Polygon Mumbai
 * **New RPC URL**: Chain ID: 80001
 * **Currency Symbol**: MATIC
-* **Block Explorer URL**: [https://mumbai.polygonscan.com](https://mumbai.polygonscan.com)
+* **Block Explorer URL**: [https://mumbai.polygonscan.com](https://mumbai.polygonscan.com/)
 
 ![](../.gitbook/assets/wch6qk2dwm71e4769yfh.png)
 
@@ -273,7 +273,7 @@ After you confirm the settings, MetaMask should automatically be connected to th
 
 ### Step 8. Get some free test ETH from the Mumbai faucet
 
-Go to [https://mumbaifaucet.com/](https://mumbaifaucet.com) and input your wallet address (ethereum account address) from MetaMask.
+Go to [https://mumbaifaucet.com/](https://mumbaifaucet.com/) and input your wallet address (ethereum account address) from MetaMask.
 
 You can get your wallet address by opening MetaMask and copying the long string that goes `0x...` at the top.
 
@@ -379,7 +379,7 @@ thatguyintech@albert new % npx hardhat compile
 Compiled 1 Solidity file successfully
 ```
 
-At this point, if you have any issues, please check previous discussions on [Ethereum Stackexchange](https://ethereum.stackexchange.com) using the [Alchemy](https://ethereum.stackexchange.com/questions/tagged/alchemy), [Polygon](https://ethereum.stackexchange.com/questions/tagged/polygon), or [Hardhat](https://ethereum.stackexchange.com/questions/tagged/hardhat) tags, or create your own question!
+At this point, if you have any issues, please check previous discussions on [Ethereum Stackexchange](https://ethereum.stackexchange.com/) using the [Alchemy](https://ethereum.stackexchange.com/questions/tagged/alchemy), [Polygon](https://ethereum.stackexchange.com/questions/tagged/polygon), or [Hardhat](https://ethereum.stackexchange.com/questions/tagged/hardhat) tags, or create your own question!
 
 ### Step 12: Deploy the smart contract on Polygon
 
@@ -395,7 +395,7 @@ You should then see output similar to this (with different address string):
 Greeter deployed to: 0x8Fab93D28e52a93d4b00E25Eaa04B64223382f89
 ```
 
-You can now paste this contract address into [https://mumbai.polygonscan.com/](https://mumbai.polygonscan.com) and find details about your deployed contract.
+You can now paste this contract address into [https://mumbai.polygonscan.com/](https://mumbai.polygonscan.com/) and find details about your deployed contract.
 
 For example, you can see when the contract was deployed, how much the transaction fee cost, and which wallet address was responsible for the deployment.
 
