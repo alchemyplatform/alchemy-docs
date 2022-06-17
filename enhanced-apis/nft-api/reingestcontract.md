@@ -4,7 +4,11 @@ description: >-
   metadata after a collection reveal/collection changes
 ---
 
-# reingestContract (BETA)
+# reingestContract
+
+{% hint style="warning" %}
+This endpoint is currently in _BETA_.&#x20;
+{% endhint %}
 
 This endpoint is supported on the following chains and networks:
 

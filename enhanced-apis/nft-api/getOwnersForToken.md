@@ -2,7 +2,11 @@
 description: Get the owner(s) for a token.
 ---
 
-# getOwnersForToken (BETA)
+# getOwnersForToken
+
+{% hint style="warning" %}
+This endpoint is currently in _BETA_.&#x20;
+{% endhint %}
 
 This endpoint is supported on the following chains and networks:
 

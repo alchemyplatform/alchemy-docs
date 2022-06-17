@@ -2,7 +2,11 @@
 description: Returns whether a contract is marked as spam or not by Alchemy
 ---
 
-# isSpamContract (BETA)
+# isSpamContract
+
+{% hint style="warning" %}
+This endpoint is currently in _BETA_.&#x20;
+{% endhint %}
 
 This endpoint is supported on the following chains and networks:
 

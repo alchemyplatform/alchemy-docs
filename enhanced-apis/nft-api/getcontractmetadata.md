@@ -6,8 +6,8 @@ description: Queries NFT high-level collection/contract level information
 
 This endpoint is supported only on the following chains and networks:
 
-* **Ethereum**: Mainnet
-* **Polygon**: Mainnet and Mumbai (BETA)
+* **Ethereum**: Mainnet and Goerli (BETA)
+* **Polygon**: Mainnet (BETA) and Mumbai (BETA)
 
 _To see chain support across all features, check out the_ [_feature matrix_](../../apis/feature-support-by-chain.md)_._
 

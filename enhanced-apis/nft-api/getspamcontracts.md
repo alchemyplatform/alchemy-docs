@@ -2,7 +2,11 @@
 description: Returns a list of all spam contracts marked by Alchemy
 ---
 
-# getSpamContracts (BETA)
+# getSpamContracts
+
+{% hint style="warning" %}
+This endpoint is currently in _BETA_.&#x20;
+{% endhint %}
 
 This endpoint is supported on the following chains and networks:
 
