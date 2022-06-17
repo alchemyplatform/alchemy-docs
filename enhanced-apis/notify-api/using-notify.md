@@ -671,6 +671,10 @@ As an added security measure, you can ensure your webhook notification originate
 34.237.24.169
 ```
 
+### How many addresses can you add to a single webhook?
+
+We recommend no more than **50,000 addresses** per single webhook. There is no current limit on how many webhooks you can create.&#x20;
+
 ### What's the difference between Notify V1 and V2?
 
 The changes in webhook V2 are mostly formatting and parameter name differences. Thus, the primary changes that will need to be made are how you process response payloads.
@@ -692,15 +696,6 @@ Here is an overview of the changes from V1 to V2:
 ### Why am I missing transactions in the response?
 
 Double check that you are parsing the response payload correctly- remember, transactions are returned in a list! Transactions that are mined within the same block will be returned within the same `"activity"` list.
-
-### Why am I seeing duplicate addresses for different webhook URLs?
-
-If you've created multiple [address activity webhooks](using-notify.md#address-activity) under the same application you might see duplicate addresses in each of the webhooks. This is known behavior since webhooks are associated by app (api\_key) instead of by URL. &#x20;
-
-There are two solutions to this:
-
-1. If you want address activity webhooks with different webhook URLs you'll need to [create different apps](../../introduction/getting-started/#1.create-an-alchemy-key) for each of the distinct URLs
-2. If you're fine with using the same webhook url for all addresses, you can simply add additional addresses to the list through the dashboard or via the [PATCH api endpoint](./#add-remove-webhook-addresses).&#x20;
 
 ### What are some best practices when using webhooks with a large number of addresses?&#x20;
 
