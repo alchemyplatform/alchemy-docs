@@ -22,6 +22,7 @@ _To see chain support across all features, check out the_ [_feature matrix_](../
   * `name:` _**\[string]**_ NFT contract name&#x20;
   * `symbol:` _**\[string]**_ NFT contract symbol abbreviation
   * `totalSupply:` _**\[string]**_ total number of NFTs in a given NFT collection
+  * `tokenType:` _**\[string]**_ `"erc721"` or `"erc1155"` NFT token type
 
 ## Example
 
@@ -57,7 +58,7 @@ import axios from 'axios';
 // replace with your Alchemy api key
 const apiKey = "demo";
 const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getContractMetadata`;
-const contractAddr = "0x61fce80d72363b731425c3a2a46a1a5fed9814b2";
+const contractAddr = "0x004dd1904b75b7e8a46711dde8a0c608578e0302";
 
 var config = {
   method: 'get',
@@ -89,11 +90,12 @@ curl --location --request GET 'https://eth-mainnet.g.alchemy.com/nft/v2/demo/get
 
 ```javascript
 {
-    "address": "0x61fce80d72363b731425c3a2a46a1a5fed9814b2",
+    "address": "0x004dd1904b75b7e8a46711dde8a0c608578e0302",
     "contractMetadata": {
-        "name": "CyborgMercenariesCm",
-        "symbol": "CYBORG",
-        "totalSupply": "7842"
+        "name": "JetPack420",
+        "symbol": "DCL-JTPCK420",
+        "totalSupply": "307",
+        "tokenType": "erc721"
     }
 }
 ```

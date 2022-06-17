@@ -4,6 +4,10 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
 
 # Changelog
 
+### 06/17/2022
+
+* **\[API]** Added `tokenType` response field in [getContractMetadata](../enhanced-apis/nft-api/getcontractmetadata.md).
+
 ### 06/16/2022
 
 * **\[API]** Added beta support for [getSpamContracts](../enhanced-apis/nft-api/getspamcontracts.md), [isSpamContract](../enhanced-apis/nft-api/isspamcontract.md), and [reingestContract](../enhanced-apis/nft-api/reingestcontract.md).
