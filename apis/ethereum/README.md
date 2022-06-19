@@ -178,6 +178,24 @@ A super easy way to distinguish between a contract address and a wallet address 
 * [**0x Contract Address**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getCode%22%2C%22paramValues%22%3A%5B%220xe41d2489571d322189246dafa5ebde1f4699f498%22%2C%22latest%22%5D%7D)
 * [**Vitalik's Wallet Address**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getCode%22%2C%22paramValues%22%3A%5B%220xAb5801a7D398351b8bE11C439e05C5B3259aeC9B%22%2C%22latest%22%5D%7D)
 
+## What is the difference between `DATA` and `QUANTITY`?&#x20;
+
+The difference between the types “`DATA`” and “`QUANTITY`” is that “`DATA`” always comes specified with a required length (ex: 20 Bytes), so you'll need to make sure the string you pass in is the right length. In contrast, `QUANTITY` does not have length requirements.&#x20;
+
+For example given a parameter type: “DATA, 20 Bytes”, a valid input would be:
+
+```
+"0x0000000000000000000000000000000000000003"
+```
+
+_note: every two hex characters make one byte, so that string is `0x` followed by forty hex characters_
+
+However, if this were a QUANTITY, a valid input would be:
+
+```
+"0x3"
+```
+
 ## My question isn't here, where can I get help?
 
 Don't worry, we got you. Check out our [support page](https://docs.alchemyapi.io/other/contact-us) for plenty of options!
