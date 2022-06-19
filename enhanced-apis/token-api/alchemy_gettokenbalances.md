@@ -8,6 +8,8 @@ description: Returns token balances for a specific address given a list of contr
 This method returns hex encoded values in the `tokenBalance` fields.
 {% endhint %}
 
+
+
 ## Parameters
 
 1. `DATA`, 20 Bytes - The address for which token balances will be checked
@@ -184,4 +186,14 @@ Body:
 }
 ```
 
-##
+## Use Cases&#x20;
+
+For guidance on how to leverage this method, check out the following tutorials:
+
+{% content-ref url="how-to-get-token-balance-for-an-address.md" %}
+[how-to-get-token-balance-for-an-address.md](how-to-get-token-balance-for-an-address.md)
+{% endcontent-ref %}
+
+{% content-ref url="get-all-tokens-owned-by-address.md" %}
+[get-all-tokens-owned-by-address.md](get-all-tokens-owned-by-address.md)
+{% endcontent-ref %}
