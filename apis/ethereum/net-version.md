@@ -16,6 +16,7 @@ none
 * `"2"`: Morden Testnet (deprecated)
 * `"3"`: Ropsten Testnet
 * `"4"`: Rinkeby Testnet
+* `"5"`: Goerli Testnet&#x20;
 * `"42"`: Kovan Testnet
 
 #### [**Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22net\_version%22%2C%22paramValues%22%3A%5B%5D%7D)

@@ -32,6 +32,10 @@ Check out Alchemy's API Reference pages to understand how to use the [Enhanced A
 [arbitrum](apis/arbitrum/)
 {% endcontent-ref %}
 
+{% content-ref url="apis/solana-api/" %}
+[solana-api](apis/solana-api/)
+{% endcontent-ref %}
+
 {% content-ref url="https://app.gitbook.com/o/-MB5OnTtI_5pcZn7v2wm/s/-Mbe-myfcwH3hjIraizf/" %}
 [Alchemy x Flow](https://app.gitbook.com/o/-MB5OnTtI\_5pcZn7v2wm/s/-Mbe-myfcwH3hjIraizf/)
 {% endcontent-ref %}
