@@ -21,6 +21,10 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
 
 ## Past
 
+### 06/18/2022
+
+* **\[API]** Added `limit` parameter in [getNFTsForCollection](../enhanced-apis/nft-api/getnftsforcollection.md).
+
 ### 06/17/2022
 
 * **\[API]** Added `tokenType` response field in [getContractMetadata](../enhanced-apis/nft-api/getcontractmetadata.md).
