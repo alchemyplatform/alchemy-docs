@@ -81,11 +81,6 @@ Additionally, we do not include any **internal transfers with call type`delegate
 * Object - An object with the following fields (required):
   * `fromBlock`: \[optional] inclusive from block (hex string, int, or `latest`)
     * Default: `"0x0"`
-
-{% hint style="warning" %}
-Prior to June 27th, 2022, the default param value was `latest`
-{% endhint %}
-
 * `toBlock`: \[optional] inclusive to block (hex string, int, or `latest`)
   * Default: `latest`
 * `fromAddress`: \[optional] from address (hex string)
@@ -95,19 +90,6 @@ Prior to June 27th, 2022, the default param value was `latest`
 * `contractAddresses`: \[optional] list of contract addresses (hex strings) to filter for - only applies to "`token`", "`erc20`", "`erc721`", "`erc1155`" transfers
   * Default: wildcard - any address
 * `category`: (required) array of categories, can be any of the following: "`external`", "`internal`", "`erc20`", "`erc721`", "`erc1155`"
-
-{% hint style="warning" %}
-Prior to June 27th, 2022, the category param looked as follows:\
-
-
-`category`: \[optional] array of categories, can be any of the following: "`external`", "`internal`", "`token`", "`erc20`", "`erc721`", "`erc1155`"
-
-* Default: \["`external`", "`internal`", "`token`"]\
-
-
-**NOTE:**`category` is now required and there is no default `category` injected in the request
-{% endhint %}
-
 * `excludeZeroValue:` \[optional] a`Boolean` to exclude transfers with zero value. Zero value is not the same as `null` value
   * Default:  `true`
 * `maxCount`: \[optional] max hex string number of results to return per call
@@ -389,42 +371,23 @@ If you'd like support for these transfer types, please [upvote and comment](http
 
 ### Parameters <a href="#parameters" id="parameters"></a>
 
-*   Object - An object with the following fields (required):
-
-    * `fromBlock`: \[optional] inclusive from block (hex string, int, or `latest`)
-      * Default: `"0x0"`
-
-    {% hint style="warning" %}
-    Prior to June 27th, 2022, the default param value was `latest`
-    {% endhint %}
-
-    * `toBlock`: \[optional] inclusive to block (hex string, int, or `latest`)
-      * Default: `latest`
-    * `fromAddress`: \[optional] from address (hex string)
-      * Default: wildcard - any address
-    * `toAddress`: \[optional] to address (hex string)
-      * Default: wildcard - any address
-    * `contractAddresses`: \[optional] list of contract addresses (hex strings) to filter for - only applies to "`token`", "`erc20`", "`erc721`", "`erc1155`" transfers
-      * Default: wildcard - any address
-    * `category`: (required) array of categories, can be any of the following: "`external`", "`internal`", "`erc20`", "`erc721`", "`erc1155`"
-
-    {% hint style="warning" %}
-    Prior to June 27th, 2022, the category param looked as follows:\
-
-
-    `category`: \[optional] array of categories, can be any of the following: "`external`", "`internal`", "`token`", "`erc20`", "`erc721`", "`erc1155`"
-
-    * Default: \["`external`", "`internal`", "`token`"]\
-
-
-    **NOTE:**`category` is now required and there is no default `category` injected in the request
-    {% endhint %}
-
-    * `excludeZeroValue:` \[optional] a`Boolean` to exclude transfers with zero value
-      * Default: `true`
-    * `maxCount`: \[optional] max hex string number of results to return per call
-      * Default (and max): `1000` or `0x3e8`
-    * `pageKey`: \[optional] `uuid` for [pagination](transfers-api.md#pagination). If more results are available, a uuid pageKey will be returned in the response. Pass that uuid into `pageKey` to fetch the next 1000 or `maxCount.`
+* Object - An object with the following fields (required):
+  * `fromBlock`: \[optional] inclusive from block (hex string, int, or `latest`)
+    * Default: `"0x0"`
+  * `toBlock`: \[optional] inclusive to block (hex string, int, or `latest`)
+    * Default: `latest`
+  * `fromAddress`: \[optional] from address (hex string)
+    * Default: wildcard - any address
+  * `toAddress`: \[optional] to address (hex string)
+    * Default: wildcard - any address
+  * `contractAddresses`: \[optional] list of contract addresses (hex strings) to filter for - only applies to "`token`", "`erc20`", "`erc721`", "`erc1155`" transfers
+    * Default: wildcard - any address
+  * `category`: (required) array of categories, can be any of the following: "`external`", "`internal`", "`erc20`", "`erc721`", "`erc1155`"
+  * `excludeZeroValue:` \[optional] a`Boolean` to exclude transfers with zero value
+    * Default: `true`
+  * `maxCount`: \[optional] max hex string number of results to return per call
+    * Default (and max): `1000` or `0x3e8`
+  * `pageKey`: \[optional] `uuid` for [pagination](transfers-api.md#pagination). If more results are available, a uuid pageKey will be returned in the response. Pass that uuid into `pageKey` to fetch the next 1000 or `maxCount.`
 
 {% hint style="info" %}
 **NOTE**:&#x20;
