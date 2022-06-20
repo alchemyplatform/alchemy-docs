@@ -58,7 +58,7 @@ async function main() {
 	  `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`);
 	
 	// Query the blockchain (replace example parameters)
-    	const transaction = await web3.eth.getTransactionByHash({
+    	const transaction = await web3.eth.getTransaction({
 	    data: '0x88df016429689c079f3b2f6ad39fa052532c56795b733da78a91ebe6a713944b',
 	  });
     
@@ -85,7 +85,7 @@ async function main() {
 	const provider = new ethers.providers.AlchemyProvider("homestead", apiKey);
 
 	// Query the blockchain (replace example parameters)
-    	const transaction = await provider.getTransactionByHash({
+    	const transaction = await provider.getTransaction({
 	    data: '0x88df016429689c079f3b2f6ad39fa052532c56795b733da78a91ebe6a713944b',
 	  });
 
