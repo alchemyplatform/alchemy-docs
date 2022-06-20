@@ -42,10 +42,7 @@ async function main() {
 	  `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`);
 	
 	// Query the blockchain (replace example parameters)
-    	const balance = await web3.eth.getBalance({
-	    address: '0xc94770007dda54cF92009BFF0dE90c06F603a09f',
-		tag: 'latest',
-	  }); 
+    	const balance = await web3.eth.getBalance('0xc94770007dda54cF92009BFF0dE90c06F603a09f', 'latest'); 
     
 	// Print the output to console
 	console.log(balance);

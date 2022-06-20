@@ -42,11 +42,8 @@ async function main() {
 	  `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`);
 	
 	// Query the blockchain (replace example parameters)
-    	const blockByNumber = await web3.eth.getBlockByNumber({
-	    tag: '0x1b4',
-	    boolean: "true",
-	  });
-    
+	const blockNumber = await web3.eth.getBlock('latest', true);
+
 	// Print the output to console
 	console.log(blockByNumber);
    }
@@ -69,10 +66,7 @@ async function main() {
 	const provider = new ethers.providers.AlchemyProvider("homestead", apiKey);
 
 	// Query the blockchain (replace example parameters)
-    	const blockByNumber = await provider.getBlockByNumber({
-	    tag: '0x1b4',
-	    boolean: "true",
-	  });
+    	const blockNumber = await web3.eth.getBlock('latest', true);
 
 	// Print the output to console
   	console.log(blockByNumber);
