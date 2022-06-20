@@ -153,7 +153,7 @@ Be sure to replace the address on line 6 with your own public address.
 
 Now, before we jump into running this code, let's talk about some of the components here.
 
-* `nonce` : The nonce specification is used to keep track of the number of transactions sent from your address. We need this for security purposes and to prevent [replay attacks](../../resources/web3-glossary.md#account-nonce). To get the number of transactions sent from your address we use [getTransactionCount](../../apis/ethereum/#eth\_gettransactioncount).
+* `nonce` : The nonce specification is used to keep track of the number of transactions sent from your address. We need this for security purposes and to prevent [replay attacks](../../resources/web3-glossary/#account-nonce). To get the number of transactions sent from your address we use [getTransactionCount](../../apis/ethereum/#eth\_gettransactioncount).
 * `transaction`: The transaction object has a few aspects we need to specify
   * `to`: This is the address we want to send Eth to. In this case, we are sending Eth back to the [Rinkeby faucet](https://faucet.rinkeby.io) we initially requested from.
   * `value`: This is the amount we wish to send, specified in wei where 10^18 wei = 1 ETH

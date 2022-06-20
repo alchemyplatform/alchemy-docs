@@ -48,7 +48,7 @@ See [`eth_getBlockByHash`](https://docs.alchemy.com/alchemy/apis/polygon/eth-get
 
 ## Example
 
-### [Alchemy Composer](eth\_getunclebyblockhashandindex.md#parameters)
+### [Alchemy Composer](eth-getunclebyblockhashandindex.md#parameters)
 
 The Alchemy Composer allows you to make a no-code example request via your browser. Try it out above!
 

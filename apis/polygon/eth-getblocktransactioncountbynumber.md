@@ -22,7 +22,7 @@ params: [
 
 ## Example
 
-### [Alchemy Composer](eth\_getblocktransactioncountbynumber.md#parameters)
+### [Alchemy Composer](eth-getblocktransactioncountbynumber.md#parameters)
 
 The Alchemy Composer allows you to make a no-code example request via your browser. Try it out above!
 

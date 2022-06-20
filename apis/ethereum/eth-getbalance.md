@@ -140,10 +140,10 @@ Result
 
 ### Converting eth\_getBalance response into ETH
 
-To convert the hex string response, measured in [Wei](../../resources/web3-glossary.md#wei) to a decimal value measured in ETH we need to complete two steps:
+To convert the hex string response, measured in [Wei](../../resources/web3-glossary/#wei) to a decimal value measured in ETH we need to complete two steps:
 
 1. Convert the hex response into decimal (Wei)
-2. Convert the [Wei](../../resources/web3-glossary.md#wei) decimal into ETH decimal (10^18 wei = 1 eth)
+2. Convert the [Wei](../../resources/web3-glossary/#wei) decimal into ETH decimal (10^18 wei = 1 eth)
 
 Depending on what library or language you are using, there are several options here.
 

@@ -29,7 +29,7 @@ description: >-
 
 ## Example
 
-### [Alchemy Composer](eth\_getproof.md#parameters)
+### [Alchemy Composer](eth-getproof.md#parameters)
 
 The Alchemy Composer allows you to make a no-code example request via your browser. Try it out above!
 

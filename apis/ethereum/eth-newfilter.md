@@ -6,7 +6,7 @@ description: >-
 
 # eth\_newFilter - Ethereum
 
-Unlike [`eth_newBlockFilter`](eth\_newblockfilter.md)which notifies you of all **new** blocks, you can pass in filter options to track new logs matching the topics specified.&#x20;
+Unlike [`eth_newBlockFilter`](eth-newblockfilter.md)which notifies you of all **new** blocks, you can pass in filter options to track new logs matching the topics specified.&#x20;
 
 To check if the state has changed, call [`eth_getFilterChanges`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-getfilterchanges)``
 

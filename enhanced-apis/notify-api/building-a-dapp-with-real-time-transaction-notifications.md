@@ -185,7 +185,7 @@ Make sure the app selected is on the Ethereum network you want to test on; if yo
 
 #### **e) Click “Create Webhook”**
 
-![Alchemy address activity webhook interface with the chain, network, webhook URL, and Ethereum address filled in.](<../.gitbook/assets/Screenshot 2022-05-10 at 2.07.41 PM (1).png>)
+![Alchemy address activity webhook interface with the chain, network, webhook URL, and Ethereum address filled in.](<../../.gitbook/assets/Screenshot 2022-05-10 at 2.07.41 PM (1).png>)
 
 ### ****
 
@@ -195,14 +195,14 @@ Find your webhook ID in the panel area of the webhook you created.
 
 
 
-![Where to find the webhook ID.](<../.gitbook/assets/Screenshot 2022-05-10 at 2.10.19 PM.png>)
+![Where to find the webhook ID.](<../../.gitbook/assets/Screenshot 2022-05-10 at 2.10.19 PM.png>)
 
 
 
 Find the auth token on the top right of the notify page on your dashboard.\
 
 
-![Where to find the Auth Key for the Alchemy Notify API.](<../.gitbook/assets/Screenshot 2022-05-10 at 2.13.50 PM.png>)
+![Where to find the Auth Key for the Alchemy Notify API.](<../../.gitbook/assets/Screenshot 2022-05-10 at 2.13.50 PM.png>)
 
 
 
@@ -305,7 +305,7 @@ Then, the webhook’s messages will show up on your frontend.
 
 
 
-![Example Ethereum address notification displayed in a dApp. ](<../.gitbook/assets/Screenshot 2022-05-10 at 2.23.03 PM.png>)
+![Example Ethereum address notification displayed in a dApp. ](<../../.gitbook/assets/Screenshot 2022-05-10 at 2.23.03 PM.png>)
 
 __
 
@@ -732,7 +732,7 @@ Now, send a small amount of testnet ETH to your address, to get a notification f
 
 
 
-![Example notification that is received when ETH was sent to a monitored Ethereum address.](<../.gitbook/assets/Screenshot 2022-05-10 at 2.23.03 PM.png>)
+![Example notification that is received when ETH was sent to a monitored Ethereum address.](<../../.gitbook/assets/Screenshot 2022-05-10 at 2.23.03 PM.png>)
 
 \
 This is a simple example, but there are many ways you can expand on this to build a dApp that is real-time responsive for your users.

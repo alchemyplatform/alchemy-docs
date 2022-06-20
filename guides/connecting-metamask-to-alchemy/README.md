@@ -6,10 +6,10 @@ description: Follow this guide if you're looking for an Infura alternative for M
 
 ## Steps to update your Metamask
 
-1. [Create a free account on Alchemy](connecting-metamask-to-alchemy.md#1.-create-a-free-account-on-alchemy)&#x20;
-2. [Create an API key for the desired Network on Metamask](connecting-metamask-to-alchemy.md#2.-create-an-api-key-for-the-desired-network-on-metamask)&#x20;
-3. [Choose "Custom RPC" in Metamask](connecting-metamask-to-alchemy.md#3.-choose-custom-rpc-in-metamask)
-4. [Fill in the network details](connecting-metamask-to-alchemy.md#4.-fill-in-the-required-information)
+1. [Create a free account on Alchemy](./#1.-create-a-free-account-on-alchemy)&#x20;
+2. [Create an API key for the desired Network on Metamask](./#2.-create-an-api-key-for-the-desired-network-on-metamask)&#x20;
+3. [Choose "Custom RPC" in Metamask](./#3.-choose-custom-rpc-in-metamask)
+4. [Fill in the network details](./#4.-fill-in-the-required-information)
 
 ## Why is Metamask not working?
 
@@ -29,7 +29,7 @@ We'll need to use an Alchemy API key to replace our Metamask endpoint. You can c
 
 ## Step 2: Create an API key for the desired Network on Metamask&#x20;
 
-If we want to replace our Ethereum Mainnet endpoint (most popular) in Metamask we'll need to create an Ethereum Mainnet API key on Alchemy. For instructions on how to do so, check out [step 1 on this guide](../introduction/getting-started/#1.create-an-alchemy-key). Or watch the video below.&#x20;
+If we want to replace our Ethereum Mainnet endpoint (most popular) in Metamask we'll need to create an Ethereum Mainnet API key on Alchemy. For instructions on how to do so, check out [step 1 on this guide](../../introduction/getting-started/#1.create-an-alchemy-key). Or watch the video below.&#x20;
 
 {% embed url="https://youtu.be/tfggWxfG9o0" %}
 
@@ -37,7 +37,7 @@ If we want to replace our Ethereum Mainnet endpoint (most popular) in Metamask w
 
 Navigate to your MetaMask wallet and click the network dropdown at the top, selecting **"Custom RPC"** at the bottom
 
-![Click on "Custom RPC" at the very bottom of the network dropdown.](<../.gitbook/assets/Screen Shot 2021-11-15 at 9.47.25 AM.png>)
+![Click on "Custom RPC" at the very bottom of the network dropdown.](<../../.gitbook/assets/Screen Shot 2021-11-15 at 9.47.25 AM.png>)
 
 ## Step 4: Fill in the network details
 
@@ -59,6 +59,6 @@ Here is the information on specific Netoworks:
 | Optimism Mainnet        | [https://opt-mainnet.g.alchemy.com/v2/your-api-key](https://opt-mainnet.g.alchemy.com/v2/your-api-key) | 10       | [https://optimistic.etherscan.io](https://optimistic.etherscan.io/)              | ETH               |
 | Optimism Kovan          | [https://opt-kovan.g.alchemy.com/v2/your-api-key](https://opt-kovan.g.alchemy.com/v2/your-api-key)     | 69       | [https://kovan-optimistic.etherscan.io/](https://kovan-optimistic.etherscan.io/) | ETH               |
 
-![Example Polygon Configuration](<../.gitbook/assets/Screen Shot 2021-11-15 at 10.07.44 AM.png>) ![Example Ethereum Mainnet Configuration](<../.gitbook/assets/Screen Shot 2021-11-15 at 10.11.10 AM.png>)
+![Example Polygon Configuration](<../../.gitbook/assets/Screen Shot 2021-11-15 at 10.07.44 AM.png>) ![Example Ethereum Mainnet Configuration](<../../.gitbook/assets/Screen Shot 2021-11-15 at 10.11.10 AM.png>)
 
-And thats it! Your MetaMask is now hooked up to Alchemy 🎉 You've now unlocked game changing tools like the [Mempool Visualizer](../introduction/core-products/alchemy-build.md#mempool-visualizer) (where you can view all your transactions as they are being mined), [Alchemy Notify](../introduction/core-products/alchemy-notify.md) (receive notifications about address activity, dropped/mined transactions, etc.), and more!
+And thats it! Your MetaMask is now hooked up to Alchemy 🎉 You've now unlocked game changing tools like the [Mempool Visualizer](../../introduction/core-products/alchemy-build.md#mempool-visualizer) (where you can view all your transactions as they are being mined), [Alchemy Notify](../../introduction/core-products/alchemy-notify.md) (receive notifications about address activity, dropped/mined transactions, etc.), and more!

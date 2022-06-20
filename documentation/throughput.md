@@ -16,7 +16,7 @@ In most instances, hitting your throughput limit will not affect your user's exp
 
 CUPS are a measure of the number of [compute units](https://docs.alchemyapi.io/documentation/compute-units) used per second when making requests. Since each request is weighted differently, we base this on the total compute units used rather than the number of requests.
 
-For example, if you send one [`eth_blockNumber`](../apis/ethereum/eth-blocknumber.md) (10 CUs), two [`eth_getLogs`](../apis/arbitrum/eth\_getlogs-1.md) (75 CUs), and two [`eth_call`](../apis/polygon/eth\_call.md) (26 CUs) requests in the same second, you will have a total of 310 CUPS.
+For example, if you send one [`eth_blockNumber`](../apis/ethereum/eth-blocknumber.md) (10 CUs), two [`eth_getLogs`](../apis/arbitrum/eth-getlogs.md) (75 CUs), and two [`eth_call`](../apis/polygon/eth-call.md) (26 CUs) requests in the same second, you will have a total of 310 CUPS.
 
 See the table below for the number of compute units per second (CUPS) permitted for each user type.
 

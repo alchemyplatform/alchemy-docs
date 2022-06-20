@@ -17,23 +17,23 @@ In this tutorial, we will show you how to send SMS notifications for any activit
 
 ## **Overview**
 
-1. [High-level walkthrough of the example project](tracking-transaction-life-cycles.md#our-example)
-2. [Build the project using Heroku](tracking-transaction-life-cycles.md#option-1-build-heroku-serviced-project)
-   1. [Clone Github Repo, Set-Up Heroku, Set-Up Twilio](tracking-transaction-life-cycles.md#a-clone-the-existing-github-repository)
-   2. [Alchemy Notify API & Register Webhook Notifications](tracking-transaction-life-cycles.md#2.-alchemy-notify-api-and-register-webhook-notifications)
+1. [High-level walkthrough of the example project](how-to-track-ethereum-transactions.md#our-example)
+2. [Build the project using Heroku](how-to-track-ethereum-transactions.md#option-1-build-heroku-serviced-project)
+   1. [Clone Github Repo, Set-Up Heroku, Set-Up Twilio](how-to-track-ethereum-transactions.md#a-clone-the-existing-github-repository)
+   2. [Alchemy Notify API & Register Webhook Notifications](how-to-track-ethereum-transactions.md#2.-alchemy-notify-api-and-register-webhook-notifications)
       * Create a [free Alchemy account](https://alchemy.com/?r=affiliate:ba2189be-b27d-4ce9-9d52-78ce131fdc2d)
-   3. [alchemy\_filteredNewFullPendingTransactions](tracking-transaction-life-cycles.md#3.-using-alchemy\_filterednewfullpendingtransactions-to-track-pending-transactions)
-   4. [Configure SMS notifications](tracking-transaction-life-cycles.md#4.-configure-sms-notifications)
-   5. [Deploy Heroku App!](tracking-transaction-life-cycles.md#5.-deploy-heroku-app)
-3. [Build the project from scratch](tracking-transaction-life-cycles.md#option-2-build-project-from-scratch)
-   1. [Set-Up Heroku, Set-Up Twilio](tracking-transaction-life-cycles.md#1-2.-complete-steps-1-2-from-the-heroku-project.)
-   2. [Alchemy Notify API & Register Webhook Notifications](tracking-transaction-life-cycles.md#1-2.-complete-steps-1-2-from-the-heroku-project.)
+   3. [alchemy\_filteredNewFullPendingTransactions](how-to-track-ethereum-transactions.md#3.-using-alchemy\_filterednewfullpendingtransactions-to-track-pending-transactions)
+   4. [Configure SMS notifications](how-to-track-ethereum-transactions.md#4.-configure-sms-notifications)
+   5. [Deploy Heroku App!](how-to-track-ethereum-transactions.md#5.-deploy-heroku-app)
+3. [Build the project from scratch](how-to-track-ethereum-transactions.md#option-2-build-project-from-scratch)
+   1. [Set-Up Heroku, Set-Up Twilio](how-to-track-ethereum-transactions.md#1-2.-complete-steps-1-2-from-the-heroku-project.)
+   2. [Alchemy Notify API & Register Webhook Notifications](how-to-track-ethereum-transactions.md#1-2.-complete-steps-1-2-from-the-heroku-project.)
       * Create a [free Alchemy account](https://alchemy.com/?r=affiliate:ba2189be-b27d-4ce9-9d52-78ce131fdc2d)
-   3. [Create WebSocket connection](tracking-transaction-life-cycles.md#3.-create-websocket-connection)
-   4. [Create Webhook connection](tracking-transaction-life-cycles.md#4.-create-webhook-connection)
-   5. [Deploy your app!](tracking-transaction-life-cycles.md#5.-deploy-app)
-4. [Test your Integration](tracking-transaction-life-cycles.md#test-your-integration)
-5. [Conclusion](tracking-transaction-life-cycles.md#conclusion)
+   3. [Create WebSocket connection](how-to-track-ethereum-transactions.md#3.-create-websocket-connection)
+   4. [Create Webhook connection](how-to-track-ethereum-transactions.md#4.-create-webhook-connection)
+   5. [Deploy your app!](how-to-track-ethereum-transactions.md#5.-deploy-app)
+4. [Test your Integration](how-to-track-ethereum-transactions.md#test-your-integration)
+5. [Conclusion](how-to-track-ethereum-transactions.md#conclusion)
 
 ## **Our Example**
 
@@ -93,7 +93,7 @@ cd Transaction-Lifecycle-via-SMS
 
 #### b) Install Heroku-CLI and verify/install dependencies
 
-In this tutorial, we use Heroku for hosting a server and website. If you want to use another provider, see [Option 2: Build Project From Scratch](tracking-transaction-life-cycles.md#option-2-build-the-webapp-from-scratch)
+In this tutorial, we use Heroku for hosting a server and website. If you want to use another provider, see [Option 2: Build Project From Scratch](how-to-track-ethereum-transactions.md#option-2-build-the-webapp-from-scratch)
 
 1. Download the right [Heroku-CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) based on your OS and configuration
 
@@ -326,7 +326,7 @@ _🎉 Congratulations on your dApp deployment! Feel free to edit your webapp, po
 
 ## **Option 2: Build project from scratch**
 
-### 1-2. Complete [Steps 1-2 ](tracking-transaction-life-cycles.md#1-set-up-github-repo-and-heroku)from the Heroku Project.&#x20;
+### 1-2. Complete [Steps 1-2 ](how-to-track-ethereum-transactions.md#1-set-up-github-repo-and-heroku)from the Heroku Project.&#x20;
 
 ### 3. Create WebSocket Connection
 

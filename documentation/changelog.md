@@ -66,7 +66,7 @@ curl https://eth-mainnet.alchemyapi.io/v2/demo \
 
 ### 06/01/2022
 
-* **\[API]** Deprecated parity\_getBlockReceipts, please use __ [alchemy\_getTransactionReceipts](../enhanced-apis/transaction-receipts-api.md#alchemy\_gettransactionreceipts) instead.
+* **\[API]** Deprecated parity\_getBlockReceipts, please use __ [alchemy\_getTransactionReceipts](../enhanced-apis/transaction-receipts-api/#alchemy\_gettransactionreceipts) instead.
 
 ### 05/25/2022
 

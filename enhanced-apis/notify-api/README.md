@@ -257,7 +257,7 @@ List of addresses you want to track. Required for address activity webhooks only
 {% swagger-parameter in="body" name="gas_price_low" type="integer" required="false" %}
 If the gas price (in 
 
-[gwei](../../resources/web3-glossary.md#why-cant-i-invite-a-user-who-is-already-on-a-team)
+[gwei](../../resources/web3-glossary/#why-cant-i-invite-a-user-who-is-already-on-a-team)
 
 ) is lower than this threshold, send a notification every minute. For gas price webhooks only.
 {% endswagger-parameter %}
@@ -265,7 +265,7 @@ If the gas price (in
 {% swagger-parameter in="body" name="gas_price_high" type="integer" required="false" %}
 If the gas price (in 10x 
 
-[gwei](../../resources/web3-glossary.md#why-cant-i-invite-a-user-who-is-already-on-a-team)
+[gwei](../../resources/web3-glossary/#why-cant-i-invite-a-user-who-is-already-on-a-team)
 
 ) is higher than this threshold, send a notification every minute. For gas price webhooks only.
 {% endswagger-parameter %}
@@ -574,8 +574,8 @@ If you want to learn more about how to leverage webhooks for your application, o
 
 For tutorials on integrating notifications into your dApp try out the following:
 
-* [Alchemy Notify Tutorial: Tracking Transaction Life Cycles](../../tutorials/tracking-transaction-life-cycles.md)
-* [Building a dApp with Real-Time Transaction Notifications](../../tutorials/building-a-dapp-with-real-time-transaction-notifications.md)
+* [Alchemy Notify Tutorial: Tracking Transaction Life Cycles](../../tutorials/how-to-track-ethereum-transactions.md)
+* [Building a dApp with Real-Time Transaction Notifications](building-a-dapp-with-real-time-transaction-notifications.md)
 
 {% content-ref url="using-notify.md" %}
 [using-notify.md](using-notify.md)

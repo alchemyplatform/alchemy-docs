@@ -43,7 +43,7 @@ params: [
 
 ## Example
 
-### [Alchemy Composer](eth\_getblockbyhash.md#parameters)
+### [Alchemy Composer](eth-getblockbyhash.md#parameters)
 
 The Alchemy Composer allows you to make a no-code example request via your browser. Try it out above!
 

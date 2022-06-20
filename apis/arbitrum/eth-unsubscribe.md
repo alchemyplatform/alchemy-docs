@@ -8,7 +8,7 @@ description: >-
 
 ### Parameters
 
-1. Subscription ID, as previously returned from an [`eth_subscribe`](eth\_subscribe.md) call.
+1. Subscription ID, as previously returned from an [`eth_subscribe`](eth-subscribe.md) call.
 
 ### Returns
 

@@ -5,7 +5,7 @@ description: >-
   token transfers in a single request.
 ---
 
-# How to get address transaction history on Ethereum
+# How to get transaction history for an address on Ethereum
 
 A few reasons for why you'd want to get address transaction history by an address:
 

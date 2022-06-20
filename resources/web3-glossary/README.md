@@ -126,7 +126,7 @@ The Uncle inclusion mechanism allows a block to include its uncles. This ensures
 Uncle blocks are similar to orphan blocks but have subtle distinctions connected with the Ethereum protocol. Uncle blocks are valid blocks that the network has rejected. Miners get paid for producing an uncle block, unlike an orphan block, where miners don't get rewarded.\
 
 
-Learn more about on this page:[what-are-uncle-blocks.md](web3-glossary/what-are-uncle-blocks.md "mention").&#x20;
+Learn more about on this page:[what-are-uncle-blocks.md](what-are-uncle-blocks.md "mention").&#x20;
 
 ### **Account Nonce**
 
@@ -176,7 +176,7 @@ The smallest denomination of ether. 10^18 wei = 1 ether.
 
 ### gwei <a href="#why-cant-i-invite-a-user-who-is-already-on-a-team" id="why-cant-i-invite-a-user-who-is-already-on-a-team"></a>
 
-A gwei or gigawei is defined as 1,000,000,000 [wei](web3-glossary.md#wei). One gwei equals 0.000000001 or 10-9 ETH.
+A gwei or gigawei is defined as 1,000,000,000 [wei](./#wei). One gwei equals 0.000000001 or 10-9 ETH.
 
 ### **Gas**
 
@@ -220,15 +220,15 @@ Go Ethereum. One of the most prominent implementations of the Ethereum protocol,
 
 ### **Compute Units (CUs)**
 
-Compute units or CUs represent the cost associated with given API calls. See the [Compute Units](../documentation/compute-units.md) page to learn more.
+Compute units or CUs represent the cost associated with given API calls. See the [Compute Units](../../documentation/compute-units.md) page to learn more.
 
 ### **Rate Limit**
 
-Rate limit is the cap on FCUs permitted. See the [Rate Limit](../documentation/throughput.md) page to learn more.
+Rate limit is the cap on FCUs permitted. See the [Rate Limit](../../documentation/throughput.md) page to learn more.
 
 ### **Alchemy Web3**
 
-Alchemy Web3 is a drop-in replacement for web3.js, built and configured to work seamlessly with Alchemy and provide multiple advantages such as automatic retries and robust WebSocket support. See the [Alchemy web3](../documentation/alchemy-web3/) page to learn more.
+Alchemy Web3 is a drop-in replacement for web3.js, built and configured to work seamlessly with Alchemy and provide multiple advantages such as automatic retries and robust WebSocket support. See the [Alchemy web3](../../documentation/alchemy-web3/) page to learn more.
 
 ## Cryptography
 

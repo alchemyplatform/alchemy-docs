@@ -67,7 +67,7 @@ Your Arbitrum Testnet wallet should now have ETH (make sure to change your netwo
 
 ### Step 6: Check your Arbitrum ETH balance <a href="#h.dciwe5w5e7jv" id="h.dciwe5w5e7jv"></a>
 
-To double-check your balance is there, let’s make an [eth\_getBalance ](../apis/arbitrum/eth\_getbalance-1.md)request using [Alchemy’s composer tool](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getBalance%22%2C%22paramValues%22%3A%5B%22%22%2C%22latest%22%5D%7D). This will return the amount of ETH assets in your wallet.
+To double-check your balance is there, let’s make an [eth\_getBalance ](../apis/arbitrum/eth-getbalance.md)request using [Alchemy’s composer tool](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getBalance%22%2C%22paramValues%22%3A%5B%22%22%2C%22latest%22%5D%7D). This will return the amount of ETH assets in your wallet.
 
 ![](../.gitbook/assets/image4)
 
@@ -350,7 +350,7 @@ If you have multiple Alchemy apps make sure to filter by app and select “arbit
 
 Here you’ll see a handful of JSON-RPC calls that Hardhat/Ethers made under the hood for us when we called the `.deploy()` function.
 
-Two important ones to call out here are [eth\_sendRawTransaction](../apis/arbitrum/eth\_sendrawtransaction-1.md), which is the request to actually write your smart contract onto the Arbitrum Rinkeby chain, and [eth\_getTransactionByHash](../apis/arbitrum/eth\_gettransactionbyhash-1.md), which is a request to read information about your transaction given the hash (a typical pattern when sending transactions).
+Two important ones to call out here are [eth\_sendRawTransaction](../apis/arbitrum/eth-sendrawtransaction.md), which is the request to actually write your smart contract onto the Arbitrum Rinkeby chain, and [eth\_getTransactionByHash](../apis/arbitrum/eth-gettransactionbyhash.md), which is a request to read information about your transaction given the hash (a typical pattern when sending transactions).
 
 To learn more about sending transactions, check out this tutorial on [sending transactions using Web3.](../introduction/getting-started/sending-txs.md)
 

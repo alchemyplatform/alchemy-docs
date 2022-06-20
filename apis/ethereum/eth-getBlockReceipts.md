@@ -7,7 +7,7 @@ description: Get all transaction receipts for a given block on Ethereum.
 {% hint style="warning" %}
 **NOTE:** This endpoint is currently only supported on **Ethereum Mainnet**.&#x20;
 
-_For higher reliability, we recommend using_ [_`alchemy_getTransactionReceipts`_](../../enhanced-apis/transaction-receipts-api.md) _instead of `eth_getBlockReceipts.`_&#x20;
+_For higher reliability, we recommend using_ [_`alchemy_getTransactionReceipts`_](../../enhanced-apis/transaction-receipts-api/) _instead of `eth_getBlockReceipts.`_&#x20;
 {% endhint %}
 
 ## Parameters

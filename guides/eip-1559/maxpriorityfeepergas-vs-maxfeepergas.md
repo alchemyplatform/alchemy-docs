@@ -7,7 +7,7 @@ description: >-
 
 # maxPriorityFeePerGas vs maxFeePerGas
 
-Sending a transaction on Ethereum post London fork uses these two new gas price fields: `maxFeePerGas` and [`maxPriorityFeePerGas`](../../apis/ethereum/eth\_maxpriorityfeepergas.md). We won't go into detail on the incentive theory behind fee markets here. Instead, we will dive into the difference between these two fields and when you might want to use one vs the other (or both).
+Sending a transaction on Ethereum post London fork uses these two new gas price fields: `maxFeePerGas` and [`maxPriorityFeePerGas`](../../apis/ethereum/eth-maxpriorityfeepergas.md). We won't go into detail on the incentive theory behind fee markets here. Instead, we will dive into the difference between these two fields and when you might want to use one vs the other (or both).
 
 If you've gone through our [tutorial on sending an EIP 1559 transaction](https://docs.alchemy.com/alchemy/guides/eip-1559/send-tx-eip-1559) then you've seen that we recommend using only the `maxPriorityFeePerGas` field. We did this for simplicity, but it's not always the better field to use.
 
@@ -25,7 +25,7 @@ The above snippet assumes you've set up your [Alchemy Web3 client](https://docs.
 
 The base fee is the bare minimum you will be charged to send a transaction on the network. The base fee is set _by the network itself_, not by miners. The base fee changes block by block, based on how full the previous block was.
 
-### What is [`maxPriorityFeePerGas`](../../apis/ethereum/eth\_maxpriorityfeepergas.md)? <a href="#what-is-max-priority-fee-per-gas" id="what-is-max-priority-fee-per-gas"></a>
+### What is [`maxPriorityFeePerGas`](../../apis/ethereum/eth-maxpriorityfeepergas.md)? <a href="#what-is-max-priority-fee-per-gas" id="what-is-max-priority-fee-per-gas"></a>
 
 In the previous section we mentioned that the base fee is determined by the network. Well, it is also _**burned**_ when the block is mined, meaning that the miner does not get the base fee as a reward for mining a block. So how do miners get compensated for the computational work of mining?
 

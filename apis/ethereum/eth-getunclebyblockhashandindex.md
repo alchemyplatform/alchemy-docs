@@ -25,7 +25,7 @@ params: [
 See [`eth_getBlockByHash`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-getblockbyhash#returns)
 
 {% hint style="warning" %}
-\*\*NOTE: \*\*The return does not contain a list of transactions in the uncle block, to get this, make another request to [eth\_getBlockByHash](eth\_getblockbyhash.md) or [eth\_getBlockByNumber](eth\_getblockbynumber.md)
+\*\*NOTE: \*\*The return does not contain a list of transactions in the uncle block, to get this, make another request to [eth\_getBlockByHash](eth-getblockbyhash.md) or [eth\_getBlockByNumber](eth-getblockbynumber.md)
 {% endhint %}
 
 ### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getUncleByBlockHashAndIndex%22%2C%22paramValues%22%3A%5B%220xb3b20624f8f0f86eb50dd04688409e5cea4bd02d700bf6e79e9384d47d6a5a35%22%2C%220x0%22%5D%7D)

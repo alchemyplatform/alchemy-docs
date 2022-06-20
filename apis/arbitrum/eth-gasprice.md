@@ -14,7 +14,7 @@ none
 
 ## Example
 
-### [Alchemy Composer](eth\_gasprice-1.md#parameters)
+### [Alchemy Composer](eth-gasprice.md#parameters)
 
 The Alchemy Composer allows you to make a no-code example request via your browser. Try it out above!
 

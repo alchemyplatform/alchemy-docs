@@ -15,7 +15,7 @@ description: Polygon API - Returns the root hash given a block range
 
 ## Example
 
-### [Alchemy Composer](bor\_getroothash.md#parameters)
+### [Alchemy Composer](bor-getroothash.md#parameters)
 
 The Alchemy Composer allows you to make a no-code example request via your browser. Try it out above!
 

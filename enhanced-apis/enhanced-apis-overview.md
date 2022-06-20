@@ -39,15 +39,15 @@ With the Transfers API, users can query all historical transactions for an addre
 
 #### Transfer API Tutorials
 
-* [How to get transaction history for an address on Ethereum](transfers-api/how-to-get-address-transaction-history-on-ethereum.md)
+* [How to get transaction history for an address on Ethereum](transfers-api/how-to-get-transaction-history-for-an-address-on-ethereum.md)
 * [How to get historical transactions on Polygon](https://alchemy.com/blog/how-to-get-historical-transactions-on-polygon)
 * [How to get all NFT transactions by an address](transfers-api/how-to-get-all-nft-transactions-by-an-address.md)
 * [How to get NFTs minted by an address](transfers-api/how-to-get-nfts-minted-by-an-address.md)
 
 ### Transaction Receipts API
 
-{% content-ref url="transaction-receipts-api.md" %}
-[transaction-receipts-api.md](transaction-receipts-api.md)
+{% content-ref url="transaction-receipts-api/" %}
+[transaction-receipts-api](transaction-receipts-api/)
 {% endcontent-ref %}
 
 Fetch all transaction receipts for a **block number** or a **block hash** in one API call using the [`alchemy_getTransactionReceipts`](https://docs.alchemy.com/alchemy/enhanced-apis/transaction-receipts-api#alchemy\_gettransactionreceipts) method - for mainnet and testnets on Ethereum, Polygon, Optimism, and Arbitrum.
