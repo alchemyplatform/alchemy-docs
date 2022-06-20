@@ -2,7 +2,7 @@
 description: Arbitrum API - Returns the current price per gas in wei.
 ---
 
-# eth\_gasPrice
+# eth\_gasPrice - Arbitrum
 
 ### Parameters
 
@@ -54,3 +54,5 @@ Body:
   "result": "0x98bca5a00"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

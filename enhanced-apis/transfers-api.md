@@ -31,7 +31,7 @@ There are five main types of transfers that are captured when using this API.
 * **Ethereum Mainnet:** External, Internal, Token, ERC20, ERC721, ERC1155
 * **Ethereum Testnets:**\
   **- Rinkeby, Kovan, Ropsten**: Token, ERC20, ERC721, ERC1155\
-  **-** **Goerli**: Exteranl, Token, ERC20, ERC721, ERC1155
+  **-** **Goerli**: Internal, Exteranl, Token, ERC20, ERC721, ERC1155
 * **Polygon Mainnet:** External, Token, ERC20, ERC721, ERC1155
 * **Polygon Mumbai:** External, Token, ERC20, ERC721, ERC1155
 {% endhint %}
@@ -73,29 +73,46 @@ Additionally, we do not include any **internal transfers with call type`delegate
 ## `alchemy_getAssetTransfers` (Ethereum Mainnet)
 
 {% hint style="warning" %}
-**NOTE:** The documentation in this section only applies to `alchemy_getAssetTransfers` on **Ethereum** **Mainnet**. For documentation on **Ethereum Testnets** and **Polygon (Mainnet and Mumbai)**, see [below](transfers-api.md#alchemy\_getassettransfers-ethereum-mainnet-1).&#x20;
+**NOTE:** The documentation in this section only applies to `alchemy_getAssetTransfers` on **Ethereum** **Mainnet**. For documentation on **Ethereum Testnets** and **Polygon (Mainnet and Mumbai)**, see [alchemy\_getAssetTransfers (Testnets and Layer 2s)](transfers-api.md#alchemy\_getassettransfers-testnets-and-layer-2s).&#x20;
 {% endhint %}
 
 ### Parameters
 
 * Object - An object with the following fields (required):
   * `fromBlock`: \[optional] inclusive from block (hex string, int, or `latest`)
-    * Default: `latest`
-  * `toBlock`: \[optional] inclusive to block (hex string, int, or `latest`)
-    * Default: `latest`
-  * `fromAddress`: \[optional] from address (hex string)
-    * Default: wildcard - any address
-  * `toAddress`: \[optional] to address (hex string)
-    * Default: wildcard - any address
-  * `contractAddresses`: \[optional] list of contract addresses (hex strings) to filter for - only applies to "`token`", "`erc20`", "`erc721`", "`erc1155`" transfers
-    * Default: wildcard - any address
-  * `category`: \[optional] array of categories, can be any of the following: "`external`", "`internal`", "`token`", "`erc20`", "`erc721`", "`erc1155`"
-    * Default: \["`external`", "`internal`", "`token`"]
-  * `excludeZeroValue:` \[optional] a`Boolean` to exclude transfers with zero value. Zero value is not the same as `null` value
-    * Default:  `true`
-  * `maxCount`: \[optional] max hex string number of results to return per call
-    * Default (and max): `1000` or `0x3e8`
-  * `pageKey`: \[optional] `uuid` for [pagination](transfers-api.md#pagination). If more results are available, a uuid pageKey will be returned in the response. Pass that uuid into `pageKey` to fetch the next 1000 or `maxCount.`
+    * Default: `"0x0"`
+
+{% hint style="warning" %}
+Prior to June 27th, 2022, the default param value was `latest`
+{% endhint %}
+
+* `toBlock`: \[optional] inclusive to block (hex string, int, or `latest`)
+  * Default: `latest`
+* `fromAddress`: \[optional] from address (hex string)
+  * Default: wildcard - any address
+* `toAddress`: \[optional] to address (hex string)
+  * Default: wildcard - any address
+* `contractAddresses`: \[optional] list of contract addresses (hex strings) to filter for - only applies to "`token`", "`erc20`", "`erc721`", "`erc1155`" transfers
+  * Default: wildcard - any address
+* `category`: (required) array of categories, can be any of the following: "`external`", "`internal`", "`erc20`", "`erc721`", "`erc1155`"
+
+{% hint style="warning" %}
+Prior to June 27th, 2022, the category param looked as follows:\
+
+
+`category`: \[optional] array of categories, can be any of the following: "`external`", "`internal`", "`token`", "`erc20`", "`erc721`", "`erc1155`"
+
+* Default: \["`external`", "`internal`", "`token`"]\
+
+
+**NOTE:**`category` is now required and there is no default `category` injected in the request
+{% endhint %}
+
+* `excludeZeroValue:` \[optional] a`Boolean` to exclude transfers with zero value. Zero value is not the same as `null` value
+  * Default:  `true`
+* `maxCount`: \[optional] max hex string number of results to return per call
+  * Default (and max): `1000` or `0x3e8`
+* `pageKey`: \[optional] `uuid` for [pagination](transfers-api.md#pagination). If more results are available, a uuid pageKey will be returned in the response. Pass that uuid into `pageKey` to fetch the next 1000 or `maxCount.`
 
 {% hint style="info" %}
 **NOTE**:&#x20;
@@ -108,7 +125,7 @@ Additionally, we do not include any **internal transfers with call type`delegate
 
 * `id`: json-rpc id
   * `jsonrpc`: json-rpc version
-  * `result`: an object with the following fields:
+  * `result`: an object with the following fields
     * `pageKey`: uuid of next page of results (if exists, else blank).
     * `transfers:` array of objects (defined below) - sorted in ascending order by block number, ties broken by category (`external` , `internal`, `token`)
 * Object schema:
@@ -365,31 +382,49 @@ The documentation in this section only applies to `alchemy_getAssetTransfers` on
 {% hint style="warning" %}
 **NOTE: Types of Transfers supported**
 
-`alchemy_getAssetTransfers` **** on Polygon only supports  `external` ,`token`, `ERC20`, `ERC721`, and `ERC1155` transfers, **not**`internal` MATIC transfers.&#x20;
+`alchemy_getAssetTransfers` **** on **Polygon** only supports  `external` ,`token`, `ERC20`, `ERC721`, and `ERC1155` transfers, **not**`internal` MATIC transfers.&#x20;
 
 If you'd like support for these transfer types, please [upvote and comment](https://roadmap.alchemy.com/b/feature-requests/support-internal-external-transfers-on-polygon) to add this to our roadmap.
 {% endhint %}
 
 ### Parameters <a href="#parameters" id="parameters"></a>
 
-* Object - An object with the following fields (required):
-  * `fromBlock`: \[optional] inclusive from block (hex string, int, or `latest`)
-    * Default: `latest`
-  * `toBlock`: \[optional] inclusive to block (hex string, int, or `latest`)
-    * Default: `latest`
-  * `fromAddress`: \[optional] from address (hex string)
-    * Default: wildcard - any address
-  * `toAddress`: \[optional] to address (hex string)
-    * Default: wildcard - any address
-  * `contractAddresses`: \[optional] list of contract addresses (hex strings) to filter for - only applies to "`token`", "`erc20`", "`erc721`", "`erc1155`" transfers
-    * Default: wildcard - any address
-  * `category`: \[optional] array of categories, can be any of the following: "`token`", "`erc20`", "`erc721`", "`erc1155`"
-    * Defaults: \["`token`"]
-  * `excludeZeroValue:` \[optional] a`Boolean` to exclude transfers with zero value
-    * Default: `true`
-  * `maxCount`: \[optional] max hex string number of results to return per call
-    * Default (and max): `1000` or `0x3e8`
-  * `pageKey`: \[optional] `uuid` for [pagination](transfers-api.md#pagination). If more results are available, a uuid pageKey will be returned in the response. Pass that uuid into `pageKey` to fetch the next 1000 or `maxCount.`
+*   Object - An object with the following fields (required):
+
+    * `fromBlock`: \[optional] inclusive from block (hex string, int, or `latest`)
+      * Default: `"0x0"`
+
+    {% hint style="warning" %}
+    Prior to June 27th, 2022, the default param value was `latest`
+    {% endhint %}
+
+    * `toBlock`: \[optional] inclusive to block (hex string, int, or `latest`)
+      * Default: `latest`
+    * `fromAddress`: \[optional] from address (hex string)
+      * Default: wildcard - any address
+    * `toAddress`: \[optional] to address (hex string)
+      * Default: wildcard - any address
+    * `contractAddresses`: \[optional] list of contract addresses (hex strings) to filter for - only applies to "`token`", "`erc20`", "`erc721`", "`erc1155`" transfers
+      * Default: wildcard - any address
+    * `category`: (required) array of categories, can be any of the following: "`external`", "`internal`", "`erc20`", "`erc721`", "`erc1155`"
+
+    {% hint style="warning" %}
+    Prior to June 27th, 2022, the category param looked as follows:\
+
+
+    `category`: \[optional] array of categories, can be any of the following: "`external`", "`internal`", "`token`", "`erc20`", "`erc721`", "`erc1155`"
+
+    * Default: \["`external`", "`internal`", "`token`"]\
+
+
+    **NOTE:**`category` is now required and there is no default `category` injected in the request
+    {% endhint %}
+
+    * `excludeZeroValue:` \[optional] a`Boolean` to exclude transfers with zero value
+      * Default: `true`
+    * `maxCount`: \[optional] max hex string number of results to return per call
+      * Default (and max): `1000` or `0x3e8`
+    * `pageKey`: \[optional] `uuid` for [pagination](transfers-api.md#pagination). If more results are available, a uuid pageKey will be returned in the response. Pass that uuid into `pageKey` to fetch the next 1000 or `maxCount.`
 
 {% hint style="info" %}
 **NOTE**:&#x20;
@@ -461,7 +496,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://eth-mainnet.alchemyapi.io/v2/demo", requestOptions)
+fetch("https://polygon-mainnet.g.alchemy.com/v2/your-api-key", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -496,7 +531,7 @@ var data = JSON.stringify({
 
 var config = {
   method: 'post',
-  url: 'https://eth-mainnet.alchemyapi.io/v2/demo',
+  url: 'https://polygon-mainnet.g.alchemy.com/v2/your-api-key',
   headers: { 
     'Content-Type': 'application/json'
   },
@@ -516,16 +551,16 @@ axios(config)
 
 {% tab title="Curl" %}
 ```bash
-curl https://polygon-mainnet.alchemyapi.io/v2/your-api-key \
+curl https://polygon-mainnet.g.alchemy.com/v2/your-api-key \
 -X POST \
 -H "Content-Type: application/json" \
--d'{"jsonrpc":"2.0", "id": 1, "method":"alchemy_getAssetTransfers","params":[{"fromBlock": "0xA97AB8", "toBlock": "0xA97CAC", "fromAddress": "0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE", "contracts": ["0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"], "category": ["external", "internal", "token"], "maxCount": "0x5"}]}'
+-d'{"jsonrpc":"2.0", "id": 1, "method":"alchemy_getAssetTransfers","params":[{"fromBlock": "0xA97AB8", "toBlock": "0xA97CAC", "fromAddress": "0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE", "contracts": ["0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"], "category": ["external", "token"], "maxCount": "0x5"}]}'
 ```
 {% endtab %}
 
 {% tab title="Postman" %}
 ```http
-URL: https://eth-mainnet.alchemyapi.io/v2/your-api-key
+URL: https://polygon-mainnet.g.alchemy.com/v2/your-api-key
 RequestType: POST
 Body: 
 {

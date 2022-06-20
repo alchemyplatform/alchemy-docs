@@ -4,7 +4,7 @@ description: >-
   index position.
 ---
 
-# eth\_getUncleByBlockHashAndIndex
+# eth\_getUncleByBlockHashAndIndex - Polygon
 
 ## Parameters
 
@@ -22,7 +22,7 @@ params: [
 
 ## Returns
 
-See [`eth_getBlockByHash`](../ethereum/#eth\_getblockbyhash)
+See [`eth_getBlockByHash`](https://docs.alchemy.com/alchemy/apis/polygon/eth-getblockbyhash#returns)
 
 `Object` - A block object with the following fields, or null when no block was found:
 
@@ -108,4 +108,4 @@ Body:
 }
 ```
 
-###
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

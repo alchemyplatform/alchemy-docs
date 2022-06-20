@@ -5,7 +5,13 @@ description: >-
   page.
 ---
 
-# eth\_getLogs
+# eth\_getLogs - Polygon
+
+{% hint style="warning" %}
+**NOTE**: You can make `eth_getLogs` requests with up to a _**2K block range**_ and _**150MB**_ _**limit on the response size** OR you can_ request _**any block range**_ with a cap of _**10K logs in the response**_.
+
+_If you need to pull logs frequently, we recommend_ [_using WebSockets_](../../enhanced-apis/subscription-api-websockets/) _to push new logs to you when they are available_
+{% endhint %}
 
 ## Parameters
 
@@ -22,7 +28,7 @@ description: >-
 * `address`: `DATA|Array`, 20 Bytes - (optional) Contract address or a list of addresses from which logs should originate.
 * `topics`: `Array` of `DATA`, - (optional) Array of 32 Bytes DATA topics.
   * Topics are order-dependent. Each topic can also be an array of DATA with "or" options.
-  * Check out more details on how to format topics in [eth\_newFilter](../ethereum/#eth\_newfilter).
+  * Check out more details on how to format topics in [eth\_newFilter](https://docs.alchemy.com/alchemy/apis/polygon/eth-newfilter#parameters).
 * `blockHash`: `DATA`, 32 Bytes - (optional) With the addition of EIP-234 (Geth >= v1.8.13 or Parity >= v2.1.0), blockHash is a new filter option which restricts the logs returned to the single block with the 32-byte hash blockHash. Using blockHash is equivalent to fromBlock = toBlock = the block number with hash `blockHash`. **If blockHash is present in the filter criteria, then neither `fromBlock` nor `toBlock` are allowed.**
 
 ```javascript
@@ -54,3 +60,5 @@ params: [
   * `data`: `DATA` - contains one or more 32 Bytes non-indexed arguments of the log.
   * `topics`: `Array of DATA` - Array of 0 to 4 32 Bytes `DATA` of indexed log arguments.
     * In _solidity_: The first topic is the _hash_ of the signature of the event (e.g. `Deposit(address,bytes32,uint256)`), except you declare the event with the `anonymous` specifier.
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

@@ -9,7 +9,7 @@ description: >-
 
 ### Parameters
 
-1. Subscription ID, as previously returned from an [`eth_subscribe`](eth\_subscribe.md) call.
+1. Subscription ID, as previously returned from an [`eth_subscribe`](https://docs.alchemy.com/alchemy/apis/polygon/eth-subscribe) call.
 
 ### Returns
 
@@ -38,3 +38,5 @@ wscat -c wss://polygon-mainnet.g.alchemyapi.io/v2/your-api-key
     "result":true
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

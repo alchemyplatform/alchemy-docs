@@ -2,7 +2,7 @@
 description: Polygon API - Returns a list of addresses owned by client.
 ---
 
-# eth\_accounts
+# eth\_accounts - Polygon
 
 ## **Parameters**
 
@@ -54,3 +54,5 @@ Body:
   "result": []
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

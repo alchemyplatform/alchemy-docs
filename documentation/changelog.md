@@ -4,14 +4,11 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
 
 # Changelog
 
-### 06/17/2022
+## Future
 
-* **\[API]** Added `tokenType` response field in [getContractMetadata](../enhanced-apis/nft-api/getcontractmetadata.md).
+### 06/27/2022
 
-### 06/16/2022
-
-* **\[API]** Added beta support for [getSpamContracts](../enhanced-apis/nft-api/getspamcontracts.md), [isSpamContract](../enhanced-apis/nft-api/isspamcontract.md), and [reingestContract](../enhanced-apis/nft-api/reingestcontract.md).
-* **\[API]** Deprecated parameter feature set for [alchemy\_getAssetTransfers](../enhanced-apis/transfers-api/). After June 27, 2022, previous parameter logic will no longer be accepted.
+* **\[API]** Deprecated parameter feature set for [alchemy\_getAssetTransfers](../enhanced-apis/transfers-api.md). After June 27, 2022, previous parameter logic will no longer be accepted.
   * **Previous parameter configuration:**
     * `fromBlock`: defaults to `"latest"`
     * `category`: \[optional] array of categories, can be any of the following: "`external`", "`internal`", "`token`", "`erc20`", "`erc721`", "`erc1155`" with the default array -> \["`external`", "`internal`", "`token`"]
@@ -20,6 +17,17 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
       * &#x20; Defaults to the genesis block for intuitiveness
     * `category`: \[**required**] array of categories, can be any of the following: "`external`", "`internal`", "`erc20`", "`erc721`", "`erc1155`"
       * Removed the `"token"` category and is now a required param. Users must specifically request their desired token/transfer types
+* **\[API]** Added `tokenType` response field in [getContractMetadata](../enhanced-apis/nft-api/getcontractmetadata.md).
+
+## Past
+
+### 06/17/2022
+
+* **\[API]** Added `tokenType` response field in [getContractMetadata](../enhanced-apis/nft-api/getcontractmetadata.md).
+
+### 06/16/2022
+
+* **\[API]** Added beta support for [getSpamContracts](../enhanced-apis/nft-api/getspamcontracts.md), [isSpamContract](../enhanced-apis/nft-api/isspamcontract.md), and [reingestContract](../enhanced-apis/nft-api/reingestcontract.md).
 
 ### 06/15/2022
 
@@ -46,7 +54,7 @@ curl https://eth-mainnet.alchemyapi.io/v2/demo \
 
 ### 06/13/2022
 
-* **\[API]** Added internal transaction support for Georli testnet in the [Transfers API](../enhanced-apis/transfers-api/) and [Address Activity Webhooks ](../enhanced-apis/notify-api/using-notify.md#address-activity)
+* **\[API]** Added internal transaction support for Georli testnet in the [Transfers API](../enhanced-apis/transfers-api.md) and [Address Activity Webhooks ](../enhanced-apis/notify-api/using-notify.md#address-activity)
 
 ### 06/06/2022
 
@@ -58,7 +66,7 @@ curl https://eth-mainnet.alchemyapi.io/v2/demo \
 
 ### 06/01/2022
 
-* **\[API]** Deprecated parity\_getBlockReceipts, please use __ [alchemy\_getTransactionReceipts](../enhanced-apis/transaction-receipts-api/#alchemy\_gettransactionreceipts) instead.
+* **\[API]** Deprecated parity\_getBlockReceipts, please use __ [alchemy\_getTransactionReceipts](../enhanced-apis/transaction-receipts-api.md#alchemy\_gettransactionreceipts) instead.
 
 ### 05/25/2022
 

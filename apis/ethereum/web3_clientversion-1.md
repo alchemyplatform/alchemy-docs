@@ -2,7 +2,7 @@
 description: Returns the current client version.
 ---
 
-# web3\_clientVersion
+# web3\_clientVersion - Ethereum
 
 ### **Parameters**
 
@@ -50,3 +50,5 @@ Result
   "result": "Geth/v1.9.15-stable-0f77f34b/linux-amd64/go1.14.4"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/ethereum" %}

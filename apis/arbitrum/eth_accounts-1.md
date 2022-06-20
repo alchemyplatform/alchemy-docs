@@ -2,7 +2,7 @@
 description: Arbitrum API - Returns a list of addresses owned by client.
 ---
 
-# eth\_accounts
+# eth\_accounts - Arbitrum
 
 ## **Parameters**
 
@@ -54,3 +54,5 @@ Body:
   "result": []
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

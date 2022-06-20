@@ -2,7 +2,7 @@
 description: Arbitrum API - Returns information about a block by hash.
 ---
 
-# eth\_getBlockByHash
+# eth\_getBlockByHash - Arbitrum
 
 ## Parameters
 
@@ -105,3 +105,5 @@ Body:
   }
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

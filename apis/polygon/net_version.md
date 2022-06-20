@@ -2,7 +2,7 @@
 description: Polygon API - Returns the current network id.
 ---
 
-# net\_version
+# net\_version - Polygon
 
 ## **Parameters**
 
@@ -60,3 +60,5 @@ Body:
     "result": "137"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

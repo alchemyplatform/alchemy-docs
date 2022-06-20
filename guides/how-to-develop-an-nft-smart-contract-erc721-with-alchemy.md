@@ -1,4 +1,4 @@
-# How to develop an NFT Smart Contract (ERC721) with Alchemy
+# 1. How to Develop an NFT Smart Contract (ERC721) with Alchemy
 
 **Developing a Smart Contract with Solidity and deploying it on the blockchain** might sound daunting at first: solidity, security, gas optimization, developer environment, and gas fees, are only some of the things you’ll need to go through to host your code on the blockchain.
 
@@ -209,11 +209,11 @@ Let's spend a couple of words to better understand what is the "require" stateme
 
 You can read more about the Solidity ["require" statement, in the official documentation](https://docs.soliditylang.org/en/v0.4.24/control-structures.html#error-handling-assert-require-revert-and-exceptions).
 
-Now that you've limited the max supply of our NFTs, is time to compile the smart contract and deploy it on the Rinkeby Testnet. To do so, you'll need to **create a free account** on [Alchemy.com](https://www.alchemy.com), add it as a node provider on Metamask, and [get some free Rinkeby ETH](https://rinkebyfaucet.com).
+Now that you've limited the max supply of our NFTs, is time to compile the smart contract and deploy it on the Rinkeby Testnet. To do so, you'll need to **create a free account** on [Alchemy.com](https://www.alchemy.com/), add it as a node provider on Metamask, and [get some free Rinkeby ETH](https://rinkebyfaucet.com/).
 
 ### Create a Free Alchemy Account
 
-First of all, le's need to navigate to [alchemy.com](https://www.alchemy.com) click on “Login” and create a new account:\
+First of all, le's need to navigate to [alchemy.com](https://www.alchemy.com/) click on “Login” and create a new account:\
 ![](<../.gitbook/assets/Screenshot 2022-05-01 at 17.32.13.png>)
 
 Select the Ethereum ecosystem:
@@ -252,7 +252,7 @@ It’s now time to **deploy our Smart Contract on Rinkeby,** but first, you'll n
 
 ### Get Free Rinkeby Test ETH
 
-Getting Rinkeby Test ETH is super simple, just navigate to [rinkebyfaucet.com](https://rinkebyfaucet.com), copy the wallet address into the text bar and click on “Send Me ETH”:
+Getting Rinkeby Test ETH is super simple, just navigate to [rinkebyfaucet.com](https://rinkebyfaucet.com/), copy the wallet address into the text bar and click on “Send Me ETH”:
 
 ![](<../.gitbook/assets/Screenshot 2022-05-01 at 19.08.49.png>)
 
@@ -461,7 +461,7 @@ Now it’s time to **move to OpenSea** to check if the metadata is benign read.
 
 ### Visualize Your NFT on OpenSea
 
-Navigate to [testnets.opensea.io](https://testnets.opensea.io) and **log in with your Metamask wallet**. Then click on your profile picture, you should see your newly minted NFT there. If the image is not yet visible, click on it, and click on the “refresh metadata” button.
+Navigate to [testnets.opensea.io](https://testnets.opensea.io/) and **log in with your Metamask wallet**. Then click on your profile picture, you should see your newly minted NFT there. If the image is not yet visible, click on it, and click on the “refresh metadata” button.
 
 ![](<../.gitbook/assets/Screenshot 2022-05-01 at 23.10.24.png>)
 
@@ -476,3 +476,5 @@ Sometimes OpenSea has hard times recognizing testnet metadata - and could take u
 To do so, look into the mapping type, here there’s an amazing guide to walk you through it.
 
 Want the video version of this tutorial? Subscribe to [the Alchemy YouTube channel](https://www.youtube.com/channel/UCtvTdPZWUwW4whk9CLlCBug) and join our [Discord community](https://discord.gg/3AyCvMJrAr) to find thousands of developers ready to help you out!&#x20;
+
+We are always looking to improve this learning journey, please share any feedback you have with us! [https://alchemyapi.typeform.com/roadtofeedback](https://alchemyapi.typeform.com/roadtofeedback)

@@ -2,7 +2,7 @@
 description: Polygon API -Returns information about a block by block number.
 ---
 
-# eth\_getBlockByNumber
+# eth\_getBlockByNumber - Polygon
 
 ## Parameters
 
@@ -103,3 +103,5 @@ Body:
     }
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

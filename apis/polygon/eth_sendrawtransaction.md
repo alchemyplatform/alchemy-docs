@@ -4,7 +4,7 @@ description: >-
   for signed transactions.
 ---
 
-# eth\_sendRawTransaction
+# eth\_sendRawTransaction - Polygon
 
 {% hint style="warning" %}
 **NOTE**: Due to network constraints, transactions on Polygon Mainnet must be submitted with a minimum gasPrice of 30 gwei.
@@ -22,7 +22,7 @@ params: ["0x29adbbaf99a3f97b2baefa11e865cf9d74435716ef8618caaa388619f5ae7d8e5d2c
 
 `DATA`, 32 Bytes - the transaction hash, or the zero hash if the transaction is not yet available.
 
-Use [`eth_getTransactionReceipt`](../ethereum/#eth\_gettransactionreceipt) to get the contract address after the transaction was mined when you created a contract.
+Use [`eth_getTransactionReceipt`](https://docs.alchemy.com/alchemy/apis/polygon/eth-gettransactionreceipt#returns) to get the contract address after the transaction was mined when you created a contract.
 
 ## Example
 
@@ -66,3 +66,5 @@ Body:
   "result": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

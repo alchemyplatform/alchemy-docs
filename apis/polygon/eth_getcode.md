@@ -4,7 +4,7 @@ description: >-
   distinguish between contract addresses and wallet addresses.
 ---
 
-# eth\_getCode
+# eth\_getCode - Polygon
 
 ## Parameters
 
@@ -64,3 +64,5 @@ Body:
     "result": "0x"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

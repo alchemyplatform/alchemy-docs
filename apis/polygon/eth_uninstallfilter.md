@@ -5,7 +5,7 @@ description: >-
   requested with eth_getFilterChangesfor a period
 ---
 
-# eth\_uninstallFilter
+# eth\_uninstallFilter - Polygon
 
 ## **Parameters**
 
@@ -63,3 +63,5 @@ Body:
   "result": false
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

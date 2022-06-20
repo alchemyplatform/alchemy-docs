@@ -4,7 +4,7 @@ description: >-
   given block hash.
 ---
 
-# eth\_getBlockTransactionCountByHash
+# eth\_getBlockTransactionCountByHash - Arbitrum
 
 ## Parameters
 
@@ -62,3 +62,5 @@ Body:
   "result": "0xb0"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

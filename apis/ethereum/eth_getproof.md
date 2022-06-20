@@ -5,21 +5,21 @@ description: >-
   from is not tampered with.
 ---
 
-# eth\_getProof
+# eth\_getProof - Ethereum
 
 ### **Parameters**
 
 1. `DATA`, 20 Bytes - address of the account.
-2. `ARRAY`, 32 Bytes - array of storage-keys which should be proofed and included. See[`eth_getStorageAt`](./#eth\_getstorageat)
+2. `ARRAY`, 32 Bytes - array of storage-keys which should be proofed and included. See[`eth_getStorageAt`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-getstorageat)
 3. `QUANTITY|TAG` - integer block number, or the string `"latest"` or `"earliest"`, see the [default block parameter](https://eth.wiki/json-rpc/API#the-default-block-parameter)
 
 ### **Returns**
 
 `Object` - A account object:
 
-* `balance`: `QUANTITY` - the balance of the account. See[`eth_getBalance`](./#eth\_getbalance)
+* `balance`: `QUANTITY` - the balance of the account. See[`eth_getBalance`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-getbalance#returns)
 * `codeHash`: `DATA`, 32 Bytes - hash of the code of the account. For a simple Account without code it will return `"0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"`
-* `nonce`: `QUANTITY`, - nonce of the account. See [`eth_getTransactionCount`](./#eth\_gettransactioncount)\`\`
+* `nonce`: `QUANTITY`, - nonce of the account. See [`eth_getTransactionCount`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-gettransactioncount#returns)
 * `storageHash`: `DATA`, 32 Bytes - SHA3 of the StorageRoot. All storage will deliver a MerkleProof starting with this rootHash.
 * `accountProof`: `ARRAY` - Array of rlp-serialized MerkleTree-Nodes, starting with the stateRoot-Node, following the path of the SHA3 (address) as key.
 * `storageProof`: `ARRAY` - Array of storage-entries as requested. Each entry is a object with these properties:
@@ -32,6 +32,89 @@ description: >-
 Request
 
 {% tabs %}
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation instructions: https://github.com/alchemyplatform/alchemy-web3
+
+async function main() {
+    // Import the AlchemyWeb3 library. Filepath to functions: 
+	// /@alch/alchemy-web3/dist/alchemyWeb3.js
+	const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+   	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+	
+	// Initialize an alchemy-web3 instance:
+	const web3 = createAlchemyWeb3(
+	  `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`);
+	
+	// Query the blockchain (replace example parameters)
+    	const account = await web3.eth.getProof({
+	    address: '0x7e5814a',
+		keys: ["0x56e81f,0x283s34"],
+		tag: 'latest',
+	  }); 
+    
+	// Print the output to console
+	console.log(account);
+   }
+
+main();
+```
+{% endtab %}
+
+{% tab title="ethers.js" %}
+```javascript
+// Installation instructions: https://docs.ethers.io/v5/getting-started/#installing
+
+async function main() {
+   const { ethers } = require("ethers");
+   
+	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+
+	// Initialize an ethers instance
+	const provider = new ethers.providers.AlchemyProvider("homestead", apiKey);
+
+	// Query the blockchain (replace example parameters)
+    const account = await provider.getProof({
+	    address: '0x7e5814a',
+		keys: ["0x56e81f,0x283s34"],
+		tag: 'latest',
+	  }); 
+    
+	// Print the output to console
+	console.log(account);
+   }
+
+main()
+```
+{% endtab %}
+
+{% tab title="web3.py" %}
+```python
+# Installation Instructions: https://web3py.readthedocs.io/en/latest/quickstart.html#installation
+
+from web3 import Web3, HTTPProvider
+
+#Replace with your Alchemy API key:
+apiKey = "demo"
+
+# Initialize a Web3.py instance
+web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/'+apiKey))
+
+# Query the blockchain (replace example parameters)
+account = web3.eth.get_proof({
+	    account: "0x7e581", #can be a checksum address or ENS
+		positions: ['0']
+		block_identifier: '3391'
+	  }) 
+
+# Print the output to console
+print(account)
+```
+{% endtab %}
+
 {% tab title="Curl" %}
 ```bash
 curl https://eth-mainnet.alchemyapi.io/v2/your-api-key \
@@ -87,3 +170,5 @@ Result
   }
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/ethereum" %}

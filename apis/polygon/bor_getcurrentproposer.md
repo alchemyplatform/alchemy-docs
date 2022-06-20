@@ -2,7 +2,7 @@
 description: Polygon API - Returns current proposer's address
 ---
 
-# bor\_getCurrentProposer
+# bor\_getCurrentProposer - Polygon
 
 ## Parameters
 
@@ -54,3 +54,5 @@ Body:
     "result": "0xb79fad4ca981472442f53d16365fdf0305ffd8e9"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

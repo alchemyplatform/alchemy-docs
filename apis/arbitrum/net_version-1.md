@@ -2,7 +2,7 @@
 description: Arbitrum API - Returns the current network id.
 ---
 
-# net\_version
+# net\_version - Arbitrum
 
 ## **Parameters**
 
@@ -61,4 +61,4 @@ Body:
 }
 ```
 
-##
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

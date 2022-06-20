@@ -4,7 +4,7 @@ description: >-
   compute the same results with an eth_getLogs call (see hint below).
 ---
 
-# eth\_getFilterLogs
+# eth\_getFilterLogs - Arbitrum
 
 ## **Parameters**
 
@@ -97,3 +97,5 @@ Body:
     }
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

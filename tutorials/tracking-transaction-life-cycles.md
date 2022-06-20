@@ -1,115 +1,123 @@
 ---
 description: >-
-  This tutorial walks through how to get SMS notifications for each transaction
-  state on Ethereum: from the moment it is sent to the moment it gets mined.
+  Learn how you can track your transactions thorough the pending and mined
+  states. We integrate Twilio to send SMS notifications when a transaction is
+  pending and when it finally gets mined.
 ---
 
-# Alchemy Notify Tutorial: Tracking Transaction Life Cycles
+# How to Track Mined and Pending Ethereum Transactions
 
-While dApps on Ethereum have become incredibly complex, one of the largest pain points for Ethereum users is the lack of transparency and clarity surrounding a transaction's life cycle. Oftentimes, dApp users are left with uncertainty surrounding pending transactions, forcing them to constantly refresh block explorers or their wallet dashboards to check if their transactions have been confirmed/mined.
+Ethereum blockchain does not natively support Notifications. For a user, that means every time your transaction gets submitted or completed, there's no way for you to stay updated of its progress other than constantly refreshing your app or [etherscan](https://etherscan.io/). For a dApp, that means a bad User Experience (UX).
 
-For dApps, simple notifications that track transaction life cycles provide a valuable user experience that allows for higher customer engagement. In particular, they can help alleviate the stress involved in pending transactions as Ethereum's ever-increasing gas fees force users to set lower `maxPriorityFeePerGas` to save money and inadvertently increase wait times.
+![dapp notifications example](../.gitbook/assets/5fa0ef98900e26b013286e9e\_notify-hero.png)
 
-While building reliable transaction trackers has traditionally been complicated and unreliable, [Alchemy Notify](https://www.alchemy.com/notify) and [Alchemy's pending transaction WebSocket](https://docs.alchemy.com/alchemy/guides/using-websockets#2-alchemy\_filterednewfullpendingtransactions) allows us to monitor and send sending real-time push notifications regarding tx life cycles.
+Using [Alchemy Notify](https://www.alchemy.com/notify) and [Alchemy's pending transaction WebSocket](https://docs.alchemy.com/alchemy/guides/using-websockets#2-alchemy\_filterednewfullpendingtransactions), dApps can monitor activity and send real-time push notifications to their users. This leads to a much better UX and in today's market, can even be your competitive advantage.\
+\
+In this tutorial, we will show you how to send SMS notifications for any activity throughout the lifecycle of a transaction.
 
-In this tutorial, we’ll look at an example of how, with just a few lines of code, your dApp can integrate the power of Alchemy's Enhanced API suite, leveraging multiple Alchemy products to build a single feature to enhance user experience.
-
-### **Overview**
+## **Overview**
 
 1. [High-level walkthrough of the example project](tracking-transaction-life-cycles.md#our-example)
 2. [Build the project using Heroku](tracking-transaction-life-cycles.md#option-1-build-heroku-serviced-project)
-   1. [Clone Github Repo, Set-Up Heroku, Set-Up Twilio](tracking-transaction-life-cycles.md#1-set-up-github-repo-and-heroku)
-   2. [Alchemy Notify API & Register Webhook Notifications](tracking-transaction-life-cycles.md#2-alchemy-notify-api-and-register-webhook-notifications)
+   1. [Clone Github Repo, Set-Up Heroku, Set-Up Twilio](tracking-transaction-life-cycles.md#a-clone-the-existing-github-repository)
+   2. [Alchemy Notify API & Register Webhook Notifications](tracking-transaction-life-cycles.md#2.-alchemy-notify-api-and-register-webhook-notifications)
       * Create a [free Alchemy account](https://alchemy.com/?r=affiliate:ba2189be-b27d-4ce9-9d52-78ce131fdc2d)
-   3. \*\*\*\*[\*\* \*\*alchemy\_filteredNewFullPendingTransactions](tracking-transaction-life-cycles.md#3-alchemy\_filterednewfullpendingtransactions)
-   4. [Configure SMS notifications](tracking-transaction-life-cycles.md#4-configure-sms-notifications)
-   5. [Deploy Heroku App!](tracking-transaction-life-cycles.md#5-deploy-heroku-app)
-3. [Build the project from scratch](tracking-transaction-life-cycles.md#option-2-build-the-webapp-from-scratch)
-   1. [Set-Up Heroku, Set-Up Twilio](tracking-transaction-life-cycles.md#1-2-complete-steps-1-2-from-the-heroku-project)
-   2. [Alchemy Notify API & Register Webhook Notifications](tracking-transaction-life-cycles.md#1-2-complete-steps-1-2-from-the-heroku-project)
+   3. [alchemy\_filteredNewFullPendingTransactions](tracking-transaction-life-cycles.md#3.-using-alchemy\_filterednewfullpendingtransactions-to-track-pending-transactions)
+   4. [Configure SMS notifications](tracking-transaction-life-cycles.md#4.-configure-sms-notifications)
+   5. [Deploy Heroku App!](tracking-transaction-life-cycles.md#5.-deploy-heroku-app)
+3. [Build the project from scratch](tracking-transaction-life-cycles.md#option-2-build-project-from-scratch)
+   1. [Set-Up Heroku, Set-Up Twilio](tracking-transaction-life-cycles.md#1-2.-complete-steps-1-2-from-the-heroku-project.)
+   2. [Alchemy Notify API & Register Webhook Notifications](tracking-transaction-life-cycles.md#1-2.-complete-steps-1-2-from-the-heroku-project.)
       * Create a [free Alchemy account](https://alchemy.com/?r=affiliate:ba2189be-b27d-4ce9-9d52-78ce131fdc2d)
-   3. [Create WebSocket connection](tracking-transaction-life-cycles.md#3-create-websocket-connection)
-   4. [Create Webhook connection](tracking-transaction-life-cycles.md#4-create-webhook-connection)
-   5. [Deploy!](tracking-transaction-life-cycles.md#5-deploy-heroku-app-1)
-4. [Conclusion](tracking-transaction-life-cycles.md#conclusion)
+   3. [Create WebSocket connection](tracking-transaction-life-cycles.md#3.-create-websocket-connection)
+   4. [Create Webhook connection](tracking-transaction-life-cycles.md#4.-create-webhook-connection)
+   5. [Deploy your app!](tracking-transaction-life-cycles.md#5.-deploy-app)
+4. [Test your Integration](tracking-transaction-life-cycles.md#test-your-integration)
+5. [Conclusion](tracking-transaction-life-cycles.md#conclusion)
 
-### **Our Example**
+## **Our Example**
 
-For this example, we’ll be creating a notification system that automatically detects a user's address activity and sends an SMS text whenever a pending transaction has been made from their address, along with a follow-up text once that transaction has been mined. This allows users to have peace of mind when transferring ETH or making a DeFi transaction, allowing them to step away from their computer screen and still receive updates on the life cycle of their transactions. For our architecture, we’ll use a [WebSocket](https://docs.alchemy.com/alchemy/guides/using-websockets) script to detect pending transactions and a WebHook in conjunction with Alchemy Notify to monitor mined transactions.
+For this example, we’ll be creating a notification system that&#x20;
+
+* automatically detects a user's address activity
+* sends an SMS on phone whenever a pending transaction has been made from their address
+* sends an SMS on phone once that transaction has been mined
+
+The code mainly consists of the below scripts&#x20;
+
+* a script that uses [Alchemy WebSockets](https://docs.alchemy.com/alchemy/guides/using-websockets) to detect pending transactions
+* a script that uses [Alchemy Notify API](https://docs.alchemy.com/alchemy/enhanced-apis/notify-api) to detect mined transactions
 
 {% hint style="info" %}
-**NOTE:** If you don't want to spend real (mainnet) Ethereum for test notifications in this tutorial, you can use any Ethereum testnet, like Rinkeby, so that you can make transactions without paying for gas ⛽!\
+**NOTE:** For Dev and Testing purposes, you can use an Ethereum Testnet, like Goerli, which saves you from spending any real ETH ⛽!\
 \
-For access to free Rinkeby, use the [Alchemy Rinkeby faucet](https://www.rinkebyfaucet.com).
+For access to free Goerli ETH, use the [Alchemy Goerli faucet](https://goerlifaucet.com/).
 {% endhint %}
 
-Our tutorial specifically leverages two different Alchemy products to give a holistic picture of a transaction's inception and its completion.
+#### Pending transactions notification workflow
 
-#### "Pending transaction" notification workflow:
+{% hint style="info" %}
+This code for this is in the file `sniffer.py`
+{% endhint %}
 
-1. User initiates a transaction on MetaMask, through Alchemy, or any other RPC
+1. User initiates a transaction on MetaMask
 2. Pending transaction is picked up by Alchemy
 3. WebSocket script receives pending transaction
 4. Script sends SMS notification
 
-#### "Mined transaction" notification workflow:
+#### Mined transactions notification workflow
+
+{% hint style="info" %}
+The code for this is in the file `app.py`
+{% endhint %}
 
 1. A pending transaction initiated by the user has been made and is confirmed by a miner
 2. Alchemy Notify API picks up the mined transaction
-3. WebHook endpoint is notified of the transaction
-4. Webapp sends SMS notification
+3. WebHook (Alchemy notify) endpoint is notified of the transaction
+4. Script sends SMS notification
 
-\*\*We’ll go through two versions of the tutorial: the first by cloning the Github Repo using Heroku and the second by doing it all from scratch. \*\*
+We’ll go through two versions of the tutorial: the first by cloning the Github Repo using Heroku and the second by doing it all from scratch.&#x20;
 
 ## **Option 1: Build Heroku-Serviced Project**
 
 ### 1. Set Up Github Repo & Heroku
 
-#### a) Make a clone of the existing [Github Repository](https://github.com/alchemyplatform/Transaction-Lifecycle-via-SMS)
+#### a) Clone the existing [Github Repository](https://github.com/alchemyplatform/Transaction-Lifecycle-via-SMS)
 
 Navigate to your command line and type:
 
-```
+```bash
 git clone https://github.com/alchemyplatform/Transaction-Lifecycle-via-SMS.git
-
 cd Transaction-Lifecycle-via-SMS
 ```
 
 #### b) Install Heroku-CLI and verify/install dependencies
 
-In this tutorial, we utilize Heroku for hosting a server and website; if you choose to use Heroku, be sure to follow all of the following steps. If you want to use another provider, see [Option 2: Build Project From Scratch](tracking-transaction-life-cycles.md#option-2-build-the-webapp-from-scratch)
+In this tutorial, we use Heroku for hosting a server and website. If you want to use another provider, see [Option 2: Build Project From Scratch](tracking-transaction-life-cycles.md#option-2-build-the-webapp-from-scratch)
 
-* Download [Heroku-CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) based on your OS. Make sure you download the correct version based on what kind of computer environment you are using!
+1. Download the right [Heroku-CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) based on your OS and configuration
 
 ![https://devcenter.heroku.com/articles/heroku-cli#download-and-install](<../.gitbook/assets/image (24).png>)
 
-* After installation, navigate into the file that you just git cloned and run the following command in your command line to login to your Heroku account.
+2\. In the folder that you just git cloned, run the below command
 
-```
+```bash
 heroku login
 ```
 
 Follow the commands to login into your Heroku account. If you don't have a Heroku account, you can [sign up for one](https://www.heroku.com) for free!
 
-![](<../.gitbook/assets/image (22).png>)
+3\. Let's confirm that you have downloaded the correct version of Node. In your command line run:
 
-* Let's confirm that you have downloaded the correct version of Node. In your command line run:
-
-```
+```bash
 node --version
 ```
 
-After running the command, you will either see a version number appear or you will instead get an error message telling you that you do not have Node installed.
+Note that Heroku requires a Node version of greater than 10. If you don’t have it or have an older version, [install a more recent version of Node](https://nodejs.org/en/download/).
 
-![](<../.gitbook/assets/image (21).png>)
+4\. Lastly, let's confirm that we also have npm installed properly. Again in your command line, run the following command:
 
-Note that Heroku requires users to have any version of Node greater than 10 installed. If you don’t have it or have an older version, [install a more recent version of Node](https://nodejs.org/en/download/).
-
-* Lastly, let's confirm that we also have npm installed properly.
-
-Again in your command line, run the following command:
-
-```
+```bash
 npm --version
 ```
 
@@ -117,35 +125,35 @@ npm is installed with Node, so check that it’s there. If you don’t have it, 
 
 #### c) Initiate Heroku
 
-Now that we have confirmed that Heroku has all the dependencies it needs to run, let's create our Heroku app by running the following command:
+Now, create our Heroku app by running the following command:
 
-```
+```bash
 heroku create
 ```
 
-You should then see something like this pop up:
-
-![](<../.gitbook/assets/image (19).png>)
-
-Make sure you take note of the URL that pops up \*\*`http://xxxxxxxxx.herokuapp.com/`. \*\*We'll be using it since it's the URL of our sample dashboard!
+Make sure you take note of the URL that pops up `http://xxxxxxxxx.herokuapp.com/`. We'll be using it later in the tutorial!
 
 {% hint style="info" %}
-\*\*NOTE: \*\*For more detailed instructions on setting up your environment to be configured for Heroku, check out the [official Heroku docs](https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true).
+NOTE: For more detailed instructions on setting up your environment for Heroku, check out the [official Heroku docs](https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true).
 {% endhint %}
 
 #### **d**) Create a Twilio account
 
-Twilio is an online SMS and voice provider that allows users to send text messages via the Internet. We use Twilio here but there are also other providers that provide similar services.
+Twilio is an online SMS provider that allows users to send text messages via the Internet.&#x20;
 
-If you are new to Twilio, sign up for a[ trial account](https://www.twilio.com/try-twilio). With your trial account, you'll have enough credits to power your SMS notifications! Once you've signed up, head over to your [Console](https://www.twilio.com/console) and grab your Account SID and your Auth Token. You'll need both of these to use the Twilio API.
+If you are new to Twilio, sign up for a[ trial account](https://www.twilio.com/try-twilio). With your trial account, you'll have enough credits to power your SMS notifications! Once you've signed up, head over to your [Console](https://www.twilio.com/console) and grab the below details from the account info section
 
-![](<../.gitbook/assets/image (25).png>)
+* Account SID
+* Auth Token
+* Phone Number
 
-Once you have a Twilio account, note that sending messages through Twilio requires a Twilio phone number with SMS capabilities. If you don’t currently own a Twilio phone number with SMS capabilities, you’ll need to buy one with your provided credits. After navigating to the [Buy a Number page](https://www.twilio.com/console/phone-numbers/search), check the 'SMS' box and click 'Search' to find/buy a number that works for you!
+You'll need to plug these values in the code when using the Twilio API.
 
-![](<../.gitbook/assets/image (26).png>)
+![](<../.gitbook/assets/Screenshot 2022-05-12 at 6.42.25 PM.png>)
 
-Keep track of your Twilio Account SID, Auth Token, and phone number. It will come in handy soon!
+Note that sending messages through Twilio requires a Twilio phone number with SMS capabilities. \
+\
+If you don’t currently own a Twilio phone number with SMS capabilities (i.e. if the Phone Number doesn't show up in the above section), you’ll need to buy one with your provided credits. Please proceed to buy one from the [Buy a Number page](https://www.twilio.com/console/phone-numbers/search) on Twilio.
 
 ### **2. Alchemy Notify API & Register Webhook Notifications**
 
@@ -155,7 +163,7 @@ First, let’s look at how notifications with Alchemy work. There are two ways t
 **NOTE:** If you don’t already have one, you’ll first need to [create an account on Alchemy](https://alchemy.com/?r=affiliate:ba2189be-b27d-4ce9-9d52-78ce131fdc2d). The free version will work fine for getting started.
 {% endhint %}
 
-Once you have an account, go to the dashboard and select “Notify” from the top menu. Here you’ll see the different kinds of notifications you can set up:
+Once you have an account, go to the dashboard and select “Notify” from the header section. Here you’ll see the different kinds of notifications you can set up:
 
 * Address Activity
 * Dropped Transactions
@@ -170,38 +178,27 @@ For our example, we’ll use the [Address Activity](https://docs.alchemy.com/alc
 **NOTE:** We use "Address Activity" and not "Mined Transaction Notifications" in this example since the "Mined Transaction" webhook only picks up on mined transactions made through the Alchemy API. "Address Activity" allows us to read all transactions via a user-defined address as long as it is posted onto the Ethereum blockchain.
 {% endhint %}
 
-In the dashboard, you can create all of your notifications, add the addresses you want to monitor, and add the webhook URL that Alchemy should communicate with when that notification triggers. Alchemy sends all the relevant details to this webhook. Your server needs to simply create the webhook, receive the call, and process the information as needed.
-
-![](../.gitbook/assets/ezgif-2-0182ba281315.gif)
-
-#### **a) Create our example notification by clicking “Create Webhook” on Address Activity.**
-
 ![](https://lh3.googleusercontent.com/50OU6kmnradfQun\_O9I26kUV9Ife1WYDRpRm0pIXdOnb71244RpVVf-lZQgGITdjiVOhaP\_z77gh8\_a-zw5xliEU3vRtmvIJOuYawX0CYZaPprR0suky4XnWzxc0nydn5QU6sqys)
 
-#### \*\*b) Enter our webhook URL \*\*
+In the dashboard&#x20;
 
-* If using Heroku, see Step 1 for the http://xxxxxxxxx.herokuapp.com/ URL that was generated with `heroku create`
-* If doing from scratch, insert your custom webhook URL from whichever service provider you are using.
+* Click on 'Create Webhook' under Address activity
+* Add Webhook URL to receive notification on
+  * If using Heroku, pick up the `http://xxxxxxxxx.herokuapp.com/` URL from Step 1
+  * If not using Heroku, use the custom URL from your provider
+* Add the addresses you want to monitor. For this tutorial, please use your own address.
+* Select "Ethereum" under Chain dropdown and "Goerli" under Network.
+* Click on Create Webhook and we're done!
 
-#### **c) Enter an Ethereum address that you want to monitor**
+![](<../.gitbook/assets/Screenshot 2022-05-10 at 2.07.41 PM.png>)
 
-While this tutorial is designed to monitor pending/mined transactions of a user's own wallet, this example can be easily adapted to monitor other addresses of interest!
+### 3. Using alchemy\_filteredNewFullPendingTransactions to track pending transactions
 
-#### \*\*d) Select an app from the dropdown menu \*\*
+Assuming you've created the account, we will now use [`alchemy_filteredNewFullPendingTransactions`](https://docs.alchemy.com/alchemy/guides/using-websockets#2-alchemy\_filterednewfullpendingtransactions) method which allows you to receive notifications on pending asset transfers for an address.
 
-Make sure the app selected is on the Ethereum network you want to test on; if you're testing on Rinkeby, select an app configured for it!
+For this tutorial, we make use of Alchemy's WebSockets to avoid making requests continuously when you want specific information. WebSockets maintain a network connection for you and listen for changes.
 
-#### **e) Click “Create Webhook” and we’re done!**
-
-![](https://lh4.googleusercontent.com/woxlK123MzEXyYHi8y9Wcbp3aQ5AFIUbU2qUTDZO2I-BEYOxEctTLbUkZ0G367eRQUGs4wnW62ggMvIWegyTSXdtN1s73da\_dDO2UjLYmqrdBKD7dDPNSG4s-Chwbn2MP6tDlLjC)
-
-### \*\*3. \*\*alchemy\_filteredNewFullPendingTransactions
-
-Once you have an account, you are now able to use the[`alchemy_filteredNewFullPendingTransactions`](https://docs.alchemy.com/alchemy/guides/using-websockets#2-alchemy\_filterednewfullpendingtransactions) method which allows you to receive notifications on pending asset transfers for a user-defined address.\*\* \*\*
-
-For our transaction life cycle tracker, we make use of Alchemy's WebSockets so that we do not need to continuously make requests when you want specific information. WebSockets maintain a network connection for you (if done right) and listen for changes.
-
-To get an Alchemy API key for WebSockets you will need to [create an App](https://www.youtube.com/watch?v=tfggWxfG9o0) in the Alchemy dashboard; if you created an app in the previous step, you can simply use that one!
+To get an Alchemy API key for WebSockets, please [create an App](https://www.youtube.com/watch?v=tfggWxfG9o0) in the Alchemy dashboard.
 
 {% hint style="info" %}
 **NOTE:** When you copy your key from the dashboard you should get a full url like this:
@@ -214,7 +211,14 @@ Your key is just the last portion in the URL:
 
 {% endhint %}
 
-In line 13 of`app.py`, replace `"<Alchemy Key>"`with your Alchemy key! Similarly, replace the address field in line 24 of`app.py`with the address that you plan to monitor!
+Make the following changes to the file `sniffer.py`
+
+* On line 10, replace `<TWILIO SID>` with the Twilio SID you grabbed in step 1(d)
+* On line 11, replace `<TWILIO AUTH TOKEN>` with the Auth token you grabbed in step 1(d)
+* On line 13, replace `<ALCHEMY KEY>` with the Alchemy key from your dashboard
+* On line 25, replace the address in the parameters with the Ethereum Address you want to monitor
+* On line 50, replace the from number to the Twilio Number you copied in step 1(d)
+* On line 51, replace with your own phone number (with country code) that you want to receive the SMS on
 
 ```python
 from websocket import create_connection
@@ -235,9 +239,7 @@ ws.send(json.dumps({"jsonrpc":"2.0","method":"eth_subscribe","params":["alchemy_
 print("JSON eth_subscribe sent")
 ```
 
-Opening a WebSocket connection can be done with a single line; however, in our forkable Heroku tutorial, we include 'retry' logic to ensure that we have a more stable WebSocket connection.
-
-In this code snippet, we embed our wss connection in a `for loop` that runs three times to help ensure that our WebSocket is properly connected upon script initiation.
+In this code snippet, we embed our wss connection in a `for loop` that runs three times to help ensure that our WebSocket is properly connected upon script initiation. This ensures a more stable WebSocket connection. Configure below retry logic to suit your needs!
 
 ```python
 for i in range(3):
@@ -251,11 +253,16 @@ for i in range(3):
 		break
 ```
 
-Configure this retry\*\* \*\*logic to suit your needs!
+### 4. Configure SMS notifications
 
-### \*\*4. \*\*Configure SMS notifications
+Make the following changes to the `app.py` file
 
-Open the `app.py` file. Change lines 17 and 18 in the file to reflect your particular Twilio Account SID and Auth Token.
+* On line 16, replace `<TWILIO SID>` with the Twilio SID you grabbed in step 1(d)
+* On line 17, replace `<TWILIO AUTH TOKEN>` with the Auth token you grabbed in step 1(d)
+* On line 52, replace the from number to the Twilio Number you copied in step 1(d)
+* On line 52, replace with your actual phone number (with country code) that you want to receive the SMS on
+
+Make the SID and Auth Token changes in the below section of your code
 
 ```python
 # Find your Account SID and Auth Token at twilio.com/console
@@ -270,22 +277,22 @@ client = Client(account_sid, auth_token)
 **NOTE:** If you are hosting a webapp on cloud computing services and plan to use environment variables, different computing environments have different ways of storing these variables.
 {% endhint %}
 
-Open the `app.py` file. Change line 58 in the file to reflect the Twilio phone number that you acquired previously in the\*\*`from`\*\* field and your own phone number in the\*\*`to` \*\*field!
+Make the phone number changes in the below section of your code
 
 ```python
-		message = client.messages \
-						.create(
-							 body="\n \n PENDING TX! \n\n From: " + from_address + " \n\n To: " + to_address + "\n\n  @tx:" + hash,
-							 from_='+14435267244',
-							 to='+14158230041'
-						 )
+message = client.messages \
+		.create(
+		body="\n \n PENDING TX! \n\n From: " + from_address + " \n\n To: " + to_address + "\n\n  @tx:" + hash,
+	        from_='+14435267244',
+	        to='+14158230041'
+	)
 ```
 
 ### **5. Deploy Heroku App!**
 
-Now, we're in the final steps! Confirm that you are navigated to the file that your Heroku project lives within. Once there, run the following commands to save your changes on Git and deploy the app.
+Now, we're in the final steps! In the root folder of your Heroku project, run the following commands to save your changes on Git and deploy the app.
 
-```
+```bash
 git add .                                      // to add changes
 git commit -m "added Alchemy / Twilio keys"    // to add a comment 
 git push heroku master                         // to push and deploy your heroku app
@@ -297,7 +304,7 @@ With that, we have pushed all changes to Heroku and our app is live!
 **NOTE:** This app has no frontend and is configured for use on a server.
 {% endhint %}
 
-To test the app and check on its status, log in to Heroku and navigate the logs for your deployed webapp.
+You can view the logs of your Heroku app by logging in to Heroku and navigating to the logs for your deployed app.
 
 ![](<../.gitbook/assets/image (28).png>)
 
@@ -307,35 +314,33 @@ The log should look like the following! Both a `worker` and `web` file should be
 
 And now, with everything in place, you can test out your dApp!
 
-### \*\*Check Your Integration \*\*✅
+{% hint style="info" %}
+An alternate way to check your heroku logs is to go to your terminal, type the command `heroku logs -t` and hit enter
 
-Load up your MetaMask wallet and make a transfer of testnet ETH from the wallet address that you inputted into the Heroku application.
 
-Upon making the transaction, you should receive a text message stating its pending status.
 
-![](<../.gitbook/assets/image (29).png>)
+You can also use this command or the above dashboard to debug any errors with your heroku deployment
+{% endhint %}
 
-Similarly, upon miner confirmation, the Heroku webapp also send an SMS alert with the change in transaction status!
+_🎉 Congratulations on your dApp deployment! Feel free to edit your webapp, point the target address at other interesting contracts / public figures, or make improvements to this transaction life cycle tracker!_
 
-![](<../.gitbook/assets/image (29) (1) (1) (1) (1) (1) (1).png>)
+## **Option 2: Build project from scratch**
 
-_🎉\*\* Congratulations on your dApp deployment! Feel free to edit your webapp, point the target address at other interesting contracts / public figures, or make improvements to this transaction life cycle tracker!\*\*_
+### 1-2. Complete [Steps 1-2 ](tracking-transaction-life-cycles.md#1-set-up-github-repo-and-heroku)from the Heroku Project.&#x20;
 
-## **Option 2: Build the WebApp From Scratch**
+### 3. Create WebSocket Connection
 
-In this tutorial, we provide a generalized setup for a Python WebApp that allows you to use a WebSocket/Webhook connection to process/send alerts regarding pending and mined transactions over SMS.
+For this tutorial, we also make use of Alchemy's WebSockets, that maintains a continuous network connection for you and listens for changes, alerting you in real-time.&#x20;
 
-### \*\*1-2. Complete \*\*[\*\*Steps 1-2 \*\*](tracking-transaction-life-cycles.md#1-set-up-github-repo-and-heroku)\*\*from the Heroku Project. \*\*
-
-### \*\*3. \*\*Create WebSocket Connection
-
-For our transaction life cycle tracker, we make use of Alchemy's WebSockets so that we do not need to continuously make requests when you want specific information. WebSockets maintain a network connection for you (if done right) and listen for changes, alerting you in real-time. For more details on WebSockets vs HTTP requests, [use this ](https://docs.alchemy.com/alchemy/guides/using-websockets#websockets-vs-http)for reference.
+{% hint style="info" %}
+For more details on WebSockets vs HTTP requests, [use this ](https://docs.alchemy.com/alchemy/guides/using-websockets#websockets-vs-http)for reference.
+{% endhint %}
 
 #### a) Install dependencies
 
-To create a WebSocket connection, we use a Python client to help simplify our build. To use the WebSocket client and other Python packages, we have a number of dependencies that must be addressed. Make sure that you have the following dependencies in your environment to follow along.
+To create a WebSocket connection, we use a Python client to help simplify our build. Also, make sure that you have the following dependencies in your environment to follow along.
 
-* One easy way to install the necessary dependencies is to create a file named `requirements.txt` with the following items inside of it.
+* Create a file named `requirements.txt` and copy-paste the below in it.
 
 ```python
 aiohttp==3.7.4.post0
@@ -394,7 +399,7 @@ yarl==1.6.3
 
 Then, run the following command to install the packages:
 
-```python
+```bash
 pip install requirements.txt 
 ```
 
@@ -422,7 +427,7 @@ ALCHEMY_KEY = '<YOUR ALCHEMY KEY>'
 
 **c) Initiate WebSocket connection**
 
-In our tutorial, we use WebSockets to receive pending transaction activity from an address that we pass into our wss request.
+In our tutorial, we use WebSockets to receive pending transaction activity from an address that we pass into our ws send request.
 
 To initiate our WebSocket connection using the Python client, we can add the following lines to `sniffer.py`:
 
@@ -439,10 +444,10 @@ for i in range(3):
 ```
 
 {% hint style="info" %}
-\*\*NOTE: \*\*We embed our wss connection in a `for loop` that runs three times to help ensure that our WebSocket is properly connected upon script initiation.
+NOTE: We embed our wss connection in a `for loop` that runs three times to help ensure that our WebSocket is properly connected upon script initiation.
 {% endhint %}
 
-After initiating the connection, we can then send a JSON message dictating what type of information we want to receive from the WebSocket itself. This can be achieved with a single line:
+After initiating the connection, to define the type of information we want to receive from the WebSocket, add the below line:
 
 ```python
 ws.send(json.dumps({"jsonrpc":"2.0","method":"eth_subscribe","params":["alchemy_filteredNewFullPendingTransactions", {"address": "0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2"}],"id":1}))
@@ -450,7 +455,7 @@ ws.send(json.dumps({"jsonrpc":"2.0","method":"eth_subscribe","params":["alchemy_
 
 Breaking down our JSON message, we send the following:
 
-```python
+```json
 {
     "jsonrpc":"2.0",
     "method":"eth_subscribe",
@@ -466,16 +471,16 @@ Breaking down our JSON message, we send the following:
 Notice how we use the[`alchemy_filteredNewFullPendingTransactions`](https://docs.alchemy.com/alchemy/guides/using-websockets#2-alchemy\_filterednewfullpendingtransactions) method which allows us to receive notifications on pending asset transfers for a user-defined address.
 
 {% hint style="warning" %}
-**Remember to change the address field to reflect the address/wallet that you want to monitor!**
+Remember to change the address field to reflect the address/wallet that you want to monitor.
 {% endhint %}
 
 **d) Parse WebSocket response & Send SMS text message**
 
 Now that we are able to create a WebSocket and send our request, we must listen for a response, parse it, and then act on the notification.
 
-We use a `while true`loop to force our script to continuously listen for a response and wrap our parsing code within the loop so that we can interpret the notification. Here, we also use the `json`package to allow us to read the information in a structured manner.
+We use a `while true`loop to force our script to continuously listen for a response and wrap our parsing code within the loop so that we can interpret the notification.
 
-Add the following code snippet to your `sniffer.py`file to parse incoming JSON messages.
+Add the below code snippet to your `sniffer.py` file
 
 ```python
 while True:
@@ -500,29 +505,22 @@ while True:
 		time.sleep(1)
 ```
 
-Now that we are able to parse and read the JSON response from the WebSocket, we also need to include a few lines of code to enable us to send an SMS with the information to our phone number.
-
-In the`sniffer.py`file within the while loop we started above, include the following lines. Make sure to replace the phone numbers in the Twilio script to reflect the Twilio phone number that you acquired previously in the\*\*`from`\*\* field and your own phone number in the\*\*`to` \*\*field!
+To send an SMS via the script - Include the following lines in the`sniffer.py`file within the while loop. \
+\
+Replace the `from` field with your Twilio phone number and the `to` field with your own phone number. The `from` and `to` parameters must strictly use [E.164](https://www.twilio.com/docs/glossary/what-e164) formatting (`+` and a country code, e.g., `+16175551212`). The parameter `body` is the text body of the SMS to be sent.&#x20;
 
 ```python
-		message = client.messages \
-						.create(
-							 body="\n \n PENDING TX! \n\n From: " + from_address + " \n\n To: " + to_address + "\n\n  @tx:" + hash,
-							 from_='+14435267244',
-							 to='+14158230041'
-						 )
+message = client.messages \
+		.create(
+		    body="\n \n PENDING TX! \n\n From: " + from_address + " \n\n To: " + to_address + "\n\n  @tx:" + hash,
+		    from_='+14435267244',
+	            to='+14158230041'
+		)
 
-		print(message.sid)
-		
+print(message.sid)
 ```
 
-In this snippet, you tell Twilio to send an SMS by sending a message with 3 parameters.
-
-As stated above, the **`from`** and\*\*`to` \*\*parameters must use [E.164](https://www.twilio.com/docs/glossary/what-e164) formatting (`+` and a country code, e.g., `+16175551212`). Without the proper formatting, your message will not send properly!
-
-Lastly, we have the `body` parameter, which contains the content of the SMS we’re going to send. In our example, we have a single string that we format and structure with numerous `'\n'` to create a newline in our SMS so that our users can more easily understand the information presented.
-
-\*\*Our script is ready! \*\*Here is the entire sample `sniffer.py` we have created together:
+Our script is ready! Here is the entire sample `sniffer.py`:
 
 ```python
 import json, time
@@ -537,11 +535,11 @@ import pickle
 account_sid = '<TWILIO SID>'
 auth_token = '<TWILIO AUTH TOKEN>'
 client = Client(account_sid, auth_token)
-ALCHEMY_KEY = '<YOUR ALCHEMY KEY>'
+ALCHEMY_KEY = '<ALCHEMY KEY>'
 
 for i in range(3):
 	try:
-		ws = create_connection("wss://eth-rinkeby.alchemyapi.io/v2/Sj6KIf5jVp8VG7PC02ydEaMNhRu7VPy0")
+		ws = create_connection("wss://eth-rinkeby.alchemyapi.io/v2/"+ALCHEMY_KEY)
 		print("Connection made")
 	except Exception as error:
 		print('Connection Error: ' + repr(error))
@@ -549,7 +547,7 @@ for i in range(3):
 	else:
 		break
 
-ws.send(json.dumps({"jsonrpc":"2.0","method":"eth_subscribe","params":["alchemy_filteredNewFullPendingTransactions", {"address": "0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2"}],"id":1}))
+ws.send(json.dumps({"jsonrpc":"2.0","method":"eth_subscribe","params":["alchemy_filteredNewFullPendingTransactions", {"address": "0xccD3dd576e715b0E060169e16C39Cd7E6eEdeF51"}],"id":1}))
 print("JSON eth_subscribe sent")
 
 while True:
@@ -566,6 +564,7 @@ while True:
 		print("hash: ", hash)
 		print("blockHash: ", blockHash)
 
+		print("Send Twilio SMS for pending transaction!")
 		message = client.messages \
 						.create(
 							 body="\n \n PENDING TX! \n\n From: " + from_address + " \n\n To: " + to_address + "\n\n  @tx:" + hash,
@@ -574,7 +573,6 @@ while True:
 						 )
 
 		print(message.sid)
-
 
 	except KeyError as error:
 		print("Check JSON params for parsing")
@@ -588,13 +586,13 @@ ws.close()
 
 ### 4. Create WebHook Connection
 
-With our WebSocket script above, we are able to receive information about pending transactions. Now, we want to receive information on transactions after they have been mined! For this, we use WebHooks combined with[ Alchemy Notify](https://docs.alchemy.com/alchemy/documentation/apis/enhanced-apis/notify-api).
+With our WebSocket script above, we are able to receive information about pending transactions. Now, we want to receive information on mined transactions! For this, we use[ Alchemy Notify](https://docs.alchemy.com/alchemy/documentation/apis/enhanced-apis/notify-api).
 
 **a) Create a file named `app.py`**
 
 This part of the tutorial is primarily built with Python and [Flask](https://flask.palletsprojects.com/en/2.0.x/). Here, we add a few installations and define a few key variables at the top.
 
-Be sure to change the Twilio and Alchemy Keys to reflect your particular Twilio Account SID / Auth Token!
+Be sure to change the `Twilio SID`, `Twilio Auth Token` and Alchemy Keys to reflect your particular Twilio Account SID / Auth Token!
 
 ```python
 import os
@@ -636,49 +634,57 @@ def request_handler():
 		data = (request.json)
 ```
 
-After detecting a POST request, we want to be able to parse the JSON message. Here, we also use the `json`package to allow us to read the information in a structured manner. By decoding the JSON, we can pull out key pieces of information that users find most useful when tracking transactions- `from_address,`\_ `to_address, blockNumber,` \_and _`hash.`_
+#### c) Parse incoming JSON response&#x20;
+
+After detecting a POST request, we want to be able to parse the JSON message. By decoding the JSON, we can pull out key pieces of information like
+
+* `from_address`
+* `to_address`
+* `blockNumber`
+* `hash`
 
 Add the following code snippet to the request handler function:
 
 ```python
-		if len(data['activity'])==1:
-			timestamp = data['timestamp']
-			from_address = data['activity'][0]['fromAddress']
-			to_address = data['activity'][0]['toAddress']
-			blockNum =  data['activity'][0]['blockNum']
-			hash =  data['activity'][0]['hash']
+	if request.method == 'POST':
+		data = (request.json)
+		if len(data['event']['activity'])==1:
+			timestamp = data['createdAt']
+			from_address = data['event']['activity'][0]['fromAddress']
+			to_address = data['event']['activity'][0]['toAddress']
+			blockNum =  data['event']['activity'][0]['blockNum']
+			hash =  data['event']['activity'][0]['hash']
 
 
 		else:
-			for i in range(len(data['activity'])):
-				timestamp = data['timestamp']
-				from_address = data['activity'][i]['fromAddress']
-				to_address = data['activity'][i]['toAddress']
-				blockNum =  data['activity'][i]['blockNum']
-				hash =  data['activity'][i]['hash']
+			for i in range(len(data['event']['activity'])):
+				timestamp = data['createdAt']
+				from_address = data['event']['activity'][i]['fromAddress']
+				to_address = data['event']['activity'][i]['toAddress']
+				blockNum =  data['event']['activity'][i]['blockNum']
+				hash =  data['event']['activity'][i]['hash']
 
 
 		print("DATA: ", data)
 		print("HASH: ", hash)
 ```
 
-Now that we are able to parse and read the JSON response from Alchemy Notify, we also need to include a few lines of code to enable us to send an SMS with the information to our phone number.
+#### d) Send SMS with Twilio
 
-Make sure to replace the phone numbers to reflect the Twilio phone number that you acquired previously in the\*\*`from`\*\* field and your own phone number in the\*\*`to` \*\*field! Add the following two lines after parsing the POST request.
+Make sure to replace the phone numbers to reflect the Twilio phone number that you acquired previously in the `from` field and your own phone number in the `to`  field! Add the following two lines after parsing the POST request.
 
 ```python
-		message = client.messages.create(body=" \n\n TX MINED! \n\n From: " + from_address + " \n\n To: " + to_address + " \n\n @#:" + blockNum + " \n Check tx: https://rinkeby.etherscan.io/tx/" +hash ,from_='+14435267241', to='+14158330071')
-		print(message.sid)
+message = client.messages.create(body=" \n\n TX MINED! \n\n From: " + from_address + " \n\n To: " + to_address + " \n\n @#:" + blockNum + " \n Check tx: https://rinkeby.etherscan.io/tx/" +hash ,from_='+14435267241', to='+14158330071')
+print(message.sid)
 ```
 
-With the main sections of our `app.py` complete, here's the sample script that we wrote together:
+With the main sections of our `app.py` complete, here's the complete sample script:&#x20;
 
 ```python
 # -*- coding: utf-8 -*-
 import os
 from flask import Flask
 from flask import request
-from webhook import webhook
 from twilio.rest import Client
 import json, time
 import requests
@@ -702,32 +708,31 @@ queue = []
 @app.route('/', methods=['POST', 'GET'])
 
 def request_handler():
-
+	print("Sending Twilio SMS for Mined transaction if webhook received!")
 	if request.method == 'POST':
 		data = (request.json)
-
-		if len(data['activity'])==1:
-			timestamp = data['timestamp']
-			from_address = data['activity'][0]['fromAddress']
-			to_address = data['activity'][0]['toAddress']
-			blockNum =  data['activity'][0]['blockNum']
-			hash =  data['activity'][0]['hash']
+		if len(data['event']['activity'])==1:
+			timestamp = data['createdAt']
+			from_address = data['event']['activity'][0]['fromAddress']
+			to_address = data['event']['activity'][0]['toAddress']
+			blockNum =  data['event']['activity'][0]['blockNum']
+			hash =  data['event']['activity'][0]['hash']
 
 
 		else:
-			for i in range(len(data['activity'])):
-				timestamp = data['timestamp']
-				from_address = data['activity'][i]['fromAddress']
-				to_address = data['activity'][i]['toAddress']
-				blockNum =  data['activity'][i]['blockNum']
-				hash =  data['activity'][i]['hash']
+			for i in range(len(data['event']['activity'])):
+				timestamp = data['createdAt']
+				from_address = data['event']['activity'][i]['fromAddress']
+				to_address = data['event']['activity'][i]['toAddress']
+				blockNum =  data['event']['activity'][i]['blockNum']
+				hash =  data['event']['activity'][i]['hash']
 
 
 		print("DATA: ", data)
 		print("HASH: ", hash)
 
 
-		message = client.messages.create(body=" \n\n TX MINED! \n\n From: " + from_address + " \n\n To: " + to_address + " \n\n @#:" + blockNum + " \n Check tx: https://rinkeby.etherscan.io/tx/" +hash ,from_='+14435267244', to='+14158130071')
+		message = client.messages.create(body=" \n\n TX MINED! \n\n From: " + from_address + " \n\n To: " + to_address + " \n\n @#:" + blockNum + " \n Check tx: https://rinkeby.etherscan.io/tx/" +hash ,from_='+14415267244', to='+14154230071')
 		print(message.sid)
 
 
@@ -742,7 +747,7 @@ if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=port)
 ```
 
-### **5. Deploy App!**
+### **5. Deploy App**
 
 Now, we're in the final steps! With custom hosting solutions, you have the freedom to either run `sniffer.py` and `app.py` in the same environment or in two separate hosting platforms. Deploy both files in your desired environment!
 
@@ -756,14 +761,32 @@ If you are able to have command line access to your files, take a look at the CL
 
 And now, with everything in place, you can test out your dApp!
 
-### Check Your Integration ✅
+_🎉 Congratulations on your dApp deployment! Feel free to edit your webapp, point the target address at other interesting contracts / public figures, or make improvements to this transaction life cycle tracker!_
 
-To test your integration and confirm that your webapp is running, cross-check with[ **Sample Test Integration**](tracking-transaction-life-cycles.md#testing-your-integration).
+## **Test** Your Integration ✅
 
-_🎉\*\* Congratulations on your dApp deployment! Feel free to edit your webapp, point the target address at other interesting contracts / public figures, or make improvements to this transaction life cycle tracker!\*\*_
+Load up your MetaMask wallet and make a transfer of testnet ETH from the wallet address that you added into `sniffer.py` .
+
+Upon making the transaction, you should receive a text message stating its pending status.
+
+{% hint style="info" %}
+This text message is sent by the script `sniffer.py` and can also be sent through your local systems by running the command
+
+`python sniffer.py`
+{% endhint %}
+
+![](<../.gitbook/assets/image (29).png>)
+
+Similarly, upon miner confirmation of that transaction, the Heroku webapp also sends an SMS alert with the change in transaction status!
+
+![](<../.gitbook/assets/image (29) (1) (1) (1) (1) (1) (1).png>)
 
 ## **Conclusion**
 
-Real-time information on a transaction life cycle is a small but important part of building a stress-free user experience. While this infrastructure was not previously available, with Alchemy's Enhanced API suite, your users can stay informed and confident about understanding their transaction activity, regardless of whether they're on their desktop madly clicking refresh or out in nature with only a cellular network.
+And that's it! You now know how to use Alchemy Notify to add notifications to your dApp! You also know where to go if you want to send SMS notifications for an addresses' activity.\
+****\
+****If you enjoyed this tutorial for setting Alchemy Notify on your dApp, give us a tweet [@AlchemyPlatform](https://twitter.com/AlchemyPlatform)!  (Or if you have any questions/feedback give the authors [@crypt0zeke](https://twitter.com/crypt0zeke) and [@ankg404](https://twitter.com/ankg404) a shoutout!)
 
-**Ready to start using Alchemy Transfers?** [**Create a free Alchemy account**](https://alchemy.com/?r=affiliate:56a32f3b-4baf-4c57-84b4-f0acd816bc87) **and get started today!**
+Don't forget to join our [Discord server](https://www.alchemy.com/discord) to meet other blockchain devs, builders, and entrepreneurs!\
+\
+**Ready to start using Alchemy Notify?** [**Create a free Alchemy account**](https://alchemy.com/?r=affiliate:ba2189be-b27d-4ce9-9d52-78ce131fdc2d) **and do share your project with us** :tada:**!**&#x20;

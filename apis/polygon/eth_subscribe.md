@@ -8,13 +8,13 @@ description: Polygon API - Creates a new subscription for specified events.
 **A note on limits over WebSocket connections**
 
 * There is a limit of 20,000 **** WebSocket connections per API Key as well as 1,000 parallel WebSocket subscriptions per WebSocket connection, creating a maximum of 20 million subscriptions per application.
-* The maximum size of a JSON-RPC `batch` request that can be sent over a WebSocket connection is 10
+* The maximum size of a JSON-RPC `batch` request that can be sent over a WebSocket connection is 20
 * Free tier users will be limited to 10 concurrent requests per WebSocket connection.
 {% endhint %}
 
 ### Parameters
 
-1. [Subscription type](../../guides/using-websockets.md#subscription-types)
+1. [Subscription type](../../enhanced-apis/subscription-api-websockets/#subscription-types)
 2. Optional params
 
 The first argument specifies the type of event for which to listen. The second argument contains additional options which depend on the first argument. The different description types, their options, and their event payloads are described below.
@@ -44,7 +44,7 @@ The `alchemy_newFullPendingTransactions`subscription type is a super costly to m
 
 NOTE:&#x20;
 
-* The naming of this subscription is different from the naming of the web3 subscription API, [`alchemy_fullPendingTransactions`](../../documentation/alchemy-web3/enhanced-web3-api.md#web-3-eth-subscribe-alchemy\_fullpendingtransactions).
+* The naming of this subscription is different from the naming of the web3 subscription API, [`alchemy_fullPendingTransactions`](../../enhanced-apis/subscription-api-websockets/#alchemy\_newfullpendingtransactions).
 * This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
 {% endhint %}
 
@@ -371,3 +371,5 @@ wscat -c wss://polygon-mainnet.g.alchemyapi.io/v2/your-api-key
     }
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

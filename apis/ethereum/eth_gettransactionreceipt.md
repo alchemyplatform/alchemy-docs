@@ -2,7 +2,7 @@
 description: Returns the receipt of a transaction by transaction hash.
 ---
 
-# eth\_getTransactionReceipt
+# eth\_getTransactionReceipt - Ethereum
 
 This can also be used to track the status of a transaction, since result will be null until the transaction is mined. However, unlike [`eth_getTransactionByHash`](./#eth\_gettransactionbyhash) , which returns `null` for unknown transactions, and a non-null response with 3 null fields for a pending transaction, `eth_getTransactionReceipt` returns null for both pending and unknown transactions.
 
@@ -48,6 +48,83 @@ It also returns either:
 Request
 
 {% tabs %}
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation instructions: https://github.com/alchemyplatform/alchemy-web3
+
+async function main() {
+    // Import the AlchemyWeb3 library. Filepath to functions: 
+	// /@alch/alchemy-web3/dist/alchemyWeb3.js
+	const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+   	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+	
+	// Initialize an alchemy-web3 instance:
+	const web3 = createAlchemyWeb3(
+	  `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`);
+	
+	// Query the blockchain (replace example parameters)
+    	const receipt = await web3.eth.getTransactionReceipt({
+	    hash: '0xab059a62e22e230fe0f56d8555340a29b2e9532360368f810595453f6fdd213b',
+	  });
+    
+	// Print the output to console
+	console.log(receipt);
+   }
+
+main();
+```
+{% endtab %}
+
+{% tab title="ethers.js" %}
+```javascript
+// Installation instructions: https://docs.ethers.io/v5/getting-started/#installing
+
+async function main() {
+   const { ethers } = require("ethers");
+   
+	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+
+	// Initialize an ethers instance
+	const provider = new ethers.providers.AlchemyProvider("homestead", apiKey);
+
+	// Query the blockchain (replace example parameters)
+    	const receipt = await provider.getTransactionReceipt({
+	    hash: '0xab059a62e22e230fe0f56d8555340a29b2e9532360368f810595453f6fdd213b',
+	  }); 
+
+	// Print the output to console
+  	console.log(receipt);
+   }
+
+main()
+```
+{% endtab %}
+
+{% tab title="web3.py" %}
+```python
+# Installation Instructions: https://web3py.readthedocs.io/en/latest/quickstart.html#installation
+
+from web3 import Web3, HTTPProvider
+
+#Replace with your Alchemy API key:
+apiKey = "demo"
+
+# Initialize a Web3.py instance
+web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/'+apiKey))
+
+# Query the blockchain (replace example parameters)
+receipt = web3.eth.get_transaction_receipt({
+	    hash: "0xab059a62e22e230fe0f56d8555340a29b2e9532360368f810595453f6fdd213b",
+	  }) 
+
+# Print the output to console
+print(receipt)
+```
+{% endtab %}
+
 {% tab title="Curl" %}
 ```bash
 curl https://eth-mainnet.alchemyapi.io/v2/your-api-key \
@@ -111,3 +188,5 @@ Result
   }
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/ethereum" %}

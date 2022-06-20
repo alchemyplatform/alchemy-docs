@@ -5,7 +5,7 @@ description: >-
   via the contract's methods.
 ---
 
-# eth\_getStorageAt
+# eth\_getStorageAt - Ethereum
 
 ## Parameters
 
@@ -38,6 +38,88 @@ Retrieving the value of `pos0` is straight forward:
 [Request](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getStorageAt%22%2C%22paramValues%22%3A%5B%220x295a70b2de5e3953354a6a8344e616ed314d7251%22%2C%220x0%22%2C%22latest%22%5D%7D)
 
 {% tabs %}
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation instructions: https://github.com/alchemyplatform/alchemy-web3
+
+async function main() {
+    // Import the AlchemyWeb3 library. Filepath to functions: 
+	// /@alch/alchemy-web3/dist/alchemyWeb3.js
+	const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+   	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+	
+	// Initialize an alchemy-web3 instance:
+	const web3 = createAlchemyWeb3(
+	  `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`);
+	
+	// Query the blockchain (replace example parameters)
+    	const val = await web3.eth.getStorageAt({
+	    address: '0x7e5814a',
+		quantity: '0x0',
+		tag: 'latest',
+	  }); 
+    
+	// Print the output to console
+	console.log(val);
+   }
+
+main();
+```
+{% endtab %}
+
+{% tab title="ethers.js" %}
+```javascript
+// Installation instructions: https://docs.ethers.io/v5/getting-started/#installing
+
+async function main() {
+   const { ethers } = require("ethers");
+   
+	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+
+	// Initialize an ethers instance
+	const provider = new ethers.providers.AlchemyProvider("homestead", apiKey);
+
+	// Query the blockchain (replace example parameters)
+    	const val = await provider.getStorageAt({
+	    address: '0x7e5814a',
+		quantity: '0x0',
+		tag: 'latest',
+	  }); 
+    
+	// Print the output to console
+	console.log(val);
+   }
+
+main()
+```
+{% endtab %}
+
+{% tab title="web3.py" %}
+```python
+# Installation Instructions: https://web3py.readthedocs.io/en/latest/quickstart.html#installation
+
+from web3 import Web3, HTTPProvider
+
+#Replace with your Alchemy API key:
+apiKey = "demo"
+
+# Initialize a Web3.py instance
+web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/'+apiKey))
+
+# Query the blockchain (replace example parameters)
+val = web3.eth.get_storage_at({
+	    account: "0x7e581", #can be a checksum address or ENS
+		position: '0'
+	  }) 
+
+# Print the output to console
+print(val)
+```
+{% endtab %}
+
 {% tab title="Curl" %}
 ```bash
 curl https://eth-mainnet.alchemyapi.io/v2/your-api-key \
@@ -131,3 +213,5 @@ Result
     "result":"0x000000000000000000000000000000000000000000000000000000000000162e"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/ethereum" %}

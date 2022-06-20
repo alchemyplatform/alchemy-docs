@@ -5,7 +5,7 @@ description: >-
   new blocks, you can pass in filter options t
 ---
 
-# eth\_newFilter
+# eth\_newFilter - Polygon
 
 ## **Parameters**
 
@@ -70,3 +70,5 @@ Body:
   "result": "0xdcc9a819f80efa9e1d215a9d41b2d22e"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

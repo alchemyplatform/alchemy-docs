@@ -4,7 +4,7 @@ description: >-
   which occurred since last poll.
 ---
 
-# eth\_getFilterChanges
+# eth\_getFilterChanges - Arbitrum
 
 ## **Parameters**
 
@@ -96,3 +96,5 @@ Body:
     }
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

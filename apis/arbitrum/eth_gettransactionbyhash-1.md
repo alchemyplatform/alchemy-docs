@@ -5,7 +5,7 @@ description: >-
   transactionIndex are null when the transaction is pending.
 ---
 
-# eth\_getTransactionByHash
+# eth\_getTransactionByHash - Arbitrum
 
 ## Parameters
 
@@ -93,3 +93,5 @@ Body:
   }
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

@@ -2,7 +2,7 @@
 description: Polygon API - Returns the current client version.
 ---
 
-# web3\_clientVersion
+# web3\_clientVersion - Polygon
 
 ## **Parameters**
 
@@ -55,4 +55,4 @@ Body:
 }
 ```
 
-###
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

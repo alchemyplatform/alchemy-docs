@@ -39,9 +39,14 @@ params: [{
 
 ### Returns
 
-`Object` - An alchemy receipt response with a list of transaction receipts or `null` if no block was found.
+`Object` - An alchemy receipt response with a list of transaction receipts
 
-* `receipts` - a list of transaction transaction receipts for each transaction in this block. See [`eth_getTransactionReceipt`](https://docs.alchemy.com/alchemy/apis/ethereum/eth\_gettransactionreceipt) for the payload of an individual transaction receipt.
+{% hint style="info" %}
+* Returns`null` if no block was found/the given block does not exist.
+* Returns an empty array if there no receipts for a given block.
+{% endhint %}
+
+* `receipts` - a list of transaction receipts for each transaction in this block. See [`eth_getTransactionReceipt`](https://docs.alchemy.com/alchemy/apis/ethereum/eth\_gettransactionreceipt) for the payload of an individual transaction receipt.
 
 ### Example
 

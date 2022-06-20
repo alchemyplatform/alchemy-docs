@@ -103,7 +103,7 @@ The Mined Transaction Webhook is used to notify your app anytime a transaction s
 *   `network`: Network for the event, can be&#x20;
 
     &#x20;`ARB_MAINNET`, `ARB_RINKEBY`, `MATIC_MAINNET`, `MATIC_MUMBAI`, `OPT_MAINNET`, `OPT_KOVAN`, `ETH_MAINNET`, `ETH_GOERLI`, `ETH_ROPSTEN`, `ETH_RINKEBY`, `ETH_KOVAN`
-* `transaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth-gettransactionbyhash.md))
+* `transaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth\_gettransactionbyhash.md))
 
 **Example:**
 
@@ -143,7 +143,7 @@ The Mined Transaction Webhook is used to notify your app anytime a transaction s
 
 Object - mined transaction object
 
-* `fullTransaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth-gettransactionbyhash.md))
+* `fullTransaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth\_gettransactionbyhash.md))
 
 **Example:**
 
@@ -188,7 +188,7 @@ The Dropped Transactions Webhook is used to notify your app anytime a transactio
 
 * `appId`: Unique ID for Alchemy app that sent the transaction and is configured to this webhook
 * `network`: Network for the event, can be `ARB_MAINNET`, `ARB_RINKEBY`, `MATIC_MAINNET`, `MATIC_MUMBAI`, `OPT_MAINNET`, `OPT_KOVAN,ETH_MAINNET`, `ETH_GOERLI`, `ETH_ROPSTEN`, `ETH_RINKEBY`, `ETH_KOVAN`
-* `transaction`: transaction object  (same output as calling [_**eth\_getTransactionByHash**_](../../apis/ethereum/eth-gettransactionbyhash.md#returns))
+* `transaction`: transaction object  (same output as calling [_**eth\_getTransactionByHash**_](../../apis/ethereum/eth\_gettransactionbyhash.md#returns))
 
 **Example Response**
 
@@ -227,7 +227,7 @@ The Dropped Transactions Webhook is used to notify your app anytime a transactio
 
 Object - dropped transaction object
 
-* `fullTransaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth-gettransactionbyhash.md))
+* `fullTransaction`: transaction object (same output as calling [`eth_getTransactionByHash`](../../apis/polygon/eth\_gettransactionbyhash.md))
 
 **Example:**
 
@@ -263,7 +263,7 @@ Object - dropped transaction object
 The Address Activity Webhook allows you to track all ETH, ERC20 and ERC721 [transfer events](../../guides/eth\_getlogs.md#what-are-transfers) for as many Ethereum addresses as you'd like. This provides your app with real-time state changes when an address sends or receives tokens.
 
 {% hint style="info" %}
-If you are looking for historical activity, check out the [Transfers API](../transfers-api/)!
+If you are looking for historical activity, check out the [Transfers API](../transfers-api.md)!
 {% endhint %}
 
 #### Types of Transfers

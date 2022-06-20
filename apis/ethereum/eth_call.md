@@ -4,7 +4,7 @@ description: >-
   block chain.
 ---
 
-# eth\_call
+# eth\_call - Ethereum
 
 This is one of the most commonly used API calls. It is used to read from the blockchain which includes executing smart contracts, but does not publish anything to the blockchain. This call does not consume any Ether.
 
@@ -56,6 +56,104 @@ params: [
 Request
 
 {% tabs %}
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation instructions: https://github.com/alchemyplatform/alchemy-web3
+
+async function main() {
+    // Import the AlchemyWeb3 library. Filepath to functions: 
+	// /@alch/alchemy-web3/dist/alchemyWeb3.js
+	const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+   	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+	
+	// Initialize an alchemy-web3 instance:
+	const web3 = createAlchemyWeb3(
+	  `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`);
+	
+	// Query the blockchain (replace example parameters)
+    	const data = await web3.eth.call(
+	    {
+	        "from": "0xb60e8dd61c5d32be8058bb8eb970870f07233155",
+	        "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
+	        "gas": "0x76c0",
+	        "gasPrice": "0x9184e72a000",
+	        "value": "0x9184e72a",
+	        "data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
+	    }, 
+	    "latest"
+	); 
+    
+	// Print the output to console
+	console.log(data);
+   }
+
+main();
+```
+{% endtab %}
+
+{% tab title="ethers.js" %}
+```javascript
+// Installation instructions: https://docs.ethers.io/v5/getting-started/#installing
+
+async function main() {
+   const { ethers } = require("ethers");
+   
+	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+
+	// Initialize an ethers instance
+	const provider = new ethers.providers.AlchemyProvider("homestead", apiKey);
+
+	// Query the blockchain (replace example parameters)
+    const data = await provider.call(
+	    {
+	        "from": "0xb60e8dd61c5d32be8058bb8eb970870f07233155",
+	        "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
+	        "gas": "0x76c0",
+	        "gasPrice": "0x9184e72a000",
+	        "value": "0x9184e72a",
+	        "data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
+	    }, 
+	    "latest"
+	); 
+    
+	// Print the output to console
+	console.log(data);
+   }
+
+main()
+```
+{% endtab %}
+
+{% tab title="web3.py" %}
+```python
+# Installation Instructions: https://web3py.readthedocs.io/en/latest/quickstart.html#installation
+
+from web3 import Web3, HTTPProvider
+
+#Replace with your Alchemy API key:
+apiKey = "demo"
+
+# Initialize a Web3.py instance
+web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/'+apiKey))
+
+# Query the blockchain (replace example parameters)
+data = web3.eth.call({
+		'value': 0, 
+		'gas': 21736, 
+		'maxFeePerGas': 2000000000, 
+		'maxPriorityFeePerGas': 1000000000, 
+		'to': '0xc305c90',
+		'data': '0x477a5c98'
+		}) 
+
+# Print the output to console
+print(data)
+```
+{% endtab %}
+
 {% tab title="Curl" %}
 ```bash
 curl https://eth-mainnet.alchemyapi.io/v2/your-api-key \
@@ -89,3 +187,5 @@ Result
   "result": "0x"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/ethereum" %}

@@ -2,7 +2,7 @@
 description: Arbitrum API - Returns the balance of the account of a given address.
 ---
 
-# eth\_getBalance
+# eth\_getBalance - Arbitrum
 
 ### Parameters
 
@@ -62,3 +62,5 @@ Body:
   "result": "0x7c2562030800"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

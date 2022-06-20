@@ -4,7 +4,7 @@ description: >-
   hash
 ---
 
-# eth\_getTransactionReceiptsByBlock
+# eth\_getTransactionReceiptsByBlock - Polygon
 
 ## Parameters
 
@@ -272,4 +272,4 @@ Body:
 }
 ```
 
-##
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

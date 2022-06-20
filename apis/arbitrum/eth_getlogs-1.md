@@ -5,7 +5,13 @@ description: >-
   eth_getLogs page.
 ---
 
-# eth\_getLogs
+# eth\_getLogs - Arbitrum
+
+{% hint style="warning" %}
+**NOTE**: You can make `eth_getLogs` requests with up to a _**2K block range**_ and _**150MB**_ _**limit on the response size** OR you can_ request _**any block range**_ with a cap of _**10K logs in the response**_.
+
+_If you need to pull logs frequently, we recommend_ [_using WebSockets_](../../enhanced-apis/subscription-api-websockets/) _to push new logs to you when they are available_
+{% endhint %}
 
 ## Parameters
 
@@ -114,3 +120,5 @@ Body:
   ]
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

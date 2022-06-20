@@ -4,11 +4,11 @@ description: >-
   changes (logs).
 ---
 
-# eth\_newFilter
+# eth\_newFilter - Ethereum
 
 Unlike [`eth_newBlockFilter`](eth\_newblockfilter.md)which notifies you of all **new** blocks, you can pass in filter options to track new logs matching the topics specified.&#x20;
 
-To check if the state has changed, call [`eth_getFilterChanges`](../polygon/eth\_getfilterchanges.md)``
+To check if the state has changed, call [`eth_getFilterChanges`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-getfilterchanges)``
 
 {% hint style="info" %}
 **A note on specifying topic filters:**
@@ -48,6 +48,93 @@ params: [{
 Request
 
 {% tabs %}
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation instructions: https://github.com/alchemyplatform/alchemy-web3
+
+async function main() {
+    // Import the AlchemyWeb3 library. Filepath to functions: 
+	// /@alch/alchemy-web3/dist/alchemyWeb3.js
+	const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+   	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+	
+	// Initialize an alchemy-web3 instance:
+	const web3 = createAlchemyWeb3(
+	  `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`);
+	
+	// Query the blockchain (replace example parameters)
+    const id = await web3.eth.newFilter({
+  		"fromBlock": "0x1",
+  		"toBlock": "0x2",
+  		"address": "0x8888f1f195afa192cfee860698584c030f4c9db1",
+ 		"topics": ["0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b", null, 
+ 		["0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b", "0x0000000000000000000000000aff3454fce5edbc8cca8697c15331677e6ebccc"]]
+		}); 
+    
+	// Print the output to console
+	console.log(id);
+   }
+
+main();
+```
+{% endtab %}
+
+{% tab title="ethers.js" %}
+```javascript
+// Installation instructions: https://docs.ethers.io/v5/getting-started/#installing
+
+async function main() {
+   const { ethers } = require("ethers");
+   
+	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+
+	// Initialize an ethers instance
+	const provider = new ethers.providers.AlchemyProvider("homestead", apiKey);
+
+	// Query the blockchain (replace example parameters)
+    	const id = await provider.newFilter({
+  			"fromBlock": "0x1",
+  			"toBlock": "0x2",
+  			"address": "0x8888f1f195afa192cfee860698584c030f4c9db1",
+  			"topics": ["0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b", null, 
+  			["0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b", "0x0000000000000000000000000aff3454fce5edbc8cca8697c15331677e6ebccc"]]}]
+			}); 
+    
+	// Print the output to console
+	console.log(id);
+   }
+
+main()
+```
+{% endtab %}
+
+{% tab title="web3.py" %}
+```python
+# Installation Instructions: https://web3py.readthedocs.io/en/latest/quickstart.html#installation
+
+from web3 import Web3, HTTPProvider
+
+#Replace with your Alchemy API key:
+apiKey = "demo"
+
+# Initialize a Web3.py instance
+web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/'+apiKey))
+
+# Query the blockchain (replace example parameters)
+id = web3.eth.filter({
+	'fromBlock': 0x1, 
+	'toBlock': 0x2, 
+	'address': '0x8888f1f195afa192cfee860698584c030f4c9db1'
+	}) 
+
+# Print the output to console
+print(id)
+```
+{% endtab %}
+
 {% tab title="Curl" %}
 ```bash
 curl https://eth-mainnet.alchemyapi.io/v2/your-api-key \
@@ -82,4 +169,4 @@ Result
 }
 ```
 
-###
+{% embed url="https://docs.alchemy.com/alchemy/apis/ethereum" %}

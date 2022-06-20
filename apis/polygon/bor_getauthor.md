@@ -2,7 +2,7 @@
 description: Polygon API - Returns address of Author
 ---
 
-# bor\_getAuthor
+# bor\_getAuthor - Polygon
 
 ### Parameters
 
@@ -54,3 +54,5 @@ Body:
     "result": "0x5973918275c01f50555d44e92c9d9b353cadad54"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

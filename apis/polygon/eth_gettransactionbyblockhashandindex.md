@@ -4,7 +4,7 @@ description: >-
   transaction index position.
 ---
 
-# eth\_getTransactionByBlockHashAndIndex
+# eth\_getTransactionByBlockHashAndIndex - Polygon
 
 ### Parameters
 
@@ -96,3 +96,5 @@ Body:
     }
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

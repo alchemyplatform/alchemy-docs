@@ -5,7 +5,7 @@ description: >-
   blockchain.
 ---
 
-# eth\_estimateGas
+# eth\_estimateGas - Arbitrum
 
 ## **Parameters**
 
@@ -71,3 +71,5 @@ Body:
   "result": "0x5208" // 21000
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

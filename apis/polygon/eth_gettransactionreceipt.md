@@ -5,7 +5,7 @@ description: >-
   transaction is mined. However, unlike eth_getT
 ---
 
-# eth\_getTransactionReceipt
+# eth\_getTransactionReceipt - Polygon
 
 ## Parameters
 
@@ -111,3 +111,5 @@ Body:
     }
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

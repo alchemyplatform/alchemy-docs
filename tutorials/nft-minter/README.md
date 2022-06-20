@@ -932,5 +932,5 @@ NFT Minter Demo
 {% endembed %}
 
 {% hint style="info" %}
-**NOTE:** The transactions sent through Metamask will use Metamask's default provider (not necessarily your Alchemy endpoint). If you'd like to send those transactions through Alchemy to unlock debugging tools and the [Alchemy Notify ](../../introduction/core-products/alchemy-notify.md)suite, check out [this guide](../../guides/connecting-metamask-to-alchemy/) for connecting Metamask to Alchemy.
+**NOTE:** The transactions sent through Metamask will use Metamask's default provider (not necessarily your Alchemy endpoint). If you'd like to send those transactions through Alchemy to unlock debugging tools and the [Alchemy Notify ](../../introduction/core-products/alchemy-notify.md)suite, check out [this guide](../../guides/connecting-metamask-to-alchemy.md) for connecting Metamask to Alchemy.
 {% endhint %}

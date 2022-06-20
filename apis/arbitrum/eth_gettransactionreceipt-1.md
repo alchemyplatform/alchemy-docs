@@ -5,7 +5,7 @@ description: >-
   null until the transaction is mined. However,
 ---
 
-# eth\_getTransactionReceipt
+# eth\_getTransactionReceipt - Arbitrum
 
 ## Parameters
 
@@ -110,3 +110,5 @@ Body:
   }
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

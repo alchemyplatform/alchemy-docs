@@ -4,7 +4,7 @@ description: >-
   uncle index position.
 ---
 
-# eth\_getUncleByBlockNumberAndIndex
+# eth\_getUncleByBlockNumberAndIndex - Polygon
 
 ## Parameters
 
@@ -104,4 +104,4 @@ Body:
 }
 ```
 
-###
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

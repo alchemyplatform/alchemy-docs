@@ -4,7 +4,7 @@ description: >-
   transaction to complete. The transaction will not be added to the blockchain.
 ---
 
-# eth\_estimateGas
+# eth\_estimateGas - Ethereum
 
 {% hint style="info" %}
 **Note:** The estimate may be significantly more than the amount of gas actually used by the transaction, for a variety of reasons including EVM mechanics and node performance. Estimates are served directly from nodes, we're not doing anything special to the value so the rest of the network is likely seeing the same.
@@ -37,6 +37,91 @@ description: >-
 Request
 
 {% tabs %}
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation instructions: https://github.com/alchemyplatform/alchemy-web3
+
+async function main() {
+	// alchemy-token-api/alchemy-web3-script.js
+	import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+	
+	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+	
+	// Initialize an alchemy-web3 instance:
+	const web3 = createAlchemyWeb3(
+	  `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`,);
+	
+	// Query the blockchain (replace example parameters)
+    	const estGas = await web3.eth.estimateGas({
+	    from: "0xge61df",
+	    to: "0x087a5c",
+	    data: "0xa9059c",
+	    gasPrice: "0xa994f8",
+	  }) 
+
+	// Print the output to console
+  	console.log(estGas);
+   }
+
+main();
+```
+{% endtab %}
+
+{% tab title="ethers.js" %}
+```javascript
+// Installation instructions: https://docs.ethers.io/v5/getting-started/#installing
+
+async function main() {
+   const { ethers } = require("ethers");
+   
+	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+
+	// Initialize an ethers instance
+	const provider = new ethers.providers.JsonRpcProvider('https://eth-mainnet.alchemyapi.io/v2/${apiKey}',);
+
+	// Query the blockchain (replace example parameters)
+    	const estGas = await provider.estimateGas({
+	    from: "0xge61df",
+	    to: "0x087a5c",
+	    data: "0xa9059c",
+	    gasPrice: "0xa994f8",
+	  }) 
+
+	// Print the output to console
+  	console.log(estGas); 
+   }
+
+main()
+```
+{% endtab %}
+
+{% tab title="web3.py" %}
+```python
+# Installation Instructions: https://web3py.readthedocs.io/en/latest/quickstart.html#installation
+
+from web3 import Web3, HTTPProvider
+
+#Replace with your Alchemy API key:
+const apiKey = "demo";
+
+# Initialize a Web3.py instance
+web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/${apiKey}'))
+
+# Query the blockchain (replace example parameters)
+estGas = web3.eth.estimate_gas({
+     'to': '0xd3CdA913deB6f67', 
+     'from':web3.eth.coinbase, 
+     'value': 12345
+     })
+
+# Print the output to console
+print(estGas)
+
+```
+{% endtab %}
+
 {% tab title="Curl" %}
 ```bash
 curl https://eth-mainnet.alchemyapi.io/v2/your-api-key \
@@ -75,4 +160,4 @@ Result
 }
 ```
 
-###
+{% embed url="https://docs.alchemy.com/alchemy/apis/ethereum" %}

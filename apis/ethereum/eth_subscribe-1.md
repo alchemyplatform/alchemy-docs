@@ -10,20 +10,20 @@ description: >-
 **A note on limits over WebSocket connections**
 
 * There is a limit of 20,000 **** WebSocket connections per API Key as well as 1,000 parallel WebSocket subscriptions per WebSocket connection, creating a maximum of 20 million subscriptions per application.
-* The maximum size of a JSON-RPC `batch` request that can be sent over a WebSocket connection is 10
+* The maximum size of a JSON-RPC `batch` request that can be sent over a WebSocket connection is 20
 * Free tier users will be limited to 10 concurrent requests per WebSocket connection.
 {% endhint %}
 
 ### Parameters
 
-1. [Subscription type](../../guides/using-websockets.md#subscription-types)
+1. [Subscription type](../../enhanced-apis/subscription-api-websockets/)
 2. Optional params
 
 The first argument specifies the type of event for which to listen. The second argument contains additional options which depend on the first argument. The different description types, their options, and their event payloads are described below.
 
 ### Returns
 
-The subscription ID. This ID will be attached to any received events, and can also be used to cancel the subsciption using `eth_unsubscribe`.
+The subscription ID. This ID will be attached to any received events, and can also be used to cancel the subsciption using [`eth_unsubscribe`](../../enhanced-apis/subscription-api-websockets/#eth\_unsubscribe).
 
 ### Subscription Events
 
@@ -373,3 +373,5 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
     }
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/ethereum" %}

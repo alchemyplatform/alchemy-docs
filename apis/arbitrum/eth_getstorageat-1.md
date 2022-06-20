@@ -5,7 +5,7 @@ description: >-
   be exposed via the contract's methods.
 ---
 
-# eth\_getStorageAt
+# eth\_getStorageAt - Arbitrum
 
 ## Parameters
 
@@ -92,3 +92,5 @@ Body:
     "result":"0x000000000000000000000000000000000000000000000000000000000000162e"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

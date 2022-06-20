@@ -2,7 +2,7 @@
 description: Polygon API - Returns the balance of the account of a given address.
 ---
 
-# eth\_getBalance
+# eth\_getBalance - Polygon
 
 ## Parameters
 
@@ -62,3 +62,5 @@ Body:
     "result": "0x7a6ab9fd8c8eb937"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

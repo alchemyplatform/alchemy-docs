@@ -4,7 +4,7 @@ description: >-
   arrives. To check if the state has changed, call eth_getFilterChanges.
 ---
 
-# eth\_newBlockFilter
+# eth\_newBlockFilter - Polygon
 
 ## **Parameters**
 
@@ -56,3 +56,5 @@ Body:
   "result": "0x9fb7f13924bb605fd29f3ddd6d193ece"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

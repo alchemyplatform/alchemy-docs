@@ -4,10 +4,10 @@ description: >-
   same results with an eth_getLogs call (see hint below).
 ---
 
-# eth\_getFilterLogs
+# eth\_getFilterLogs - Ethereum
 
 {% hint style="warning" %}
-This method only works for filters creates with [`eth_newFilter`](./#eth\_newfilter)not for filters created using [`eth_newBlockFilter`](./#eth\_newblockfilter) or [`eth_newPendingTransactionFilter`](./#eth\_newpendingtransactionfilter), which will return `"filter not found".`
+This method only works for filters creates with [`eth_newFilter`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-newfilter)not for filters created using [`eth_newBlockFilter`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-newblockfilter) or [`eth_newPendingTransactionFilter`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-newpendingtransactionfilter), which will return `"filter not found".`
 
 #### eth\_getLogs vs. eth\_getFilterLogs
 
@@ -29,13 +29,89 @@ params: [
 
 ### **Returns**
 
-See [`eth_getFilterChanges`](./#eth\_getfilterchanges)\`\`
+See [`eth_getFilterChanges`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-getfilterchanges#returns)
 
 ### [**Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getFilterLogs%22%2C%22paramValues%22%3A%5B%220xfe704947a3cd3ca12541458a4321c869%22%5D%7D)
 
 Request
 
 {% tabs %}
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation instructions: https://github.com/alchemyplatform/alchemy-web3
+
+async function main() {
+	// alchemy-token-api/alchemy-web3-script.js
+	import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+	
+	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+	
+	// Initialize an alchemy-web3 instance:
+	const web3 = createAlchemyWeb3(
+	  `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`,);
+	
+	// Query the blockchain (replace example parameters)
+    	const logs = await web3.eth.getFilterLogs({
+	    id: "0xfe704947a3cd3ca12541458a4321c869" 
+	  }) 
+
+	// Print the output to console
+  	console.log(logs);
+   }
+
+main();
+```
+{% endtab %}
+
+{% tab title="ethers.js" %}
+```javascript
+// Installation instructions: https://docs.ethers.io/v5/getting-started/#installing
+
+async function main() {
+   const { ethers } = require("ethers");
+   
+	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+
+	// Initialize an ethers instance
+	const provider = new ethers.providers.AlchemyProvider("homestead", apiKey);
+
+	// Query the blockchain (replace example parameters)
+    	const logs = await provider.getFilterLogs({
+	    id: "0xfe704947a3cd3ca12541458a4321c869" 
+	  }) 
+
+	// Print the output to console
+  	console.log(logs);
+   }
+
+main()
+```
+{% endtab %}
+
+{% tab title="web3.py" %}
+```python
+# Installation Instructions: https://web3py.readthedocs.io/en/latest/quickstart.html#installation
+
+from web3 import Web3, HTTPProvider
+
+#Replace with your Alchemy API key:
+apiKey = "demo"
+
+# Initialize a Web3.py instance
+web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/'+apiKey))
+
+# Query the blockchain (replace example parameters)
+logs = web3.eth.net.get_filter_logs({
+	    id: "0xfe704947a3cd3ca12541458a4321c869" 
+	  })  
+
+# Print the output to console
+print(logs)
+```
+{% endtab %}
+
 {% tab title="Curl" %}
 ```bash
 curl https://eth-mainnet.alchemyapi.io/v2/your-api-key \
@@ -90,4 +166,4 @@ Result
 }
 ```
 
-###
+{% embed url="https://docs.alchemy.com/alchemy/apis/ethereum" %}

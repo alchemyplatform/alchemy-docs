@@ -4,9 +4,9 @@ description: >-
   transaction index position.
 ---
 
-# eth\_getTransactionByBlockNumberAndIndex
+# eth\_getTransactionByBlockNumberAndIndex - Polygon
 
-## Parameters
+Parameters
 
 * `QUANTITY|TAG` - a block number, or the string "earliest", "latest" or "pending", as in the [default block parameter](https://eth.wiki/json-rpc/API#the-default-block-parameter).
 * `QUANTITY` - the transaction index position.
@@ -96,4 +96,4 @@ Body:
 }
 ```
 
-##
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

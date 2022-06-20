@@ -2,11 +2,12 @@
 description: Gets all NFTs for a given NFT contract
 ---
 
-# getNFTsForCollection (BETA)
+# getNFTsForCollection
 
 This endpoint is supported on the following chains and networks:
 
-* **Ethereum**: Mainnet
+* **Ethereum**: Mainnet, Goerli
+* **Polygon**: Mainnet and Mumbai
 
 _To see chain support across all features, check out the_ [_feature matrix_](../../apis/feature-support-by-chain.md)_._
 
@@ -47,7 +48,7 @@ See the 'examples' section for an example of how to use this parameter to fetch 
 
 {% hint style="info" %}
 The example below is for Ethereum Mainnet. If you are using Polygon you'll need to use your polygon endpoint instead: \
-https://polygon-mainnet.g.alchemy.com/`v2/your-api-key/getNFTs`...
+https://polygon-mainnet.g.alchemy.com/nft/v2/`your-api-key`/getNFTs...
 {% endhint %}
 
 ### Request
@@ -63,7 +64,7 @@ import fetch from 'node-fetch';
   };
 
   const apiKey = "demo"
-  const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTsForCollection`;
+  const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTsForCollection`;
   const contractAddr = "0x61fce80d72363b731425c3a2a46a1a5fed9814b2";
   const tokenId = "0x1ea2";
   const withMetadata = "false";
@@ -83,7 +84,7 @@ import axios from 'axios';
 
 // replace with your Alchemy api key
 const apiKey = "demo";
-const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTsForCollection`;
+const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTsForCollection`;
 const contractAddr = "0x61fce80d72363b731425c3a2a46a1a5fed9814b2";
 const startToken = "0x1ea2";
 const withMetadata = "false";
@@ -102,14 +103,14 @@ axios(config)
 
 {% tab title="Postman" %}
 ```http
-URL: https://eth-mainnet.g.alchemy.com/v2/demo/getNFTsForCollection/?contractAddress=0x61fce80d72363b731425c3a2a46a1a5fed9814b2&startToken=0x1ea2&withMetadata=false
+URL: https://eth-mainnet.g.alchemy.com/nft/v2/demo/getNFTsForCollection/?contractAddress=0x61fce80d72363b731425c3a2a46a1a5fed9814b2&startToken=0x1ea2&withMetadata=false
 RequestType: GET
 ```
 {% endtab %}
 
 {% tab title="Curl" %}
 ```
-curl 'https://eth-mainnet.g.alchemy.com/v2/demo/getNFTsForCollection/?contractAddress=0x61fce80d72363b731425c3a2a46a1a5fed9814b2&startToken=0x1ea2&withMetadata=false'
+curl 'https://eth-mainnet.g.alchemy.com/nft/v2/demo/getNFTsForCollection/?contractAddress=0x61fce80d72363b731425c3a2a46a1a5fed9814b2&startToken=0x1ea2&withMetadata=false'
 ```
 {% endtab %}
 {% endtabs %}
@@ -149,7 +150,7 @@ import axios from 'axios';
 
 // replace with your Alchemy api key
 const apiKey = "demo";
-const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTsForCollection`;
+const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTsForCollection`;
 const contractAddr = "0x61fce80d72363b731425c3a2a46a1a5fed9814b2";
 
 async function callGetNFTsForCollectionOnce(

@@ -5,21 +5,21 @@ description: >-
   are pulling from is not tampered with.
 ---
 
-# eth\_getProof
+# eth\_getProof - Polygon
 
 ## **Parameters**
 
 1. `DATA`, 20 Bytes - address of the account.
-2. `ARRAY`, 32 Bytes - array of storage-keys which should be proofed and included. See[`eth_getStorageAt`](../ethereum/#eth\_getstorageat)
+2. `ARRAY`, 32 Bytes - array of storage-keys which should be proofed and included. See[`eth_getStorageAt`](https://docs.alchemy.com/alchemy/apis/polygon/eth-getstorageat)
 3. `QUANTITY|TAG` - integer block number, or the string `"latest"` or `"earliest"`, see the [default block parameter](https://eth.wiki/json-rpc/API#the-default-block-parameter)
 
 ## **Returns**
 
 `Object` - A account object:
 
-* `balance`: `QUANTITY` - the balance of the account. See[`eth_getBalance`](../ethereum/#eth\_getbalance)
+* `balance`: `QUANTITY` - the balance of the account. See[`eth_getBalance`](https://docs.alchemy.com/alchemy/apis/polygon/eth-getbalance#returns)
 * `codeHash`: `DATA`, 32 Bytes - hash of the code of the account. For a simple Account without code it will return `"0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"`
-* `nonce`: `QUANTITY`, - nonce of the account. See [`eth_getTransactionCount`](../ethereum/#eth\_gettransactioncount)\`\`
+* `nonce`: `QUANTITY`, - nonce of the account. See [`eth_getTransactionCount`](https://docs.alchemy.com/alchemy/apis/polygon/eth-gettransactioncount#returns)
 * `storageHash`: `DATA`, 32 Bytes - SHA3 of the StorageRoot. All storage will deliver a MerkleProof starting with this rootHash.
 * `accountProof`: `ARRAY` - Array of rlp-serialized MerkleTree-Nodes, starting with the stateRoot-Node, following the path of the SHA3 (address) as key.
 * `storageProof`: `ARRAY` - Array of storage-entries as requested. Each entry is a object with these properties:
@@ -92,4 +92,4 @@ Body:
 }
 ```
 
-##
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

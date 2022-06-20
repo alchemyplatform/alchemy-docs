@@ -4,7 +4,7 @@ description: >-
   for signed transactions.
 ---
 
-# eth\_sendRawTransaction
+# eth\_sendRawTransaction - Arbitrum
 
 ## Parameters
 
@@ -62,3 +62,5 @@ Body:
   "result": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

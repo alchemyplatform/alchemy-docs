@@ -5,7 +5,7 @@ description: >-
   returned should always correspond to the informati
 ---
 
-# eth\_chainId
+# eth\_chainId - Arbitrum
 
 ## **Parameters**
 
@@ -57,3 +57,5 @@ Body:
   "result": "0x3d" // 61
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

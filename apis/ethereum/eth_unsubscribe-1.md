@@ -8,7 +8,7 @@ description: >-
 
 ### Parameters
 
-1. Subscription ID, as previously returned from an [`eth_subscribe`](../arbitrum/eth\_subscribe.md) call.
+1. Subscription ID, as previously returned from an [`eth_subscribe`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-subscribe-1#parameters) call.
 
 ### Returns
 
@@ -37,3 +37,5 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
     "result":true
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/ethereum" %}

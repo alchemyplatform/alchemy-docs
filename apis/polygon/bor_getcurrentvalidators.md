@@ -2,7 +2,7 @@
 description: Polygon API - Returns current validators
 ---
 
-# bor\_getCurrentValidators
+# bor\_getCurrentValidators - Polygon
 
 ## Parameters
 
@@ -86,4 +86,4 @@ Body:
 }
 ```
 
-###
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

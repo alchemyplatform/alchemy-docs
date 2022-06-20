@@ -2,7 +2,7 @@
 description: Polygon API - Returns the number of transactions sent from an address.
 ---
 
-# eth\_getTransactionCount
+# eth\_getTransactionCount - Polygon
 
 ## Parameters
 
@@ -63,4 +63,4 @@ Body:
 }
 ```
 
-###
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

@@ -4,7 +4,7 @@ description: >-
   data.
 ---
 
-# web3\_sha3
+# web3\_sha3 - Arbitrum
 
 ## **Parameters**
 
@@ -67,4 +67,4 @@ Body:
 }
 ```
 
-###
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

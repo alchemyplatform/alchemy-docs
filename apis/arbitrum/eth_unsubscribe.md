@@ -37,3 +37,5 @@ wscat -c wss://arb-mainnet.g.alchemy.com/v2/your-api-key
     "result":true
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

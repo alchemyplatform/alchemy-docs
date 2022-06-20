@@ -2,7 +2,7 @@
 description: Arbitrum API - eth_getTransactionCount
 ---
 
-# eth\_getTransactionCount
+# eth\_getTransactionCount - Arbitrum
 
 ## Parameters
 
@@ -62,3 +62,5 @@ Body:
   "result": "0x219"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

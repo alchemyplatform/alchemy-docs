@@ -4,7 +4,7 @@ description: >-
   transaction index position.
 ---
 
-# eth\_getTransactionByBlockHashAndIndex
+# eth\_getTransactionByBlockHashAndIndex - Arbitrum
 
 ## Parameters
 
@@ -95,3 +95,5 @@ Body:
   }
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

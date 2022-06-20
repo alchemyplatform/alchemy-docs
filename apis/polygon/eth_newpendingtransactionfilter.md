@@ -5,7 +5,7 @@ description: >-
   eth_getFilterChanges``
 ---
 
-# eth\_newPendingTransactionFilter
+# eth\_newPendingTransactionFilter - Polygon
 
 ## **Parameters**
 
@@ -57,3 +57,5 @@ Body:
   "result": "0xa08914f1caedfcbe814d9fb33e69678d"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

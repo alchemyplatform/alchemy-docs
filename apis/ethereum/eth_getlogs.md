@@ -4,12 +4,12 @@ description: >-
   information about eth_getLogs check out our Deep Dive into eth_getLogs page.
 ---
 
-# eth\_getLogs
+# eth\_getLogs - Ethereum
 
 {% hint style="warning" %}
-**NOTE**: You can make `eth_getLogs` requests with up to a _**2K block range**_ and _**150MB**_ _**limit on the response size**_. You can also request _**any block range**_ with a cap of _**10K logs in the response**_.
+**NOTE**: You can make `eth_getLogs` requests with up to a _**2K block range**_ and _**150MB**_ _**limit on the response size** OR you can_ request _**any block range**_ with a cap of _**10K logs in the response**_.
 
-_If you need to pull logs frequently, we recommend_ [_using WebSockets_](../../guides/using-websockets.md) _to push new logs to you when they are available_
+_If you need to pull logs frequently, we recommend_ [_using WebSockets_](../../enhanced-apis/subscription-api-websockets/) _to push new logs to you when they are available_
 {% endhint %}
 
 ### Parameters
@@ -27,7 +27,7 @@ _If you need to pull logs frequently, we recommend_ [_using WebSockets_](../../g
 * `address`: `DATA|Array`, 20 Bytes - (optional) Contract address or a list of addresses from which logs should originate.
 * `topics`: `Array` of `DATA`, - (optional) Array of 32 Bytes DATA topics.
   * Topics are order-dependent. Each topic can also be an array of DATA with "or" options.
-  * Check out more details on how to format topics in [eth\_newFilter](./#eth\_newfilter).
+  * Check out more details on how to format topics in [eth\_newFilter](https://docs.alchemy.com/alchemy/apis/ethereum/eth-newfilter#parameters).
 * `blockHash`: `DATA`, 32 Bytes - (optional) With the addition of EIP-234 (Geth >= v1.8.13 or Parity >= v2.1.0), blockHash is a new filter option which restricts the logs returned to the single block with the 32-byte hash blockHash. Using blockHash is equivalent to fromBlock = toBlock = the block number with hash `blockHash`. **If blockHash is present in the filter criteria, then neither `fromBlock` nor `toBlock` are allowed.**
 
 ```javascript
@@ -65,6 +65,92 @@ params: [
 Request
 
 {% tabs %}
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation instructions: https://github.com/alchemyplatform/alchemy-web3
+
+async function main() {
+    // Import the AlchemyWeb3 library. Filepath to functions: 
+	// /@alch/alchemy-web3/dist/alchemyWeb3.js
+	const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+   	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+	
+	// Initialize an alchemy-web3 instance:
+	const web3 = createAlchemyWeb3(
+	  `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`);
+	
+	// Query the blockchain (replace example parameters)
+   	const logs = await web3.eth.getLogs({
+	    "address": "0xb59f67a8bff5d8cd03f6ac17265c550ed8f33907",
+	    "topics": [
+	      "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+	    ],
+	    "blockHash": "0x8243343df08b9751f5ca0c5f8c9c0460d8a9b6351066fae0acbd4d3e776de8bb""
+	  }); 
+    
+	// Print the output to console
+	console.log(logs);
+   }
+
+main();
+```
+{% endtab %}
+
+{% tab title="ethers.js" %}
+```javascript
+// Installation instructions: https://docs.ethers.io/v5/getting-started/#installing
+
+async function main() {
+   const { ethers } = require("ethers");
+   
+	// Replace with your Alchemy API key:
+	const apiKey = "demo";
+
+	// Initialize an ethers instance
+	const provider = new ethers.providers.AlchemyProvider("homestead", apiKey);
+
+	// Query the blockchain (replace example parameters)
+    	const logs = await provider.getLogs({
+		"address": "0xb59f6",
+		"topics": ["0xddf252"],
+		"blockHash": "0x8243343d"
+	  }); 
+    
+	// Print the output to console
+	console.log(logs);
+   }
+
+
+main()
+```
+{% endtab %}
+
+{% tab title="web3.py" %}
+```python
+# Installation Instructions: https://web3py.readthedocs.io/en/latest/quickstart.html#installation
+
+from web3 import Web3, HTTPProvider
+
+#Replace with your Alchemy API key:
+apiKey = "demo"
+
+# Initialize a Web3.py instance
+web3 = Web3(Web3.HTTPProvider('https://eth-mainnet.alchemyapi.io/v2/'+apiKey))
+
+# Query the blockchain (replace example parameters)
+logs = web3.eth.get_logs({
+	'fromBlock': 1000000, 
+	'toBlock': 1000100, 
+	'address': '0x6C8f2A1'
+	}) 
+
+# Print the output to console
+print(logs)
+```
+{% endtab %}
+
 {% tab title="Curl" %}
 ```bash
 curl https://eth-mainnet.alchemyapi.io/v2/your-api-key \
@@ -114,3 +200,5 @@ Result
   ]
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/ethereum" %}

@@ -4,7 +4,7 @@ description: >-
   hash.
 ---
 
-# eth\_getUncleCountByBlockHash
+# eth\_getUncleCountByBlockHash - Polygon
 
 ## Parameters
 
@@ -63,4 +63,4 @@ Result
 }
 ```
 
-###
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

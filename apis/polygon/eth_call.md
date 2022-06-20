@@ -5,7 +5,7 @@ description: >-
   calls. It is used to read from the blockchain which in
 ---
 
-# eth\_call
+# eth\_call - Polygon
 
 ## Parameters
 
@@ -82,3 +82,5 @@ Body:
   "result": "0x"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

@@ -5,7 +5,7 @@ description: >-
   requested with eth_getFilterChangesfor a period
 ---
 
-# eth\_uninstallFilter
+# eth\_uninstallFilter - Arbitrum
 
 ### **Parameters**
 
@@ -64,4 +64,4 @@ Body:
 }
 ```
 
-###
+{% embed url="https://docs.alchemy.com/alchemy/apis/arbitrum" %}

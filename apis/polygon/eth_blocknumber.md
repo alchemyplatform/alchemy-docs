@@ -2,7 +2,7 @@
 description: Polygon API- Returns the number of the most recent block.
 ---
 
-# eth\_blockNumber
+# eth\_blockNumber - Polygon
 
 ## Parameters
 
@@ -54,3 +54,5 @@ Body:
     "jsonrpc": "2.0"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

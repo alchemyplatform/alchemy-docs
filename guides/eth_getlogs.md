@@ -7,7 +7,7 @@ description: >-
 
 # Deep Dive into eth\_getLogs
 
-New to `eth_getLogs` or want to learn more information about it? You are in the right place. `eth_getLogs` has many beneficial use cases that developers are often times unaware of. It also has some extreme vulnerabilities that can have huge consequences if you don't use it correctly. This page is a deep dive into the capabilities of `eth_getLogs` to help you improve your usage and understanding of this method! For details about the request/response specifications for `eth_getLogs`, check out our [JSON-RPC reference page.](../apis/ethereum/eth-getlogs.md)
+New to `eth_getLogs` or want to learn more information about it? You are in the right place. `eth_getLogs` has many beneficial use cases that developers are often times unaware of. It also has some extreme vulnerabilities that can have huge consequences if you don't use it correctly. This page is a deep dive into the capabilities of `eth_getLogs` to help you improve your usage and understanding of this method! For details about the request/response specifications for `eth_getLogs`, check out our [JSON-RPC reference page.](../apis/ethereum/eth\_getlogs.md)
 
 ## What are Logs? <a href="#what-are-logs" id="what-are-logs"></a>
 
@@ -92,7 +92,7 @@ _Transfers_ are one of the most common functions on Ethereum contracts. They rep
 
 A contract can contain many different types of events, so the _event signature_ is used to identify what the specific event or log represents. In the example above, this contract contains two types of events: `Transfer` and `NewOwner`.
 
-Every event has an associated event signature which can be computed by taking the _keccak 256_ hash of the event _name_ and input argument \_types (\_argument names are ignored). For example, the event signature of this specific Transfer event above is `keccak256(Transfer(address,address,uint256))` , which results in the hash: `0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef` . If you would like to reproduce the hash yourself you can use this [online keccak-256 converter](https://emn178.github.io/online-tools/keccak\_256.html) and input "Transfer(address,address,uint256)". Or, convert the string to hexadecimal number and use the [`web3_sha3`](../apis/ethereum/web3-sha3-1.md) JSON-RPC call to get the corresponding hash. For "Transfer(address,address,uint256)", the corresponding hex value is`0x5472616e7366657228616464726573732c616464726573732c75696e7432353629`.
+Every event has an associated event signature which can be computed by taking the _keccak 256_ hash of the event _name_ and input argument \_types (\_argument names are ignored). For example, the event signature of this specific Transfer event above is `keccak256(Transfer(address,address,uint256))` , which results in the hash: `0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef` . If you would like to reproduce the hash yourself you can use this [online keccak-256 converter](https://emn178.github.io/online-tools/keccak\_256.html) and input "Transfer(address,address,uint256)". Or, convert the string to hexadecimal number and use the [`web3_sha3`](../apis/ethereum/web3\_sha3-1.md) JSON-RPC call to get the corresponding hash. For "Transfer(address,address,uint256)", the corresponding hex value is`0x5472616e7366657228616464726573732c616464726573732c75696e7432353629`.
 
 ## Back to the Logs Example... <a href="#back-to-the-logs-example" id="back-to-the-logs-example"></a>
 
@@ -103,9 +103,9 @@ Let's say some Contract has a `Transfer(address,address,uint256)`method defined 
 ### Making a Request to eth\_**g**etLogs <a href="#making-a-request-to-eth-get-logs" id="making-a-request-to-eth-get-logs"></a>
 
 {% hint style="danger" %}
-**Note:** Remember when we mentioned `eth_getLogs` has extreme vulnerabilities? Here's what we mean. When you make a request to `eth_getLogs` , all parameters are _optional_, meaning you don’t actually have to specify `fromBlock`, `toBlock`, `address`, `topics`, or `blockHash` (learn more about each parameter in our [JSON-RPC Reference page](../apis/ethereum/eth-getlogs.md)). However, if we leave these parameters empty, or specify too large of a range, we can risk trying to query millions of logs, both overloading the node and creating a massive payload that will be extremely difficult to return. This can result in huge consequences if the right safety nets are not put in place. Luckily, Alchemy has systems in place to prevent users from making these extreme requests, but if you are running your own node you might not be so lucky.
+**Note:** Remember when we mentioned `eth_getLogs` has extreme vulnerabilities? Here's what we mean. When you make a request to `eth_getLogs` , all parameters are _optional_, meaning you don’t actually have to specify `fromBlock`, `toBlock`, `address`, `topics`, or `blockHash` (learn more about each parameter in our [JSON-RPC Reference page](../apis/ethereum/eth\_getlogs.md)). However, if we leave these parameters empty, or specify too large of a range, we can risk trying to query millions of logs, both overloading the node and creating a massive payload that will be extremely difficult to return. This can result in huge consequences if the right safety nets are not put in place. Luckily, Alchemy has systems in place to prevent users from making these extreme requests, but if you are running your own node you might not be so lucky.
 
-**Here are the safety nets Alchemy has in place for large** [**`eth_getLogs`**](../apis/ethereum/eth-getlogs.md) **requests on Ethereum:**
+**Here are the safety nets Alchemy has in place for large** [**`eth_getLogs`**](../apis/ethereum/eth\_getlogs.md) **requests on Ethereum:**
 
 * You can make `eth_getLogs` requests with up to a _**2K block range**_ and _**150MB**_ _**limit on the response size**_&#x20;
 * _OR you can_ request _**any block range**_ with a cap of _**10K logs in the response**_.
@@ -138,7 +138,7 @@ Let's look at an example of a good request. If you have an Alchemy account, you 
 In our `params` here we have specified the `fromBlock` , `toBlock` , `address`, and `topics`.
 
 {% hint style="info" %}
-**Note:** The reason why we did not specify the `blockHash` in our `params` is because you can **only** use either `fromBlock` and `toBlock` or `blockHash`, **not both**. Learn more about this specification [here](../apis/ethereum/eth-getlogs.md).
+**Note:** The reason why we did not specify the `blockHash` in our `params` is because you can **only** use either `fromBlock` and `toBlock` or `blockHash`, **not both**. Learn more about this specification [here](../apis/ethereum/eth\_getlogs.md).
 {% endhint %}
 
 The `fromBlock` and `toBlock` params specify the start and end block numbers to restrict the search by, these are important to specify so we search over the correct blocks. The `address` field represents the address of the contract emitting the log.

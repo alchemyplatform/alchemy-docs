@@ -135,7 +135,7 @@ Used by an owner of a smart contract to destroy the contract, which will transfe
 
 ### `CALL`
 
-Used for transferring ETH between [externally owned accounts](../../resources/web3-glossary/#externally-owned-account) (EOAs) or to call a smart contract function.&#x20;
+Used for transferring ETH between [externally owned accounts](../../resources/web3-glossary.md#externally-owned-account) (EOAs) or to call a smart contract function.&#x20;
 
 {% tabs %}
 {% tab title="Response" %}

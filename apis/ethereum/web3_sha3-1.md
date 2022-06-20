@@ -2,7 +2,7 @@
 description: Returns Keccak-256 (not the standardized SHA3-256) of the given data.
 ---
 
-# web3\_sha3
+# web3\_sha3 - Ethereum
 
 ### **Parameters**
 
@@ -61,4 +61,4 @@ Result
 }
 ```
 
-##
+{% embed url="https://docs.alchemy.com/alchemy/apis/ethereum" %}

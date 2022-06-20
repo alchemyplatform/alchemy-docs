@@ -2,7 +2,7 @@
 description: Polygon API - Returns the root hash given a block range
 ---
 
-# bor\_getRootHash
+# bor\_getRootHash - Polygon
 
 ## Parameters
 
@@ -55,3 +55,5 @@ Body:
     "result": "04b073e17b7186ab4daae17c5e2cc2d5a729cffd102cede41ee458a2d5573994"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

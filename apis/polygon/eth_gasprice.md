@@ -2,7 +2,7 @@
 description: Polygon API - Returns the current price per gas in wei.
 ---
 
-# eth\_gasPrice
+# eth\_gasPrice - Polygon
 
 ## Parameters
 
@@ -54,3 +54,5 @@ Body:
     "result": "0x77359400"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

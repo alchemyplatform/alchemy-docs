@@ -111,7 +111,7 @@ Merkle trees are also used to store the internal storage of accounts as well as 
 
 ### **Uncle**
 
-See \*\*Ommer **below**, \*\*the gender-neutral alternative to aunt/uncle.
+See Ommer **below**, the gender-neutral alternative to aunt/uncle.
 
 ### **Ommer**
 
@@ -120,6 +120,13 @@ An ommer is a child of a parent of a parent of a block that is not the parent, o
 ### **Uncle Inclusion Mechanism**
 
 The Uncle inclusion mechanism allows a block to include its uncles. This ensures that miners that create blocks that do not quite get included into the main chain can still get rewarded.
+
+### Uncle Blocks
+
+Uncle blocks are similar to orphan blocks but have subtle distinctions connected with the Ethereum protocol. Uncle blocks are valid blocks that the network has rejected. Miners get paid for producing an uncle block, unlike an orphan block, where miners don't get rewarded.\
+
+
+Learn more about on this page:[what-are-uncle-blocks.md](web3-glossary/what-are-uncle-blocks.md "mention").&#x20;
 
 ### **Account Nonce**
 

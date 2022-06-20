@@ -5,7 +5,7 @@ description: >-
   always correspond to the information in the curre
 ---
 
-# eth\_chainId
+# eth\_chainId - Polygon
 
 #### **Parameters**
 
@@ -57,3 +57,5 @@ Body:
     "result": "0x89"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

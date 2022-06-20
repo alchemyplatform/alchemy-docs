@@ -4,7 +4,7 @@ description: >-
   block number.
 ---
 
-# eth\_getBlockTransactionCountByNumber
+# eth\_getBlockTransactionCountByNumber - Polygon
 
 ## Parameters
 
@@ -62,3 +62,5 @@ Body:
     "result": "0x146"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

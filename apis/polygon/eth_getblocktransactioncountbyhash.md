@@ -4,7 +4,7 @@ description: >-
   block hash.
 ---
 
-# eth\_getBlockTransactionCountByHash
+# eth\_getBlockTransactionCountByHash - Polygon
 
 ## Parameters
 
@@ -62,3 +62,5 @@ Body:
     "result": "0xaa"
 }
 ```
+
+{% embed url="https://docs.alchemy.com/alchemy/apis/polygon" %}

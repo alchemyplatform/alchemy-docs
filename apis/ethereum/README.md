@@ -17,27 +17,27 @@ The Ethereum API allows applications to connect to an Ethereum node that is part
 Retrieves information from a particular block in the blockchain.
 
 * [eth\_blockNumber](eth-blocknumber.md)
-* [eth\_getBlockByHash](eth-getblockbyhash.md)
-* [eth\_getBlockByNumber](eth-getblockbynumber.md)
+* [eth\_getBlockByHash](eth\_getblockbyhash.md)
+* [eth\_getBlockByNumber](eth\_getblockbynumber.md)
 
 ### Reading Transactions
 
 Retrieves information on the state data for addresses regardless of whether it is a user or a smart contract.
 
-* [eth\_getTransactionByHash](eth-gettransactionbyhash.md)
-* [eth\_getTransactionCount](eth-gettransactioncount.md)
-* [eth\_getTransactionReceipt](eth-gettransactionreceipt.md)
-* [eth\_getBlockTransactionCountByHash](eth-getblocktransactioncountbyhash.md)
-* [eth\_getBlockTransactionCountByNumber](eth-getblocktransactioncountbynumber.md)
-* [eth\_getTransactionByBlockHashAndIndex](eth-gettransactionbyblockhashandindex.md)
-* [eth\_getTransactionByBlockNumberAndIndex](eth-gettransactionbyblocknumberandindex.md)
+* [eth\_getTransactionByHash](eth\_gettransactionbyhash.md)
+* [eth\_getTransactionCount](eth\_gettransactioncount.md)
+* [eth\_getTransactionReceipt](eth\_gettransactionreceipt.md)
+* [eth\_getBlockTransactionCountByHash](eth\_getblocktransactioncountbyhash.md)
+* [eth\_getBlockTransactionCountByNumber](eth\_getblocktransactioncountbynumber.md)
+* [eth\_getTransactionByBlockHashAndIndex](eth\_gettransactionbyblockhashandindex.md)
+* [eth\_getTransactionByBlockNumberAndIndex](eth\_gettransactionbyblocknumberandindex.md)
 * [eth\_getBlockReceipts](eth-getBlockReceipts.md)
 
 ### Writing Transactions
 
 Allows developers to both send ETH from one address to another, write data on-chain, and interact with smart contracts.
 
-* [eth\_sendRawTransaction](eth-sendrawtransaction.md)
+* [eth\_sendRawTransaction](eth\_sendrawtransaction.md)
 * [eth\_sendPrivateTransaction](eth-sendPrivateTransaction.md)
 * [eth\_cancelPrivateTransaction](eth\_cancelPrivateTransaction.md)
 
@@ -45,70 +45,70 @@ Allows developers to both send ETH from one address to another, write data on-ch
 
 Returns information regarding an address's stored on-chain data.
 
-* [eth\_getBalance](eth-getbalance.md)
-* [eth\_getStorageAt](eth-getstorageat.md)
-* [eth\_getCode](eth-getcode.md)
-* [eth\_accounts](eth-accounts.md)
-* [eth\_getProof](eth-getproof.md)
+* [eth\_getBalance](eth\_getbalance.md)
+* [eth\_getStorageAt](eth\_getstorageat.md)
+* [eth\_getCode](eth\_getcode.md)
+* [eth\_accounts](eth\_accounts.md)
+* [eth\_getProof](eth\_getproof.md)
 
 ### EVM/Smart Contract Execution
 
 Allows developers to read data from the blockchain which includes executing smart contracts. However, no data is published to the Ethereum network.&#x20;
 
-* [eth\_call](eth-call.md)
+* [eth\_call](eth\_call.md)
 
 ### Event Logs
 
 Returns logs which are records that denote/provide context on specific events within a smart contract, like a token transfer or a change of ownership for example.
 
-* [eth\_getLogs](eth-getlogs.md)
+* [eth\_getLogs](eth\_getlogs.md)
 
 ### Chain Information
 
 Returns information on the Ethereum network and internal settings.
 
-* [eth\_protocolVersion](eth-protocolversion.md)
-* [eth\_gasPrice](eth-gasprice.md)
-* [eth\_estimateGas](eth-estimategas.md)
-* [eth\_feeHistory](eth-feehistory.md)
-* [eth\_maxPriorityFeePerGas](eth-maxpriorityfeepergas.md)
-* [eth\_chainId](eth-chainid.md)
+* [eth\_protocolVersion](eth\_protocolversion.md)
+* [eth\_gasPrice](eth\_gasprice.md)
+* [eth\_estimateGas](eth\_estimategas.md)
+* [eth\_feeHistory](eth\_feehistory.md)
+* [eth\_maxPriorityFeePerGas](eth\_maxpriorityfeepergas.md)
+* [eth\_chainId](eth\_chainid.md)
 * [net\_version](net-version.md)
-* [net\_listening](net-listening.md)
+* [net\_listening](net\_listening.md)
 
 ### Getting Uncles
 
 Returns information on uncle blocks are which are network rejected blocks and replaced by a canonical block instead.
 
-* [eth\_getUncleByBlockHashAndIndex](eth-getunclebyblockhashandindex.md)
-* [eth\_getUncleByBlockNumberAndIndex](eth-getunclebyblocknumberandindex.md)
-* [eth\_getUncleCountByBlockHash](eth-getunclecountbyblockhash.md)
-* [eth\_getUncleCountByBlockNumber](eth-getunclecountbyblocknumber.md)
+* [eth\_getUncleByBlockHashAndIndex](eth\_getunclebyblockhashandindex.md)
+* [eth\_getUncleByBlockNumberAndIndex](eth\_getunclebyblocknumberandindex.md)
+* [eth\_getUncleCountByBlockHash](eth\_getunclecountbyblockhash.md)
+* [eth\_getUncleCountByBlockNumber](eth\_getunclecountbyblocknumber.md)
 
 ### Filters
 
 Allows developers to filter and query for specific Ethereum logs.&#x20;
 
-* [eth\_getFilterChanges](eth-getfilterchanges.md)
-* [eth\_getFilterLogs](eth-getfilterlogs.md)
-* [eth\_newBlockFilter](eth-newblockfilter.md)
-* [eth\_newFilter](eth-newfilter.md)
-* [eth\_newPendingTransactionFilter](eth-newpendingtransactionfilter.md)
-* [eth\_uninstallFilter](eth-uninstallfilter.md)&#x20;
+* [eth\_getFilterChanges](eth\_getfilterchanges.md)
+* [eth\_getFilterLogs](eth\_getfilterlogs.md)
+* [eth\_newBlockFilter](eth\_newblockfilter.md)
+* [eth\_newFilter](eth\_newfilter.md)
+* [eth\_newPendingTransactionFilter](eth\_newpendingtransactionfilter.md)
+* [eth\_uninstallFilter](eth\_uninstallfilter.md)&#x20;
 
 ### Web3
 
 Returns Ethereum network configuration information.
 
-* [web3\_clientVersion](web3-clientversion-1.md)&#x20;
-* [web3\_sha3](web3-sha3-1.md)
+* [web3\_clientVersion](web3\_clientversion-1.md)&#x20;
+* [web3\_sha3](web3\_sha3-1.md)
 
 ### Real-time Events
 
 Introduces WebSocket-based requests/responses which leverage a network connection allowing developers to listen for changes continuously without the need for HTTP polling.
 
-* [eth\_subscribe](eth-subscribe-1.md)
-* [eth\_unsubscribe](eth-unsubscribe-1.md)&#x20;
+* [eth\_subscribe](eth\_subscribe-1.md)
+* [eth\_unsubscribe](eth\_unsubscribe-1.md)&#x20;
 
 ## What testnet should developers use for Ethereum development?
 
@@ -164,7 +164,7 @@ There are three steps to get the timestamp for a transaction:
 
 1. Grab the `blockNumber` field in your transaction object
    1. If you only have the transaction hash, you can get the full object by making a request to [`eth_getTransactionByHash`](./#eth\_gettransactionbyhash).
-2. Get the block info by calling [eth\_getBlockByNumber](eth-getblockbynumber.md)
+2. Get the block info by calling [eth\_getBlockByNumber](eth\_getblockbynumber.md)
 3. Grab the `timestamp` field in the returned block object
 
 Here is an [example request](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getBlockByNumber%22%2C%22paramValues%22%3A%5B%22latest%22%2Cfalse%5D%7D).
