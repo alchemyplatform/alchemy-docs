@@ -31,7 +31,7 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
 
 ### 06/15/2022
 
-* **\[Latency]** Specify `Accept-Encoding` in the header of your request to get compressed response payloads for all responses bigger 1024 bytes, expect large latency reductions as a result. See example request below:
+* **\[Latency]** Specify `Accept-Encoding` in the header of your request (according to [HTTP standards](https://httpwg.org/specs/rfc7231.html#rfc.section.5.3.4\))) to get compressed response payloads up to 95% for all responses bigger 1024 bytes, expect large latency reductions as a result. See example request below:
 
 ```
 curl https://eth-mainnet.alchemyapi.io/v2/demo \
@@ -39,6 +39,17 @@ curl https://eth-mainnet.alchemyapi.io/v2/demo \
    -H "Content-Type: application/json" \
    -H "Accept-Encoding: gzip" \
    -d '{"method":"trace_replayTransaction","params":["0x5862dc09779b4af56ab8829acdf0fb3160962db1d5aa4236950e307a36612450",["trace"]],"id":1,"jsonrpc":"2.0"}'
+```
+
+The response payload will contain a header `Content-Encoding` where the value is the compression algorithm so the client knows how to decompress, see example response below:
+
+```
+< content-type: application/json
+< content-length: 727
+< content-encoding: gzip
+_<8b>^H^@^@^@^@^@^@^@ìWËnÛ0^Pü^W<9e><8d>bù^úV _P¤§ ^G<92>»^LR¸q ËA<8b>ÀÿÞ<95><8c>Àv^R¡r<8d>äPdá^CEkù<98>á^LW<8f>êÇf}×ÝWµTæ^S¨<85>º%µÔ^KÕñf»êÕòQ·ýýVZ
+~Éß<9b>>÷üå¶5µ¼Û®V^KÕw¹²Z^?ª\ûÛõÝ<90>ÒºõÏ1!Ù^V¬·Ñ^@`<89>ÕS<8c><90>s^NYm<9d>w^U©º<84>U^F®yµºú}/C<8d>Mé¹É<9b>q^Pg-¸aewOëÐµµ<98>*ÁDP6) á^XÑ:N%1&§c©Ù5o0³C<99>^ZÚTþ¼p<97>¥ëàÜðó`§^Á<96>[òÈ6Ô<90>"¸^T-^FQ28<98>^T[kH&ú©ü
+FÐ¶©^Xc^[#A^FöÕ5^S9S^B´5úP«<99>Ê^OEGï¢^Sø ¹ê^\å<84>%yÇL<9c><85>9o¢¦i^\}Ð^Q3<90>o^VtÉ-ÔfYWò<96>^R^Fël<94>CPZ<9a>^OÚSèDr^H¨j^V ð¼ÜD)êh^H^DÁB<90>ÎH<8f>N<8e>^O`<88>²s^PPòy3ïÃ<99>¬<93>k95<90>õ#ñùû'<86>^R<8a>Í1\t^H<83>^\<8f><98>^K_2Æ%!¢î×£¢³^_¨^@1<85>bÐC^Q<88>ª÷^X &N<9c>5@#<92>ã#^Y^Oyµå1)Xðj·PÜuëNz¾ò^Cw=<93>:Ø×Þ£6Û2ÚÔf´¶±ù<99>HÞ<91><8e>ëïÒsä;»Å«NvÆ^B<8f><9c><8c>xÅ7b<98>Ï^]^MÈâ<89>£}8Á<87>^Sü^ONpPôÜ;øbE»^W<8a><86>·<94>ô3)[<91>P;<91>2Pc^]P^_ <98>+Þ^S(`ÀáP<85>É|ß6^BÄXU<85>áÕ£ºl<92>Õ<99>ª^]¦:B^T^"ºxWL^Y1<9c>b<9a>À4<9d>ë^[bZq^^¦¯E^St£<83><9c><9c>X^A^VB^SÏT£5P<8a>M®x<8e>^Y<92>Í<93>7Áßb¯dçgpªß<93>S^R§:-â©¹ZÛ[r^Zò¿sú^ZI305ï<89>i^Mõ´<8c><90>¯+@cõÔ^Næ^Ã^GNæ^V^N³9áp       'Õ<96>\dùÚy ,-<96>^Y<9c>Øç<9c>ÈóÃÏ«ý<87>ëp<9f>ìv^?^@^@^@ÿÿ^C^@g<83><91>Ý^H^O^@^@
 ```
 
 * **\[API]** Deprecated parameter input for [alchemy\_filteredNewFullPendingTransactions](../enhanced-apis/subscription-api-websockets/#alchemy\_filterednewfullpendingtransactions). Previous parameter input is still backward compatible but will be unsupported in the future.&#x20;

@@ -135,7 +135,7 @@ The `alchemy_newFullPendingTransactions` subscription type is costly to maintain
 
 #### Returns
 
-* Transaction object for pending transaction, same response payload as [eth\_getTransactionByHash](../../apis/ethereum/eth\_gettransactionbyhash.md#returns)&#x20;
+* Transaction object for pending transaction, same response payload as [eth\_getTransactionByHash](../../apis/ethereum/eth-gettransactionbyhash.md#returns)&#x20;
 
 #### Request
 

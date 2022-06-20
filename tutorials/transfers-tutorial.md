@@ -8,7 +8,7 @@ description: >-
 
 dApps on Ethereum have grown in complexity, depth, and breadth in the past few years. One missing piece is the efficient querying of historical block information. With standard Ethereum JSON-RPC methods, developers either need to maintain centralized databases containing large swaths of the blockchain history, or repeatedly query blocks across long time periods in order to scrap the entire transaction history of a particular address. These two options complicate the process in which users like wallet providers supply information such as the history of a particular user's interactions on the blockchain. Without easy access to this information, developers must rely on expensive, slow methods that limit the feature set of their apps.
 
-While building historical queries into dApps has traditionally been complicated, time-consuming, and error-prone, the [Alchemy Transfers API](../enhanced-apis/transfers-api.md) allows for developers to query historical wallet activity, token transfers, and other account-driven transactions in a simple transaction.
+While building historical queries into dApps has traditionally been complicated, time-consuming, and error-prone, the [Alchemy Transfers API](../enhanced-apis/transfers-api/) allows for developers to query historical wallet activity, token transfers, and other account-driven transactions in a simple transaction.
 
 In this tutorial, we’ll look at an example of how, with just a few lines of code, your dApp can integrate the power of the Alchemy Transfers API.
 
@@ -121,7 +121,7 @@ If you don’t already have one, you’ll first need to [create an account on Al
 
 ### \*\*3. Integrate Alchemy Transfers API \*\*
 
-Once you have an account, you are now able to use the [`alchemy_getAssetTransfers`](../enhanced-apis/transfers-api.md) method which allows you to query asset transfers.
+Once you have an account, you are now able to use the [`alchemy_getAssetTransfers`](../enhanced-apis/transfers-api/) method which allows you to query asset transfers.
 
 For our Akita Token Rescue dashboard, this is the specific request that we use:
 
@@ -148,7 +148,7 @@ For our Akita Token Rescue dashboard, this is the specific request that we use:
 * `fromAddress`: `0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6` is the Gitcoin multisig address
 * `toAddress` : `0xDead000000000000000000000000000000000d06` is the address used for burning tokens
 * `contractAddresses` : `0x3301Ee63Fb29F863f2333Bd4466acb46CD8323E6` contract where the Akita rescue logic is stored
-* `category`: `["external","token"]` are the [types of transfer events](../enhanced-apis/transfers-api.md#types-of-transfers) we want to monitor
+* `category`: `["external","token"]` are the [types of transfer events](../enhanced-apis/transfers-api/#types-of-transfers) we want to monitor
 
 ### 4. Insert Alchemy API Key
 
@@ -301,7 +301,7 @@ Note that we include the ERC20 ABI in this code snippet in order to properly rea
 
 **d) Define Alchemy Transfer function**
 
-Here, we use the Alchemy specific method [`alchemy_getAssetTransfers`](../enhanced-apis/transfers-api.md#alchemy\_getassettransfers) to get the total number of AKITA tokens burned by the Gitcoin contract.
+Here, we use the Alchemy specific method [`alchemy_getAssetTransfers`](../enhanced-apis/transfers-api/#alchemy\_getassettransfers) to get the total number of AKITA tokens burned by the Gitcoin contract.
 
 ```python
 def get_total_burn(): total_burn = requests.post('https://eth-mainnet.alchemyapi.io/v2/'+ALCHEMY_KEY, json={"jsonrpc": "2.0","id": 0,"method": "alchemy_getAssetTransfers","params": [{"fromBlock": "0xC30965","toBlock": "latest","fromAddress": "0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6","toAddress": "0xDead000000000000000000000000000000000d06","contractAddresses": ["0x3301Ee63Fb29F863f2333Bd4466acb46CD8323E6"],"category": ["external","token"]}]})
