@@ -319,6 +319,7 @@
   * [5. Connect APIs to your Smart Contracts using Chainlink](road-to-web3/weekly-learning-challenges/5.-connect-apis-to-your-smart-contracts-using-chainlink.md)
   * [6. How to Build a Staking Dapp](road-to-web3/weekly-learning-challenges/6.-how-to-build-a-staking-dapp.md)
   * [7. How to build an NFT marketplace from scratch](road-to-web3/weekly-learning-challenges/7.-how-to-build-an-nft-marketplace-from-scratch.md)
+  * [8. How to build a betting game on Optimism](road-to-web3/weekly-learning-challenges/8.-how-to-build-a-betting-game-on-optimism.md)
 
 ## 💻 Tutorials
 
