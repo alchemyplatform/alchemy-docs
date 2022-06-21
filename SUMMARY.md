@@ -296,6 +296,7 @@
 
 ## 📖 Documentation
 
+* [Best Practices When Using Alchemy](documentation/best-practices-when-using-alchemy.md)
 * [Changelog](documentation/changelog.md)
 * [Alchemy Web3.js](documentation/alchemy-web3/README.md)
   * [Enhanced Web3 API](documentation/alchemy-web3/enhanced-web3-api.md)
