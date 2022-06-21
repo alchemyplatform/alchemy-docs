@@ -17,7 +17,7 @@ _To see chain support across all features, check out the_ [_feature matrix_](../
 * `contractAddress`: _**\[string]**_ - contract address for the NFT collection
 
 {% hint style="info" %}
-When using pricing information from exchanges, we advise that all teams attribute the data to the respective marketplace with a **View on {Exchange}** button/link that allows users to explore the collection more on OpenSea/LooksRare specifically.
+When using pricing information from marketplaces, we advise that all teams attribute the data to the respective marketplace with a **View on {Marketplace}** button/link that allows users to explore the collection more on OpenSea/LooksRare specifically.
 {% endhint %}
 
 ## Returns&#x20;
@@ -25,8 +25,8 @@ When using pricing information from exchanges, we advise that all teams attribut
 * _**\[object]**_ with the following properties&#x20;
   * `marketplace`: _**\[object]**_ name of the NFT marketplace where the collection is listed. Current marketplaces supported:  [OpenSea](https://opensea.io/), [LooksRare](https://looksrare.org/)
     * `floorPrice`: _**\[float]** - ****_ the floor price of the collection on the given marketplace
-    * `priceCurrency`: _**\[string]** -_ the currency in which the floor price is denominated
-      * Typically denominated in **(ETH/WETH), SOL, USDC, and DAI**
+    * `priceCurrency`: _**\[enum]** -_ the currency in which the floor price is denominated
+      * Typically, denominated in **ETH**
     * `collectionUrl`: _**\[string]** - ****_ link to the collection on the given marketplace
     * `retrievedAt`: _**\[string]** -_ UTC timestamp of when the floor price was retrieved from the marketplace
     * `error`: _**\[string]**_** -**returns an error if there was an error fetching floor prices from the given marketplace
