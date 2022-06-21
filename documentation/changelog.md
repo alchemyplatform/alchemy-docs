@@ -6,6 +6,10 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
 
 ## Future
 
+### 07/01/2022
+
+* **\[Network]** Starting **at 9AM PST on July 1st** the Ropsten and Kovan networks will no longer be supported on Alchemy. The Ethereum Foundation has stopped maintaining support for these test networks so there is a high change they might fail without warning. **We strongly reccomend switching over to Goerli as soon as possible.**  Here is [a short guide on how to migrate](https://www.alchemy.com/overviews/migrate-from-ropsten-to-goerli).
+
 ### 06/27/2022
 
 * **\[API]** Deprecated parameter feature set for [alchemy\_getAssetTransfers](../enhanced-apis/transfers-api.md). After June 27, 2022, previous parameter logic will no longer be accepted.
