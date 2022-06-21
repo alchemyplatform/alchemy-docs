@@ -22,14 +22,14 @@ When using pricing information from exchanges, we advise that all teams attribut
 
 ## Returns&#x20;
 
-* `floorPrices`: list of objects that represents the floor prices of the collection across marketplaces
-  * `marketplace`: name of the NFT marketplace where the collection is listed and its associated marketplace price. \
-    Current marketplaces supported:  [OpenSea](https://opensea.io/), [LooksRare](https://looksrare.org/)
-  * `floorPrice`: the floor price of the collection on the given exchange
-  * `priceCurrency`: the asset in which the floor price is denominated\
-    \- Typically denominated in **(ETH/WETH), SOL, USDC, and DAI**
-  * `collectionUrl`: link to the collection on the given marketplace
-  * `error`: returns an error, if there was an error fetching floor prices from the given exchange
+* _**\[object]**_ with the following properties&#x20;
+  * `marketplace`: _**\[object]**_ name of the NFT marketplace where the collection is listed. Current marketplaces supported:  [OpenSea](https://opensea.io/), [LooksRare](https://looksrare.org/)
+    * `floorPrice`: _**\[float]** - ****_ the floor price of the collection on the given marketplace
+    * `priceCurrency`: _**\[string]** -_ the currency in which the floor price is denominated
+      * Typically denominated in **(ETH/WETH), SOL, USDC, and DAI**
+    * `collectionUrl`: _**\[string]** - ****_ link to the collection on the given marketplace
+    * `retrievedAt`: _**\[string]** -_ UTC timestamp of when the floor price was retrieved from the marketplace
+    * `error`: _**\[string]**_** -**returns an error if there was an error fetching floor prices from the given marketplace
 
 ## Examples
 
@@ -96,22 +96,22 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
 
 ### Response
 
+{% code title="200" %}
 ```json
 {
-    "floorPrices": [
-        {
-            "marketplace": "opensea",
-            "floorPrice": 95.9,
-            "priceCurrency": "ETH",
-            "collectionUrl": "https://opensea.io/collection/boredapeyachtclub"
-        },
-        {
-            "marketplace": "looksrare",
-            "floorPrice": 86.9,
-            "priceCurrency": "ETH",
-            "collectionUrl": "https://looksrare.org/collections/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
-        }
-    ]
+    "openSea": {
+        "floorPrice": 90,
+        "priceCurrency": "ETH",
+        "retrievedAt": "2022-06-21T13:50:17.080287240Z",
+        "collectionUrl": "https://opensea.io/collection/boredapeyachtclub"
+    },
+    "looksRare": {
+        "floorPrice": 87,
+        "priceCurrency": "ETH",
+        "retrievedAt": "2022-06-21T15:08:59.819Z",
+        "collectionUrl": "https://looksrare.org/collections/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
+    }
 }
 
 ```
+{% endcode %}
