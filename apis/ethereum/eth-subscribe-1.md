@@ -1,7 +1,7 @@
 ---
 description: >-
-  Ethereum API - Subscribe to different event types like newHeads, logs,
-  pendingTransactions, and syncing using websockets.
+  Ethereum API - Subscribe to different event types like newHeads, logs, and
+  pendingTransactions using websockets.
 ---
 
 # eth\_subscribe - Ethereum
@@ -37,33 +37,85 @@ While the subscription is active, you will receive events which are objects with
 
 ## Subscription types
 
-### 1. alchemy\_newFullPendingTransactions
+The following subscription types are accepted in all `eth_subscribe` websocket requests through your Alchemy endpoint.&#x20;
 
-Returns the transaction information for all transactions that are added to the pending state. This subscription type subscribes to pending transactions, similar to the standard Web3 call `web3.eth.subscribe("pendingTransactions")`, but differs in that it emits full transaction information rather than just transaction hashes.
+| Subscription Type                                                               | Description                                                                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| [alchemy\_pendingTransactions](eth-subscribe-1.md#alchemy\_pendingtransactions) | Emits full transactions that are sent to the network, marked as "pending", and are sent from **** or to **** a certain address. |
+| [newPendingTransactions](eth-subscribe-1.md#newpendingtransactions)             | Emits transaction hashes that are sent to the network and marked as "pending".                                                  |
+| [newHeads](eth-subscribe-1.md#newheads)                                         | Emits new blocks that are added to the blockchain.                                                                              |
+| [logs](eth-subscribe-1.md#logs)                                                 | Emits logs attached to a new block that match certain topic filters.                                                            |
+
+### alchemy\_pendingTransactions
+
+Returns the transaction information for all pending transactions that match a given filter.
 
 {% hint style="warning" %}
-The `alchemy_newFullPendingTransactions`subscription type is a super costly to maintain and requires a large number of compute units since it emits full transaction information instead of just transaction hashes. We do not recommend keeping this subscription open for long periods of time for non-enterprise tier users.
-
-NOTE:&#x20;
-
-* The naming of this subscription is different from the naming of the web3 subscription API, [`alchemy_fullPendingTransactions`](../../documentation/alchemy-web3/enhanced-web3-api.md#web-3-eth-subscribe-alchemy\_fullpendingtransactions).
-* This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
+**NOTE:** This method is only supported on **Ethereum** and **Polygon** networks (Mainnet and Mumbai).
 {% endhint %}
 
-### **Parameters**
+#### **Parameters**&#x20;
 
-* None
+* `fromAddress` (optional): `string` or \[`array of strings`]
+  * Singular address or array of addresses to receive pending transactions sent **from** this address.
+* `toAddress` (optional): `string` or \[`array of strings`]
+  * Singular address or array of addresses to receive pending transactions **to** this address
+* `hashesOnly` (optional): `boolean`&#x20;
+  * Default value is `false`, where the response matches the payload of [eth\_getTransactionByHash](eth\_gettransactionbyhash.md#returns) . If set to `true`, the payload returned contains _only the hashes of the transactions_ that are added to the pending state, which matches the payload of [newPendingTransactions](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#newpendingtransactions))
 
-### **Example**
+{% hint style="info" %}
+**NOTE:** Excluding all parameters returns the transaction information for **all transactions** that are added to the pending state.
+{% endhint %}
+
+#### Returns
+
+With `hashesOnly` = `true`&#x20;
+
+* `result`: ** **_**\[string]** -_ transaction __ hash for pending transaction
+* `subscription`: _**\[string]** -_ subscription ID __&#x20;
+
+With `hashesOnly` = `false`
+
+* `result` - _**\[object]**_ A transaction object:
+  * `blockHash`: `DATA`, 32 Bytes -  `null` when it's pending.
+  * `blockNumber`: `QUANTITY` - `null` when it's pending.
+  * `from`: `DATA`, 20 Bytes - address of the sender.
+  * `gas`: `QUANTITY` - gas provided by the sender.
+  * `gasPrice`: `QUANTITY` - gas price provided by the sender in Wei.
+  * `hash`: `DATA`, 32 Bytes - hash of the transaction.
+  * `input`: `DATA` - the data send along with the transaction.
+  * `nonce`: `QUANTITY` - the number of transactions made by the sender prior to this one.
+  * `to`: `DATA`, 20 Bytes - address of the receiver. `null` when it's a contract creation transaction.
+  * `transactionIndex`: `QUANTITY` -  `null` when its pending.
+  * `value`: `QUANTITY` - value transferred in Wei.
+  * `v`: `QUANTITY` - ECDSA recovery id
+  * `r`: `DATA`, 32 Bytes - ECDSA signature r
+  * `s`: `DATA`, 32 Bytes - ECDSA signature s
+* `subscription` - _**\[string]**_ subscription ID
 
 #### Request
 
 {% tabs %}
 {% tab title="wscat" %}
-```bash
-wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
+```javascript
+// initiate websocket stream first
+wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
-{"jsonrpc":"2.0","id": 2, "method": "eth_subscribe", "params": ["alchemy_newFullPendingTransactions"]}
+// then call subscription 
+{"jsonrpc":"2.0","id": 2, "method": "eth_subscribe", "params": ["alchemy_pendingTransactions", {"toAddress": ["0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", "0xdAC17F958D2ee523a2206206994597C13D831ec7"], "hashesOnly": false}]}
+```
+{% endtab %}
+
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+// Initialize alchemy-web3 object.
+const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
+
+// Subcribes to the event and prints results 
+web3.eth.subscribe("alchemy_pendingTransactions", {"toAddress": ["0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", "0xdAC17F958D2ee523a2206206994597C13D831ec7"], "hashesOnly": false}).on("data", (data) => console.log(data));
 ```
 {% endtab %}
 {% endtabs %}
@@ -71,110 +123,74 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
 #### Result
 
 ```javascript
-{"id":1,"result":"0x9a52eeddc2b289f985c0e23a7d8427c8","jsonrpc":"2.0"}
+{"id":1,"result":"0xf13f7073ddef66a8c1b0c9c9f0e543c3","jsonrpc":"2.0"}
+
 {
-    "jsonrpc":"2.0",
-    "method":"eth_subscription",
-    "params":{
-        "result":{
-            "blockHash":null,
-            "blockNumber":null,
-            "from":"0xa36452fc31f6f482ad823cd1cf5515177d57667f",
-            "gas":"0x1adb0",
-            "gasPrice":"0x7735c4d40",
-            "hash":"0x50bff0736c713458c92dd1848d12f3354149be1363123dae35e94e0f2a9d56bf",
-            "input":"0xa9059cbb0000000000000000000000000d0707963952f2fba59dd06f2b425ace40b492fe0000000000000000000000000000000000000000000015b1111266cfca100000",
-            "nonce":"0x0",
-            "to":"0xea38eaa3c86c8f9b751533ba2e562deb9acded40",
-            "transactionIndex":null,
-            "value":"0x0",
-            "v":"0x26",
-            "r":"0x195c2c1ed126088e12d290aa93541677d3e3b1d10f137e11f86b1b9227f01e3b",
-            "s":"0x60fc4edbf1527832a2a36dbc1e63ed6193a6eee654472fbebbf88ef1750b5344"},
-            "subscription":"0x9a52eeddc2b289f985c0e23a7d8427c8"
-        }
+  "jsonrpc": "2.0",
+  "method": "eth_subscription",
+  "params": {
+    "result": {
+      "blockHash": null,
+      "blockNumber": null,
+      "from": "0x098bdcdc84ab11a57b7c156557dca8cef853523d",
+      "gas": "0x1284a",
+      "gasPrice": "0x6fc23ac00",
+      "hash": "0x10466101bd8979f3dcba18eb72155be87bdcd4962527d97c84ad93fc4ad5d461",
+      "input": "0xa9059cbb00000000000000000000000054406f1ec84f89532f83768f3f159b73b237257f0000000000000000000000000000000000000000000000000000000001c9c380",
+      "nonce": "0x11",
+      "to": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "transactionIndex": null,
+      "value": "0x0",
+      "type": "0x0",
+      "v": "0x26",
+      "r": "0x93ddd646056f365352f7e53dfe5dc81bde53f5b7c7bbe5deea555a62540d6995",
+      "s": "0x79ed82a681930feb11eb68feccd1df2e53e1b96cf9171ae4ffcf53e9b2a40e8e"
+    },
+    "subscription": "0xf13f7073ddef66a8c1b0c9c9f0e543c3"
+  }
 }
 ```
 
-### 2. alchemy\_filteredNewFullPendingTransactions
+### newPendingTransactions
 
-Returns the transaction information for all transactions that are added to the pending state that match a given filter. Currently supports an address filter, which will return transactions from or to the address.
+Returns the hash for all transactions that are added to the pending state (regardless if you sent them or not).
 
 {% hint style="warning" %}
 NOTE: This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
 {% endhint %}
 
-### **Parameters**&#x20;
-
-* `address`: address to receive pending transactions for (sent from this address).&#x20;
-
-### **Example**
-
-#### Request
-
-{% tabs %}
-{% tab title="wscat" %}
-```bash
-wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
-
-{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["alchemy_filteredNewFullPendingTransactions", {"address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2"}]}
-```
-{% endtab %}
-{% endtabs %}
-
-#### Result
-
-```javascript
-{"id":1,"result":"0x9a52eeddc2b289f985c0e23a7d8427c8","jsonrpc":"2.0"}
-{
-    "jsonrpc":"2.0",
-    "method":"eth_subscription",
-    "params":{
-        "result":{
-            "blockHash":null,
-            "blockNumber":null,
-            "from":"0xa36452fc31f6f482ad823cd1cf5515177d57667f",
-            "gas":"0x1adb0",
-            "gasPrice":"0x7735c4d40",
-            "hash":"0x50bff0736c713458c92dd1848d12f3354149be1363123dae35e94e0f2a9d56bf",
-            "input":"0xa9059cbb0000000000000000000000000d0707963952f2fba59dd06f2b425ace40b492fe0000000000000000000000000000000000000000000015b1111266cfca100000",
-            "nonce":"0x0",
-            "to":"0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-            "transactionIndex":null,
-            "value":"0x0",
-            "v":"0x26",
-            "r":"0x195c2c1ed126088e12d290aa93541677d3e3b1d10f137e11f86b1b9227f01e3b",
-            "s":"0x60fc4edbf1527832a2a36dbc1e63ed6193a6eee654472fbebbf88ef1750b5344"},
-            "subscription":"0x9a52eeddc2b289f985c0e23a7d8427c8"
-        }
-}
-```
-
-### 3. newPendingTransactions
-
-Returns the hash for all transactions that are added to the pending state.
-
-When a transaction that was previously part of the canonical chain isn’t part of the new canonical chain after a reorganization its again emitted.
-
-{% hint style="warning" %}
-NOTE: This method is only supported on Ethereum and Polygon networks (Mainnet and Mumbai).
-{% endhint %}
-
-### **Parameters**
+#### **Parameters**
 
 * None
 
-### **Example**
+**Returns**
+
+* `result`: ** **_**\[string]** -_ transaction __ hash for pending transaction
+* `subscription`: _**\[string]** -_ subscription ID __&#x20;
 
 **Request**
 
 {% tabs %}
 {% tab title="wscat" %}
-```bash
- wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
- 
+```java
+// initiate websocket stream first
+wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
+// then call subscription 
 {"jsonrpc":"2.0","id": 2, "method": "eth_subscribe", "params": ["newPendingTransactions"]}
+```
+{% endtab %}
+
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+// Initialize alchemy-web3 object.
+const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
+
+// Subcribes to the event and prints results 
+web3.eth.subscribe("newPendingTransactions").on("data", (data) => console.log(data));
 ```
 {% endtab %}
 {% endtabs %}
@@ -182,11 +198,8 @@ NOTE: This method is only supported on Ethereum and Polygon networks (Mainnet an
 **Result**
 
 ```javascript
-{
-    "jsonrpc":"2.0",
-    "id":2,
-    "result":"0xc3b33aa549fb9a60e95d21862596617c"
-}
+{"id":1,"result":"0xc3b33aa549fb9a60e95d21862596617c","jsonrpc":"2.0"}
+
 {
     "jsonrpc":"2.0",
     "method":"eth_subscription",
@@ -197,30 +210,43 @@ NOTE: This method is only supported on Ethereum and Polygon networks (Mainnet an
 }
 ```
 
-### 4. newHeads
+### newHeads
 
-Emits an event any time a new header is added to the chain, including during a chain reorganization.
+Emits an event any time a new header (block) is added to the chain, including during a chain reorganization.
 
 {% hint style="info" %}
 **NOTE: Chain Reorganizations (ReOrgs)**
 
-When a chain reorganization occurs, this subscription will emit an event containing all new headers for the new chain. This means that you may see multiple headers emitted with the same height, and when this happens the later header should be taken as the correct one after a reorganization.
+When a chain reorganization occurs, this subscription will emit an event containing all new headers (blocks) for the new chain. This means that you may see multiple headers emitted with the same height, and when this happens the later header should be taken as the correct one after a reorganization.
 {% endhint %}
 
-### Parameters
+#### Parameters
 
 * None
-
-### Example
 
 **Request**
 
 {% tabs %}
 {% tab title="wscat" %}
-```bash
-wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
+```javascript
+// initiate websocket stream first
+wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
+// then call subscription 
 {"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["newHeads"]}
+```
+{% endtab %}
+
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+// Initialize alchemy-web3 object.
+const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
+
+// Subcribes to the event and prints results 
+web3.eth.subscribe("newHeads").on("data", (data) => console.log(data));
 ```
 {% endtab %}
 {% endtabs %}
@@ -228,11 +254,8 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
 **Result**
 
 ```java
-{
-  "jsonrpc":"2.0",
-  "id":1,
-  "result":"0x9ce59a13059e417087c02d3236a0b1cc"
-}
+{"jsonrpc":"2.0", "id":1, "result":"0x9ce59a13059e417087c02d3236a0b1cc"}
+
 {
    "jsonrpc": "2.0",
    "method": "eth_subscription",
@@ -258,7 +281,7 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
  }
 ```
 
-### 5. logs
+### logs
 
 Emits logs which are part of newly added blocks that match specified filter criteria.
 
@@ -270,16 +293,18 @@ When a chain reorganization occurs, logs that are part of blocks on the old chai
 Logs which are part of the blocks on the new chain are also emitted, it is possible to see logs for the same transaction multiple times in the case of a reorganization.
 {% endhint %}
 
-### Parameters
+#### Parameters
 
-1. An object with the following fields:
-   * `adddress` (optional): either a string representing an address or an array of such strings.
-     * Only logs created from one of these addresses will be emitted.
-   * `topics`: an array of topic specifiers.
-     * Each topic specifier is either `null`, a string representing a topic, or an array of strings.
-     * Each position in the array which is not `null` restricts the emitted logs to only those who have one of the given topics in that position.
+An object with the following fields:
 
-Some examples of topic specifications:
+* `adddress` (optional): \[`string`] or \[`array of strings`] Singular address or array of addresses.
+  * Only logs created from one of these addresses will be emitted.
+* `topics`: an array of topic specifiers.
+  * Each topic specifier is either `null`, a single string, or an array of strings.
+  * For every non `null` topic, a log will be emitted when activity associated with that topic occurs.
+
+{% hint style="info" %}
+**Topic Specifications:**&#x20;
 
 * `[]`: Any topics allowed.
 * `[A]`: A in first position (and anything after).
@@ -287,16 +312,32 @@ Some examples of topic specifications:
 * `[A, B]`: A in first position and B in second position (and anything after).
 * `[[A, B], [A, B]]`: (A or B) in first position and (A or B) in second position (and anything after).
 
-### Example
+To learn more about how log topics work, check out [this page](../../enhanced-apis/subscription-api-websockets/how-to-listen-to-nft-mints.md#what-are-log-topics).&#x20;
+{% endhint %}
 
 #### Request
 
 {% tabs %}
 {% tab title="wscat" %}
-```bash
-wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
+```javascript
+// initiate websocket stream first
+wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
 
-{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["logs", {"address": "0x8320fe7702b96808f7bbc0d4a888ed1468216cfd", "topics": ["0xd78a0cb8bb633d06981248b816e7bd33c2a35a6089241d099fa519e361cab902"]}]}
+// then call subscription 
+{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["logs", {"address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "topics": ["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"]}]}
+```
+{% endtab %}
+
+{% tab title="alchemyweb3.js" %}
+```javascript
+// Installation: https://github.com/alchemyplatform/alchemy-web3
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
+// Initialize alchemy-web3 object.
+const web3 = createAlchemyWeb3(`wss://eth-mainnet.alchemyapi.io/v2/demo`);
+
+// Subcribes to the event and prints results 
+web3.eth.subscribe("logs", {"address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "topics": ["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"]}).on("data", (data) => console.log(data));
 ```
 {% endtab %}
 {% endtabs %}
@@ -325,51 +366,6 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
             "transactionHash":"0xe044554a0a55067caafd07f8020ab9f2af60bdfe337e395ecd84b4877a3d1ab4",
             "transactionIndex":"0x0"
         }
-    }
-}
-```
-
-### 6. syncing
-
-Indicates when the node starts or stops synchronizing. The result can either be a boolean indicating that the synchronization has started (true), finished (false) or an object with various progress indicators.
-
-### **Parameters**
-
-* None
-
-### **Example**
-
-**Request**
-
-{% tabs %}
-{% tab title="wscat" %}
-```bash
-wscat -c wss://eth-mainnet.alchemyapi.io/v2/<key>
-
-{"jsonrpc":"2.0","id": 1, "method": "eth_subscribe", "params": ["syncing"]}
-```
-{% endtab %}
-{% endtabs %}
-
-**Result**
-
-```java
-{
-    "jsonrpc":"2.0",
-    "id":1,
-    "result":"0xe2ffeb2703bcf602d42922385829ce96"
-}
-
-{
-    "subscription":"0xe2ffeb2703bcf602d42922385829ce96",
-    "result":{
-        "syncing":true,
-        "status":{
-            "startingBlock":674427,
-            "currentBlock":67400,
-            "highestBlock":674432,
-            "pulledStates":0,
-            "knownStates":0}
     }
 }
 ```
