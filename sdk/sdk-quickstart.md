@@ -12,7 +12,7 @@ description: >-
 Alchemy SDK helps developers use Alchemy's APIs and endpoints more efficiently. This is a lightweight, modular SDK that encapsulates common usage patterns and abstracts away the complexities of both our HTTP and JSON-RPC endpoints.
 
 {% hint style="warning" %}
-### **Private Beta**
+### **Public Beta**
 
 Note that the SDK is still in public beta. Alchemy reserves the right to (and almost certainly will) make breaking API changes in subsequent releases (don't write production code around it just yet).
 {% endhint %}
