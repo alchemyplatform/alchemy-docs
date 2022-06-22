@@ -1,7 +1,7 @@
 ---
 description: >-
   Learn how to subscribe to pending transactions, log events, new blocks and
-  more using WebSockets on Ethereum, Polygon, and Arbitrum.
+  more using WebSockets on Ethereum, Polygon, Arbitrum, and Optimism.
 ---
 
 # Subscription API (WebSockets)
@@ -135,7 +135,7 @@ The `alchemy_newFullPendingTransactions` subscription type is costly to maintain
 
 #### Returns
 
-* Transaction object for pending transaction, same response payload as [eth\_getTransactionByHash](../../apis/ethereum/eth-gettransactionbyhash.md#returns)&#x20;
+* Transaction object for pending transaction, same response payload as [eth\_getTransactionByHash](../../apis/ethereum/eth\_gettransactionbyhash.md#returns)&#x20;
 
 #### Request
 
