@@ -1,7 +1,7 @@
 ---
 description: >-
-  Arbitrum API - Subscribe to different event types like newHeads, logs,
-  pendingTransactions, and syncing using websockets.
+  Arbitrum API - Subscribe to different event types like newHeads, logs, and
+  syncing using websockets.
 ---
 
 # eth\_subscribe - Arbitrum

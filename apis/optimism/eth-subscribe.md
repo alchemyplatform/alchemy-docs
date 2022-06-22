@@ -1,7 +1,7 @@
 ---
 description: >-
-  Optimism API - Subscribe to different event types like newHeads, logs,
-  pendingTransactions, and syncing using websockets.
+  Optimism API - Subscribe to different event types like newHeads, logs, and
+  syncing using websockets.
 ---
 
 # eth\_subscribe - Optimism

@@ -1,3 +1,9 @@
+---
+description: >-
+  How to use websockets when building on Ethereum, Polygon, Optimism, and
+  Arbitrum.
+---
+
 # 🌐 Best Practices for Using WebSockets in Web3
 
 ## What are WebSockets and how do they differ from HTTP requests?&#x20;

@@ -11,7 +11,7 @@ Ethereum blockchain does not natively support Notifications. For a user, that me
 
 ![dapp notifications example](../.gitbook/assets/5fa0ef98900e26b013286e9e\_notify-hero.png)
 
-Using [Alchemy Notify](https://www.alchemy.com/notify) and [Alchemy's pending transaction WebSocket](https://docs.alchemy.com/alchemy/guides/using-websockets#2-alchemy\_filterednewfullpendingtransactions), dApps can monitor activity and send real-time push notifications to their users. This leads to a much better UX and in today's market, can even be your competitive advantage.\
+Using [Alchemy Notify](https://www.alchemy.com/notify) and Alchemy's [pending transaction WebSocket](../enhanced-apis/subscription-api-websockets/#alchemy\_pendingtransactions), dApps can monitor activity and send real-time push notifications to their users. This leads to a much better UX and in today's market, can even be your competitive advantage.\
 \
 In this tutorial, we will show you how to send SMS notifications for any activity throughout the lifecycle of a transaction.
 
@@ -22,7 +22,7 @@ In this tutorial, we will show you how to send SMS notifications for any activit
    1. [Clone Github Repo, Set-Up Heroku, Set-Up Twilio](how-to-track-ethereum-transactions.md#a-clone-the-existing-github-repository)
    2. [Alchemy Notify API & Register Webhook Notifications](how-to-track-ethereum-transactions.md#2.-alchemy-notify-api-and-register-webhook-notifications)
       * Create a [free Alchemy account](https://alchemy.com/?r=affiliate:ba2189be-b27d-4ce9-9d52-78ce131fdc2d)
-   3. [alchemy\_filteredNewFullPendingTransactions](how-to-track-ethereum-transactions.md#3.-using-alchemy\_filterednewfullpendingtransactions-to-track-pending-transactions)
+   3. [Subscribe to pending transactions](how-to-track-ethereum-transactions.md#3.-using-alchemy\_pendingtransactions-to-track-pending-transactions)
    4. [Configure SMS notifications](how-to-track-ethereum-transactions.md#4.-configure-sms-notifications)
    5. [Deploy Heroku App!](how-to-track-ethereum-transactions.md#5.-deploy-heroku-app)
 3. [Build the project from scratch](how-to-track-ethereum-transactions.md#option-2-build-project-from-scratch)
@@ -192,9 +192,9 @@ In the dashboard&#x20;
 
 ![](<../.gitbook/assets/Screenshot 2022-05-10 at 2.07.41 PM.png>)
 
-### 3. Using alchemy\_filteredNewFullPendingTransactions to track pending transactions
+### 3. Using alchemy\_pendingTransactions to track pending transactions
 
-Assuming you've created the account, we will now use [`alchemy_filteredNewFullPendingTransactions`](https://docs.alchemy.com/alchemy/guides/using-websockets#2-alchemy\_filterednewfullpendingtransactions) method which allows you to receive notifications on pending asset transfers for an address.
+Assuming you've created the account, we will now use [`alchemy_pendingTransactions`](../enhanced-apis/subscription-api-websockets/#alchemy\_pendingtransactions) method which allows you to receive notifications on pending asset transfers for an address.
 
 For this tutorial, we make use of Alchemy's WebSockets to avoid making requests continuously when you want specific information. WebSockets maintain a network connection for you and listen for changes.
 
@@ -235,7 +235,7 @@ for i in range(3):
 	else:
 		break
 
-ws.send(json.dumps({"jsonrpc":"2.0","method":"eth_subscribe","params":["alchemy_filteredNewFullPendingTransactions", {"address": "0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2"}],"id":1}))
+ws.send(json.dumps({"jsonrpc":"2.0","method":"eth_subscribe","params":["alchemy_filteredNewFullPendingTransactions", {"toAddress": "0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2"}],"id":1}))
 print("JSON eth_subscribe sent")
 ```
 
@@ -450,7 +450,7 @@ NOTE: We embed our wss connection in a `for loop` that runs three times to help 
 After initiating the connection, to define the type of information we want to receive from the WebSocket, add the below line:
 
 ```python
-ws.send(json.dumps({"jsonrpc":"2.0","method":"eth_subscribe","params":["alchemy_filteredNewFullPendingTransactions", {"address": "0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2"}],"id":1}))
+ws.send(json.dumps({"jsonrpc":"2.0","method":"eth_subscribe","params":["alchemy_filteredNewFullPendingTransactions", {"toAddress": "0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2"}],"id":1}))
 ```
 
 Breaking down our JSON message, we send the following:
@@ -460,15 +460,15 @@ Breaking down our JSON message, we send the following:
     "jsonrpc":"2.0",
     "method":"eth_subscribe",
     "params":[
-        "alchemy_filteredNewFullPendingTransactions", {
-            "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2"
+        "alchemy_pendingTransactions", {
+            "toAddress": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2"
         }
     ],
     "id":1
 }
 ```
 
-Notice how we use the[`alchemy_filteredNewFullPendingTransactions`](https://docs.alchemy.com/alchemy/guides/using-websockets#2-alchemy\_filterednewfullpendingtransactions) method which allows us to receive notifications on pending asset transfers for a user-defined address.
+Notice how we use the [`alchemy_pendingTransactions`](../enhanced-apis/subscription-api-websockets/#alchemy\_pendingtransactions) method which allows us to receive notifications on pending asset transfers for a user-defined address.
 
 {% hint style="warning" %}
 Remember to change the address field to reflect the address/wallet that you want to monitor.
@@ -478,7 +478,7 @@ Remember to change the address field to reflect the address/wallet that you want
 
 Now that we are able to create a WebSocket and send our request, we must listen for a response, parse it, and then act on the notification.
 
-We use a `while true`loop to force our script to continuously listen for a response and wrap our parsing code within the loop so that we can interpret the notification.
+We use a `while true` loop to force our script to continuously listen for a response and wrap our parsing code within the loop so that we can interpret the notification.
 
 Add the below code snippet to your `sniffer.py` file
 
@@ -546,8 +546,8 @@ for i in range(3):
 		time.sleep(3)
 	else:
 		break
-
-ws.send(json.dumps({"jsonrpc":"2.0","method":"eth_subscribe","params":["alchemy_filteredNewFullPendingTransactions", {"address": "0xccD3dd576e715b0E060169e16C39Cd7E6eEdeF51"}],"id":1}))
+		
+ws.send(json.dumps({"jsonrpc":"2.0","method":"eth_subscribe","params":["alchemy_filteredNewFullPendingTransactions", {"toAddress": "0xcF3A24407aae7c87bd800c47928C5F20Cd4764D2"}],"id":1}))
 print("JSON eth_subscribe sent")
 
 while True:
