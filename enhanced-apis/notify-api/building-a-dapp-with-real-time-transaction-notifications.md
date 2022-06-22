@@ -8,15 +8,21 @@ description: >-
 
 dApps on Ethereum have come a long way over the last several years, both in popularity and in complexity. Unfortunately, the user experience of most dApps is lacking compared to web2 apps.
 
-One key piece that is missing is real-time notifications of events. Users need to know immediately when their trades execute, when their transactions fail, when their auction bid has been accepted, or when a wallet of interest has aped into some new token. Without these notifications, trades can be missed, critical actions are forgotten, and ultimately users end up abandoning your dApp.
+One key piece that is missing is real-time notifications of events.&#x20;
 
-Unfortunately, building these real-time notifications into your dApp has traditionally been complicated, time-consuming, and error-prone. But now with [Alchemy Notify](https://alchemy.com/notify?r=affiliate:ba2189be-b27d-4ce9-9d52-78ce131fdc2d), sending real-time push notifications to your users for critical events such as dropped transactions, mined transactions, wallet activity, and even gas price changes is straightforward, easy, and dependable.
+Users need to know immediately when their trades execute, when their transactions fail, when their auction bid has been accepted, or when a wallet of interest has aped into some new token.&#x20;
+
+Without these notifications, trades can be missed, critical actions are forgotten, and ultimately users might abandon your dApp.
+
+Until [Alchemy Notify](https://alchemy.com/notify?r=affiliate:ba2189be-b27d-4ce9-9d52-78ce131fdc2d), building these real-time notifications into your dApp has traditionally been complicated, time-consuming, and error-prone.&#x20;
+
+With Alchemy, sending real-time push notifications to your users for critical events such as [dropped transactions, mined transactions](../../tutorials/how-to-track-ethereum-transactions.md), wallet activity, and even gas price changes is straightforward, easy, and reliable.
 
 {% hint style="info" %}
-At Alchemy, we've just launched Notify v2, which is an improved and more reliable version of Notify v1. You can read more about the [Notify v2 announcement](https://alchemy.com/blog/launching-notify-v2-with-improvements-to-reliability-scalability-and-security).
+Learn about [the differences between Alchemy Notify v1 and v2](https://alchemy.com/blog/launching-notify-v2-with-improvements-to-reliability-scalability-and-security) in our announcement.
 {% endhint %}
 
-In this tutorial, we’ll look at an example of how, with just a few lines of code, your dApp can integrate the power of Alchemy Notify v2
+In this tutorial, we’ll look at an example of how, with just a few lines of code, your dApp can integrate the power of Alchemy Notify v2.
 
 ### **Overview**
 
@@ -41,7 +47,7 @@ For our example, we’ll create a dApp that notifies users on a frontend interfa
 
 Here's what we'll use for our architecture:
 
-* [Express](http://expressjs.com) for our server
+* [Express](https://github.com/alchemyplatform/webhook-examples/tree/master/node-express) for our server
 * [WebSockets](https://docs.alchemy.com/alchemy/guides/using-websockets) to communicate between the client and server
 * [Alchemy Notify](https://alchemy.com/notify?r=affiliate:ba2189be-b27d-4ce9-9d52-78ce131fdc2d) to monitor an address and send a push notification when there is new activity
 
@@ -65,8 +71,8 @@ If you don't want to spend real (mainnet) Ethereum to try out this tutorial, you
 
 1. A change happens to the registered address (e.g. they send or receive a transaction)
 2. Alchemy Notify calls the server webhook with the change information
-3. The server notifies the client through WebSockets that a change has been made to the address
-4. The website frontend displays the JSON response from the Websocket, inclusive of all the transaction metadata
+3. The server notifies the client through WebSockets a change has been made to the address
+4. The website frontend displays the JSON response from the Websocket, with all the metadata
 
 **We’ll go through two versions of the tutorial:**&#x20;
 
@@ -203,8 +209,6 @@ Find the auth token on the top right of the notify page on your dashboard.\
 
 
 ![Where to find the Auth Key for the Alchemy Notify API.](<../../.gitbook/assets/Screenshot 2022-05-10 at 2.13.50 PM.png>)
-
-
 
 
 
