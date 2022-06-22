@@ -25,6 +25,10 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
 
 ## Past
 
+### 06/22/2022
+
+* \[API] `alchemy_newFullPendingTransactions` and `alchemy_newFilteredFullPendingTransactions` has been replaced with a single endpoint `alchemy_pendingTransactions`. Previous naming will still be supported however we highly suggest modifying to use `alchemy_pendingTransactions` instead. &#x20;
+
 ### 06/18/2022
 
 * **\[API]** Added `limit` parameter in [getNFTsForCollection](../enhanced-apis/nft-api/getnftsforcollection.md).

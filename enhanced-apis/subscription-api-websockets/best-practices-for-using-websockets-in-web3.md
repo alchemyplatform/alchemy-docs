@@ -46,13 +46,12 @@ wscat -c wss://eth-mainnet.alchemyapi.io/v2/demo
  }
 ```
 
-Using Alchemy’s [Subscription API](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets), there are five main types of WebSocket subscriptions you can make to receive push updates to an Ethereum node: ​
+Using Alchemy’s [Subscription API](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets), there are four main types of WebSocket subscriptions you can make to receive push updates to an Ethereum node: ​
 
-1. ****[**newFullPendingTransactions**](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#alchemy\_newfullpendingtransactions)**​:** Emits full transactions that are sent to the network and marked as "pending". A custom Alchemy subscription. ​
-2. ****[**filteredNewFullPendingTransactions​:**](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#alchemy\_filterednewfullpendingtransactions) Emits full transactions that are sent to the network, marked as "pending", and are sent from or to a certain address. A custom Alchemy subscription.&#x20;
-3. ​[**newPendingTransactions​:** ](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#newpendingtransactions)Emits transaction hashes that are sent to the network and marked as "pending". ​
-4. ****[**newHeads​:**](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#newheads) Emits new blocks that are added to the blockchain.&#x20;
-5. ​[**logs**](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#logs)​: Emits logs attached to a new block that match certain topic filters. Note: ​newFullPendingTransactions​ and ​filteredNewFullPendingTransactions​ are being combined into a single API with parameters.&#x20;
+1. ****[**alchemy\_pendingTransactions**](./#alchemy\_pendingtransactions)**​:** Emits full transactions that are sent to the network, marked as "pending", and are sent from or to a certain address. A custom Alchemy subscription.&#x20;
+2. ​[**newPendingTransactions​:** ](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#newpendingtransactions)Emits transaction hashes that are sent to the network and marked as "pending". ​
+3. ****[**newHeads​:**](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#newheads) Emits new blocks that are added to the blockchain.&#x20;
+4. ​[**logs**](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#logs)​: Emits logs attached to a new block that match certain topic filters. Note: ​newFullPendingTransactions​ and ​filteredNewFullPendingTransactions​ are being combined into a single API with parameters.&#x20;
 
 ## 4 Reasons to Use HTTPS instead of WebSockets for JSON-RPC Node Requests&#x20;
 
