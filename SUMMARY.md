@@ -38,7 +38,7 @@
   * [Handling errors](enhanced-apis/nft-api/handling-errors.md)
   * [How to Get All NFTs Owned by an Address](enhanced-apis/nft-api/how-to-get-all-nfts-owned-by-an-address.md)
   * [How to Get All NFTs in a Collection](enhanced-apis/nft-api/how-to-get-all-nfts-in-a-collection.md)
-  * [How to Get the Owner(s) of an NFT](enhanced-apis/nft-api/how-to-get-the-owner-s-of-an-nft.md)
+  * [How to Check the Owner of an NFT](enhanced-apis/nft-api/how-to-check-the-owner-of-an-nft.md)
   * [How to Resolve ENS Domains Given a Wallet Address](enhanced-apis/nft-api/how-to-get-ens.md)
 * [Transfers API (Tx History)](enhanced-apis/transfers-api.md)
   * [How to get transaction history for an address on Ethereum](enhanced-apis/transfers-api/how-to-get-transaction-history-for-an-address-on-ethereum.md)
