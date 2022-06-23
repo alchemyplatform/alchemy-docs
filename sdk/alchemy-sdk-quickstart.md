@@ -5,7 +5,7 @@ description: >-
   endpoints.
 ---
 
-# SDK QuickStart
+# Alchemy SDK QuickStart
 
 ## Alchemy SDK for Javascript
 
@@ -36,12 +36,12 @@ npm install @alch/alchemy-sdk
 After installing the app, you can then import and use the SDK:
 
 ```javascript
-import { AlchemyConfig, Network, initializeAlchemy } from '@alch/alchemy-sdk';
+import { Network, initializeAlchemy } from '@alch/alchemy-sdk';
 
 // Optional Config object, but defaults to demo api-key and eth-mainnet.
 const settings = {
-  apiKey: 'your-api-key',
-  network: Network.ETH_RINKEBY,
+  apiKey: 'demo',  // Replace with your Alchemy API Key.
+  network: Network.ETH_MAINNET,  // Replace with your network.
   maxRetries: 10
 };
 
@@ -52,12 +52,9 @@ The SDK's modular approach exports all functions at the top-level to reduce bund
 
 ```javascript
 // Initializing the alchemy config object
-import { initializeAlchemy } from '@alch/alchemy-sdk';
+import { initializeAlchemy, getNftsForOwner } from '@alch/alchemy-sdk';
 
 const alchemy = initializeAlchemy(); // using default settings - pass in a settings object to specify your API key and network
-
-// Import and call a method, passing in the alchemy config object
-import { getNftsForOwner } from '@alch/alchemy-sdk';
 
 getNftsForOwner(alchemy, '0xshah.eth').then(console.log);
 ```
@@ -65,7 +62,7 @@ getNftsForOwner(alchemy, '0xshah.eth').then(console.log);
 However, this can make it harder to discover the full API surface. If you want your IDE to find all functions, you can alternatively import the entire SDK (though this is not recommended, as it will increase the bundle size):
 
 ```javascript
-javaimport * as alchemySdk from 'alchemy-sdk';
+import * as alchemySdk from '@alch/alchemy-sdk';
 
 const alchemy = alchemySdk.initializeAlchemy();
 alchemySdk.getNftsForOwner(alchemy, '0xshah.eth').then(console.log);
@@ -73,14 +70,20 @@ alchemySdk.getNftsForOwner(alchemy, '0xshah.eth').then(console.log);
 
 ## SDK Structure
 
-The `Alchemy` object returned by `initializeAlchemy()` is an object that holds configuration settings. An optional config object can be passed in when initializing to set your API key, change the network, or specify the max number of retries. The `Alchemy` object is then passed into other top-level functions like `getNftsForOwner()` or `getAssetTransfers()`. The current supported functions using this pattern are the NFT API endpoints and Alchemy Enhanced APIs.
+The `Alchemy` object returned by `initializeAlchemy()` provides access to the Alchemy API. An optional config object can be passed in when initializing to set your API key, change the network, or specify the max number of retries.
+
+There are two different patterns for the Alchemy object to be used:
+
+1. It can be passed into top-level functions like `getNftsForOwner()` or `getAssetTransfers()`. The current supported functions using this pattern are the Alchemy NFT API endpoints and Alchemy Enhanced APIs.
+2. It can be used to generate an Ethers.js provider that allows access to Alchemy Provider-specific [Ethers.js methods](https://docs.ethers.io/v5/single-page/). These encompass most standard JSON-RPC requests to the blockchain.
 
 ## Ethers.js for standard JSON-RPC Calls
 
-To access standard JSON-RPC calls not in the NFT API or Alchemy Enhanced APIs, the SDK includes Ethers.js. The `Alchemy.getProvider()` function configures the Ethers.js [AlchemyProvider](https://docs.ethers.io/v5/api/providers/api-providers/#AlchemyProvider) and returns it. This allows you to perform core json-rpc calls with an Alchemy provider, just as you normally would with Ethers. If you are already using Ethers, you can simply use the provider from `alchemy-sdk` and the rest of your code should just work:
+To access standard JSON-RPC calls not in the NFT API or Alchemy Enhanced APIs, the SDK includes Ethers.js. The `Alchemy.getProvider()` function configures the Ethers.js [AlchemyProvider](https://docs.ethers.io/v5/api/providers/api-providers/#AlchemyProvider) and returns it. This allows you to perform core JSON-RPC calls with an Alchemy provider, just as you normally would with Ethers. If you are already using Ethers, you can simply use the provider from `alchemy-sdk` and the rest of your code should just work:
 
-```javascript
+```
 import { initializeAlchemy } from '@alch/alchemy-sdk';
+
 const alchemy = initializeAlchemy();
 
 // ETH JSON-RPC calls through ethers.js Provider
@@ -91,6 +94,36 @@ ethersAlchemyProvider
 ```
 
 Consult the [Ethers.js documentation](https://docs.ethers.io/v5/) for how to use it to call standard JSON-RPC methods.
+
+## Websockets and Subscription Listeners
+
+In addition to the built-in Ethers.js listeners, the Alchemy SDK includes support for Alchemy's Subscription API. This allows you to subscribe to events and receive updates as they occur. The two supported subscriptions are [alchemy\_newFullPendingTransactions](https://alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#alchemy\_newfullpendingtransactions) and [alchemy\_filteredNewFullPendingTransactions](https://alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#alchemy\_filterednewfullpendingtransactions) .
+
+The `Alchemy.getWebsocketProvider()` function configures the Alchemy [AlchemyWebSocketProvider](https://docs.ethers.io/v5/api/providers/api-providers/#AlchemyWebSocketProvider) and returns it. This can be used like the standard Ethers.js Websocket provider to add listeners for Alchemy events:
+
+```
+import { initializeAlchemy } from '@alch/alchemy-sdk';
+
+const alchemy = initializeAlchemy();
+
+const websocketProvider = alchemy.getWebsocketProvider();
+
+// Listen to all new pending transactions.
+websocketProvider.on({
+  method: 'alchemy_newFullPendingTransactions',
+}, res => console.log(res));
+
+// Listen to all transactions on the USDC contract.
+websocketProvider.on({
+  method: 'alchemy_filteredNewFullPendingTransactions',
+  address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'
+}, res => console.log(res));
+```
+
+The SDK brings multiple improvements to ensure correct WebSocket behavior in cases of temporary network failure or dropped connections. As with any network connection, you should not assume that a WebSocket will remain open forever without interruption, but correctly handling dropped connections and reconnection by hand can be challenging to get right. `alchemy-sdk` automatically handles these failures with no configuration necessary. The main benefits are:
+
+* **Resilient event delivery:** Unlike standard Web3.js or Ethers.js, you will not permanently miss events which arrive while the backing WebSocket is temporarily down. Instead, you will receive these events as soon as the connection is reopened. Note that if the connection is down for more than 120 blocks (approximately 20 minutes), you may still miss some events that were not part of the most recent 120 blocks.
+* **Lowered rate of failure:** Compared to standard Web3.js or Ethers.js, there are fewer failures when sending requests over the WebSocket while the connection is down. Alchemy Web3 will attempt to send the requests once the connection is reopened. Note that it is still possible, with a lower likelihood, for outgoing requests to be lost, so you should still have error handling as with any network request.
 
 ## NFT Module
 
@@ -119,12 +152,13 @@ The Alchemy NFT endpoints return 100 results per page. To get the next page, you
 Here's an example of how to paginate through all the NFTs in Vitalik's ENS address:
 
 ```javascript
-import { getNftsForOwnerIterator } from '@alch/alchemy-sdk';
+import { initializeAlchemy, getNftsForOwnerIterator } from "@alch/alchemy-sdk";
+const alchemy = initializeAlchemy();
 
 async function main() {
-  const ownerAddress = 'vitalik.eth';
+  const ownerAddress = "vitalik.eth";
   for await (const nft of getNftsForOwnerIterator(alchemy, ownerAddress)) {
-    console.log('ownedNft:', nft);
+    console.log("ownedNft:", nft);
   }
 }
 
@@ -155,39 +189,52 @@ There's a long list, but here are the main ones:
 * Most of these changes require extending the base ethers.js SDK with custom implementations.
 * Separating SDK into separate packages.
 
-## Use Case Examples
+## Examples
 
 Below are a few usage examples:
 
-### Getting the NFTs owned by an address.
+### Getting the NFTs owned by an address
 
-```javascript
+```
+import {
+  getNftsForOwner,
+  getNftsForOwnerIterator,
+  NftExcludeFilters,
+  initializeAlchemy,
+} from "@alch/alchemy-sdk";
+
+const alchemy = initializeAlchemy();
+
 // Get how many NFTs an address owns.
-import { getNftsForOwner, getNftsForOwnerIterator } from 'alchemy-sdk';
-import { NftExcludeFilters } from 'alchemy-sdk';
-
-getNftsForOwner(alchemy, '0xshah.eth').then(nfts => {
+getNftsForOwner(alchemy, "0xshah.eth").then((nfts) => {
   console.log(nfts.totalCount);
 });
 
 // Get all the image urls for all the NFTs an address owns.
 async function main() {
-  for await (const nft of getNftsForOwnerIterator(alchemy, '0xshah.eth')) {
+  for await (const nft of getNftsForOwnerIterator(alchemy, "0xshah.eth")) {
     console.log(nft.media);
   }
 }
+
 main();
 
 // Filter out spam NFTs.
-getNftsForOwner(alchemy, '0xshah.eth', {
-  excludeFilters: [NftExcludeFilters.SPAM]
+getNftsForOwner(alchemy, "0xshah.eth", {
+  excludeFilters: [NftExcludeFilters.SPAM],
 }).then(console.log);
 ```
 
-### Getting all the owners of the BAYC NFT.
+### Getting all the owners of the BAYC NFT
 
-```javascript
-import { getOwnersForNft, getNftsForCollectionIterator } from '@alch/alchemy-sdk';
+```
+import {
+  getOwnersForNft,
+  getNftsForCollectionIterator,
+  initializeAlchemy
+} from '@alch/alchemy-sdk';
+
+const alchemy = initializeAlchemy();
 
 // Bored Ape Yacht Club contract address.
 const baycAddress = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D';
@@ -202,15 +249,17 @@ async function main() {
     );
   }
 }
+
 main();
 ```
 
-### Get all outbound transfers for a provided address.
+### Get all outbound transfers for a provided address
 
-```javascript
-import { getTokenBalances } from '@alch/alchemy-sdk';
+```
+import { getTokenBalances, initializeAlchemy } from "@alch/alchemy-sdk";
+const alchemy = initializeAlchemy();
 
-getTokenBalances(alchemy, '0x994b342dd87fc825f66e51ffa3ef71ad818b6893').then(
+getTokenBalances(alchemy, "0x994b342dd87fc825f66e51ffa3ef71ad818b6893").then(
   console.log
 );
 ```

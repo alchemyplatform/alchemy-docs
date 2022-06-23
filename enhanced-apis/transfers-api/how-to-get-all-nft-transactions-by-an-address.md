@@ -13,17 +13,17 @@ A few quick reasons why you'd want to get NFT transfer history by an address:
 
 While this type of data cannot be easily queried via the [Ethereum API](../../apis/ethereum/), Alchemy builds higher-level [Enhanced APIs](broken-reference) to make Web3 interactions much easier.&#x20;
 
-In this tutorial, we'll be leveraging Alchemy's [Transfers API ](./)(`alchemy_getAssetTransfers`) to query all NFT transfers by an address.
+In this tutorial, we'll be leveraging Alchemy's [Transfers API ](../transfers-api.md)(`alchemy_getAssetTransfers`) to query all NFT transfers by an address.
 
 ## **What happens when NFTs are transacted?**
 
-Behind the scenes, whenever an NFT undergoes an on-chain sale or swap, any associated smart contract calls will emit a standard [transfer event](./#what-are-transfers) since the asset is ultimately being _transferred_ from one account to another.&#x20;
+Behind the scenes, whenever an NFT undergoes an on-chain sale or swap, any associated smart contract calls will emit a standard [transfer event](../transfers-api.md#what-are-transfers) since the asset is ultimately being _transferred_ from one account to another.&#x20;
 
-Since we can specifically filter for transfer events using the [Transfers API](./), we can easily fetch NFT transactions with the right combination of filter parameters!
+Since we can specifically filter for transfer events using the [Transfers API](../transfers-api.md), we can easily fetch NFT transactions with the right combination of filter parameters!
 
 ## How to get NFT Transaction History&#x20;
 
-In order to fetch NFT transaction history by a given address, we'll need to specify a few things in our [`alchemy_getAssetTransfers`](./#alchemy\_getassettransfers-ethereum-mainnet) request:
+In order to fetch NFT transaction history by a given address, we'll need to specify a few things in our [`alchemy_getAssetTransfers`](../transfers-api.md#alchemy\_getassettransfers-ethereum-mainnet) request:
 
 * `fromAddress`: where the NFT transaction originated from\
   \*when fetching NFT transaction history originating `from` an address we use this\*

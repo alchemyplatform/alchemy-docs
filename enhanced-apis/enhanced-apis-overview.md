@@ -27,8 +27,8 @@ Rather than searching, indexing, and storing data yourself - you can now make on
 
 ### Transfers API&#x20;
 
-{% content-ref url="transfers-api/" %}
-[transfers-api](transfers-api/)
+{% content-ref url="transfers-api.md" %}
+[transfers-api.md](transfers-api.md)
 {% endcontent-ref %}
 
 Transfers are a representation of value being exchanged between two accounts, and sometimes users wish to see the historical transactions associated with a specific account or address.&#x20;

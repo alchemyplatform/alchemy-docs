@@ -18,6 +18,10 @@
 * [Web3 University](https://www.web3.university/)
 * [Road To Web3](https://docs.alchemy.com/alchemy/road-to-web3)
 
+## SDK
+
+* [Alchemy SDK QuickStart](sdk/alchemy-sdk-quickstart.md)
+
 ## ✨ Enhanced APIs
 
 * [Enhanced APIs Overview](enhanced-apis/enhanced-apis-overview.md)
@@ -77,10 +81,6 @@
   * [Get records for a domain](enhanced-apis/unstoppable-domains-apis/get-records-for-a-domain.md)
   * [Get records for owner addresses](enhanced-apis/unstoppable-domains-apis/get-records-for-owner-addresses.md)
   * [Get domain transfer events](enhanced-apis/unstoppable-domains-apis/get-domain-transfer-events.md)
-
-## SDK
-
-* [SDK QuickStart](sdk/sdk-quickstart.md)
 
 ## ⛓ Chain APIs <a href="#apis" id="apis"></a>
 

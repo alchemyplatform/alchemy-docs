@@ -16,6 +16,8 @@ _To see chain support across all features, check out the_ [_feature matrix_](../
 * `contractAddress`: _**\[string]**_ - contract address for the NFT collection
 * `withMetadata`: _**\[boolean] -**_ (optional) _****_ if set to `true`, returns NFT metadata; otherwise will only return tokenIds. Defaults to `false`.
 * `startToken`: _**\[string]**_ - (optional) an offset used for pagination. Can be a hex string, or a decimal.
+* `limit`: _**\[int]**_ - (optional) sets the total number of NFTs returned in the response. \
+  Defaults to 100.
 
 {% hint style="info" %}
 #### NOTE on`startToken`:&#x20;
