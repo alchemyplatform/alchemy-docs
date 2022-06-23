@@ -13,13 +13,13 @@ A few reasons for why you'd want to get address transaction history by an addres
 * Querying an address's transactions filtered by smart contract interactions&#x20;
 * Analyzing a user's historical profit and loss&#x20;
 
-Regardless of the different types of transaction history you want to look up, this process can be extremely burdensome for developers to stitch together without the [Alchemy Transfers API](./). \
+Regardless of the different types of transaction history you want to look up, this process can be extremely burdensome for developers to stitch together without the [Alchemy Transfers API](../transfers-api.md). \
 \
-**In this tutorial, we’ll be using Alchemy’s** [**Transfers API** ](./)**to fetch all transactions sent **_**`from`**_** and sent **_**`to`**_** addresses you care about to create a complete picture of a user's transaction history.**
+**In this tutorial, we’ll be using Alchemy’s** [**Transfers API** ](../transfers-api.md)**to fetch all transactions sent **_**`from`**_** and sent **_**`to`**_** addresses you care about to create a complete picture of a user's transaction history.**
 
 ## How to query transaction history
 
-When using the [Transfers API](./) for querying a user’s full on-chain history, its important to have a few key parameters on hand.
+When using the [Transfers API](../transfers-api.md) for querying a user’s full on-chain history, its important to have a few key parameters on hand.
 
 * `fromAddress`: the address we want to see transaction information originating from
 * `toAddress`: the address we want to see for recipient-based transactions
@@ -27,7 +27,7 @@ When using the [Transfers API](./) for querying a user’s full on-chain history
 * `toBlock` : the ending time range we want to fetch transactions over (defaults to `latest`)
 * `category`: the type of transfer events we care about, in our case we want to see all transactions so we can simply let the param use its default argument of \["`external`", "`internal`", "`token`"]
 
-For transaction information that originates from your target sender address, use the `fromAddress` parameter within the [Transfers API](./). For recipient-based transactions, use the `toAddress` parameter.&#x20;
+For transaction information that originates from your target sender address, use the `fromAddress` parameter within the [Transfers API](../transfers-api.md). For recipient-based transactions, use the `toAddress` parameter.&#x20;
 
 {% hint style="info" %}
 If you want to get transactions that have a specific from AND to address, you can specify the `fromAddress`and`toAddress` in your request.
