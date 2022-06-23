@@ -46,9 +46,18 @@ Once you have created your app, click on your app's **View Key** button in the d
 
 ### Step 2: Create a Node project
 
-Now create an empty repository and install all Node dependencies. In order to make requests to the NFT API, you can use either the `axios` or `fetch` library. To do this, run the following code in your terminal:
+Now, let's create an empty repository and install all node dependencies. To make requests to the NFT API, we recommend using the [Alchemy SDK](https://docs.alchemy.com/alchemy/sdk/sdk-quickstart). However, you can also use `axios` or `fetch` libraries. Run the following commands in your terminal:
 
 {% tabs %}
+{% tab title="Alchemy SDK (Recommended)" %}
+```bash
+mkdir nft-collection && cd nft-collection
+npm init -y
+npm install --save @alch/alchemy-sdk
+touch main.js
+```
+{% endtab %}
+
 {% tab title="Axios" %}
 ```bash
 mkdir nft-collection && cd nft-collection
@@ -71,7 +80,7 @@ This above commands create a repository named `nft-collection` that holds all th
 
 ### Step 3: Get all NFTs that belong to a collection
 
-To retrieve all of the NFTs that belong to a collection, we will use the `getNFTsForCollection` method. This method uses one required argument and two optional arguments.
+To retrieve all of the NFTs that belong to a collection, we will use the `getNFTsForCollection` method. This method accepts one required argument and two optional arguments.
 
 * `contractAddress`: The address of the NFT contract we're interested in. This is a required argument.
 * `withMetadata`: A boolean that indicates whether the method should return NFT metadata. By default, this is set to `False`, and we only retrieve token IDs. For our purposes, we will set this to `True`.
@@ -79,9 +88,48 @@ To retrieve all of the NFTs that belong to a collection, we will use the `getNFT
 
 As noted, the method does not return NFT metadata by default. In our example, however, we will override this default behavior by setting `withMetadata` to `True`. For more information about NFT metadata, check out the [NFT API FAQ](https://docs.alchemy.com/alchemy/enhanced-apis/nft-api/nft-api-faq#understanding-nft-metadata).
 
-Add the following code to the `main.js` file:
+Add the following code to the `main.js` file, using your Alchemy API key:
 
 {% tabs %}
+{% tab title="Alchemy SDK (Recommended)" %}
+```javascript
+const { initializeAlchemy, getNftsForCollection } = require('@alch/alchemy-sdk');
+
+// Alchemy app API key
+const settings = {
+    apiKey: '<-- ALCHEMY APP API KEY -->',
+};
+
+const alchemy = initializeAlchemy(settings);
+
+const main = async () => {
+
+    // Contract address
+    const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'
+
+    // Metadata inclusion flag
+    const withMetadata = 'true';
+
+    // Get all NFTs
+    const response = await getNftsForCollection(alchemy, address, { withMetadata: withMetadata })
+    console.log(JSON.stringify(response, null, 2))
+}
+
+const runMain = async () => {
+    try {
+        await main();
+        process.exit(0);
+    }
+    catch (error) {
+        console.log(error);
+        process.exit(1);
+    }
+};
+
+runMain();
+```
+{% endtab %}
+
 {% tab title="Axios" %}
 ```javascript
 const axios = require('axios')
@@ -106,8 +154,8 @@ const config = {
 
 // Make the request and print the formatted response:
 axios(config)
-    .then(response => console.log(response['data'])
-    .catch(error => console.log('error', error)));
+    .then(response => console.log(JSON.stringify(response['data'], null, 2)))
+    .catch(error => console.log(error));
 ```
 {% endtab %}
 
@@ -134,8 +182,10 @@ var requestOptions = {
 };
 
 fetch(url, requestOptions)
-  .then(response => console.log)
-  .catch(error => console.log('error', error))
+  .then(response => response.json())
+  .then(response => JSON.stringify(response, null, 2))
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
 ```
 {% endtab %}
 {% endtabs %}
@@ -225,6 +275,55 @@ As a final step, parse the API output to show the image URL of every NFT. In the
 Replace the contents of `main.js` with the following code:
 
 {% tabs %}
+{% tab title="Alchemy SDK (Recommended)" %}
+```javascript
+const { initializeAlchemy, getNftsForCollection } = require('@alch/alchemy-sdk');
+
+// Alchemy app API key
+const settings = {
+    apiKey: '<-- ALCHEMY APP API KEY -->',
+};
+
+const alchemy = initializeAlchemy(settings);
+
+const main = async () => {
+
+    // Contract address
+    const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'
+
+    // Metadata inclusion flag
+    const withMetadata = 'true';
+
+    // Get all NFTs
+    const response = await getNftsForCollection(alchemy, address, { withMetadata: withMetadata })
+    const nfts = response['nfts']
+
+    console.log("NFT Metadata")
+
+    let i = 1
+
+    for (let nft of nfts) {
+        console.log(`${i}. ${nft['rawMetadata']['image']}`)
+        i++;
+    }
+
+}
+
+const runMain = async () => {
+    try {
+        await main();
+        process.exit(0);
+    }
+    catch (error) {
+        console.log(error);
+        process.exit(1);
+    }
+};
+
+runMain();
+```
+{% endtab %}
+
 {% tab title="Axios" %}
 ```javascript
 const axios = require('axios')

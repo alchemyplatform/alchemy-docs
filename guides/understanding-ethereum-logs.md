@@ -12,7 +12,7 @@ A core part of Web3 or decentralized applications (dApps) is the ability to unde
 
 **Events are any action executed by a smart contract.**&#x20;
 
-The most popular event type is a [Transfer event](../enhanced-apis/transfers-api.md#what-are-transfers). Transfer events are whenever wallet addresses transfer tokens to one another. Transfers are common in ERC20, ERC721, and ERC1155 token contracts. In Solidity, events are defined in the smart contract itself like the below example. Events use the 'emit' keyword to add the event to the log records. We will explore later how this information is stored as an event signature in the topics section of the logs.
+The most popular event type is a [Transfer event](../enhanced-apis/transfers-api/#what-are-transfers). Transfer events are whenever wallet addresses transfer tokens to one another. Transfers are common in ERC20, ERC721, and ERC1155 token contracts. In Solidity, events are defined in the smart contract itself like the below example. Events use the 'emit' keyword to add the event to the log records. We will explore later how this information is stored as an event signature in the topics section of the logs.
 
 ![Source: https://docs.nethereum.com/en/latest/nethereum-events-gettingstarted/](<../.gitbook/assets/TransferEvent (1).png>)
 
