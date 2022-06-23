@@ -73,26 +73,28 @@ The example below is for Ethereum Mainnet. If you are using Polygon you'll need 
 ****[**Alchemy Composer Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22getNFTMetadata%22%2C%22paramValues%22%3A%5B%7B%22Contract%20Address%22%3A%220x5180db8F5c931aaE63c74266b211F580155ecac8%22%2C%22Token%20ID%22%3A%221590%22%7D%5D%7D)****
 
 {% tabs %}
-{% tab title="Alchemy Web3.js" %}
+{% tab title="Alchemy SDK" %}
 ```javascript
-// Installation: https://github.com/alchemyplatform/alchemy-web3
+// Github: https://github.com/alchemyplatform/alchemy-sdk-js
+// Setup: npm install @alch/alchemy-sdk
+import { Network, initializeAlchemy, getNftMetadata } from "@alch/alchemy-sdk";
 
-import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+// Optional Config object, but defaults to demo api-key and eth-mainnet.
+const settings = {
+  apiKey: "demo", // Replace with your Alchemy API Key.
+  network: Network.ETH_MAINNET, // Replace with your network.
+  maxRetries: 10,
+};
 
-// Using HTTPS
-const web3 = createAlchemyWeb3(
-  "https://eth-mainnet.alchemyapi.io/nft/v2/demo",
+const alchemy = initializeAlchemy(settings);
+
+// Print total NFT count returned in the response:
+const nftMetadata = await getNftMetadata(
+  alchemy,
+  "0x5180db8F5c931aaE63c74266b211F580155ecac8",
+  "1590"
 );
-
-
-// Fetch metadata for a particular NFT:
-console.log("fetching metadata for a crypto coven NFT...");
-const response = await web3.alchemy.getNftMetadata({
-  contractAddress: "0x5180db8F5c931aaE63c74266b211F580155ecac8",
-  tokenId: "1590"
-})
-
-console.log(metadata);
+console.log(nftMetadata);
 
 ```
 {% endtab %}
@@ -158,7 +160,7 @@ curl 'https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTMetadata?contractAddre
 {% endtab %}
 {% endtabs %}
 
-If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](nft-api-quickstart-guide.md)****
+If you're having trouble running requests via the Alchemy SDK, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](nft-api-quickstart-guide.md)****
 
 ### Response
 

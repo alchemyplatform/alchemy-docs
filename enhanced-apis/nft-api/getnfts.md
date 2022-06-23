@@ -80,9 +80,7 @@ We paginate our responses with a default limit of **100 responses**. We've chose
 * `error`: A string describing a particular reason that we were unable to fetch complete metadata for the NFT. \
   **See the** [**Handling Errors**](handling-errors.md) **section for a complete list of potential errors.**
 
-{% hint style="info" %}
 
-{% endhint %}
 
 {% hint style="info" %}
 **NOTE:**\
@@ -127,20 +125,24 @@ The examples below is for Ethereum Mainnet. If you are using Polygon you'll need
 [**Alchemy Composer Example**](https://composer.alchemyapi.io/?composer\_state=%7B%22chain%22%3A0%2C%22network%22%3A0%2C%22methodName%22%3A%22getNFTs%22%2C%22paramValues%22%3A%5B%7B%22Owner%22%3A%220xfAE46f94Ee7B2Acb497CEcAFf6Cff17F621c693D%22%7D%5D%7D)****
 
 {% tabs %}
-{% tab title="Alchemy Web3.js" %}
+{% tab title="Alchemy SDK" %}
 ```javascript
-// Installation: https://github.com/alchemyplatform/alchemy-web3
+// Setup: npm install @alch/alchemy-sdk
+// Github: https://github.com/alchemyplatform/alchemy-sdk-js
+import { Network, initializeAlchemy, getNftsForOwner } from "@alch/alchemy-sdk";
 
-import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+// Optional Config object, but defaults to demo api-key and eth-mainnet.
+const settings = {
+  apiKey: "demo", // Replace with your Alchemy API Key.
+  network: Network.ETH_MAINNET, // Replace with your network.
+  maxRetries: 10,
+};
 
-// Using HTTPS
-const web3 = createAlchemyWeb3(
-  "https://eth-mainnet.alchemyapi.io/nft/v2/demo",
-);
+const alchemy = initializeAlchemy(settings);
 
-const nfts = await web3.alchemy.getNfts({owner: "0xfae46f94ee7b2acb497cecaff6cff17f621c693d"})
-
-console.log(nfts);
+// Print total NFT count returned in the response:
+const nftsForOwner = await getNftsForOwner(alchemy, "0xshah.eth");
+console.log(nftsForOwner);
 ```
 {% endtab %}
 
@@ -200,7 +202,7 @@ curl 'https://eth-mainnet.alchemyapi.io/nft/v2/demo/getNFTs/?owner=0xfae46f94ee7
 {% endtab %}
 {% endtabs %}
 
-If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](nft-api-quickstart-guide.md)
+If you're having trouble running requests via the Alchemy SDK, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](nft-api-quickstart-guide.md)
 
 ### Response (by default)
 
