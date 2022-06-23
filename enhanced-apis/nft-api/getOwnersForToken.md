@@ -31,6 +31,31 @@ _To see chain support across all features, check out the_ [_feature matrix_](../
 ### Request
 
 {% tabs %}
+{% tab title="Alchemy SDK" %}
+```javascript
+// Github: https://github.com/alchemyplatform/alchemy-sdk-js
+// Setup: npm install @alch/alchemy-sdk
+import { Network, initializeAlchemy, getOwnersForNft } from "@alch/alchemy-sdk";
+
+// Optional Config object, but defaults to demo api-key and eth-mainnet.
+const settings = {
+  apiKey: "demo", // Replace with your Alchemy API Key.
+  network: Network.ETH_MAINNET, // Replace with your network.
+  maxRetries: 10,
+};
+
+const alchemy = initializeAlchemy(settings);
+
+// Print total NFT count returned in the response:
+const ownersForNft = await getOwnersForNft(
+  alchemy,
+  "0x5180db8F5c931aaE63c74266b211F580155ecac8",
+  "1590"
+);
+console.log(ownersForNft);
+```
+{% endtab %}
+
 {% tab title="Fetch (JS)" %}
 ```javascript
 import fetch from 'node-fetch';
@@ -86,31 +111,6 @@ RequestType: GET
 {% tab title="Curl" %}
 ```
 curl 'https://eth-mainnet.g.alchemy.com/nft/v2/demo/getOwnersForToken/?contractAddress=0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D&tokenId=867'
-```
-{% endtab %}
-
-{% tab title="Alchemy SDK" %}
-```javascript
-// Github: https://github.com/alchemyplatform/alchemy-sdk-js
-// Setup: npm install @alch/alchemy-sdk
-import { Network, initializeAlchemy, getOwnersForNft } from "@alch/alchemy-sdk";
-
-// Optional Config object, but defaults to demo api-key and eth-mainnet.
-const settings = {
-  apiKey: "demo", // Replace with your Alchemy API Key.
-  network: Network.ETH_MAINNET, // Replace with your network.
-  maxRetries: 10,
-};
-
-const alchemy = initializeAlchemy(settings);
-
-// Print total NFT count returned in the response:
-const ownersForNft = await getOwnersForNft(
-  alchemy,
-  "0x5180db8F5c931aaE63c74266b211F580155ecac8",
-  "1590"
-);
-console.log(ownersForNft);
 ```
 {% endtab %}
 {% endtabs %}
