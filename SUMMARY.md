@@ -22,6 +22,7 @@
 
 * [Enhanced APIs Overview](enhanced-apis/enhanced-apis-overview.md)
 * [NFT API](enhanced-apis/nft-api/README.md)
+  * [NFT API Quickstart Guide](enhanced-apis/nft-api/nft-api-quickstart-guide.md)
   * [getNFTs](enhanced-apis/nft-api/getnfts.md)
   * [getNFTMetadata](enhanced-apis/nft-api/getnftmetadata.md)
   * [getContractMetadata](enhanced-apis/nft-api/getcontractmetadata.md)
@@ -34,7 +35,6 @@
   * [getFloorPrice](enhanced-apis/nft-api/getfloorprice.md)
   * [NFT Image Caching](enhanced-apis/nft-api/nft-image-caching.md)
   * [NFT API FAQ](enhanced-apis/nft-api/nft-api-faq.md)
-  * [NFT API Quickstart Guide](enhanced-apis/nft-api/nft-api-quickstart-guide.md)
   * [Handling errors](enhanced-apis/nft-api/handling-errors.md)
   * [How to Get All NFTs Owned by an Address](enhanced-apis/nft-api/how-to-get-all-nfts-owned-by-an-address.md)
   * [How to Get All NFTs in a Collection](enhanced-apis/nft-api/how-to-get-all-nfts-in-a-collection.md)

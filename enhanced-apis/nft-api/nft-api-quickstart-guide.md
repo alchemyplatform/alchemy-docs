@@ -1,12 +1,12 @@
 ---
 description: >-
   Go from zero to hero with the Alchemy NFT API. Learn how to query NFT data
-  using the Alchemy SDK (recommended), fetch, or axios.
+  using alchemy-web3 (recommended), fetch, or axios.
 ---
 
 # NFT API Quickstart Guide
 
-For this **Javascript** quickstart guide, we recommend using `alchemy-sdk-js`, a full-featured SDK that allows you to more easily interact with Alchemy APIs. The Alchemy SDK give you WebSocket support and other benefits right out of the box! Fetch or Axios are two alternative modules that also allow you to make standard HTTP requests.
+For this **Javascript** quickstart guide, we recommend using `alchemy-web3`, a module that allows you to more easily interact with Alchemy APIs. The `alchemy-web3` SDK give you websocket support and other benefits right out of the box! Fetch or Axios are two alternative modules that also allow you to make HTTP requests.
 
 ## Common setup steps
 
@@ -14,7 +14,7 @@ You should start with these steps before choosing any of the modules below.
 
 ### Choose a package manager (npm or yarn)
 
-For this guide we will be using `npm`  or `yarn` as our package manager to install either `@alch/alchemy-sdk`, `fetch`, or `axios`.&#x20;
+For this guide we will be using `npm`  or `yarn` as our package manager to install either `alchemy-web3`, `fetch`, or `axios`.&#x20;
 
 #### npm
 
@@ -56,17 +56,13 @@ Since we'll be using import syntax to load ES6 modules, add `'type': 'module'` t
 }
 ```
 
-See this discussion for more context:
+See this discussion for more context: [https://stackoverflow.com/questions/61401475/why-is-type-module-in-package-json-file](https://stackoverflow.com/questions/61401475/why-is-type-module-in-package-json-file)
 
-{% embed url="https://stackoverflow.com/questions/61401475/why-is-type-module-in-package-json-file" %}
+## Alchemy Web3 SDK (_**Recommended**_)
 
-## Alchemy SDK (_**Recommended**_)
+You can install the `alchemy-web3` module to easily interact with Alchemy APIs. We highly recommend using the `alchemy-web3` sdk because you also get websocket support, retries, and other benefits without the complexity!
 
-You can install the `alchemy-sdk-js` module to easily interact with Alchemy APIs. We highly recommend using the Alchemy SDK because you also get WebSocket support, retries, and other benefits without the complexity!
-
-For full documentation on `alchemy-sdk-js`, check the github repo:&#x20;
-
-{% embed url="https://github.com/alchemyplatform/alchemy-sdk-js" %}
+For full documentation on `alchemy-web3`, check the github repo: [https://github.com/alchemyplatform/alchemy-web3](https://github.com/alchemyplatform/alchemy-web3)
 
 ### Installation
 
@@ -75,7 +71,7 @@ For full documentation on `alchemy-sdk-js`, check the github repo:&#x20;
 Run the following command to install `alchemy-web3` with `npm`
 
 ```
-npm install @alch/alchemy-sdk
+npm install @alch/alchemy-web3
 ```
 {% endtab %}
 
@@ -83,79 +79,72 @@ npm install @alch/alchemy-sdk
 Run the following command to install `alchemy-web3` with `yarn`
 
 ```
-yarn add @alch/alchemy-sdk
+yarn add @alch/alchemy-web3
 ```
 {% endtab %}
 {% endtabs %}
 
 ### Usage
 
-{% embed url="https://github.com/alchemyplatform/nft-api-javascript-scripts/blob/main/alchemy-sdk-script.js" %}
-The demo script for the Alchemy SDK
-{% endembed %}
+{% embed url="https://github.com/alchemyplatform/nft-api-javascript-scripts/blob/main/alchemy-web3-script.js" %}
 
-In your `alchemy-nft-api` directory, you can create a new file called `alchemy-sdk-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
+In your `alchemy-nft-api` directory, you can create a new file called `alchemy-web3-script.js` using your favorite file browser, code editor, or just directly in the terminal using the `touch` command like this:
 
 ```
-touch alchemy-sdk-script.js
+touch alchemy-web3-script.js
 ```
 
 and then paste the following code snippet into the file:
 
 ```javascript
-// This script demonstrates access to the NFT API via the Alchemy SDK.
-import {
-  Network,
-  initializeAlchemy,
-  getNftsForOwner,
-  getNftMetadata,
-  BaseNft,
-  NftTokenType,
-} from "@alch/alchemy-sdk";
+// alchemy-nft-api/alchemy-web3-script.js
+import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 
-// Optional Config object, but defaults to demo api-key and eth-mainnet.
-const settings = {
-  apiKey: "demo", // Replace with your Alchemy API Key.
-  network: Network.ETH_MAINNET, // Replace with your network.
-  maxRetries: 10,
-};
+// Replace with your Alchemy api key:
+const apiKey = "demo";
 
-const alchemy = initializeAlchemy(settings);
+// Initialize an alchemy-web3 instance:
+const web3 = createAlchemyWeb3(
+  `https://eth-mainnet.alchemyapi.io/v2/${apiKey}`,
+);
+
+// The wallet address we want to query for NFTs:
+const ownerAddr = "0xC33881b8FD07d71098b440fA8A3797886D831061";
+const nfts = await web3.alchemy.getNfts({
+  owner: ownerAddr
+})
 
 // Print owner's wallet address:
-const ownerAddr = "0xshah.eth";
 console.log("fetching NFTs for address:", ownerAddr);
 console.log("...");
 
 // Print total NFT count returned in the response:
-const nftsForOwner = await getNftsForOwner(alchemy, "0xshah.eth");
-console.log("number of NFTs found:", nftsForOwner.totalCount);
+console.log("number of NFTs found:", nfts.totalCount);
 console.log("...");
 
 // Print contract address and tokenId for each NFT:
-for (const nft of nftsForOwner.ownedNfts) {
+for (const nft of nfts.ownedNfts) {
   console.log("===");
   console.log("contract address:", nft.contract.address);
-  console.log("token ID:", nft.tokenId);
+  console.log("token ID:", nft.id.tokenId);
 }
 console.log("===");
 
 // Fetch metadata for a particular NFT:
-console.log("fetching metadata for a Crypto Coven NFT...");
-const response = await getNftMetadata(
-  alchemy,
-  "0x5180db8F5c931aaE63c74266b211F580155ecac8",
-  "1590"
-);
+console.log("fetching metadata for a crypto coven NFT...");
+const response = await web3.alchemy.getNftMetadata({
+  contractAddress: "0x5180db8F5c931aaE63c74266b211F580155ecac8",
+  tokenId: "1590"
+})
 
 // Uncomment this line to see the full api response:
-// console.log(response);
+// console.log(metadata);
 
 // Print some commonly used fields:
 console.log("NFT name: ", response.title);
-console.log("token type: ", response.tokenType);
+console.log("token type: ", response.id.tokenMetadata.tokenType);
 console.log("tokenUri: ", response.tokenUri.gateway);
-console.log("image url: ", response.rawMetadata.image);
+console.log("image url: ", response.metadata.image);
 console.log("time last updated: ", response.timeLastUpdated);
 console.log("===");
 ```
@@ -163,38 +152,33 @@ console.log("===");
 From your command line, you can execute the script with:
 
 ```bash
-node alchemy-sdk-script.js
+node alchemy-web3-script.js
 ```
 
 You should see output like this:
 
 ```bash
-node alchemy-sdk-script.js   ✔  4s
-fetching NFTs for address: 0xshah.eth
+alchemy-nft-api % node alchemyweb3-script.js
+fetching NFTs for address: 0xC33881b8FD07d71098b440fA8A3797886D831061
 ...
-number of NFTs found: 516
+number of NFTs found: 1
 ...
 ===
-contract address: 0x000386e3f7559d9b6a2f5c46b4ad1a9587d59dc3
-token ID: 29
+contract address: 0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85
+token ID: 0x3ee4ed8824659deea1bb8fa6d4090b11d263417704c0a0fbc78fa8c4fc177909
 ===
-contract address: 0x000386e3f7559d9b6a2f5c46b4ad1a9587d59dc3
-token ID: 238
-===
-...........
-===
-fetching metadata for a Crypto Coven NFT...
+fetching metadata for a crypto coven NFT...
 NFT name:  balsa vault
 token type:  ERC721
-tokenUri:  https://alchemy.mypinata.cloud/ipfs/QmaXzZhcYnsisuue5WRdQDH6FDvqkLQX1NckLqBYeYYEfm/1590.json
+tokenUri:  https://ipfs.io/ipfs/QmZHKZDavkvNfA9gSAg7HALv8jF7BJaKjUc9U2LSuvUySB/1590.json
 image url:  https://cryptocoven.s3.amazonaws.com/a7875f5758f85544dcaab79a8a1ca406.png
-time last updated:  2022-06-23T06:48:33.229Z
+time last updated:  2022-01-25T07:41:32.003Z
 ===
 ```
 
-For full documentation on the available endpoints for `alchemy-sdk`, check the github repo:
+For full documentation on the available endpoints for `alchemy-web3` sdk, check the github repo:
 
-{% embed url="https://github.com/alchemyplatform/alchemy-sdk-js" %}
+{% embed url="https://github.com/alchemyplatform/alchemy-web3" %}
 
 ## Javascript Fetch&#x20;
 
