@@ -93,6 +93,36 @@ curl --location --request GET 'https://eth-mainnet.g.alchemy.com/nft/v2/demo/rei
 --data-raw ''
 ```
 {% endtab %}
+
+{% tab title="Alchemy SDK" %}
+```javascript
+// Github: https://github.com/alchemyplatform/alchemy-sdk-js
+// Setup: npm install @alch/alchemy-sdk
+import {
+  Network,
+  initializeAlchemy,
+  refreshNftMetadata,
+} from "@alch/alchemy-sdk";
+
+// Optional Config object, but defaults to demo api-key and eth-mainnet.
+const settings = {
+  apiKey: "demo", // Replace with your Alchemy API Key.
+  network: Network.ETH_MAINNET, // Replace with your network.
+  maxRetries: 10,
+};
+
+const alchemy = initializeAlchemy(settings);
+
+// Print total NFT count returned in the response:
+const refreshed = await refreshNftMetadata(
+  alchemy,
+  "0x5180db8F5c931aaE63c74266b211F580155ecac8",
+  "1590"
+);
+
+console.log("contract refreshed: " + refreshed);
+```
+{% endtab %}
 {% endtabs %}
 
 If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, please refer to: [**NFT API Quickstart Guide** ](nft-api-quickstart-guide.md)****

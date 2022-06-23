@@ -29,6 +29,35 @@ https://polygon-mainnet.g.alchemy.com/nft/`v2/your-api-key/getNFTs`...
 ### Request
 
 {% tabs %}
+{% tab title="Alchemy SDK" %}
+```javascript
+// Github: https://github.com/alchemyplatform/alchemy-sdk-js
+// Setup: npm install @alch/alchemy-sdk
+import {
+  Network,
+  initializeAlchemy,
+  getOwnersForCollection,
+} from "@alch/alchemy-sdk";
+
+// Optional Config object, but defaults to demo api-key and eth-mainnet.
+const settings = {
+  apiKey: "demo", // Replace with your Alchemy API Key.
+  network: Network.ETH_MAINNET, // Replace with your network.
+  maxRetries: 10,
+};
+
+const alchemy = initializeAlchemy(settings);
+
+// Print total NFT count returned in the response:
+const ownersForCollection = await getOwnersForCollection(
+  alchemy,
+  "0x61fce80d72363b731425c3a2a46a1a5fed9814b2"
+);
+console.log(ownersForCollection);
+
+```
+{% endtab %}
+
 {% tab title="Fetch (JS)" %}
 ```javascript
 import fetch from 'node-fetch';
