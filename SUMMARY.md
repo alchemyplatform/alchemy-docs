@@ -374,6 +374,7 @@
 * [Debugging CORS problems for end-users](guides/debugging-cors.md)
 * [How to interpret binaries in Solidity](guides/how-to-interpret-binaries-in-solidity.md)
 * [Ethereum Transactions - Pending, Mined, Dropped & Replaced](guides/ethereum-transactions-pending-mined-dropped-and-replaced.md)
+* [How to Enable Compression to Speed Up JSON-RPC Blockchain Requests](guides/how-to-enable-compression-to-speed-up-json-rpc-blockchain-requests.md)
 
 ## 📚 Resources
 
