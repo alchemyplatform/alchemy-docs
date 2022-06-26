@@ -373,6 +373,8 @@
 * [Internal Playbook: Upgrading Ethereum Nodes](guides/internal-playbook-upgrading-ethereum-nodes.md)
 * [Debugging CORS problems for end-users](guides/debugging-cors.md)
 * [How to interpret binaries in Solidity](guides/how-to-interpret-binaries-in-solidity.md)
+* [How to Verify a Message Signature on Ethereum](guides/how-to-verify-a-message-signature-on-ethereum/README.md)
+  * [How to Create a Signature Generator DApp](guides/how-to-verify-a-message-signature-on-ethereum/how-to-create-a-signature-generator-dapp.md)
 * [Ethereum Transactions - Pending, Mined, Dropped & Replaced](guides/ethereum-transactions-pending-mined-dropped-and-replaced.md)
 * [How to Enable Compression to Speed Up JSON-RPC Blockchain Requests](guides/how-to-enable-compression-to-speed-up-json-rpc-blockchain-requests.md)
 
