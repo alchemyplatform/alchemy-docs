@@ -46,6 +46,8 @@
   * [How to Resolve ENS Domains Given a Wallet Address](enhanced-apis/nft-api/how-to-get-ens.md)
 * [Transfers API (Tx History)](enhanced-apis/transfers-api.md)
   * [How to get transaction history for an address on Ethereum](enhanced-apis/transfers-api/how-to-get-transaction-history-for-an-address-on-ethereum.md)
+  * [How to get a contract's first transfer event](enhanced-apis/transfers-api/how-to-get-a-contracts-first-transfer-event.md)
+  * [How to get a contract's last transfer event](enhanced-apis/transfers-api/how-to-get-a-contracts-last-transfer-event.md)
   * [How to get NFTs minted by an address](enhanced-apis/transfers-api/how-to-get-nfts-minted-by-an-address.md)
   * [How to get all NFT transactions by an address](enhanced-apis/transfers-api/how-to-get-all-nft-transactions-by-an-address.md)
 * [Transaction Receipts API](enhanced-apis/transaction-receipts-api/README.md)
