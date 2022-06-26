@@ -24,6 +24,11 @@ _To see chain support across all features, check out the_ [_feature matrix_](../
   * `totalSupply:` _**\[string]**_ total number of NFTs in a given NFT collection
   * `tokenType:` _**\[string]**_ `"erc721"` or `"erc1155"` NFT token type
 
+{% hint style="info" %}
+**NOTE:** \
+****The **** `name`, `symbol`, and `totalSupply`fields will only be set in the response if the contract implements functions to return each field.
+{% endhint %}
+
 ## Example
 
 ### Request
