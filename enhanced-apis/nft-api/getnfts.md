@@ -58,7 +58,7 @@ We paginate our responses with a default limit of **100 responses**. We've chose
     * `tokenUri`:
       * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
       * `gateway:` public gateway uri for the raw uri above.
-    *   `media`:
+    *   `media` _**\[array of object]**_ :
 
         * `raw:` uri representing the location of the NFT media asset. This is a backup for you to parse when the `metadata` field is not automatically populated.
         * `gateway:` public gateway uri for the raw asset above.&#x20;
