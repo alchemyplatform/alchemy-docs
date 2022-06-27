@@ -8,6 +8,8 @@ description: Returns a list of all spam contracts marked by Alchemy
 This endpoint is currently in _BETA_.&#x20;
 {% endhint %}
 
+_**For more information on how we classify spam, go to our**_ [_**NFT API FAQ**_](https://docs.alchemy.com/alchemy/enhanced-apis/nft-api/nft-api-faq#nft-spam-classification)_**.**_
+
 This endpoint is supported on the following chains and networks:
 
 * **Ethereum**: Mainnet
