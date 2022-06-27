@@ -17,13 +17,15 @@ Sign up for our private beta waitlist and we'll get back to you soon!
 3. Configure solana-web3.js to use Alchemy:
 
 ```jsx
-import * as web3 from '@solana/web3.js';
+const solanaWeb3 = require('@solana/web3.js');
 
-// Connect to cluster
-var connection = new web3.Connection(
-  web3.clusterApiUrl('https://solana-mainnet.g.alchemy.com/v2/API_KEY'),
-  'confirmed',
-);
+const establishConnection = async () =>{
+ rpc="https://solana-mainnet.g.alchemy.com/v2/<API-KEY>";
+ connection = new solanaWeb3.Connection(rpc, 'confirmed');
+ console.log('Cluster Connected:', rpcUrl);
+}
+
+establishConnection();
 ```
 
 Now, you can use solana-web3.js normally!&#x20;
