@@ -24,6 +24,7 @@ Here are links to each of the learning challenges in the Road to Web 3 Series.
 6. [How to Build a Staking dApp](weekly-learning-challenges/6.-how-to-build-a-staking-dapp.md)&#x20;
 7. [How to Build an NFT Marketplace from Scratch](weekly-learning-challenges/7.-how-to-build-an-nft-marketplace-from-scratch.md)&#x20;
 8. [How to Build a Betting Game on Optimism](weekly-learning-challenges/8.-how-to-build-a-betting-game-on-optimism.md)
+9. [How to Build a Token Swap Dapp with 0x API](https://docs.alchemy.com/alchemy/road-to-web3/weekly-learning-challenges/9.-how-to-build-a-token-swap-dapp-with-0x-api)
 
 To learn more about the program, read some of our frequently asked questions answered below.
 
