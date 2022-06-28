@@ -43,7 +43,7 @@ Though it may be tempting to use WebSockets for all node requests because it’s
 HTTPS is a better option for standard JSON-RPC node requests for several reasons:&#x20;
 
 * **Silent failures:** WebSockets client-side handling has many tricky edge cases and silent failure modes.&#x20;
-* L**oad balancing:** When making requests to distributed systems such as Alchemy, individual HTTP requests are load-balanced to the fastest possible server, whereas with WebSockets you incur additional latency by sending JSON-RPC requests only to a single node&#x20;
+* **Load balancing:** When making requests to distributed systems such as Alchemy, individual HTTP requests are load-balanced to the fastest possible server, whereas with WebSockets you incur additional latency by sending JSON-RPC requests only to a single node&#x20;
 * **Retries:** In most common request frameworks, support for retrying failed HTTP requests comes automatically, and can be configured easily. Conversely, in WebSockets retrying failed requests typically requires custom JSON-RPC id based tracking.&#x20;
 * **HTTP status codes:** When web3 developers use WebSockets they won't receive HTTP status codes in WebSockets responses, which can be useful for debugging or sorting responses.&#x20;
 
@@ -55,7 +55,21 @@ Though we permit sending large requests (currently up to 2.5 MB) and receiving l
 
 By keeping your API calls an order of magnitude smaller than our hard limits, your infrastructure will become more reliable, responsive, and you’ll spend less time debugging your dApp.
 
-### Contact Us When Multiplying Your Capacity&#x20;
+### 5. Use gZip Compression to Speed Up Large Requests
+
+At Alchemy, many of our developers have brought up slow response times as a major blocker to providing their customers with a good web3 user experience.
+
+To provide users with better product experiences, we updated our internal infrastructure to offer **Alchemy developers support for gzip compression on all responses larger than 1kb in size.**
+
+In practice, we’ve seen roughly a **75% improvement in the total latency of typical JSON-RPC replayTransaction calls.**
+
+**Go to the article below to learn how to implement gZip compression:**&#x20;
+
+{% content-ref url="../guides/how-to-enable-compression-to-speed-up-json-rpc-blockchain-requests.md" %}
+[how-to-enable-compression-to-speed-up-json-rpc-blockchain-requests.md](../guides/how-to-enable-compression-to-speed-up-json-rpc-blockchain-requests.md)
+{% endcontent-ref %}
+
+### 6. Contact Us When Multiplying Your Capacity&#x20;
 
 Are you planning on launching the next big NFT project? Planning a major indexing project to backfill your databases with custom node data?
 
