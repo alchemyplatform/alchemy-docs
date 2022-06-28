@@ -23,13 +23,17 @@ When using pricing information from marketplaces, we advise that all teams attri
 ## Returns&#x20;
 
 * _**\[object]**_ with the following properties&#x20;
-  * `marketplace`: _**\[object]**_ name of the NFT marketplace where the collection is listed. Current marketplaces supported:  [OpenSea](https://opensea.io/), [LooksRare](https://looksrare.org/)
-    * `floorPrice`: _**\[float]** - ****_ the floor price of the collection on the given marketplace
-    * `priceCurrency`: _**\[enum]** -_ the currency in which the floor price is denominated
-      * Typically, denominated in **ETH**
-    * `collectionUrl`: _**\[string]** - ****_ link to the collection on the given marketplace
-    * `retrievedAt`: _**\[string]** -_ UTC timestamp of when the floor price was retrieved from the marketplace
-    * `error`: _**\[string]**_** -**returns an error if there was an error fetching floor prices from the given marketplace
+  *   `{marketplace}`: _**\[object]** - ****_ name of the NFT marketplace where the collection is listed. Current marketplaces supported:  [OpenSea](https://opensea.io/), [LooksRare](https://looksrare.org/)
+
+      * `floorPrice`: _**\[float]** - ****_ the floor price of the collection on the given marketplace
+      * `priceCurrency`: _**\[enum]** -_ the currency in which the floor price is denominated
+        * Typically, denominated in **ETH**
+      * `collectionUrl`: _**\[string]** - ****_ link to the collection on the given marketplace
+      * `retrievedAt`: _**\[string]** -_ UTC timestamp of when the floor price was retrieved from the marketplace
+
+      &#x20;                                                                   **or**
+  * **OR (if there is a marketplace error):** `{marketplace}`: _**\[object]** - ****_ name of the NFT marketplace where the collection is listed. Current marketplaces supported:  [OpenSea](https://opensea.io/), [LooksRare](https://looksrare.org/)
+    * `error`: _**\[string]**_** ** - returns an error if there was an error fetching floor prices from the given marketplace
 
 ## Examples
 
@@ -96,8 +100,9 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
 
 ### Response
 
-{% code title="200" %}
-```json
+{% tabs %}
+{% tab title="200" %}
+```
 {
     "openSea": {
         "floorPrice": 90,
@@ -112,6 +117,20 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
         "collectionUrl": "https://looksrare.org/collections/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
     }
 }
-
 ```
-{% endcode %}
+{% endtab %}
+
+{% tab title="200 - marketplace error" %}
+```
+{
+    "openSea": {
+        "error": "unable to fetch floor price"
+    },
+    "looksRare": {
+        "error": "unable to fetch floor price"
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
+
