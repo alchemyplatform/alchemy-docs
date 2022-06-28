@@ -324,6 +324,7 @@
   * [6. How to Build a Staking Dapp](road-to-web3/weekly-learning-challenges/6.-how-to-build-a-staking-dapp.md)
   * [7. How to Build an NFT Marketplace from Scratch](road-to-web3/weekly-learning-challenges/7.-how-to-build-an-nft-marketplace-from-scratch.md)
   * [8. How to build a betting game on Optimism](road-to-web3/weekly-learning-challenges/8.-how-to-build-a-betting-game-on-optimism.md)
+  * [9. How to Build a Token Swap Dapp With 0x API](road-to-web3/weekly-learning-challenges/9.-how-to-build-a-token-swap-dapp-with-0x-api.md)
 
 ## 💻 Tutorials
 
