@@ -461,8 +461,8 @@ If you'd like support for these transfer types, please [upvote and comment](http
     * `value`: raw transfer value (hex string). `null` if ERC721 or ERC1155 transfer
     * `address`: contract address (hex string). `null` if `external` or `internal` transfer
     * `decimal`: contract decimal (hex string). `null` if not defined in the contract and not available from other sources.
-    * `metadata`: Additional metadata about each transfer event. (included if `withMetadata=true` )
-      * `blockTimestamp`: Timestamp of the block from which the transaction event originated (ISO-formatted timestamp).
+  * `metadata`: Additional metadata about each transfer event. (included if `withMetadata=true` )
+    * `blockTimestamp`: Timestamp of the block from which the transaction event originated (ISO-formatted timestamp).
 {% endtab %}
 
 {% tab title="withMetadata=false" %}
