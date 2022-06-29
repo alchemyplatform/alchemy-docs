@@ -59,11 +59,11 @@ By keeping your API calls an order of magnitude smaller than our hard limits, yo
 
 At Alchemy, many of our developers have brought up slow response times as a major blocker to providing their customers with a good web3 user experience.
 
-To provide users with better product experiences, we updated our internal infrastructure to offer **Alchemy developers support for gzip compression on all responses larger than 1kb in size.**
+To provide users with better product experiences, we updated our internal infrastructure to offer Alchemy developers **support for gzip compression on all responses larger than 1kb in size.**
 
 In practice, we’ve seen roughly a **75% improvement in the total latency of typical JSON-RPC replayTransaction calls.**
 
-**Go to the article below to learn how to implement gZip compression:**&#x20;
+Go to the article below to learn how to implement gZip compression:&#x20;
 
 {% content-ref url="../guides/how-to-enable-compression-to-speed-up-json-rpc-blockchain-requests.md" %}
 [how-to-enable-compression-to-speed-up-json-rpc-blockchain-requests.md](../guides/how-to-enable-compression-to-speed-up-json-rpc-blockchain-requests.md)
