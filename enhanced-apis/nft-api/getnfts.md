@@ -16,10 +16,10 @@ _To see chain support across all features, check out the_ [_feature matrix_](../
 
 * `owner`: _**\[string]**_ address for NFT owner (can be in _**ENS format**_!)
 * `pageKey`: _**\[string]**_ (optional) UUID for pagination. If more results are available, a UUID `pageKey` will be returned in the response. Pass that UUID into `pageKey` to fetch the next 100 NFTs.     _**NOTE:** pageKeys expire after 10 minutes._&#x20;
-* `contractAddresses`:  _**\[array of strings]**_ (optional) array of contract addresses to filter the responses with. Max limit 20 contracts.
+* `contractAddresses[]`:  _**\[array of strings]**_ (optional) array of contract addresses to filter the responses with. Max limit 20 contracts.
 * `withMetadata`:  _**\[boolean]**_ `true` by default (optional); if boolean is set to `true` the query will include metadata for each returned token&#x20;
   * _**For more information on NFT metadata structure, go to our**_ [_**NFT API FAQ**_](https://docs.alchemy.com/alchemy/enhanced-apis/nft-api/nft-api-faq#understanding-nft-metadata)_**.**_
-*   `filters`:  _**\[array of ENUMS]**_ (optional) array of filters (as string ENUMS) that will be applied to the query. NFTs that are match one or more of these filters will be excluded from the response. &#x20;
+*   `filters[]`:  _**\[array of ENUMS]**_ (optional) array of filters (as string ENUMS) that will be applied to the query. NFTs that are match one or more of these filters will be excluded from the response. &#x20;
 
     **NOTE:** _This is a beta feature._ Valid filter strings include:&#x20;
 
