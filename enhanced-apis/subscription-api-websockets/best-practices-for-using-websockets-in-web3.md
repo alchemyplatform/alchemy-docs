@@ -59,7 +59,7 @@ Using Alchemy’s [Subscription API](https://docs.alchemy.com/alchemy/enhanced-a
 3. ****[**newHeads​:**](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#newheads) Emits new blocks that are added to the blockchain.&#x20;
 4. ​[**logs**](https://docs.alchemy.com/alchemy/enhanced-apis/subscription-api-websockets#logs)​: Emits logs attached to a new block that match certain topic filters. Note: ​newFullPendingTransactions​ and ​filteredNewFullPendingTransactions​ are being combined into a single API with parameters.&#x20;
 
-## 4 Reasons to Use HTTPS instead of WebSockets for JSON-RPC Node Requests&#x20;
+## Reasons to Use HTTPS instead of WebSockets for JSON-RPC Node Requests&#x20;
 
 In general, the best practice that we recommend is that developers don’t send standard Ethereum JSON-RPC requests over WebSockets, and instead use HTTP(S) requests. Sending JSON-RPC requests over WebSockets may become unsupported in the future.
 
@@ -68,7 +68,8 @@ This is for four main reasons:
 * Silent failures&#x20;
 * Load balancing&#x20;
 * Retries HTTP&#x20;
-* status codes
+* Status codes
+* gZip compression
 
 ### 1. Silent failures&#x20;
 
@@ -87,6 +88,18 @@ In most common request frameworks, support for retrying failed HTTP requests com
 ### 4. HTTP status codes&#x20;
 
 When web3 developers use WebSockets they won't receive HTTP status codes in WebSockets responses, which can be useful for debugging or sorting responses.
+
+### 5. gZip Compression
+
+To provide users with better product experiences, we updated our infrastructure serving HTTP requests to offer Alchemy developers **support for gzip compression on all responses larger than 1kb in size.**
+
+In practice, we’ve seen roughly a **75% improvement in the total latency of typical JSON-RPC replayTransaction calls.**
+
+Go to the article below to learn how to implement gZip compression:
+
+{% content-ref url="../../guides/how-to-enable-compression-to-speed-up-json-rpc-blockchain-requests.md" %}
+[how-to-enable-compression-to-speed-up-json-rpc-blockchain-requests.md](../../guides/how-to-enable-compression-to-speed-up-json-rpc-blockchain-requests.md)
+{% endcontent-ref %}
 
 ## Conclusion
 
