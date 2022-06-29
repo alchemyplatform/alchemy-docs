@@ -28,12 +28,12 @@ There are five main types of transfers that are captured when using this API.
 {% hint style="info" %}
 #### **Types of transfers supported on each network:**
 
-* **Ethereum Mainnet:** External, Internal, Token, ERC20, ERC721, ERC1155
+* **Ethereum Mainnet:** External, Internal, ERC20, ERC721, ERC1155
 * **Ethereum Testnets:**\
-  **- Rinkeby, Kovan, Ropsten**: Token, ERC20, ERC721, ERC1155\
-  **-** **Goerli**: Internal, Exteranl, Token, ERC20, ERC721, ERC1155
-* **Polygon Mainnet:** External, Token, ERC20, ERC721, ERC1155
-* **Polygon Mumbai:** External, Token, ERC20, ERC721, ERC1155
+  **- Rinkeby, Kovan, Ropsten**: ERC20, ERC721, ERC1155\
+  **-** **Goerli**: Internal, Exteranl, ERC20, ERC721, ERC1155
+* **Polygon Mainnet:** External, ERC20, ERC721, ERC1155
+* **Polygon Mumbai:** External, ERC20, ERC721, ERC1155
 {% endhint %}
 
 ### 1. External Eth Transfers
@@ -90,6 +90,8 @@ Additionally, we do not include any **internal transfers with call type`delegate
 * `contractAddresses`: \[optional] list of contract addresses (hex strings) to filter for - only applies to "`token`", "`erc20`", "`erc721`", "`erc1155`" transfers
   * Default: wildcard - any address
 * `category`: (required) array of categories, can be any of the following: "`external`", "`internal`", "`erc20`", "`erc721`", "`erc1155`"
+* `withMetadata`: \[optional] whether or not to include additional metadata about each transfer event.
+  * Default: `false`
 * `excludeZeroValue:` \[optional] a`Boolean` to exclude transfers with zero value. Zero value is not the same as `null` value
   * Default:  `true`
 * `maxCount`: \[optional] max hex string number of results to return per call
@@ -105,11 +107,15 @@ Additionally, we do not include any **internal transfers with call type`delegate
 
 ### Returns
 
+{% tabs %}
+{% tab title="withMetadata=true" %}
+
+
 * `id`: json-rpc id
   * `jsonrpc`: json-rpc version
   * `result`: an object with the following fields
     * `pageKey`: uuid of next page of results (if exists, else blank).
-    * `transfers:` array of objects (defined below) - sorted in ascending order by block number, ties broken by category (`external` , `internal`, `token`)
+    * `transfers:` array of objects (defined below) - sorted in ascending order by block number, ties broken by category (`external` , `internal`, `token transfers`)
 * Object schema:
   * `category`: "`external`", "`internal`", "`token`", "`erc20`", "`erc721`", "`erc1155`" - label for the transfer
     * "`token`" includes "`erc20`" and "`erc721`" transfers
@@ -126,6 +132,36 @@ Additionally, we do not include any **internal transfers with call type`delegate
     * `value`: raw transfer value (hex string). `null` if ERC721 or ERC1155 transfer
     * `address`: contract address (hex string). `null` if `external` or `internal` transfer
     * `decimal`: contract decimal (hex string). `null` if not defined in the contract and not available from other sources.
+  * `metadata`: Additional metadata about each transfer event. (included if `withMetadata=true` )
+    * `blockTimestamp`: Timestamp of the block from which the transaction event originated (ISO-formatted timestamp).
+{% endtab %}
+
+{% tab title="withMetadata=false" %}
+
+
+* `id`: json-rpc id
+  * `jsonrpc`: json-rpc version
+  * `result`: an object with the following fields
+    * `pageKey`: uuid of next page of results (if exists, else blank).
+    * `transfers:` array of objects (defined below) - sorted in ascending order by block number, ties broken by category (`external` , `internal`, `token transfers`)
+* Object schema:
+  * `category`: "`external`", "`internal`", "`token`", "`erc20`", "`erc721`", "`erc1155`" - label for the transfer
+    * "`token`" includes "`erc20`" and "`erc721`" transfers
+  * `blockNum`: the block where the transfer occurred (hex string).
+  * `from`: from address of transfer (hex string).
+  * `to`: to address of transfer (hex string). `null` if contract creation.
+  * `value`: converted asset transfer value as a number (raw value divided by contract decimal). `null` if ERC721 transfer or contract decimal not available.
+  * `erc721TokenId`: raw ERC721 token id (hex string). `null` if not an ERC721 token transfer
+  * `erc1155Metadata`: A list of objects containing the ERC1155 `tokenId` (hex string) and `value` (hex string). `null` if not an ERC1155 transfer
+  * `tokenId`: token ID for ERC721 (or other NFT) tokens
+  * `asset`: `ETH` or the token's symbol. `null` if not defined in the contract and not available from other sources.
+  * `hash`: transaction hash (hex string).
+  * `rawContract`
+    * `value`: raw transfer value (hex string). `null` if ERC721 or ERC1155 transfer
+    * `address`: contract address (hex string). `null` if `external` or `internal` transfer
+    * `decimal`: contract decimal (hex string). `null` if not defined in the contract and not available from other sources.
+{% endtab %}
+{% endtabs %}
 
 ### [Example](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22alchemy\_getAssetTransfers%22%2C%22paramValues%22%3A%5B%7B%22fromBlock%22%3A%220xA97AB8%22%2C%22toBlock%22%3A%220xA97CAC%22%2C%22contractAddresses%22%3A%22%5B%5C%220x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9%5C%22%5D%22%2C%22maxCount%22%3A%225%22%2C%22fromAddress%22%3A%220x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE%22%2C%22excludeZeroValue%22%3Atrue%2C%22category%22%3A%5B%22external%22%2C%22token%22%5D%7D%5D%7D)
 
@@ -383,6 +419,8 @@ If you'd like support for these transfer types, please [upvote and comment](http
   * `contractAddresses`: \[optional] list of contract addresses (hex strings) to filter for - only applies to "`token`", "`erc20`", "`erc721`", "`erc1155`" transfers
     * Default: wildcard - any address
   * `category`: (required) array of categories, can be any of the following: "`external`", "`internal`", "`erc20`", "`erc721`", "`erc1155`"
+  * `withMetadata`: \[optional] whether or not to include additional metadata about each transfer event.
+    * Default: `false`
   * `excludeZeroValue:` \[optional] a`Boolean` to exclude transfers with zero value
     * Default: `true`
   * `maxCount`: \[optional] max hex string number of results to return per call
@@ -397,6 +435,10 @@ If you'd like support for these transfer types, please [upvote and comment](http
 {% endhint %}
 
 ### Returns <a href="#returns" id="returns"></a>
+
+{% tabs %}
+{% tab title="withMetadata=true" %}
+
 
 * `id`: json-rpc id
 * `jsonrpc`: json-rpc version
@@ -419,6 +461,36 @@ If you'd like support for these transfer types, please [upvote and comment](http
     * `value`: raw transfer value (hex string). `null` if ERC721 or ERC1155 transfer
     * `address`: contract address (hex string). `null` if `external` or `internal` transfer
     * `decimal`: contract decimal (hex string). `null` if not defined in the contract and not available from other sources.
+    * `metadata`: Additional metadata about each transfer event. (included if `withMetadata=true` )
+      * `blockTimestamp`: Timestamp of the block from which the transaction event originated (ISO-formatted timestamp).
+{% endtab %}
+
+{% tab title="withMetadata=false" %}
+
+
+* `id`: json-rpc id
+* `jsonrpc`: json-rpc version
+* `result`: an object with the following fields:
+  * `pageKey`: uuid of next page of results (if exists, else blank).
+  * `transfers:` array of objects (defined below) - sorted in ascending order by block number, ties broken by category (`external` , `internal`, `token`)
+* Object schema:
+  * `category`: "`token`", "`erc20`", "`erc721`", "`erc1155`" - label for the transfer
+    * "`token`" includes "`erc20`" and "`erc721`" transfers
+  * `blockNum`: the block where the transfer occurred (hex string).
+  * `from`: from address of transfer (hex string).
+  * `to`: to address of transfer (hex string). `null` if contract creation.
+  * `value`: converted asset transfer value as a number (raw value divided by contract decimal). `null` if ERC721 transfer or contract decimal not available.
+  * `erc721TokenId`: raw ERC721 token id (hex string). `null` if not an ERC721 token transfer
+  * `erc1155Metadata`: A list of objects containing the ERC1155 `tokenId` (hex string) and `value` (hex string). `null` if not an ERC1155 transfer
+  * `tokenId`: token ID for ERC721 (or other NFT) tokens
+  * `asset`: `ETH` or the token's symbol. `null` if not defined in the contract and not available from other sources.
+  * `hash`: transaction hash (hex string).
+  * `rawContract`
+    * `value`: raw transfer value (hex string). `null` if ERC721 or ERC1155 transfer
+    * `address`: contract address (hex string). `null` if `external` or `internal` transfer
+    * `decimal`: contract decimal (hex string). `null` if not defined in the contract and not available from other sources.
+{% endtab %}
+{% endtabs %}
 
 ### [​Example​](https://bit.ly/3ofZsYM) <a href="#example" id="example"></a>
 
