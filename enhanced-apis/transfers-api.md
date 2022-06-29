@@ -73,7 +73,7 @@ Additionally, we do not include any **internal transfers with call type`delegate
 ## `alchemy_getAssetTransfers` (Ethereum Mainnet)
 
 {% hint style="warning" %}
-**NOTE:** The documentation in this section only applies to `alchemy_getAssetTransfers` on **Ethereum** **Mainnet**. For documentation on **Ethereum Testnets** and **Polygon (Mainnet and Mumbai)**, see [alchemy\_getAssetTransfers (Testnets and Layer 2s)](transfers-api.md#alchemy\_getassettransfers-testnets-and-layer-2s).&#x20;
+**NOTE:** The documentation in this section only applies to `alchemy_getAssetTransfers` on **Ethereum** **Mainnet** and **Ethereum Goerli**. For documentation on **Ethereum Ropsten, Rinkeby, and Kovan** and **Polygon (Mainnet and Mumbai)**, see [alchemy\_getAssetTransfers (Testnets and Layer 2s)](transfers-api.md#alchemy\_getassettransfers-testnets-and-layer-2s).&#x20;
 {% endhint %}
 
 ### Parameters
@@ -395,12 +395,12 @@ Body:
 
 ## `alchemy_getAssetTransfers` (Testnets and Layer 2s)
 
-The documentation in this section only applies to `alchemy_getAssetTransfers` on **Ethereum Testnets** and **Polygon (Mainnet and Mumbai).** For documentation on **Ethereum** **Mainnet**, see [above](transfers-api.md#alchemy\_getassettransfers-ethereum-mainnet).
+The documentation in this section only applies to `alchemy_getAssetTransfers` on **Ethereum Testnets (Rinkeby, Ropsten, Kovan)** and **Polygon (Mainnet and Mumbai).** For documentation on **Ethereum** **Mainnet** and **Goerli**, see [above](transfers-api.md#alchemy\_getassettransfers-ethereum-mainnet).
 
 {% hint style="warning" %}
 **NOTE: Types of Transfers supported**
 
-`alchemy_getAssetTransfers` **** on **Polygon** only supports  `external` ,`token`, `ERC20`, `ERC721`, and `ERC1155` transfers, **not**`internal` MATIC transfers.&#x20;
+`alchemy_getAssetTransfers` **** on **Ethereum Kovan, Rinkeby, Ropsetn** and **Polygon Mainnet** and **Mumbai** only supports  `external` ,`token`, `ERC20`, `ERC721`, and `ERC1155` transfers, **not**`internal` transfers.&#x20;
 
 If you'd like support for these transfer types, please [upvote and comment](https://roadmap.alchemy.com/b/feature-requests/support-internal-external-transfers-on-polygon) to add this to our roadmap.
 {% endhint %}
@@ -418,7 +418,7 @@ If you'd like support for these transfer types, please [upvote and comment](http
     * Default: wildcard - any address
   * `contractAddresses`: \[optional] list of contract addresses (hex strings) to filter for - only applies to "`token`", "`erc20`", "`erc721`", "`erc1155`" transfers
     * Default: wildcard - any address
-  * `category`: (required) array of categories, can be any of the following: "`external`", "`internal`", "`erc20`", "`erc721`", "`erc1155`"
+  * `category`: (required) array of categories, can be any of the following: "`external`", "`erc20`", "`erc721`", "`erc1155`"
   * `withMetadata`: \[optional] whether or not to include additional metadata about each transfer event.
     * Default: `false`
   * `excludeZeroValue:` \[optional] a`Boolean` to exclude transfers with zero value
