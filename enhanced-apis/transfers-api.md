@@ -404,4 +404,4 @@ In the second case, you will also receive a value for `pageKey` in the response,
 
 ## How to get timestamps for a transaction
 
-A transaction object will have a block number associated with it, the block number is Ethereum's measure of time, however, if you want a standard timestamp you can easily get that by grabbing the `blockNum` result and making a call to [`eth_getBlockByNumber`](../apis/ethereum/#eth\_getblockbynumber). Here is an [example request](https://composer.alchemyapi.io/?composer\_state=%7B%22network%22%3A0%2C%22methodName%22%3A%22eth\_getBlockByNumber%22%2C%22paramValues%22%3A%5B%22latest%22%2Cfalse%5D%7D).&#x20;
+A transaction object will have a block number associated with it, the block number is Ethereum's measure of time, however, if you want a standard timestamp you can easily get that by specifying `withMetadata=true` in your request.&#x20;
