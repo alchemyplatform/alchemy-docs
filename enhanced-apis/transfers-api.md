@@ -23,18 +23,15 @@ NOTE: The Transfers API is currently only available on **Ethereum** and **Polygo
 
 ## Types of Transfers
 
-There are five main types of transfers that are captured when using this API.
+There are five main types of transfers that are captured when using this API. See below for the types of transfers supported on each network.
 
-{% hint style="info" %}
-#### **Types of transfers supported on each network:**
-
-* **Ethereum Mainnet:** External, Internal, ERC20, ERC721, ERC1155
-* **Ethereum Testnets:**\
-  **- Rinkeby, Kovan, Ropsten**: ERC20, ERC721, ERC1155\
-  **-** **Goerli**: Internal, Exteranl, ERC20, ERC721, ERC1155
-* **Polygon Mainnet:** External, ERC20, ERC721, ERC1155
-* **Polygon Mumbai:** External, ERC20, ERC721, ERC1155
-{% endhint %}
+| Type of Transfer | Ethereum Mainnet, Goerli | Polygon Mainnet, Mumbai | Ethereum Kovan, Rinkeby, Ropsten |
+| ---------------- | ------------------------ | ----------------------- | -------------------------------- |
+| External         | ✅                        | ✅                       | :white\_check\_mark:             |
+| Internal         | ✅                        | ❌                       | ❌                                |
+| ERC20            | ✅                        | ✅                       | ❌                                |
+| ERC721           | ✅                        | ✅                       | ❌                                |
+| ERC1155          | ✅                        | ✅                       | ❌                                |
 
 ### 1. External Eth Transfers
 
@@ -70,11 +67,7 @@ These are transfers that occur where the `fromAddress` is an internal (smart con
 Additionally, we do not include any **internal transfers with call type`delegatecall`**` ``` because although they have a \_value \_associated with them they do not actually _transfer_ that value (see[ Appendix H of the Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) if you're curious). We also do not include miner rewards as an internal transfer.
 {% endhint %}
 
-## `alchemy_getAssetTransfers` (Ethereum Mainnet)
-
-{% hint style="warning" %}
-**NOTE:** The documentation in this section only applies to `alchemy_getAssetTransfers` on **Ethereum** **Mainnet** and **Ethereum Goerli**. For documentation on **Ethereum Ropsten, Rinkeby, and Kovan** and **Polygon (Mainnet and Mumbai)**, see [alchemy\_getAssetTransfers (Testnets and Layer 2s)](transfers-api.md#alchemy\_getassettransfers-testnets-and-layer-2s).&#x20;
-{% endhint %}
+## `alchemy_getAssetTransfers`
 
 ### Parameters
 
@@ -90,6 +83,7 @@ Additionally, we do not include any **internal transfers with call type`delegate
 * `contractAddresses`: \[optional] list of contract addresses (hex strings) to filter for - only applies to "`token`", "`erc20`", "`erc721`", "`erc1155`" transfers
   * Default: wildcard - any address
 * `category`: (required) array of categories, can be any of the following: "`external`", "`internal`", "`erc20`", "`erc721`", "`erc1155`"
+  * **NOTE:** See [**table above**](transfers-api.md#types-of-transfers) for categories supported on each network.&#x20;
 * `withMetadata`: \[optional] whether or not to include additional metadata about each transfer event.
   * Default: `false`
 * `excludeZeroValue:` \[optional] a`Boolean` to exclude transfers with zero value. Zero value is not the same as `null` value
@@ -390,266 +384,6 @@ Body:
     "pageKey": "347664a8-a6fd-40dd-b421-9cd08ae8c067"
   },
   "jsonrpc": "2.0"
-}
-```
-
-## `alchemy_getAssetTransfers` (Testnets and Layer 2s)
-
-The documentation in this section only applies to `alchemy_getAssetTransfers` on **Ethereum Testnets (Rinkeby, Ropsten, Kovan)** and **Polygon (Mainnet and Mumbai).** For documentation on **Ethereum** **Mainnet** and **Goerli**, see [above](transfers-api.md#alchemy\_getassettransfers-ethereum-mainnet).
-
-{% hint style="warning" %}
-**NOTE: Types of Transfers supported**
-
-`alchemy_getAssetTransfers` **** on **Ethereum Kovan, Rinkeby, Ropsetn** and **Polygon Mainnet** and **Mumbai** only supports  `external` ,`token`, `ERC20`, `ERC721`, and `ERC1155` transfers, **not**`internal` transfers.&#x20;
-
-If you'd like support for these transfer types, please [upvote and comment](https://roadmap.alchemy.com/b/feature-requests/support-internal-external-transfers-on-polygon) to add this to our roadmap.
-{% endhint %}
-
-### Parameters <a href="#parameters" id="parameters"></a>
-
-* Object - An object with the following fields (required):
-  * `fromBlock`: \[optional] inclusive from block (hex string, int, or `latest`)
-    * Default: `"0x0"`
-  * `toBlock`: \[optional] inclusive to block (hex string, int, or `latest`)
-    * Default: `latest`
-  * `fromAddress`: \[optional] from address (hex string)
-    * Default: wildcard - any address
-  * `toAddress`: \[optional] to address (hex string)
-    * Default: wildcard - any address
-  * `contractAddresses`: \[optional] list of contract addresses (hex strings) to filter for - only applies to "`token`", "`erc20`", "`erc721`", "`erc1155`" transfers
-    * Default: wildcard - any address
-  * `category`: (required) array of categories, can be any of the following: "`external`", "`erc20`", "`erc721`", "`erc1155`"
-  * `withMetadata`: \[optional] whether or not to include additional metadata about each transfer event.
-    * Default: `false`
-  * `excludeZeroValue:` \[optional] a`Boolean` to exclude transfers with zero value
-    * Default: `true`
-  * `maxCount`: \[optional] max hex string number of results to return per call
-    * Default (and max): `1000` or `0x3e8`
-  * `pageKey`: \[optional] `uuid` for [pagination](transfers-api.md#pagination). If more results are available, a uuid pageKey will be returned in the response. Pass that uuid into `pageKey` to fetch the next 1000 or `maxCount.`
-
-{% hint style="info" %}
-**NOTE**:&#x20;
-
-* `fromAddress` and `toAddress` are `AND`ed together when filtering.
-* `contractAddresses` are `OR` ed together. This filter will then be `AND`ed with `fromAddress` and `toAddress`.
-{% endhint %}
-
-### Returns <a href="#returns" id="returns"></a>
-
-{% tabs %}
-{% tab title="withMetadata=true" %}
-
-
-* `id`: json-rpc id
-* `jsonrpc`: json-rpc version
-* `result`: an object with the following fields:
-  * `pageKey`: uuid of next page of results (if exists, else blank).
-  * `transfers:` array of objects (defined below) - sorted in ascending order by block number, ties broken by category (`external` , `internal`, `token`)
-* Object schema:
-  * `category`: "`token`", "`erc20`", "`erc721`", "`erc1155`" - label for the transfer
-    * "`token`" includes "`erc20`" and "`erc721`" transfers
-  * `blockNum`: the block where the transfer occurred (hex string).
-  * `from`: from address of transfer (hex string).
-  * `to`: to address of transfer (hex string). `null` if contract creation.
-  * `value`: converted asset transfer value as a number (raw value divided by contract decimal). `null` if ERC721 transfer or contract decimal not available.
-  * `erc721TokenId`: raw ERC721 token id (hex string). `null` if not an ERC721 token transfer
-  * `erc1155Metadata`: A list of objects containing the ERC1155 `tokenId` (hex string) and `value` (hex string). `null` if not an ERC1155 transfer
-  * `tokenId`: token ID for ERC721 (or other NFT) tokens
-  * `asset`: `ETH` or the token's symbol. `null` if not defined in the contract and not available from other sources.
-  * `hash`: transaction hash (hex string).
-  * `rawContract`
-    * `value`: raw transfer value (hex string). `null` if ERC721 or ERC1155 transfer
-    * `address`: contract address (hex string). `null` if `external` or `internal` transfer
-    * `decimal`: contract decimal (hex string). `null` if not defined in the contract and not available from other sources.
-  * `metadata`: Additional metadata about each transfer event. (included if `withMetadata=true` )
-    * `blockTimestamp`: Timestamp of the block from which the transaction event originated (ISO-formatted timestamp).
-{% endtab %}
-
-{% tab title="withMetadata=false" %}
-
-
-* `id`: json-rpc id
-* `jsonrpc`: json-rpc version
-* `result`: an object with the following fields:
-  * `pageKey`: uuid of next page of results (if exists, else blank).
-  * `transfers:` array of objects (defined below) - sorted in ascending order by block number, ties broken by category (`external` , `internal`, `token`)
-* Object schema:
-  * `category`: "`token`", "`erc20`", "`erc721`", "`erc1155`" - label for the transfer
-    * "`token`" includes "`erc20`" and "`erc721`" transfers
-  * `blockNum`: the block where the transfer occurred (hex string).
-  * `from`: from address of transfer (hex string).
-  * `to`: to address of transfer (hex string). `null` if contract creation.
-  * `value`: converted asset transfer value as a number (raw value divided by contract decimal). `null` if ERC721 transfer or contract decimal not available.
-  * `erc721TokenId`: raw ERC721 token id (hex string). `null` if not an ERC721 token transfer
-  * `erc1155Metadata`: A list of objects containing the ERC1155 `tokenId` (hex string) and `value` (hex string). `null` if not an ERC1155 transfer
-  * `tokenId`: token ID for ERC721 (or other NFT) tokens
-  * `asset`: `ETH` or the token's symbol. `null` if not defined in the contract and not available from other sources.
-  * `hash`: transaction hash (hex string).
-  * `rawContract`
-    * `value`: raw transfer value (hex string). `null` if ERC721 or ERC1155 transfer
-    * `address`: contract address (hex string). `null` if `external` or `internal` transfer
-    * `decimal`: contract decimal (hex string). `null` if not defined in the contract and not available from other sources.
-{% endtab %}
-{% endtabs %}
-
-### [​Example​](https://bit.ly/3ofZsYM) <a href="#example" id="example"></a>
-
-#### Request <a href="#example" id="example"></a>
-
-{% tabs %}
-{% tab title="Fetch (JS)" %}
-```javascript
-var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
-
-var raw = JSON.stringify({
-  "jsonrpc": "2.0",
-  "id": 0,
-  "method": "alchemy_getAssetTransfers",
-  "params": [
-    {
-      "fromBlock": "0xA97AB8",
-      "toBlock": "0xA97CAC",
-      "fromAddress": "0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE",
-      "contractAddresses": [
-        "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"
-      ],
-      "maxCount": "0x5",
-      "excludeZeroValue": true,
-      "category": [
-        "external",
-        "token"
-      ]
-    }
-  ]
-});
-
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
-};
-
-fetch("https://polygon-mainnet.g.alchemy.com/v2/your-api-key", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-```
-{% endtab %}
-
-{% tab title="Axios (JS)" %}
-```javascript
-import axios from 'axios';
-
-var data = JSON.stringify({
-  "jsonrpc": "2.0",
-  "id": 0,
-  "method": "alchemy_getAssetTransfers",
-  "params": [
-    {
-      "fromBlock": "0xA97AB8",
-      "toBlock": "0xA97CAC",
-      "fromAddress": "0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE",
-      "contractAddresses": [
-        "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"
-      ],
-      "maxCount": "0x5",
-      "excludeZeroValue": true,
-      "category": [
-        "external",
-        "token"
-      ]
-    }
-  ]
-});
-
-var config = {
-  method: 'post',
-  url: 'https://polygon-mainnet.g.alchemy.com/v2/your-api-key',
-  headers: { 
-    'Content-Type': 'application/json'
-  },
-  data : data
-};
-
-axios(config)
-.then(function (response) {
-  console.log(JSON.stringify(response.data));
-})
-.catch(function (error) {
-  console.log(error);
-});
-
-```
-{% endtab %}
-
-{% tab title="Curl" %}
-```bash
-curl https://polygon-mainnet.g.alchemy.com/v2/your-api-key \
--X POST \
--H "Content-Type: application/json" \
--d'{"jsonrpc":"2.0", "id": 1, "method":"alchemy_getAssetTransfers","params":[{"fromBlock": "0xA97AB8", "toBlock": "0xA97CAC", "fromAddress": "0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE", "contracts": ["0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"], "category": ["external", "token"], "maxCount": "0x5"}]}'
-```
-{% endtab %}
-
-{% tab title="Postman" %}
-```http
-URL: https://polygon-mainnet.g.alchemy.com/v2/your-api-key
-RequestType: POST
-Body: 
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "method": "alchemy_getAssetTransfers",
-  "params": [
-    {
-      "fromBlock": "0xA97AB8",
-      "toBlock": "0xA97CAC",
-      "fromAddress": "0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE",
-      "contractAddresses": [
-        "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"
-      ],
-      "maxCount": "0x5",
-      "excludeZeroValue": true,
-      "category": [
-        "external",
-        "token"
-      ]
-    }
-  ]
-}
-```
-{% endtab %}
-{% endtabs %}
-
-#### Response <a href="#returns" id="returns"></a>
-
-```json
-{
-"id":0
-    "result":{
-        "transfers":[
-            0:{
-                "blockNum":"0x16c5378"
-                "hash":"0x1e85ace98f4fc4ad7b1b64465df81d0a275d494421e553e23a238b156f42b17f"
-                "from":"0x5350e1068f0e138ff306990b16fa4910d970c692"
-                "to":"0x9d2b758e3ffd2569c6956676fae7f8b71a53ffb5"
-                "value":NULL
-                "erc721TokenId":NULL
-                "erc1155Metadata":NULL
-                "tokenId":NULL
-                "asset":NULL
-                "category":"erc20"
-                "rawContract":{
-                    "value": "0x02f86e8030",
-                    "address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-                    "decimal": null
-                }
-            }
-        ]
-    }
-"jsonrpc":"2.0"
 }
 ```
 
