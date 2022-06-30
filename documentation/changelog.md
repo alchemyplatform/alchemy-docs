@@ -11,6 +11,14 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
 * **\[Network]** Starting **at 9AM PST on October 5th** the Ropsten, Kovan and Rinkeby networks will no longer be supported on Alchemy. All requests to those networks after this date will return HTTP 410 errors.&#x20;
   * The [Ethereum Foundation has stopped maintaining support for these test networks](https://blog.ethereum.org/2022/06/21/testnet-deprecation/) so there is a high change they might fail without warning. **We strongly recommend switching over to Goerli as soon as possible.**  Here is [a short guide on how to migrate](https://www.alchemy.com/overviews/migrate-from-ropsten-to-goerli).
 
+
+
+## Past
+
+### 06/29/2022
+
+* **\[API]** Added `withMetadata` parameter in [`alchemy_getAssetTransfers`](../enhanced-apis/transfers-api.md) which includes `blockTimestamp`
+
 ### 06/27/2022
 
 * **\[API]** Deprecated parameter feature set for [alchemy\_getAssetTransfers](../enhanced-apis/transfers-api.md). After June 27, 2022, previous parameter logic will no longer be accepted.
@@ -23,12 +31,6 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
     * `category`: \[**required**] array of categories, can be any of the following: "`external`", "`internal`", "`erc20`", "`erc721`", "`erc1155`"
       * Removed the `"token"` category and is now a required param. Users must specifically request their desired token/transfer types
 * **\[API]** Added `tokenType` response field in [getContractMetadata](../enhanced-apis/nft-api/getcontractmetadata.md).
-
-## Past
-
-### 06/29/2022
-
-* **\[API]** Added `withMetadata` parameter in [`alchemy_getAssetTransfers`](../enhanced-apis/transfers-api.md).
 
 ### 06/22/2022
 
