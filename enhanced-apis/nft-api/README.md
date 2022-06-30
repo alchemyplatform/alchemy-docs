@@ -1,7 +1,7 @@
 ---
 description: >-
-  Fetch NFTs, metadata, owners, collections, and more with speed and accuracy
-  across Ethereum, Polygon, Flow, testnets, and more.
+  Fetch NFTs, metadata, prices, owners, collections, and more with speed and
+  accuracy across Ethereum, Polygon, Flow, testnets, and more.
 ---
 
 # NFT API
@@ -37,6 +37,10 @@ Using the Alchemy NFT API allows you to both fetch and display NFTs for your use
 
 ![OpenSea](<../../.gitbook/assets/Screen Shot 2022-01-25 at 11.46.21 AM.png>)
 
+#### NFT Analytics Platforms
+
+![](<../../.gitbook/assets/Screen Shot 2022-06-30 at 12.09.59 PM.png>)
+
 #### Build On-chain NFT Games
 
 ![CryptoRaiders](<../../.gitbook/assets/Screen Shot 2022-01-25 at 11.50.43 AM.png>)
@@ -44,10 +48,6 @@ Using the Alchemy NFT API allows you to both fetch and display NFTs for your use
 #### Verify Ownership of Digital Assets
 
 ![Twitter NFT Profile Pictures](<../../.gitbook/assets/Screen Shot 2022-01-25 at 11.53.44 AM.png>)
-
-#### Social NFT displays
-
-![Gallery.so](<../../.gitbook/assets/Screen Shot 2022-01-25 at 11.56.05 AM.png>)
 
 #### ... and lots more!
 
@@ -67,7 +67,7 @@ You can check out the rest of our docs for more in-depth documentation about our
 
 #### Ethereum&#x20;
 
-\-> Mainnet, Rinkeby, Ropsten, Kovan, Goerli
+\-> Mainnet, Goerli, Rinkeby&#x20;
 
 #### Polygon (Matic)
 
@@ -76,12 +76,6 @@ You can check out the rest of our docs for more in-depth documentation about our
 #### Flow - view docs [here](https://docs.alchemy.com/flow/documentation/flow-nft-apis)
 
 \-> Mainnet
-
-### Chains Being Considered
-
-* [Solana](https://roadmap.alchemy.com/b/feature-requests/integrate-with-solana/)
-* [Avalanche](https://roadmap.alchemy.com/b/feature-requests/avalanche-support/)
-* .. and others!
 
 ## What NFTs are supported?
 
@@ -107,32 +101,44 @@ Check out the guide below to get a quick setup using:
 
 ## API Endpoints Overview
 
-### `getNFTs`
+### Ownership Endpoints
 
-#### Get all NFTs owned by an address
+*   **``**[**`getNFTs`**](getnfts.md)**``**
 
-The `getNFTs` methods takes in a user address as input and will return all of the ERC721 and ERC1155 tokens owned by that address.
+    \- Given a user address, returns all of its ERC721 and ERC1155 tokens
+*   **``**[**`getNFTsForCollection`**](getnftsforcollection.md)**``**
 
-View the **full documentation** for getNFTs here:
+    \- Given an NFT contract address, returns all NFTs for a given NFT contract.
+*   **``**[**`getOwnersForCollection`**](getownersforcollection.md)**``**
 
-{% content-ref url="getnfts.md" %}
-[getnfts.md](getnfts.md)
-{% endcontent-ref %}
+    \- Given an NFT contract address, returns all owner addresses.
+*   **``**[**`getOwnersForToken`**](getOwnersForToken.md)**``**
 
-### `getNFTMetadata`
+    \- Given an NFT contract address and token ID, returns all owner addresses.
 
-#### Get metadata for a specific NFT token
+### Metadata Endpoints
 
-The `getNFTMetadata` method takes in an NFT contract address and token ID as input and will return the metadata, including traits, and image URIs for displaying that NFT.&#x20;
+*   **``**[**`getNFTMetadata`**](getnftmetadata.md)&#x20;
 
-View the **full documentation** for getNFTMetadata here:
+    \- Given an NFT contract address/token ID, returns the metadata, including traits, image URIs, and Alchemy cached NFT media for easy display.
+*   **``**[**`getContractMetadata`**](getcontractmetadata.md)**``**
 
-{% content-ref url="getnftmetadata.md" %}
-[getnftmetadata.md](getnftmetadata.md)
-{% endcontent-ref %}
+    \- Given an NFT contract address, returns high-level collection/contract level information.
+*   **``**[**`reingestContract`**](reingestcontract.md)**``**
 
-### Understanding differences between `getNFTs` & `getNFTMetadata`
+    \- Given an NFT collection's address, triggers a refresh of a collection's metadata after a reveal
 
-`getNFTs` is most commonly used when querying all NFTs owned by an address. By default, it will return both NFTs and any associated metadata per asset in the response. Common use cases include dashboards/wallets for viewing NFT assets held by a particular address.\
-\
-`getNFTMetadata` is more specific and is used for querying the metadata of a single NFT. Common use cases include NFT rarity tools and NFT searching applications.
+### Spam Endpoints
+
+*   **``**[**`getSpamContracts`**](getspamcontracts.md)**``**
+
+    \- Returns a list of contracts earmarked as spam by Alchemy.
+*   **``**[**`isSpamContract`**](isspamcontract.md)**``**
+
+    \- Given an NFT contract address, checks whether it is on Alchemy's spam list or not.
+
+### Price Endpoints
+
+*   **``**[**`getFloorPrice`**](getfloorprice.md)**``**
+
+    \- Given an NFT collection's address, returns its floor prices by marketplace

@@ -23,6 +23,18 @@ The primary object within the Alchemy NFT API is the **NFT asset**, which is an 
 Not all metadata fields may be filled out by the NFT creator. NFTs can be published on-chain without these fields and still conform to the ERC721/ERC1155 standards.
 {% endhint %}
 
+## How Does Alchemy's NFT API Handle Image Caching?
+
+{% content-ref url="nft-image-caching.md" %}
+[nft-image-caching.md](nft-image-caching.md)
+{% endcontent-ref %}
+
+## Understanding NFT API Error Messages
+
+{% content-ref url="handling-errors.md" %}
+[handling-errors.md](handling-errors.md)
+{% endcontent-ref %}
+
 ## Gateway vs. Raw URIs
 
 Gateways are an important part of NFT infrastructure. Behind the scenes, they allow users to access IPFS content without running an IPFS node. With a gateway provider, a third-party service downloads data off of IPFS nodes and then serves it whenever requested. \
@@ -30,6 +42,12 @@ Gateways are an important part of NFT infrastructure. Behind the scenes, they al
 NFT creators/developers can also choose to "pin" their content, effectively caching and storing their content on gateway nodes/servers. This ensures that the content is always available online.
 
 While NFT gateway and raw URIs tend to be pointed at the same links, gateway URIs generally offer better performance.
+
+## Understanding differences between `getNFTs` & `getNFTMetadata`
+
+`getNFTs` is most commonly used when querying all NFTs owned by an address. By default, it will return both NFTs and any associated metadata per asset in the response. Common use cases include dashboards/wallets for viewing NFT assets held by a particular address.\
+\
+`getNFTMetadata` is more specific and is used for querying the metadata of a single NFT. Common use cases include NFT rarity tools and NFT searching applications.
 
 ## NFT "Spam" Classification
 
