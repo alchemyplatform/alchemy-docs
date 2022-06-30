@@ -43,7 +43,7 @@ See the 'examples' section for an example of how to use this parameter to fetch 
       * `raw:` uri representing the location of the NFT's original metadata blob. This is a backup for you to parse when the `metadata` field is not automatically populated.
       * `gateway:` public gateway uri for the raw uri above.
     * `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually. \
-      _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](nft-api-faq/#understanding-nft-metadata)_****_
+      _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](nft-api-faq.md#understanding-nft-metadata)_****_
 * `nextToken`: _**\[string]**_ an offset used for pagination
 
 ## Example

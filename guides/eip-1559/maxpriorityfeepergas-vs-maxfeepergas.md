@@ -7,7 +7,7 @@ description: >-
 
 # maxPriorityFeePerGas vs maxFeePerGas
 
-Sending a transaction on Ethereum post London fork uses these two new gas price fields: `maxFeePerGas` and [`maxPriorityFeePerGas`](../../apis/ethereum/eth-maxpriorityfeepergas.md). We won't go into detail on the incentive theory behind fee markets here. Instead, we will dive into the difference between these two fields and when you might want to use one vs the other (or both).
+Sending a transaction on Ethereum post London fork uses these two new gas price fields: [`maxFeePerGas`](maxpriorityfeepergas-vs-maxfeepergas.md#and-finally-what-is-max-fee-per-gas) and [`maxPriorityFeePerGas`](../../apis/ethereum/eth-maxpriorityfeepergas.md). We won't go into detail on the incentive theory behind fee markets here. Instead, we will dive into the difference between these two fields and when you might want to use one vs the other (or both).
 
 If you've gone through our [tutorial on sending an EIP 1559 transaction](https://docs.alchemy.com/alchemy/guides/eip-1559/send-tx-eip-1559) then you've seen that we recommend using only the `maxPriorityFeePerGas` field. We did this for simplicity, but it's not always the better field to use.
 
@@ -37,7 +37,7 @@ Now that we know about base fee and tip, `maxFeePerGas` is super simple. It's ju
 
 `maxFeePerGas = baseFeePerGas + maxPriorityFeePerGas`
 
-### When to use `maxPriorityFeePerGas` vs. `maxFeePerGas` <a href="#when-to-use-max-priority-fee-per-gas-vs-max-fee-per-gas" id="when-to-use-max-priority-fee-per-gas-vs-max-fee-per-gas"></a>
+### When to use `maxPriorityFeePerGas` vs. `maxFeePerGas`? <a href="#when-to-use-max-priority-fee-per-gas-vs-max-fee-per-gas" id="when-to-use-max-priority-fee-per-gas-vs-max-fee-per-gas"></a>
 
 As mentioned in the tutorial, the most _guaranteed_ way to have your transaction included in the block is to just specify a `maxPriorityFeePerGas` field (which is a tip). In this case, Alchemy/geth/etc will look up the pending `baseFee` and then set the `maxFeePerGas` field accordingly (to the sum of the base fee and the tip). All you have to do is decide how much tip to provide, which you can get by simply calling the `eth_maxPriorityFeePerGas` method on Alchemy.
 

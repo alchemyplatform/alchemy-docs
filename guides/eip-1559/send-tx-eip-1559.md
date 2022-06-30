@@ -164,7 +164,7 @@ Attempting to get transaction receipt...
 }
 ```
 
-## Add maxPriorityFeePerGas field only <a href="#add-max-priority-fee-per-gas-field-only-recommended" id="add-max-priority-fee-per-gas-field-only-recommended"></a>
+## Add `maxPriorityFeePerGas` field only <a href="#add-max-priority-fee-per-gas-field-only-recommended" id="add-max-priority-fee-per-gas-field-only-recommended"></a>
 
 The closest analogy to the `gas`:`gasPrice` combination is `gas`:`maxPriorityFeePerGas`. Since the baseFee needs to be paid regardless, we can just submit a bid on the "tip" for the miner. Our calling code becomes:
 
@@ -223,6 +223,14 @@ Which returns a hex:
 ```
 0x8
 ```
+
+## What is the difference between `effectiveGasPrice`, `cumulativeGasUsed`, and `gasUsed`? <a href="#building-a-more-sophisticated-estimate-of-max-priority-fee-per-gas" id="building-a-more-sophisticated-estimate-of-max-priority-fee-per-gas"></a>
+
+**`effectiveGasPrice`** is price per gas at the time of your transaction, so the total gas cost of your transaction is `effectiveGasPrice` \* `gasUsed`.  The `effectiveGasPrice` can be calculated by taking the minimum of `(baseFeeForBlock` + `maxTipPerGas)` and `maxFeePerGas`.
+
+**`cumulativeGasUsed`** is the sum of `gasUsed` by this specific transaction plus the `gasUsed` in all preceding transactions in the same block. So if you're looking at the last transaction in a given block, the `cumulativeGasUsed` would be all gas used by the entire block.&#x20;
+
+**`gasUsed`** is the total amount of gas used by this specific transaction.&#x20;
 
 ## Building a more sophisticated estimate of maxPriorityFeePerGas <a href="#building-a-more-sophisticated-estimate-of-max-priority-fee-per-gas" id="building-a-more-sophisticated-estimate-of-max-priority-fee-per-gas"></a>
 
