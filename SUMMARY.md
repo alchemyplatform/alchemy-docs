@@ -62,6 +62,7 @@
   * [How to Get All Tokens Owned by an Address](enhanced-apis/token-api/get-all-tokens-owned-by-address.md)
 * [Notify API](enhanced-apis/notify-api/README.md)
   * [Using Alchemy Notify/Webhooks](enhanced-apis/notify-api/using-notify.md)
+  * [How to Create a Whale Alert Discord Bot](enhanced-apis/notify-api/how-to-create-a-whale-alert-discord-bot.md)
   * [How to Integrate Alchemy Webhooks with Zapier](enhanced-apis/notify-api/integrate-alchemy-zapier.md)
   * [Building a dApp with Real-Time Transaction Notifications](enhanced-apis/notify-api/building-a-dapp-with-real-time-transaction-notifications.md)
 * [Debug API](enhanced-apis/debug-api.md)
