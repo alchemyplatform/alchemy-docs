@@ -39,7 +39,7 @@ API requests will perform faster if `tokenType` is specified!
       * `raw`: uri representing the location of the NFT media asset. This is a backup for you to parse when the `metadata` field is not automatically populated.
       * `gateway`: public gateway uri for the raw asset above.&#x20;
 
-      **NOTE:** **Where possible, **_**Alchemy-hosted NFT media are used in the `gateway` field and feature a Cloudinary URL for faster loading times and can be configured for image re-sizing. For more info on using Alchemy-hosted media, see**_ [_**this doc**_](nft-image-caching.md)_**.**_&#x20;
+      **NOTE:** **Where possible, **_**Alchemy-hosted NFT media are used in the `gateway` field and feature a Cloudinary URL for faster loading times and can be configured for image re-sizing. For more info on using Alchemy-hosted media, see**_ [_**this doc**_](nft-api-faq/nft-image-caching.md)_**.**_&#x20;
   *   `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually.
 
       * `image`: URL to the NFT asset image. Can be standard URLs pointing to images on conventional servers, [IPFS](https://github.com/ipfs/is-ipfs), or [Arweave](https://www.arweave.org/). Most types of images (SVGs, PNGs, JPEGs, etc.) are supported by NFT marketplaces.
@@ -49,14 +49,14 @@ API requests will perform faster if `tokenType` is specified!
       * `description`: human-readable description of the NFT asset. (Markdown is supported/rendered on OpenSea and other NFT platforms)
       * `attributes`: traits/attributes/characteristics for each NFT asset.
 
-      _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](nft-api-faq.md#understanding-nft-metadata)_****_
+      _**For more info on NFT responses: check out the**_ [_**NFT API FAQ.**_](nft-api-faq/#understanding-nft-metadata)_****_
   * `timeLastUpdated`: ISO timestamp of the last cache refresh for the information returned in the `metadata` field.
   * `error`: A string describing a particular reason that we were unable to fetch complete metadata for the NFT. \
-    **See the** [**Handling Errors**](handling-errors.md) **section for a complete list of potential errors.**
+    **See the** [**Handling Errors**](nft-api-faq/handling-errors.md) **section for a complete list of potential errors.**
 
 {% hint style="info" %}
 **NOTE:**\
-****To parse and view an NFT's media asset, use either the `gateway`URI within the`media` objector the`external_url`within `metadata`object. [Visit the FAQ](nft-api-faq.md#gateway-vs.-raw-uris) for more info on IPFS gateways.\
+****To parse and view an NFT's media asset, use either the `gateway`URI within the`media` objector the`external_url`within `metadata`object. [Visit the FAQ](nft-api-faq/#gateway-vs.-raw-uris) for more info on IPFS gateways.\
 \
 Select NFT contracts may not have metadata specified by their creator. You may need to parse the response on a case-by-case basis. &#x20;
 {% endhint %}
