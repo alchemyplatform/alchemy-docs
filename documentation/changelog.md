@@ -11,7 +11,9 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
 * **\[Network]** Starting **at 9AM PST on October 5th** the Ropsten, Kovan and Rinkeby networks will no longer be supported on Alchemy. All requests to those networks after this date will return HTTP 410 errors.&#x20;
   * The [Ethereum Foundation has stopped maintaining support for these test networks](https://blog.ethereum.org/2022/06/21/testnet-deprecation/) so there is a high change they might fail without warning. **We strongly recommend switching over to Goerli as soon as possible.**  Here is [a short guide on how to migrate](https://www.alchemy.com/overviews/migrate-from-ropsten-to-goerli).
 
+### 08/15/2022
 
+* **\[Network]** Optimism Kovan will be deprecated in favor of Optimism Goerli. We recommend migrating your applications ASAP.&#x20;
 
 ## Past
 
