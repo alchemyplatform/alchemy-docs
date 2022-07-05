@@ -382,6 +382,7 @@
 * [How to Verify a Message Signature on Ethereum](guides/how-to-verify-a-message-signature-on-ethereum/README.md)
   * [How to Create a Signature Generator DApp](guides/how-to-verify-a-message-signature-on-ethereum/how-to-create-a-signature-generator-dapp.md)
 * [Ethereum Transactions - Pending, Mined, Dropped & Replaced](guides/ethereum-transactions-pending-mined-dropped-and-replaced.md)
+* [How to cancel a pending transaction on Ethereum](guides/how-to-cancel-a-pending-transaction-on-ethereum.md)
 * [How to Enable Compression to Speed Up JSON-RPC Blockchain Requests](guides/how-to-enable-compression-to-speed-up-json-rpc-blockchain-requests.md)
 
 ## 📚 Resources

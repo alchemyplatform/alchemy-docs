@@ -8,7 +8,7 @@ description: >-
 
 If you're building a wallet, an NFT marketplace like OpenSea, or a [dApp with an NFT gallery](https://docs.alchemy.com/alchemy/road-to-web3/weekly-learning-challenges/4.-how-to-create-an-nft-gallery), chances are that you will need to list all NFTs owned by a user as well as information about the NFTs themselves (such as name, description, traits, etc.)
 
-![NFT gallery showing multiple NFTs including Degen Apes, Bored Ape Yacht Club (BAYC), Mekaverse, and Degen Trash Pandas.](<../../.gitbook/assets/image (40).png>)
+![NFT gallery showing multiple NFTs including Degen Apes, Bored Ape Yacht Club (BAYC), Mekaverse, and Degen Trash Pandas.](<../../.gitbook/assets/image (41).png>)
 
 To get all NFTs owned by a user on a blockchain like Ethereum or Polygon, you would have to parse the entire blockchain since genesis, track all ERC-721 and ERC-1155 contracts, and track the latest ownership status of every NFT.&#x20;
 
