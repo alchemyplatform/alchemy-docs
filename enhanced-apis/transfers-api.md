@@ -404,4 +404,11 @@ In the second case, you will also receive a value for `pageKey` in the response,
 
 ## How to get timestamps for a transaction
 
-A transaction object will have a block number associated with it, the block number is Ethereum's measure of time, however, if you want a standard timestamp you can easily get that by specifying `withMetadata=true` in your request.&#x20;
+A transaction object will have a block number associated with it, the block number is Ethereum's measure of time, however, if you want a standard timestamp you can easily get that by specifying `withMetadata=true` in your `alchemy_getAssetTransfers` __ request, or make a second call to `eth_getBlockByNumber`, passing in the `blockNum` field from the `alchemy_getAssetTransfers` __ response payload.&#x20;
+
+{% hint style="info" %}
+#### **Understanding Block Timestamps**
+
+Surprisingly, a block's timestamp is actually the time that the **previous** **block** was mined not the block that the timestamp is contained within. So for Ethereum Mainnet, blocks tend to actually be mined around 14 seconds after their timestamps.\
+
+{% endhint %}
