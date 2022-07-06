@@ -8,7 +8,7 @@ description: >-
 
 ## Want to get started with Alchemy's Solana API?
 
-Sign up for our private beta waitlist and we'll get back to you soon!
+Sign up for our [private beta waitlist ](https://www.alchemy.com/solana)and we'll get back to you soon!
 
 ## Getting Started with the Solana API
 
