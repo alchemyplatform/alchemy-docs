@@ -40,11 +40,21 @@ Transactions that have been submitted to the mempool and are waiting to be inclu
 
 ### Mined Transactions&#x20;
 
-Transactions that have been selected to be included onto the latest block by a miner. These transactions are executed, and their updated state is written to the blockchain ledger and broadcasted to the entire network.
+Transactions that have been selected and are included onto the latest block by a miner. The results of these transactions are then broadcasted to the entire network. Mined transactions can have two statuses:
+
+#### Success
+
+These transactions are successfully executed and modify state on-chain. The `status` field for a successful transaction is `0x1`
+
+#### Failure / Execution Reverted&#x20;
+
+These transactions are not successfully executed but are still included in the block. This can occur if the execution process hits an error, runs out of gas, or encounters some other issue. The `status` field for a failed transaction is `0x0`
+
+See below to understand [how to check the status of a mined transaction](ethereum-transactions-pending-mined-dropped-and-replaced.md#undefined).&#x20;
 
 ### Dropped Transactions&#x20;
 
-Transactions that have failed to be confirmed. This could happen because the transaction failed certain validation tests, the nonce was incorrect, the submitted gas price was too low and it timed out, or a number of other errors. Dropped transactions return their assets and gas fees to the sender, as if the transaction never happened.
+Transactions that have failed to be confirmed and are not included in the latest block. This could happen because the transaction failed certain validation tests, the nonce was incorrect, the submitted gas price was too low and it timed out, or a number of other errors. Dropped transactions return their assets and gas fees to the sender, as if the transaction never happened.
 
 Need help troubleshooting dropped transactions? Watch our tutorial on [how to fix pending or stuck transactions](https://www.youtube.com/watch?v=MhtJLUl51gE) with Alchemy’s Mempool Watcher.
 
@@ -81,3 +91,7 @@ Web3 developers can also use the Alchemy Notify API (webhook alerts for transact
 ## How do I start using the Mempool Watcher?
 
 [Sign up for a free Alchemy account today](https://alchemy.com/?a=dropped-replaced) to access the Mempool Watcher, start tracking your dropped & replaced transactions, and access a host of other powerful blockchain developer tools! At our current pricing, you’ll be able to send 1.2 million transactions to the mempool each month on our free tier - the most generous in the web3 ecosystem.
+
+## How to check the status of a mined transaction?&#x20;
+
+To check whether a mined transaction was successful or failed you can call [eth\_getTransactionReceipt](https://composer.alchemyapi.io/?share=eJyVl01v4jAQhv9Lzj2U8M2NIrFbqduitttLVVWOM0BUYyPHlKKq.33tQKkzHgf2gtDM\_7x2PLYz\_Uz4khUyGaUXiQSzVfotGXUuWxfJCsxS5bdsBckosf9fF2AeNZMl46ZQ8h44FGuTfAvv1i5aJqPnz\_SdiY2jmOBLWO0cOS7LAz4HXVpKsAxEo\_brgnR6VG8gx0KoLZMcaCekaXK6YsJpIlOqS5p8.oBhOTOswecoifkEqxubFSH0PTOlq.Xc2MJoz6IeJ4jJRmuQZqbVWpVAoFgQ93hiorAPq2rFjkoIn3ulzG9WLkP8mCGoh2Ih7eYZR9B62ufdDmecq42srXotjPWZUPztdrPKakuFM5jiTAgkr0KBzh3M6xxLD1GshtIUK2bgF8PT9zOYmgP8Lkpbgh2CvARmFqyc6aJ29GrhQA.mcIIw8ZOgGLeEVztURyIZZ8nSBOkYT5xBMh3jvVM6cfun8Vki4vO9G581Kif8JyonClVFCfW0EAb0ZMnkonaHkukof6MWUbjKESTNxNT2xlLzUL4PE3ri9sEZgnqwB4YtYOxeiwj7SRGcV5\_rXVUxN8JY5tcyh4.Q7IT\_rBH2O\_B.xkDEqVHo5QslzT7Vfm202SuaXX66lbjPt\_Ysp.KwJuc4HrWE81.JBZxV86jyhOupOjdoY86HO\_Q4lYhpIDvHL3aPxYTYc8U\_7GtI6cLspgAz0OELkZRgHwnbapj9JYQcUJJgY1icmIHMC7nwtk.MI6rErmutjOJKPNmWx6qQE85iurTD3LOtNwwyIASBx05yO1UMHqJYvZGFLI3thcgnx1mfrt5Q0mg7DaIRp7KIngqlNG5r6nFE3DBt32lmHPaMRBKxt9NHepp\_ImTQIFWEUE2VnighANeMTCP\_buv64wYHShDzqL56Ivg\_55P28.NV2J4TbJ39HVOPY\_I92Nt\_1FevmTvxTe1dTOG7uF0E\_.7eI.1oqEYdvxcMtTp24sg0wcNasP0N6Qn9p2zWxRwbJxUoQhf7G\_X9nE9uIWu.clG4b8WgzEQyYMsla2Okin29XLhqs5X9Bt3YznT0nFx\_dPLhoNcfZpCnvQ7rDjsp7.b60E873bTPslar22llrd6A99J2vzXvpr12m.f7MB8MO4O0e5m8fP0DNsUzXw--) passing in your transaction hash. In the payload, you will find a status field which will be 0x0 for failed and 0x1 for success.
