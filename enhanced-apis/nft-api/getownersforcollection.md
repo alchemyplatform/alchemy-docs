@@ -115,8 +115,10 @@ curl 'https://eth-mainnet.g.alchemy.com/nft/v2/demo/getOwnersForCollection/?cont
 {% endtab %}
 {% endtabs %}
 
+### Response
+
 ```json
-{"contractAddress":
+{"owners":
     ["0x001a61213d72f2f3c95ff743c80f472749ab8ad3",
     "0x003a1acce28eb335f3ff1e93a5b09cd4b598ef62",
     "0x00614efd868dabb5f92e15b0440d1f85ac0f9be1",
