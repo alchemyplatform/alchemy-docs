@@ -58,6 +58,12 @@ Allows developers to read data from the blockchain which includes executing smar
 Returns logs which are records that denote/provide context on specific events within a smart contract, like a token transfer or a change of ownership for example.
 
 * eth\_getLogs
+* eth\_getFilterChanges
+* eth\_getFilterLogs
+* eth\_newBlockFilter
+* eth\_newFilter
+* eth\_newPendingTransactionFilter
+* eth\_uninstallFilter&#x20;
 
 ### Chain Information
 
@@ -80,17 +86,6 @@ Returns information on uncle blocks are which are network rejected blocks and re
 * eth\_getUncleByBlockNumberAndIndex
 * eth\_getUncleCountByBlockHash
 * eth\_getUncleCountByBlockNumber
-
-### Filters
-
-Allows developers to filter and query for specific Optimism logs.&#x20;
-
-* eth\_getFilterChanges
-* eth\_getFilterLogs
-* eth\_newBlockFilter
-* eth\_newFilter
-* eth\_newPendingTransactionFilter
-* eth\_uninstallFilter&#x20;
 
 ### Web3
 

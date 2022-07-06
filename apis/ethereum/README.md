@@ -62,6 +62,12 @@ Allows developers to read data from the blockchain which includes executing smar
 Returns logs which are records that denote/provide context on specific events within a smart contract, like a token transfer or a change of ownership for example.
 
 * [eth\_getLogs](eth-getlogs.md)
+* [eth\_getFilterChanges](eth-getfilterchanges.md)
+* [eth\_getFilterLogs](eth-getfilterlogs.md)
+* [eth\_newBlockFilter](eth-newblockfilter.md)
+* [eth\_newFilter](eth-newfilter.md)
+* [eth\_newPendingTransactionFilter](eth-newpendingtransactionfilter.md)
+* [eth\_uninstallFilter](eth-uninstallfilter.md)&#x20;
 
 ### Chain Information
 
@@ -84,17 +90,6 @@ Returns information on uncle blocks are which are network rejected blocks and re
 * [eth\_getUncleByBlockNumberAndIndex](eth-getunclebyblocknumberandindex.md)
 * [eth\_getUncleCountByBlockHash](eth-getunclecountbyblockhash.md)
 * [eth\_getUncleCountByBlockNumber](eth-getunclecountbyblocknumber.md)
-
-### Filters
-
-Allows developers to filter and query for specific Ethereum logs.&#x20;
-
-* [eth\_getFilterChanges](eth-getfilterchanges.md)
-* [eth\_getFilterLogs](eth-getfilterlogs.md)
-* [eth\_newBlockFilter](eth-newblockfilter.md)
-* [eth\_newFilter](eth-newfilter.md)
-* [eth\_newPendingTransactionFilter](eth-newpendingtransactionfilter.md)
-* [eth\_uninstallFilter](eth-uninstallfilter.md)&#x20;
 
 ### Web3
 
