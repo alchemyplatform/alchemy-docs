@@ -254,7 +254,7 @@ axios(config)
 curl https://eth-mainnet.alchemyapi.io/v2/your-api-key \
 -X POST \
 -H "Content-Type: application/json" \
--d'{"jsonrpc":"2.0", "id": 1, "method":"alchemy_getAssetTransfers","params":[{"fromBlock": "0xA97AB8", "toBlock": "0xA97CAC", "fromAddress": "0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE", "contracts": ["0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"], "category": ["external", "internal", "token"], "maxCount": "0x5"}]}'
+-d'{"jsonrpc":"2.0", "id": 1, "method":"alchemy_getAssetTransfers","params":[{"fromBlock": "0xA97AB8", "toBlock": "0xA97CAC", "fromAddress": "0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE", "contractAddresses": ["0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"], "category": ["external", "internal", "token"], "maxCount": "0x5"}]}'
 ```
 {% endtab %}
 
