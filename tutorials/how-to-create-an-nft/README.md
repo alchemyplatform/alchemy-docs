@@ -380,6 +380,6 @@ Here you’ll see a handful of JSON-RPC calls that Hardhat/Ethers made under the
 
 Two important ones to call out here are [`eth_sendRawTransaction`](https://docs.alchemyapi.io/alchemy/documentation/alchemy-api-reference/json-rpc#eth\_sendrawtransaction), which is the request to actually write our smart contract onto the Ropsten chain, and [`eth_getTransactionByHash`](https://docs.alchemyapi.io/alchemy/documentation/alchemy-api-reference/json-rpc#eth\_gettransactionbyhash) which is a request to read information about our transaction given the hash (a typical pattern when sending transactions).
 
-To learn more about sending transactions, check out this tutorial on [sending transactions using Web3](https://docs.alchemyapi.io/alchemy/tutorials/sending-transactions-using-web3-and-alchemy).
+To learn more about sending transactions, check out this tutorial on [sending transactions using Web3](../../introduction/getting-started/sending-txs.md).
 
 That’s all for Part I of this tutorial. In Part II, we’ll actually interact with our smart contract by [minting an NFT](https://docs.alchemyapi.io/alchemy/tutorials/how-to-write-and-deploy-a-nft-smart-contract/how-to-mint-a-nft), and in Part III we'll explain how to [view your NFT in Metamask](https://docs.alchemyapi.io/alchemy/tutorials/how-to-write-and-deploy-a-nft-smart-contract/how-to-view-your-nft-in-your-wallet)! 🤑
