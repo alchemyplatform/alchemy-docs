@@ -39,7 +39,7 @@ API requests will perform faster if `tokenType` is specified!
       * `raw`: uri representing the location of the NFT media asset. This is a backup for you to parse when the `metadata` field is not automatically populated.
       * `gateway`: public gateway uri for the raw asset above.&#x20;
       * `thumbnail`: Alchemy-hosted thumbnail sized NFT media (256 pixels by 256 pixels)&#x20;
-      * `mimeType`: label idetifying the type of NFT media file (ie. png, jpg, gif, etc.)
+      * `format`: label idetifying the type of NFT media file (ie. png, jpg, gif, etc.)
 
       **NOTE:** **Where possible, **_**Alchemy-hosted NFT media are used in the `gateway` /`thumbnail` fields and feature a Cloudinary URL for faster loading times. These links can be configured for image re-sizing. For more info on using Alchemy-hosted media, see**_ [_**this doc**_](nft-api-faq/nft-image-caching.md)_**.**_&#x20;
   *   `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually.
