@@ -67,6 +67,7 @@
   * [How to Integrate Alchemy Webhooks with Zapier](enhanced-apis/notify-api/integrate-alchemy-zapier.md)
   * [Building a dApp with Real-Time Transaction Notifications](enhanced-apis/notify-api/building-a-dapp-with-real-time-transaction-notifications.md)
   * [How to Create a Slack Whale Alert Bot](enhanced-apis/notify-api/how-to-create-a-slack-whale-alert-bot.md)
+  * [How to Create a Telegram Whale Alert Bot](enhanced-apis/notify-api/how-to-create-a-telegram-whale-alert-bot.md)
 * [Debug API](enhanced-apis/debug-api.md)
 * [Trace API](enhanced-apis/trace-api/README.md)
   * [trace\_call](enhanced-apis/trace-api/trace\_call.md)
