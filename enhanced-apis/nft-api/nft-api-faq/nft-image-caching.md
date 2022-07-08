@@ -27,9 +27,11 @@ Here's an example of a Moonbird NFT asset cached by Alchemy:\
 
 ![](<../../../.gitbook/assets/image (45).png>)
 
-{% hint style="info" %}
-NOTE: We're working on expanding coverage of Alchemy-hosted NFT endpoints. Feel free to reach out to support@alchemy.com for specific questions!
-{% endhint %}
+### Why did my request not return a cached media url?
+
+We're actively working on expanding coverage of Alchemy-hosted NFT endpoints. Feel free to reach out to support@alchemy.com for specific questions!
+
+
 
 ### Image Resizing
 
