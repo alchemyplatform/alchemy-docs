@@ -19,7 +19,7 @@ Note that the SDK is still in public beta. Alchemy reserves the right to (and al
 
 ## Questions & Feedback
 
-For all SDK related questions and feedback please send us a message in the [SDK channel in discord](https://discord.gg/wAwWxpa6yU) :)&#x20;
+If you have any questions, issues, or feedback, please file an issue on [GitHub](https://github.com/alchemyplatform/alchemy-sdk-js/issues), or drop us a message on our [Discord](https://discord.com/channels/735965332958871634/983472322998575174) channel for the SDK.
 
 ## Getting started
 
