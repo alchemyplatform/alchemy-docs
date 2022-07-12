@@ -1,394 +1,224 @@
 ---
 description: >-
-  This tutorial describes how to mint an NFT on Ethereum using Ethers via the
-  ethers.js library, and our smart contract from Part I: How to Create an NFT.
-  We'll also explore basic test setup.
+  This tutorial describes how to mint an NFT using the ethers library, and the
+  smart contract from Part I: How to Create an NFT.
 ---
 
-# How to Mint an NFT with Ethers.js (option 2)
+# How to Mint an NFT with Ethers
 
 _Estimated time to complete this guide: \~10 minutes_\
 \_\_
 
+_Minting an NFT_ is the act of publishing a unique instance of an ERC721 token on the blockchain. Now that we have successfully [deployed a smart contract to the Goerli network in Part I](https://docs.alchemyapi.io/alchemy/tutorials/how-to-write-and-deploy-a-nft-smart-contract) of this NFT tutorial series, let's flex our web3 skills and mint an NFT!
+
+At the end of this tutorial, you'll be able to mint as many NFTs as you'd like with this code —let's get started!
+
+## Creating the Mint NFT Script
+
+### Step 1: Create an Alchemy Provider using ethers
+
+Open the repository from Part 1 in your favorite code editor (e.g. VSCode), and create a new file in the `scripts` folder called `mint-nft.js`. We will be using the `ethers` library from Part 1 to connect to the Alchemy Provider. Add the following code to the file:
+
+```javascript
+require('dotenv').config();
+const ethers = require('ethers');
+
+// Get Alchemy API Key
+const API_KEY = process.env.API_KEY;
+
+// Define an Alchemy Provider
+const provider = new ethers.providers.AlchemyProvider('goerli', API_URL)
+```
+
+Note that we are using `API_KEY` and not `API_URL`. Make sure you add this to your `.env` file so that it looks something like this:
+
+```
+API_URL = "https://eth-ropsten.alchemyapi.io/v2/your-api-key"
+PRIVATE_KEY = "your-metamask-private-key"
+API_KEY = "your-api-key"
+```
+
+### Step 2: Grab your contract ABI <a href="#step-3-grab-your-contract-abi" id="step-3-grab-your-contract-abi"></a>
+
+The contract ABI (Application Binary Interface) is an interface to interact with our smart contract. You can learn more about Contract ABIs [here](https://docs.alchemyapi.io/alchemy/guides/eth\_getlogs#what-are-ab-is). Hardhat automatically generates an ABI for us and saves it in the `MyNFT.json` file. In order to use this we'll need to parse out the contents by adding the following code to the `mint-nft.js` file:
+
+```javascript
+const contract = require("../artifacts/contracts/MyNFT.sol/MyNFT.json");
+```
+
+If you want to see the ABI you can print it to your console:
+
+```javascript
+console.log(JSON.stringify(contract.abi));
+```
+
+To run  and see your ABI printed to the console navigate to your terminal and run
+
+```bash
+node scripts/mint-nft.js
+```
+
+### Step 3: Configure the metadata of your NFT using IPFS <a href="#step-4-configure-the-metadata-for-your-nft-using-ipfs" id="step-4-configure-the-metadata-for-your-nft-using-ipfs"></a>
+
+Our `mintNFT` smart contract function takes in a `tokenURI` parameter that should resolve to a JSON document describing the NFT's metadata— which is really what brings the NFT to life, allowing it to have configurable properties, such as a name, description, image, and other attributes.
+
+> Interplanetary File System (IPFS) is a decentralized protocol and peer-to-peer network for storing and sharing data in a distributed file system.
+
+We will use [Pinata](https://pinata.cloud), a convenient IPFS API and toolkit, to store our NFT asset and metadata and ensure that our NFT is truly decentralized. If you don't have a Pinata account, sign up for a free account [here](https://pinata.cloud/signup).
+
+Once you've created an account:
+
+* Navigate to the _Pinata Upload_ button on the top right
+* Upload an image to pinata - this will be the image asset for your NFT. Feel free to name the asset whatever you wish
+* After you upload, at the top of the page, there should be a green popup that allows you to view the hash of your upload —> Copy that hashcode. You can view your upload at: [https://gateway.pinata.cloud/ipfs/<](https://gateway.pinata.cloud/ipfs/QmarPqdEuzh5RsWpyH2hZ3qSXBCzC5RyK3ZHnFkAsk7u2f)hash-code>
+
+For the more visual learners, the steps above are summarized here: Now, we're going to want to upload one more document to Pinata. But before we do that, we need to create it!
+
+![](https://static.slab.com/prod/uploads/7adb25ff/posts/images/gcCjisV9jQvt6CYOjUkM1NxU.gif)
+
+In your root directory, make a new file called nft-metadata.json and add the following json code:
+
+```
+{
+    "attributes" : [ {
+      "trait_type" : "Breed",
+      "value" : "Maltipoo"
+    }, {
+      "trait_type" : "Eye color",
+      "value" : "Mocha"
+    } ],
+    "description" : "The world's most adorable and sensitive pup.",
+    "image" : "https://gateway.pinata.cloud/ipfs/QmWmvTJmJU3pozR9ZHFmQC2DNDwi2XJtf3QGyYiiagFSWb",
+    "name" : "Ramses"
+}
+```
+
+Feel free to change the data in the json. You can add or remove attributes. Most importantly, make sure the image field points to the location of your IPFS image— otherwise, your NFT will not include a photo of a (very cute!) dog.
+
+Once you're done editing the json file, save it and upload it to Pinata, following the same steps we did for uploading the image.
+
+![](https://static.slab.com/prod/uploads/7adb25ff/posts/images/77NWEdyRHvtY4Da2CGi2S4SW.gif)
+
+### Step 4: Create a Signer and an Instance of the Contract <a href="#step-5-create-an-instance-of-your-contract" id="step-5-create-an-instance-of-your-contract"></a>
+
+In order to be able to call the functions on our deployed contract, we need to define an ethers `Signer` using our wallet's private key. Next we need to use the contract's deployed address, the contract ABI, and the aforementioned signer to define a `contract` instance.
+
+In the `mint-nft.js` file, add the following code:
+
+```javascript
+// Create a signer
+const privateKey = process.env.PRIVATE_KEY
+const signer = new ethers.Wallet(privateKey, provider)
+
+// Get contract ABI and address
+const abi = contract.abi
+const contractAddress = '0xA4766Ceb9E84a71D282A4CED9fB8Fe93C49b2Ff7'
+
+// Create a contract instance
+const myNftContract = new ethers.Contract(contractAddress, abi, signer)
+```
+
+In the snippet above, you can see that our contract's deployed address is `0xA4766Ceb9E84a71D282A4CED9fB8Fe93C49b2Ff7`. If you don't remember your contract address or can't find it on Etherscan, simply re-deploy the contract from Part 1 again and note down the new address.
+
+### Step 5: Call mintNFT function of the contract
+
+Remember the metadata.json you uploaded to Pinata? Get its hashcode from Pinata and pass the following into a call to `mintNFT` [https://gateway.pinata.cloud/ipfs/\<metadata-hash-code>](https://gateway.pinata.cloud/ipfs/%3Chash-code%3E)
+
+Here's how to get the hashcode:
+
+![](https://static.slab.com/prod/uploads/7adb25ff/posts/images/AnI4KrRVhT6RWzcXcivtp9ig.gif)
+
 {% hint style="warning" %}
-If you've already completed "How to Mint an NFT Using Web3.js (option 1)", you can skip this tutorial!
+Double check that the hashcode you copied links to your **metadata.json** by loading [https://gateway.pinata.cloud/ipfs/\<metadata-hash-code>](https://gateway.pinata.cloud/ipfs/%3Chash-code%3E) into a separate window. The page should look similar to the screenshot below:
 {% endhint %}
 
-In [another tutorial](how-to-mint-a-nft.md), we learned how to mint an NFT using Web3 and the [OpenZeppelin contracts library](https://docs.openzeppelin.com/contracts/erc721). In this exercise, we're going to walk you through an alternative implementation using version 4 of the [OpenZeppelin library](https://docs.openzeppelin.com/contracts/4.x/erc721) as well as the [Ethers.js](https://docs.ethers.io) Ethereum library instead of Web3.
-
-We'll also cover the basics of testing your contract with [Hardhat and Waffle](https://hardhat.org/plugins/nomiclabs-hardhat-waffle.html). For this tutorial I'm using Yarn, but you can use npm/npx if you prefer.
-
-Lastly, we'll use TypeScript. This is fairly [well documented](https://hardhat.org/guides/typescript.html#typescript-support), so we won't cover it here.
-
-In all other respects, this tutorial works the same as the Web3 version, including tools such as Pinata and IPFS.
-
-## A Quick Reminder
-
-As a reminder, "minting an NFT" is the act of publishing a unique instance of your ERC721 token on the blockchain. This tutorial assumes that that you've successfully [deployed a smart contract to the Ropsten network in Part I](./) of the NFT tutorial series, which includes [installing Ethers](./#step-12-install-ethersjs).
-
-### Step 1: Create your Solidity contract
-
-OpenZeppelin is library for secure smart contract development. You simply inherit their implementations of popular standards such as ERC20 or ERC721, and extend the behavior to your needs. We're going to put this file at `contracts/MyNFT.sol`.
-
-```
-// Contract based on https://docs.openzeppelin.com/contracts/4.x/erc721
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
-
-contract MyNFT is ERC721URIStorage {
-    using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
-
-    constructor() ERC721("MyNFT", "MNFT") {}
-
-    function mintNFT(address recipient, string memory tokenURI)
-    public
-    returns (uint256)
-    {
-        _tokenIds.increment();
-
-        uint256 newItemId = _tokenIds.current();
-        _mint(recipient, newItemId);
-        _setTokenURI(newItemId, tokenURI);
-
-        return newItemId;
-    }
-}
-```
-
-### Step 2: Create Hardhat tasks to deploy our contract and mint NFT's
-
-Create the file `tasks/nft.ts` containing the following:
-
-```typescript
-import { task, types } from "hardhat/config";
-import { Contract } from "ethers";
-import { TransactionResponse } from "@ethersproject/abstract-provider";
-import { env } from "../lib/env";
-import { getContract } from "../lib/contract";
-import { getWallet } from "../lib/wallet";
-
-task("deploy-contract", "Deploy NFT contract").setAction(async (_, hre) => {
-  return hre.ethers
-    .getContractFactory("MyNFT", getWallet())
-    .then((contractFactory) => contractFactory.deploy())
-    .then((result) => {
-      process.stdout.write(`Contract address: ${result.address}`);
-    });
-});
-
-task("mint-nft", "Mint an NFT")
-  .addParam("tokenUri", "Your ERC721 Token URI", undefined, types.string)
-  .setAction(async (tokenUri, hre) => {
-    return getContract("MyNFT", hre)
-      .then((contract: Contract) => {
-        return contract.mintNFT(env("ETH_PUBLIC_KEY"), tokenUri, {
-          gasLimit: 500_000,
-        });
-      })
-      .then((tr: TransactionResponse) => {
-        process.stdout.write(`TX hash: ${tr.hash}`);
-      });
-  });
-```
-
-### Step 3: Create helpers
-
-You'll notice our tasks imported a few helpers. Here they are.
-
-`contract.ts`
-
-```typescript
-import { Contract, ethers } from "ethers";
-import { getContractAt } from "@nomiclabs/hardhat-ethers/internal/helpers";
-import { HardhatRuntimeEnvironment } from "hardhat/types";
-import { env } from "./env";
-import { getProvider } from "./provider";
-
-export function getContract(
-  name: string,
-  hre: HardhatRuntimeEnvironment
-): Promise<Contract> {
-  const WALLET = new ethers.Wallet(env("ETH_PRIVATE_KEY"), getProvider());
-  return getContractAt(hre, name, env("NFT_CONTRACT_ADDRESS"), WALLET);
-}
-```
-
-`env.ts`
-
-```typescript
-export function env(key: string): string {
-  const value = process.env[key];
-  if (value === undefined) {
-    throw `${key} is undefined`;
-  }
-  return value;
-}
-```
-
-`provider.ts`
-
-Note that the final `getProvider()` function uses the ropsten network. This argument is optional and defaults to "homestead" if omitted. We're using Alchemy of course, but there are several [supported alternatives](https://docs.ethers.io/v5/api/providers/#providers-getDefaultProvider).
-
-```typescript
-import { ethers } from "ethers";
-
-export function getProvider(): ethers.providers.Provider {
-  return ethers.getDefaultProvider("ropsten", {
-    alchemy: process.env.ALCHEMY_API_KEY,
-  });
-}
-```
-
-`wallet.ts`
-
-```typescript
-import { ethers } from "ethers";
-import { env } from "./env";
-import { getProvider } from "./provider";
-
-export function getWallet(): ethers.Wallet {
-  return new ethers.Wallet(env("ETH_PRIVATE_KEY"), getProvider());
-}
-```
-
-### Step 4: Create tests
-
-Under your `test` directory, create these files. Note that these tests are not comprehensive. They test a small subset of the ERC721 functionality offered by the OpenZeppelin library, and are intended to provide you with the building blocks to create more robust tests.
-
-`test/MyNFT.spec.ts` (unit tests)
-
-```typescript
-import { ethers, waffle } from "hardhat";
-import { Contract, Wallet } from "ethers";
-import { expect } from "chai";
-import { TransactionResponse } from "@ethersproject/abstract-provider";
-import sinon from "sinon";
-import { deployTestContract } from "./test-helper";
-import * as provider from "../lib/provider";
-
-describe("MyNFT", () => {
-  const TOKEN_URI = "http://example.com/ip_records/42";
-  let deployedContract: Contract;
-  let wallet: Wallet;
-
-  beforeEach(async () => {
-    sinon.stub(provider, "getProvider").returns(waffle.provider);
-    [wallet] = waffle.provider.getWallets();
-    deployedContract = await deployTestContract("MyNFT");
-  });
-
-  async function mintNftDefault(): Promise<TransactionResponse> {
-    return deployedContract.mintNFT(wallet.address, TOKEN_URI);
-  }
-
-  describe("mintNft", async () => {
-    it("emits the Transfer event", async () => {
-      await expect(mintNftDefault())
-        .to.emit(deployedContract, "Transfer")
-        .withArgs(ethers.constants.AddressZero, wallet.address, "1");
-    });
-
-    it("returns the new item ID", async () => {
-      await expect(
-        await deployedContract.callStatic.mintNFT(wallet.address, TOKEN_URI)
-      ).to.eq("1");
-    });
-
-    it("increments the item ID", async () => {
-      const STARTING_NEW_ITEM_ID = "1";
-      const NEXT_NEW_ITEM_ID = "2";
-
-      await expect(mintNftDefault())
-        .to.emit(deployedContract, "Transfer")
-        .withArgs(
-          ethers.constants.AddressZero,
-          wallet.address,
-          STARTING_NEW_ITEM_ID
-        );
-
-      await expect(mintNftDefault())
-        .to.emit(deployedContract, "Transfer")
-        .withArgs(
-          ethers.constants.AddressZero,
-          wallet.address,
-          NEXT_NEW_ITEM_ID
-        );
-    });
-
-    it("cannot mint to address zero", async () => {
-      const TX = deployedContract.mintNFT(
-        ethers.constants.AddressZero,
-        TOKEN_URI
-      );
-      await expect(TX).to.be.revertedWith("ERC721: mint to the zero address");
-    });
-  });
-
-  describe("balanceOf", () => {
-    it("gets the count of NFTs for this address", async () => {
-      await expect(await deployedContract.balanceOf(wallet.address)).to.eq("0");
-
-      await mintNftDefault();
-
-      expect(await deployedContract.balanceOf(wallet.address)).to.eq("1");
-    });
-  });
-});
-```
-
-`tasks.spec.ts` (integration specs)
-
-```typescript
-import { deployTestContract, getTestWallet } from "./test-helper";
-import { waffle, run } from "hardhat";
-import { expect } from "chai";
-import sinon from "sinon";
-import * as provider from "../lib/provider";
-
-describe("tasks", () => {
-  beforeEach(async () => {
-    sinon.stub(provider, "getProvider").returns(waffle.provider);
-    const wallet = getTestWallet();
-    sinon.stub(process, "env").value({
-      ETH_PUBLIC_KEY: wallet.address,
-      ETH_PRIVATE_KEY: wallet.privateKey,
-    });
-  });
-
-  describe("deploy-contract", () => {
-    it("calls through and returns the transaction object", async () => {
-      sinon.stub(process.stdout, "write");
-
-      await run("deploy-contract");
-
-      await expect(process.stdout.write).to.have.been.calledWith(
-        "Contract address: 0x610178dA211FEF7D417bC0e6FeD39F05609AD788"
-      );
-    });
-  });
-
-  describe("mint-nft", () => {
-    beforeEach(async () => {
-      const deployedContract = await deployTestContract("MyNFT");
-      process.env.NFT_CONTRACT_ADDRESS = deployedContract.address;
-    });
-
-    it("calls through and returns the transaction object", async () => {
-      sinon.stub(process.stdout, "write");
-
-      await run("mint-nft", { tokenUri: "https://example.com/record/4" });
-
-      await expect(process.stdout.write).to.have.been.calledWith(
-        "TX hash: 0xd1e60d34f92b18796080a7fcbcd8c2b2c009687daec12f8bb325ded6a81f5eed"
-      );
-    });
-  });
-});
-```
-
-`test-helpers.ts` Note this require the NPM libraries imported, including sinon, chai, and sinon-chai. The `sinon.restore()` call is necessary due to the use of stubbing.
-
-```typescript
-import sinon from "sinon";
-import chai from "chai";
-import sinonChai from "sinon-chai";
-import { ethers as hardhatEthers, waffle } from "hardhat";
-import { Contract, Wallet } from "ethers";
-
-chai.use(sinonChai);
-
-afterEach(() => {
-  sinon.restore();
-});
-
-export function deployTestContract(name: string): Promise<Contract> {
-  return hardhatEthers
-    .getContractFactory(name, getTestWallet())
-    .then((contractFactory) => contractFactory.deploy());
+![](<../../.gitbook/assets/image (5).png>)
+
+Now add the following piece of code to `mint-nft.js` to call the `mintNFT` function:
+
+```javascript
+// Get the NFT Metadata IPFS URL
+const tokenUri = "https://gateway.pinata.cloud/ipfs/QmYueiuRNmL4MiA2GwtVMm6ZagknXnSpQnB3z2gWbz36hP"
+
+// Call mintNFT function
+const mintNFT = async () => {
+    let nftTxn = await myNftContract.mintNFT(signer.address, tokenUri)
+    await nftTxn.wait()
+    console.log(`NFT Minted! Check it out at: https://goerli.etherscan.io/tx/${nftTxn.hash}`)
 }
 
-export function getTestWallet(): Wallet {
-  return waffle.provider.getWallets()[0];
+mintNFT()
+    .then(() => process.exit(0))
+    .catch((error) => {
+        console.error(error);
+        process.exit(1);
+    });java
+```
+
+The final `mint-nft.js` file should look something like this:
+
+```javascript
+require('dotenv').config();
+const ethers = require('ethers');
+
+// Get Alchemy App URL
+const API_KEY = process.env.API_KEY;
+
+// Define an Alchemy Provider
+const provider = new ethers.providers.AlchemyProvider('goerli', API_KEY)
+
+// Get contract ABI file
+const contract = require("../artifacts/contracts/MyNFT.sol/MyNFT.json");
+
+// Create a signer
+const privateKey = process.env.PRIVATE_KEY
+const signer = new ethers.Wallet(privateKey, provider)
+
+// Get contract ABI and address
+const abi = contract.abi
+const contractAddress = '0xA4766Ceb9E84a71D282A4CED9fB8Fe93C49b2Ff7'
+
+// Create a contract instance
+const myNftContract = new ethers.Contract(contractAddress, abi, signer)
+
+// Get the NFT Metadata IPFS URL
+const tokenUri = "https://gateway.pinata.cloud/ipfs/QmYueiuRNmL4MiA2GwtVMm6ZagknXnSpQnB3z2gWbz36hP"
+
+// Call mintNFT function
+const mintNFT = async () => {
+    let nftTxn = await myNftContract.mintNFT(signer.address, tokenUri)
+    await nftTxn.wait()
+    console.log(`NFT Minted! Check it out at: https://goerli.etherscan.io/tx/${nftTxn.hash}`)
 }
+
+mintNFT()
+    .then(() => process.exit(0))
+    .catch((error) => {
+        console.error(error);
+        process.exit(1);
+    });
+
+
 ```
 
-## Step 5: Configuration
+We're all set. Let's mint our NFT by running the following command:
 
-Here's our fairly bare bones `hardhat.config.ts`.
-
-```typescript
-import("@nomiclabs/hardhat-ethers");
-import("@nomiclabs/hardhat-waffle");
-import dotenv from "dotenv";
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
-
-const argv = JSON.parse(env("npm_config_argv"));
-if (argv.original !== ["hardhat", "test"]) {
-  require('dotenv').config();
-}
-
-import("./tasks/nft");
-
-import { HardhatUserConfig } from "hardhat/config";
-
-const config: HardhatUserConfig = {
-  solidity: "0.8.6",
-};
-
-export default config;
+```bash
+node scripts/mint-nft.js
 ```
 
-Note the conditional to only invoke dotenv if we're not running tests. You might not want to run this in production, but rest assured that dotenv will silently ignore it if the .env file isn't present.
-
-## Running Our Tasks
-
-Now that we've put these files in place, we can run `hardhat` to see our tasks (excluding the built-in tasks for brevity).
+You should get output that looks something like this:
 
 ```
-AVAILABLE TASKS:
-
-  deploy-contract    Deploy NFT contract
-  mint-nft      Mint an NFT
+NFT Minted! Check it out at: https://goerli.etherscan.io/tx/0x06a7a06aea5d55eb6e7a0f0f17bfeaad2fb4e310de55f5a884e1b623a3fab080
 ```
 
-Forget the arguments to your task? No problem.
+You can check out your NFT mint on Etherscan by following the URL above.&#x20;
 
-```
-$ hardhat help deploy-contract
+![NFT Minting Transactions](<../../.gitbook/assets/Screenshot 2022-07-12 at 7.32.31 PM.png>)
 
-Usage: hardhat [GLOBAL OPTIONS] deploy-contract
+You can view your NFT on OpenSea by searching for your contract address. Check out [our NFT here](https://testnets.opensea.io/collection/mynft-zmdehpzacz).
 
-deploy-contract: Deploy NFT contract
-```
+Using the `mint-nft.js` you can mint as many NFT's as your heart (and wallet) desires! Just be sure to pass in a new `tokenURI` describing the NFT's metadata --otherwise, you'll just end up making a bunch of identical ones with different IDs.
 
-## Running Our Tests
-
-To run our tests, we run `hardhat test`.
-
-```
-  mintNft
-    ✓ calls through and returns the transaction object (60ms)
-
-  MyNFT
-    mintNft
-      ✓ emits the Transfer event (60ms)
-      ✓ returns the new item ID
-      ✓ increments the item ID (57ms)
-      ✓ cannot mint to address zero
-    balanceOf
-      ✓ gets the count of NFTs for this address
-
-
-  6 passing (2s)
-
-✨  Done in 5.66s.
-```
-
-## Summary
-
-In this tutorial, we've created a firm foundation for a well tested NFT infrastructure based on Solidity. The wallet provided by `waffle.provider.getWallets()` links to a local fake [Hardhat Network](https://hardhat.org/hardhat-network/) account that [conveniently comes preloaded](https://hardhat.org/hardhat-network/reference/#initial-state) with an eth balance that we can use to fund our test transactions.
+Presumably, you'd like to be able to show off your NFT in your wallet 😉— so be sure to check out Part III: [How to View Your NFT in Your Wallet](https://docs.alchemyapi.io/alchemy/tutorials/how-to-write-and-deploy-a-nft-smart-contract/how-to-view-your-nft-in-your-wallet).

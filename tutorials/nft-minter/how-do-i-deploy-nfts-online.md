@@ -8,7 +8,7 @@ description: Guide for deploying your NFT minter to a live website
 
 ### 1. You are ready to share your NFT with the world!
 
-By now, you have likely already created an NFT on your local machine via 🎨 [How to Mint an NFT](../how-to-create-an-nft/how-to-mint-a-nft.md) or 📝 [NFT Minter Tutorial: How to Create a Full Stack DApp](./). However, you may now want to share your creation with family, friends, or potential customers. To take the next step, this often means hosting your minting scripts/frontend apps on an online web hosting service so that anyone can take part in your NFT! Many of these services include access to a public URL so that anyone can search and visit your website online.
+By now, you have likely already created an NFT on your local machine via 🎨 [How to Mint an NFT](broken-reference) or 📝 [NFT Minter Tutorial: How to Create a Full Stack DApp](./). However, you may now want to share your creation with family, friends, or potential customers. To take the next step, this often means hosting your minting scripts/frontend apps on an online web hosting service so that anyone can take part in your NFT! Many of these services include access to a public URL so that anyone can search and visit your website online.
 
 ### 2. Infrastructure constraints on your local computing environment
 
