@@ -62,8 +62,10 @@ We paginate our responses with a default limit of **100 responses**. We've chose
 
         * `raw:` uri representing the location of the NFT media asset. This is a backup for you to parse when the `metadata` field is not automatically populated.
         * `gateway:` public gateway uri for the raw asset above.&#x20;
+        * `thumbnail`: Alchemy-hosted thumbnail sized NFT media (256 pixels by 256 pixels)&#x20;
+        * `format`: label idetifying the type of NFT media file (ie. png, jpg, gif, etc.)
 
-        **NOTE:** **Where possible, **_**Alchemy-hosted NFT media are used in the `gateway` field and feature a Cloudinary URL for faster loading times and can be configured for image re-sizing. For more info on using Alchemy-hosted media, see**_ [_**this doc**_](nft-api-faq/nft-image-caching.md)_**.**_&#x20;
+        **NOTE:** **Where possible, **_**Alchemy-hosted NFT media are used in the `gateway` /`thumbnail` fields and feature a Cloudinary URL for faster loading times. These links can be configured for image re-sizing. For more info on using Alchemy-hosted media, see**_ [_**this doc**_](nft-api-faq/nft-image-caching.md)_**.**_&#x20;
     * `metadata`: relevant metadata for NFT contract. This is useful for viewing image url, traits, etc. without having to follow the metadata url in `tokenUri` to parse manually.\
       <mark style="background-color:yellow;">**NOTE:**</mark> <mark style="background-color:yellow;"></mark><mark style="background-color:yellow;"></mark> <mark style="background-color:yellow;"></mark>_<mark style="background-color:yellow;">Not all metadata fields may be filled in if the provided NFT contract does not contain relevant information.</mark>_
       * `image`: URL to the NFT asset image. Can be standard URLs pointing to images on conventional servers, [IPFS](https://github.com/ipfs/is-ipfs), or [Arweave](https://www.arweave.org/). Most types of images (SVGs, PNGs, JPEGs, etc.) are supported by NFT marketplaces.

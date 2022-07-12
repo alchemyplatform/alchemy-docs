@@ -51,14 +51,14 @@ While NFT gateway and raw URIs tend to be pointed at the same links, gateway URI
 
 ## NFT "Spam" Classification
 
-Given a contract address we look at a few things:
+Given a contract address, Alchemy assesses a few important metrics:
 
 (1) If this contract is ERC721, does this contract egregiously break the ERC721 standard? i.e. Does it have a lot of duplicate tokens.
 
-(2) If this contract is ERC721, does it have any transfer during which it broke the ERC721 standard? i.e. It transferred a token to more than one recipient.
+(2) If this contract is ERC721, does it have any transfers which brakes the ERC721 standard? i.e. It transferred a token to more than one recipient.
 
 (3) Does this contract mint tokens mostly to honeypots? Honeypots are popular addresses like `vitalik.eth`
 
-(4) Does this contract egregiously lie about its own total supply? i.e. running totalSupply() on the contract is vastly different from the empirical number of tokens in circulation.
+(4) Does this contract egregiously lie about its own total supply? i.e. running `totalSupply()` on the contract is vastly different from the empirical number of tokens in circulation.
 
-If any of these are satisfied, we will mark an NFT as spam.
+If any of these conditions are fulfilled, Alchemy will mark the NFT in question as spam.
