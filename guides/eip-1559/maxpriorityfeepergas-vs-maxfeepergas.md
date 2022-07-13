@@ -11,45 +11,53 @@ Sending a transaction on Ethereum post London fork uses these two new gas price 
 
 If you've gone through our [tutorial on sending an EIP 1559 transaction](https://docs.alchemy.com/alchemy/guides/eip-1559/send-tx-eip-1559) then you've seen that we recommend using only the `maxPriorityFeePerGas` field. We did this for simplicity, but it's not always the better field to use.
 
-To understand why, let's first make sure we're familiar with all the terms.
+To understand why, let's look at each of the concepts more in-depth.&#x20;
 
-### What is the `baseFeePerGas`? <a href="#what-is-the-base-fee-per-gas" id="what-is-the-base-fee-per-gas"></a>
+## What is the `baseFeePerGas`? <a href="#what-is-the-base-fee-per-gas" id="what-is-the-base-fee-per-gas"></a>
 
-Before talking about the two gas price limit fields, we need to understand what the base fee is. Post London fork, each block has a `baseFeePerGas` associated with it. You can see the base fee for the pending (upcoming) block with:
+Let's start with understanding what a base fee is. The base fee is the bare minimum you will be charged to send a transaction on the network. The base fee is set _by the network itself_, not by miners. The base fee changes block by block, based on how full the previous block was.
 
-```
+Post London fork, each block has a `baseFeePerGas` associated with it. You can see the base fee for the pending (upcoming) block with:
+
+```javascript
 web3.eth.getBlock("pending").then((block) => console.log("baseFee", Number(block.baseFeePerGas)));
 ```
 
 The above snippet assumes you've set up your [Alchemy Web3 client](https://docs.alchemy.com/alchemy/documentation/alchemy-web3). If you haven't , check out the [EIP 1559 tutorial](https://docs.alchemy.com/alchemy/tutorials/sending-txs/eip-1559) for some sample code.
 
-The base fee is the bare minimum you will be charged to send a transaction on the network. The base fee is set _by the network itself_, not by miners. The base fee changes block by block, based on how full the previous block was.
+## What is [`maxPriorityFeePerGas`](../../apis/ethereum/eth-maxpriorityfeepergas.md)? <a href="#what-is-max-priority-fee-per-gas" id="what-is-max-priority-fee-per-gas"></a>
 
-### What is [`maxPriorityFeePerGas`](../../apis/ethereum/eth-maxpriorityfeepergas.md)? <a href="#what-is-max-priority-fee-per-gas" id="what-is-max-priority-fee-per-gas"></a>
+Base fees are determined by the network and are also burned when the block is mined. This means that the miner does not get the base fee as a reward for mining a block.&#x20;
 
-In the previous section we mentioned that the base fee is determined by the network. Well, it is also _**burned**_ when the block is mined, meaning that the miner does not get the base fee as a reward for mining a block. So how do miners get compensated for the computational work of mining?
+Miners are still compensated for the computational work by receiving a "tip". When you submit a transaction you will also provide this "tip" in the `maxPriorityFeePerGas` field. T
 
-When you submit a transaction you will also provide a "tip" to the miner. This is the `maxPriorityFeePerGas` field. The bare minimum you should tip the miner is 1 wei, otherwise there is no incentive for the miner to execute the transaction. The higher your tip, the more likely your transaction will be included in the block. This concept is pretty much the same as pre-London fork.
+The bare minimum you should tip the miner is 1 wei so that there is an incentive for the miner to execute the transaction. The higher your tip, the more likely your transaction will be included in the block.&#x20;
 
-### And finally, what is `maxFeePerGas`? <a href="#and-finally-what-is-max-fee-per-gas" id="and-finally-what-is-max-fee-per-gas"></a>
+## What is `maxFeePerGas`? <a href="#and-finally-what-is-max-fee-per-gas" id="and-finally-what-is-max-fee-per-gas"></a>
 
 Now that we know about base fee and tip, `maxFeePerGas` is super simple. It's just the sum of the two:
 
 `maxFeePerGas = baseFeePerGas + maxPriorityFeePerGas`
 
-### When to use `maxPriorityFeePerGas` vs. `maxFeePerGas`? <a href="#when-to-use-max-priority-fee-per-gas-vs-max-fee-per-gas" id="when-to-use-max-priority-fee-per-gas-vs-max-fee-per-gas"></a>
 
-As mentioned in the tutorial, the most _guaranteed_ way to have your transaction included in the block is to just specify a `maxPriorityFeePerGas` field (which is a tip). In this case, Alchemy/geth/etc will look up the pending `baseFee` and then set the `maxFeePerGas` field accordingly (to the sum of the base fee and the tip). All you have to do is decide how much tip to provide, which you can get by simply calling the `eth_maxPriorityFeePerGas` method on Alchemy.
 
-Although this is the simplest method, it may not be the cheapest. There are two dimensions to consider when submitting your transaction: speed and cost. If you bid high, you get mined earlier. If you bid low, you get mined later or not at all. When you submit only the `maxPriorityFeePerGas` field, the defaults will fill in the base fee for you. Recall that the base fee depends on how full previous blocks were. If many of the previous blocks were full, then the base fee can end up being quite high! And since we are filling in the value for you, you can end up paying a surprisingly high gas price.
+## When to use `maxPriorityFeePerGas` vs. `maxFeePerGas`? <a href="#when-to-use-max-priority-fee-per-gas-vs-max-fee-per-gas" id="when-to-use-max-priority-fee-per-gas-vs-max-fee-per-gas"></a>
 
-To avoid this pitfall you can supply the `maxFeePerGas` field. If you supply _only_ this field, then the tip will be filled in for you, however, there are no guarantees on _when_ your transaction will be mined. You can also supply both the `maxFeePerGas` and the `maxPriorityFeePerGas` fields for full control.
+The most _guaranteed_ way to have your transaction included in the block is to specify a `maxPriorityFeePerGas` field (which is a tip). In this case, Alchemy will look up the pending `baseFee` and then set the `maxFeePerGas` field accordingly (to the sum of the base fee and the tip). All you have to do is decide how much tip to provide, which you can get by simply calling the `eth_maxPriorityFeePerGas` method on Alchemy.
 
-### Let's see them in action <a href="#lets-see-them-in-action" id="lets-see-them-in-action"></a>
+This method is the simplest but it may not be the cheapest. There are two dimensions to consider when submitting your transaction: **speed** and **cost.** If you bid high, you get mined earlier. If you bid low, you get mined later or not at all.&#x20;
 
-Just so that we 100% understand the concepts, let's submit a transaction that is guaranteed to fail by setting the `maxFeePerGas` to less than the sum of `baseFeePerGas` and `maxPriorityFeePerGas`. This code is an extension of the code in the [EIP 1559 transaction sending tutorial](https://docs.alchemy.com/alchemy/guides/eip-1559/send-tx-eip-1559).
+When you submit only the `maxPriorityFeePerGas` field, the defaults will fill in the base fee for you. The base fee depends on how full the previous blocks were. If many of the previous blocks were full, then the base fee can end up being quite high! Since the value is added automatically, you can end up paying a surprisingly high gas price.
 
-```
+To avoid this pitfall you can supply the `maxFeePerGas` field. If you supply _only_ this field, then the tip will be filled in for you but there are no guarantees on _when_ your transaction will be mined. You can also supply both the `maxFeePerGas` and the `maxPriorityFeePerGas` fields for full control.
+
+
+
+## Example using maxFeePerGas <a href="#lets-see-them-in-action" id="lets-see-them-in-action"></a>
+
+Let's put all of the concepts together by submitting a transaction that is guaranteed to fail. By setting the `maxFeePerGas` to less than the sum of `baseFeePerGas` and `maxPriorityFeePerGas`. This code is an extension of the code in the [EIP 1559 transaction sending tutorial](https://docs.alchemy.com/alchemy/guides/eip-1559/send-tx-eip-1559).
+
+```javascript
 web3.eth.estimateGas({
   to: toAddress,
   data: "0xc6888fa10000000000000000000000000000000000000000000000000000000000000003"
@@ -124,10 +132,12 @@ Attempting to get transaction receipt...
 Attempting to get transaction receipt...
 ```
 
-Basically you will be waiting until the base fee of a block drops low enough that the sum of base fee plus tip is less than your `maxFeePerGas`, which could be a very long time or never depending on the network congestion.
+You will now have to wait until the base fee of a block drops low enough that the sum of the base fee plus tip is less than your `maxFeePerGas`. Depending on network congestion, the wait time can be very long.&#x20;
 
-### Conclusion <a href="#hkcau-conclusion" id="hkcau-conclusion"></a>
+## Conclusion <a href="#hkcau-conclusion" id="hkcau-conclusion"></a>
 
-Choosing to use `maxPriorityFeePerGas` vs. `maxFeePerGas` for sending transactions is completely dependent on what your priorities are. If you care about speed and want to get your transaction into the earliest block possible, you should use the default base fee and just set (a high) `maxPriorityFeePerGas`. However, if you care more about saving on gas, and less about transaction speed, you can set your own `maxFeePerGas` and potentially risk the transaction getting mined at a later block (or earlier block if you choose to set it to be higher than the base fee + tip).
+Choosing to use `maxPriorityFeePerGas` vs. `maxFeePerGas` for sending transactions is completely dependent on what your priorities are. If you care about speed and want to get your transaction into the earliest block possible, you should use the default base fee and just set (a high) `maxPriorityFeePerGas`.&#x20;
+
+If you care more about saving on gas, and less about transaction speed, you can set your own `maxFeePerGas` and potentially risk the transaction getting mined at a later block (or earlier block if you choose to set it to be higher than the base fee + tip).
 
 **If you're interested in learning more, or have feedback, suggestions, or questions, reach out to us in** [**Discord**](https://alchemy.com/discord)**! Get started with Alchemy today by** [**signing up for free**](https://alchemy.com/?r=affiliate:5494a54b-6ae1-4d33-9016-c331c0dcdc1f)**.**

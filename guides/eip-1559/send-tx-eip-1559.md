@@ -1,24 +1,28 @@
 ---
-description: Guide for sending transactions using EIP-1559 methods
+description: A guide for sending transactions using EIP-1559 methods
 ---
 
 # How to Send Transactions with EIP 1559
 
 The London Hardfork introduced a new EIP that modifies how gas estimation and costs work for transactions on Ethereum.
 
-This tutorial will walk you through both the legacy and new ([EIP-1559](https://blog.alchemy.com/blog/eip-1559)) way to estimate gas and send transactions. To learn more about EIP-1559, check out [this blog post](https://blog.alchemy.com/blog/eip-1559).
+This tutorial will walk you through both the legacy and new ([EIP-1559](https://blog.alchemy.com/blog/eip-1559)) ways to estimate gas and send transactions. To learn more about EIP-1559, check out [this blog post](https://blog.alchemy.com/blog/eip-1559).
 
-## How sending transactions used to work <a href="#how-sending-transactions-used-to-work" id="how-sending-transactions-used-to-work"></a>
+## Sending transactions before EIP 1559  <a href="#how-sending-transactions-used-to-work" id="how-sending-transactions-used-to-work"></a>
 
-When you submitted a transaction you also sent a [`gasPrice`](../../apis/ethereum/eth-gasprice.md), which is an amount you are offering to pay per gas consumed. You probably called [`eth_estimateGas`](../../apis/ethereum/eth-estimategas.md) and [`eth_gasPrice`](../../apis/ethereum/eth-gasprice.md) in order to determine an approximate amount that the transaction was going to cost you. Then, when you submitted the transaction, miners could decide to include it or not based on your `gasPrice` bid. Miners would prioritize the highest gas prices.
+Before EIP 1559, when you submitted a transaction you also sent a [`gasPrice`](../../apis/ethereum/eth-gasprice.md), which is an amount you are offering to pay per gas consumed. You probably called [`eth_estimateGas`](../../apis/ethereum/eth-estimategas.md) and [`eth_gasPrice`](../../apis/ethereum/eth-gasprice.md) in order to determine an approximate amount that the transaction was going to cost you.&#x20;
 
-## How sending transactions work with EIP 1559 <a href="#how-sending-transactions-work-with-eip-1559" id="how-sending-transactions-work-with-eip-1559"></a>
+Once you submitted the transaction, miners could decide to include it or not based on your `gasPrice` bid. Miners would prioritize the highest gas prices.
 
-It's a similar concept, but with a few incentive changes in order to more closely align user and miner interests. The total fee (gas \* gasPrice) will be split into a `baseFee` and a `priorityFee`. Every transaction needs to pay the base fee, which is calculated based on how full the previous block was. Transactions can also offer the miner a `priorityFee` to incentivize the miner to include the transaction in the block.
+## Sending transactions with EIP 1559 <a href="#how-sending-transactions-work-with-eip-1559" id="how-sending-transactions-work-with-eip-1559"></a>
 
-I won't go into the incentive model here, if you want to dive into that check out [this blog post](https://blog.alchemy.com/blog/eip-1559).
+With EIP 1559, it's a similar concept but with a few incentive changes in order to more closely align user and miner interests. The total fee (gas \* gasPrice) will be split into a `baseFee` and a `priorityFee`. Every transaction needs to pay the base fee, which is calculated based on how full the previous block was.&#x20;
 
-## Let's send a transaction <a href="#lets-send-a-transaction" id="lets-send-a-transaction"></a>
+Transactions can also offer the miner a `priorityFee` to incentivize the miner to include the transaction in the block.We won't go into the incentive model here, if you want to dive into that check out [this blog post](https://blog.alchemy.com/blog/eip-1559).
+
+## Transactions Examples  <a href="#lets-send-a-transaction" id="lets-send-a-transaction"></a>
+
+### Transaction Before EIP 1559 &#x20;
 
 First, let's send a legacy (non EIP 1559 transaction). The steps below are:
 
@@ -116,7 +120,7 @@ Attempting to get transaction receipt...
 }
 ```
 
-## Using EIP-1559 with Minimal changes <a href="#using-eip-1559-with-minimal-changes" id="using-eip-1559-with-minimal-changes"></a>
+### EIP 1559 Transaction Example (Minimal Changes)  <a href="#using-eip-1559-with-minimal-changes" id="using-eip-1559-with-minimal-changes"></a>
 
 The smallest possible change we can make to the original code is to simply remove the `gasPrice` field on the transaction. So our calling code will look like this:
 
@@ -137,7 +141,7 @@ function sendMinimalLondonTx(web3) {
 sendMinimalLondonTx(web3);
 ```
 
-In this case Alchemy will fill in reasonable defaults for the new London transaction fields. Notice how we have removed the `getGasPrice` call. The output looks pretty similar:
+In this case,  Alchemy will fill in reasonable defaults for the new London transaction fields. Notice how we have removed the `getGasPrice` call. The output looks pretty similar:
 
 ```
 Transaction sent! 0xb49dbe2ae38664f3881c33ad067d30fb27717709d800b0b87fd9d4a57479a775
@@ -194,7 +198,7 @@ Note that we have substituted the `web3.eth.getGasPrice()` call in the legacy co
 
 If you are accustomed to using a fee estimator like Eth Gas Station then instead of providing only the tip you will provide only the `maxFeePerGas` field, which is the base fee plus tip. You can take the output of your API call to Eth Gas Station or another estimator and plug it in like so:
 
-```
+```javascript
 web3.eth.estimateGas({
   to: toAddress,
   data: "0xc6888fa10000000000000000000000000000000000000000000000000000000000000003"
@@ -226,7 +230,7 @@ Which returns a hex:
 
 ## What is the difference between `effectiveGasPrice`, `cumulativeGasUsed`, and `gasUsed`? <a href="#building-a-more-sophisticated-estimate-of-max-priority-fee-per-gas" id="building-a-more-sophisticated-estimate-of-max-priority-fee-per-gas"></a>
 
-**`effectiveGasPrice`** is price per gas at the time of your transaction, so the total gas cost of your transaction is `effectiveGasPrice` \* `gasUsed`.  The `effectiveGasPrice` can be calculated by taking the minimum of `(baseFeeForBlock` + `maxTipPerGas)` and `maxFeePerGas`.
+**`effectiveGasPrice`** is the price per gas at the time of your transaction, so the total gas cost of your transaction is `effectiveGasPrice` \* `gasUsed`.  The `effectiveGasPrice` can be calculated by taking the minimum of `(baseFeeForBlock` + `maxTipPerGas)` and `maxFeePerGas`.
 
 **`cumulativeGasUsed`** is the sum of `gasUsed` by this specific transaction plus the `gasUsed` in all preceding transactions in the same block. So if you're looking at the last transaction in a given block, the `cumulativeGasUsed` would be all gas used by the entire block.&#x20;
 
@@ -234,6 +238,8 @@ Which returns a hex:
 
 ## Building a more sophisticated estimate of maxPriorityFeePerGas <a href="#building-a-more-sophisticated-estimate-of-max-priority-fee-per-gas" id="building-a-more-sophisticated-estimate-of-max-priority-fee-per-gas"></a>
 
-Alchemy has exposed the [`eth_maxPriorityFeePerGas`](../../apis/ethereum/eth-maxpriorityfeepergas.md) method so that you can pretty much call that and not worry too much about fee calculations. However you might want to make your own calculations, similar to how you might currently offer a "low", "medium", and "high" fee (like what [Eth Gas Station](https://ethgasstation.info) offers). To do this, you can use the [`eth_feeHistory`](../../apis/ethereum/eth-feehistory.md) API, which returns detailed information on historical fees for blocks, allowing you to build a better estimate. We will not go into detail on that here.
+Alchemy has exposed the [`eth_maxPriorityFeePerGas`](../../apis/ethereum/eth-maxpriorityfeepergas.md) method so that you can pretty much call that and not worry too much about fee calculations. However, you might want to make your own calculations, similar to how you might currently offer a "low", "medium", and "high" fee (like what [Eth Gas Station](https://ethgasstation.info) offers).&#x20;
 
-**If you're interested in learning more, or have feedback, suggestions, or questions, reach out to us in** [**Discord**](https://alchemy.com/discord)**! Get started with Alchemy today by** [**signing up for free**](https://alchemy.com/?r=affiliate:5494a54b-6ae1-4d33-9016-c331c0dcdc1f)**.**
+To do this, you can use the [`eth_feeHistory`](../../apis/ethereum/eth-feehistory.md) API, which returns detailed information on historical fees for blocks, allowing you to build a better estimate. We will not go into detail on that here.
+
+**If you're interested in learning more, or have feedback, suggestions, or questions, reach out to us on** [**Discord**](https://alchemy.com/discord)**! Get started with Alchemy today by** [**signing up for free**](https://alchemy.com/?r=affiliate:5494a54b-6ae1-4d33-9016-c331c0dcdc1f)**.**
