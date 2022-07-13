@@ -36,8 +36,9 @@ node -v
 To create an Alchemy app, check out [this video](https://www.youtube.com/watch?v=tfggWxfG9o0) or follow the instructions below:
 
 1. From [Alchemy's dashboard](https://dashboard.alchemyapi.io/), hover over the **Apps** drop-down menu and choose **Create App**.
-2. Provide a **Name** and **Description** for your app. For **Chain**, select **Ethereum** and for **Network** select **Goerli**.&#x20;
-3. Click the **Create App** button.&#x20;
+2. Provide a **Name** and **Description** for your app.&#x20;
+3. For **Chain**, select **Ethereum** and for **Network** select **Goerli**.&#x20;
+4. Click the **Create App** button.&#x20;
 
 ![Creating an Alchemy App](<../../.gitbook/assets/Screenshot 2022-07-12 at 3.21.22 PM.png>)
 
