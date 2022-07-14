@@ -53,7 +53,7 @@ To avoid this pitfall you can supply the `maxFeePerGas` field. If you supply _on
 
 
 
-## Example using maxFeePerGas <a href="#lets-see-them-in-action" id="lets-see-them-in-action"></a>
+## Failed Request: Example using maxFeePerGas <a href="#lets-see-them-in-action" id="lets-see-them-in-action"></a>
 
 Let's put all of the concepts together by submitting a transaction that is guaranteed to fail. By setting the `maxFeePerGas` to less than the sum of `baseFeePerGas` and `maxPriorityFeePerGas`. This code is an extension of the code in the [EIP 1559 transaction sending tutorial](https://docs.alchemy.com/alchemy/guides/eip-1559/send-tx-eip-1559).
 
@@ -133,6 +133,12 @@ Attempting to get transaction receipt...
 ```
 
 You will now have to wait until the base fee of a block drops low enough that the sum of the base fee plus tip is less than your `maxFeePerGas`. Depending on network congestion, the wait time can be very long.&#x20;
+
+To learn how to send transactions correctly, check out the tutorial below:
+
+{% content-ref url="send-tx-eip-1559.md" %}
+[send-tx-eip-1559.md](send-tx-eip-1559.md)
+{% endcontent-ref %}
 
 ## Conclusion <a href="#hkcau-conclusion" id="hkcau-conclusion"></a>
 
