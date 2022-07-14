@@ -387,6 +387,8 @@
 * [Ethereum Transactions - Pending, Mined, Dropped & Replaced](guides/ethereum-transactions-pending-mined-dropped-and-replaced.md)
 * [How to cancel a pending transaction on Ethereum](guides/how-to-cancel-a-pending-transaction-on-ethereum.md)
 * [How to Enable Compression to Speed Up JSON-RPC Blockchain Requests](guides/how-to-enable-compression-to-speed-up-json-rpc-blockchain-requests.md)
+* [What are Internal Transactions?](guides/what-are-internal-transactions.md)
+* [Understanding the Transaction Object on Ethereum](guides/understanding-the-transaction-object-on-ethereum.md)
 
 ## 📚 Resources
 

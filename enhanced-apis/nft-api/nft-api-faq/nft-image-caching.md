@@ -25,7 +25,7 @@ Where available, Alchemy will replace the default `gateway` field of the NFT `me
 Here's an example of a Moonbird NFT asset cached by Alchemy:\
 [https://res.cloudinary.com/alchemyapi/image/upload/mainnet/07783aaf80e4c4497725b2da0af33394.png](https://res.cloudinary.com/alchemyapi/image/upload/mainnet/07783aaf80e4c4497725b2da0af33394.png)
 
-![](<../../../.gitbook/assets/image (47).png>)
+![](<../../../.gitbook/assets/image (45).png>)
 
 ### Why did my request not return a cached media url?
 
@@ -50,7 +50,7 @@ NOTE: Developers can use any combination of width and height pixel values to cre
 Here's an example of a resized Moonbird NFT cached by Alchemy:\
 [https://res.cloudinary.com/alchemyapi/image/upload/w\_250,h\_250/mainnet/07783aaf80e4c4497725b2da0af33394.png](https://res.cloudinary.com/alchemyapi/image/upload/w\_250,h\_250/mainnet/07783aaf80e4c4497725b2da0af33394.png)
 
-<img src="../../../.gitbook/assets/image (48) (1).png" alt="" data-size="original">
+<img src="../../../.gitbook/assets/image (46).png" alt="" data-size="original">
 
 \
 \
