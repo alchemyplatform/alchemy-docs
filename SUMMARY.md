@@ -329,6 +329,7 @@
   * [7. How to Build an NFT Marketplace from Scratch](road-to-web3/weekly-learning-challenges/7.-how-to-build-an-nft-marketplace-from-scratch.md)
   * [8. How to build a betting game on Optimism](road-to-web3/weekly-learning-challenges/8.-how-to-build-a-betting-game-on-optimism.md)
   * [9. How to Build a Token Swap Dapp With 0x API](road-to-web3/weekly-learning-challenges/9.-how-to-build-a-token-swap-dapp-with-0x-api.md)
+  * [10. How to Create a Decentralized Twitter with Lens Protocol](road-to-web3/weekly-learning-challenges/10.-how-to-create-a-decentralized-twitter-with-lens-protocol.md)
 
 ## 💻 Tutorials
 
