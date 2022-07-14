@@ -19,7 +19,7 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
 
 ### 07/12/2022
 
-* **\[API]** Added `thumbnail` and `format` parameters under the `media`  array of [`getNFTs`](../enhanced-apis/nft-api/getnfts.md) and [`getNFTMetadata`](../enhanced-apis/nft-api/getnftmetadata.md) ngel
+* **\[API]** Added `thumbnail` and `format` parameters under the `media`  array of [`getNFTs`](../enhanced-apis/nft-api/getnfts.md) and [`getNFTMetadata`](../enhanced-apis/nft-api/getnftmetadata.md)&#x20;
 
 ### 06/29/2022
 
