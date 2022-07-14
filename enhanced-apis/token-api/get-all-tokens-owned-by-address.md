@@ -8,7 +8,7 @@ description: >-
 
 Most dapps, whether they are exchanges, DeFi protocols, wallets, or analytics platforms, require that their users are able to view all their tokens and token balances at one place.
 
-![Digital asset wallet interface that shows the token balances of multiple cryptocurrencies.](<../../.gitbook/assets/image (41).png>)
+![Digital asset wallet interface that shows the token balances of multiple cryptocurrencies.](<../../.gitbook/assets/image (50).png>)
 
 To get all the tokens owned by a wallet on Ethereum, you would typically have to index the entire blockchain since genesis, track all ERC-20 contracts, and compute token balances of wallets.&#x20;
 
@@ -36,7 +36,7 @@ node -v
 
 In case you haven't already, [sign up for a free Alchemy account](https://alchemy.com/?a=645c54745b).
 
-![Alchemy's account dashboard where developers can create a new app on the Ethereum blockchain.](<../../.gitbook/assets/image (43).png>)
+![Alchemy's account dashboard where developers can create a new app on the Ethereum blockchain.](<../../.gitbook/assets/image (53).png>)
 
 Next, navigate to the [Alchemy Dashboard](https://dashboard.alchemyapi.io/) and create a new app.&#x20;
 

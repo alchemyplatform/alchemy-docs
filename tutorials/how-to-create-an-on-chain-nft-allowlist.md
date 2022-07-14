@@ -8,7 +8,7 @@ If you're launching your very own NFT PFP collection, chances are that you want 
 
 It may also be the case that your project has already generated a huge amount of interest, and the demand for your NFTs far outstrip supply. In such cases, you would want to implement a system that only allows the most active or desirable members to mint first before opening sale to the public.
 
-![Cryptopunks, one of the world's most popular NFT PFP project](<../.gitbook/assets/image (48).png>)
+![Cryptopunks, one of the world's most popular NFT PFP project](<../.gitbook/assets/image (48) (1).png>)
 
 An allowlist is an excellent solution for both the aforementioned cases. An allowlist is a mechanism that allows only certain wallets to mint NFTs from a collection for a certain period of time. Allowlist mints almost always precede public sales.
 

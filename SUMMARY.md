@@ -348,6 +348,7 @@
 * [NFT Minter Tutorial: How to Create a Full Stack DApp](tutorials/nft-minter/README.md)
   * [How to Build an NFT Website](tutorials/nft-minter/how-do-i-deploy-nfts-online.md)
 * [How to Create an ERC-20 Token (4 Steps)](tutorials/deploy-your-own-erc20-token.md)
+* [How to Add Royalties to an ERC-20 Token](tutorials/how-to-add-royalties-to-an-erc-20-token.md)
 * [Integrating Historical Transaction Data into your dApp](tutorials/transfers-tutorial.md)
 * [How to Track Mined and Pending Ethereum Transactions](tutorials/how-to-track-ethereum-transactions.md)
 * [Arbitrum NFTs: Creating and Deploying ERC-721](tutorials/arbitrum-nft.md)

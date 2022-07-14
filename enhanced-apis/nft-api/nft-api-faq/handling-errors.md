@@ -26,7 +26,7 @@ If we pass a token ID into the method that the contract does not recognize, we w
 
 [See the specific error for the example above via Etherscan's contract interface. ](https://etherscan.io/address/0x60e4d786628fea6478f785a6d7e704777c86a7c6#readContract)
 
-![The contract throws an exception on etherscan](<../../../.gitbook/assets/image (39).png>)
+![The contract throws an exception on etherscan](<../../../.gitbook/assets/image (39) (1).png>)
 
 #### Next Steps
 
@@ -66,7 +66,7 @@ In the "token does not exist" section we talked about how a contract can throw a
 
 You can see the specific error for the example above in etherscan's contract interface here: [https://etherscan.io/address/0xffdf17652cca46eb98a214cb3e413c8661241e49#readContract](https://etherscan.io/address/0xffdf17652cca46eb98a214cb3e413c8661241e49#readContract)
 
-![The contract throws an exception on etherscan](<../../../.gitbook/assets/image (38) (1).png>)
+![The contract throws an exception on etherscan](<../../../.gitbook/assets/image (38) (2).png>)
 
 #### Next Steps
 
