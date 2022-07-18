@@ -148,7 +148,7 @@ Depending on what library or language you are using, there are several options h
 {% tab title="Python" %}
 ```python
 # conversion from hex string to decimal
-wei_in_dec = int("hex strong response",16)
+wei_in_dec = int("hex string response",16)
 
 # conversion from Wei to ETH
 ethBalance = wei_in_dec / (10**18)
@@ -158,7 +158,7 @@ ethBalance = wei_in_dec / (10**18)
 {% tab title="JavaScript" %}
 ```javascript
 // conversion from hex string to decimal
-dec = parseInt("hex strong response", 16)
+dec = parseInt("hex string response", 16)
 
 // conversion from Wei to to ETH
 ethBalance = dec*(10**18)
