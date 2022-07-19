@@ -120,3 +120,12 @@ Returns balance / account information&#x20;
 * [getTokenAccountsByOwner](gettokenaccountsbyowner.md)
 * [getTokenSupply](gettokensupply.md)
 
+### Subscription Websocket
+
+Subscribe to different events on Solana using the Websocket RPC endpoint: `wss://solana-mainnet.g.alchemy.com/v2/<API-KEY>`. Multiple subscriptions may be active at once.&#x20;
+
+* [signatureSubscribe](signaturesubscribe.md)
+* [signatureUnsubscribe](signatureunsubscribe.md)
+* [slotSubscribe](slotsubscribe.md)
+* [slotUnsubscribe](slotunsubscribe.md)
+* [slotUpdateSubscribe](slotupdatesubscribe.md)
