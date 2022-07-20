@@ -6,15 +6,18 @@ description: >-
 
 # Solana API
 
+Get started with the Solana API by creating a [free Alchemy account here](https://www.alchemy.com/solana).&#x20;
+
 ## Want to get started with Alchemy's Solana API?
 
 Sign up for our [private beta waitlist ](https://www.alchemy.com/solana)and we'll get back to you soon!
 
 ## Getting Started with the Solana API
 
-1. Get access to your Solana API key! During out beta roll-out, we'll email you an API key that you can use
-2. Download [solana-web3.js](https://github.com/solana-labs/solana-web3.js)
-3. Configure solana-web3.js to use Alchemy:
+1. Create a free [Alchemy account](https://www.alchemy.com/solana)&#x20;
+2. Create a Solana API key from the dashboard. See instructions for creating an app [here](../../introduction/getting-started/#1.create-an-alchemy-key).
+3. Download [solana-web3.js](https://github.com/solana-labs/solana-web3.js)
+4. Configure solana-web3.js to use Alchemy:
 
 ```jsx
 const solanaWeb3 = require('@solana/web3.js');
