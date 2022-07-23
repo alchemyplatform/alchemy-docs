@@ -6,11 +6,13 @@ description: >-
 
 # Debug API
 
-{% hint style="warning" %}
-Note: Alchemy is the only service that provides access to this Debug API method due to its high maintenance costs and specialized infrastructure. For this reason, it's currently only available to Alchemy users in Growth and Enterprise tiers. You can upgrade your plan [here](https://dashboard.alchemyapi.io/settings/billing) to access it.
+{% hint style="danger" %}
+### Deprecation Warning
+
+debug\_traceTransaction will be deprecated the [week of 7/25/22](../documentation/changelog.md#week-of-07-25). Please use the [Trace API](trace-api/) methods instead.&#x20;
 {% endhint %}
 
-## debug\_traceTransaction
+## \[Deprecated] debug\_traceTransaction
 
 {% hint style="danger" %}
 Our current debug\_traceTransaction method only works on the following networks:

@@ -15,6 +15,10 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
 
 * **\[Network]** Optimism Kovan will be deprecated in favor of Optimism Goerli. We recommend migrating your applications ASAP.&#x20;
 
+### Week of 07/25
+
+* **\[API]** Deprecating all [Debug API](../enhanced-apis/debug-api.md) support. Please use [Trace APIs](../enhanced-apis/trace-api/) instead.&#x20;
+
 ## Past
 
 ### 07/12/2022

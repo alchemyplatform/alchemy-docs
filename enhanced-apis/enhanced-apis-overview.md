@@ -105,18 +105,6 @@ Unlike the log filtering API, you are able to search and filter based only upon 
 
 Information returned includes the execution of all `CREATE,` `SUICIDE` and all variants of `CALL` together with input data, output data, gas usage, amount transferred and the success status of each individual action.
 
-### Debug API
-
-{% content-ref url="debug-api.md" %}
-[debug-api.md](debug-api.md)
-{% endcontent-ref %}
-
-The traceTransaction debugging method will attempt to run the transaction in the exact same manner as it was executed on the network.&#x20;
-
-It will replay any transaction that may have been executed prior to this one before it will finally attempt to execute the transaction that corresponds to the given hash.
-
-Alchemy exposes `debug_traceTransaction` calls for debugging on networks running on Geth including Ethereum Mainnet and Ethereum's Rinkeby Testnet.
-
 ### Subscription API
 
 {% content-ref url="subscription-api-websockets/" %}
