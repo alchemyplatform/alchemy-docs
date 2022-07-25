@@ -7,8 +7,6 @@ description: >-
 
 # Alchemy SDK QuickStart
 
-## Alchemy SDK for Javascript
-
 Alchemy SDK helps developers use Alchemy's APIs and endpoints more efficiently. This is a lightweight, modular SDK built as a drop-in replacement of Ethers.js that provides a superset of functionality - enabling access to the Alchemy NFT API, Websockets, and Enhanced API methods.
 
 It also provides access to Alchemy's hardened node infrastructure, guaranteeing reliability, scalability, and quality-of-life improvements such as automatic exponential backoff retries.
@@ -34,7 +32,7 @@ npm install alchemy-sdk
 
 After installing the app, you can then import and use the SDK:
 
-```ts
+```javascript
 import { Network, Alchemy } from 'alchemy-sdk';
 
 // Optional Config object, but defaults to demo api-key and eth-mainnet.
@@ -58,7 +56,7 @@ The Alchemy SDK currently supports three different namespaces, including:
 
 If you are already using Ethers.js, you should be simply able to replace the Ethers.js object with `alchemy.core` and it should just work.
 
-```ts
+```javascript
 import { Alchemy } from 'alchemy-sdk';
 
 // Using default settings - pass in a settings object to specify your API key and network
@@ -97,7 +95,7 @@ It also includes the majority of Alchemy Enhanced APIs, including:
 
 To keep the package clean, we don't support certain uncommonly-used Ethers.js methods as top-level methods the Alchemy object - for example, `provider.formatter`. If you'd like to access these methods, simply use the `alchemy.config.getProvider()` function to configure the Ethers.js [AlchemyProvider](https://docs.ethers.io/v5/api/providers/api-providers/#AlchemyProvider) and return it.
 
-```ts
+```javascript
 import { Alchemy } from 'alchemy-sdk';
 const alchemy = new Alchemy();
 
@@ -114,7 +112,7 @@ In addition to the built-in Ethers.js listeners, the Alchemy SDK includes suppor
 
 The `alchemy.ws` instance can be used can be used like the standard Ethers.js [WebSocketProvider](https://docs.ethers.io/v5/api/providers/other/#WebSocketProvider) to add listeners for Alchemy events:
 
-```ts
+```javascript
 import { Alchemy } from 'alchemy-sdk';
 
 const alchemy = new Alchemy();
@@ -177,7 +175,7 @@ The Alchemy NFT endpoints return 100 results per page. To get the next page, you
 
 Here's an example of how to paginate through all the NFTs in Vitalik's ENS address:
 
-```ts
+```javascript
 import { Alchemy } from 'alchemy-sdk';
 
 const alchemy = new Alchemy();
@@ -220,7 +218,7 @@ There's a long list, but here are the main ones:
 
 #### Getting the NFTs owned by an address
 
-```ts
+```typescript
 import { NftExcludeFilters, Alchemy } from 'alchemy-sdk';
 
 const alchemy = new Alchemy();
@@ -247,7 +245,7 @@ alchemy.nft.getNftsForOwner('vitalik.eth', {
 
 #### Getting all the owners of the BAYC NFT
 
-```ts
+```typescript
 import { Alchemy } from 'alchemy-sdk';
 
 const alchemy = new Alchemy();
@@ -273,7 +271,7 @@ main();
 
 #### Get all outbound transfers for a provided address
 
-```ts
+```typescript
 import { Alchemy } from 'alchemy-sdk';
 
 const alchemy = new Alchemy();
