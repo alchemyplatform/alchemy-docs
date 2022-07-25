@@ -15,7 +15,7 @@ This method returns hex encoded values in the `tokenBalance` fields.
 1. `DATA`, 20 Bytes - The address for which token balances will be checked
 2. One of:
    1. `Array` - A list of contract addresses. Suggested limit: `100` addresses
-   2. The `String`"DEFAULT\_TOKENS" - denotes a query for the top 100 tokens by 24 hour volume
+   2. The `String`"DEFAULT\_TOKENS" - denotes a query for the top 100 tokens by 24 hour volume - only available on Mainnet for Ethereum, Polygon, and Arbitrum.
 
 ## Returns
 
