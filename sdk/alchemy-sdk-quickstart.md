@@ -13,20 +13,25 @@ Alchemy SDK helps developers use Alchemy's APIs and endpoints more efficiently. 
 
 It also provides access to Alchemy's hardened node infrastructure, guaranteeing reliability, scalability, and quality-of-life improvements such as automatic exponential backoff retries.
 
-If you have any questions, issues, or feedback, please file an issue on [GitHub](https://github.com/alchemyplatform/alchemy-sdk-js/issues), or drop us a message on our [Discord](https://discord.com/channels/735965332958871634/983472322998575174) channel for the SDK.
+> :warning: **WARNING:** The `@alch/alchemy-sdk` package is now deprecated as of the v2.0.0 release. Please use the `alchemy-sdk` package instead. To upgrade to v2.0.0 from v1.X.X, simply run one of the following:
 
-Note that the SDK is still in public beta. Alchemy reserves the right to (and almost certainly will) make breaking API changes in subsequent releases (don't write production code around it just yet).
+```
+npm uninstall @alch/alchemy-sdk
+npm install alchemy-sdk@latest
+```
+
+As of version `2.0.0` on NPM, the Alchemy SDK is out of beta. This means that all future releases will follow semantic versioning. The upgrade from `1.x.x` to `2.x.x` will be a breaking change. See the Releases changelog for full details.
 
 ### Getting started
 
 ```
-npm install @alch/alchemy-sdk
+npm install alchemy-sdk
 ```
 
 After installing the app, you can then import and use the SDK:
 
 ```ts
-import { Network, Alchemy } from '@alch/alchemy-sdk';
+import { Network, Alchemy } from 'alchemy-sdk';
 
 // Optional Config object, but defaults to demo api-key and eth-mainnet.
 const settings = {
@@ -39,7 +44,7 @@ const alchemy = new Alchemy(settings);
 
 The `Alchemy` object returned by `new Alchemy()` provides access to the Alchemy API. An optional config object can be passed in when initializing to set your API key, change the network, or specify the max number of retries.
 
-### Alchemy SDK Namespaces
+### Using the Alchemy SDK
 
 The Alchemy SDK currently supports three different namespaces, including:
 
@@ -50,7 +55,7 @@ The Alchemy SDK currently supports three different namespaces, including:
 If you are already using Ethers.js, you should be simply able to replace the Ethers.js object with `alchemy.core` and it should just work.
 
 ```ts
-import { Alchemy } from '@alch/alchemy-sdk';
+import { Alchemy } from 'alchemy-sdk';
 
 // Using default settings - pass in a settings object to specify your API key and network
 const alchemy = new Alchemy();
@@ -73,20 +78,6 @@ alchemy.ws.on(
 );
 ```
 
-#### Preventing Breaking Changes
-
-The SDK is currently in public beta, and will undergo breaking changes before its official release. To protect your project from breaking changes, make sure to pin the version of the SDK you are using in your `package.json` file. Please check the release notes to see if any breaking changes have been made. While the SDK in the public beta, minor versions may contain breaking changes, but patch versions under the same minor version should be safe to use interchangeably.
-
-For example, to pin to a specific version of the SDK in your `package.json` file:
-
-```
-{
-  "dependencies": {
-    "@alch/alchemy-sdk": "1.1.0"
-  }
-}
-```
-
 ### Alchemy Core
 
 The core package contains all commonly-used [Ethers.js](https://docs.ethers.io/v5/api/providers/api-providers/#AlchemyProvider) methods. If you are already using Ethers.js, you should be simply able to replace the Ethers.js object with `alchemy.core` and it should just work.
@@ -103,7 +94,7 @@ It also includes the majority of Alchemy Enhanced APIs, including:
 To keep the package clean, we don't support certain uncommonly-used Ethers.js methods as top-level methods the Alchemy object - for example, `provider.formatter`. If you'd like to access these methods, simply use the `alchemy.config.getProvider()` function to configure the Ethers.js [AlchemyProvider](https://docs.ethers.io/v5/api/providers/api-providers/#AlchemyProvider) and return it.
 
 ```ts
-import { Alchemy } from '@alch/alchemy-sdk';
+import { Alchemy } from 'alchemy-sdk';
 const alchemy = new Alchemy();
 
 async function runAlchemy() {
@@ -120,7 +111,7 @@ In addition to the built-in Ethers.js listeners, the Alchemy SDK includes suppor
 The `alchemy.ws` instance can be used can be used like the standard Ethers.js [WebSocketProvider](https://docs.ethers.io/v5/api/providers/other/#WebSocketProvider) to add listeners for Alchemy events:
 
 ```ts
-import { Alchemy } from '@alch/alchemy-sdk';
+import { Alchemy } from 'alchemy-sdk';
 
 const alchemy = new Alchemy();
 
@@ -183,7 +174,7 @@ The Alchemy NFT endpoints return 100 results per page. To get the next page, you
 Here's an example of how to paginate through all the NFTs in Vitalik's ENS address:
 
 ```ts
-import { Alchemy } from '@alch/alchemy-sdk';
+import { Alchemy } from 'alchemy-sdk';
 
 const alchemy = new Alchemy();
 
@@ -226,7 +217,7 @@ There's a long list, but here are the main ones:
 #### Getting the NFTs owned by an address
 
 ```ts
-import { NftExcludeFilters, Alchemy } from '@alch/alchemy-sdk';
+import { NftExcludeFilters, Alchemy } from 'alchemy-sdk';
 
 const alchemy = new Alchemy();
 
@@ -253,7 +244,7 @@ alchemy.nft.getNftsForOwner('vitalik.eth', {
 #### Getting all the owners of the BAYC NFT
 
 ```ts
-import { Alchemy } from '@alch/alchemy-sdk';
+import { Alchemy } from 'alchemy-sdk';
 
 const alchemy = new Alchemy();
 
@@ -279,7 +270,7 @@ main();
 #### Get all outbound transfers for a provided address
 
 ```ts
-import { Alchemy } from '@alch/alchemy-sdk';
+import { Alchemy } from 'alchemy-sdk';
 
 const alchemy = new Alchemy();
 
