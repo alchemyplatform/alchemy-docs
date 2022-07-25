@@ -131,7 +131,7 @@ The examples below is for Ethereum Mainnet. If you are using Polygon you'll need
 ```javascript
 // Setup: npm install @alch/alchemy-sdk
 // Github: https://github.com/alchemyplatform/alchemy-sdk-js
-import { Network, initializeAlchemy, getNftsForOwner } from "@alch/alchemy-sdk";
+import { Network, Alchemy } from "@alch/alchemy-sdk";
 
 // Optional Config object, but defaults to demo api-key and eth-mainnet.
 const settings = {
@@ -140,10 +140,10 @@ const settings = {
   maxRetries: 10,
 };
 
-const alchemy = initializeAlchemy(settings);
+const alchemy = new Alchemy(settings);
 
-// Print total NFT count returned in the response:
-const nftsForOwner = await getNftsForOwner(alchemy, "0xshah.eth");
+// Print all NFTs for a certain owner
+const nftsForOwner = await alchemy.getNftsForOwner("0xshah.eth");
 console.log(nftsForOwner);
 ```
 {% endtab %}
@@ -432,21 +432,29 @@ curl --location -g --request GET 'https://eth-mainnet.alchemyapi.io/nft/v2/demo/
 Multiple contracts in filter array:
 
 {% tabs %}
-{% tab title="Alchemy Web3.js" %}
+{% tab title="Alchemy SDK" %}
 ```javascript
-// Installation: https://github.com/alchemyplatform/alchemy-web3
+// Setup: npm install @alch/alchemy-sdk
+// Github: https://github.com/alchemyplatform/alchemy-sdk-js
+import { Network, Alchemy, NftExcludeFilters } from "@alch/alchemy-sdk";
 
-import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+// Optional Config object, but defaults to demo api-key and eth-mainnet.
+const settings = {
+  apiKey: "demo", // Replace with your Alchemy API Key.
+  network: Network.ETH_MAINNET, // Replace with your network.
+  maxRetries: 10,
+};
 
-// Using HTTPS
-const web3 = createAlchemyWeb3(
-  "https://eth-mainnet.g.alchemy.com/nft/v2/demo",
-);
+const alchemy = new Alchemy(settings);
 
-const nfts = await web3.alchemy.getNfts({owner: "0xC33881b8FD07d71098b440fA8A3797886D831061", contractAddresses: ["0x39ed051a1a3a1703b5e0557b122ec18365dbc184", "0x76be3b62873462d2142405439777e971754e8e77"]})
-
-console.log(nfts);
-
+alchemy
+  .getNftsForOwner("0xC33881b8FD07d71098b440fA8A3797886D831061", {
+    contractAddresses: [
+      "0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85",
+      "0x76be3b62873462d2142405439777e971754e8e77",
+    ],
+  })
+  .then(console.log);
 ```
 {% endtab %}
 
@@ -538,20 +546,26 @@ This example request will not return anything in the response since the `pageKey
 {% endhint %}
 
 {% tabs %}
-{% tab title="Alchemy Web3.js" %}
+{% tab title="Alchemy SDK" %}
 ```javascript
-// Installation: https://github.com/alchemyplatform/alchemy-web3
+// Setup: npm install @alch/alchemy-sdk
+// Github: https://github.com/alchemyplatform/alchemy-sdk-js
+import { Network, Alchemy, NftExcludeFilters } from "@alch/alchemy-sdk";
 
-import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+// Optional Config object, but defaults to demo api-key and eth-mainnet.
+const settings = {
+  apiKey: "demo", // Replace with your Alchemy API Key.
+  network: Network.ETH_MAINNET, // Replace with your network.
+  maxRetries: 10,
+};
 
-// Using HTTPS
-const web3 = createAlchemyWeb3(
-  "https://eth-mainnet.alchemyapi.io/nft/v2/demo",
-);
+const alchemy = new Alchemy(settings);
 
-const nfts = await web3.alchemy.getNfts({owner: "0xC33881b8FD07d71098b440fA8A3797886D831061", pageKey:"12e032c5-ce4a-4389-8764-b980e1a17da8"})
-
-console.log(nfts);
+alchemy
+  .getNftsForOwner("0xshah.eth", {
+    pageKey: "12e032c5-ce4a-4389-8764-b980e1a17da8",
+  })
+  .then(console.log);
 ```
 {% endtab %}
 
@@ -702,20 +716,26 @@ If you're having trouble running requests via Alchemy Web3.js, Fetch, or Axios, 
 ### Request (with filters)&#x20;
 
 {% tabs %}
-{% tab title="Alchemy Web3.js" %}
+{% tab title="Alchemy SDK" %}
 ```javascript
-// Installation: https://github.com/alchemyplatform/alchemy-web3
+// Setup: npm install @alch/alchemy-sdk
+// Github: https://github.com/alchemyplatform/alchemy-sdk-js
+import { Network, Alchemy, NftExcludeFilters } from "@alch/alchemy-sdk";
 
-import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+// Optional Config object, but defaults to demo api-key and eth-mainnet.
+const settings = {
+  apiKey: "demo", // Replace with your Alchemy API Key.
+  network: Network.ETH_MAINNET, // Replace with your network.
+  maxRetries: 10,
+};
 
-// Using HTTPS
-const web3 = createAlchemyWeb3(
-  "https://eth-mainnet.alchemyapi.io/nft/v2/demo",
-);
+const alchemy = new Alchemy(settings);
 
-const nfts = await web3.alchemy.getNfts({owner: "0xC33881b8FD07d71098b440fA8A3797886D831061", "filters[]":"SPAM"})
-
-console.log(nfts);
+alchemy
+  .getNftsForOwner("0xshah.eth", {
+    excludeFilters: [NftExcludeFilters.SPAM],
+  })
+  .then(console.log);
 ```
 {% endtab %}
 

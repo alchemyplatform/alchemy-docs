@@ -31,6 +31,28 @@ _To see chain support across all features, check out the_ [_feature matrix_](../
 ### Request
 
 {% tabs %}
+{% tab title="Alchemy SDK" %}
+```javascript
+// Github: https://github.com/alchemyplatform/alchemy-sdk-js
+// Setup: npm install @alch/alchemy-sdk
+import { Network, Alchemy } from "@alch/alchemy-sdk";
+
+// Optional Config object, but defaults to demo api-key and eth-mainnet.
+const settings = {
+  apiKey: "demo", // Replace with your Alchemy API Key.
+  network: Network.ETH_MAINNET, // Replace with your network.
+  maxRetries: 10,
+};
+
+const alchemy = new Alchemy(settings);
+
+// Print whether an NFT contract is spam
+alchemy
+  .isSpamNftContract("0x000440f08436a7b866d1ae42db5e0be801da722a")
+  .then(console.log);
+```
+{% endtab %}
+
 {% tab title="Fetch (JS)" %}
 ```javascript
 import fetch from 'node-fetch';

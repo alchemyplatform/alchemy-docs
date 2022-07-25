@@ -6,7 +6,7 @@ description: >-
 
 # NFT API Quickstart Guide
 
-For this **Javascript** quickstart guide, we recommend using `alchemy-sdk-js`, a full-featured SDK that allows you to more easily interact with Alchemy APIs. The Alchemy SDK give you WebSocket support and other benefits right out of the box! Fetch or Axios are two alternative modules that also allow you to make standard HTTP requests.
+For this **Javascript** quickstart guide, we recommend using `alchemy-sdk-js`, a full-featured SDK that allows you to more easily interact with Alchemy APIs. [The Alchemy SDK](../../sdk/alchemy-sdk-quickstart.md) give you WebSocket support and other benefits right out of the box! Fetch or Axios are two alternative modules that also allow you to make standard HTTP requests.
 
 ## Common setup steps
 
@@ -104,14 +104,7 @@ and then paste the following code snippet into the file:
 
 ```javascript
 // This script demonstrates access to the NFT API via the Alchemy SDK.
-import {
-  Network,
-  initializeAlchemy,
-  getNftsForOwner,
-  getNftMetadata,
-  BaseNft,
-  NftTokenType,
-} from "@alch/alchemy-sdk";
+import { Network, Alchemy } from "@alch/alchemy-sdk";
 
 // Optional Config object, but defaults to demo api-key and eth-mainnet.
 const settings = {
@@ -120,44 +113,47 @@ const settings = {
   maxRetries: 10,
 };
 
-const alchemy = initializeAlchemy(settings);
+const alchemy = new Alchemy(settings);
 
-// Print owner's wallet address:
-const ownerAddr = "0xshah.eth";
-console.log("fetching NFTs for address:", ownerAddr);
-console.log("...");
+async function main() {
+  // Print owner's wallet address:
+  const ownerAddr = "0xshah.eth";
+  console.log("fetching NFTs for address:", ownerAddr);
+  console.log("...");
 
-// Print total NFT count returned in the response:
-const nftsForOwner = await getNftsForOwner(alchemy, "0xshah.eth");
-console.log("number of NFTs found:", nftsForOwner.totalCount);
-console.log("...");
+  // Print total NFT count returned in the response:
+  const nftsForOwner = await alchemy.getNftsForOwner("0xshah.eth");
+  console.log("number of NFTs found:", nftsForOwner.totalCount);
+  console.log("...");
 
-// Print contract address and tokenId for each NFT:
-for (const nft of nftsForOwner.ownedNfts) {
+  // Print contract address and tokenId for each NFT:
+  for (const nft of nftsForOwner.ownedNfts) {
+    console.log("===");
+    console.log("contract address:", nft.contract.address);
+    console.log("token ID:", nft.tokenId);
+  }
   console.log("===");
-  console.log("contract address:", nft.contract.address);
-  console.log("token ID:", nft.tokenId);
+
+  // Fetch metadata for a particular NFT:
+  console.log("fetching metadata for a Crypto Coven NFT...");
+  const response = await alchemy.getNftMetadata(
+    "0x5180db8F5c931aaE63c74266b211F580155ecac8",
+    "1590"
+  );
+
+  // Uncomment this line to see the full api response:
+  // console.log(response);
+
+  // Print some commonly used fields:
+  console.log("NFT name: ", response.title);
+  console.log("token type: ", response.tokenType);
+  console.log("tokenUri: ", response.tokenUri.gateway);
+  console.log("image url: ", response.rawMetadata.image);
+  console.log("time last updated: ", response.timeLastUpdated);
+  console.log("===");
 }
-console.log("===");
 
-// Fetch metadata for a particular NFT:
-console.log("fetching metadata for a Crypto Coven NFT...");
-const response = await getNftMetadata(
-  alchemy,
-  "0x5180db8F5c931aaE63c74266b211F580155ecac8",
-  "1590"
-);
-
-// Uncomment this line to see the full api response:
-// console.log(response);
-
-// Print some commonly used fields:
-console.log("NFT name: ", response.title);
-console.log("token type: ", response.tokenType);
-console.log("tokenUri: ", response.tokenUri.gateway);
-console.log("image url: ", response.rawMetadata.image);
-console.log("time last updated: ", response.timeLastUpdated);
-console.log("===");
+main();
 ```
 
 From your command line, you can execute the script with:

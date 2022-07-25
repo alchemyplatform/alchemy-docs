@@ -47,7 +47,7 @@ Once we know where an NFT's metadata is stored (by calling `tokenURI` or `uri` o
 
 You can see the empty response in etherscan's contract interface here: [https://etherscan.io/address/0xbfde6246df72d3ca86419628cac46a9d2b60393c#readContract](https://etherscan.io/address/0xbfde6246df72d3ca86419628cac46a9d2b60393c#readContract)
 
-![The contract returns a malformed URI on etherscan](<../../../.gitbook/assets/image (40) (1).png>)
+![The contract returns a malformed URI on etherscan](<../../../.gitbook/assets/image (40) (1) (1).png>)
 
 #### Next Steps
 
@@ -66,7 +66,7 @@ In the "token does not exist" section we talked about how a contract can throw a
 
 You can see the specific error for the example above in etherscan's contract interface here: [https://etherscan.io/address/0xffdf17652cca46eb98a214cb3e413c8661241e49#readContract](https://etherscan.io/address/0xffdf17652cca46eb98a214cb3e413c8661241e49#readContract)
 
-![The contract throws an exception on etherscan](<../../../.gitbook/assets/image (38) (2).png>)
+![The contract throws an exception on etherscan](<../../../.gitbook/assets/image (38) (1) (1).png>)
 
 #### Next Steps
 

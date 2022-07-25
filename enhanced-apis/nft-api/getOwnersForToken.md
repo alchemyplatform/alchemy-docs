@@ -35,7 +35,7 @@ _To see chain support across all features, check out the_ [_feature matrix_](../
 ```javascript
 // Github: https://github.com/alchemyplatform/alchemy-sdk-js
 // Setup: npm install @alch/alchemy-sdk
-import { Network, initializeAlchemy, getOwnersForNft } from "@alch/alchemy-sdk";
+import { Network, Alchemy } from "@alch/alchemy-sdk";
 
 // Optional Config object, but defaults to demo api-key and eth-mainnet.
 const settings = {
@@ -44,15 +44,12 @@ const settings = {
   maxRetries: 10,
 };
 
-const alchemy = initializeAlchemy(settings);
+const alchemy = new Alchemy(settings);
 
 // Print total NFT count returned in the response:
-const ownersForNft = await getOwnersForNft(
-  alchemy,
-  "0x5180db8F5c931aaE63c74266b211F580155ecac8",
-  "1590"
+getOwnersForNft("0x5180db8F5c931aaE63c74266b211F580155ecac8", "1590").then(
+  console.log
 );
-console.log(ownersForNft);
 ```
 {% endtab %}
 

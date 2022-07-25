@@ -40,6 +40,28 @@ When using pricing information from marketplaces, we advise that all teams attri
 ### Request
 
 {% tabs %}
+{% tab title="Alchemy SDK" %}
+```javascript
+// Github: https://github.com/alchemyplatform/alchemy-sdk-js
+// Setup: npm install @alch/alchemy-sdk
+import { Network, Alchemy } from "@alch/alchemy-sdk";
+
+// Optional Config object, but defaults to demo api-key and eth-mainnet.
+const settings = {
+  apiKey: "demo", // Replace with your Alchemy API Key.
+  network: Network.ETH_MAINNET, // Replace with your network.
+  maxRetries: 10,
+};
+
+const alchemy = new Alchemy(settings);
+
+// Print the NFT floor price for a contract
+alchemy
+  .getNftFloorPrice("0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d")
+  .then(console.log);
+```
+{% endtab %}
+
 {% tab title="Fetch (JS)" %}
 ```javascript
 import fetch from 'node-fetch';

@@ -60,11 +60,7 @@ https://polygon-mainnet.g.alchemy.com/nft/v2/`your-api-key`/getNFTs...
 ```java
 // Github: https://github.com/alchemyplatform/alchemy-sdk-js
 // Setup: npm install @alch/alchemy-sdk
-import {
-  Network,
-  initializeAlchemy,
-  getNftsForCollection,
-} from "@alch/alchemy-sdk";
+import { Network, Alchemy } from "@alch/alchemy-sdk";
 
 // Optional Config object, but defaults to demo api-key and eth-mainnet.
 const settings = {
@@ -73,15 +69,12 @@ const settings = {
   maxRetries: 10,
 };
 
-const alchemy = initializeAlchemy(settings);
+const alchemy = new Alchemy(settings);
 
-// Print total NFT count returned in the response:
-const nftsForCollection = await getNftsForCollection(
-  alchemy,
-  "0x61fce80d72363b731425c3a2a46a1a5fed9814b2"
-);
-console.log(nftsForCollection);
-
+// Print total NFT collection returned in the response:
+alchemy
+  .getNftsForNftContract("0x61fce80d72363b731425c3a2a46a1a5fed9814b2")
+  .then(console.log);
 ```
 {% endtab %}
 

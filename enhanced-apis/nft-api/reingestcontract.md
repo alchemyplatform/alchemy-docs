@@ -37,6 +37,31 @@ _To see chain support across all features, check out the_ [_feature matrix_](../
 ### Request
 
 {% tabs %}
+{% tab title="Alchemy SDK" %}
+```javascript
+// Github: https://github.com/alchemyplatform/alchemy-sdk-js
+// Setup: npm install @alch/alchemy-sdk
+import {
+  Network,
+} from "@alch/alchemy-sdk";
+
+// Optional Config object, but defaults to demo api-key and eth-mainnet.
+const settings = {
+  apiKey: "demo", // Replace with your Alchemy API Key.
+  network: Network.ETH_MAINNET, // Replace with your network.
+  maxRetries: 10,
+};
+
+const alchemy = new Alchemy(settings);
+
+// Print total NFT count returned in the response:
+alchemy.reingestNftContract(
+  "0x5180db8F5c931aaE63c74266b211F580155ecac8",
+  "1590"
+).then(console.log);
+```
+{% endtab %}
+
 {% tab title="Fetch (JS)" %}
 ```javascript
 import fetch from 'node-fetch';
@@ -91,36 +116,6 @@ RequestType: GET
 ```
 curl --location --request GET 'https://eth-mainnet.g.alchemy.com/nft/v2/demo/reingestContract?contractAddress=0xE9FCa552b9eb110c2d170962aF740725F71F5644' \
 --data-raw ''
-```
-{% endtab %}
-
-{% tab title="Alchemy SDK" %}
-```javascript
-// Github: https://github.com/alchemyplatform/alchemy-sdk-js
-// Setup: npm install @alch/alchemy-sdk
-import {
-  Network,
-  initializeAlchemy,
-  refreshNftMetadata,
-} from "@alch/alchemy-sdk";
-
-// Optional Config object, but defaults to demo api-key and eth-mainnet.
-const settings = {
-  apiKey: "demo", // Replace with your Alchemy API Key.
-  network: Network.ETH_MAINNET, // Replace with your network.
-  maxRetries: 10,
-};
-
-const alchemy = initializeAlchemy(settings);
-
-// Print total NFT count returned in the response:
-const refreshed = await refreshNftMetadata(
-  alchemy,
-  "0x5180db8F5c931aaE63c74266b211F580155ecac8",
-  "1590"
-);
-
-console.log("contract refreshed: " + refreshed);
 ```
 {% endtab %}
 {% endtabs %}
