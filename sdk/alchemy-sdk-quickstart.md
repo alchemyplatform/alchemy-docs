@@ -24,6 +24,10 @@ As of version `2.0.0` on NPM, the Alchemy SDK is out of beta. This means that al
 
 ### Getting started
 
+Check out the GitHub here!
+
+{% embed url="https://github.com/alchemyplatform/alchemy-sdk-js" %}
+
 ```
 npm install alchemy-sdk
 ```
