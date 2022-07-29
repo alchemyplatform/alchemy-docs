@@ -600,3 +600,12 @@ For full documentation on the available NFT API method  `getNFTMetadata` , check
 {% content-ref url="getnftmetadata.md" %}
 [getnftmetadata.md](getnftmetadata.md)
 {% endcontent-ref %}
+
+## Use Cases
+
+Not sure where to start? Check out the following use cases and code examples:
+
+1. [How to get all NFTs owned by an address](how-to-get-all-nfts-owned-by-an-address.md)
+2. [How to get all NFTs in a collection](how-to-get-all-nfts-in-a-collection.md)&#x20;
+3. [How to check the owner of an NFT](how-to-check-the-owner-of-an-nft.md)
+4. [How to resolve ENS domains given a wallet address](how-to-get-ens.md)
