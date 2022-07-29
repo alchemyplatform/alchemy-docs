@@ -6,6 +6,12 @@ description: >-
 
 # eth\_newPendingTransactionFilter - Ethereum
 
+{% hint style="info" %}
+#### Note on Filters
+
+* Filters expire after 5 minutes of inactivity (no queries).&#x20;
+{% endhint %}
+
 ### **Parameters**
 
 None

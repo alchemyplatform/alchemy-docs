@@ -8,9 +8,13 @@ description: >-
 
 Unlike [`eth_newBlockFilter`](eth-newblockfilter.md)which notifies you of all **new** blocks, you can pass in filter options to track new logs matching the topics specified.&#x20;
 
-To check if the state has changed, call [`eth_getFilterChanges`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-getfilterchanges)``
+To check if the state has changed, call [`eth_getFilterChanges`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-getfilterchanges)
 
 {% hint style="info" %}
+#### Note on Filters
+
+* Filters expire after 5 minutes of inactivity (no queries).&#x20;
+
 **A note on specifying topic filters:**
 
 Topics are order-dependent. A transaction with a log with topics \[A, B] will be matched by the following topic filters:

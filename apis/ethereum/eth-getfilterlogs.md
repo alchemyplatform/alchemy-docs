@@ -6,8 +6,11 @@ description: >-
 
 # eth\_getFilterLogs - Ethereum
 
-{% hint style="warning" %}
-This method only works for filters creates with [`eth_newFilter`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-newfilter)not for filters created using [`eth_newBlockFilter`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-newblockfilter) or [`eth_newPendingTransactionFilter`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-newpendingtransactionfilter), which will return `"filter not found".`
+{% hint style="info" %}
+#### Note on Filters
+
+* Filters expire after 5 minutes of inactivity (no queries).&#x20;
+* This method only works for filters creates with [`eth_newFilter`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-newfilter)not for filters created using [`eth_newBlockFilter`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-newblockfilter) or [`eth_newPendingTransactionFilter`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-newpendingtransactionfilter), which will return `"filter not found".`
 
 #### eth\_getLogs vs. eth\_getFilterLogs
 

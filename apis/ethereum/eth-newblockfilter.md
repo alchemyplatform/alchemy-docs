@@ -6,6 +6,12 @@ description: Creates a filter in the node, to notify when a new block arrives.
 
 To check if the state has changed, call [`eth_getFilterChanges`](https://docs.alchemy.com/alchemy/apis/ethereum/eth-getfilterchanges).
 
+{% hint style="info" %}
+#### Note on Filters
+
+* Filters expire after 5 minutes of inactivity (no queries).&#x20;
+{% endhint %}
+
 ### **Parameters**
 
 None

@@ -21,7 +21,10 @@ params: [
 `Array` - Array of log objects, or an empty array if nothing has changed since last poll.
 
 {% hint style="info" %}
-\*\*NOTE: \*\*`eth_getFilterChanges` only returns logs since the filter was **created**, regardless of the block passed in to create the filter. To get logs ranging from a specific block you should use [`eth_getLogs`](eth-getlogs.md)`.`
+#### Note on Filters
+
+* Filters expire after 5 minutes of inactivity (no queries).&#x20;
+* `eth_getFilterChanges` only returns logs **after** the filter was created, regardless of the block passed in to create the filter. To get logs ranging from a specific block you should use [`eth_getLogs`](eth-getlogs.md)`.`
 {% endhint %}
 
 * For filters created with `eth_newBlockFilter` the return are block hashes (`DATA`, 32 Bytes), e.g. `["0x3454645634534..."]`.
