@@ -11,6 +11,10 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
 * **\[Network]** Starting **at 9AM PST on October 5th** the Ropsten, Kovan and Rinkeby networks will no longer be supported on Alchemy. All requests to those networks after this date will return HTTP 410 errors.&#x20;
   * The [Ethereum Foundation has stopped maintaining support for these test networks](https://blog.ethereum.org/2022/06/21/testnet-deprecation/) so there is a high change they might fail without warning. **We strongly recommend switching over to Goerli as soon as possible.**  Here is [a short guide on how to migrate](https://www.alchemy.com/overviews/migrate-from-ropsten-to-goerli).
 
+### 08/25/2022
+
+* **\[API]** Removing support for unprotected transactions that do not adhere to the EIP-155 standard. Please make any necessary code changes ahead of time to protect your transactions from replay attacks by including the `chainId` field in your transaction payload.&#x20;
+
 ### 08/15/2022
 
 * **\[Network]** Optimism Kovan will be deprecated in favor of Optimism Goerli. We recommend migrating your applications ASAP.&#x20;
@@ -20,6 +24,10 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
 * **\[API]** Deprecating all [Debug API](../enhanced-apis/debug-api.md) support. Please use [Trace APIs](../enhanced-apis/trace-api/) instead.&#x20;
 
 ## Past
+
+### 07/28/2022
+
+* **\[Network]** Arbitrum Rinkeby will experience downtime while the network is hard-forked to Nitro. We recommend switching to Arbitrum Goerli in the meantime and for the foreseeable future since Arbitrum-Rinkeby will follow the Eth-Rinkeby end-of-life target date in Q3 of 2022.
 
 ### 07/12/2022
 
