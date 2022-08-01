@@ -35,6 +35,16 @@ We're obsessed with providing the most developer-friendly experience across our 
 
 | Method                                   | CU                                              |
 | ---------------------------------------- | ----------------------------------------------- |
+| get\_nftMetadata                         | ~~10~~ 0\*                                      |
+| getContractMetadata                      | ~~10~~ 0\*                                      |
+| isSpamContracts                          | ~~10~~ 0\*                                      |
+| getSpamContracts                         | ~~10~~ 0\*                                      |
+| getFloorPrice                            | ~~10~~ 0\*                                      |
+| get\_nfts                                | ~~100~~ 0\*                                     |
+| getNFTsForCollection                     | ~~100~~ 0\*                                     |
+| getOwnersForToken                        | ~~100~~ 0\*                                     |
+| getOwnersForCollection                   | ~~100~~ 0\*                                     |
+| reingestContract                         | ~~100~~ 0\*                                     |
 | net\_version                             | 0                                               |
 | eth\_chainId                             | 0                                               |
 | eth\_syncing                             | 0                                               |
@@ -106,9 +116,11 @@ We're obsessed with providing the most developer-friendly experience across our 
 | eth\_getBlockReceipts                    | 500                                             |
 | trace\_replayTransaction                 | 2983                                            |
 | trace\_replayBlockTransactions           | 2983                                            |
-| batch\*                                  | CU of method \* # of times the method is called |
+| batch\*\*                                | CU of method \* # of times the method is called |
 
-\*To view the batch request breakdown in the dashboard click on "raw request"&#x20;
+\*In an effort to help grow the NFT ecosystem and support developers, all NFT APIs are free to use for a limited time
+
+\*\*To view the batch request breakdown in the dashboard click on "raw request"&#x20;
 
 ## WebSocket and Webhook Costs
 
