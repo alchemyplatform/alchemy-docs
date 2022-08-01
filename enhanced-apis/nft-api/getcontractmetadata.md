@@ -24,9 +24,13 @@ _To see chain support across all features, check out the_ [_feature matrix_](../
   * `totalSupply:` _**\[string]**_ total number of NFTs in a given NFT collection
   * `tokenType:` _**\[string]**_ `"erc721"` or `"erc1155"` NFT token type
 
-{% hint style="info" %}
+{% hint style="success" %}
 **NOTE:** \
 ****The **** `name`, `symbol`, and `totalSupply`fields will only be set in the response if the contract implements functions to return each field.
+{% endhint %}
+
+{% hint style="warning" %}
+Starting August 1st at 9am PST, the `tokeType` field will be returned capitalized: "ERC721“ and "ERC1155“
 {% endhint %}
 
 ## Example
