@@ -19,15 +19,19 @@ description: All upgrades and changes to Alchemy's API endpoints and product fea
 
 * **\[Network]** Optimism Kovan will be deprecated in favor of Optimism Goerli. We recommend migrating your applications ASAP.&#x20;
 
-### Week of 07/25
+### 08/05/2022
 
-* **\[API]** Deprecating all [Debug API](../enhanced-apis/debug-api.md) support. Please use [Trace APIs](../enhanced-apis/trace-api/) instead.&#x20;
+* **\[API]** The `tokenType` field on the **** [`getContractMetadata`](../enhanced-apis/nft-api/getcontractmetadata.md) method will switch capitalization from `"erc721"` or `"erc1155"` to `"ERC721"` or `"ERC1155"`. Please prepare ahead of time for this change by setting up your code to accept either capitalization formats.&#x20;
 
 ## Past
 
 ### 07/28/2022
 
 * **\[Network]** Arbitrum Rinkeby will experience downtime while the network is hard-forked to Nitro. We recommend switching to Arbitrum Goerli in the meantime and for the foreseeable future since Arbitrum-Rinkeby will follow the Eth-Rinkeby end-of-life target date in Q3 of 2022.
+
+### Week of 07/25
+
+* **\[API]** Deprecating all [Debug API](../enhanced-apis/debug-api.md) support. Please use [Trace APIs](../enhanced-apis/trace-api/) instead.&#x20;
 
 ### 07/12/2022
 
